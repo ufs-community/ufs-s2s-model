@@ -1,0 +1,18 @@
+!!!IMPORTANT!!!
+===============
+
+This is a very early prototype of NUOPC-fied MOM6. The integration into NEMS
+is non-standard at this point. Instead of pulling the MOM6 directory via an
+SVN external, there is a script (fetch_MOM6.sh) that needs to be executed by
+the user once to access the pieces that make up the MOM6 directory.
+
+If you read this right after you have checked out the application, you will 
+notice that there is _no_ MOM6 directory under the application directory yet. 
+If so, go and execute 
+
+./fetch_MOM6.sh
+
+from your shell. Upon successful completion of the script you will see the 
+MOM6 directory. You can now proceed with regular NEMS build and run procedures.
+
+*gjt*
