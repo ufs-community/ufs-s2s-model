@@ -106,8 +106,8 @@ platform theia {
         log_dir="@[TMPrt]/log"
         scheduler="moabtorque"
         entities=[[[
-  <!ENTITY SHORTQ "batch">
-  <!ENTITY LONGQ "batch">
+  <!ENTITY SHORTQ "debug">
+  <!ENTITY LONGQ "debug">
   <!ENTITY BUILDQ "service">
 ]]]
         build_resources=[[[
