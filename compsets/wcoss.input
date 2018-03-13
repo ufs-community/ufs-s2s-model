@@ -22,11 +22,8 @@ platform wcoss.phase2 {
     LONG_TEST_QUEUE='&LONGQ;'
     BUILD_QUEUE='&BUILDQ;'
     MACHINE_ID='wcoss.phase2'
-    #BASELINE="/nems/noscrub/emc.nemspara/RT/NEMSfv3gfs/trunk-20171016"
-    #BASELINE_TEMPLATE="/nems/noscrub/emc.nemspara/RT/NEMSfv3gfs/trunk-20171016"
-    BASELINE="/nems/noscrub/emc.nemspara/RT/NEMSfv3gfs/cpldtest-20171018"
-    BASELINE_TEMPLATE="/nems/noscrub/emc.nemspara/RT/NEMSfv3gfs/cpldtest-20171018"
-    UGCS_input_data="/nems/noscrub/emc.nemspara/RT/UGCS/cpld_fv3_mom6_cice"
+    BASELINE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/updateMOM6CICE-20180226"
+    BASELINE_TEMPLATE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/updateMOM6CICE-20180226"
 
     default_resources={
         TASKS=150

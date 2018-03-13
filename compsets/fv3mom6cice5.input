@@ -17,7 +17,12 @@ embed bash fv3_prep(RUNDIR,modules,CNTL) [[[
         module use $( dirname $modules )
         module load $( basename $modules )
 
-        mkdir RESTART INPUT
+        mkdir RESTART INPUT 
+        #For MOM6
+        mkdir MOM6_RESTART MOM6_OUTPUT
+        #For CICE
+        mkdir history
+
 
         export MPI_TYPE_DEPTH=20
         export OMP_STACKSIZE=512M
@@ -36,83 +41,6 @@ embed bash fv3_prep(RUNDIR,modules,CNTL) [[[
 
 	ulimit -a
 ]]]
-
-# Function that uses compile.sh to build.  Note the defaults are no
-# make options and no build name.  No build name creates fv3.exe and
-# modules.fv3.
-embed bash compile.sh(MAKE_OPTS=' ',BUILD_NR='',fv3,modules,md5) [[[
-        cd @[plat%HOMEnems]/tests/
-        # Run the compile.sh.  Convert wcoss.cray to wcoss_cray to
-        # make the FV3 happy.
-        rm -f @[fv3] @[modules]
-        if ( which aprun ) && [[ @[plat%PLATFORM_NAME] == wcoss.cray ]] ; then
-            aprun -n 1 -j 1 -N 1 -d 24 \
-                ./compile.sh "@[plat%HOMEnems]/FV3" \
-                $( echo @[plat%MACHINE_ID] | sed 's,\.,_,g' ) \
-                @[MAKE_OPTS] @[BUILD_NR]
-        else
-            ./compile.sh "@[plat%HOMEnems]/FV3" \
-                $( echo @[plat%MACHINE_ID] | sed 's,\.,_,g' ) \
-                @[MAKE_OPTS] @[BUILD_NR]
-        fi
-        mkdir -p "@[plat%EXECrt]" "@[plat%INCrt]"
-        cp -fp ./fv3.exe @[fv3]
-        cp -fp ./modules.fv3 @[modules]
-        md5sum ./fv3.exe > @[md5]
-]]]
-
-########################################################################
-
-# Builds for the fv3.  Presently there is only one build, but with two
-# different build systems.  Results should be identical.
-
-build fv3.exe {
-    use plat
-
-    # Note:
-    #  plat%EXECrt = temporary directory for executables and md5 sums
-    #  plat%INCrt  = temporary directory for modulefiles
-    target="@[plat%EXECrt]/fv3.exe"   # NEMS.x installation location
-    modules.nems="@[plat%INCrt]/modules.fv3"  # modulefile for this NEMS.x
-    md5sum="@[target].md5"            # MD5SUM for this NEMS.x
-
-    # build: script to build the NEMS.x.  For now, this is an embedded
-    # bash script.
-    build=compile.sh(fv3="@[target]",modules="@[modules.nems]",md5="@[md5sum]")
-}
-
- 
-build fv3_32bit.exe {
-    # This block builds the FV3 in 32 bit mode.  It is otherwise
-    # identical to the fv3.exe block.
-    use plat
-
-    # Note:
-    #  plat%EXECrt = temporary directory for executables and md5 sums
-    #  plat%INCrt  = temporary directory for modulefiles
-    target="@[plat%EXECrt]/fv3_32bit.exe"   # NEMS.x installation location
-    modules.nems="@[plat%INCrt]/modules.fv3_32bit"  # modulefile for this NEMS.x
-    md5sum="@[target].md5"            # MD5SUM for this NEMS.x
-
-    # build: script to build the NEMS.x.  For now, this is an embedded
-    # bash script.
-    build=compile.sh(fv3="@[target]",modules="@[modules.nems]",md5="@[md5sum]",
-                    MAKE_OPTS='32BIT=Y')
-}
-
-build fv3_appbuilder.exe {
-    # This block is similar to the fv3.exe block, but uses the
-    # NEMSAppBuilder.  We do this for one compset, just to make sure
-    # the NEMSAppBuilder does not break.
-    use plat
-    target="@[plat%EXECrt]/fv3_appbuilder.exe"
-    modules.nems="@[plat%INCrt]/modules_appbuilder.fv3"
-    md5sum="@[target].md5"
-
-    # The NEMSAppBuilder is another embedded bash script in nemscommon.input
-    build=NEMSAppBuilder(NEMS.x="@[target]",modules.nems="@[modules.nems]",
-                         OPTS="app=standaloneFV3",md5sum="@[md5sum]")
-}
 
 build fv3_mom6_cice.exe { 
     # Use NEMSAppBuilder to build a coupled app.   
@@ -185,7 +113,7 @@ test cpld_fv3_atmnostep: fv3_mom6_cice.exe {
     use plat%default_resources 
     use fv3_defaults 
  
-    TEST_DESCR="Compare FV3 control results with previous trunk version" 
+    TEST_DESCR="Compare FV3 control results with previous trunk version cpld_fv3_atmnostep" 
     CNTL_NAME='fv3_control' 
  
     COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
@@ -306,7 +234,7 @@ test cpld_fv3_atmstep: fv3_mom6_cice.exe {
     use plat%default_resources 
     use fv3_defaults 
  
-    TEST_DESCR="Compare FV3 control results with previous trunk version" 
+    TEST_DESCR="Compare FV3 control results with previous trunk version cpld_fv3_atmstep" 
     CNTL_NAME='fv3_control' 
  
     COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
@@ -424,9 +352,9 @@ test cpld_fv3_atmstep: fv3_mom6_cice.exe {
 ######################################################################## 
  
 test cpld_fv3_rst_atmstep: fv3_mom6_cice.exe { 
-    use fv3_control 
+    #use fv3_control 
  
-    TEST_DESCR="Compare FV3 restart results with previous trunk version" 
+    TEST_DESCR="Compare FV3 restart results with previous trunk version cpld_fv3_rst_atmstep" 
     CNTL_NAME='fv3_restart' 
      
     WARM_START='.T.' 
@@ -562,9 +490,9 @@ test cpld_fv3_mom6_cice_cold: fv3_mom6_cice.exe {
     COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
     RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 
     CNTL="@[plat%BASELINE]/@[CNTL_NAME]"      # Control baseline area 
-    FV3_input_data="@[plat%INPUTS]/FV3_input_data" 
 
-    UGCS_input_data="@[plat%UGCS_input_data]" 
+    FV3_input_data="@[plat%INPUTS]/FV3_input_data" 
+    UGCS_input_data="@[plat%INPUTS]" 
  
     build=fv3_mom6_cice.exe 
  
@@ -573,7 +501,7 @@ test cpld_fv3_mom6_cice_cold: fv3_mom6_cice.exe {
         CNTL="@[CNTL]") 
      
     # - set total number of tasks to satisfy coupled application need 
-    TASKS=202 
+    TASKS=510 
  
     # - nems.configure --- 
     nems_configure='medcold_atm_ocn_ice' 
@@ -582,16 +510,16 @@ test cpld_fv3_mom6_cice_cold: fv3_mom6_cice.exe {
     atm_model='fv3' 
     atm_petlist_bounds="0 149" 
     ocn_model='mom6' 
-    ocn_petlist_bounds="150 181" 
+    ocn_petlist_bounds="150 389" 
     ice_model='cice' 
-    ice_petlist_bounds="182 201" 
+    ice_petlist_bounds="390 509" 
     coupling_interval_slow_sec=1800.0  # 30min coupling, fv3 time step 
     coupling_interval_fast_sec=1800.0  # 30min coupling, fv3 time step 
  
     # Specify input files. 
     filters input { 
       #    WORK FILE  <=filter=   SOURCE FILE 
-          'input.nml' <=atparse=  "@[PARMnems]/input.nml.IN" 
+          'input.nml' <=atparse=  "@[PARMnems]/input.mom6.nml.IN" 
     'model_configure' <=atparse=  "@[PARMnems]/model_configure.IN" 
                  'aerosol.dat' <=copyfrom= "@[FV3_input_data]/INPUT" 
   'co2historicaldata_201*.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
@@ -601,13 +529,12 @@ test cpld_fv3_mom6_cice_cold: fv3_mom6_cice.exe {
             '*_table' <=copyfrom= "@[FV3_input_data]" 
          '*configure' <=copyfrom= "@[FV3_input_data]" 
               'INPUT' <=copy=     "@[FV3_input_data]/INPUT" 
+'INPUT/C96_mosaic.nc' <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
      'nems.configure' <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN" 
-                  '*' <=copydir=  "@[UGCS_input_data]/CICE"
-                  '*' <=copydir=  "@[UGCS_input_data]/MOM6"
-            'INPUT/*' <=copyfrom= "@[UGCS_input_data]/MOM6-INPUT"
-             'OUTPUT' <=copy=     "@[UGCS_input_data]/EmptyDir"
-            'history' <=copy=     "@[UGCS_input_data]/EmptyDir"
-            'restart' <=copy=     "@[UGCS_input_data]/EmptyDir"
+            'INPUT/*' <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
+ 'INPUT/MOM6_IC_TS.nc' <=copy=    "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
+ 'INPUT/grid_spec.nc'  <=copy=    "@[UGCS_input_data]/COUPLED/grid_spec.nc"
+                  '*' <=copyfrom= "@[UGCS_input_data]/CICE"
     } 
  
     # Specify output files:
@@ -831,4 +758,3 @@ test cpld_fv3_mom6_cice: fv3_mom6_cice.exe {
     } 
 } 
  
-######################################################################## 

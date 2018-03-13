@@ -239,4 +239,11 @@
   ISEED_SPPT=3,
 /
 
-
+ &MOM_input_nml
+         output_directory = 'MOM6_OUTPUT/',
+         input_filename = 'n'
+         restart_input_dir = 'INPUT/',
+         restart_output_dir = 'MOM6_RESTART/',
+         parameter_filename = 'INPUT/MOM_input',
+                              'INPUT/MOM_override' /
+ 
