@@ -101,7 +101,7 @@ fv3_defaults = {
 
     IAU_INC_FILES=''
 
-    walltime=900
+    walltime=1800
 }
 
 ########################################################################
@@ -486,6 +486,8 @@ test cpld_fv3_mom6_cice_cold: fv3_mom6_cice.exe {
     CNTL_NAME='fv3_control' 
  
     CPLFLX='.T.' 
+    DAYS='0.041666666'
+    FHMAX='1'
  
     COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
     RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 
@@ -627,13 +629,15 @@ test cpld_fv3_mom6_cice: fv3_mom6_cice.exe {
     CNTL_NAME='fv3_control' 
  
     CPLFLX='.T.' 
+    DAYS='0.25'
+    FHMAX='6'
  
     COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
     RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 
     CNTL="@[plat%BASELINE]/@[CNTL_NAME]"      # Control baseline area 
     FV3_input_data="@[plat%INPUTS]/FV3_input_data" 
 
-    UGCS_input_data="@[plat%UGCS_input_data]"
+    UGCS_input_data="@[plat%INPUTS]" 
  
     build=fv3_mom6_cice.exe 
  
@@ -642,7 +646,7 @@ test cpld_fv3_mom6_cice: fv3_mom6_cice.exe {
         CNTL="@[CNTL]") 
      
     # - set total number of tasks to satisfy coupled application need 
-    TASKS=202 
+    TASKS=510 
  
     # - nems.configure --- 
     nems_configure='med_atm_ocn_ice' 
@@ -651,16 +655,16 @@ test cpld_fv3_mom6_cice: fv3_mom6_cice.exe {
     atm_model='fv3' 
     atm_petlist_bounds="0 149" 
     ocn_model='mom6' 
-    ocn_petlist_bounds="150 181" 
+    ocn_petlist_bounds="150 389" 
     ice_model='cice' 
-    ice_petlist_bounds="182 201" 
+    ice_petlist_bounds="390 509" 
     coupling_interval_slow_sec=1800.0  # 30min coupling, fv3 time step 
     coupling_interval_fast_sec=1800.0  # 30min coupling, fv3 time step 
  
     # Specify input files. 
     filters input { 
       #    WORK FILE  <=filter=   SOURCE FILE 
-          'input.nml' <=atparse=  "@[PARMnems]/input.nml.IN" 
+          'input.nml' <=atparse=  "@[PARMnems]/input.mom6.nml.IN" 
     'model_configure' <=atparse=  "@[PARMnems]/model_configure.IN" 
                  'aerosol.dat' <=copyfrom= "@[FV3_input_data]/INPUT" 
   'co2historicaldata_201*.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
@@ -670,15 +674,15 @@ test cpld_fv3_mom6_cice: fv3_mom6_cice.exe {
             '*_table' <=copyfrom= "@[FV3_input_data]" 
          '*configure' <=copyfrom= "@[FV3_input_data]" 
               'INPUT' <=copy=     "@[FV3_input_data]/INPUT" 
+'INPUT/C96_mosaic.nc' <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
      'nems.configure' <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN" 
-                  '*' <=copydir=  "@[UGCS_input_data]/CICE" 
-                  '*' <=copydir=  "@[UGCS_input_data]/MOM6" 
-            'INPUT/*' <=copyfrom= "@[UGCS_input_data]/MOM6-INPUT" 
-             'OUTPUT' <=copy=     "@[UGCS_input_data]/EmptyDir" 
-            'history' <=copy=     "@[UGCS_input_data]/EmptyDir" 
-            'restart' <=copy=     "@[UGCS_input_data]/EmptyDir" 
+            'INPUT/*' <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
+ 'INPUT/MOM6_IC_TS.nc' <=copy=    "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
+ 'INPUT/grid_spec.nc'  <=copy=    "@[UGCS_input_data]/COUPLED/grid_spec.nc"
+                  '*' <=copyfrom= "@[UGCS_input_data]/CICE"
+                  '*' <=copyfrom= "@[UGCS_input_data]/MEDIATOR"
     } 
- 
+
     # Specify output files:
     criteria output {
         # WORKFILE                            .comparison. TARGET

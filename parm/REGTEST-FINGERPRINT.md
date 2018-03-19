@@ -18,4 +18,7 @@ Change log:
 
 * Feb. 26, 2018 - FV3 ICs and test baselines are from RT/NEMSfv3gfs/trunk-20171016
                   MOM6 ICs and input are for 1/4 deg
-                  CICE5 ICs and input are for 1/4 deg 
+                  CICE5 ICs and input are for 1/4 deg
+* Mar. 13, 2018 - Moving updateMOM6CICE to master 
+* Mar. 19, 2018 - Updated CICE/ice_in and added MEDIATOR dir which has restart files
+                  for the mediator
