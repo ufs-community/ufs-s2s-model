@@ -10,27 +10,9 @@
 [submodule "MOM6/MOM6_scripts"]
 	path = MOM6/MOM6_scripts
 	url = https://github.com/jiandewang/MOM6_scripts
-[submodule "MOM6/src/atmos_null"]
-	path = MOM6/src/atmos_null
-	url = https://github.com/NOAA-GFDL/atmos_null
-[submodule "MOM6/src/land_null"]
-	path = MOM6/src/land_null
-	url = https://github.com/NOAA-GFDL/land_null
-[submodule "MOM6/src/icebergs"]
-	path = MOM6/src/icebergs
-	url = https://github.com/NOAA-GFDL/icebergs
 [submodule "MOM6/src/FMS"]
 	path = MOM6/src/FMS
 	url = https://github.com/NOAA-GFDL/FMS
-[submodule "MOM6/src/coupler"]
-	path = MOM6/src/coupler
-	url = https://github.com/NOAA-GFDL/coupler
-[submodule "MOM6/src/SIS2"]
-	path = MOM6/src/SIS2
-	url = https://github.com/NOAA-GFDL/SIS2
-[submodule "MOM6/src/ice_ocean_extras"]
-	path = MOM6/src/ice_ocean_extras
-	url = https://github.com/jiandewang/ice_ocean_extras
 [submodule "MOM6/src/mkmf"]
 	path = MOM6/src/mkmf
 	url = https://github.com/jiandewang/mkmf
