@@ -7,18 +7,3 @@
 [submodule "CICE_SRC"]
 	path = CICE_SRC
 	url = gerrit:EMC_CICE
-[submodule "MOM6/MOM6_scripts"]
-	path = MOM6/MOM6_scripts
-	url = https://github.com/jiandewang/MOM6_scripts
-[submodule "MOM6/src/FMS"]
-	path = MOM6/src/FMS
-	url = https://github.com/NOAA-GFDL/FMS
-[submodule "MOM6/src/mkmf"]
-	path = MOM6/src/mkmf
-	url = https://github.com/jiandewang/mkmf
-[submodule "MOM6/src/MOM6"]
-	path = MOM6/src/MOM6
-	url = https://github.com/jiandewang/MOM6
-[submodule "MOM_CAP"]
-	path = MOM_CAP
-	url = https://github.com/jiandewang/nems_mom_cap
