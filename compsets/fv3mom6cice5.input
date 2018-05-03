@@ -493,7 +493,7 @@ test cpld_fv3_mom6_cice_cold: fv3_mom6_cice.exe {
     use fv3_defaults 
  
     TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold start" 
-    CNTL_NAME='fv3_control' 
+    CNTL_NAME='RT-Baselines_cold_start' 
  
     CPLFLX='.T.' 
     CPL='.true.'
@@ -553,36 +553,18 @@ test cpld_fv3_mom6_cice_cold: fv3_mom6_cice.exe {
     # Specify output files:
     criteria output {
         # WORKFILE                            .comparison. TARGET
-        'atmos_4xdaily.tile1.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile2.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile3.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile4.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile5.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile6.nc' .bitcmp. "@[CNTL]"
-        'phyf000.tile1.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile2.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile3.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile4.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile5.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile6.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile1.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile2.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile3.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile4.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile5.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile6.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile1.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile2.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile3.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile4.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile5.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile6.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile1.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile2.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile3.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile4.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile5.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile6.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile1.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile2.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile3.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile4.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile5.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile6.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile1.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile2.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile3.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile4.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile5.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile6.nc'      .bitcmp. "@[CNTL]"
         'RESTART/coupler.res'                   .bitcmp. "@[CNTL]/RESTART/"
         'RESTART/fv_core.res.nc'                .bitcmp. "@[CNTL]/RESTART/"
         'RESTART/fv_core.res.tile1.nc'          .bitcmp. "@[CNTL]/RESTART/"
@@ -637,7 +619,7 @@ test cpld_fv3_mom6_cice: fv3_mom6_cice.exe {
     use fv3_defaults 
  
     TEST_DESCR="Fully coupled FV3-MOM6-CICE system from Mediator restarts" 
-    CNTL_NAME='fv3_control' 
+    CNTL_NAME='RT-Baselines' 
  
     CPLFLX='.T.' 
     CPL='.true.'
@@ -698,36 +680,18 @@ test cpld_fv3_mom6_cice: fv3_mom6_cice.exe {
     # Specify output files:
     criteria output {
         # WORKFILE                            .comparison. TARGET
-        'atmos_4xdaily.tile1.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile2.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile3.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile4.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile5.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile6.nc' .bitcmp. "@[CNTL]"
-        'phyf000.tile1.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile2.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile3.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile4.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile5.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile6.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile1.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile2.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile3.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile4.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile5.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile6.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile1.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile2.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile3.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile4.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile5.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile6.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile1.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile2.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile3.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile4.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile5.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile6.nc'      .bitcmp. "@[CNTL]"
+        'phyf006.tile1.nc'      .bitcmp. "@[CNTL]"
+        'phyf006.tile2.nc'      .bitcmp. "@[CNTL]"
+        'phyf006.tile3.nc'      .bitcmp. "@[CNTL]"
+        'phyf006.tile4.nc'      .bitcmp. "@[CNTL]"
+        'phyf006.tile5.nc'      .bitcmp. "@[CNTL]"
+        'phyf006.tile6.nc'      .bitcmp. "@[CNTL]"
+        'dynf006.tile1.nc'      .bitcmp. "@[CNTL]"
+        'dynf006.tile2.nc'      .bitcmp. "@[CNTL]"
+        'dynf006.tile3.nc'      .bitcmp. "@[CNTL]"
+        'dynf006.tile4.nc'      .bitcmp. "@[CNTL]"
+        'dynf006.tile5.nc'      .bitcmp. "@[CNTL]"
+        'dynf006.tile6.nc'      .bitcmp. "@[CNTL]"
         'RESTART/coupler.res'                   .bitcmp. "@[CNTL]/RESTART/"
         'RESTART/fv_core.res.nc'                .bitcmp. "@[CNTL]/RESTART/"
         'RESTART/fv_core.res.tile1.nc'          .bitcmp. "@[CNTL]/RESTART/"
