@@ -11,6 +11,7 @@
        blocksize = 32
        chksum_debug = .false.
        dycore_only = .false.
+       fdiag = @[FDIAG]
 /
 
 &diag_manager_nml
@@ -25,7 +26,7 @@
 
 &fms_nml
        clock_grain = 'ROUTINE',
-       domains_stack_size = 40000000,
+       domains_stack_size = 3000000,
        print_memory_usage = .false.
 /
 
@@ -39,7 +40,7 @@
        npx      = @[NPX]
        npy      = @[NPY]
        ntiles   = 6,
-       npz    = 63
+       npz    = @[NPZ]
        grid_type = -1
        make_nh = @[MAKE_NH]
        fv_debug = .F.
@@ -117,7 +118,7 @@
 
 &external_ic_nml
        filtered_terrain = .true.
-       levp = 64
+       levp = @[NPZP]
        gfs_dwinds = .true.
        checker_tr = .F.
        nt_checker = 0
@@ -131,7 +132,7 @@
        use_ufo        = .true.
        pre_rad        = .false.
        ncld           = 1
-       zhao_mic       = .true.
+       imp_physics    = 99
        pdfcld         = .false.
        fhswr          = 3600.
        fhlwr          = 3600.
@@ -167,10 +168,6 @@
        iau_inc_files  = @[IAU_INC_FILES]
 /
 
-&nggps_diag_nml
-       fdiag = @[FDIAG]
-/
-
 &interpolator_nml
        interp_method = 'conserve_great_circle'
 /
@@ -181,14 +178,14 @@
        FNTSFC   = "RTGSST.1982.2012.monthly.clim.grb",
        FNSNOC   = "global_snoclim.1.875.grb",
        FNZORC   = "igbp",
-       FNALBC   = "global_snowfree_albedo.bosu.t126.384.190.rg.grb",
+       FNALBC   = @[FNALBC]
        FNALBC2  = "global_albedo4.1x1.grb",
        FNAISC   = "CFSR.SEAICE.1982.2012.monthly.clim.grb",
        FNTG3C   = "global_tg3clim.2.6x1.5.grb",
        FNVEGC   = "global_vegfrac.0.144.decpercent.grb",
-       FNVETC   = "global_vegtype.igbp.t126.384.190.rg.grb",
-       FNSOTC   = "global_soiltype.statsgo.t126.384.190.rg.grb",
-       FNSMCC   = "global_soilmgldas.t126.384.190.grb",
+       FNVETC   = @[FNVETC]
+       FNSOTC   = @[FNSOTC] 
+       FNSMCC   = @[FNSMCC]
        FNMSKH   = "seaice_newland.grb",
        FNTSFA   = "",
        FNACNA   = "",
@@ -196,7 +193,7 @@
        FNVMNC   = "global_shdmin.0.144x0.144.grb",
        FNVMXC   = "global_shdmax.0.144x0.144.grb",
        FNSLPC   = "global_slope.1x1.grb",
-       FNABSC   = "global_mxsnoalb.uariz.t126.384.190.rg.grb",
+       FNABSC   = @[FNABSC]
        LDEBUG   =.false.,
        FSMCL(2) = 99999
        FSMCL(3) = 99999
@@ -238,7 +235,6 @@
   ISEED_SKEB=2,
   ISEED_SPPT=3,
 /
-
  &MOM_input_nml
          output_directory = 'MOM6_OUTPUT/',
          input_filename = 'n'
@@ -246,4 +242,4 @@
          restart_output_dir = 'MOM6_RESTART/',
          parameter_filename = 'INPUT/MOM_input',
                               'INPUT/MOM_override' /
- 
+

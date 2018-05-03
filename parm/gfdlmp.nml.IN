@@ -11,6 +11,7 @@
        blocksize = 32
        chksum_debug = .false.
        dycore_only = .false.
+       fdiag = @[FDIAG]
 /
 
 &diag_manager_nml
@@ -39,7 +40,7 @@
        npx      = 97
        npy      = 97
        ntiles   = 6,
-       npz    = 63
+       npz    = @[NPZ]
        grid_type = -1
        make_nh = @[MAKE_NH]
        fv_debug = .F.
@@ -78,7 +79,7 @@
        ke_bg = 0.
        do_vort_damp = .true.
        external_ic = @[EXTERNAL_IC]
-       external_eta = .F.
+       external_eta = .T.
        gfs_phil = .false.
        nggps_ic = @[NGGPS_IC]
        mountain = @[MOUNTAIN]
@@ -119,7 +120,7 @@
 
 &external_ic_nml
        filtered_terrain = .true.
-       levp = 64
+       levp = @[NPZP]
        gfs_dwinds = .true.
        checker_tr = .F.
        nt_checker = 0
@@ -133,7 +134,7 @@
        use_ufo        = .true.
        pre_rad        = .false.
        ncld           = 5
-       zhao_mic       = .false.
+       imp_physics    = 11
        pdfcld         = .false.
        fhswr          = 3600.
        fhlwr          = 3600.
@@ -216,10 +217,6 @@
        fix_negative = .true.
        icloud_f = 1
        mp_time = 150.
-/
-
-&nggps_diag_nml
-       fdiag = @[FDIAG]
 /
 
 &interpolator_nml

@@ -12,6 +12,7 @@
 !     surface_debug = .false.
        chksum_debug = .false.
        dycore_only = .false.
+       fdiag = @[FDIAG]
 /
 
 &diag_manager_nml
@@ -122,7 +123,7 @@
        use_ufo        = .true.
        pre_rad        = .false.
        ncld           = 1
-       zhao_mic       = .true.
+       imp_physics    = 99
        pdfcld         = .false.
        fhswr          = 3600.
        fhlwr          = 3600.
@@ -155,10 +156,6 @@
 	   dspheat = .T.
 	   hybedmf = .F.
 	   shal_cnv = .T. !Shallow convection
-/
-
-&nggps_diag_nml
-       fdiag = @[FDIAG]
 /
 
 &interpolator_nml

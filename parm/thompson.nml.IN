@@ -64,7 +64,7 @@
        p_fac = 0.1
        k_split  = 2
        n_split  = 6
-       nwat = 2
+       nwat = 6
        na_init = @[NA_INIT]
        d_ext = 0.0
        dnats = 0
@@ -131,8 +131,8 @@
        nst_anl        = .true.
        use_ufo        = .true.
        pre_rad        = .false.
-       ncld           = 1
-       imp_physics    = 99
+       ncld           = 2
+       imp_physics    = 8
        pdfcld         = .false.
        fhswr          = 3600.
        fhlwr          = 3600.
@@ -162,7 +162,6 @@
        isot           = 1
        debug          = .false.
        nstf_name      = @[NSTF_NAME]
-       cplflx         = @[CPLFLX]
        iau_delthrs    = 6
        iaufhrs        = 30
        iau_inc_files  = @[IAU_INC_FILES]

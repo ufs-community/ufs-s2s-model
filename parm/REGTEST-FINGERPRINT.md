@@ -22,3 +22,4 @@ Change log:
 * Mar. 13, 2018 - Moving updateMOM6CICE to master 
 * Mar. 19, 2018 - Updated CICE/ice_in and added MEDIATOR dir which has restart files
                   for the mediator
+* Apr. 18, 2018 - Update FV3 ICs and inputs from RT/NEMSfv3gfs/trunk-20180330

@@ -68,7 +68,11 @@ fv3_defaults = {
     READ_INCREMENT='.F.'
     FDIAG='0,1,2,3,4,5,6,7,8,9,10,11,12,15,18,21,24'
     NSTF_NAME='2,1,1,0,5'
-    CPLFLX='.F.'
+    FNALBC="'global_snowfree_albedo.bosu.t126.384.190.rg.grb',"
+    FNVETC="'global_vegtype.igbp.t126.384.190.rg.grb',"
+    FNSOTC="'global_soiltype.statsgo.t126.384.190.rg.grb',"
+    FNSMCC="'global_soilmgldas.t126.384.190.grb',"
+    FNABSC="'global_mxsnoalb.uariz.t126.384.190.rg.grb',"
 
     ENS_NUM='1'
     SYEAR='2016'
@@ -81,6 +85,8 @@ fv3_defaults = {
     FHMAX='24'
     NPX='97'
     NPY='97'
+    NPZ='64'
+    NPZP='65'
     NFHOUT='3'
     NFHMAX_HF='12'
     NFHOUT_HF='1'
@@ -90,8 +96,9 @@ fv3_defaults = {
     NUM_FILES=2
     FILENAME_BASE="'dyn' 'phy'"
     OUTPUT_GRID="'cubed_sphere_grid'"
-    WRITE_NEMSIOFILE='.false.'
+    OUTPUT_FILE="'netcdf'"
     WRITE_NEMSIOFLIP='.false.'
+    WRITE_FSYNCFLAG ='.false.'
     IMO='384'
     JMO='190'
 
@@ -101,7 +108,10 @@ fv3_defaults = {
 
     IAU_INC_FILES=''
 
-    walltime=1800
+    CPLFLX='.F.'
+    CPL='.false.'
+
+    walltime=1800 # seconds
 }
 
 ########################################################################
@@ -486,6 +496,7 @@ test cpld_fv3_mom6_cice_cold: fv3_mom6_cice.exe {
     CNTL_NAME='fv3_control' 
  
     CPLFLX='.T.' 
+    CPL='.true.'
     DAYS='0.041666666'
     FHMAX='1'
  
@@ -629,6 +640,7 @@ test cpld_fv3_mom6_cice: fv3_mom6_cice.exe {
     CNTL_NAME='fv3_control' 
  
     CPLFLX='.T.' 
+    CPL='.true.'
     DAYS='0.25'
     FHMAX='6'
  
