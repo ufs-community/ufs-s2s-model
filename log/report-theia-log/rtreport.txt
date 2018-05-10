@@ -1,42 +1,140 @@
 Run rocotostat...
 Generate report...
-WORKFLOW STARTED AT Mon Feb 12 20:06:26 2018 (+1518465986)
+WORKFLOW STARTED AT Thu May 10 03:33:58 2018 (+1525923238)
 Repository information:
 
 
 REPO TOP:
-drwxr-sr-x 17 Jun.Wang emc-nems  4096 Mon Feb 12 17:23:06 2018 CICE
--rw-r--r--  1 Jun.Wang emc-nems   582 Mon Feb 12 20:22:06 2018 CICE.install.md5sum.theia
--rw-r--r--  1 Jun.Wang emc-nems  1303 Mon Feb 12 20:06:48 2018 FV3.install.md5sum.theia
--rwxr-xr-x  1 Jun.Wang emc-nems  1341 Mon Feb 12 14:17:24 2018 fetch_MOM6.sh
-drwxr-sr-x  2 Jun.Wang emc-nems  4096 Mon Feb 12 14:17:24 2018 conf
--rw-r--r--  1 Jun.Wang emc-nems   208 Mon Feb 12 14:17:24 2018 standaloneFV3.appBuilder
-drwxr-sr-x  7 Jun.Wang emc-nems  4096 Mon Feb 12 20:22:44 2018 log
-drwxr-sr-x  7 Jun.Wang emc-nems  4096 Mon Feb 12 20:22:06 2018 MOM6
--rw-r--r--  1 Jun.Wang emc-nems   692 Mon Feb 12 14:17:23 2018 MOM6.README
-drwxr-sr-x  6 Jun.Wang emc-nems  4096 Mon Feb 12 14:17:24 2018 modulefiles
-drwxr-sr-x 12 Jun.Wang emc-nems  8192 Mon Feb 12 17:21:51 2018 FV3
-drwxr-sr-x  4 Jun.Wang emc-nems  4096 Mon Feb 12 14:17:25 2018 tests
--rw-r--r--  1 Jun.Wang emc-nems   720 Mon Feb 12 20:22:06 2018 MOM6.install.md5sum.theia
-drwxr-sr-x  2 Jun.Wang emc-nems  4096 Mon Feb 12 19:57:50 2018 compsets
-drwxr-sr-x  2 Jun.Wang emc-nems  4096 Mon Feb 12 14:17:24 2018 parm
--rw-r--r--  1 Jun.Wang emc-nems  6652 Mon Feb 12 17:29:15 2018 xxx
-drwxr-sr-x  2 Jun.Wang emc-nems  4096 Mon Feb 12 20:22:06 2018 MOM_CAP
-drwxr-sr-x  6 Jun.Wang emc-nems  4096 Mon Feb 12 14:18:03 2018 NEMS
-drwxr-sr-x  2 Jun.Wang emc-nems  4096 Mon Feb 12 17:23:06 2018 CICE_CAP
-drwxr-sr-x  2 Jun.Wang emc-nems  4096 Mon Feb 12 14:17:24 2018 doc
--rw-r--r--  1 Jun.Wang emc-nems 13672 Mon Feb 12 20:49:27 2018 xxx1
-drwxr-sr-x  3 Jun.Wang emc-nems  4096 Mon Feb 12 14:17:24 2018 release
--rw-r--r--  1 Jun.Wang emc-nems   391 Mon Feb 12 14:17:24 2018 coupledFV3_MOM6_CICE.appBuilder
+master 3527dbf [origin/master] Revised compsets/fv3mom6cice5.input.
+Fetch URL: gerrit:EMC_FV3-MOM6-CICE5
+ M NEMS
+ M log/report-theia-log/rtreport.txt
 
-WARNING: Could not complete subversion checks: exe('svn')['info','.']: non-zero exit status (returncode=1)
+Entering 'CICE_SRC'
+(HEAD detached at c58eedc) c58eedc update for cice_mx025 and bug fix for dump file output
+Fetch URL: gerrit:EMC_CICE
+
+Entering 'FV3'
+(HEAD detached at 39988db) 39988db FV3: this commits #refs 49248: adding capability to output 3D fields in physics history file and a few other fixes
+Fetch URL: gerrit:FV3
+
+Entering 'MOM6'
+(HEAD detached at e9728b1) e9728b1 updating FMS to warsaw_201803
+Fetch URL: https://github.com/EMC-MOM6/NEMS-MOM6-FMS
+
+Entering 'NEMS'
+gaea-support 7c31d59 [origin/gaea-support] pass the  node size down to produtil.mpi_impl when generating test scripts
+Fetch URL: gerrit:NEMS
+
+
 BUILD fv3_mom6_cice.exe: SUCCEEDED
-  FAIL: job state is DEAD
 
-TEST #1: FAIL
-  Test cpld_fv3_mom6_cice_cold starting at Mon Feb 12 20:24:46 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold start)
-  Mon Feb 12 20:24:46 UTC 2018
-WORKFLOW REPORT AT Mon Feb 12 20:49:27 2018 (+1518468567)
-Tests: 1 failed, 0 passed out of 1
+TEST #1: PASS
+  Test cpld_fv3_mom6_cice starting at Thu May 10 03:59:09 UTC 2018 (Fully coupled FV3-MOM6-CICE system from Mediator restarts)
+  Thu May 10 03:59:09 UTC 2018
+  phyf006.tile1.nc: bit-for-bit identical
+  phyf006.tile2.nc: bit-for-bit identical
+  phyf006.tile3.nc: bit-for-bit identical
+  phyf006.tile4.nc: bit-for-bit identical
+  phyf006.tile5.nc: bit-for-bit identical
+  phyf006.tile6.nc: bit-for-bit identical
+  dynf006.tile1.nc: bit-for-bit identical
+  dynf006.tile2.nc: bit-for-bit identical
+  dynf006.tile3.nc: bit-for-bit identical
+  dynf006.tile4.nc: bit-for-bit identical
+  dynf006.tile5.nc: bit-for-bit identical
+  dynf006.tile6.nc: bit-for-bit identical
+  RESTART/coupler.res: bit-for-bit identical
+  RESTART/fv_core.res.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile1.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile2.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile3.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile4.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile5.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile6.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile1.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile2.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile3.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile4.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile5.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile6.nc: bit-for-bit identical
+  RESTART/phy_data.tile1.nc: bit-for-bit identical
+  RESTART/phy_data.tile2.nc: bit-for-bit identical
+  RESTART/phy_data.tile3.nc: bit-for-bit identical
+  RESTART/phy_data.tile4.nc: bit-for-bit identical
+  RESTART/phy_data.tile5.nc: bit-for-bit identical
+  RESTART/phy_data.tile6.nc: bit-for-bit identical
+  RESTART/sfc_data.tile1.nc: bit-for-bit identical
+  RESTART/sfc_data.tile2.nc: bit-for-bit identical
+  RESTART/sfc_data.tile3.nc: bit-for-bit identical
+  RESTART/sfc_data.tile4.nc: bit-for-bit identical
+  RESTART/sfc_data.tile5.nc: bit-for-bit identical
+  RESTART/sfc_data.tile6.nc: bit-for-bit identical
+  Executable did not change during test suite:
+    File: /scratch4/NCEPDEV/stmp4/Samuel.Trahan/rtgen.103766/exec/fv3_mom6_cice.exe
+    Expected md5sum: 390b734765a963cc44295b9b0b8e975b
+    Actual md5sum: 390b734765a963cc44295b9b0b8e975b
+  TEST PASSED AT Thu May 10 04:09:10 UTC 2018
+
+TEST #2: PASS
+  Test cpld_fv3_mom6_cice_cold starting at Thu May 10 03:59:03 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold start)
+  Thu May 10 03:59:03 UTC 2018
+  phyf001.tile1.nc: bit-for-bit identical
+  phyf001.tile2.nc: bit-for-bit identical
+  phyf001.tile3.nc: bit-for-bit identical
+  phyf001.tile4.nc: bit-for-bit identical
+  phyf001.tile5.nc: bit-for-bit identical
+  phyf001.tile6.nc: bit-for-bit identical
+  dynf001.tile1.nc: bit-for-bit identical
+  dynf001.tile2.nc: bit-for-bit identical
+  dynf001.tile3.nc: bit-for-bit identical
+  dynf001.tile4.nc: bit-for-bit identical
+  dynf001.tile5.nc: bit-for-bit identical
+  dynf001.tile6.nc: bit-for-bit identical
+  RESTART/coupler.res: bit-for-bit identical
+  RESTART/fv_core.res.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile1.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile2.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile3.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile4.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile5.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile6.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile1.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile2.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile3.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile4.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile5.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile6.nc: bit-for-bit identical
+  RESTART/phy_data.tile1.nc: bit-for-bit identical
+  RESTART/phy_data.tile2.nc: bit-for-bit identical
+  RESTART/phy_data.tile3.nc: bit-for-bit identical
+  RESTART/phy_data.tile4.nc: bit-for-bit identical
+  RESTART/phy_data.tile5.nc: bit-for-bit identical
+  RESTART/phy_data.tile6.nc: bit-for-bit identical
+  RESTART/sfc_data.tile1.nc: bit-for-bit identical
+  RESTART/sfc_data.tile2.nc: bit-for-bit identical
+  RESTART/sfc_data.tile3.nc: bit-for-bit identical
+  RESTART/sfc_data.tile4.nc: bit-for-bit identical
+  RESTART/sfc_data.tile5.nc: bit-for-bit identical
+  RESTART/sfc_data.tile6.nc: bit-for-bit identical
+  Executable did not change during test suite:
+    File: /scratch4/NCEPDEV/stmp4/Samuel.Trahan/rtgen.103766/exec/fv3_mom6_cice.exe
+    Expected md5sum: 390b734765a963cc44295b9b0b8e975b
+    Actual md5sum: 390b734765a963cc44295b9b0b8e975b
+  TEST PASSED AT Thu May 10 04:04:33 UTC 2018
+WORKFLOW REPORT AT Thu May 10 04:10:09 2018 (+1525925409)
+Tests: 0 failed, 2 passed out of 2
 Builds: 0 failed, 1 passed out of 1
-REGRESSION TEST FAILED
+REGRESSION TEST WAS SUCCESSFUL
