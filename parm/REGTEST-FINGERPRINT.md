@@ -23,3 +23,4 @@ Change log:
 * Mar. 19, 2018 - Updated CICE/ice_in and added MEDIATOR dir which has restart files
                   for the mediator
 * Apr. 18, 2018 - Update FV3 ICs and inputs from RT/NEMSfv3gfs/trunk-20180330
+* May  21, 2018 - Created a combined diag_table for ATM and MOM6 output

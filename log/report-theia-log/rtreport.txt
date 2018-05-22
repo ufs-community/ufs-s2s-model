@@ -1,14 +1,17 @@
 Run rocotostat...
 Generate report...
-WORKFLOW STARTED AT Mon May 14 17:53:50 2018 (+1526320430)
+WORKFLOW STARTED AT Mon May 21 16:14:41 2018 (+1526919281)
 Repository information:
 
 
 REPO TOP:
-MOM6updates 2a6a91f MOM6updates: using NEMS master branch that was updated today
+master 599ecb9 [origin/master] Updates to NEMS build system to allow NEMS to compile on Cheyenne and Mac OS/X machines.
 Fetch URL: gerrit:EMC_FV3-MOM6-CICE5
+ M compsets/fv3mom6cice5.input
+ M compsets/platforms.input
  M log/report-theia-log/build_fv3_mom6_cice.exe.log
  M log/report-theia-log/rtreport.txt
+ M parm/REGTEST-FINGERPRINT.md
 
 Entering 'CICE_SRC'
 (HEAD detached at c58eedc) c58eedc update for cice_mx025 and bug fix for dump file output
@@ -19,19 +22,19 @@ Entering 'FV3'
 Fetch URL: gerrit:FV3
 
 Entering 'MOM6'
-(HEAD detached at NEMSMOM6_FMS_warsaw_201803_MOM6_2018Apr24) 0d695d7 updating MOM6 to 2018Apr24 version
+(HEAD detached at 0d695d7) 0d695d7 updating MOM6 to 2018Apr24 version
 Fetch URL: https://github.com/EMC-MOM6/NEMS-MOM6-FMS
 
 Entering 'NEMS'
-master b04bc73 [origin/master] NEMS commits to add GAEA and Jet support.  Various bug fixes are added to NEMSfv3gfs.
+(HEAD detached at 711ac59) 711ac59 Updates to NEMS build system to allow NEMS to compile on Cheyenne and Mac OS/X machines.
 Fetch URL: gerrit:NEMS
 
 
 BUILD fv3_mom6_cice.exe: SUCCEEDED
 
 TEST #1: PASS
-  Test cpld_fv3_mom6_cice starting at Mon May 14 17:56:22 UTC 2018 (Fully coupled FV3-MOM6-CICE system from Mediator restarts)
-  Mon May 14 17:56:23 UTC 2018
+  Test cpld_fv3_mom6_cice starting at Mon May 21 16:17:01 UTC 2018 (Fully coupled FV3-MOM6-CICE system from Mediator restarts)
+  Mon May 21 16:17:01 UTC 2018
   phyf006.tile1.nc: bit-for-bit identical
   phyf006.tile2.nc: bit-for-bit identical
   phyf006.tile3.nc: bit-for-bit identical
@@ -77,14 +80,14 @@ TEST #1: PASS
   RESTART/sfc_data.tile5.nc: bit-for-bit identical
   RESTART/sfc_data.tile6.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch4/NCEPDEV/stmp4/Jessica.Meixner/rtgen.44470/exec/fv3_mom6_cice.exe
-    Expected md5sum: 1395838915f1ca3d6125b87d83cb29fa
-    Actual md5sum: 1395838915f1ca3d6125b87d83cb29fa
-  TEST PASSED AT Mon May 14 18:06:02 UTC 2018
+    File: /scratch3/NCEPDEV/stmp1/Jessica.Meixner/rtgen.12464/exec/fv3_mom6_cice.exe
+    Expected md5sum: 53516711608b06d435752f52247dc0a6
+    Actual md5sum: 53516711608b06d435752f52247dc0a6
+  TEST PASSED AT Mon May 21 16:27:44 UTC 2018
 
 TEST #2: PASS
-  Test cpld_fv3_mom6_cice_cold starting at Mon May 14 17:56:22 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold start)
-  Mon May 14 17:56:23 UTC 2018
+  Test cpld_fv3_mom6_cice_cold starting at Mon May 21 16:18:57 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold start)
+  Mon May 21 16:18:57 UTC 2018
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -130,11 +133,11 @@ TEST #2: PASS
   RESTART/sfc_data.tile5.nc: bit-for-bit identical
   RESTART/sfc_data.tile6.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch4/NCEPDEV/stmp4/Jessica.Meixner/rtgen.44470/exec/fv3_mom6_cice.exe
-    Expected md5sum: 1395838915f1ca3d6125b87d83cb29fa
-    Actual md5sum: 1395838915f1ca3d6125b87d83cb29fa
-  TEST PASSED AT Mon May 14 18:01:35 UTC 2018
-WORKFLOW REPORT AT Mon May 14 18:07:40 2018 (+1526321260)
+    File: /scratch3/NCEPDEV/stmp1/Jessica.Meixner/rtgen.12464/exec/fv3_mom6_cice.exe
+    Expected md5sum: 53516711608b06d435752f52247dc0a6
+    Actual md5sum: 53516711608b06d435752f52247dc0a6
+  TEST PASSED AT Mon May 21 16:24:51 UTC 2018
+WORKFLOW REPORT AT Mon May 21 16:31:57 2018 (+1526920317)
 Tests: 0 failed, 2 passed out of 2
 Builds: 0 failed, 1 passed out of 1
 REGRESSION TEST WAS SUCCESSFUL

@@ -22,12 +22,12 @@ platform wcoss.phase2 {
     LONG_TEST_QUEUE='&LONGQ;'
     BUILD_QUEUE='&BUILDQ;'
     MACHINE_ID='wcoss.phase2'
-    BASELINE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/updateFV3-20180418"
-    BASELINE_TEMPLATE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/updateFV3-20180418"
+    BASELINE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20180521"
+    BASELINE_TEMPLATE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20180521"
 
     default_resources={
-        TASKS=156
-        WRTTASK_PER_GROUP=12
+        TASKS=150
+        WRTTASK_PER_GROUP=6
         TPN=12
         INPES=3
         JNPES=8

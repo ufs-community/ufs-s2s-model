@@ -548,6 +548,7 @@ test cpld_fv3_mom6_cice_cold: fv3_mom6_cice.exe {
             'INPUT/*' <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
  'INPUT/MOM6_IC_TS.nc' <=copy=    "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
  'INPUT/grid_spec.nc'  <=copy=    "@[UGCS_input_data]/COUPLED/grid_spec.nc"
+         'diag_table'  <=copy=    "@[UGCS_input_data]/COUPLED/diag_table"
                   '*' <=copyfrom= "@[UGCS_input_data]/CICE"
     } 
  
@@ -675,6 +676,7 @@ test cpld_fv3_mom6_cice: fv3_mom6_cice.exe {
             'INPUT/*' <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
  'INPUT/MOM6_IC_TS.nc' <=copy=    "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
  'INPUT/grid_spec.nc'  <=copy=    "@[UGCS_input_data]/COUPLED/grid_spec.nc"
+         'diag_table'  <=copy=    "@[UGCS_input_data]/COUPLED/diag_table"
                   '*' <=copyfrom= "@[UGCS_input_data]/CICE"
                   '*' <=copyfrom= "@[UGCS_input_data]/MEDIATOR"
     } 
