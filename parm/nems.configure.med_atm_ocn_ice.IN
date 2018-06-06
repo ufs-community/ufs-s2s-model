@@ -13,7 +13,7 @@ MED_model:                      @[med_model]
 MED_petlist_bounds:             @[med_petlist_bounds]
 MED_attributes::
   Verbosity = max
-  DumpFields = true
+  DumpFields = false
   DumpRHs = false
   coldstart = false
   restart_interval = 0
@@ -24,7 +24,7 @@ ATM_model:                      @[atm_model]
 ATM_petlist_bounds:             @[atm_petlist_bounds]
 ATM_attributes::
   Verbosity = max
-  DumpFields = true
+  DumpFields = false
 ::
 
 # OCN #
@@ -32,7 +32,7 @@ OCN_model:                      @[ocn_model]
 OCN_petlist_bounds:             @[ocn_petlist_bounds]
 OCN_attributes::
   Verbosity = max
-  DumpFields = true
+  DumpFields = false
   restart_interval = 9999999
 ::
 
@@ -41,7 +41,7 @@ ICE_model:                      @[ice_model]
 ICE_petlist_bounds:             @[ice_petlist_bounds]
 ICE_attributes::
   Verbosity = max
-  DumpFields = true
+  DumpFields = false
 ::
 
 # Run Sequence #
