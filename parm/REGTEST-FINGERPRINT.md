@@ -24,3 +24,5 @@ Change log:
                   for the mediator
 * Apr. 18, 2018 - Update FV3 ICs and inputs from RT/NEMSfv3gfs/trunk-20180330
 * May  21, 2018 - Created a combined diag_table for ATM and MOM6 output
+* Jun  6,  2018 - Created a new test "cpld_fv3_mom6_cice_2d" to run the model for 2 days. 
+                  In this new test, the FV3 history files are written on the Gaussian grid.

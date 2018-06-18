@@ -29,5 +29,7 @@ load 'fv3mom6cice5.input'
 #run cpld_fv3_atmstep       @ fv3, coupledapp, atmsteptest
 #run cpld_fv3_rst_atmstep   @ fv3, coupledapp, atmsteptest
 
-run cpld_fv3_mom6_cice_cold @ fv3, coupledapp, coupled, cold
-run cpld_fv3_mom6_cice      @ fv3, coupledapp, coupled, restart
+run cpld_fv3_mom6_cice_cold @ fv3, coupledapp, cold
+run cpld_fv3_mom6_cice_6hr  @ fv3, coupledapp, restart
+run cpld_fv3_mom6_cice_2d   @ fv3, coupledapp, coupled
+run cpld_fv3_mom6_cice_2d_test1   @ fv3, coupledapp, standard
