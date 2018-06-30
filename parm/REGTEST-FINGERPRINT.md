@@ -26,3 +26,7 @@ Change log:
 * May  21, 2018 - Created a combined diag_table for ATM and MOM6 output
 * Jun  6,  2018 - Created a new test "cpld_fv3_mom6_cice_2d" to run the model for 2 days. 
                   In this new test, the FV3 history files are written on the Gaussian grid.
+* Jun. 20, 2018 - Add restart capability for CICE (now included in warm-start) and
+                  updated the CICE grid with a fix for a point near the pole
+* Jun  25, 2018 - Updated diag_table so that the output frequency from MOM6 is every three hours. 
+                  The NSSTM is off. The near sea surface temperature model is not used.
