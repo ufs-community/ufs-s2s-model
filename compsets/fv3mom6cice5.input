@@ -110,10 +110,9 @@ fv3_defaults = {
 
     CPLFLX='.F.'
     CPL='.false.'
-    walltime=18000   # seconds
+    walltime=1800   # seconds
 
 }
-#    walltime=1800   # seconds
 
 ########################################################################
 
@@ -702,6 +701,7 @@ test cpld_fv3_mom6_cice_35d_atm_flux: fv3_mom6_cice.exe {
     use plat 
     use plat%default_resources 
     use fv3_defaults 
+    walltime=14400   # seconds
  
     TEST_DESCR="Fully coupled FV3-MOM6-CICE system (atmocn_flux_from_atm = .false)" 
     CNTL_NAME='RT-Baselines_35d_atm_flux' 
@@ -714,7 +714,7 @@ test cpld_fv3_mom6_cice_35d_atm_flux: fv3_mom6_cice.exe {
 #    FHMAXHF='12'
     NFHMAX_HF='12'
     NFHOUT_HF='1'
-    FDIAG='3' 
+    FDIAG='6' 
  
     COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
     RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 
