@@ -633,7 +633,7 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
  'INPUT/MOM6_IC_TS.nc' <=copy=    "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
                   '*' <=copyfrom= "@[UGCS_input_data]/CICE"
  'INPUT/grid_spec.nc'  <=copy=    "@[UGCS_input_data]/COUPLED/grid_spec.nc"
-   'INPUT/diag_table'  <=copy=    "@[UGCS_input_data]/COUPLED/diag_table"
+         'diag_table'  <=copy=    "@[UGCS_input_data]/COUPLED/diag_table"
     } 
  
     # Specify output files:
