@@ -558,12 +558,57 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     # Specify output files:
     criteria output {
         # WORKFILE                            .comparison. TARGET
+        'phyf048.tile1.nc'      .bitcmp. "@[CNTL]"
+        'phyf048.tile2.nc'      .bitcmp. "@[CNTL]"
+        'phyf048.tile3.nc'      .bitcmp. "@[CNTL]"
+        'phyf048.tile4.nc'      .bitcmp. "@[CNTL]"
+        'phyf048.tile5.nc'      .bitcmp. "@[CNTL]"
+        'phyf048.tile6.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile1.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile2.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile3.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile4.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile5.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile6.nc'      .bitcmp. "@[CNTL]"
+        'RESTART/coupler.res'                   .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.nc'                .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile1.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile2.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile3.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile4.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile5.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile6.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile1.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile2.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile3.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile4.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile5.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile6.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile1.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile2.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile3.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile4.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile5.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile6.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile1.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile2.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile3.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile1.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile2.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile3.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
+
       # Executable validation.  This makes an MD5 sum of the fv3.exe
       # for comparison against the MD5 sum made in the build job.
       # This is to ensure the executable did not change during the
       # test suite.
         "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
-    }
+    } 
  
     spawn execute { 
         # Run the  
