@@ -1,24 +1,22 @@
 Run rocotostat...
 Generate report...
-WORKFLOW STARTED AT Mon May 21 16:14:41 2018 (+1526919281)
+WORKFLOW STARTED AT Sat Jul 28 12:58:18 2018 (+1532782698)
 Repository information:
 
 
 REPO TOP:
-master 599ecb9 [origin/master] Updates to NEMS build system to allow NEMS to compile on Cheyenne and Mac OS/X machines.
+air-sea-flux e4c1738 [origin/air-sea-flux] compsets/fv3mom6cice5.input and compsets/platforms.input are updated.
 Fetch URL: gerrit:EMC_FV3-MOM6-CICE5
- M compsets/fv3mom6cice5.input
- M compsets/platforms.input
  M log/report-theia-log/build_fv3_mom6_cice.exe.log
  M log/report-theia-log/rtreport.txt
  M parm/REGTEST-FINGERPRINT.md
 
 Entering 'CICE_SRC'
-(HEAD detached at c58eedc) c58eedc update for cice_mx025 and bug fix for dump file output
+(HEAD detached at d227e7d) d227e7d Fix for cice restart writing (by Denise Worthen) on Theia
 Fetch URL: gerrit:EMC_CICE
 
 Entering 'FV3'
-(HEAD detached at 39988db) 39988db FV3: this commits #refs 49248: adding capability to output 3D fields in physics history file and a few other fixes
+fv3_withSST 4a204ea [origin/fv3_withSST] Revised atmos_model.F90 to use ice fields in FV3.
 Fetch URL: gerrit:FV3
 
 Entering 'MOM6'
@@ -26,68 +24,15 @@ Entering 'MOM6'
 Fetch URL: https://github.com/EMC-MOM6/NEMS-MOM6-FMS
 
 Entering 'NEMS'
-(HEAD detached at 711ac59) 711ac59 Updates to NEMS build system to allow NEMS to compile on Cheyenne and Mac OS/X machines.
+(HEAD detached at 1ef15b7) 1ef15b7 Revised module_MEDIATOR.F90 so that land-sea mask of the FV3 model is not used when FV3 fields are interpolated to MOM6 (CICE5) grid.
 Fetch URL: gerrit:NEMS
 
 
 BUILD fv3_mom6_cice.exe: SUCCEEDED
 
 TEST #1: PASS
-  Test cpld_fv3_mom6_cice starting at Mon May 21 16:17:01 UTC 2018 (Fully coupled FV3-MOM6-CICE system from Mediator restarts)
-  Mon May 21 16:17:01 UTC 2018
-  phyf006.tile1.nc: bit-for-bit identical
-  phyf006.tile2.nc: bit-for-bit identical
-  phyf006.tile3.nc: bit-for-bit identical
-  phyf006.tile4.nc: bit-for-bit identical
-  phyf006.tile5.nc: bit-for-bit identical
-  phyf006.tile6.nc: bit-for-bit identical
-  dynf006.tile1.nc: bit-for-bit identical
-  dynf006.tile2.nc: bit-for-bit identical
-  dynf006.tile3.nc: bit-for-bit identical
-  dynf006.tile4.nc: bit-for-bit identical
-  dynf006.tile5.nc: bit-for-bit identical
-  dynf006.tile6.nc: bit-for-bit identical
-  RESTART/coupler.res: bit-for-bit identical
-  RESTART/fv_core.res.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile6.nc: bit-for-bit identical
-  RESTART/phy_data.tile1.nc: bit-for-bit identical
-  RESTART/phy_data.tile2.nc: bit-for-bit identical
-  RESTART/phy_data.tile3.nc: bit-for-bit identical
-  RESTART/phy_data.tile4.nc: bit-for-bit identical
-  RESTART/phy_data.tile5.nc: bit-for-bit identical
-  RESTART/phy_data.tile6.nc: bit-for-bit identical
-  RESTART/sfc_data.tile1.nc: bit-for-bit identical
-  RESTART/sfc_data.tile2.nc: bit-for-bit identical
-  RESTART/sfc_data.tile3.nc: bit-for-bit identical
-  RESTART/sfc_data.tile4.nc: bit-for-bit identical
-  RESTART/sfc_data.tile5.nc: bit-for-bit identical
-  RESTART/sfc_data.tile6.nc: bit-for-bit identical
-  Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp1/Jessica.Meixner/rtgen.12464/exec/fv3_mom6_cice.exe
-    Expected md5sum: 53516711608b06d435752f52247dc0a6
-    Actual md5sum: 53516711608b06d435752f52247dc0a6
-  TEST PASSED AT Mon May 21 16:27:44 UTC 2018
-
-TEST #2: PASS
-  Test cpld_fv3_mom6_cice_cold starting at Mon May 21 16:18:57 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold start)
-  Mon May 21 16:18:57 UTC 2018
+  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Sat Jul 28 13:01:05 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold start)
+  Sat Jul 28 13:01:05 UTC 2018
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -133,11 +78,11 @@ TEST #2: PASS
   RESTART/sfc_data.tile5.nc: bit-for-bit identical
   RESTART/sfc_data.tile6.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp1/Jessica.Meixner/rtgen.12464/exec/fv3_mom6_cice.exe
-    Expected md5sum: 53516711608b06d435752f52247dc0a6
-    Actual md5sum: 53516711608b06d435752f52247dc0a6
-  TEST PASSED AT Mon May 21 16:24:51 UTC 2018
-WORKFLOW REPORT AT Mon May 21 16:31:57 2018 (+1526920317)
-Tests: 0 failed, 2 passed out of 2
+    File: /scratch3/NCEPDEV/stmp1/Bin.Li/rtgen.15322/exec/fv3_mom6_cice.exe
+    Expected md5sum: 407acfa807fb93bd4b5772c1baa2a5fd
+    Actual md5sum: 407acfa807fb93bd4b5772c1baa2a5fd
+  TEST PASSED AT Sat Jul 28 13:06:37 UTC 2018
+WORKFLOW REPORT AT Sat Jul 28 13:07:12 2018 (+1532783232)
+Tests: 0 failed, 1 passed out of 1
 Builds: 0 failed, 1 passed out of 1
 REGRESSION TEST WAS SUCCESSFUL
