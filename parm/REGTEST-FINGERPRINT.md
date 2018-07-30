@@ -30,3 +30,4 @@ Change log:
                   updated the CICE grid with a fix for a point near the pole
 * Jun  25, 2018 - Updated diag_table so that the output frequency from MOM6 is every three hours. 
                   The NSSTM is off. The near sea surface temperature model is not used.
+* Jul  27, 2018 - Coupling fields from CICE5 are used in FV3.
