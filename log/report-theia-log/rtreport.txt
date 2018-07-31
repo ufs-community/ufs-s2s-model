@@ -1,23 +1,24 @@
 Run rocotostat...
 Generate report...
-WORKFLOW STARTED AT Sat Jul 28 12:58:18 2018 (+1532782698)
+WORKFLOW STARTED AT Mon Jul 30 20:12:01 2018 (+1532981521)
 Repository information:
 
 
 REPO TOP:
-air-sea-flux e4c1738 [origin/air-sea-flux] compsets/fv3mom6cice5.input and compsets/platforms.input are updated.
+air-sea-flux 1ab4249 [origin/air-sea-flux] air-sea-flux: updating REGTEST-FINGERPRINT.md to point to new baseline
 Fetch URL: gerrit:EMC_FV3-MOM6-CICE5
+ M FV3
  M log/report-theia-log/build_fv3_mom6_cice.exe.log
  M log/report-theia-log/rtreport.txt
- M parm/REGTEST-FINGERPRINT.md
 
 Entering 'CICE_SRC'
 (HEAD detached at d227e7d) d227e7d Fix for cice restart writing (by Denise Worthen) on Theia
 Fetch URL: gerrit:EMC_CICE
 
 Entering 'FV3'
-fv3_withSST 4a204ea [origin/fv3_withSST] Revised atmos_model.F90 to use ice fields in FV3.
+fv3_withSST 891f56e [origin/fv3_withSST] fv3_withSST: This commit helps with the memory leak when field dumps and coupling is turned on.  It adds calls to ESMF_GridDestroy and ESMF_FieldRegridRelease. See VLab Issue #51999
 Fetch URL: gerrit:FV3
+M  atmos_model.F90
 
 Entering 'MOM6'
 (HEAD detached at 0d695d7) 0d695d7 updating MOM6 to 2018Apr24 version
@@ -29,10 +30,64 @@ Fetch URL: gerrit:NEMS
 
 
 BUILD fv3_mom6_cice.exe: SUCCEEDED
+  FAIL: job state is DEAD
 
-TEST #1: PASS
-  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Sat Jul 28 13:01:05 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold start)
-  Sat Jul 28 13:01:05 UTC 2018
+TEST #1: FAIL
+  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Mon Jul 30 20:38:19 UTC 2018 (Fully coupled FV3-MOM6-CICE system (atmocn_flux_from_atm = .false))
+  Mon Jul 30 20:38:19 UTC 2018
+  phyf048.tile1.nc: bit-for-bit MISMATCH
+  phyf048.tile2.nc: bit-for-bit MISMATCH
+  phyf048.tile3.nc: bit-for-bit MISMATCH
+  phyf048.tile4.nc: bit-for-bit MISMATCH
+  phyf048.tile5.nc: bit-for-bit MISMATCH
+  phyf048.tile6.nc: bit-for-bit MISMATCH
+  dynf048.tile1.nc: bit-for-bit MISMATCH
+  dynf048.tile2.nc: bit-for-bit MISMATCH
+  dynf048.tile3.nc: bit-for-bit MISMATCH
+  dynf048.tile4.nc: bit-for-bit MISMATCH
+  dynf048.tile5.nc: bit-for-bit MISMATCH
+  dynf048.tile6.nc: bit-for-bit MISMATCH
+  RESTART/coupler.res: bit-for-bit identical
+  RESTART/fv_core.res.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile1.nc: bit-for-bit MISMATCH
+  RESTART/fv_core.res.tile2.nc: bit-for-bit MISMATCH
+  RESTART/fv_core.res.tile3.nc: bit-for-bit MISMATCH
+  RESTART/fv_core.res.tile4.nc: bit-for-bit MISMATCH
+  RESTART/fv_core.res.tile5.nc: bit-for-bit MISMATCH
+  RESTART/fv_core.res.tile6.nc: bit-for-bit MISMATCH
+  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit MISMATCH
+  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit MISMATCH
+  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit MISMATCH
+  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit MISMATCH
+  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit MISMATCH
+  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit MISMATCH
+  RESTART/fv_tracer.res.tile1.nc: bit-for-bit MISMATCH
+  RESTART/fv_tracer.res.tile2.nc: bit-for-bit MISMATCH
+  RESTART/fv_tracer.res.tile3.nc: bit-for-bit MISMATCH
+  RESTART/fv_tracer.res.tile4.nc: bit-for-bit MISMATCH
+  RESTART/fv_tracer.res.tile5.nc: bit-for-bit MISMATCH
+  RESTART/fv_tracer.res.tile6.nc: bit-for-bit MISMATCH
+  RESTART/phy_data.tile1.nc: bit-for-bit MISMATCH
+  RESTART/phy_data.tile2.nc: bit-for-bit MISMATCH
+  RESTART/phy_data.tile3.nc: bit-for-bit MISMATCH
+  RESTART/phy_data.tile4.nc: bit-for-bit MISMATCH
+  RESTART/phy_data.tile5.nc: bit-for-bit MISMATCH
+  RESTART/phy_data.tile6.nc: bit-for-bit MISMATCH
+  RESTART/sfc_data.tile1.nc: bit-for-bit MISMATCH
+  RESTART/sfc_data.tile2.nc: bit-for-bit MISMATCH
+  RESTART/sfc_data.tile3.nc: bit-for-bit MISMATCH
+  RESTART/sfc_data.tile4.nc: bit-for-bit MISMATCH
+  RESTART/sfc_data.tile5.nc: bit-for-bit MISMATCH
+  RESTART/sfc_data.tile6.nc: bit-for-bit MISMATCH
+  Executable did not change during test suite:
+    File: /scratch3/NCEPDEV/stmp2/Jessica.Meixner/rtgen.114277/exec/fv3_mom6_cice.exe
+    Expected md5sum: dba2b3e271b23f61b87f3da061d30eb7
+    Actual md5sum: dba2b3e271b23f61b87f3da061d30eb7
+  TEST FAILED AT Mon Jul 30 20:51:53 UTC 2018
+
+TEST #2: PASS
+  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Mon Jul 30 20:39:57 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold start)
+  Mon Jul 30 20:39:57 UTC 2018
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -78,11 +133,12 @@ TEST #1: PASS
   RESTART/sfc_data.tile5.nc: bit-for-bit identical
   RESTART/sfc_data.tile6.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp1/Bin.Li/rtgen.15322/exec/fv3_mom6_cice.exe
-    Expected md5sum: 407acfa807fb93bd4b5772c1baa2a5fd
-    Actual md5sum: 407acfa807fb93bd4b5772c1baa2a5fd
-  TEST PASSED AT Sat Jul 28 13:06:37 UTC 2018
-WORKFLOW REPORT AT Sat Jul 28 13:07:12 2018 (+1532783232)
-Tests: 0 failed, 1 passed out of 1
+    File: /scratch3/NCEPDEV/stmp2/Jessica.Meixner/rtgen.114277/exec/fv3_mom6_cice.exe
+    Expected md5sum: dba2b3e271b23f61b87f3da061d30eb7
+    Actual md5sum: dba2b3e271b23f61b87f3da061d30eb7
+  TEST PASSED AT Mon Jul 30 20:45:32 UTC 2018
+TEST #3 cpld_fv3_mom6_cice_35d_atm_flux: not yet complete...
+WORKFLOW REPORT AT Mon Jul 30 20:58:38 2018 (+1532984318)
+Tests: 1 failed, 1 passed out of 3
 Builds: 0 failed, 1 passed out of 1
-REGRESSION TEST WAS SUCCESSFUL
+REGRESSION TEST IS STILL RUNNING (SOME TESTS FAILED)
