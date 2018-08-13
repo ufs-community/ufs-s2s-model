@@ -31,4 +31,4 @@ load 'fv3mom6cice5.input'
 
 run cpld_fv3_mom6_cice_cold_atm_flux @ fv3, coupledapp,  cold
 run cpld_fv3_mom6_cice_2d_atm_flux   @ fv3, coupledapp,  warm
-run cpld_fv3_mom6_cice_35d_atm_flux   @ fv3, coupledapp, coupled
+#run cpld_fv3_mom6_cice_35d_atm_flux   @ fv3, coupledapp, coupled
