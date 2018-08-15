@@ -10,8 +10,11 @@
 &atmos_model_nml
        blocksize = 32
        chksum_debug = .false.
+       debug = .true.
        dycore_only = .false.
        fdiag = @[FDIAG]
+       fhmax = @[FHMAX]
+       fhmaxhf = @[NFHMAX_HF]
 /
 
 &diag_manager_nml
@@ -28,6 +31,11 @@
        clock_grain = 'ROUTINE',
        domains_stack_size = 3000000,
        print_memory_usage = .false.
+/
+
+&sat_vapor_pres_nml
+	show_bad_value_count_by_slice=.true.
+	show_all_bad_values=.true.
 /
 
 &fv_grid_nml
@@ -151,8 +159,9 @@
        redrag         = .true.
        dspheat        = .true.
        hybedmf        = .true.
+       satmedmf       = .false.
        random_clds    = .true.
-       trans_trac     = .true.
+       trans_trac     = .false.
        cnvcld         = .true.
        imfshalcnv     = 2
        imfdeepcnv     = 2
@@ -234,6 +243,19 @@
   ISEED_SHUM=1,
   ISEED_SKEB=2,
   ISEED_SPPT=3,
+/
+&nam_sfcperts
+  NSFCPERT=6,
+  PERTZ0=-999.,
+  PERTSHC=-999.,
+  PERTZT=-999.,
+  PERTLAI=-999.,
+  PERTVEGF=-999.,
+  PERTALB=-999.,
+  SFC_TAU=21600,
+  SFC_LSCALE=500000,
+  ISEED_SFC=0,
+  SPPT_LAND=.FALSE.,
 /
  &MOM_input_nml
          output_directory = 'MOM6_OUTPUT/',
