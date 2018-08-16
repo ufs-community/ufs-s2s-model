@@ -1,39 +1,37 @@
 Run rocotostat...
 Generate report...
-WORKFLOW STARTED AT Wed Aug 15 18:26:28 2018 (+1534357588)
+WORKFLOW STARTED AT Thu Aug 16 15:27:51 2018 (+1534433271)
 Repository information:
 
 
 REPO TOP:
-master 2d4654c [origin/master] 1. Correction to mediator logic so that land/sea masks consistently use 1 for land and 0 for water.
+master         2d4654c [origin/master] 1. Correction to mediator logic so that land/sea masks consistently use 1 for land and 0 for water.
 Fetch URL: gerrit:EMC_FV3-MOM6-CICE5
- M FV3
- M NEMS
  M log/report-theia-log/build_fv3_mom6_cice.exe.log
  M log/report-theia-log/rtreport.txt
 
 Entering 'CICE_SRC'
-master e075445 [origin/master] master: comment out debug statement VLab Issue #53361
+(HEAD detached at e075445) e075445 master: comment out debug statement VLab Issue #53361
 Fetch URL: gerrit:EMC_CICE
 
 Entering 'FV3'
-master d8bc4b5 [origin/master] FV3: this commits #refs 52926,Using coupled fields in fv3 in coupled mode and #refs 53492, issue compiling with HYDRO=Y with current master #refs 51999, Growing memory when DumpFields=True and CPL=True
+(HEAD detached at d8bc4b5) d8bc4b5 FV3: this commits #refs 52926,Using coupled fields in fv3 in coupled mode and #refs 53492, issue compiling with HYDRO=Y with current master #refs 51999, Growing memory when DumpFields=True and CPL=True
 Fetch URL: gerrit:FV3
 
 Entering 'MOM6'
-(HEAD detached at 0d695d7) 0d695d7 updating MOM6 to 2018Apr24 version
+(HEAD detached at 7dcbe63) 7dcbe63 check in MOM6 tag EMC_MOM6_2018Jul26
 Fetch URL: https://github.com/EMC-MOM6/NEMS-MOM6-FMS
 
 Entering 'NEMS'
-master 114ba6b [origin/master] 1. Correction to mediator logic so that land/sea masks consistently use 1 for land and 0 for water.
+(HEAD detached at 114ba6b) 114ba6b 1. Correction to mediator logic so that land/sea masks consistently use 1 for land and 0 for water.
 Fetch URL: gerrit:NEMS
 
 
 BUILD fv3_mom6_cice.exe: SUCCEEDED
 
 TEST #1: PASS
-  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Wed Aug 15 18:53:54 UTC 2018 (Fully coupled FV3-MOM6-CICE system (atmocn_flux_from_atm = .false))
-  Wed Aug 15 18:53:54 UTC 2018
+  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Thu Aug 16 15:55:12 UTC 2018 (Fully coupled FV3-MOM6-CICE system (atmocn_flux_from_atm = .false))
+  Thu Aug 16 15:55:12 UTC 2018
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -79,14 +77,14 @@ TEST #1: PASS
   RESTART/sfc_data.tile5.nc: bit-for-bit identical
   RESTART/sfc_data.tile6.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp2/Jessica.Meixner/rtgen.132625/exec/fv3_mom6_cice.exe
-    Expected md5sum: 86233f4d800c95dd4e08897506a3b1be
-    Actual md5sum: 86233f4d800c95dd4e08897506a3b1be
-  TEST PASSED AT Wed Aug 15 19:07:11 UTC 2018
+    File: /scratch3/NCEPDEV/stmp2/Jessica.Meixner/rtgen.67022/exec/fv3_mom6_cice.exe
+    Expected md5sum: 94a77b1fa825c017554dbcefcba35b3c
+    Actual md5sum: 94a77b1fa825c017554dbcefcba35b3c
+  TEST PASSED AT Thu Aug 16 16:08:00 UTC 2018
 
 TEST #2: PASS
-  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Wed Aug 15 18:51:11 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold start)
-  Wed Aug 15 18:51:11 UTC 2018
+  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Thu Aug 16 15:56:53 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold start)
+  Thu Aug 16 15:56:53 UTC 2018
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -131,12 +129,29 @@ TEST #2: PASS
   RESTART/sfc_data.tile4.nc: bit-for-bit identical
   RESTART/sfc_data.tile5.nc: bit-for-bit identical
   RESTART/sfc_data.tile6.nc: bit-for-bit identical
+  mediator_FBaccumAtmOcn_restart.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile1.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile2.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile3.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile4.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile5.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile6.nc: bit-for-bit identical
+  mediator_FBaccumHyd_restart.nc: bit-for-bit identical
+  mediator_FBaccumIce_restart.nc: bit-for-bit identical
+  mediator_FBaccumLnd_restart.nc: bit-for-bit identical
+  mediator_FBaccumOcn_restart.nc: bit-for-bit identical
+  mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
+  mediator_FBHyd_h_restart.nc: bit-for-bit identical
+  mediator_FBIce_i_restart.nc: bit-for-bit identical
+  mediator_FBLnd_l_restart.nc: bit-for-bit identical
+  mediator_FBOcn_o_restart.nc: bit-for-bit identical
+  mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp2/Jessica.Meixner/rtgen.132625/exec/fv3_mom6_cice.exe
-    Expected md5sum: 86233f4d800c95dd4e08897506a3b1be
-    Actual md5sum: 86233f4d800c95dd4e08897506a3b1be
-  TEST PASSED AT Wed Aug 15 18:56:34 UTC 2018
-WORKFLOW REPORT AT Wed Aug 15 19:07:49 2018 (+1534360069)
+    File: /scratch3/NCEPDEV/stmp2/Jessica.Meixner/rtgen.67022/exec/fv3_mom6_cice.exe
+    Expected md5sum: 94a77b1fa825c017554dbcefcba35b3c
+    Actual md5sum: 94a77b1fa825c017554dbcefcba35b3c
+  TEST PASSED AT Thu Aug 16 16:02:38 UTC 2018
+WORKFLOW REPORT AT Thu Aug 16 16:09:12 2018 (+1534435752)
 Tests: 0 failed, 2 passed out of 2
 Builds: 0 failed, 1 passed out of 1
 REGRESSION TEST WAS SUCCESSFUL
