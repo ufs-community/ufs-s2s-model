@@ -32,3 +32,4 @@ Change log:
                   The NSSTM is off. The near sea surface temperature model is not used.
 * Jul  27, 2018 - Coupling fields from CICE5 are used in FV3.
 * Aug. 16, 2018 - Update MOM6 and its input files.
+* Aug. 20, 2018 - Update FV3.
