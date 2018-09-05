@@ -1,35 +1,13 @@
-#load 'fv3.input'
 load 'fv3mom6cice5.input'
-
-#run fv3_control                 @ fv3, standard, baseline
-#run fv3_decomp                  @ fv3, standard
-#run fv3_2threads                @ fv3, standard
-#run fv3_restart                 @ fv3, standard, baseline
-#run fv3_read_inc                @ fv3, standard, baseline
-#run fv3_gfdlmp                  @ fv3, standard, baseline
-#run fv3_thompson                @ fv3, standard, baseline
-#run fv3_wsm6                    @ fv3, standard, baseline
-#run fv3_csawmgshoc              @ fv3, standard, baseline
-#run fv3_rasmgshoc               @ fv3, standard, baseline
-#run fv3_csawmg                  @ fv3, standard, baseline
-#run fv3_wrtGauss_netcdf_esmf    @ fv3, standard, baseline
-#run fv3_wrtGauss_netcdf         @ fv3, standard, baseline
-#run fv3_wrtGauss_nemsio         @ fv3, standard, baseline
-#run fv3_wrtGauss_nemsio_c768    @ fv3,           baseline, plat==theia
-#run fv3_wrtGauss_nemsio_c192    @ fv3, standard, baseline
-#run fv3_stochy                  @ fv3, standard, baseline
-#run fv3_iau                     @ fv3, standard, baseline
-#run fv3_appbuilder              @ fv3, standard
-#run fv3_control_32bit           @ fv3, standard, baseline
-#run fv3_stretched               @ fv3, standard, baseline
-#run fv3_stretched_nest          @ fv3, standard, baseline
-
 
 #run cpld_fv3_atmnostep     @ fv3, coupledapp, atmsteptest
 #run cpld_fv3_atmstep       @ fv3, coupledapp, atmsteptest
 #run cpld_fv3_rst_atmstep   @ fv3, coupledapp, atmsteptest
 
-run cpld_fv3_384_mom6_cice_cold_atm_flux @ fv3, coupledapp,  cold384
-run cpld_fv3_mom6_cice_cold_atm_flux @ fv3, coupledapp,  cold
-run cpld_fv3_mom6_cice_2d_atm_flux   @ fv3, coupledapp,  warm
+run cpld_fv3_mom6_cice_cold_atm_flux @ fv3, coupledapp, cold
+run cpld_fv3_384_mom6_cice_cold_atm_flux @ fv3, coupledapp, cold384
+#run cpld_fv3_384_mom6_cice_cold_pet816 @ fv3, coupledapp, cold384_pet816
+
+run cpld_fv3_mom6_cice_2d_atm_flux @ fv3, coupledapp, warm
+run cpld_fv3_384_mom6_cice_2d_atm_flux @ fv3, coupledapp, warm384
 #run cpld_fv3_mom6_cice_35d_atm_flux   @ fv3, coupledapp, coupled
