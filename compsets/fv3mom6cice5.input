@@ -1033,9 +1033,9 @@ test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     CPLFLX='.T.' 
     CPL='.true.'
 # run for 1 days
-    DAYS='35'
-    FHMAX='840'
-    #walltime=28800   # seconds
+    DAYS='2'
+    FHMAX='48'
+    walltime=14400   # seconds
     NFHMAX_HF='12'
     NFHOUT_HF='1'
     FDIAG='6' 
