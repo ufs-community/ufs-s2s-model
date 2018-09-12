@@ -56,8 +56,8 @@ platform theia {
 
     # INPUTS is the input directory, which should contain fix and parm
     # files, plus any restarts or other inputs.
-    BASELINE="/scratch4/NCEPDEV/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20180821"
-    BASELINE_TEMPLATE="/scratch4/NCEPDEV/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20180821"
+    BASELINE="/scratch4/NCEPDEV/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20180904"
+    BASELINE_TEMPLATE="/scratch4/NCEPDEV/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20180904"
     INPUTS="@[BASELINE]"
 
     default_resources={
@@ -105,7 +105,7 @@ platform theia {
         log_dir="@[TMPrt]/log"
         scheduler="moabtorque"
         entities=[[[
-  <!ENTITY SHORTQ "debug">
+  <!ENTITY SHORTQ "batch">
   <!ENTITY LONGQ "batch">
   <!ENTITY BUILDQ "service">
 ]]]
