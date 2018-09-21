@@ -10,3 +10,6 @@
 [submodule "MOM6"]
 	path = MOM6
 	url = https://github.com/EMC-MOM6/NEMS-MOM6-FMS
+[submodule "FMS"]
+	path = FMS
+	url = git://github.com/NOAA-EMC/FMS

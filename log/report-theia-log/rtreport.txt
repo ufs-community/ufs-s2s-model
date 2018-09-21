@@ -1,11 +1,11 @@
 Run rocotostat...
 Generate report...
-WORKFLOW STARTED AT Wed Sep 12 19:08:40 2018 (+1536779320)
+WORKFLOW STARTED AT Thu Sep 20 20:24:39 2018 (+1537475079)
 Repository information:
 
 
 REPO TOP:
-master      a1d525a [origin/master: ahead 1] baseline0904: updating baseline to master-0904
+fms-component-commit 31fc679 [origin/fms-component-commit] Check out NEMS fms-component
 Fetch URL: gerrit:EMC_FV3-MOM6-CICE5
  M log/report-theia-log/build_fv3_mom6_cice.exe.log
  M log/report-theia-log/rtreport.txt
@@ -14,33 +14,37 @@ Entering 'CICE_SRC'
 (HEAD detached at e075445) e075445 master: comment out debug statement VLab Issue #53361
 Fetch URL: gerrit:EMC_CICE
 
+Entering 'FMS'
+(HEAD detached at 06d43ea) 06d43ea revert changes to current version in EMC FV3 repo fv3gfs/ directory
+Fetch URL: git://github.com/NOAA-EMC/FMS
+
 Entering 'FV3'
-(HEAD detached at cbf0aab) cbf0aab FV3: this commits #refs 54358, unit conversion and remove land sea mask in several physics output fields and #refs 54539, Regional boundary file update interval
+(HEAD detached at d615480) d615480 Merge branch 'master' of gerrit:FV3 into fms-component
 Fetch URL: gerrit:FV3
 
 Entering 'MOM6'
-(HEAD detached at 7dcbe63) 7dcbe63 check in MOM6 tag EMC_MOM6_2018Jul26
+(HEAD detached at 2519b4d) 2519b4d fms-component: updating makefile.nuopc so it will compile
 Fetch URL: https://github.com/EMC-MOM6/NEMS-MOM6-FMS
 
 Entering 'NEMS'
-(HEAD detached at 114ba6b) 114ba6b 1. Correction to mediator logic so that land/sea masks consistently use 1 for land and 0 for water.
+(HEAD detached at 742f67e) 742f67e merge with nems master
 Fetch URL: gerrit:NEMS
 
 
 BUILD fv3_mom6_cice.exe: SUCCEEDED
 
 TEST #1: PASS
-  Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Wed Sep 12 17:19:54 UTC 2018 (Fully coupled FV3-MOM6-CICE system (atmocn_flux_from_atm = .false))
-  Wed Sep 12 17:19:54 UTC 2018
+  Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Thu Sep 20 22:46:24 UTC 2018 (Fully coupled FV3-MOM6-CICE system (atmocn_flux_from_atm = .false))
+  Thu Sep 20 22:46:24 UTC 2018
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp2/Jessica.Meixner/rtgen.140464/exec/fv3_mom6_cice.exe
-    Expected md5sum: c244eb2e1b226fae76366df1b21f84da
-    Actual md5sum: c244eb2e1b226fae76366df1b21f84da
-  TEST PASSED AT Wed Sep 12 18:13:52 UTC 2018
+    File: /scratch3/NCEPDEV/stmp2/emc.nemspara/rtgen.143740/exec/fv3_mom6_cice.exe
+    Expected md5sum: 10f1c4c336e1e4053fe67bfdf101bef8
+    Actual md5sum: 10f1c4c336e1e4053fe67bfdf101bef8
+  TEST PASSED AT Thu Sep 20 23:40:19 UTC 2018
 
 TEST #2: PASS
-  Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Wed Sep 12 17:19:55 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold 384)
-  Wed Sep 12 17:19:55 UTC 2018
+  Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Thu Sep 20 22:46:51 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold 384)
+  Thu Sep 20 22:46:51 UTC 2018
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -103,14 +107,14 @@ TEST #2: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp2/Jessica.Meixner/rtgen.140464/exec/fv3_mom6_cice.exe
-    Expected md5sum: c244eb2e1b226fae76366df1b21f84da
-    Actual md5sum: c244eb2e1b226fae76366df1b21f84da
-  TEST PASSED AT Wed Sep 12 17:30:22 UTC 2018
+    File: /scratch3/NCEPDEV/stmp2/emc.nemspara/rtgen.143740/exec/fv3_mom6_cice.exe
+    Expected md5sum: 10f1c4c336e1e4053fe67bfdf101bef8
+    Actual md5sum: 10f1c4c336e1e4053fe67bfdf101bef8
+  TEST PASSED AT Thu Sep 20 22:57:19 UTC 2018
 
 TEST #3: PASS
-  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Wed Sep 12 17:22:42 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold start)
-  Wed Sep 12 17:22:43 UTC 2018
+  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Thu Sep 20 22:47:40 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold start)
+  Thu Sep 20 22:47:40 UTC 2018
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -173,20 +177,20 @@ TEST #3: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp2/Jessica.Meixner/rtgen.140464/exec/fv3_mom6_cice.exe
-    Expected md5sum: c244eb2e1b226fae76366df1b21f84da
-    Actual md5sum: c244eb2e1b226fae76366df1b21f84da
-  TEST PASSED AT Wed Sep 12 17:28:27 UTC 2018
+    File: /scratch3/NCEPDEV/stmp2/emc.nemspara/rtgen.143740/exec/fv3_mom6_cice.exe
+    Expected md5sum: 10f1c4c336e1e4053fe67bfdf101bef8
+    Actual md5sum: 10f1c4c336e1e4053fe67bfdf101bef8
+  TEST PASSED AT Thu Sep 20 22:53:24 UTC 2018
 
 TEST #4: PASS
-  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Wed Sep 12 19:14:38 UTC 2018 (Fully coupled FV3-MOM6-CICE system (atmocn_flux_from_atm = .false))
-  Wed Sep 12 19:14:38 UTC 2018
+  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Thu Sep 20 22:48:04 UTC 2018 (Fully coupled FV3-MOM6-CICE system (atmocn_flux_from_atm = .false))
+  Thu Sep 20 22:48:04 UTC 2018
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp2/Jessica.Meixner/rtgen.140464/exec/fv3_mom6_cice.exe
-    Expected md5sum: c244eb2e1b226fae76366df1b21f84da
-    Actual md5sum: c244eb2e1b226fae76366df1b21f84da
-  TEST PASSED AT Wed Sep 12 19:27:15 UTC 2018
-WORKFLOW REPORT AT Wed Sep 12 19:27:42 2018 (+1536780462)
+    File: /scratch3/NCEPDEV/stmp2/emc.nemspara/rtgen.143740/exec/fv3_mom6_cice.exe
+    Expected md5sum: 10f1c4c336e1e4053fe67bfdf101bef8
+    Actual md5sum: 10f1c4c336e1e4053fe67bfdf101bef8
+  TEST PASSED AT Thu Sep 20 23:00:52 UTC 2018
+WORKFLOW REPORT AT Thu Sep 20 23:40:29 2018 (+1537486829)
 Tests: 0 failed, 4 passed out of 4
 Builds: 0 failed, 1 passed out of 1
 REGRESSION TEST WAS SUCCESSFUL
