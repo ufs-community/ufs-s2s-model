@@ -61,7 +61,7 @@ build fv3_mom6_cice.exe {
 
 ########################################################################
 
-# Common variables used by many tests and input files:
+# Common variables used by many tests and input files: 
 
 fv3_defaults = {
     WARM_START='.F.'
@@ -74,7 +74,7 @@ fv3_defaults = {
     NA_INIT='1'
     READ_INCREMENT='.F.'
     FDIAG='0,1,2,3,4,5,6,7,8,9,10,11,12,15,18,21,24'
-    NSTF_NAME='0,1,1,0,5'
+    NSTF_NAME='2,1,1,0,5'
     FNALBC="'global_snowfree_albedo.bosu.t126.384.190.rg.grb',"
     FNVETC="'global_vegtype.igbp.t126.384.190.rg.grb',"
     FNSOTC="'global_soiltype.statsgo.t126.384.190.rg.grb',"
@@ -88,8 +88,8 @@ fv3_defaults = {
     SHOUR='00'
     DT_ATMOS='1800'
 
-    DAYS='0.5'
-    FHMAX='12'
+    DAYS='1'
+    FHMAX='24'
     NPX='97'
     NPY='97'
     NPZ='64'
@@ -124,387 +124,17 @@ fv3_defaults = {
 
 ######################################################################## 
  
-test cpld_fv3_atmnostep: fv3_mom6_cice.exe { 
-    use plat 
-    use plat%default_resources 
-    use fv3_defaults 
- 
-    TEST_DESCR="Compare FV3 control results with previous trunk version cpld_fv3_atmnostep" 
-    CNTL_NAME='fv3_control' 
- 
-    COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
-    RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 
-    CNTL="@[plat%BASELINE]/@[CNTL_NAME]"      # Control baseline area 
-    FV3_input_data="@[plat%INPUTS]/FV3_input_data" 
- 
-    build=fv3_mom6_cice.exe 
- 
-    prep=fv3_prep( 
-        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice.exe%modules.nems]", 
-        CNTL="@[CNTL]") 
- 
-    # - nems.configure --- 
-    nems_configure='atm_nostep' 
-    atm_petlist_bounds="-1 -1" 
-    atm_model='fv3' 
- 
-    # Specify input files. 
-    filters input { 
-      #    WORK FILE  <=filter=   SOURCE FILE 
-          'input.nml' <=atparse=  "@[PARMnems]/input.nml.IN" 
-    'model_configure' <=atparse=  "@[PARMnems]/model_configure.IN" 
-                 'aerosol.dat' <=copyfrom= "@[FV3_input_data]/INPUT" 
-  'co2historicaldata_201*.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-      'sfc_emissivity_idx.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-   'solarconstant_noaa_an.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-               '*grb' <=copyfrom= "@[FV3_input_data]" 
-            '*_table' <=copyfrom= "@[FV3_input_data]" 
-         '*configure' <=copyfrom= "@[FV3_input_data]" 
-              'INPUT' <=copy=     "@[FV3_input_data]/INPUT" 
-     'nems.configure' <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN" 
-    } 
- 
-    # Specify output files:
-    criteria output {
-        # WORKFILE                            .comparison. TARGET
-        'atmos_4xdaily.tile1.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile2.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile3.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile4.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile5.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile6.nc' .bitcmp. "@[CNTL]"
-        'phyf000.tile1.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile2.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile3.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile4.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile5.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile6.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile1.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile2.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile3.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile4.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile5.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile6.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile1.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile2.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile3.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile4.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile5.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile6.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile1.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile2.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile3.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile4.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile5.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile6.nc'      .bitcmp. "@[CNTL]"
-        'RESTART/coupler.res'                   .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.nc'                .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile1.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile2.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile3.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile4.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile5.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile6.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile1.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile2.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile3.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile4.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile5.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile6.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile1.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile2.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile3.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile4.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile5.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile6.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile1.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile2.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile3.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile1.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile2.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile3.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
-
-      # Executable validation.  This makes an MD5 sum of the fv3.exe
-      # for comparison against the MD5 sum made in the build job.
-      # This is to ensure the executable did not change during the
-      # test suite.
-        "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
-    }
- 
-    spawn execute { 
-        # Run the  
-        {"@[build%target]", ranks="@[TASKS]" } 
-    } 
-} 
- 
-######################################################################## 
- 
-test cpld_fv3_atmstep: fv3_mom6_cice.exe { 
-    use plat 
-    use plat%default_resources 
-    use fv3_defaults 
- 
-    TEST_DESCR="Compare FV3 control results with previous trunk version cpld_fv3_atmstep" 
-    CNTL_NAME='fv3_control' 
- 
-    COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
-    RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 
-    CNTL="@[plat%BASELINE]/@[CNTL_NAME]"      # Control baseline area 
-    FV3_input_data="@[plat%INPUTS]/FV3_input_data" 
- 
-    build=fv3_mom6_cice.exe 
- 
-    prep=fv3_prep( 
-        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice.exe%modules.nems]", 
-        CNTL="@[CNTL]") 
- 
-    # - nems.configure --- 
-    nems_configure='atm' 
-    atm_model='fv3' 
-    atm_petlist_bounds="-1 -1" 
-    coupling_interval_sec=1800.0  # 30min coupling, fv3 time step 
- 
-    # Specify input files. 
-    filters input { 
-      #    WORK FILE  <=filter=   SOURCE FILE 
-          'input.nml' <=atparse=  "@[PARMnems]/input.nml.IN" 
-    'model_configure' <=atparse=  "@[PARMnems]/model_configure.IN" 
-                 'aerosol.dat' <=copyfrom= "@[FV3_input_data]/INPUT" 
-  'co2historicaldata_201*.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-      'sfc_emissivity_idx.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-   'solarconstant_noaa_an.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-               '*grb' <=copyfrom= "@[FV3_input_data]" 
-            '*_table' <=copyfrom= "@[FV3_input_data]" 
-         '*configure' <=copyfrom= "@[FV3_input_data]" 
-              'INPUT' <=copy=     "@[FV3_input_data]/INPUT" 
-     'nems.configure' <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN" 
-    } 
- 
-    # Specify output files:
-    criteria output {
-        # WORKFILE                            .comparison. TARGET
-        'atmos_4xdaily.tile1.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile2.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile3.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile4.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile5.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile6.nc' .bitcmp. "@[CNTL]"
-        'phyf000.tile1.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile2.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile3.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile4.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile5.nc'      .bitcmp. "@[CNTL]"
-        'phyf000.tile6.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile1.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile2.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile3.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile4.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile5.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile6.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile1.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile2.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile3.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile4.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile5.nc'      .bitcmp. "@[CNTL]"
-        'dynf000.tile6.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile1.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile2.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile3.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile4.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile5.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile6.nc'      .bitcmp. "@[CNTL]"
-        'RESTART/coupler.res'                   .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.nc'                .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile1.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile2.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile3.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile4.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile5.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile6.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile1.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile2.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile3.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile4.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile5.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile6.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile1.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile2.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile3.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile4.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile5.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile6.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile1.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile2.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile3.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile1.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile2.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile3.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
-
-      # Executable validation.  This makes an MD5 sum of the fv3.exe
-      # for comparison against the MD5 sum made in the build job.
-      # This is to ensure the executable did not change during the
-      # test suite.
-        "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
-    }
- 
-    spawn execute { 
-        # Run the  
-        {"@[build%target]", ranks="@[TASKS]" } 
-    } 
-} 
- 
-######################################################################## 
- 
-test cpld_fv3_rst_atmstep: fv3_mom6_cice.exe { 
-    #use fv3_control 
- 
-    TEST_DESCR="Compare FV3 restart results with previous trunk version cpld_fv3_rst_atmstep" 
-    CNTL_NAME='fv3_restart' 
-     
-    WARM_START='.T.' 
-    NGGPS_IC='.F.' 
-    EXTERNAL_IC='.F.' 
-    MAKE_NH='.F.' 
-    MOUNTAIN='.T.' 
-    NA_INIT='0' 
-    FHMAX='48' 
-    FDIAG='6' 
-    NSTF_NAME='2,0,1,0,5' 
- 
-    build=fv3_mom6_cice.exe 
- 
-    prep=fv3_prep( 
-        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice.exe%modules.nems]", 
-        CNTL="@[CNTL]") 
- 
-    # - nems.configure --- 
-    nems_configure='atm' 
-    atm_model='fv3' 
-    atm_petlist_bounds="-1 -1" 
-    coupling_interval_sec=1800.0  # 30min coupling, fv3 time step 
- 
-    # Specify input files. 
-    filters input { 
-      #    WORK FILE  <=filter=   SOURCE FILE 
-                   'input.nml' <=atparse=  "@[PARMnems]/input.nml.IN" 
-             'model_configure' <=atparse=  "@[PARMnems]/model_configure.IN" 
-                 'aerosol.dat' <=copyfrom= "@[FV3_input_data]/INPUT" 
-  'co2historicaldata_201*.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-      'sfc_emissivity_idx.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-   'solarconstant_noaa_an.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-                        '*grb' <=copyfrom= "@[FV3_input_data]" 
-                     '*_table' <=copyfrom= "@[FV3_input_data]" 
-                  '*configure' <=copyfrom= "@[FV3_input_data]" 
-                       'INPUT' <=copy=     "@[FV3_input_data]/RESTART" 
-              'nems.configure' <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN" 
-    } 
- 
- 
-    # Specify output files:
-    criteria output {
-        # WORKFILE                            .comparison. TARGET
-        'atmos_4xdaily.tile1.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile2.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile3.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile4.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile5.nc' .bitcmp. "@[CNTL]"
-        'atmos_4xdaily.tile6.nc' .bitcmp. "@[CNTL]"
-        'phyf027.tile1.nc'      .bitcmp. "@[CNTL]"
-        'phyf027.tile2.nc'      .bitcmp. "@[CNTL]"
-        'phyf027.tile3.nc'      .bitcmp. "@[CNTL]"
-        'phyf027.tile4.nc'      .bitcmp. "@[CNTL]"
-        'phyf027.tile5.nc'      .bitcmp. "@[CNTL]"
-        'phyf027.tile6.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile1.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile2.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile3.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile4.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile5.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile6.nc'      .bitcmp. "@[CNTL]"
-        'dynf027.tile1.nc'      .bitcmp. "@[CNTL]"
-        'dynf027.tile2.nc'      .bitcmp. "@[CNTL]"
-        'dynf027.tile3.nc'      .bitcmp. "@[CNTL]"
-        'dynf027.tile4.nc'      .bitcmp. "@[CNTL]"
-        'dynf027.tile5.nc'      .bitcmp. "@[CNTL]"
-        'dynf027.tile6.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile1.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile2.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile3.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile4.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile5.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile6.nc'      .bitcmp. "@[CNTL]"
-        'RESTART/coupler.res'                   .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.nc'                .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile1.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile2.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile3.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile4.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile5.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile6.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile1.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile2.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile3.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile4.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile5.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile6.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile1.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile2.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile3.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile4.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile5.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile6.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile1.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile2.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile3.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile1.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile2.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile3.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
-
-      # Executable validation.  This makes an MD5 sum of the fv3.exe
-      # for comparison against the MD5 sum made in the build job.
-      # This is to ensure the executable did not change during the
-      # test suite.
-        "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
-    } 
- 
-    spawn execute { 
-        # Run the 
-        {"@[build%target]", ranks="@[TASKS]" } 
-     } 
-} 
- 
-######################################################################## 
- 
 test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe { 
     use plat 
     use plat%default_resources 
     use fv3_defaults 
  
-    TEST_DESCR="Fully coupled FV3-MOM6-CICE system (atmocn_flux_from_atm = .false)" 
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm" 
     CNTL_NAME='RT-Baselines_2d_warm' 
  
     CPLFLX='.T.' 
     CPL='.true.'
-# run for 2 days
-    DAYS='2'
+    DAYS='2'  # run for 2 days
     FHMAX='48'
     FDIAG='3' 
  
@@ -522,18 +152,20 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
         CNTL="@[CNTL]") 
      
     # - set total number of tasks to satisfy coupled application need 
-    TASKS=510 
+    TASKS=480
+    INPES=4
+    JNPES=8 
  
     # - nems.configure --- 
     nems_configure='med_atm_ocn_ice' 
     med_model='nems' 
-    med_petlist_bounds="0 149" 
-    atm_model='fv3' 
-    atm_petlist_bounds="0 149" 
-    ocn_model='mom6' 
-    ocn_petlist_bounds="150 389" 
-    ice_model='cice' 
-    ice_petlist_bounds="390 509" 
+    med_petlist_bounds="0 197"
+    atm_model='fv3'
+    atm_petlist_bounds="0 197"
+    ocn_model='mom6'
+    ocn_petlist_bounds="198 455"
+    ice_model='cice'
+    ice_petlist_bounds="456 479"
     coupling_interval_slow_sec=1800.0  # 30min coupling, fv3 time step 
     coupling_interval_fast_sec=1800.0  # 30min coupling, fv3 time step 
  
@@ -637,10 +269,6 @@ test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     DT_ATMOS='450'
     NPX='385'
     NPY='385'
-    WRITE_GROUP=3
-    WRTTASK_PER_GROUP=24
-    INPES=4
-    JNPES=8
     IMO='1536'
     JMO='768'
     FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
@@ -664,18 +292,24 @@ test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
         CNTL="@[CNTL]") 
      
     # - set total number of tasks to satisfy coupled application need 
-    TASKS=624 
+    TASKS=456
+    WRITE_GROUP=1
+    WRTTASK_PER_GROUP=24
+    INPES=6
+    JNPES=8
+    THRD=2
+    TPN=12
  
     # - nems.configure --- 
     nems_configure='medcold_atm_ocn_ice' 
     med_model='nems' 
-    med_petlist_bounds="0 263" 
-    atm_model='fv3' 
-    atm_petlist_bounds="0 263" 
-    ocn_model='mom6' 
-    ocn_petlist_bounds="264 503" 
-    ice_model='cice' 
-    ice_petlist_bounds="504 623" 
+    med_petlist_bounds="0 311"
+    atm_model='fv3'
+    atm_petlist_bounds="0 311"
+    ocn_model='mom6'
+    ocn_petlist_bounds="312 431"
+    ice_model='cice'
+    ice_petlist_bounds="432 455"
     coupling_interval_slow_sec=1800.0  # 30min coupling, fv3 time step 
     coupling_interval_fast_sec=1800.0  # 30min coupling, fv3 time step 
  
@@ -780,8 +414,9 @@ test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     }
 
     spawn execute { 
-        # Run the  
-        {"@[build%target]", ranks="@[TASKS]" } 
+        # Run: ATM/MED runs with threads while OCN/CICE get threads but uses all pets/node 
+        {"@[build%target]", ranks="312", threads="@[THRD]", ppn="@[TPN]" }
+        {"@[build%target]", ranks="144", threads="@[THRD]", ppn="24" }
     } 
 } 
  
@@ -813,18 +448,20 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
         CNTL="@[CNTL]") 
      
     # - set total number of tasks to satisfy coupled application need 
-    TASKS=510 
+    TASKS=480
+    INPES=4
+    JNPES=8
  
     # - nems.configure --- 
     nems_configure='medcold_atm_ocn_ice' 
     med_model='nems' 
-    med_petlist_bounds="0 149" 
-    atm_model='fv3' 
-    atm_petlist_bounds="0 149" 
-    ocn_model='mom6' 
-    ocn_petlist_bounds="150 389" 
-    ice_model='cice' 
-    ice_petlist_bounds="390 509" 
+    med_petlist_bounds="0 197"
+    atm_model='fv3'
+    atm_petlist_bounds="0 197"
+    ocn_model='mom6'
+    ocn_petlist_bounds="198 455"
+    ice_model='cice'
+    ice_petlist_bounds="456 479"
     coupling_interval_slow_sec=1800.0  # 30min coupling, fv3 time step 
     coupling_interval_fast_sec=1800.0  # 30min coupling, fv3 time step 
  
@@ -940,15 +577,13 @@ test cpld_fv3_mom6_cice_35d_atm_flux: fv3_mom6_cice.exe {
     use fv3_defaults 
     #walltime=14400   # seconds
  
-    TEST_DESCR="Fully coupled FV3-MOM6-CICE system (atmocn_flux_from_atm = .false)" 
-    CNTL_NAME='RT-Baselines_35d_20180813' 
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system" 
+    CNTL_NAME='RT-Baselines_35d' 
  
     CPLFLX='.T.' 
     CPL='.true.'
-# run for 35 days
-    DAYS='35'
+    DAYS='35' # run for 35 days
     FHMAX='840'
-#    FHMAXHF='12'
     NFHMAX_HF='12'
     NFHOUT_HF='1'
     FDIAG='6' 
@@ -967,18 +602,20 @@ test cpld_fv3_mom6_cice_35d_atm_flux: fv3_mom6_cice.exe {
         CNTL="@[CNTL]") 
      
     # - set total number of tasks to satisfy coupled application need 
-    TASKS=510 
+    TASKS=480
+    INPES=4
+    JNPES=8
  
     # - nems.configure --- 
     nems_configure='med_atm_ocn_ice' 
     med_model='nems' 
-    med_petlist_bounds="0 149" 
-    atm_model='fv3' 
-    atm_petlist_bounds="0 149" 
-    ocn_model='mom6' 
-    ocn_petlist_bounds="150 389" 
-    ice_model='cice' 
-    ice_petlist_bounds="390 509" 
+    med_petlist_bounds="0 197"
+    atm_model='fv3'
+    atm_petlist_bounds="0 197"
+    ocn_model='mom6'
+    ocn_petlist_bounds="198 455"
+    ice_model='cice'
+    ice_petlist_bounds="456 479"
     coupling_interval_slow_sec=1800.0  # 30min coupling, fv3 time step 
     coupling_interval_fast_sec=1800.0  # 30min coupling, fv3 time step 
  
@@ -1001,7 +638,7 @@ test cpld_fv3_mom6_cice_35d_atm_flux: fv3_mom6_cice.exe {
             'INPUT/*' <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
  'INPUT/MOM6_IC_TS.nc' <=copy=    "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
                   '*' <=copyfrom= "@[UGCS_input_data]/CICE"
-                  '*' <=copyfrom= "@[UGCS_input_data]/MEDIATOR_20180813"
+                  '*' <=copyfrom= "@[UGCS_input_data]/MEDIATOR"
  'INPUT/grid_spec.nc'  <=copy=    "@[UGCS_input_data]/COUPLED/grid_spec.nc"
          'diag_table'  <=copy=    "@[UGCS_input_data]/COUPLED/diag_table"
     } 
@@ -1027,12 +664,11 @@ test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     use plat%default_resources 
     use fv3_defaults 
  
-    TEST_DESCR="Fully coupled FV3-MOM6-CICE system (atmocn_flux_from_atm = .false)" 
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm_c384" 
     CNTL_NAME='RT-Baselines_2d_warm384' 
  
     CPLFLX='.T.' 
     CPL='.true.'
-# run for 1 days
     DAYS='2'
     FHMAX='48'
     walltime=14400   # seconds
@@ -1068,19 +704,24 @@ test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
         CNTL="@[CNTL]") 
      
     # - set total number of tasks to satisfy coupled application need 
-    # - nems.configure --- 
-    TASKS=624 
+    TASKS=456
+    WRITE_GROUP=1
+    WRTTASK_PER_GROUP=24
+    INPES=6
+    JNPES=8
+    THRD=2
+    TPN=12
  
     # - nems.configure --- 
     nems_configure='med_atm_ocn_ice' 
     med_model='nems' 
-    med_petlist_bounds="0 263" 
-    atm_model='fv3' 
-    atm_petlist_bounds="0 263" 
-    ocn_model='mom6' 
-    ocn_petlist_bounds="264 503" 
-    ice_model='cice' 
-    ice_petlist_bounds="504 623" 
+    med_petlist_bounds="0 311"
+    atm_model='fv3'
+    atm_petlist_bounds="0 311"
+    ocn_model='mom6'
+    ocn_petlist_bounds="312 431"
+    ice_model='cice'
+    ice_petlist_bounds="432 455"
     coupling_interval_slow_sec=1800.0  # 30min coupling, fv3 time step 
     coupling_interval_fast_sec=1800.0  # 30min coupling, fv3 time step 
  
@@ -1120,102 +761,8 @@ test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     } 
  
     spawn execute { 
-        # Run the  
-        {"@[build%target]", ranks="@[TASKS]" } 
-    } 
-} 
-test cpld_fv3_384_mom6_cice_cold_pet816: fv3_mom6_cice.exe { 
-    use plat 
-    use plat%default_resources 
-    use fv3_defaults 
- 
-    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold 384" 
-    CNTL_NAME='RT-Baselines_cold384' 
- 
-    CPLFLX='.T.' 
-    CPL='.true.'
-    DAYS='0.041666666'
-    FHMAX='1'
-    DT_ATMOS='450'
-    NPX='385'
-    NPY='385'
-    WRITE_GROUP=3
-    WRTTASK_PER_GROUP=24
-    INPES=8
-    JNPES=8
-    IMO='1536'
-    JMO='768'
-    FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
-    FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
-    FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
-    FNSMCC="'global_soilmgldas.t766.1536.768.grb',"
-    FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
- 
-    COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
-    RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 
-    CNTL="@[plat%BASELINE]/@[CNTL_NAME]"      # Control baseline area 
-    CNTLMED="@[plat%BASELINE]/MEDIATOR384"
-
-    FV3_input_data="@[plat%INPUTS]/FV3_input_data384" 
-    UGCS_input_data="@[plat%INPUTS]" 
- 
-    build=fv3_mom6_cice.exe 
- 
-    prep=fv3_prep( 
-        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice.exe%modules.nems]", 
-        CNTL="@[CNTL]") 
-     
-    # - set total number of tasks to satisfy coupled application need 
-    TASKS=816 
- 
-    # - nems.configure --- 
-    nems_configure='medcold_atm_ocn_ice' 
-    med_model='nems' 
-    med_petlist_bounds="0 455" 
-    atm_model='fv3' 
-    atm_petlist_bounds="0 455" 
-    ocn_model='mom6' 
-    ocn_petlist_bounds="456 695" 
-    ice_model='cice' 
-    ice_petlist_bounds="696 815" 
-    coupling_interval_slow_sec=1800.0  # 30min coupling, fv3 time step 
-    coupling_interval_fast_sec=1800.0  # 30min coupling, fv3 time step 
- 
-    # Specify input files. 
-    filters input { 
-      #    WORK FILE  <=filter=   SOURCE FILE 
-          'input.nml' <=atparse=  "@[PARMnems]/input.mom6.nml.IN" 
-    'model_configure' <=atparse=  "@[PARMnems]/model_configure.IN" 
-                 'aerosol.dat' <=copyfrom= "@[FV3_input_data]/INPUT" 
-  'co2historicaldata_201*.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
- 'global_o3prdlos.f77' <=copyfrom= "@[FV3_input_data]/INPUT" 
-      'sfc_emissivity_idx.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-   'solarconstant_noaa_an.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-               '*grb' <=copyfrom= "@[FV3_input_data]" 
-            '*_table' <=copyfrom= "@[FV3_input_data]" 
-         '*configure' <=copyfrom= "@[FV3_input_data]" 
-              'INPUT' <=copy=     "@[FV3_input_data]/INPUT" 
-'INPUT/C384_mosaic.nc' <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
-     'nems.configure' <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN" 
-            'INPUT/*' <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
- 'INPUT/MOM6_IC_TS.nc' <=copy=    "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
-                  '*' <=copyfrom= "@[UGCS_input_data]/CICE"
- 'INPUT/grid_spec.nc'  <=copy=    "@[UGCS_input_data]/COUPLED384/grid_spec.nc"
-         'diag_table'  <=copy=    "@[UGCS_input_data]/COUPLED384/diag_table"
-    } 
- 
-    # Specify output files:
-    criteria output {
-        # WORKFILE                            .comparison. TARGET
-      # Executable validation.  This makes an MD5 sum of the fv3.exe
-      # for comparison against the MD5 sum made in the build job.
-      # This is to ensure the executable did not change during the
-      # test suite.
-        "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
-    }
-
-    spawn execute { 
-        # Run the  
-        {"@[build%target]", ranks="@[TASKS]" } 
+        # Run: ATM/MED with threads and OCN/ICE with all pets/node
+        {"@[build%target]", ranks="312", threads="@[THRD]", ppn="@[TPN]" }
+        {"@[build%target]", ranks="144", threads="@[THRD]", ppn="24" }
     } 
 } 
