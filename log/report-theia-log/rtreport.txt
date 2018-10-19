@@ -1,17 +1,17 @@
 Run rocotostat...
 Generate report...
-WORKFLOW STARTED AT Thu Sep 27 16:06:55 2018 (+1538064415)
+WORKFLOW STARTED AT Thu Oct 18 21:09:26 2018 (+1539896966)
 Repository information:
 
 
 REPO TOP:
-FixFreezeMeltDatm-commit 5a9ad86 [origin/FixFreezeMeltDatm-commit] Check out NEMS FixFreezeMeltDatm
+build-env-mk-commit 14f7f07 [origin/build-env-mk-commit] point to TOP of makefile-fix branch of FV3 and build-env-mk branch of NEMS
 Fetch URL: gerrit:EMC_FV3-MOM6-CICE5
  M log/report-theia-log/build_fv3_mom6_cice.exe.log
  M log/report-theia-log/rtreport.txt
 
 Entering 'CICE_SRC'
-(HEAD detached at e075445) e075445 master: comment out debug statement VLab Issue #53361
+(HEAD detached at c0a5d98) c0a5d98 Added a Readme file
 Fetch URL: gerrit:EMC_CICE
 
 Entering 'FMS'
@@ -19,32 +19,32 @@ Entering 'FMS'
 Fetch URL: git://github.com/NOAA-EMC/FMS
 
 Entering 'FV3'
-(HEAD detached at d615480) d615480 Merge branch 'master' of gerrit:FV3 into fms-component
+(HEAD detached at c5174bf) c5174bf Merge branch 'master' into makefile-fix
 Fetch URL: gerrit:FV3
 
 Entering 'MOM6'
-(HEAD detached at 2519b4d) 2519b4d fms-component: updating makefile.nuopc so it will compile
+(HEAD detached at 195006a) 195006a points to MOM6 with fix for duplicate line in MOM_diagnostics compiles as symmetric
 Fetch URL: https://github.com/EMC-MOM6/NEMS-MOM6-FMS
 
 Entering 'NEMS'
-(HEAD detached at 7eded72) 7eded72 update commit test info
+(HEAD detached at 85b9edc) 85b9edc Bug fix: an #ifdef should have been a #if
 Fetch URL: gerrit:NEMS
 
 
 BUILD fv3_mom6_cice.exe: SUCCEEDED
 
 TEST #1: PASS
-  Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Thu Sep 27 16:52:09 UTC 2018 (Fully coupled FV3-MOM6-CICE system (atmocn_flux_from_atm = .false))
-  Thu Sep 27 16:52:09 UTC 2018
+  Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Thu Oct 18 22:13:55 UTC 2018 (Fully coupled FV3-MOM6-CICE system - 2d_warm_c384)
+  Thu Oct 18 22:13:55 UTC 2018
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp1/emc.nemspara/rtgen.137713/exec/fv3_mom6_cice.exe
-    Expected md5sum: 1bd64f529e4c9efc8c11d650a67eb1bf
-    Actual md5sum: 1bd64f529e4c9efc8c11d650a67eb1bf
-  TEST PASSED AT Thu Sep 27 17:46:34 UTC 2018
+    File: /scratch3/NCEPDEV/stmp2/emc.nemspara/rtgen.63396/exec/fv3_mom6_cice.exe
+    Expected md5sum: 42fa1c3074f92ee8ec971f2e13a8d8ee
+    Actual md5sum: 42fa1c3074f92ee8ec971f2e13a8d8ee
+  TEST PASSED AT Thu Oct 18 22:48:48 UTC 2018
 
 TEST #2: PASS
-  Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Thu Sep 27 16:52:42 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold 384)
-  Thu Sep 27 16:52:42 UTC 2018
+  Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Thu Oct 18 22:30:18 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold 384)
+  Thu Oct 18 22:30:19 UTC 2018
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -107,14 +107,14 @@ TEST #2: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp1/emc.nemspara/rtgen.137713/exec/fv3_mom6_cice.exe
-    Expected md5sum: 1bd64f529e4c9efc8c11d650a67eb1bf
-    Actual md5sum: 1bd64f529e4c9efc8c11d650a67eb1bf
-  TEST PASSED AT Thu Sep 27 17:03:19 UTC 2018
+    File: /scratch3/NCEPDEV/stmp2/emc.nemspara/rtgen.63396/exec/fv3_mom6_cice.exe
+    Expected md5sum: 42fa1c3074f92ee8ec971f2e13a8d8ee
+    Actual md5sum: 42fa1c3074f92ee8ec971f2e13a8d8ee
+  TEST PASSED AT Thu Oct 18 22:41:45 UTC 2018
 
 TEST #3: PASS
-  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Thu Sep 27 16:53:19 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold start)
-  Thu Sep 27 16:53:19 UTC 2018
+  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Thu Oct 18 22:31:27 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold start)
+  Thu Oct 18 22:31:27 UTC 2018
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -177,20 +177,20 @@ TEST #3: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp1/emc.nemspara/rtgen.137713/exec/fv3_mom6_cice.exe
-    Expected md5sum: 1bd64f529e4c9efc8c11d650a67eb1bf
-    Actual md5sum: 1bd64f529e4c9efc8c11d650a67eb1bf
-  TEST PASSED AT Thu Sep 27 16:59:02 UTC 2018
+    File: /scratch3/NCEPDEV/stmp2/emc.nemspara/rtgen.63396/exec/fv3_mom6_cice.exe
+    Expected md5sum: 42fa1c3074f92ee8ec971f2e13a8d8ee
+    Actual md5sum: 42fa1c3074f92ee8ec971f2e13a8d8ee
+  TEST PASSED AT Thu Oct 18 22:38:04 UTC 2018
 
 TEST #4: PASS
-  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Thu Sep 27 16:55:57 UTC 2018 (Fully coupled FV3-MOM6-CICE system (atmocn_flux_from_atm = .false))
-  Thu Sep 27 16:55:57 UTC 2018
+  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Thu Oct 18 22:32:35 UTC 2018 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
+  Thu Oct 18 22:32:35 UTC 2018
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp1/emc.nemspara/rtgen.137713/exec/fv3_mom6_cice.exe
-    Expected md5sum: 1bd64f529e4c9efc8c11d650a67eb1bf
-    Actual md5sum: 1bd64f529e4c9efc8c11d650a67eb1bf
-  TEST PASSED AT Thu Sep 27 17:08:35 UTC 2018
-WORKFLOW REPORT AT Thu Sep 27 17:47:02 2018 (+1538070422)
+    File: /scratch3/NCEPDEV/stmp2/emc.nemspara/rtgen.63396/exec/fv3_mom6_cice.exe
+    Expected md5sum: 42fa1c3074f92ee8ec971f2e13a8d8ee
+    Actual md5sum: 42fa1c3074f92ee8ec971f2e13a8d8ee
+  TEST PASSED AT Thu Oct 18 22:50:16 UTC 2018
+WORKFLOW REPORT AT Thu Oct 18 22:51:24 2018 (+1539903084)
 Tests: 0 failed, 4 passed out of 4
 Builds: 0 failed, 1 passed out of 1
 REGRESSION TEST WAS SUCCESSFUL

@@ -23,4 +23,4 @@ CICE_BINDIR=$ROOTDIR/CICE/CICE_INSTALL
 # enviornment
 # enviornment
 CHOSEN_MODULE=$FULL_MACHINE_ID/fv3_coupled
-CONFOPT=configure.fv3_coupled.$FULL_MACHINE_ID
+CONFIGURE_NEMS_FILE=configure.fv3_coupled.$FULL_MACHINE_ID
