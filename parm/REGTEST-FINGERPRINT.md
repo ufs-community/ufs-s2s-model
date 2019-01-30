@@ -35,4 +35,5 @@ Change log:
 * Aug. 20, 2018 - Update FV3.
 * Sep.  4, 2018 - CICE grid updated FV3 basline updated after FV3 updated (RT/NEMSfv3gfs/trunk-20180829)
 * Oct. 13, 2018 - Revised "regression test description" in compsets/fv3mom6cice5.input.
-* Oct. 18, 2018 - Prep for benchmark 
+* Oct. 18, 2018 - Prep for benchmark
+* Dec  20, 2018 - Updating mediator files (FV3 results change with update of code) 

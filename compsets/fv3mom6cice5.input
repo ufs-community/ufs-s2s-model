@@ -61,6 +61,11 @@ build fv3_mom6_cice.exe {
 
 ########################################################################
 
+#NOTE: DO NOT UPDATE the fv3_default variables for coupled fiels, 
+#update them within the tests themselves.  The fv3_default variables
+#are updated to match the NEMSfv3gfs variables only. Instead, update
+#the cpl_defaults
+
 # Common variables used by many tests and input files: 
 
 fv3_defaults = {
@@ -113,11 +118,22 @@ fv3_defaults = {
     SHUM='-999.0'
     SKEB='-999.0'
 
-    IAU_INC_FILES=''
+    IAU_INC_FILES="''"
 
     CPLFLX='.F.'
+    CPLWAV='.F.'
     CPL='.false.'
+}
 
+#NOTE: DO NOT UPDATE the fv3_default variables for coupled fiels, 
+#update them within the tests themselves.  The fv3_default variables
+#are updated to match the NEMSfv3gfs variables only. Instead, update
+#the cpl_defaults 
+
+cpl_defaults = { 
+    CPLFLX='.T.'
+    CPL='.true.'
+    NSTF_NAME='0,0,0,0,0'
 }
 
 ########################################################################
@@ -128,12 +144,11 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     use plat 
     use plat%default_resources 
     use fv3_defaults 
+    use cpl_defaults 
  
     TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm" 
     CNTL_NAME='RT-Baselines_2d_warm' 
  
-    CPLFLX='.T.' 
-    CPL='.true.'
     DAYS='2'  # run for 2 days
     FHMAX='48'
     FDIAG='3' 
@@ -258,12 +273,11 @@ test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     use plat 
     use plat%default_resources 
     use fv3_defaults 
+    use cpl_defaults
  
     TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold 384" 
     CNTL_NAME='RT-Baselines_cold384' 
  
-    CPLFLX='.T.' 
-    CPL='.true.'
     DAYS='0.041666666'
     FHMAX='1'
     DT_ATMOS='450'
@@ -424,12 +438,11 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     use plat 
     use plat%default_resources 
     use fv3_defaults 
+    use cpl_defaults
  
     TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold start" 
     CNTL_NAME='RT-Baselines_cold' 
  
-    CPLFLX='.T.' 
-    CPL='.true.'
     DAYS='0.041666666'
     FHMAX='1'
  
@@ -575,13 +588,12 @@ test cpld_fv3_mom6_cice_35d_atm_flux: fv3_mom6_cice.exe {
     use plat 
     use plat%default_resources 
     use fv3_defaults 
+    use cpl_defaults
     #walltime=14400   # seconds
  
     TEST_DESCR="Fully coupled FV3-MOM6-CICE system" 
     CNTL_NAME='RT-Baselines_35d' 
  
-    CPLFLX='.T.' 
-    CPL='.true.'
     DAYS='35' # run for 35 days
     FHMAX='840'
     NFHMAX_HF='12'
@@ -663,12 +675,11 @@ test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     use plat 
     use plat%default_resources 
     use fv3_defaults 
+    use cpl_defaults
  
     TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm_c384" 
     CNTL_NAME='RT-Baselines_2d_warm384' 
  
-    CPLFLX='.T.' 
-    CPL='.true.'
     DAYS='2'
     FHMAX='48'
     walltime=14400   # seconds

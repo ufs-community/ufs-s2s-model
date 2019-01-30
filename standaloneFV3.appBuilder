@@ -4,11 +4,5 @@
 
 COMPONENTS=( FMS FV3 )
 
-FMS_SRCDIR=$ROOTDIR/FMS
-FMS_BINDIR=$ROOTDIR/FMS/FMS_INSTALL
-
-FV3_SRCDIR=$ROOTDIR/FV3
-FV3_BINDIR=$ROOTDIR/FV3/FV3_INSTALL
-
-CHOSEN_MODULE=$FULL_MACHINE_ID/fv3
-CONFOPT=configure.fv3.$FULL_MACHINE_ID
+# The modules.nems and configure.nems are selected by
+# conf/before_appbuilder_file.mk.

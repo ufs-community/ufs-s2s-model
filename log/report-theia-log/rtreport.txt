@@ -1,17 +1,17 @@
 Run rocotostat...
 Generate report...
-WORKFLOW STARTED AT Tue Nov 13 20:55:54 2018 (+1542142554)
+WORKFLOW STARTED AT Tue Jan 29 22:31:42 2019 (+1548801102)
 Repository information:
 
 
 REPO TOP:
-dell-produtil-commit faff043 [origin/dell-produtil-commit] Update FMS to top of GFS-FMS branch
+master      2b7fab8 [origin/master] WCOSS Phase 3 support, FMS portability, build system bug fixes
 Fetch URL: gerrit:EMC_FV3-MOM6-CICE5
  M log/report-theia-log/build_fv3_mom6_cice.exe.log
  M log/report-theia-log/rtreport.txt
 
 Entering 'CICE_SRC'
-(HEAD detached at c0a5d98) c0a5d98 Added a Readme file
+(HEAD detached at 6d23841) 6d23841 added tool to generate a script to convert hourly mean CICE5 output to daily mean
 Fetch URL: gerrit:EMC_CICE
 
 Entering 'FMS'
@@ -19,7 +19,7 @@ Entering 'FMS'
 Fetch URL: git://github.com/NOAA-EMC/FMS
 
 Entering 'FV3'
-(HEAD detached at 8b38096) 8b38096 This change refs #56153
+(HEAD detached at 10ff520) 10ff520 FV3: this commits #refs 57587
 Fetch URL: gerrit:FV3
 
 Entering 'MOM6'
@@ -27,24 +27,24 @@ Entering 'MOM6'
 Fetch URL: https://github.com/EMC-MOM6/NEMS-MOM6-FMS
 
 Entering 'NEMS'
-(HEAD detached at 6643bb2) 6643bb2 Add WCOSS Dell to the list of platforms to test.  Update commit branch to dell-produtil.
+(HEAD detached at ba874b0) ba874b0 WCOSS Phase 3 support, FMS portability, build system bug fixes
 Fetch URL: gerrit:NEMS
 
 
 BUILD fv3_mom6_cice.exe: SUCCEEDED
 
 TEST #1: PASS
-  Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Tue Nov 13 23:15:38 UTC 2018 (Fully coupled FV3-MOM6-CICE system - 2d_warm_c384)
-  Tue Nov 13 23:15:38 UTC 2018
+  Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Tue Jan 29 23:10:55 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm_c384)
+  Tue Jan 29 23:10:55 UTC 2019
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp2/emc.nemspara/rtgen.103654/exec/fv3_mom6_cice.exe
-    Expected md5sum: caabc8bcf5f8261e0adef1748bf3dc80
-    Actual md5sum: caabc8bcf5f8261e0adef1748bf3dc80
-  TEST PASSED AT Tue Nov 13 23:49:31 UTC 2018
+    File: /scratch4/NCEPDEV/stmp4/Jessica.Meixner/rtgen.74472/exec/fv3_mom6_cice.exe
+    Expected md5sum: e44cffd393f520e520b5a697c7b18c52
+    Actual md5sum: e44cffd393f520e520b5a697c7b18c52
+  TEST PASSED AT Tue Jan 29 23:42:34 UTC 2019
 
 TEST #2: PASS
-  Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Tue Nov 13 23:17:52 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold 384)
-  Tue Nov 13 23:17:52 UTC 2018
+  Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Tue Jan 29 23:11:24 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold 384)
+  Tue Jan 29 23:11:24 UTC 2019
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -107,14 +107,14 @@ TEST #2: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp2/emc.nemspara/rtgen.103654/exec/fv3_mom6_cice.exe
-    Expected md5sum: caabc8bcf5f8261e0adef1748bf3dc80
-    Actual md5sum: caabc8bcf5f8261e0adef1748bf3dc80
-  TEST PASSED AT Tue Nov 13 23:29:05 UTC 2018
+    File: /scratch4/NCEPDEV/stmp4/Jessica.Meixner/rtgen.74472/exec/fv3_mom6_cice.exe
+    Expected md5sum: e44cffd393f520e520b5a697c7b18c52
+    Actual md5sum: e44cffd393f520e520b5a697c7b18c52
+  TEST PASSED AT Tue Jan 29 23:22:38 UTC 2019
 
 TEST #3: PASS
-  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Tue Nov 13 23:16:10 UTC 2018 (Fully coupled FV3-MOM6-CICE system - cold start)
-  Tue Nov 13 23:16:10 UTC 2018
+  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Tue Jan 29 23:11:25 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold start)
+  Tue Jan 29 23:11:25 UTC 2019
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -177,20 +177,20 @@ TEST #3: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp2/emc.nemspara/rtgen.103654/exec/fv3_mom6_cice.exe
-    Expected md5sum: caabc8bcf5f8261e0adef1748bf3dc80
-    Actual md5sum: caabc8bcf5f8261e0adef1748bf3dc80
-  TEST PASSED AT Tue Nov 13 23:22:27 UTC 2018
+    File: /scratch4/NCEPDEV/stmp4/Jessica.Meixner/rtgen.74472/exec/fv3_mom6_cice.exe
+    Expected md5sum: e44cffd393f520e520b5a697c7b18c52
+    Actual md5sum: e44cffd393f520e520b5a697c7b18c52
+  TEST PASSED AT Tue Jan 29 23:18:51 UTC 2019
 
 TEST #4: PASS
-  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Tue Nov 13 23:17:59 UTC 2018 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
-  Tue Nov 13 23:17:59 UTC 2018
+  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Tue Jan 29 23:14:07 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
+  Tue Jan 29 23:14:07 UTC 2019
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp2/emc.nemspara/rtgen.103654/exec/fv3_mom6_cice.exe
-    Expected md5sum: caabc8bcf5f8261e0adef1748bf3dc80
-    Actual md5sum: caabc8bcf5f8261e0adef1748bf3dc80
-  TEST PASSED AT Tue Nov 13 23:35:15 UTC 2018
-WORKFLOW REPORT AT Tue Nov 13 23:50:52 2018 (+1542153052)
+    File: /scratch4/NCEPDEV/stmp4/Jessica.Meixner/rtgen.74472/exec/fv3_mom6_cice.exe
+    Expected md5sum: e44cffd393f520e520b5a697c7b18c52
+    Actual md5sum: e44cffd393f520e520b5a697c7b18c52
+  TEST PASSED AT Tue Jan 29 23:34:39 UTC 2019
+WORKFLOW REPORT AT Tue Jan 29 23:44:15 2019 (+1548805455)
 Tests: 0 failed, 4 passed out of 4
 Builds: 0 failed, 1 passed out of 1
 REGRESSION TEST WAS SUCCESSFUL
