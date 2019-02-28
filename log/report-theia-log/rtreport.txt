@@ -1,11 +1,11 @@
 Run rocotostat...
 Generate report...
-WORKFLOW STARTED AT Fri Feb  8 17:10:40 2019 (+1549645840)
+WORKFLOW STARTED AT Thu Feb 28 16:36:57 2019 (+1551371817)
 Repository information:
 
 
 REPO TOP:
-master       262acf6 [origin/master] NEMS documentation updates:
+gaea-f2-commit 36c0ce5 [origin/gaea-f2-commit] Merge remote-tracking branch 'origin/gaea-f2' into gaea-f2-commit
 Fetch URL: gerrit:EMC_FV3-MOM6-CICE5
  M log/report-theia-log/build_fv3_mom6_cice.exe.log
  M log/report-theia-log/rtreport.txt
@@ -19,7 +19,7 @@ Entering 'FMS'
 Fetch URL: git://github.com/NOAA-EMC/FMS
 
 Entering 'FV3'
-(HEAD detached at 10ff520) 10ff520 FV3: this commits #refs 57587
+(HEAD detached at a46e0fa) a46e0fa FV3: this commits #refs 60593 changes in srflag to reduce excessive snowfall
 Fetch URL: gerrit:FV3
 
 Entering 'MOM6'
@@ -27,24 +27,24 @@ Entering 'MOM6'
 Fetch URL: https://github.com/EMC-MOM6/NEMS-MOM6-FMS
 
 Entering 'NEMS'
-(HEAD detached at 3d81ac1) 3d81ac1 Bug fix to theia slurm naming: platform name should be  theia.slurm.intel
+(HEAD detached at 574327f) 574327f Merge remote-tracking branch 'origin/nest_quilt' into gaea-f2
 Fetch URL: gerrit:NEMS
 
 
 BUILD fv3_mom6_cice.exe: SUCCEEDED
 
 TEST #1: PASS
-  Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Fri Feb 8 18:06:14 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm_c384)
-  Fri Feb  8 18:06:14 UTC 2019
+  Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Thu Feb 28 17:08:31 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm_c384)
+  Thu Feb 28 17:08:31 UTC 2019
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp1/emc.nemspara/rtgen.90950/exec/fv3_mom6_cice.exe
-    Expected md5sum: d7623871cc5d752823088e5ab54db307
-    Actual md5sum: d7623871cc5d752823088e5ab54db307
-  TEST PASSED AT Fri Feb  8 18:37:09 UTC 2019
+    File: /scratch4/NCEPDEV/stmp3/emc.nemspara/rtgen.40541/exec/fv3_mom6_cice.exe
+    Expected md5sum: 501f65db7a23f49310ed7a539f129a98
+    Actual md5sum: 501f65db7a23f49310ed7a539f129a98
+  TEST PASSED AT Thu Feb 28 17:40:13 UTC 2019
 
 TEST #2: PASS
-  Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Fri Feb 8 17:55:43 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold 384)
-  Fri Feb  8 17:55:43 UTC 2019
+  Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Thu Feb 28 17:10:49 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold 384)
+  Thu Feb 28 17:10:49 UTC 2019
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -107,14 +107,14 @@ TEST #2: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp1/emc.nemspara/rtgen.90950/exec/fv3_mom6_cice.exe
-    Expected md5sum: d7623871cc5d752823088e5ab54db307
-    Actual md5sum: d7623871cc5d752823088e5ab54db307
-  TEST PASSED AT Fri Feb  8 18:05:07 UTC 2019
+    File: /scratch4/NCEPDEV/stmp3/emc.nemspara/rtgen.40541/exec/fv3_mom6_cice.exe
+    Expected md5sum: 501f65db7a23f49310ed7a539f129a98
+    Actual md5sum: 501f65db7a23f49310ed7a539f129a98
+  TEST PASSED AT Thu Feb 28 17:21:25 UTC 2019
 
 TEST #3: PASS
-  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Fri Feb 8 18:06:12 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold start)
-  Fri Feb  8 18:06:12 UTC 2019
+  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Thu Feb 28 17:10:42 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold start)
+  Thu Feb 28 17:10:42 UTC 2019
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -177,20 +177,20 @@ TEST #3: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp1/emc.nemspara/rtgen.90950/exec/fv3_mom6_cice.exe
-    Expected md5sum: d7623871cc5d752823088e5ab54db307
-    Actual md5sum: d7623871cc5d752823088e5ab54db307
-  TEST PASSED AT Fri Feb  8 18:12:52 UTC 2019
+    File: /scratch4/NCEPDEV/stmp3/emc.nemspara/rtgen.40541/exec/fv3_mom6_cice.exe
+    Expected md5sum: 501f65db7a23f49310ed7a539f129a98
+    Actual md5sum: 501f65db7a23f49310ed7a539f129a98
+  TEST PASSED AT Thu Feb 28 17:17:05 UTC 2019
 
 TEST #4: PASS
-  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Fri Feb 8 18:06:12 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
-  Fri Feb  8 18:06:12 UTC 2019
+  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Thu Feb 28 17:10:42 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
+  Thu Feb 28 17:10:42 UTC 2019
   Executable did not change during test suite:
-    File: /scratch3/NCEPDEV/stmp1/emc.nemspara/rtgen.90950/exec/fv3_mom6_cice.exe
-    Expected md5sum: d7623871cc5d752823088e5ab54db307
-    Actual md5sum: d7623871cc5d752823088e5ab54db307
-  TEST PASSED AT Fri Feb  8 18:26:26 UTC 2019
-WORKFLOW REPORT AT Fri Feb  8 18:38:48 2019 (+1549651128)
+    File: /scratch4/NCEPDEV/stmp3/emc.nemspara/rtgen.40541/exec/fv3_mom6_cice.exe
+    Expected md5sum: 501f65db7a23f49310ed7a539f129a98
+    Actual md5sum: 501f65db7a23f49310ed7a539f129a98
+  TEST PASSED AT Thu Feb 28 17:28:03 UTC 2019
+WORKFLOW REPORT AT Thu Feb 28 17:40:45 2019 (+1551375645)
 Tests: 0 failed, 4 passed out of 4
 Builds: 0 failed, 1 passed out of 1
 REGRESSION TEST WAS SUCCESSFUL
