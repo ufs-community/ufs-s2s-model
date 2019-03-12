@@ -154,6 +154,7 @@
        dspheat        = .true.
        hybedmf        = @[HYBEDMF]
        satmedmf       = @[SATMEDMF]
+       lheatstrg      = @[LHEATSTRG]
        random_clds    = .true.
        trans_trac     = .false.
        cnvcld         = .true.
@@ -267,7 +268,7 @@
 /
  &MOM_input_nml
          output_directory = 'MOM6_OUTPUT/',
-         input_filename = 'n'
+         input_filename = '@[MOM6_RESTART_SETTING]'
          restart_input_dir = 'INPUT/',
          restart_output_dir = 'MOM6_RESTART/',
          parameter_filename = 'INPUT/MOM_input',

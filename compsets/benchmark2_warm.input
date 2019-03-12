@@ -1,0 +1,161 @@
+########################################################################
+
+test cpld_fv3_384_mom6_cice_2d_bm2: fv3_mom6_cice.exe { 
+    use plat 
+    use plat%default_resources 
+    use fv3_defaults 
+    use cpl_defaults
+ 
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm_c384, slow/fast coupling" 
+    CNTL_NAME='RT-Baselines_2d_warm384' 
+ 
+    DAYS='2'
+    FHMAX='48'
+    #walltime=14400   # seconds
+#   For a 30 day run: 
+#     DAYS='30'
+#     FHMAX='720'
+#     walltime=28800   # seconds
+    #no high freq fv3 output
+    NFHMAX_HF='-1'
+    NFHOUT_HF='-1'
+    FDIAG='6' 
+    DT_ATMOS='450'
+    NPX='385'
+    NPY='385'
+    WRITE_GROUP=3
+    WRTTASK_PER_GROUP=24
+    INPES=4
+    JNPES=8
+    IMO='1536'
+    JMO='768'
+    FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
+    FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
+    FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
+    FNSMCC="'global_soilmgldas.t766.1536.768.grb',"
+    FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
+    COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
+    RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 
+    CNTL="@[plat%BASELINE]/@[CNTL_NAME]"      # Control baseline area 
+
+    FV3_input_data="@[plat%INPUTS]/FV3_input_data384" 
+    UGCS_input_data="@[plat%INPUTS]" 
+ 
+    build=fv3_mom6_cice.exe 
+ 
+    prep=fv3_prep( 
+        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice.exe%modules.nems]", 
+        CNTL="@[CNTL]") 
+     
+    # - set total number of tasks to satisfy coupled application need 
+    TASKS=456
+    WRITE_GROUP=1
+    WRTTASK_PER_GROUP=24
+    INPES=6
+    JNPES=8
+    THRD=2
+    TPN=12
+ 
+    # - set component and coupling timesteps
+          DT_CICE="@[DT_ATMOS]"
+    DT_DYNAM_MOM6='900'
+    DT_THERM_MOM6='3600'
+         CPL_SLOW="@[DT_THERM_MOM6]"
+         CPL_FAST="@[DT_ATMOS]"
+
+    # - set date YYYYMMDDHH
+     SYEAR='2011'
+    SMONTH='09'
+      SDAY='01'
+     SHOUR='00'
+     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
+
+    # - set run type for CICE in ice_in
+    RUNTYPE='initial'
+    # - set restart write at defined freq
+    # to skip writing a restart, make the dumpfreq>run length
+    DUMPFREQ_N='35'
+      DUMPFREQ='d'
+
+    # - set initialization type for MOM6 (../parm/input.mom6.nml.IN)
+    MOM6_RESTART_SETTING = 'r'
+  
+    # - nems.configure --- 
+    nems_configure='med_atm_ocn_ice' 
+    med_model='nems' 
+    med_petlist_bounds="0 311"
+    atm_model='fv3'
+    atm_petlist_bounds="0 311"
+    ocn_model='mom6'
+    ocn_petlist_bounds="312 431"
+    ice_model='cice'
+    ice_petlist_bounds="432 455"
+    coupling_interval_slow_sec="@[CPL_SLOW]"
+    coupling_interval_fast_sec="@[CPL_FAST]"
+ 
+    # Specify input files. 
+    filters input { 
+      #    WORK FILE  <=filter=   SOURCE FILE 
+                  'input.nml'  <=atparse=  "@[PARMnems]/input.bm2.nml.IN" 
+            'model_configure'  <=atparse=  "@[PARMnems]/model_configure.IN" 
+                'aerosol.dat'  <=copyfrom= "@[FV3_input_data]/INPUT" 
+ 'co2historicaldata_201*.txt'  <=copyfrom= "@[FV3_input_data]/INPUT" 
+        'global_o3prdlos.f77'  <=copyfrom= "@[FV3_input_data]/INPUT" 
+     'sfc_emissivity_idx.txt'  <=copyfrom= "@[FV3_input_data]/INPUT" 
+  'solarconstant_noaa_an.txt'  <=copyfrom= "@[FV3_input_data]/INPUT" 
+                       '*grb'  <=copyfrom= "@[FV3_input_data]" 
+                    '*_table'  <=copyfrom= "@[FV3_input_data]" 
+                 '*configure'  <=copyfrom= "@[FV3_input_data]" 
+                      'INPUT'  <=copy=     "@[FV3_input_data]/INPUT" 
+       'INPUT/C384_mosaic.nc'  <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
+             'nems.configure'  <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN" 
+# this will copy a MOM_input_template which will be edited in the prerun==>MOM_input
+                    'INPUT/*'  <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
+         'INPUT/grid_spec.nc'  <=copy=     "@[UGCS_input_data]/COUPLED384/grid_spec.nc"
+    'grid_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/grid_cice_NEMS_mx025.nc"
+    'kmtu_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/kmtu_cice_NEMS_mx025.nc"
+# the ice_in created in pre-run sets a generic name for the restart file
+         'cice5_model.res.nc'  <=copy=     "@[UGCS_input_data]/CICE/cice5_model_0.25.res_@[CDATE].nc"
+# the ice_in_template will be edited in the prerun==>ice_in
+            'ice_in_template'  <=copy=     "@[UGCS_input_data]/CICE/ice_in_template"
+# the diag_table_template will be edited in the prerun==>diag_table
+        'diag_table_template'  <=copy=     "@[UGCS_input_data]/COUPLED384/diag_table_template"
+                          '*'  <=copyfrom= "@[UGCS_input_data]/MEDIATOR384_@[CDATE]"
+# copy over ICs from DA
+         'INPUT/MOM.res_1.nc'  <=copy=     "@[UGCS_input_data]/MOM6_IC/MOM.res_1.@[CDATE].nc"
+         'INPUT/MOM.res_2.nc'  <=copy=     "@[UGCS_input_data]/MOM6_IC/MOM.res_2.@[CDATE].nc"
+         'INPUT/MOM.res_3.nc'  <=copy=     "@[UGCS_input_data]/MOM6_IC/MOM.res_3.@[CDATE].nc"
+         'INPUT/MOM.res_4.nc'  <=copy=     "@[UGCS_input_data]/MOM6_IC/MOM.res_4.@[CDATE].nc"
+           'INPUT/MOM.res.nc'  <=copy=     "@[UGCS_input_data]/MOM6_IC/MOM.res.@[CDATE].nc"
+# and the FV3 initial conditions and updated input 
+                    'INPUT/*'  <=copyfrom= "@[UGCS_input_data]/FV3_input_bm2/INPUT"
+                'field_table'  <=copy=     "@[UGCS_input_data]/FV3_input_bm2/field_table"
+       'global_h2oprdlos.f77'  <=copy=     "@[UGCS_input_data]/FV3_input_bm2/global_h2oprdlos.f77"
+    } 
+
+    # Edit the templates for the compset parameters
+    prerun=edit_inputs(CDATE="@[CDATE]",
+                     DT_CICE="@[DT_CICE]",
+                     RUNTYPE="@[RUNTYPE]",
+                  DUMPFREQ_N="@[DUMPFREQ_N]",
+                    DUMPFREQ="@[DUMPFREQ]",
+                    DT_THERM="@[DT_THERM_MOM6]",
+                    DT_DYNAM="@[DT_DYNAM_MOM6]")
+
+    # Specify output files:
+    criteria output {
+        # WORKFILE                            .comparison. TARGET
+
+      # Executable validation.  This makes an MD5 sum of the fv3.exe
+      # for comparison against the MD5 sum made in the build job.
+      # This is to ensure the executable did not change during the
+      # test suite.
+        "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
+    } 
+ 
+    spawn execute { 
+        # Run: ATM/MED with threads and OCN/ICE with all pets/node
+        {"@[build%target]", ranks="312", threads="@[THRD]", ppn="@[TPN]" }
+        {"@[build%target]", ranks="144", threads="@[THRD]", ppn="24" }
+    } 
+}

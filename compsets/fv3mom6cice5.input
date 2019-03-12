@@ -76,6 +76,9 @@ fv3_defaults = {
     MOUNTAIN='.F.'
     SATMEDMF='.F.'
     HYBEDMF='.T.'
+    LHEATSTRG='.F.'
+    LGFDLMPRAD='.F.'
+    EFFR_IN='.F.'
     NA_INIT='1'
     READ_INCREMENT='.F.'
     FDIAG='0,1,2,3,4,5,6,7,8,9,10,11,12,15,18,21,24'
@@ -134,7 +137,62 @@ cpl_defaults = {
     CPLFLX='.T.'
     CPL='.true.'
     NSTF_NAME='0,0,0,0,0'
+    MOM6_RESTART_SETTING='n'
 }
+
+########################################################################
+# embeded bash script to create input files at prerun from specification 
+# in compset
+
+embed bash edit_inputs(CDATE,DT_CICE,RUNTYPE,DUMPFREQ_N,DUMPFREQ,DT_THERM,DT_DYNAM) [[[
+
+python <<EOT
+import os
+import datetime
+
+fmt='%Y%m%d%H'
+dt = datetime.datetime.strptime("@[CDATE]", fmt)
+tt = dt.timetuple()
+
+jday=tt.tm_yday
+year=tt.tm_year
+month=tt.tm_mon
+day=tt.tm_mday
+ymd=str(year)+str(month).zfill(2)+str(day).zfill(2)
+
+#ice_in
+istep0=(jday-1)*86400/int("@[DT_CICE]")
+
+with open("ice_in_template",'rt') as inf:
+ with open("ice_in",'wf') as outf:
+   for x in inf.readlines():
+    newline=x.replace('YEAR_INIT',str(year)) \
+             .replace('ISTEP0',str(istep0)) \
+             .replace('DT_CICE',"@[DT_CICE]") \
+             .replace('RUNTYPE',"@[RUNTYPE]") \
+             .replace('DUMPFREQ_N',"@[DUMPFREQ_N]") \
+             .replace('DUMPFREQ',"@[DUMPFREQ]")
+    outf.write(newline)
+
+#MOM_input
+with open("INPUT/MOM_input_template",'rt') as inf:
+ with open("INPUT/MOM_input",'wf') as outf:
+   for x in inf.readlines():
+    newline=x.replace('DT_THERM_MOM6',"@[DT_THERM]") \
+             .replace('DT_DYNAM_MOM6',"@[DT_DYNAM]")
+    outf.write(newline)
+
+#diag_table
+with open("diag_table_template",'rt') as inf:
+ with open("diag_table",'wf') as outf:
+   for x in inf.readlines():
+    newline=x.replace('YMD',ymd) \
+             .replace('SYEAR',str(year).zfill(4)) \
+             .replace('SMONTH',str(month).zfill(2)) \
+             .replace('SDAY',str(day).zfill(2))
+    outf.write(newline)
+EOT
+]]]
 
 ########################################################################
 
@@ -171,6 +229,22 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     INPES=4
     JNPES=8 
  
+          DT_CICE='900'  #"@[DT_ATMOS]"
+    DT_DYNAM_MOM6='900'
+    DT_THERM_MOM6='3600'
+         CPL_SLOW="@[DT_THERM_MOM6]"
+         CPL_FAST="@[DT_ATMOS]"
+
+     SYEAR='2016'
+    SMONTH='10'
+      SDAY='03'
+     SHOUR='00'
+     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
+
+    RUNTYPE='initial' # - set run type for CICE in ice_in
+    DUMPFREQ='d'  # - set restart write at defined freq
+    DUMPFREQ_N='35' # to skip writing a restart, make the dumpfreq>run length
+
     # - nems.configure --- 
     nems_configure='med_atm_ocn_ice' 
     med_model='nems' 
@@ -187,26 +261,42 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     # Specify input files. 
     filters input { 
       #    WORK FILE  <=filter=   SOURCE FILE 
-          'input.nml' <=atparse=  "@[PARMnems]/input.mom6.nml.IN" 
-    'model_configure' <=atparse=  "@[PARMnems]/model_configure.IN" 
-                 'aerosol.dat' <=copyfrom= "@[FV3_input_data]/INPUT" 
-  'co2historicaldata_201*.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-  'global_o3prdlos.f77' <=copyfrom= "@[FV3_input_data]/INPUT" 
-      'sfc_emissivity_idx.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-   'solarconstant_noaa_an.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-               '*grb' <=copyfrom= "@[FV3_input_data]" 
-            '*_table' <=copyfrom= "@[FV3_input_data]" 
-         '*configure' <=copyfrom= "@[FV3_input_data]" 
-              'INPUT' <=copy=     "@[FV3_input_data]/INPUT" 
-'INPUT/C96_mosaic.nc' <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
-     'nems.configure' <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN" 
-            'INPUT/*' <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
- 'INPUT/MOM6_IC_TS.nc' <=copy=    "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
-                  '*' <=copyfrom= "@[UGCS_input_data]/CICE"
-                  '*' <=copyfrom= "@[UGCS_input_data]/MEDIATOR"
- 'INPUT/grid_spec.nc'  <=copy=    "@[UGCS_input_data]/COUPLED/grid_spec.nc"
-         'diag_table'  <=copy=    "@[UGCS_input_data]/COUPLED/diag_table"
-    } 
+                  'input.nml'  <=atparse=  "@[PARMnems]/input.mom6.nml.IN"
+            'model_configure'  <=atparse=  "@[PARMnems]/model_configure.IN"
+                'aerosol.dat'  <=copyfrom= "@[FV3_input_data]/INPUT"
+ 'co2historicaldata_201*.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
+        'global_o3prdlos.f77'  <=copyfrom= "@[FV3_input_data]/INPUT"
+     'sfc_emissivity_idx.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
+  'solarconstant_noaa_an.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
+                       '*grb'  <=copyfrom= "@[FV3_input_data]"
+                    '*_table'  <=copyfrom= "@[FV3_input_data]"
+                 '*configure'  <=copyfrom= "@[FV3_input_data]"
+                      'INPUT'  <=copy=     "@[FV3_input_data]/INPUT"
+        'INPUT/C96_mosaic.nc'  <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
+             'nems.configure'  <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN"
+# this will copy a MOM_input_template which will be edited in the prerun==>MOM_input
+                    'INPUT/*'  <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
+        'INPUT/MOM6_IC_TS.nc'  <=copy=     "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
+         'INPUT/grid_spec.nc'  <=copy=     "@[UGCS_input_data]/COUPLED/grid_spec.nc"
+    'grid_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/grid_cice_NEMS_mx025.nc"
+    'kmtu_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/kmtu_cice_NEMS_mx025.nc"
+# the ice_in created in pre-run sets a generic name for the restart file
+         'cice5_model.res.nc'  <=copy=     "@[UGCS_input_data]/CICE/cice5_model_0.25.res_@[CDATE].nc"
+# the ice_in_template will be edited in the prerun==>ice_in
+            'ice_in_template'  <=copy=     "@[UGCS_input_data]/CICE/ice_in_template"
+# the diag_table_template will be edited in the prerun==>diag_table
+        'diag_table_template'  <=copy=     "@[UGCS_input_data]/COUPLED/diag_table_template"
+                          '*'  <=copyfrom= "@[UGCS_input_data]/MEDIATOR"
+    }
+
+    # Edit the templates for the compset parameters
+    prerun=edit_inputs(CDATE="@[CDATE]",
+                     DT_CICE="@[DT_CICE]",
+                     RUNTYPE="@[RUNTYPE]",
+                  DUMPFREQ_N="@[DUMPFREQ_N]",
+                    DUMPFREQ="@[DUMPFREQ]",
+                    DT_THERM="@[DT_THERM_MOM6]",
+                    DT_DYNAM="@[DT_DYNAM_MOM6]")
 
     # Specify output files:
     criteria output {
@@ -314,6 +404,22 @@ test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     THRD=2
     TPN=12
  
+          DT_CICE='900'  #"@[DT_ATMOS]"
+    DT_DYNAM_MOM6='900'
+    DT_THERM_MOM6='3600'
+         CPL_SLOW="@[DT_THERM_MOM6]"
+         CPL_FAST="@[DT_ATMOS]"
+
+     SYEAR='2016'
+    SMONTH='10'
+      SDAY='03'
+     SHOUR='00'
+     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
+
+    RUNTYPE='initial' # - set run type for CICE in ice_in
+    DUMPFREQ='d'  # - set restart write at defined freq
+    DUMPFREQ_N='35' # to skip writing a restart, make the dumpfreq>run length
+
     # - nems.configure --- 
     nems_configure='medcold_atm_ocn_ice' 
     med_model='nems' 
@@ -330,26 +436,43 @@ test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     # Specify input files. 
     filters input { 
       #    WORK FILE  <=filter=   SOURCE FILE 
-          'input.nml' <=atparse=  "@[PARMnems]/input.mom6.nml.IN" 
-    'model_configure' <=atparse=  "@[PARMnems]/model_configure.IN" 
-                 'aerosol.dat' <=copyfrom= "@[FV3_input_data]/INPUT" 
-  'co2historicaldata_201*.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
- 'global_o3prdlos.f77' <=copyfrom= "@[FV3_input_data]/INPUT" 
-      'sfc_emissivity_idx.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-   'solarconstant_noaa_an.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-               '*grb' <=copyfrom= "@[FV3_input_data]" 
-            '*_table' <=copyfrom= "@[FV3_input_data]" 
-         '*configure' <=copyfrom= "@[FV3_input_data]" 
-              'INPUT' <=copy=     "@[FV3_input_data]/INPUT" 
-'INPUT/C384_mosaic.nc' <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
-     'nems.configure' <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN" 
-            'INPUT/*' <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
- 'INPUT/MOM6_IC_TS.nc' <=copy=    "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
-                  '*' <=copyfrom= "@[UGCS_input_data]/CICE"
- 'INPUT/grid_spec.nc'  <=copy=    "@[UGCS_input_data]/COUPLED384/grid_spec.nc"
-         'diag_table'  <=copy=    "@[UGCS_input_data]/COUPLED384/diag_table"
+                  'input.nml'  <=atparse=  "@[PARMnems]/input.mom6.nml.IN"
+            'model_configure'  <=atparse=  "@[PARMnems]/model_configure.IN"
+                'aerosol.dat'  <=copyfrom= "@[FV3_input_data]/INPUT"
+ 'co2historicaldata_201*.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
+        'global_o3prdlos.f77'  <=copyfrom= "@[FV3_input_data]/INPUT"
+     'sfc_emissivity_idx.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
+  'solarconstant_noaa_an.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
+                       '*grb'  <=copyfrom= "@[FV3_input_data]"
+                    '*_table'  <=copyfrom= "@[FV3_input_data]"
+                 '*configure'  <=copyfrom= "@[FV3_input_data]"
+                      'INPUT'  <=copy=     "@[FV3_input_data]/INPUT"
+       'INPUT/C384_mosaic.nc'  <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
+             'nems.configure'  <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN"
+# this will copy a MOM_input_template which will be edited in the prerun==>MOM_input
+                    'INPUT/*'  <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
+        'INPUT/MOM6_IC_TS.nc'  <=copy=     "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
+         'INPUT/grid_spec.nc'  <=copy=     "@[UGCS_input_data]/COUPLED384/grid_spec.nc"
+    'grid_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/grid_cice_NEMS_mx025.nc"
+    'kmtu_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/kmtu_cice_NEMS_mx025.nc"
+# the ice_in created in pre-run sets a generic name for the restart file
+         'cice5_model.res.nc'  <=copy=     "@[UGCS_input_data]/CICE/cice5_model_0.25.res_@[CDATE].nc"
+# the ice_in_template will be edited in the prerun==>ice_in
+            'ice_in_template'  <=copy=     "@[UGCS_input_data]/CICE/ice_in_template"
+# the diag_table_template will be edited in the prerun==>diag_table
+        'diag_table_template'  <=copy=     "@[UGCS_input_data]/COUPLED384/diag_table_template"
     } 
  
+
+    # Edit the templates for the compset parameters
+    prerun=edit_inputs(CDATE="@[CDATE]",
+                     DT_CICE="@[DT_CICE]",
+                     RUNTYPE="@[RUNTYPE]",
+                  DUMPFREQ_N="@[DUMPFREQ_N]",
+                    DUMPFREQ="@[DUMPFREQ]",
+                    DT_THERM="@[DT_THERM_MOM6]",
+                    DT_DYNAM="@[DT_DYNAM_MOM6]")
+
     # Specify output files:
     criteria output {
         # WORKFILE                            .comparison. TARGET
@@ -464,6 +587,22 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     TASKS=480
     INPES=4
     JNPES=8
+
+          DT_CICE='900'  #"@[DT_ATMOS]"
+    DT_DYNAM_MOM6='900'
+    DT_THERM_MOM6='3600'
+         CPL_SLOW="@[DT_THERM_MOM6]"
+         CPL_FAST="@[DT_ATMOS]"
+
+     SYEAR='2016'
+    SMONTH='10'
+      SDAY='03'
+     SHOUR='00'
+     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
+
+    RUNTYPE='initial' # - set run type for CICE in ice_in
+    DUMPFREQ='d'  # - set restart write at defined freq
+    DUMPFREQ_N='35' # to skip writing a restart, make the dumpfreq>run length
  
     # - nems.configure --- 
     nems_configure='medcold_atm_ocn_ice' 
@@ -481,26 +620,43 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     # Specify input files. 
     filters input { 
       #    WORK FILE  <=filter=   SOURCE FILE 
-          'input.nml' <=atparse=  "@[PARMnems]/input.mom6.nml.IN" 
-    'model_configure' <=atparse=  "@[PARMnems]/model_configure.IN" 
-                 'aerosol.dat' <=copyfrom= "@[FV3_input_data]/INPUT" 
-  'co2historicaldata_201*.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
- 'global_o3prdlos.f77' <=copyfrom= "@[FV3_input_data]/INPUT" 
-      'sfc_emissivity_idx.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-   'solarconstant_noaa_an.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-               '*grb' <=copyfrom= "@[FV3_input_data]" 
-            '*_table' <=copyfrom= "@[FV3_input_data]" 
-         '*configure' <=copyfrom= "@[FV3_input_data]" 
-              'INPUT' <=copy=     "@[FV3_input_data]/INPUT" 
-'INPUT/C96_mosaic.nc' <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
-     'nems.configure' <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN" 
-            'INPUT/*' <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
- 'INPUT/MOM6_IC_TS.nc' <=copy=    "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
-                  '*' <=copyfrom= "@[UGCS_input_data]/CICE"
- 'INPUT/grid_spec.nc'  <=copy=    "@[UGCS_input_data]/COUPLED/grid_spec.nc"
-         'diag_table'  <=copy=    "@[UGCS_input_data]/COUPLED/diag_table"
+                  'input.nml'  <=atparse=  "@[PARMnems]/input.mom6.nml.IN"
+            'model_configure'  <=atparse=  "@[PARMnems]/model_configure.IN"
+                'aerosol.dat'  <=copyfrom= "@[FV3_input_data]/INPUT"
+ 'co2historicaldata_201*.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
+        'global_o3prdlos.f77'  <=copyfrom= "@[FV3_input_data]/INPUT"
+     'sfc_emissivity_idx.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
+  'solarconstant_noaa_an.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
+                       '*grb'  <=copyfrom= "@[FV3_input_data]"
+                    '*_table'  <=copyfrom= "@[FV3_input_data]"
+                 '*configure'  <=copyfrom= "@[FV3_input_data]"
+                      'INPUT'  <=copy=     "@[FV3_input_data]/INPUT"
+        'INPUT/C96_mosaic.nc'  <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
+             'nems.configure'  <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN"
+# this will copy a MOM_input_template which will be edited in the prerun==>MOM_input
+                    'INPUT/*'  <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
+        'INPUT/MOM6_IC_TS.nc'  <=copy=     "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
+         'INPUT/grid_spec.nc'  <=copy=     "@[UGCS_input_data]/COUPLED/grid_spec.nc"
+    'grid_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/grid_cice_NEMS_mx025.nc"
+    'kmtu_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/kmtu_cice_NEMS_mx025.nc"
+# the ice_in created in pre-run sets a generic name for the restart file
+         'cice5_model.res.nc'  <=copy=     "@[UGCS_input_data]/CICE/cice5_model_0.25.res_@[CDATE].nc"
+# the ice_in_template will be edited in the prerun==>ice_in
+            'ice_in_template'  <=copy=     "@[UGCS_input_data]/CICE/ice_in_template"
+# the diag_table_template will be edited in the prerun==>diag_table
+        'diag_table_template'  <=copy=     "@[UGCS_input_data]/COUPLED/diag_table_template"
     } 
  
+    # Edit the templates for the compset parameters
+    prerun=edit_inputs(CDATE="@[CDATE]",
+                     DT_CICE="@[DT_CICE]",
+                     RUNTYPE="@[RUNTYPE]",
+                  DUMPFREQ_N="@[DUMPFREQ_N]",
+                    DUMPFREQ="@[DUMPFREQ]",
+                    DT_THERM="@[DT_THERM_MOM6]",
+                    DT_DYNAM="@[DT_DYNAM_MOM6]")
+
+
     # Specify output files:
     criteria output {
         # WORKFILE                            .comparison. TARGET
@@ -584,92 +740,6 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     } 
 } 
  
-test cpld_fv3_mom6_cice_35d_atm_flux: fv3_mom6_cice.exe { 
-    use plat 
-    use plat%default_resources 
-    use fv3_defaults 
-    use cpl_defaults
-    #walltime=14400   # seconds
- 
-    TEST_DESCR="Fully coupled FV3-MOM6-CICE system" 
-    CNTL_NAME='RT-Baselines_35d' 
- 
-    DAYS='35' # run for 35 days
-    FHMAX='840'
-    NFHMAX_HF='12'
-    NFHOUT_HF='1'
-    FDIAG='6' 
- 
-    COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
-    RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 
-    CNTL="@[plat%BASELINE]/@[CNTL_NAME]"      # Control baseline area 
-    FV3_input_data="@[plat%INPUTS]/FV3_input_data" 
-
-    UGCS_input_data="@[plat%INPUTS]" 
- 
-    build=fv3_mom6_cice.exe 
- 
-    prep=fv3_prep( 
-        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice.exe%modules.nems]", 
-        CNTL="@[CNTL]") 
-     
-    # - set total number of tasks to satisfy coupled application need 
-    TASKS=480
-    INPES=4
-    JNPES=8
- 
-    # - nems.configure --- 
-    nems_configure='med_atm_ocn_ice' 
-    med_model='nems' 
-    med_petlist_bounds="0 197"
-    atm_model='fv3'
-    atm_petlist_bounds="0 197"
-    ocn_model='mom6'
-    ocn_petlist_bounds="198 455"
-    ice_model='cice'
-    ice_petlist_bounds="456 479"
-    coupling_interval_slow_sec=1800.0  # 30min coupling, fv3 time step 
-    coupling_interval_fast_sec=1800.0  # 30min coupling, fv3 time step 
- 
-    # Specify input files. 
-    filters input { 
-      #    WORK FILE  <=filter=   SOURCE FILE 
-          'input.nml' <=atparse=  "@[PARMnems]/input.mom6.nml.IN" 
-    'model_configure' <=atparse=  "@[PARMnems]/model_configure.IN" 
-                 'aerosol.dat' <=copyfrom= "@[FV3_input_data]/INPUT" 
-  'co2historicaldata_201*.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-  'global_o3prdlos.f77' <=copyfrom= "@[FV3_input_data]/INPUT" 
-      'sfc_emissivity_idx.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-   'solarconstant_noaa_an.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-               '*grb' <=copyfrom= "@[FV3_input_data]" 
-            '*_table' <=copyfrom= "@[FV3_input_data]" 
-         '*configure' <=copyfrom= "@[FV3_input_data]" 
-              'INPUT' <=copy=     "@[FV3_input_data]/INPUT" 
-'INPUT/C96_mosaic.nc' <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
-     'nems.configure' <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN" 
-            'INPUT/*' <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
- 'INPUT/MOM6_IC_TS.nc' <=copy=    "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
-                  '*' <=copyfrom= "@[UGCS_input_data]/CICE"
-                  '*' <=copyfrom= "@[UGCS_input_data]/MEDIATOR"
- 'INPUT/grid_spec.nc'  <=copy=    "@[UGCS_input_data]/COUPLED/grid_spec.nc"
-         'diag_table'  <=copy=    "@[UGCS_input_data]/COUPLED/diag_table"
-    } 
-
-    # Specify output files:
-    criteria output {
-        # WORKFILE                            .comparison. TARGET
-      # Executable validation.  This makes an MD5 sum of the fv3.exe
-      # for comparison against the MD5 sum made in the build job.
-      # This is to ensure the executable did not change during the
-      # test suite.
-        "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
-    }
- 
-    spawn execute { 
-        # Run the  
-        {"@[build%target]", ranks="@[TASKS]" } 
-    } 
-} 
  
 test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe { 
     use plat 
@@ -722,6 +792,23 @@ test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     JNPES=8
     THRD=2
     TPN=12
+
+          DT_CICE='900'  #"@[DT_ATMOS]"
+    DT_DYNAM_MOM6='900'
+    DT_THERM_MOM6='3600'
+         CPL_SLOW="@[DT_THERM_MOM6]"
+         CPL_FAST="@[DT_ATMOS]"
+
+     SYEAR='2016'
+    SMONTH='10'
+      SDAY='03'
+     SHOUR='00'
+     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
+
+    RUNTYPE='initial' # - set run type for CICE in ice_in
+    DUMPFREQ='d'  # - set restart write at defined freq
+    DUMPFREQ_N='35' # to skip writing a restart, make the dumpfreq>run length
+
  
     # - nems.configure --- 
     nems_configure='med_atm_ocn_ice' 
@@ -739,26 +826,43 @@ test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     # Specify input files. 
     filters input { 
       #    WORK FILE  <=filter=   SOURCE FILE 
-          'input.nml' <=atparse=  "@[PARMnems]/input.mom6.nml.IN" 
-    'model_configure' <=atparse=  "@[PARMnems]/model_configure.IN" 
-                 'aerosol.dat' <=copyfrom= "@[FV3_input_data]/INPUT" 
-  'co2historicaldata_201*.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-  'global_o3prdlos.f77' <=copyfrom= "@[FV3_input_data]/INPUT" 
-      'sfc_emissivity_idx.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-   'solarconstant_noaa_an.txt' <=copyfrom= "@[FV3_input_data]/INPUT" 
-               '*grb' <=copyfrom= "@[FV3_input_data]" 
-            '*_table' <=copyfrom= "@[FV3_input_data]" 
-         '*configure' <=copyfrom= "@[FV3_input_data]" 
-              'INPUT' <=copy=     "@[FV3_input_data]/INPUT" 
-'INPUT/C384_mosaic.nc' <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
-     'nems.configure' <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN" 
-            'INPUT/*' <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
- 'INPUT/MOM6_IC_TS.nc' <=copy=    "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
-                  '*' <=copyfrom= "@[UGCS_input_data]/CICE"
-                  '*' <=copyfrom= "@[UGCS_input_data]/MEDIATOR384"
- 'INPUT/grid_spec.nc'  <=copy=    "@[UGCS_input_data]/COUPLED384/grid_spec.nc"
-         'diag_table'  <=copy=    "@[UGCS_input_data]/COUPLED384/diag_table"
+                  'input.nml'  <=atparse=  "@[PARMnems]/input.mom6.nml.IN"
+            'model_configure'  <=atparse=  "@[PARMnems]/model_configure.IN"
+                'aerosol.dat'  <=copyfrom= "@[FV3_input_data]/INPUT"
+ 'co2historicaldata_201*.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
+        'global_o3prdlos.f77'  <=copyfrom= "@[FV3_input_data]/INPUT"
+     'sfc_emissivity_idx.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
+  'solarconstant_noaa_an.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
+                       '*grb'  <=copyfrom= "@[FV3_input_data]"
+                    '*_table'  <=copyfrom= "@[FV3_input_data]"
+                 '*configure'  <=copyfrom= "@[FV3_input_data]"
+                      'INPUT'  <=copy=     "@[FV3_input_data]/INPUT"
+       'INPUT/C384_mosaic.nc'  <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
+             'nems.configure'  <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN"
+# this will copy a MOM_input_template which will be edited in the prerun==>MOM_input
+                    'INPUT/*'  <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
+        'INPUT/MOM6_IC_TS.nc'  <=copy=     "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
+         'INPUT/grid_spec.nc'  <=copy=     "@[UGCS_input_data]/COUPLED384/grid_spec.nc"
+    'grid_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/grid_cice_NEMS_mx025.nc"
+    'kmtu_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/kmtu_cice_NEMS_mx025.nc"
+# the ice_in created in pre-run sets a generic name for the restart file
+         'cice5_model.res.nc'  <=copy=     "@[UGCS_input_data]/CICE/cice5_model_0.25.res_@[CDATE].nc"
+# the ice_in_template will be edited in the prerun==>ice_in
+            'ice_in_template'  <=copy=     "@[UGCS_input_data]/CICE/ice_in_template"
+# the diag_table_template will be edited in the prerun==>diag_table
+        'diag_table_template'  <=copy=     "@[UGCS_input_data]/COUPLED384/diag_table_template"
+                          '*'  <=copyfrom= "@[UGCS_input_data]/MEDIATOR384"
     } 
+
+
+    # Edit the templates for the compset parameters
+    prerun=edit_inputs(CDATE="@[CDATE]",
+                     DT_CICE="@[DT_CICE]",
+                     RUNTYPE="@[RUNTYPE]",
+                  DUMPFREQ_N="@[DUMPFREQ_N]",
+                    DUMPFREQ="@[DUMPFREQ]",
+                    DT_THERM="@[DT_THERM_MOM6]",
+                    DT_DYNAM="@[DT_DYNAM_MOM6]")
 
     # Specify output files:
     criteria output {

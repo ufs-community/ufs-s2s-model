@@ -37,3 +37,5 @@ Change log:
 * Oct. 13, 2018 - Revised "regression test description" in compsets/fv3mom6cice5.input.
 * Oct. 18, 2018 - Prep for benchmark
 * Dec  20, 2018 - Updating mediator files (FV3 results change with update of code) 
+* Mar. 11, 2019 - Updating inputs for MOM6 and CICE5 to be templates and updated baselines
+                  and created new baselines for updated code
