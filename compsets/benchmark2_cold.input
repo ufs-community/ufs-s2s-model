@@ -9,8 +9,8 @@ test cpld_fv3_384_mom6_cice_cold_bm2: fv3_mom6_cice.exe {
     TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold 384, slow/fast coupling" 
     CNTL_NAME='RT-Baselines_cold384' 
  
-    DAYS='0.083333333'
-    FHMAX='2'
+    DAYS='0.041666666'
+    FHMAX='1' #Note this needs to be at least 2x CPL_SLOW
     DT_ATMOS='450'
     NPX='385'
     NPY='385'
@@ -37,7 +37,7 @@ test cpld_fv3_384_mom6_cice_cold_bm2: fv3_mom6_cice.exe {
         CNTL="@[CNTL]") 
      
     # - set total number of tasks to satisfy coupled application need 
-    TASKS=456
+    TASKS=480
     WRITE_GROUP=1
     WRTTASK_PER_GROUP=24
     INPES=6
@@ -78,7 +78,7 @@ test cpld_fv3_384_mom6_cice_cold_bm2: fv3_mom6_cice.exe {
     ocn_model='mom6'
     ocn_petlist_bounds="312 431"
     ice_model='cice'
-    ice_petlist_bounds="432 455"
+    ice_petlist_bounds="432 479"
     coupling_interval_slow_sec="@[CPL_SLOW]"
     coupling_interval_fast_sec="@[CPL_FAST]"
 
@@ -125,6 +125,7 @@ test cpld_fv3_384_mom6_cice_cold_bm2: fv3_mom6_cice.exe {
     # Edit the templates for the compset parameters
     prerun=edit_inputs(CDATE="@[CDATE]",
                      DT_CICE="@[DT_CICE]",
+                   NPROC_ICE="@[NPROC_ICE]",
                      RUNTYPE="@[RUNTYPE]",
                   DUMPFREQ_N="@[DUMPFREQ_N]",
                     DUMPFREQ="@[DUMPFREQ]",
@@ -142,8 +143,6 @@ test cpld_fv3_384_mom6_cice_cold_bm2: fv3_mom6_cice.exe {
     }
 
     spawn execute { 
-        # Run: ATM/MED runs with threads while OCN/CICE get threads but uses all pets/node 
-        {"@[build%target]", ranks="312", threads="@[THRD]", ppn="@[TPN]" }
-        {"@[build%target]", ranks="144", threads="@[THRD]", ppn="24" }
+        {"@[build%target]", ranks="@[TASKS]", threads="@[THRD]", ppn="@[TPN]" }
     } 
 } 

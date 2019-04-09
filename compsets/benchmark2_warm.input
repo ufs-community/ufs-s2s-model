@@ -48,7 +48,7 @@ test cpld_fv3_384_mom6_cice_2d_bm2: fv3_mom6_cice.exe {
         CNTL="@[CNTL]") 
      
     # - set total number of tasks to satisfy coupled application need 
-    TASKS=456
+    TASKS=480
     WRITE_GROUP=1
     WRTTASK_PER_GROUP=24
     INPES=6
@@ -89,7 +89,7 @@ test cpld_fv3_384_mom6_cice_2d_bm2: fv3_mom6_cice.exe {
     ocn_model='mom6'
     ocn_petlist_bounds="312 431"
     ice_model='cice'
-    ice_petlist_bounds="432 455"
+    ice_petlist_bounds="432 479"
     coupling_interval_slow_sec="@[CPL_SLOW]"
     coupling_interval_fast_sec="@[CPL_FAST]"
  
@@ -136,6 +136,7 @@ test cpld_fv3_384_mom6_cice_2d_bm2: fv3_mom6_cice.exe {
     # Edit the templates for the compset parameters
     prerun=edit_inputs(CDATE="@[CDATE]",
                      DT_CICE="@[DT_CICE]",
+                   NPROC_ICE="@[NPROC_ICE]",
                      RUNTYPE="@[RUNTYPE]",
                   DUMPFREQ_N="@[DUMPFREQ_N]",
                     DUMPFREQ="@[DUMPFREQ]",
@@ -154,8 +155,6 @@ test cpld_fv3_384_mom6_cice_2d_bm2: fv3_mom6_cice.exe {
     } 
  
     spawn execute { 
-        # Run: ATM/MED with threads and OCN/ICE with all pets/node
-        {"@[build%target]", ranks="312", threads="@[THRD]", ppn="@[TPN]" }
-        {"@[build%target]", ranks="144", threads="@[THRD]", ppn="24" }
+        {"@[build%target]", ranks="@[TASKS]", threads="@[THRD]", ppn="@[TPN]" }
     } 
 }
