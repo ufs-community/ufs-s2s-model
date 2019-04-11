@@ -22,8 +22,8 @@ platform wcoss.phase2 {
     LONG_TEST_QUEUE='&LONGQ;'
     BUILD_QUEUE='&BUILDQ;'
     MACHINE_ID='wcoss.phase2'
-    BASELINE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190403"
-    BASELINE_TEMPLATE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190403"
+    BASELINE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190409"
+    BASELINE_TEMPLATE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190409"
 
     default_resources={
         TASKS=150
@@ -109,8 +109,8 @@ platform wcoss.phase1 {
     cores_per_node=16
     cpus_per_core=2
     MACHINE_ID='wcoss.phase1'
-    BASELINE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190403"
-    BASELINE_TEMPLATE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190403"
+    BASELINE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190409"
+    BASELINE_TEMPLATE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190409"
 
     default_resources={
         TASKS=156
@@ -185,8 +185,8 @@ platform wcoss_dell_p3 {
     LONG_TEST_QUEUE='&LONGQ;'
     BUILD_QUEUE='&BUILDQ;'
 
-    BASELINE="/gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190403"
-    BASELINE_TEMPLATE="/gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190403"
+    BASELINE="/gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190409"
+    BASELINE_TEMPLATE="/gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190409"
 
     default_resources={
         TASKS=156

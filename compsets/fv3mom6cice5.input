@@ -139,6 +139,7 @@ cpl_defaults = {
     NSTF_NAME='0,0,0,0,0'
     MOM6_RESTART_SETTING='n'
     NPROC_ICE='48'
+    DT_ATMOS='900' #needed for C96 cases
 }
 
 ########################################################################
@@ -231,9 +232,9 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     INPES=4
     JNPES=8 
  
-          DT_CICE='900'  #"@[DT_ATMOS]"
+          DT_CICE="@[DT_ATMOS]"
     DT_DYNAM_MOM6='900'
-    DT_THERM_MOM6='3600'
+    DT_THERM_MOM6='1800'
          CPL_SLOW="@[DT_THERM_MOM6]"
          CPL_FAST="@[DT_ATMOS]"
 
@@ -257,8 +258,8 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     ocn_petlist_bounds="198 455"
     ice_model='cice'
     ice_petlist_bounds="456 503"
-    coupling_interval_slow_sec=1800.0  # 30min coupling, fv3 time step 
-    coupling_interval_fast_sec=1800.0  # 30min coupling, fv3 time step 
+    coupling_interval_slow_sec="@[CPL_SLOW]"
+    coupling_interval_fast_sec="@[CPL_FAST]"
  
     # Specify input files. 
     filters input { 
@@ -407,9 +408,9 @@ test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     THRD=2
     TPN=12
  
-          DT_CICE='900'  #"@[DT_ATMOS]"
+          DT_CICE="@[DT_ATMOS]"
     DT_DYNAM_MOM6='900'
-    DT_THERM_MOM6='3600'
+    DT_THERM_MOM6='1800'
          CPL_SLOW="@[DT_THERM_MOM6]"
          CPL_FAST="@[DT_ATMOS]"
 
@@ -433,8 +434,8 @@ test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     ocn_petlist_bounds="312 431"
     ice_model='cice'
     ice_petlist_bounds="432 479"
-    coupling_interval_slow_sec=1800.0  # 30min coupling, fv3 time step 
-    coupling_interval_fast_sec=1800.0  # 30min coupling, fv3 time step 
+    coupling_interval_slow_sec="@[CPL_SLOW]"
+    coupling_interval_fast_sec="@[CPL_FAST]"
     ATMTASKS='312'
     OTASKS='168' 
 
@@ -594,9 +595,9 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     INPES=4
     JNPES=8
 
-          DT_CICE='900'  #"@[DT_ATMOS]"
+          DT_CICE="@[DT_ATMOS]"
     DT_DYNAM_MOM6='900'
-    DT_THERM_MOM6='3600'
+    DT_THERM_MOM6='1800'
          CPL_SLOW="@[DT_THERM_MOM6]"
          CPL_FAST="@[DT_ATMOS]"
 
@@ -620,8 +621,8 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     ocn_petlist_bounds="198 455"
     ice_model='cice'
     ice_petlist_bounds="456 503"
-    coupling_interval_slow_sec=1800.0  # 30min coupling, fv3 time step 
-    coupling_interval_fast_sec=1800.0  # 30min coupling, fv3 time step 
+    coupling_interval_slow_sec="@[CPL_SLOW]"
+    coupling_interval_fast_sec="@[CPL_FAST]"
  
     # Specify input files. 
     filters input { 
@@ -800,9 +801,9 @@ test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     THRD=2
     TPN=12
 
-          DT_CICE='900'  #"@[DT_ATMOS]"
+          DT_CICE="@[DT_ATMOS]"
     DT_DYNAM_MOM6='900'
-    DT_THERM_MOM6='3600'
+    DT_THERM_MOM6='1800'
          CPL_SLOW="@[DT_THERM_MOM6]"
          CPL_FAST="@[DT_ATMOS]"
 
@@ -827,8 +828,8 @@ test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     ocn_petlist_bounds="312 431"
     ice_model='cice'
     ice_petlist_bounds="432 479"
-    coupling_interval_slow_sec=1800.0  # 30min coupling, fv3 time step 
-    coupling_interval_fast_sec=1800.0  # 30min coupling, fv3 time step 
+    coupling_interval_slow_sec="@[CPL_SLOW]"
+    coupling_interval_fast_sec="@[CPL_FAST]"
     ATMTASKS='312'
     OTASKS='168'
  

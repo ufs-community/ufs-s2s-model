@@ -39,3 +39,4 @@ Change log:
 * Dec  20, 2018 - Updating mediator files (FV3 results change with update of code) 
 * Mar. 11, 2019 - Updating inputs for MOM6 and CICE5 to be templates and updated baselines
                   and created new baselines for updated code
+* Apr. 10, 2019 - Updating timesteps, new MEDIATOR files needed

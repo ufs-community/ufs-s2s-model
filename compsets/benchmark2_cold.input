@@ -42,13 +42,13 @@ test cpld_fv3_384_mom6_cice_cold_bm2: fv3_mom6_cice.exe {
     WRTTASK_PER_GROUP=24
     INPES=6
     JNPES=8
-    THRD=2
-    TPN=12
+    THRD=3
+    TPN=8
  
     # - set component and coupling timesteps
           DT_CICE="@[DT_ATMOS]"
     DT_DYNAM_MOM6='900'
-    DT_THERM_MOM6='3600'
+    DT_THERM_MOM6='1800'
          CPL_SLOW="@[DT_THERM_MOM6]"
          CPL_FAST="@[DT_ATMOS]"
 
