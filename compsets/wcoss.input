@@ -19,20 +19,20 @@ platform wcoss.phase2 {
     cpus_per_core=2
 
     # WCOSS Phase 2 has been slow of late.
-    DEFAULT_TEST_WALLTIME=3000
+    DEFAULT_TEST_WALLTIME=3600
 
     MPI='LSF'
     SHORT_TEST_QUEUE='&SHORTQ;'
     LONG_TEST_QUEUE='&LONGQ;'
     BUILD_QUEUE='&BUILDQ;'
     MACHINE_ID='wcoss.phase2'
-    BASELINE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190409"
-    BASELINE_TEMPLATE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190409"
+    BASELINE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190618"
+    BASELINE_TEMPLATE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190618"
 
     default_resources={
-        TASKS=156
-        WRTTASK_PER_GROUP=12
-        TPN=12
+        TASKS=150
+        WRTTASK_PER_GROUP=6
+        TPN=24
         INPES=3
         JNPES=8
         THRD=1

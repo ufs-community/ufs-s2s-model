@@ -27,8 +27,8 @@ platform theia {   # SLURM support
     # INPUTS is the input directory, which should contain fix and parm
     # files, plus any restarts or other inputs.
 
-    BASELINE="/scratch4/NCEPDEV/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190409"
-    BASELINE_TEMPLATE="/scratch4/NCEPDEV/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190409"
+    BASELINE="/scratch4/NCEPDEV/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190618"
+    BASELINE_TEMPLATE="/scratch4/NCEPDEV/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20190618"
     INPUTS="@[BASELINE]"
 
     default_resources={

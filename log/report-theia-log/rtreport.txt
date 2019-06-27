@@ -1,16 +1,17 @@
 Run rocotostat...
 Generate report...
-WORKFLOW STARTED AT Fri Apr 26 21:10:49 2019 (+1556313049)
+WORKFLOW STARTED AT Wed Jun 19 12:53:50 2019 (+1560948830)
 Repository information:
 
 
 REPO TOP:
-feature/slurm 4fcdade slurm: updates to use slurm
+master          f84d794 [origin/master] master: updates to regtest system to work with slurm other updates follow NEMSfv3gfs recent updates
 Fetch URL: gerrit:EMC_FV3-MOM6-CICE5
- M compsets/fv3mom6cice5.input
+ M compsets/all.input
  M compsets/theia.input
  M log/report-theia-log/build_fv3_mom6_cice.exe.log
  M log/report-theia-log/rtreport.txt
+ M parm/REGTEST-FINGERPRINT.md
 
 Entering 'CICE_SRC'
 (HEAD detached at b4ea027) b4ea027 Fixing name of sea ice temperature which should have gone into last commit but somehow didnt
@@ -21,11 +22,11 @@ Entering 'FMS'
 Fetch URL: git://github.com/NOAA-EMC/FMS
 
 Entering 'FV3'
-(HEAD detached at 72bbca2) 72bbca2 FV3:this commit refs #61777 sea-surface-ice-temperature fix for cplflx=t
+(HEAD detached at 208e875) 208e875 FV3: this commits #refs 56264: support fractional landmask on FV3 grid, and #refs 64400: bug fix for UGW and in CSAW
 Fetch URL: gerrit:FV3
 
 Entering 'MOM6'
-(HEAD detached at a1f5b75) a1f5b75 master: updating to use the unified nuopc cap MOM6 is pointing to the UFS-20190306 tag
+(HEAD detached at 1889557) 1889557 update MOM6 to reflect to GFDL 2019-04-22 dev/master update
 Fetch URL: https://github.com/EMC-MOM6/NEMS-MOM6-FMS
 
 Entering 'NEMS'
@@ -36,17 +37,17 @@ Fetch URL: gerrit:NEMS
 BUILD fv3_mom6_cice.exe: SUCCEEDED
 
 TEST #1: PASS
-  Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Fri Apr 26 21:38:49 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm_c384)
-  Fri Apr 26 21:38:49 UTC 2019
+  Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Wed Jun 19 13:00:01 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm_c384)
+  Wed Jun 19 13:00:01 UTC 2019
   Executable did not change during test suite:
-    File: /scratch4/NCEPDEV/stmp4/Jessica.Meixner/rtgen.134654/exec/fv3_mom6_cice.exe
-    Expected md5sum: 0c2ce694f6c4a57fd42e0dd553e40edf
-    Actual md5sum: 0c2ce694f6c4a57fd42e0dd553e40edf
-  TEST PASSED AT Fri Apr 26 22:14:39 UTC 2019
+    File: /scratch3/NCEPDEV/stmp2/Bin.Li/rtgen.70664/exec/fv3_mom6_cice.exe
+    Expected md5sum: d0a37a8f08e30ac47c9896f2b4a2d7e8
+    Actual md5sum: d0a37a8f08e30ac47c9896f2b4a2d7e8
+  TEST PASSED AT Wed Jun 19 13:31:55 UTC 2019
 
 TEST #2: PASS
-  Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Fri Apr 26 21:41:47 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold 384)
-  Fri Apr 26 21:41:47 UTC 2019
+  Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Wed Jun 19 13:00:01 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold 384)
+  Wed Jun 19 13:00:01 UTC 2019
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile4.nc: bit-for-bit identical
@@ -107,14 +108,14 @@ TEST #2: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch4/NCEPDEV/stmp4/Jessica.Meixner/rtgen.134654/exec/fv3_mom6_cice.exe
-    Expected md5sum: 0c2ce694f6c4a57fd42e0dd553e40edf
-    Actual md5sum: 0c2ce694f6c4a57fd42e0dd553e40edf
-  TEST PASSED AT Fri Apr 26 21:59:12 UTC 2019
+    File: /scratch3/NCEPDEV/stmp2/Bin.Li/rtgen.70664/exec/fv3_mom6_cice.exe
+    Expected md5sum: d0a37a8f08e30ac47c9896f2b4a2d7e8
+    Actual md5sum: d0a37a8f08e30ac47c9896f2b4a2d7e8
+  TEST PASSED AT Wed Jun 19 13:13:06 UTC 2019
 
 TEST #3: PASS
-  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Fri Apr 26 21:35:05 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold start)
-  Fri Apr 26 21:35:05 UTC 2019
+  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Wed Jun 19 12:59:29 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold start)
+  Wed Jun 19 12:59:29 UTC 2019
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -177,20 +178,20 @@ TEST #3: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch4/NCEPDEV/stmp4/Jessica.Meixner/rtgen.134654/exec/fv3_mom6_cice.exe
-    Expected md5sum: 0c2ce694f6c4a57fd42e0dd553e40edf
-    Actual md5sum: 0c2ce694f6c4a57fd42e0dd553e40edf
-  TEST PASSED AT Fri Apr 26 21:41:34 UTC 2019
+    File: /scratch3/NCEPDEV/stmp2/Bin.Li/rtgen.70664/exec/fv3_mom6_cice.exe
+    Expected md5sum: d0a37a8f08e30ac47c9896f2b4a2d7e8
+    Actual md5sum: d0a37a8f08e30ac47c9896f2b4a2d7e8
+  TEST PASSED AT Wed Jun 19 13:05:41 UTC 2019
 
 TEST #4: PASS
-  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Fri Apr 26 21:37:06 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
-  Fri Apr 26 21:37:06 UTC 2019
+  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Wed Jun 19 12:58:07 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
+  Wed Jun 19 12:58:07 UTC 2019
   Executable did not change during test suite:
-    File: /scratch4/NCEPDEV/stmp4/Jessica.Meixner/rtgen.134654/exec/fv3_mom6_cice.exe
-    Expected md5sum: 0c2ce694f6c4a57fd42e0dd553e40edf
-    Actual md5sum: 0c2ce694f6c4a57fd42e0dd553e40edf
-  TEST PASSED AT Fri Apr 26 21:53:19 UTC 2019
-WORKFLOW REPORT AT Fri Apr 26 22:16:32 2019 (+1556316992)
+    File: /scratch3/NCEPDEV/stmp2/Bin.Li/rtgen.70664/exec/fv3_mom6_cice.exe
+    Expected md5sum: d0a37a8f08e30ac47c9896f2b4a2d7e8
+    Actual md5sum: d0a37a8f08e30ac47c9896f2b4a2d7e8
+  TEST PASSED AT Wed Jun 19 13:13:27 UTC 2019
+WORKFLOW REPORT AT Wed Jun 19 13:33:47 2019 (+1560951227)
 Tests: 0 failed, 4 passed out of 4
 Builds: 0 failed, 1 passed out of 1
 REGRESSION TEST WAS SUCCESSFUL

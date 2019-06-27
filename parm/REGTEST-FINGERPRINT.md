@@ -40,3 +40,4 @@ Change log:
 * Mar. 11, 2019 - Updating inputs for MOM6 and CICE5 to be templates and updated baselines
                   and created new baselines for updated code
 * Apr. 10, 2019 - Updating timesteps, new MEDIATOR files needed
+* Jun. 18, 2019 - Updating FV3 and MOM6 to their masters. MOM6 corresponds to GFDL dev/master 20190422.
