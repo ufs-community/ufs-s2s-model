@@ -7,10 +7,14 @@
 	branch = develop
 [submodule "CICE_SRC"]
 	path = CICE_SRC
-	url = gerrit:EMC_CICE
+	url = https://github.com/NOAA-EMC/CICE5.git
+	branch = develop
 [submodule "MOM6"]
 	path = MOM6
 	url = https://github.com/EMC-MOM6/NEMS-MOM6-FMS
 [submodule "FMS"]
 	path = FMS
 	url = https://github.com/NOAA-EMC/FMS
+[submodule "stochastic_physics"]
+	path = stochastic_physics
+	url = https://github.com/noaa-psd/stochastic_physics

@@ -41,3 +41,19 @@ Change log:
                   and created new baselines for updated code
 * Apr. 10, 2019 - Updating timesteps, new MEDIATOR files needed
 * Jun. 18, 2019 - Updating FV3 and MOM6 to their masters. MOM6 corresponds to GFDL dev/master 20190422.
+* Aug. 11, 2019 - Creating branch "update_fv3_0606" using the following submodules: 
+                  b4ea027ce55b6d0aa16d863932c94f7f3b913d0e CICE_SRC (remotes/origin/feature/nems_sea_ice-6-gb4ea027)
+                  d4937c8aeb927f0ff33fc59845da386502350d16 FMS (warsaw_201803-11-gd4937c8)
+                  a58e43eb09c525c45fdfc620addad2fe88028fae FV3 (NEMSfv3gfs_preCCPP_20190506-4-ga58e43e)
+                  a1f5b75b06d1e5c275039600b876b467cffbf0fd MOM6 (NEMSMOM6_20190306)
+                  be73d771cdf7352ab2aa32fcf004bcb9666b43e1 NEMS (be73d77) - Apr 6, 2019 
+                  (be73d77 is the same as c1c570160f327dff957764b0dce058d7361febed - Apr 6, 2019)
+* Sep. 14, 2019 - Creating branch "update_fv3_09"
+* Sep. 23, 2019 - Porting to Hera has been done. Currently this application only works on Hera. 
+                  New master branch is created with the following submodules:
+                  fad26550abab181ceadfe687fd99acf175e91d33 CICE_SRC (heads/develop)
+                  32c2c2c6ccdf1295fb80c3008af3f1919a356c9f FMS (warsaw_201803-112-g32c2c2c)
+                  b67d9a398bc2fb2b76701711a6b33eb925a8c7e6 FV3 (NEMSfv3gfs_preCCPP_20190506-13-gb67d9a3)
+                  862cba89c30e061723e9e077a8b59af7069435f4 MOM6 (NEMSMOM6_20190306-8-g862cba8)
+                  e05bf2a554544093f02bf177658ad432cbafbaa8 NEMS (heads/develop)
+                  a40d93c0dd92933a0d4ed2f62759433384456c3f stochastic_physics (heads/master)

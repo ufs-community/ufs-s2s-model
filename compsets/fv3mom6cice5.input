@@ -30,8 +30,8 @@ embed bash fv3_prep(RUNDIR,modules,CNTL) [[[
         export OMP_STACKSIZE=512M
         export ESMF_RUNTIME_COMPLIANCECHECK=OFF:depth=4
 
-        ##To run Cupid, comment out the above ESMF_RUNTIME_COMPLIANCECHECK and 
-        ##uncomment the two rows below
+        #To run Cupid, comment out the above ESMF_RUNTIME_COMPLIANCECHECK and 
+        #uncomment the two rows below
         #export ESMF_RUNTIME_COMPLIANCECHECK=OFF # removed depth=4
         #export ESMF_RUNTIME_TRACE=ON # added this
 
@@ -52,6 +52,9 @@ embed bash fv3_prep(RUNDIR,modules,CNTL) [[[
 build fv3_mom6_cice.exe { 
     # Use NEMSAppBuilder to build a coupled app.   
     use plat 
+    # Note:
+    #  plat%EXECrt = temporary directory for executables and md5 sums
+    #  plat%INCrt  = temporary directory for modulefiles
     target="@[plat%EXECrt]/fv3_mom6_cice.exe" 
     modules.nems="@[plat%INCrt]/modules_fv3_mom6_cice" 
     md5sum="@[target].md5" 
@@ -63,7 +66,7 @@ build fv3_mom6_cice.exe {
 
 ########################################################################
 
-#NOTE: DO NOT UPDATE the fv3_default variables for coupled fiels, 
+#NOTE: DO NOT UPDATE the fv3_default variables for coupled variables, 
 #update them within the tests themselves.  The fv3_default variables
 #are updated to match the NEMSfv3gfs variables only. Instead, update
 #the cpl_defaults
@@ -94,6 +97,7 @@ fv3_defaults = {
     FNSOTC="'global_soiltype.statsgo.t126.384.190.rg.grb',"
     FNSMCC="'global_soilmgldas.t126.384.190.grb',"
     FNABSC="'global_mxsnoalb.uariz.t126.384.190.rg.grb',"
+    LANDICE='.T.'
 
     ENS_NUM='1'
     SYEAR='2016'
@@ -123,6 +127,12 @@ fv3_defaults = {
     IMO='384'
     JMO='190'
 
+    H2O_PHYS='.F.'
+
+    DO_SPPT='.F.'
+    DO_SHUM='.F.'
+    DO_SKEB='.F.'
+    DO_SFCPERTS='.F.'
     SPPT='-999.0'
     SHUM='-999.0'
     SKEB='-999.0'
@@ -219,6 +229,7 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     DAYS='2'  # run for 2 days
     FHMAX='48'
     FDIAG='3' 
+    walltime=3600   # seconds
  
     COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
     RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 
@@ -413,6 +424,7 @@ test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     JNPES=8
     THRD=2
     TPN=12
+    #TPN=20
  
           DT_CICE="@[DT_ATMOS]"
     DT_DYNAM_MOM6='900'
@@ -491,10 +503,10 @@ test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
         # WORKFILE                            .comparison. TARGET
         'phyf001.tile1.nc'      .bitcmp. "@[CNTL]"
         'phyf001.tile2.nc'      .bitcmp. "@[CNTL]"
-        #'phyf001.tile3.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile3.nc'      .bitcmp. "@[CNTL]"
         'phyf001.tile4.nc'      .bitcmp. "@[CNTL]"
         'phyf001.tile5.nc'      .bitcmp. "@[CNTL]"
-        #'phyf001.tile6.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile6.nc'      .bitcmp. "@[CNTL]"
         'dynf001.tile1.nc'      .bitcmp. "@[CNTL]"
         'dynf001.tile2.nc'      .bitcmp. "@[CNTL]"
         'dynf001.tile3.nc'      .bitcmp. "@[CNTL]"
@@ -540,9 +552,9 @@ test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
         'mediator_FBaccumAtm_restart.tile4.nc'     .bitcmp. "@[CNTLMED]/"
         'mediator_FBaccumAtm_restart.tile5.nc'     .bitcmp. "@[CNTLMED]/"
         'mediator_FBaccumAtm_restart.tile6.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBaccumHyd_restart.nc'     .bitcmp. "@[CNTLMED]/"
+        #'mediator_FBaccumHyd_restart.nc'     .bitcmp. "@[CNTLMED]/"
         'mediator_FBaccumIce_restart.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBaccumLnd_restart.nc'     .bitcmp. "@[CNTLMED]/"
+        #'mediator_FBaccumLnd_restart.nc'     .bitcmp. "@[CNTLMED]/"
         'mediator_FBaccumOcn_restart.nc'     .bitcmp. "@[CNTLMED]/"
         #'mediator_FBAtm_a_restart.tile1.nc'     .bitcmp. "@[CNTLMED]/"
         #'mediator_FBAtm_a_restart.tile2.nc'     .bitcmp. "@[CNTLMED]/"
@@ -551,9 +563,9 @@ test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
         #'mediator_FBAtm_a_restart.tile5.nc'     .bitcmp. "@[CNTLMED]/"
         #'mediator_FBAtm_a_restart.tile6.nc'     .bitcmp. "@[CNTLMED]/"
         'mediator_FBAtmOcn_o_restart.nc'        .bitcmp. "@[CNTLMED]/"
-        'mediator_FBHyd_h_restart.nc'     .bitcmp. "@[CNTLMED]/"
+        #'mediator_FBHyd_h_restart.nc'     .bitcmp. "@[CNTLMED]/"
         'mediator_FBIce_i_restart.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBLnd_l_restart.nc'     .bitcmp. "@[CNTLMED]/"
+        #'mediator_FBLnd_l_restart.nc'     .bitcmp. "@[CNTLMED]/"
         'mediator_FBOcn_o_restart.nc'     .bitcmp. "@[CNTLMED]/"
         'mediator_scalars_restart.txt'    .bitcmp. "@[CNTLMED]/"
       # Executable validation.  This makes an MD5 sum of the fv3.exe
@@ -727,9 +739,9 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
         'mediator_FBaccumAtm_restart.tile4.nc'     .bitcmp. "@[CNTLMED]/"
         'mediator_FBaccumAtm_restart.tile5.nc'     .bitcmp. "@[CNTLMED]/"
         'mediator_FBaccumAtm_restart.tile6.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBaccumHyd_restart.nc'     .bitcmp. "@[CNTLMED]/"
+        #'mediator_FBaccumHyd_restart.nc'     .bitcmp. "@[CNTLMED]/"
         'mediator_FBaccumIce_restart.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBaccumLnd_restart.nc'     .bitcmp. "@[CNTLMED]/"
+        #'mediator_FBaccumLnd_restart.nc'     .bitcmp. "@[CNTLMED]/"
         'mediator_FBaccumOcn_restart.nc'     .bitcmp. "@[CNTLMED]/"
         #'mediator_FBAtm_a_restart.tile1.nc'     .bitcmp. "@[CNTLMED]/"
         #'mediator_FBAtm_a_restart.tile2.nc'     .bitcmp. "@[CNTLMED]/"
@@ -738,9 +750,9 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
         #'mediator_FBAtm_a_restart.tile5.nc'     .bitcmp. "@[CNTLMED]/"
         #'mediator_FBAtm_a_restart.tile6.nc'     .bitcmp. "@[CNTLMED]/"
         'mediator_FBAtmOcn_o_restart.nc'        .bitcmp. "@[CNTLMED]/"
-        'mediator_FBHyd_h_restart.nc'     .bitcmp. "@[CNTLMED]/"
+        #'mediator_FBHyd_h_restart.nc'     .bitcmp. "@[CNTLMED]/"
         'mediator_FBIce_i_restart.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBLnd_l_restart.nc'     .bitcmp. "@[CNTLMED]/"
+        #'mediator_FBLnd_l_restart.nc'     .bitcmp. "@[CNTLMED]/"
         'mediator_FBOcn_o_restart.nc'     .bitcmp. "@[CNTLMED]/"
         'mediator_scalars_restart.txt'    .bitcmp. "@[CNTLMED]/"
       # Executable validation.  This makes an MD5 sum of the fv3.exe
@@ -768,7 +780,7 @@ test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
  
     DAYS='2'
     FHMAX='48'
-    walltime=14400   # seconds
+    walltime=5400   # seconds
     NFHMAX_HF='12'
     NFHOUT_HF='1'
     FDIAG='6' 

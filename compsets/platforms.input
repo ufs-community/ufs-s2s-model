@@ -1,7 +1,7 @@
 # DEFAULTS VALUES OVERRIDDEN BY PLATFORMS
 
 platform.defaults={
-    BUILD_WALLTIME=3600 # Wallclock limit in seconds for build jobs
+    BUILD_WALLTIME=1800 # Wallclock limit in seconds for build jobs
     DEFAULT_TEST_WALLTIME=1800 # Default wallclock limit in seconds for test jobs
 
     SRCnems="@[HOMEnems]/NEMS/src"
@@ -34,12 +34,15 @@ platform.defaults={
 load 'wcoss.input'
 load 'jet.input'
 load 'gaea.input'
-load 'theia.input'
+#load 'theia.input'
+load 'hera.input'
 
 ########################################################################
 
 # Autodetection of available platforms.  Calls the "detect" function
 # from each of the listed platforms.
 
-autodetect plat (/ gaea.c3, gaea.c4, wcoss.cray, theia, wcoss.phase2, wcoss.phase1,
-                   xjet, svjet, tujet, wcoss_dell_p3, ujet.slurm /)
+#autodetect plat (/ gaea.c3, gaea.c4, wcoss.cray, theia.intel, wcoss.phase2, wcoss.phase1,
+#                   xjet, svjet, tujet, wcoss_dell_p3, ujet.slurm, theia.slurm.intel, hera.intel /)
+autodetect plat (/ gaea.c3, gaea.c4, wcoss.cray, wcoss.phase2, wcoss.phase1,
+                   xjet, svjet, tujet, wcoss_dell_p3, ujet.slurm, hera.intel /)
