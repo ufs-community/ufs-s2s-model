@@ -15,6 +15,13 @@
 [submodule "FMS"]
 	path = FMS
 	url = https://github.com/NOAA-EMC/FMS
+        branch = GFS-FMS
 [submodule "stochastic_physics"]
 	path = stochastic_physics
 	url = https://github.com/noaa-psd/stochastic_physics
+[submodule "ccpp/framework"]
+	path = ccpp/framework
+	url = https://github.com/NCAR/ccpp-framework
+[submodule "ccpp/physics"]
+	path = ccpp/physics
+	url = https://github.com/NCAR/ccpp-physics

@@ -57,3 +57,12 @@ Change log:
                   862cba89c30e061723e9e077a8b59af7069435f4 MOM6 (NEMSMOM6_20190306-8-g862cba8)
                   e05bf2a554544093f02bf177658ad432cbafbaa8 NEMS (heads/develop)
                   a40d93c0dd92933a0d4ed2f62759433384456c3f stochastic_physics (heads/master)
+* Oct. 7, 2019    New master branch is created with the following submodules:
+                  fad2655 CICE_SRC (heads/develop)
+                  558d8d9 FMS (warsaw_201803-15-g558d8d9)
+                  f4f8644 FV3 (NEMSfv3gfs_preCCPP_20190506-15-gf4f8644)
+                  c0394b7 MOM6 (NEMSMOM6_20190306-9-gc0394b7)
+                  ba1ddf7 NEMS (heads/develop)
+                  257252e ccpp/framework (ccpp_transition_to_vlab_master_20190705-68-g257252e)
+                  ce641c9 ccpp/physics (ccpp_transition_to_vlab_master_20190705-101-gce641c9)
+                  a40d93c stochastic_physics (a40d93c)
