@@ -66,3 +66,12 @@ Change log:
                   257252e ccpp/framework (ccpp_transition_to_vlab_master_20190705-68-g257252e)
                   ce641c9 ccpp/physics (ccpp_transition_to_vlab_master_20190705-101-gce641c9)
                   a40d93c stochastic_physics (a40d93c)
+* Oct.25, 2019    New master branch is created with the following submodules:
+                  fad2655 CICE_SRC (heads/develop)
+                  46014b4 FMS (warsaw_201803-17-g46014b4)
+                  a31f0bb FV3 (heads/develop).FV3 points to fv3atm repository.
+                  c0394b7 MOM6 (NEMSMOM6_20190306-9-gc0394b7)
+                  8cb7137 NEMS (heads/develop)
+                  257252e ccpp/framework (ccpp_transition_to_vlab_master_20190705-68-g257252e)
+                  ce641c9 ccpp/physics (ccpp_transition_to_vlab_master_20190705-101-gce641c9)
+                  a40d93c stochastic_physics (a40d93c)

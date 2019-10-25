@@ -117,6 +117,8 @@ fv3_defaults = {
     NFHOUT_HF='1'
 
     QUILTING='.true.'
+    OUTPUT_HISTORY='.true.'
+    WRITE_DOPOST='.false.'
     WRITE_GROUP=1
     NUM_FILES=2
     FILENAME_BASE="'dyn' 'phy'"
