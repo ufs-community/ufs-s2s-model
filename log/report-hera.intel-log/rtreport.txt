@@ -1,13 +1,14 @@
 Run rocotostat...
 Generate report...
-WORKFLOW STARTED AT Fri Oct 25 16:48:24 2019 (+1572022104)
+WORKFLOW STARTED AT Mon Oct 28 16:03:59 2019 (+1572278639)
 Repository information:
 
 
 REPO TOP:
-master        bf846c1 [origin/master] Added module files for wcoss. Updated parm/input.nml.IN
+feature/updateMOM6submodule ba8f01f [origin/feature/updateMOM6submodule] updating MOM6/src/mkmf to add missing wcoss-phase2 file
 Fetch URL: gerrit:EMC_FV3-MOM6-CICE5
- M compsets/hera.input
+ M log/report-hera.intel-log/build_fv3_mom6_cice.exe.log
+ M log/report-hera.intel-log/rtreport.txt
 
 Entering 'CICE_SRC'
 (HEAD detached at fad2655) fad2655 Merge pull request #2 from JessicaMeixner-NOAA/hera
@@ -22,8 +23,8 @@ Entering 'FV3'
 Fetch URL: https://github.com/NOAA-EMC/fv3atm
 
 Entering 'MOM6'
-(HEAD detached at c0394b7) c0394b7 pointing MOM6 to tag EMC_MOM6_2019OCT04 which corresponding to GFDL dev-master-candidate-2019-08-30 modify compile.sh as there are file name changes in nuopc_driver directory
-Fetch URL: https://github.com/EMC-MOM6/NEMS-MOM6-FMS
+develop 0757e56 [origin/develop] updating mkmf submodule commit to add missing wcoss-p2 file
+Fetch URL: https://github.com/NOAA-EMC/MOM6-interface
 
 Entering 'NEMS'
 (HEAD detached at 8cb7137) 8cb7137 src/incmake/component_CCPP.mk: update CCPP source/install directories and set CCPP build directory (#11)
@@ -45,8 +46,8 @@ Fetch URL: https://github.com/noaa-psd/stochastic_physics
 BUILD fv3_mom6_cice.exe: SUCCEEDED
 
 TEST #1: PASS
-  Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Fri Oct 25 17:03:45 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm_c384)
-  Fri Oct 25 17:03:45 UTC 2019
+  Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Mon Oct 28 17:03:41 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm_c384)
+  Mon Oct 28 17:03:41 UTC 2019
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -60,14 +61,14 @@ TEST #1: PASS
   dynf048.tile5.nc: bit-for-bit identical
   dynf048.tile6.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.167783/exec/fv3_mom6_cice.exe
-    Expected md5sum: 9cd3b9738074a35e4e23886dff9c4134
-    Actual md5sum: 9cd3b9738074a35e4e23886dff9c4134
-  TEST PASSED AT Fri Oct 25 17:56:52 UTC 2019
+    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.209380/exec/fv3_mom6_cice.exe
+    Expected md5sum: 0d2da434cfd179fa24c3979b91c15220
+    Actual md5sum: 0d2da434cfd179fa24c3979b91c15220
+  TEST PASSED AT Mon Oct 28 17:56:22 UTC 2019
 
 TEST #2: PASS
-  Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Fri Oct 25 17:04:50 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold 384)
-  Fri Oct 25 17:04:50 UTC 2019
+  Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Mon Oct 28 16:24:53 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold 384)
+  Mon Oct 28 16:24:53 UTC 2019
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -123,14 +124,14 @@ TEST #2: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.167783/exec/fv3_mom6_cice.exe
-    Expected md5sum: 9cd3b9738074a35e4e23886dff9c4134
-    Actual md5sum: 9cd3b9738074a35e4e23886dff9c4134
-  TEST PASSED AT Fri Oct 25 17:14:32 UTC 2019
+    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.209380/exec/fv3_mom6_cice.exe
+    Expected md5sum: 0d2da434cfd179fa24c3979b91c15220
+    Actual md5sum: 0d2da434cfd179fa24c3979b91c15220
+  TEST PASSED AT Mon Oct 28 16:34:53 UTC 2019
 
 TEST #3: PASS
-  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Fri Oct 25 17:04:51 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold start)
-  Fri Oct 25 17:04:51 UTC 2019
+  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Mon Oct 28 16:24:52 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold start)
+  Mon Oct 28 16:24:53 UTC 2019
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -186,14 +187,14 @@ TEST #3: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.167783/exec/fv3_mom6_cice.exe
-    Expected md5sum: 9cd3b9738074a35e4e23886dff9c4134
-    Actual md5sum: 9cd3b9738074a35e4e23886dff9c4134
-  TEST PASSED AT Fri Oct 25 17:08:40 UTC 2019
+    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.209380/exec/fv3_mom6_cice.exe
+    Expected md5sum: 0d2da434cfd179fa24c3979b91c15220
+    Actual md5sum: 0d2da434cfd179fa24c3979b91c15220
+  TEST PASSED AT Mon Oct 28 16:29:12 UTC 2019
 
 TEST #4: PASS
-  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Fri Oct 25 17:04:50 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
-  Fri Oct 25 17:04:50 UTC 2019
+  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Mon Oct 28 17:04:42 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
+  Mon Oct 28 17:04:42 UTC 2019
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -207,11 +208,11 @@ TEST #4: PASS
   dynf048.tile5.nc: bit-for-bit identical
   dynf048.tile6.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.167783/exec/fv3_mom6_cice.exe
-    Expected md5sum: 9cd3b9738074a35e4e23886dff9c4134
-    Actual md5sum: 9cd3b9738074a35e4e23886dff9c4134
-  TEST PASSED AT Fri Oct 25 17:22:39 UTC 2019
-WORKFLOW REPORT AT Fri Oct 25 17:58:24 2019 (+1572026304)
+    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.209380/exec/fv3_mom6_cice.exe
+    Expected md5sum: 0d2da434cfd179fa24c3979b91c15220
+    Actual md5sum: 0d2da434cfd179fa24c3979b91c15220
+  TEST PASSED AT Mon Oct 28 17:22:30 UTC 2019
+WORKFLOW REPORT AT Mon Oct 28 17:58:37 2019 (+1572285517)
 Tests: 0 failed, 4 passed out of 4
 Builds: 0 failed, 1 passed out of 1
 REGRESSION TEST WAS SUCCESSFUL

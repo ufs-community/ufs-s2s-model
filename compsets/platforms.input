@@ -1,7 +1,7 @@
 # DEFAULTS VALUES OVERRIDDEN BY PLATFORMS
 
 platform.defaults={
-    BUILD_WALLTIME=1800 # Wallclock limit in seconds for build jobs
+    BUILD_WALLTIME=3600 # Wallclock limit in seconds for build jobs
     DEFAULT_TEST_WALLTIME=1800 # Default wallclock limit in seconds for test jobs
 
     SRCnems="@[HOMEnems]/NEMS/src"
