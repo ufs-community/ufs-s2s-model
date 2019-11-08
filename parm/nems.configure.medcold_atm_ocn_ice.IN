@@ -5,7 +5,7 @@
 # EARTH #
 EARTH_component_list: MED ATM OCN ICE
 EARTH_attributes::
-  Verbosity = max
+  Verbosity = 0
 ::
 
 # MED #
@@ -13,7 +13,7 @@ MED_model:                      @[med_model]
 MED_petlist_bounds:             @[med_petlist_bounds]
 MED_attributes::
   Verbosity = 0
-  DumpFields = true
+  DumpFields = false
   DumpRHs = false
   coldstart = true
   ProfileMemory = false
@@ -24,7 +24,7 @@ ATM_model:                      @[atm_model]
 ATM_petlist_bounds:             @[atm_petlist_bounds]
 ATM_attributes::
   Verbosity = 0
-  DumpFields = true
+  DumpFields = false
   ProfileMemory = false
 ::
 
@@ -33,7 +33,7 @@ OCN_model:                      @[ocn_model]
 OCN_petlist_bounds:             @[ocn_petlist_bounds]
 OCN_attributes::
   Verbosity = 0
-  DumpFields = true
+  DumpFields = false
   ProfileMemory = false
 ::
 
@@ -42,7 +42,7 @@ ICE_model:                      @[ice_model]
 ICE_petlist_bounds:             @[ice_petlist_bounds]
 ICE_attributes::
   Verbosity = 0
-  DumpFields = true
+  DumpFields = false
   ProfileMemory = false
 ::
 

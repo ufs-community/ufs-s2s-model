@@ -111,6 +111,21 @@
   
 /
 
+&cires_ugwp_nml
+       knob_ugwp_solver  = 2
+       knob_ugwp_source  = 1,1,0,0
+       knob_ugwp_wvspec  = 1,25,25,25
+       knob_ugwp_azdir   = 2,4,4,4
+       knob_ugwp_stoch   = 0,0,0,0
+       knob_ugwp_effac   = 1,1,1,1
+       knob_ugwp_doaxyz  = 1
+       knob_ugwp_doheat  = 1
+       knob_ugwp_dokdis  = 1
+       knob_ugwp_ndx4lh  = 1
+       knob_ugwp_version = 0
+       launch_level      = 27
+/
+
 &external_ic_nml
   filtered_terrain = .true.
   levp = 65
@@ -129,14 +144,15 @@
   pre_rad      = .false.
   ncld         = 5
   imp_physics  = 11
-  lgfdlmprad   = .true.
-  effr_in      = .true.
   pdfcld       = .false.
   fhswr        = 3600.
   fhlwr        = 3600.
   ialb         = 1
   iems         = 1
   iaer         = 111
+  icliq_sw     = 1
+  iovr_lw      = 1
+  iovr_sw      = 1
   ico2         = 2
   isubc_sw     = 2
   isubc_lw     = 2
@@ -149,6 +165,9 @@
   redrag       = .true.
   dspheat      = .true.
   hybedmf      = .true.
+  satmedmf     = .false.
+  isatmedmf    = 0
+  lheatstrg    = .false.
   random_clds  = .false.
   trans_trac   = .true.
   cnvcld       = .true.
@@ -158,11 +177,30 @@
   prslrd0      = 0.
   ivegsrc      = 1
   isot         = 1
+  lsoil        = 4
+  lsm          = 1
+  iopt_dveg    = 1
+  iopt_crs     = 1
+  iopt_btr     = 1
+  iopt_run     = 1
+  iopt_sfc     = 1
+  iopt_frz     = 1
+  iopt_inf     = 1
+  iopt_rad     = 1
+  iopt_alb     = 2
+  iopt_snf     = 4
+  iopt_tbot    = 2
+  iopt_stc     = 1
   debug        = .false.
   nstf_name    = 0,0,0,0,0
   nst_anl      = .false.
   psautco      = 0.0008,0.0005
   prautco      = 0.00015,0.00015
+  lgfdlmprad   = .true.
+  effr_in      = .true.
+  ldiag_ugwp   = .false.
+  do_ugwp      = .false.
+  do_tofd      = .false.
   cplflx       = .T. 
   
 /
@@ -248,6 +286,7 @@
   FSMCL(2) = 99999
   FSMCL(3) = 99999
   FSMCL(4) = 99999
+  LANDICE = .true.
   FTSFS = 90
   FAISL = 99999
   FAISS = 99999

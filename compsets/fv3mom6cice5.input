@@ -1,11 +1,12 @@
 load 'platforms.input'
 load 'nemscommon.input'
+load 'fv3.input'
 
 ########################################################################
 
-# Common prep step at the top of all fv3 tests:
+# Common prep step at the top of all fv3cpld tests:
 
-embed bash fv3_prep(RUNDIR,modules,CNTL) [[[
+embed bash fv3cpld_prep(RUNDIR,modules,CNTL) [[[
         rm -rf "$RUNDIR"
         mkdir -p "$RUNDIR" "$CNTL"
         cd @[RUNDIR]
@@ -24,7 +25,6 @@ embed bash fv3_prep(RUNDIR,modules,CNTL) [[[
         mkdir MOM6_RESTART MOM6_OUTPUT
         #For CICE
         mkdir history restart
-
 
         export MPI_TYPE_DEPTH=20
         export OMP_STACKSIZE=512M
@@ -63,108 +63,50 @@ build fv3_mom6_cice.exe {
     build=NEMSAppBuilder(NEMS.x="@[target]",modules.nems="@[modules.nems]", 
                          OPTS="app=coupledFV3_MOM6_CICE",md5sum="@[md5sum]") 
 }
-
 ########################################################################
-
-#NOTE: DO NOT UPDATE the fv3_default variables for coupled variables, 
-#update them within the tests themselves.  The fv3_default variables
-#are updated to match the NEMSfv3gfs variables only. Instead, update
-#the cpl_defaults
-
-# Common variables used by many tests and input files: 
-
-fv3_defaults = {
-    WARM_START='.F.'
-    NGGPS_IC='.T.'
-    EXTERNAL_IC='.T.'
-    MAKE_NH='.T.'
-    MOUNTAIN='.F.'
-    SATMEDMF='.F.'
-    HYBEDMF='.T.'
-    LHEATSTRG='.F.'
-    LGFDLMPRAD='.F.'
-    EFFR_IN='.F.'
-    LDIAG_UGWP='.F.'
-    DO_UGWP='.F.'
-    DO_TOFD='.F.'
-    LSM='1'
-    NA_INIT='1'
-    READ_INCREMENT='.F.'
-    FDIAG='0,1,2,3,4,5,6,7,8,9,10,11,12,15,18,21,24'
-    NSTF_NAME='2,1,1,0,5'
-    FNALBC="'global_snowfree_albedo.bosu.t126.384.190.rg.grb',"
-    FNVETC="'global_vegtype.igbp.t126.384.190.rg.grb',"
-    FNSOTC="'global_soiltype.statsgo.t126.384.190.rg.grb',"
-    FNSMCC="'global_soilmgldas.t126.384.190.grb',"
-    FNABSC="'global_mxsnoalb.uariz.t126.384.190.rg.grb',"
-    LANDICE='.T.'
-
-    ENS_NUM='1'
-    SYEAR='2016'
-    SMONTH='10'
-    SDAY='03'
-    SHOUR='00'
-    DT_ATMOS='1800'
-
-    DAYS='1'
-    FHMAX='24'
-    NPX='97'
-    NPY='97'
-    NPZ='64'
-    NPZP='65'
-    NFHOUT='3'
-    NFHMAX_HF='12'
-    NFHOUT_HF='1'
-
-    QUILTING='.true.'
-    OUTPUT_HISTORY='.true.'
-    WRITE_DOPOST='.false.'
-    WRITE_GROUP=1
-    NUM_FILES=2
-    FILENAME_BASE="'dyn' 'phy'"
-    OUTPUT_GRID="'cubed_sphere_grid'"
-    OUTPUT_FILE="'netcdf'"
-    WRITE_NEMSIOFLIP='.false.'
-    WRITE_FSYNCFLAG ='.false.'
-    IMO='384'
-    JMO='190'
-
-    H2O_PHYS='.F.'
-
-    DO_SPPT='.F.'
-    DO_SHUM='.F.'
-    DO_SKEB='.F.'
-    DO_SFCPERTS='.F.'
-    SPPT='-999.0'
-    SHUM='-999.0'
-    SKEB='-999.0'
-
-    IAU_INC_FILES="''"
-
-    CPLFLX='.F.'
-    CPLWAV='.F.'
-    CPL='.false.'
-}
-
 #NOTE: DO NOT UPDATE the fv3_default variables for coupled fiels, 
 #update them within the tests themselves.  The fv3_default variables
 #are updated to match the NEMSfv3gfs variables only. Instead, update
 #the cpl_defaults 
 
-cpl_defaults = { 
+cpl_defaults = {
+    ATMRES=''
+    INPUT_NML="input.mom6.nml.IN"
+    FIELD_TABLE="field_table"
+    NSOUT='-1'
     CPLFLX='.T.'
     CPL='.true.'
     NSTF_NAME='0,0,0,0,0'
     MOM6_RESTART_SETTING='n'
+# future use: for MOM6 river runoff 
+#   MOM6_RIVER_RUNOFF='False'
     NPROC_ICE='48'
     DT_ATMOS='900' #needed for C96 cases
+# defaults for CICE runtype and restart writing
+    RUNTYPE='initial' 
+    DUMPFREQ='d' 
+    DUMPFREQ_N='35' 
+    USE_RESTART_TIME='.false.'
+# setting to true will allow Frazil FW and Salt to be
+# included in fluxes sent to ocean
+    FRAZIL_FWSALT='.true.'
+# default to write CICE average history files
+    CICE_HIST_AVG='.true.'
+# default setting for runid
+    RUNID='unknown'
+# for FV3: default values will be changed if doing a warm-warm restart
+    WARM_START='.F.'
+    MAKE_NH='.T.'
+    NA_INIT='1'
+    EXTERNAL_IC='.T.'
+    NGGPS_IC='.T.'
+    MOUNTAIN='.F.'
 }
-
 ########################################################################
 # embeded bash script to create input files at prerun from specification 
 # in compset
 
-embed bash edit_inputs(CDATE,DT_CICE,NPROC_ICE,RUNTYPE,DUMPFREQ_N,DUMPFREQ,DT_THERM,DT_DYNAM) [[[
+embed bash edit_inputs(CDATE,ATMRES,DT_CICE,NPROC_ICE,RUNTYPE,USE_RESTART_TIME,FRAZIL_FWSALT,RUNID,CICE_HIST_AVG,DUMPFREQ_N,DUMPFREQ,DT_THERM,DT_DYNAM) [[[ 
 
 python <<EOT
 import os
@@ -174,357 +116,93 @@ fmt='%Y%m%d%H'
 dt = datetime.datetime.strptime("@[CDATE]", fmt)
 tt = dt.timetuple()
 
+# ice_calendar subroutine does not allow for writing restarts 
+# at hour frequencies
+# if DUMPFREQ is set as "h", then convert DUMPFREQ_N to seconds and
+# reset DUMPFREQ to "s"
+if("@[DUMPFREQ]" == "h"):
+ dumpn = int("@[DUMPFREQ_N]")
+ DUMPFREQ_N = str(dumpn*3600)
+ DUMPFREQ = "s"
+else:
+ DUMPFREQ_N = str("@[DUMPFREQ_N]")
+ DUMPFREQ = str("@[DUMPFREQ]")
+#
+
 jday=tt.tm_yday
 year=tt.tm_year
 month=tt.tm_mon
 day=tt.tm_mday
+hour=tt.tm_hour
 ymd=str(year)+str(month).zfill(2)+str(day).zfill(2)
 
 #ice_in
-istep0=(jday-1)*86400/int("@[DT_CICE]")
+istep0=((jday-1)*86400 + hour*3600)/int("@[DT_CICE]")
 
 with open("ice_in_template",'rt') as inf:
  with open("ice_in",'wf') as outf:
    for x in inf.readlines():
-    newline=x.replace('YEAR_INIT',str(year)) \
-             .replace('ISTEP0',str(istep0)) \
-             .replace('DT_CICE',"@[DT_CICE]") \
-             .replace('NPROC_ICE',"@[NPROC_ICE]")\
-             .replace('RUNTYPE',"@[RUNTYPE]") \
-             .replace('DUMPFREQ_N',"@[DUMPFREQ_N]") \
-             .replace('DUMPFREQ',"@[DUMPFREQ]")
+    newline=x.replace("YEAR_INIT",str(year)) \
+             .replace("ISTEP0",str(istep0)) \
+             .replace("DT_CICE","@[DT_CICE]") \
+             .replace("NPROC_ICE","@[NPROC_ICE]") \
+             .replace("RUNTYPE","@[RUNTYPE]") \
+             .replace("RUNID","@[RUNID]") \
+             .replace("CICE_HIST_AVG","@[CICE_HIST_AVG]") \
+             .replace("USE_RESTART_TIME","@[USE_RESTART_TIME]") \
+             .replace("DUMPFREQ_N",DUMPFREQ_N) \
+             .replace("DUMPFREQ",DUMPFREQ) \
+             .replace("FRAZIL_FWSALT","@[FRAZIL_FWSALT]")
     outf.write(newline)
 
 #MOM_input
 with open("INPUT/MOM_input_template",'rt') as inf:
  with open("INPUT/MOM_input",'wf') as outf:
    for x in inf.readlines():
-    newline=x.replace('DT_THERM_MOM6',"@[DT_THERM]") \
-             .replace('DT_DYNAM_MOM6',"@[DT_DYNAM]")
+    newline=x.replace("DT_THERM_MOM6","@[DT_THERM]") \
+             .replace("DT_DYNAM_MOM6","@[DT_DYNAM]")
     outf.write(newline)
 
 #diag_table
 with open("diag_table_template",'rt') as inf:
  with open("diag_table",'wf') as outf:
    for x in inf.readlines():
-    newline=x.replace('YMD',ymd) \
-             .replace('SYEAR',str(year).zfill(4)) \
-             .replace('SMONTH',str(month).zfill(2)) \
-             .replace('SDAY',str(day).zfill(2))
+    newline=x.replace("YMD",ymd) \
+             .replace("ATMRES","@[ATMRES]") \
+             .replace("SYEAR",str(year).zfill(4)) \
+             .replace("SMONTH",str(month).zfill(2)) \
+             .replace("SDAY",str(day).zfill(2))
     outf.write(newline)
 EOT
 ]]]
-
 ########################################################################
+
+load 'cpld_fv3_mom6_cice_cold_atm_flux.input'
+load 'cpld_fv3_mom6_cice_2d_atm_flux.input'
+
+######################################################################## 
+# cold c96
+
 test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe { 
-    use plat 
-    use plat%default_resources 
-    use fv3_defaults 
-    use cpl_defaults
- 
-    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold start" 
-    CNTL_NAME='RT-Baselines_cold' 
- 
-    DAYS='0.041666666'
-    FHMAX='1'  #Note this needs to be at least 2x CPL_SLOW
- 
-    COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
-    RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 
-    CNTL="@[plat%BASELINE]/@[CNTL_NAME]"      # Control baseline area 
-    CNTLMED="@[plat%BASELINE]/MEDIATOR"
+    use cpld_fv3_mom6_cice_cold_atm_flux 
 
-    FV3_input_data="@[plat%INPUTS]/FV3_input_data" 
-    UGCS_input_data="@[plat%INPUTS]" 
- 
-    build=fv3_mom6_cice.exe 
- 
-    prep=fv3_prep( 
-    RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice.exe%modules.nems]", 
-    CNTL="@[CNTL]") 
-     
-    # - set total number of tasks to satisfy coupled application need 
-    TASKS=318
-
-    DT_CICE="@[DT_ATMOS]"
-    DT_DYNAM_MOM6='900'
-    DT_THERM_MOM6='1800'
-    CPL_SLOW="@[DT_THERM_MOM6]"
-    CPL_FAST="@[DT_ATMOS]"
-
-    SYEAR='2016'
-    SMONTH='10'
-    SDAY='03'
-    SHOUR='00'
-    CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
-
-    RUNTYPE='initial' # - set run type for CICE in ice_in
-    DUMPFREQ='d'  # - set restart write at defined freq
-    DUMPFREQ_N='35' # to skip writing a restart, make the dumpfreq>run length
- 
-    # - nems.configure --- 
-    nems_configure='medcold_atm_ocn_ice' 
-    med_model='nems' 
-    med_petlist_bounds="0 149"
-    atm_model='fv3'
-    atm_petlist_bounds="0 149"
-    ocn_model='mom6'
-    ocn_petlist_bounds="150 269"
-    ice_model='cice'
-    ice_petlist_bounds="270 317"
-    coupling_interval_slow_sec="@[CPL_SLOW]"
-    coupling_interval_fast_sec="@[CPL_FAST]"
- 
-    # Specify input files. 
-    filters input { 
-      #    WORK FILE  <=filter=   SOURCE FILE 
-                  'input.nml'  <=atparse=  "@[PARMnems]/input.mom6.nml.IN"
-            'model_configure'  <=atparse=  "@[PARMnems]/model_configure.IN"
-                'aerosol.dat'  <=copyfrom= "@[FV3_input_data]/INPUT"
- 'co2historicaldata_201*.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
-        'global_o3prdlos.f77'  <=copyfrom= "@[FV3_input_data]/INPUT"
-     'sfc_emissivity_idx.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
-  'solarconstant_noaa_an.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
-                       '*grb'  <=copyfrom= "@[FV3_input_data]"
-                    '*_table'  <=copyfrom= "@[FV3_input_data]"
-                 '*configure'  <=copyfrom= "@[FV3_input_data]"
-                      'INPUT'  <=copy=     "@[FV3_input_data]/INPUT"
-        'INPUT/C96_mosaic.nc'  <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
-             'nems.configure'  <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN"
-# this will copy a MOM_input_template which will be edited in the prerun==>MOM_input
-                    'INPUT/*'  <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
-        'INPUT/MOM6_IC_TS.nc'  <=copy=     "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
-         'INPUT/grid_spec.nc'  <=copy=     "@[UGCS_input_data]/COUPLED/grid_spec.nc"
-    'grid_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/grid_cice_NEMS_mx025.nc"
-    'kmtu_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/kmtu_cice_NEMS_mx025.nc"
-# the ice_in created in pre-run sets a generic name for the restart file
-         'cice5_model.res.nc'  <=copy=     "@[UGCS_input_data]/CICE/cice5_model_0.25.res_@[CDATE].nc"
-# the ice_in_template will be edited in the prerun==>ice_in
-            'ice_in_template'  <=copy=     "@[UGCS_input_data]/CICE/ice_in_template"
-# the diag_table_template will be edited in the prerun==>diag_table
-        'diag_table_template'  <=copy=     "@[UGCS_input_data]/COUPLED/diag_table_template"
-    } 
- 
-    # Edit the templates for the compset parameters
-    prerun=edit_inputs(CDATE="@[CDATE]",
-                     DT_CICE="@[DT_CICE]",
-                   NPROC_ICE="@[NPROC_ICE]",
-                     RUNTYPE="@[RUNTYPE]",
-                  DUMPFREQ_N="@[DUMPFREQ_N]",
-                    DUMPFREQ="@[DUMPFREQ]",
-                    DT_THERM="@[DT_THERM_MOM6]",
-                    DT_DYNAM="@[DT_DYNAM_MOM6]")
-
-
-    # Specify output files:
-    criteria output {
-        # WORKFILE                            .comparison. TARGET
-        'phyf001.tile1.nc'      .bitcmp. "@[CNTL]"
-        'phyf001.tile2.nc'      .bitcmp. "@[CNTL]"
-        'phyf001.tile3.nc'      .bitcmp. "@[CNTL]"
-        'phyf001.tile4.nc'      .bitcmp. "@[CNTL]"
-        'phyf001.tile5.nc'      .bitcmp. "@[CNTL]"
-        'phyf001.tile6.nc'      .bitcmp. "@[CNTL]"
-        'dynf001.tile1.nc'      .bitcmp. "@[CNTL]"
-        'dynf001.tile2.nc'      .bitcmp. "@[CNTL]"
-        'dynf001.tile3.nc'      .bitcmp. "@[CNTL]"
-        'dynf001.tile4.nc'      .bitcmp. "@[CNTL]"
-        'dynf001.tile5.nc'      .bitcmp. "@[CNTL]"
-        'dynf001.tile6.nc'      .bitcmp. "@[CNTL]"
-        'RESTART/coupler.res'                   .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.nc'                .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile1.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile2.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile3.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile4.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile5.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile6.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile1.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile2.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile3.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile4.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile5.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile6.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile1.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile2.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile3.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile4.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile5.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile6.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile1.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile2.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile3.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile1.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile2.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile3.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'mediator_FBAtm_a_restart.tile1.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBAtm_a_restart.tile2.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBAtm_a_restart.tile3.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBAtm_a_restart.tile4.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBAtm_a_restart.tile5.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBAtm_a_restart.tile6.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBAtmOcn_o_restart.nc'        .bitcmp. "@[CNTLMED]/"
-        'mediator_FBIce_i_restart.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBOcn_o_restart.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_scalars_restart.txt'    .bitcmp. "@[CNTLMED]/"
-      # Executable validation.  This makes an MD5 sum of the fv3.exe
-      # for comparison against the MD5 sum made in the build job.
-      # This is to ensure the executable did not change during the
-      # test suite.
-        "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
-    }
- 
-    spawn execute { 
-        # Run the  
-        {"@[build%target]", ranks="@[TASKS]" } 
-    } 
 } 
- 
+######################################################################## 
+# warm 2d c96
+
 test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe { 
-    use plat 
-    use plat%default_resources 
-    use fv3_defaults 
-    use cpl_defaults 
+    use cpld_fv3_mom6_cice_2d_atm_flux 
  
-    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm" 
-    CNTL_NAME='RT-Baselines_2d_warm' 
- 
-    DAYS='2'  # run for 2 days
-    FHMAX='48'
-    FDIAG='6' 
-    walltime=3600   # seconds
- 
-    COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
-    RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 
-    CNTL="@[plat%BASELINE]/@[CNTL_NAME]"      # Control baseline area 
-    FV3_input_data="@[plat%INPUTS]/FV3_input_data" 
-
-    UGCS_input_data="@[plat%INPUTS]" 
- 
-    build=fv3_mom6_cice.exe 
- 
-    prep=fv3_prep( 
-      RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice.exe%modules.nems]", 
-      CNTL="@[CNTL]") 
-     
-    # - set total number of tasks to satisfy coupled application need 
-    TASKS=318
- 
-          DT_CICE="@[DT_ATMOS]"
-    DT_DYNAM_MOM6='900'
-    DT_THERM_MOM6='1800'
-         CPL_SLOW="@[DT_THERM_MOM6]"
-         CPL_FAST="@[DT_ATMOS]"
-
-     SYEAR='2016'
-    SMONTH='10'
-      SDAY='03'
-     SHOUR='00'
-     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
-
-    RUNTYPE='initial' # - set run type for CICE in ice_in
-    DUMPFREQ='d'  # - set restart write at defined freq
-    DUMPFREQ_N='35' # to skip writing a restart, make the dumpfreq>run length
-
-    # - nems.configure --- 
-    nems_configure='med_atm_ocn_ice' 
-    med_model='nems' 
-    med_petlist_bounds="0 149"
-    atm_model='fv3'
-    atm_petlist_bounds="0 149"
-    ocn_model='mom6'
-    ocn_petlist_bounds="150 269"
-    ice_model='cice'
-    ice_petlist_bounds="270 317"
-    coupling_interval_slow_sec="@[CPL_SLOW]"
-    coupling_interval_fast_sec="@[CPL_FAST]"
- 
-    # Specify input files. 
-    filters input { 
-      #    WORK FILE  <=filter=   SOURCE FILE 
-                  'input.nml'  <=atparse=  "@[PARMnems]/input.mom6.nml.IN"
-            'model_configure'  <=atparse=  "@[PARMnems]/model_configure.IN"
-                'aerosol.dat'  <=copyfrom= "@[FV3_input_data]/INPUT"
- 'co2historicaldata_201*.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
-        'global_o3prdlos.f77'  <=copyfrom= "@[FV3_input_data]/INPUT"
-     'sfc_emissivity_idx.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
-  'solarconstant_noaa_an.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
-                       '*grb'  <=copyfrom= "@[FV3_input_data]"
-                    '*_table'  <=copyfrom= "@[FV3_input_data]"
-                 '*configure'  <=copyfrom= "@[FV3_input_data]"
-                      'INPUT'  <=copy=     "@[FV3_input_data]/INPUT"
-        'INPUT/C96_mosaic.nc'  <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
-             'nems.configure'  <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN"
-# this will copy a MOM_input_template which will be edited in the prerun==>MOM_input
-                    'INPUT/*'  <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
-        'INPUT/MOM6_IC_TS.nc'  <=copy=     "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
-         'INPUT/grid_spec.nc'  <=copy=     "@[UGCS_input_data]/COUPLED/grid_spec.nc"
-    'grid_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/grid_cice_NEMS_mx025.nc"
-    'kmtu_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/kmtu_cice_NEMS_mx025.nc"
-# the ice_in created in pre-run sets a generic name for the restart file
-         'cice5_model.res.nc'  <=copy=     "@[UGCS_input_data]/CICE/cice5_model_0.25.res_@[CDATE].nc"
-# the ice_in_template will be edited in the prerun==>ice_in
-            'ice_in_template'  <=copy=     "@[UGCS_input_data]/CICE/ice_in_template"
-# the diag_table_template will be edited in the prerun==>diag_table
-        'diag_table_template'  <=copy=     "@[UGCS_input_data]/COUPLED/diag_table_template"
-                          '*'  <=copyfrom= "@[UGCS_input_data]/MEDIATOR"
-    }
-
-    # Edit the templates for the compset parameters
-    prerun=edit_inputs(CDATE="@[CDATE]",
-                     DT_CICE="@[DT_CICE]",
-                   NPROC_ICE="@[NPROC_ICE]",
-                     RUNTYPE="@[RUNTYPE]",
-                  DUMPFREQ_N="@[DUMPFREQ_N]",
-                    DUMPFREQ="@[DUMPFREQ]",
-                    DT_THERM="@[DT_THERM_MOM6]",
-                    DT_DYNAM="@[DT_DYNAM_MOM6]")
-
-    # Specify output files:
-    criteria output {
-        # WORKFILE                            .comparison. TARGET
-        'phyf048.tile1.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile2.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile3.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile4.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile5.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile6.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile1.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile2.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile3.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile4.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile5.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile6.nc'      .bitcmp. "@[CNTL]"
-
-      # Executable validation.  This makes an MD5 sum of the fv3.exe
-      # for comparison against the MD5 sum made in the build job.
-      # This is to ensure the executable did not change during the
-      # test suite.
-        "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
-    } 
- 
-    spawn execute { 
-        # Run the  
-        {"@[build%target]", ranks="@[TASKS]" } 
-    } 
 } 
-
+######################################################################## 
+# cold c384
+ 
 test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe { 
-    use plat 
-    use plat%default_resources 
-    use fv3_defaults 
-    use cpl_defaults
- 
-    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold 384" 
-    CNTL_NAME='RT-Baselines_cold384' 
- 
-    DAYS='0.041666666'
-    FHMAX='1'   #Note this needs to be at least 2x CPL_SLOW
+    use cpld_fv3_mom6_cice_cold_atm_flux
+
+    ATMRES='384'
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold 384"
+
     DT_ATMOS='450'
     NPX='385'
     NPY='385'
@@ -535,185 +213,18 @@ test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
     FNSMCC="'global_soilmgldas.t766.1536.768.grb',"
     FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
- 
-    COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
-    RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 
-    CNTL="@[plat%BASELINE]/@[CNTL_NAME]"      # Control baseline area 
-    CNTLMED="@[plat%BASELINE]/MEDIATOR384"
 
-    FV3_input_data="@[plat%INPUTS]/FV3_input_data384" 
-    UGCS_input_data="@[plat%INPUTS]" 
- 
-    build=fv3_mom6_cice.exe 
- 
-    prep=fv3_prep( 
-        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice.exe%modules.nems]", 
-        CNTL="@[CNTL]") 
-     
-    # - set total number of tasks to satisfy coupled application need 
-    TASKS=318
- 
-          DT_CICE="@[DT_ATMOS]"
-    DT_DYNAM_MOM6='900'
-    DT_THERM_MOM6='1800'
-         CPL_SLOW="@[DT_THERM_MOM6]"
-         CPL_FAST="@[DT_ATMOS]"
-
-     SYEAR='2016'
-    SMONTH='10'
-      SDAY='03'
-     SHOUR='00'
-     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
-
-    RUNTYPE='initial' # - set run type for CICE in ice_in
-    DUMPFREQ='d'  # - set restart write at defined freq
-    DUMPFREQ_N='35' # to skip writing a restart, make the dumpfreq>run length
-
-    # - nems.configure --- 
-    nems_configure='medcold_atm_ocn_ice' 
-    med_model='nems' 
-    med_petlist_bounds="0 149"
-    atm_model='fv3'
-    atm_petlist_bounds="0 149"
-    ocn_model='mom6'
-    ocn_petlist_bounds="150 269"
-    ice_model='cice'
-    ice_petlist_bounds="270 317"
-    coupling_interval_slow_sec="@[CPL_SLOW]"
-    coupling_interval_fast_sec="@[CPL_FAST]"
-    ATMTASKS='150'
-    OTASKS='168' 
-
-    # Specify input files. 
-    filters input { 
-      #    WORK FILE  <=filter=   SOURCE FILE 
-                  'input.nml'  <=atparse=  "@[PARMnems]/input.mom6.nml.IN"
-            'model_configure'  <=atparse=  "@[PARMnems]/model_configure.IN"
-                'aerosol.dat'  <=copyfrom= "@[FV3_input_data]/INPUT"
- 'co2historicaldata_201*.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
-        'global_o3prdlos.f77'  <=copyfrom= "@[FV3_input_data]/INPUT"
-     'sfc_emissivity_idx.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
-  'solarconstant_noaa_an.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
-                       '*grb'  <=copyfrom= "@[FV3_input_data]"
-                    '*_table'  <=copyfrom= "@[FV3_input_data]"
-                 '*configure'  <=copyfrom= "@[FV3_input_data]"
-                      'INPUT'  <=copy=     "@[FV3_input_data]/INPUT"
-       'INPUT/C384_mosaic.nc'  <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
-             'nems.configure'  <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN"
-# this will copy a MOM_input_template which will be edited in the prerun==>MOM_input
-                    'INPUT/*'  <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
-        'INPUT/MOM6_IC_TS.nc'  <=copy=     "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
-         'INPUT/grid_spec.nc'  <=copy=     "@[UGCS_input_data]/COUPLED384/grid_spec.nc"
-    'grid_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/grid_cice_NEMS_mx025.nc"
-    'kmtu_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/kmtu_cice_NEMS_mx025.nc"
-# the ice_in created in pre-run sets a generic name for the restart file
-         'cice5_model.res.nc'  <=copy=     "@[UGCS_input_data]/CICE/cice5_model_0.25.res_@[CDATE].nc"
-# the ice_in_template will be edited in the prerun==>ice_in
-            'ice_in_template'  <=copy=     "@[UGCS_input_data]/CICE/ice_in_template"
-# the diag_table_template will be edited in the prerun==>diag_table
-        'diag_table_template'  <=copy=     "@[UGCS_input_data]/COUPLED384/diag_table_template"
-    } 
- 
-
-    # Edit the templates for the compset parameters
-    prerun=edit_inputs(CDATE="@[CDATE]",
-                     DT_CICE="@[DT_CICE]",
-                   NPROC_ICE="@[NPROC_ICE]",
-                     RUNTYPE="@[RUNTYPE]",
-                  DUMPFREQ_N="@[DUMPFREQ_N]",
-                    DUMPFREQ="@[DUMPFREQ]",
-                    DT_THERM="@[DT_THERM_MOM6]",
-                    DT_DYNAM="@[DT_DYNAM_MOM6]")
-
-    # Specify output files:
-    criteria output {
-        # WORKFILE                            .comparison. TARGET
-        'phyf001.tile1.nc'      .bitcmp. "@[CNTL]"
-        'phyf001.tile2.nc'      .bitcmp. "@[CNTL]"
-        'phyf001.tile3.nc'      .bitcmp. "@[CNTL]"
-        'phyf001.tile4.nc'      .bitcmp. "@[CNTL]"
-        'phyf001.tile5.nc'      .bitcmp. "@[CNTL]"
-        'phyf001.tile6.nc'      .bitcmp. "@[CNTL]"
-        'dynf001.tile1.nc'      .bitcmp. "@[CNTL]"
-        'dynf001.tile2.nc'      .bitcmp. "@[CNTL]"
-        'dynf001.tile3.nc'      .bitcmp. "@[CNTL]"
-        'dynf001.tile4.nc'      .bitcmp. "@[CNTL]"
-        'dynf001.tile5.nc'      .bitcmp. "@[CNTL]"
-        'dynf001.tile6.nc'      .bitcmp. "@[CNTL]"
-        'RESTART/coupler.res'                   .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.nc'                .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile1.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile2.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile3.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile4.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile5.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_core.res.tile6.nc'          .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile1.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile2.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile3.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile4.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile5.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_srf_wnd.res.tile6.nc'       .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile1.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile2.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile3.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile4.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile5.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/fv_tracer.res.tile6.nc'        .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile1.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile2.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile3.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/phy_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile1.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile2.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile3.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'RESTART/sfc_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
-        'mediator_FBAtm_a_restart.tile1.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBAtm_a_restart.tile2.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBAtm_a_restart.tile3.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBAtm_a_restart.tile4.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBAtm_a_restart.tile5.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBAtm_a_restart.tile6.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBAtmOcn_o_restart.nc'        .bitcmp. "@[CNTLMED]/"
-        'mediator_FBIce_i_restart.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_FBOcn_o_restart.nc'     .bitcmp. "@[CNTLMED]/"
-        'mediator_scalars_restart.txt'    .bitcmp. "@[CNTLMED]/"
-      # Executable validation.  This makes an MD5 sum of the fv3.exe
-      # for comparison against the MD5 sum made in the build job.
-      # This is to ensure the executable did not change during the
-      # test suite.
-        "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
-    }
-
-    spawn execute { 
-        {"@[build%target]", ranks="@[TASKS]", threads="@[THRD]", ppn="@[TPN]" }
-       #Need to update this if running in slurm
-        # Run: ATM/MED runs with threads while OCN/CICE get threads but uses all pets/node 
-        #{"@[build%target]", ranks="@[ATMTASKS]", threads="@[THRD]", ppn="@[TPN]" }
-        #{"@[build%target]", ranks="@[OTASKS]", threads="@[THRD]", ppn="24" }
-    } 
+    FV3_mosaic="C@[ATMRES]"
 } 
+######################################################################## 
+# warm 2d c384
  
 test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe { 
-    use plat 
-    use plat%default_resources 
-    use fv3_defaults 
-    use cpl_defaults
+    use cpld_fv3_mom6_cice_2d_atm_flux 
  
-    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm_c384" 
-    CNTL_NAME='RT-Baselines_2d_warm384' 
-    
-    # - set total number of tasks to satisfy coupled application need 
-    TASKS=318
- 
-    DAYS='2'
-    FHMAX='48'
-    FDIAG='6' 
-    walltime=3600   # seconds
+    ATMRES='384'
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm"
+
     DT_ATMOS='450'
     NPX='385'
     NPY='385'
@@ -724,122 +235,6 @@ test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
     FNSMCC="'global_soilmgldas.t766.1536.768.grb',"
     FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
- 
-    COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
-    RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 
-    CNTL="@[plat%BASELINE]/@[CNTL_NAME]"      # Control baseline area 
-    FV3_input_data="@[plat%INPUTS]/FV3_input_data384" 
 
-    UGCS_input_data="@[plat%INPUTS]" 
- 
-    build=fv3_mom6_cice.exe 
- 
-    prep=fv3_prep( 
-        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice.exe%modules.nems]", 
-        CNTL="@[CNTL]") 
-     
-          DT_CICE="@[DT_ATMOS]"
-    DT_DYNAM_MOM6='900'
-    DT_THERM_MOM6='1800'
-         CPL_SLOW="@[DT_THERM_MOM6]"
-         CPL_FAST="@[DT_ATMOS]"
-
-     SYEAR='2016'
-    SMONTH='10'
-      SDAY='03'
-     SHOUR='00'
-     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
-
-    RUNTYPE='initial' # - set run type for CICE in ice_in
-    DUMPFREQ='d'  # - set restart write at defined freq
-    DUMPFREQ_N='35' # to skip writing a restart, make the dumpfreq>run length
-
- 
-    # - nems.configure --- 
-    nems_configure='med_atm_ocn_ice' 
-    med_model='nems' 
-    med_petlist_bounds="0 149"
-    atm_model='fv3'
-    atm_petlist_bounds="0 149"
-    ocn_model='mom6'
-    ocn_petlist_bounds="150 269"
-    ice_model='cice'
-    ice_petlist_bounds="270 317"
-    coupling_interval_slow_sec="@[CPL_SLOW]"
-    coupling_interval_fast_sec="@[CPL_FAST]"
-    ATMTASKS='150'
-    OTASKS='168'
- 
-    # Specify input files. 
-    filters input { 
-      #    WORK FILE  <=filter=   SOURCE FILE 
-                  'input.nml'  <=atparse=  "@[PARMnems]/input.mom6.nml.IN"
-            'model_configure'  <=atparse=  "@[PARMnems]/model_configure.IN"
-                'aerosol.dat'  <=copyfrom= "@[FV3_input_data]/INPUT"
- 'co2historicaldata_201*.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
-        'global_o3prdlos.f77'  <=copyfrom= "@[FV3_input_data]/INPUT"
-     'sfc_emissivity_idx.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
-  'solarconstant_noaa_an.txt'  <=copyfrom= "@[FV3_input_data]/INPUT"
-                       '*grb'  <=copyfrom= "@[FV3_input_data]"
-                    '*_table'  <=copyfrom= "@[FV3_input_data]"
-                 '*configure'  <=copyfrom= "@[FV3_input_data]"
-                      'INPUT'  <=copy=     "@[FV3_input_data]/INPUT"
-       'INPUT/C384_mosaic.nc'  <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
-             'nems.configure'  <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN"
-# this will copy a MOM_input_template which will be edited in the prerun==>MOM_input
-                    'INPUT/*'  <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
-        'INPUT/MOM6_IC_TS.nc'  <=copy=     "@[UGCS_input_data]/MOM6_IC/MOM6_IC_TS.nc"
-         'INPUT/grid_spec.nc'  <=copy=     "@[UGCS_input_data]/COUPLED384/grid_spec.nc"
-    'grid_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/grid_cice_NEMS_mx025.nc"
-    'kmtu_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/kmtu_cice_NEMS_mx025.nc"
-# the ice_in created in pre-run sets a generic name for the restart file
-         'cice5_model.res.nc'  <=copy=     "@[UGCS_input_data]/CICE/cice5_model_0.25.res_@[CDATE].nc"
-# the ice_in_template will be edited in the prerun==>ice_in
-            'ice_in_template'  <=copy=     "@[UGCS_input_data]/CICE/ice_in_template"
-# the diag_table_template will be edited in the prerun==>diag_table
-        'diag_table_template'  <=copy=     "@[UGCS_input_data]/COUPLED384/diag_table_template"
-                          '*'  <=copyfrom= "@[UGCS_input_data]/MEDIATOR384"
-    } 
-
-
-    # Edit the templates for the compset parameters
-    prerun=edit_inputs(CDATE="@[CDATE]",
-                     DT_CICE="@[DT_CICE]",
-                   NPROC_ICE="@[NPROC_ICE]",
-                     RUNTYPE="@[RUNTYPE]",
-                  DUMPFREQ_N="@[DUMPFREQ_N]",
-                    DUMPFREQ="@[DUMPFREQ]",
-                    DT_THERM="@[DT_THERM_MOM6]",
-                    DT_DYNAM="@[DT_DYNAM_MOM6]")
-
-    # Specify output files:
-    criteria output {
-        # WORKFILE                            .comparison. TARGET
-        'phyf048.tile1.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile2.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile3.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile4.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile5.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile6.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile1.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile2.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile3.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile4.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile5.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile6.nc'      .bitcmp. "@[CNTL]"
-
-      # Executable validation.  This makes an MD5 sum of the fv3.exe
-      # for comparison against the MD5 sum made in the build job.
-      # This is to ensure the executable did not change during the
-      # test suite.
-        "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
-    } 
- 
-    spawn execute { 
-        # Run: ATM/MED with threads and OCN/ICE with all pets/node
-        {"@[build%target]", ranks="@[TASKS]", threads="@[THRD]", ppn="@[TPN]" }
-       #Need to update this if running in slurm
-       # {"@[build%target]", ranks="@[ATMTASKS]", threads="@[THRD]", ppn="@[TPN]" }
-       # {"@[build%target]", ranks="@[OTASKS]", threads="@[THRD]", ppn="24" }
-    } 
+    FV3_mosaic="C@[ATMRES]"
 } 

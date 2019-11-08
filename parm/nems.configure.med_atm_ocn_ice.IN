@@ -5,7 +5,7 @@
 # EARTH #
 EARTH_component_list: MED ATM OCN ICE
 EARTH_attributes::
-  Verbosity = max
+  Verbosity = 0
 ::
 
 # MED #
