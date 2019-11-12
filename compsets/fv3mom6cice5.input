@@ -230,6 +230,7 @@ test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     NPY='385'
     IMO='1536'
     JMO='768'
+    walltime=5600   # seconds
     FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
     FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
     FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
