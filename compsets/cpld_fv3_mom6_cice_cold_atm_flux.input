@@ -71,12 +71,6 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     # Specify input files. 
     filters input { 
       #    WORK FILE  <=filter=   SOURCE FILE 
-                     'input.nml'  <=atparse=  "@[PARMnems]/@[INPUT_NML]"
-               'model_configure'  <=atparse=  "@[PARMnems]/model_configure.IN"
-               'ice_in_template'  <=copy=     "@[PARMnems]/ice_in_template"
-      'INPUT/MOM_input_template'  <=copy=     "@[PARMnems]/MOM_input_template"
-           'diag_table_template'  <=copy=     "@[PARMnems]/diag_table_template"
-                "nems.configure"  <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN"
 #FV3 fixed input
                    'aerosol.dat'  <=copyfrom= "@[FV3_input_data]/INPUT"
     'co2historicaldata_201*.txt'  <=copyfrom= "@[CO2_data]"
@@ -102,6 +96,13 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
             'INPUT/gfs_data*.nc'  <=copyfrom= "@[FV3_IC]"
                  'INPUT/MOM*.nc'  <=copyfrom= "@[MOM6_IC]"
             'cice5_model.res.nc'  <=copy=     "@[CICE5_IC]/cice5_model_0.25.res_@[CDATE].nc"
+# namelists,templates and configurations
+                     'input.nml'  <=atparse=  "@[PARMnems]/@[INPUT_NML]"
+               'model_configure'  <=atparse=  "@[PARMnems]/model_configure.IN"
+               'ice_in_template'  <=copy=     "@[PARMnems]/ice_in_template"
+      'INPUT/MOM_input_template'  <=copy=     "@[PARMnems]/MOM_input_template"
+           'diag_table_template'  <=copy=     "@[PARMnems]/diag_table_template"
+                "nems.configure"  <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN"
     } 
  
     # Edit the templates for the compset parameters

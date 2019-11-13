@@ -14,7 +14,7 @@ test cpld_fv3_384_mom6_cice_cold_bmark: fv3_mom6_cice.exe {
     FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
     FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
     FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
-    FNSMCC="'global_soilmgldas.t766.1536.768.grb',"
+    FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
     FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
 
     FV3_mosaic="C@[ATMRES]"

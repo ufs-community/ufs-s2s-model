@@ -14,7 +14,9 @@ run cpld_fv3_384_mom6_cice_2d_atm_flux @ fv3, coupledapp, warm384
 #These can be run separately from the baseline test cases 
 #above by commenting those 4 tests out. The user must then 
 #first run the benchmark cold start alone. The location of
-#cold start mediator files is then used to run the warm start
+#cold start mediator files is then used to run the warm start.  
+#The full path to the cold start mediator files is specified as
+#MED_restart_data in benchmark_warm.input. 
 
 #load 'benchmark_cold.input'
 #load 'benchmark_warm.input'
@@ -27,7 +29,9 @@ run cpld_fv3_384_mom6_cice_2d_atm_flux @ fv3, coupledapp, warm384
 #These can be run separately from the baseline test cases
 #above by commenting those 4 tests out. The user must then
 #first run the 4 cold starts alone. The location of
-#cold start mediator files are then used to run the warm starts
+#cold start mediator files is then used to run the warm starts. The
+#full path to the cold start mediator files is specified as ROOTDIR
+#in the datesuite_warm.input.
 
 #load 'datesuite_cold.input'
 #run cpld_fv3_384_mom6_cice_cold_2012010100 @ benchmark, coldBM2
