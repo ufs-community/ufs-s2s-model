@@ -2,7 +2,9 @@
 load 'benchmark_warm.input'
 
    # set this as the location of the 4 cold starts
-   ROOTDIR = "/scratch2/NCEPDEV/stmp1/Denise.Worthen/coldstarts"
+   # THIS IS A USERS OWN RUN and should reflect the path to the location of the cold starts
+   # eg: "/scratch2/NCEPDEV/stmp1/First.LastName/rtgen.NUMBER"
+   ROOTDIR = "path-to-user-coldstarts"
 
     DAYS='5'
    FHMAX='120'

@@ -20,7 +20,7 @@ test cpld_fv3_384_mom6_cice_2d_bmark: fv3_mom6_cice.exe {
     FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
     FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
     FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
-    FNSMCC="'global_soilmgldas.t766.1536.768.grb',"
+    FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
     FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
 
     FV3_mosaic="C@[ATMRES]"
@@ -69,8 +69,9 @@ test cpld_fv3_384_mom6_cice_2d_bmark: fv3_mom6_cice.exe {
       CICE5_IC="@[BM_IC]/cpc"    
 
     # set location of cold start for mediator restarts
-    # THIS IS A USER's OWN RUN
-    MED_restart_data="/scratch2/NCEPDEV/stmp1/Denise.Worthen/BM_Test/@[CDATE]_cold/tmp/cpld_fv3_384_mom6_cice_cold_bmark"
+    # THIS IS A USER's OWN RUN and should reflect the full path to the location of the cold start
+    # eg: "/scratch2/NCEPDEV/stmp1/First.LastName/rtgen.NUMBER/tmp/cpld_fv3_384_mom6_cice_cold_bmark"
+    MED_restart_data="full-path-to-user-coldstart"
     RESTART_MED="mediator_*"    
 
     # - nems.configure --- 
