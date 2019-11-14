@@ -78,10 +78,16 @@ cpl_defaults = {
     CPL='.true.'
     NSTF_NAME='0,0,0,0,0'
     MOM6_RESTART_SETTING='n'
+    med_model="nems"
+    atm_model="fv3"
+    ocn_model="mom6"
+    ice_model="cice"
 # future use: for MOM6 river runoff 
 #   MOM6_RIVER_RUNOFF='False'
     NPROC_ICE='48'
     DT_ATMOS='900' #needed for C96 cases
+    DT_DYNAM_MOM6='900'
+    DT_THERM_MOM6='1800'
 # defaults for CICE runtype and restart writing
     RUNTYPE='initial' 
     DUMPFREQ='d' 

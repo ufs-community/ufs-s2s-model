@@ -60,6 +60,31 @@ platform hera.intel {
         THRD=2
         WRTTASK_PER_GROUP=12
     }
+    default_cpl={
+        TASKS=320
+        TPN=40
+        INPES=3
+        JNPES=8
+        THRD=1
+        WRTTASK_PER_GROUP=6
+        med_petlist_bounds="0 149"
+        atm_petlist_bounds="0 149"
+        ocn_petlist_bounds="150 271"
+        ice_petlist_bounds="272 319"
+    }
+
+    default_cpl_benchmark={
+        TASKS=480
+        TPN=40
+        INPES=6
+        JNPES=8
+        THRD=1
+        WRTTASK_PER_GROUP=24
+        med_petlist_bounds="0 279"
+        atm_petlist_bounds="0 311"
+        ocn_petlist_bounds="312 431"
+        ice_petlist_bounds="432 479"
+    }
 
     # PLATFORM DETECTION -----------------------------------------------
     embed bash detect [[[

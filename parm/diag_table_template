@@ -42,20 +42,10 @@ SYEAR SMONTH SDAY 00 0 0
 # save daily SST
  "ocean_model", "geolon",      "geolon",      "SST%4yr%2mo%2dy", "all", .false., "none", 2
  "ocean_model", "geolat",      "geolat",      "SST%4yr%2mo%2dy", "all", .false., "none", 2
-# "ocean_model", "geolon_c",    "geolon_c",    "SST%4yr%2mo%2dy", "all", .false., "none", 2
-# "ocean_model", "geolat_c",    "geolat_c",    "SST%4yr%2mo%2dy", "all", .false., "none", 2
-# "ocean_model", "geolon_u",    "geolon_u",    "SST%4yr%2mo%2dy", "all", .false., "none", 2
-# "ocean_model", "geolat_u",    "geolat_u",    "SST%4yr%2mo%2dy", "all", .false., "none", 2
-# "ocean_model", "geolon_v",    "geolon_v",    "SST%4yr%2mo%2dy", "all", .false., "none", 2
-# "ocean_model", "geolat_v",    "geolat_v",    "SST%4yr%2mo%2dy", "all", .false., "none", 2
  "ocean_model", "SST",         "sst",         "SST%4yr%2mo%2dy", "all", .true.,  "none", 2
 
 # Z-Space Fields Provided for CMIP6 (CMOR Names):
 #===============================================
-# "ocean_model_zold","uo","uo"      ,"ocn%4yr%2mo%2dy%2hr","all",.true.,"none",2
-# "ocean_model_zold","vo","vo"      ,"ocn%4yr%2mo%2dy%2hr","all",.true.,"none",2
-# "ocean_model_zold","so","so"      ,"ocn%4yr%2mo%2dy%2hr","all",.true.,"none",2
-# "ocean_model_zold","temp","temp"  ,"ocn%4yr%2mo%2dy%2hr","all",.true.,"none",2
  "ocean_model_z","uo","uo"      ,"ocn%4yr%2mo%2dy%2hr","all",.true.,"none",2
  "ocean_model_z","vo","vo"      ,"ocn%4yr%2mo%2dy%2hr","all",.true.,"none",2
  "ocean_model_z","so","so"      ,"ocn%4yr%2mo%2dy%2hr","all",.true.,"none",2

@@ -2,6 +2,7 @@
 
 test cpld_fv3_384_mom6_cice_cold_bmark: fv3_mom6_cice.exe {
     use cpld_fv3_mom6_cice_cold_atm_flux
+    use plat%default_cpl_benchmark
 
     ATMRES='384'
     TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold 384"
@@ -54,17 +55,10 @@ test cpld_fv3_384_mom6_cice_cold_bmark: fv3_mom6_cice.exe {
       CICE5_IC="@[BM_IC]/cpc"    
 
     # - nems.configure --- 
-    #nems_configure="medcold_atm_ocn_ice" 
-    #med_model="nems" 
     #med_petlist_bounds="0 311"
-    #atm_model="fv3"
     #atm_petlist_bounds="0 311"
-    #ocn_model="mom6"
     #ocn_petlist_bounds="312 431"
-    #ice_model="cice"
     #ice_petlist_bounds="432 479"
-    #coupling_interval_slow_sec="@[CPL_SLOW]"
-    #coupling_interval_fast_sec="@[CPL_FAST]"
 
     # Specify output files:
     criteria output {

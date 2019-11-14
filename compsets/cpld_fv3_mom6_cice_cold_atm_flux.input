@@ -2,7 +2,7 @@
 
 test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe { 
     use plat 
-    use plat%default_resources 
+    use plat%default_cpl
     use fv3_defaults 
     use cpl_defaults
  
@@ -28,13 +28,8 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice.exe%modules.nems]", 
     CNTL="@[CNTL]") 
      
-    # - set total number of tasks to satisfy coupled application need 
-    TASKS=318
-
     # - set component and coupling timesteps
     DT_CICE="@[DT_ATMOS]"
-    DT_DYNAM_MOM6='900'
-    DT_THERM_MOM6='1800'
     CPL_SLOW="@[DT_THERM_MOM6]"
     CPL_FAST="@[DT_ATMOS]"
 
@@ -57,14 +52,6 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
 
     # - nems.configure --- 
     nems_configure="medcold_atm_ocn_ice" 
-    med_model="nems" 
-    med_petlist_bounds="0 149"
-    atm_model="fv3"
-    atm_petlist_bounds="0 149"
-    ocn_model="mom6"
-    ocn_petlist_bounds="150 269"
-    ice_model="cice"
-    ice_petlist_bounds="270 317"
     coupling_interval_slow_sec="@[CPL_SLOW]"
     coupling_interval_fast_sec="@[CPL_FAST]"
  
