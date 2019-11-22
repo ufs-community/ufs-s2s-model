@@ -1,14 +1,23 @@
 Run rocotostat...
 Generate report...
+<<<<<<< HEAD
 WORKFLOW STARTED AT Fri Nov 15 04:11:23 2019 (+1573791083)
+=======
+WORKFLOW STARTED AT Wed Nov 20 13:40:04 2019 (+1574257204)
+>>>>>>> UFS/develop
 Repository information:
 
 
 REPO TOP:
+<<<<<<< HEAD
 develop                  47c23c9 [origin/develop] minor changes to baseline and benchmark test cases #2 (#3)
 Fetch URL: https://github.com/JessicaMeixner-NOAA/ufs-s2s-model
  M compsets/datesuite_warm.input
  M compsets/hera.input
+=======
+develop                 47c23c9 [origin/develop] minor changes to baseline and benchmark test cases #2 (#3)
+Fetch URL: https://github.com/DeniseWorthen/ufs-s2s-model.git
+>>>>>>> UFS/develop
  M log/report-hera.intel-log/build_fv3_mom6_cice.exe.log
  M log/report-hera.intel-log/rtreport.txt
 
@@ -40,8 +49,13 @@ Fetch URL: https://github.com/noaa-psd/stochastic_physics
 BUILD fv3_mom6_cice.exe: SUCCEEDED
 
 TEST #1: PASS
+<<<<<<< HEAD
   Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Fri Nov 15 04:27:23 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
   Fri Nov 15 04:27:23 UTC 2019
+=======
+  Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Tue Nov 19 21:13:57 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
+  Tue Nov 19 21:13:58 UTC 2019
+>>>>>>> UFS/develop
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -54,7 +68,67 @@ TEST #1: PASS
   dynf048.tile4.nc: bit-for-bit identical
   dynf048.tile5.nc: bit-for-bit identical
   dynf048.tile6.nc: bit-for-bit identical
+  RESTART/coupler.res: bit-for-bit identical
+  RESTART/fv_core.res.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile1.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile2.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile3.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile4.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile5.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile6.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile1.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile2.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile3.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile4.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile5.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile6.nc: bit-for-bit identical
+  RESTART/phy_data.tile1.nc: bit-for-bit identical
+  RESTART/phy_data.tile2.nc: bit-for-bit identical
+  RESTART/phy_data.tile3.nc: bit-for-bit identical
+  RESTART/phy_data.tile4.nc: bit-for-bit identical
+  RESTART/phy_data.tile5.nc: bit-for-bit identical
+  RESTART/phy_data.tile6.nc: bit-for-bit identical
+  RESTART/sfc_data.tile1.nc: bit-for-bit identical
+  RESTART/sfc_data.tile2.nc: bit-for-bit identical
+  RESTART/sfc_data.tile3.nc: bit-for-bit identical
+  RESTART/sfc_data.tile4.nc: bit-for-bit identical
+  RESTART/sfc_data.tile5.nc: bit-for-bit identical
+  RESTART/sfc_data.tile6.nc: bit-for-bit identical
+  MOM6_RESTART/MOM.res.nc: bit-for-bit identical
+  MOM6_RESTART/MOM.res_1.nc: bit-for-bit identical
+  MOM6_RESTART/MOM.res_2.nc: bit-for-bit identical
+  MOM6_RESTART/MOM.res_3.nc: bit-for-bit identical
+  restart/iced.2016-10-05-00000.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile1.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile2.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile3.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile4.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile5.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile6.nc: bit-for-bit identical
+  mediator_FBaccumOcn_restart.nc: bit-for-bit identical
+  mediator_FBaccumIce_restart.nc: bit-for-bit identical
+  mediator_FBaccumLnd_restart.nc: bit-for-bit identical
+  mediator_FBaccumHyd_restart.nc: bit-for-bit identical
+  mediator_FBaccumAtmOcn_restart.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile1.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile2.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile3.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile4.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile5.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile6.nc: bit-for-bit identical
+  mediator_FBIce_i_restart.nc: bit-for-bit identical
+  mediator_FBOcn_o_restart.nc: bit-for-bit identical
+  mediator_FBLnd_l_restart.nc: bit-for-bit identical
+  mediator_FBHyd_h_restart.nc: bit-for-bit identical
+  mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
+<<<<<<< HEAD
     File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.243879/exec/fv3_mom6_cice.exe
     Expected md5sum: d5f8b93589f262d776beb1c333d737de
     Actual md5sum: d5f8b93589f262d776beb1c333d737de
@@ -63,6 +137,16 @@ TEST #1: PASS
 TEST #2: PASS
   Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Fri Nov 15 04:27:22 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold 384)
   Fri Nov 15 04:27:22 UTC 2019
+=======
+    File: /scratch2/NCEPDEV/stmp1/Denise.Worthen/RTS/rtgen.25876/exec/fv3_mom6_cice.exe
+    Expected md5sum: a54f0575cdcfbbec0da65baf42a41edc
+    Actual md5sum: a54f0575cdcfbbec0da65baf42a41edc
+  TEST PASSED AT Tue Nov 19 22:06:20 UTC 2019
+
+TEST #2: PASS
+  Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Tue Nov 19 21:14:00 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold 384)
+  Tue Nov 19 21:14:00 UTC 2019
+>>>>>>> UFS/develop
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -118,6 +202,7 @@ TEST #2: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
+<<<<<<< HEAD
     File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.243879/exec/fv3_mom6_cice.exe
     Expected md5sum: d5f8b93589f262d776beb1c333d737de
     Actual md5sum: d5f8b93589f262d776beb1c333d737de
@@ -126,6 +211,16 @@ TEST #2: PASS
 TEST #3: PASS
   Test cpld_fv3_mom6_cice_cold_atm_flux starting at Fri Nov 15 04:27:33 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold start)
   Fri Nov 15 04:27:33 UTC 2019
+=======
+    File: /scratch2/NCEPDEV/stmp1/Denise.Worthen/RTS/rtgen.25876/exec/fv3_mom6_cice.exe
+    Expected md5sum: a54f0575cdcfbbec0da65baf42a41edc
+    Actual md5sum: a54f0575cdcfbbec0da65baf42a41edc
+  TEST PASSED AT Tue Nov 19 21:19:49 UTC 2019
+
+TEST #3: PASS
+  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Tue Nov 19 21:13:59 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold start)
+  Tue Nov 19 21:13:59 UTC 2019
+>>>>>>> UFS/develop
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -181,6 +276,7 @@ TEST #3: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
+<<<<<<< HEAD
     File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.243879/exec/fv3_mom6_cice.exe
     Expected md5sum: d5f8b93589f262d776beb1c333d737de
     Actual md5sum: d5f8b93589f262d776beb1c333d737de
@@ -189,6 +285,16 @@ TEST #3: PASS
 TEST #4: PASS
   Test cpld_fv3_mom6_cice_2d_atm_flux starting at Fri Nov 15 04:27:34 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
   Fri Nov 15 04:27:34 UTC 2019
+=======
+    File: /scratch2/NCEPDEV/stmp1/Denise.Worthen/RTS/rtgen.25876/exec/fv3_mom6_cice.exe
+    Expected md5sum: a54f0575cdcfbbec0da65baf42a41edc
+    Actual md5sum: a54f0575cdcfbbec0da65baf42a41edc
+  TEST PASSED AT Tue Nov 19 21:16:40 UTC 2019
+
+TEST #4: PASS
+  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Tue Nov 19 21:13:58 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
+  Tue Nov 19 21:13:58 UTC 2019
+>>>>>>> UFS/develop
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -201,12 +307,79 @@ TEST #4: PASS
   dynf048.tile4.nc: bit-for-bit identical
   dynf048.tile5.nc: bit-for-bit identical
   dynf048.tile6.nc: bit-for-bit identical
+  RESTART/coupler.res: bit-for-bit identical
+  RESTART/fv_core.res.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile1.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile2.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile3.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile4.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile5.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile6.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile1.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile2.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile3.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile4.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile5.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile6.nc: bit-for-bit identical
+  RESTART/phy_data.tile1.nc: bit-for-bit identical
+  RESTART/phy_data.tile2.nc: bit-for-bit identical
+  RESTART/phy_data.tile3.nc: bit-for-bit identical
+  RESTART/phy_data.tile4.nc: bit-for-bit identical
+  RESTART/phy_data.tile5.nc: bit-for-bit identical
+  RESTART/phy_data.tile6.nc: bit-for-bit identical
+  RESTART/sfc_data.tile1.nc: bit-for-bit identical
+  RESTART/sfc_data.tile2.nc: bit-for-bit identical
+  RESTART/sfc_data.tile3.nc: bit-for-bit identical
+  RESTART/sfc_data.tile4.nc: bit-for-bit identical
+  RESTART/sfc_data.tile5.nc: bit-for-bit identical
+  RESTART/sfc_data.tile6.nc: bit-for-bit identical
+  MOM6_RESTART/MOM.res.nc: bit-for-bit identical
+  MOM6_RESTART/MOM.res_1.nc: bit-for-bit identical
+  MOM6_RESTART/MOM.res_2.nc: bit-for-bit identical
+  MOM6_RESTART/MOM.res_3.nc: bit-for-bit identical
+  restart/iced.2016-10-05-00000.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile1.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile2.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile3.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile4.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile5.nc: bit-for-bit identical
+  mediator_FBaccumAtm_restart.tile6.nc: bit-for-bit identical
+  mediator_FBaccumOcn_restart.nc: bit-for-bit identical
+  mediator_FBaccumIce_restart.nc: bit-for-bit identical
+  mediator_FBaccumLnd_restart.nc: bit-for-bit identical
+  mediator_FBaccumHyd_restart.nc: bit-for-bit identical
+  mediator_FBaccumAtmOcn_restart.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile1.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile2.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile3.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile4.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile5.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile6.nc: bit-for-bit identical
+  mediator_FBIce_i_restart.nc: bit-for-bit identical
+  mediator_FBOcn_o_restart.nc: bit-for-bit identical
+  mediator_FBLnd_l_restart.nc: bit-for-bit identical
+  mediator_FBHyd_h_restart.nc: bit-for-bit identical
+  mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
+<<<<<<< HEAD
     File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.243879/exec/fv3_mom6_cice.exe
     Expected md5sum: d5f8b93589f262d776beb1c333d737de
     Actual md5sum: d5f8b93589f262d776beb1c333d737de
   TEST PASSED AT Fri Nov 15 04:44:38 UTC 2019
 WORKFLOW REPORT AT Fri Nov 15 05:09:59 2019 (+1573794599)
+=======
+    File: /scratch2/NCEPDEV/stmp1/Denise.Worthen/RTS/rtgen.25876/exec/fv3_mom6_cice.exe
+    Expected md5sum: a54f0575cdcfbbec0da65baf42a41edc
+    Actual md5sum: a54f0575cdcfbbec0da65baf42a41edc
+  TEST PASSED AT Tue Nov 19 21:33:18 UTC 2019
+WORKFLOW REPORT AT Wed Nov 20 13:40:36 2019 (+1574257236)
+>>>>>>> UFS/develop
 Tests: 0 failed, 4 passed out of 4
 Builds: 0 failed, 1 passed out of 1
 REGRESSION TEST WAS SUCCESSFUL

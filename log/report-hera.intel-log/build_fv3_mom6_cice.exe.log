@@ -1,15 +1,25 @@
 + [[ fv3_mom6_cice.exe == fv3_mom6_cice.exe ]]
+<<<<<<< HEAD
 + rm -f /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.243879/exec/fv3_mom6_cice.exe
 + md5sum=/scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.243879/exec/fv3_mom6_cice.exe.md5
 + OPTS=app=coupledFV3_MOM6_CICE
 + mkdir -p /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.243879/exec /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.243879/include
 + rm -f /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.243879/exec/fv3_mom6_cice.exe /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.243879/include/modules_fv3_mom6_cice
 + cd /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02
+=======
++ rm -f /scratch2/NCEPDEV/stmp1/Denise.Worthen/RTS/rtgen.25876/exec/fv3_mom6_cice.exe
++ md5sum=/scratch2/NCEPDEV/stmp1/Denise.Worthen/RTS/rtgen.25876/exec/fv3_mom6_cice.exe.md5
++ OPTS=app=coupledFV3_MOM6_CICE
++ mkdir -p /scratch2/NCEPDEV/stmp1/Denise.Worthen/RTS/rtgen.25876/exec /scratch2/NCEPDEV/stmp1/Denise.Worthen/RTS/rtgen.25876/include
++ rm -f /scratch2/NCEPDEV/stmp1/Denise.Worthen/RTS/rtgen.25876/exec/fv3_mom6_cice.exe /scratch2/NCEPDEV/stmp1/Denise.Worthen/RTS/rtgen.25876/include/modules_fv3_mom6_cice
++ cd /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3
+>>>>>>> UFS/develop
 + which aprun
 which: no aprun in (/scratch1/NCEPDEV/nems/emc.nemspara/soft/emc-utils/1.1.0/bin:/apps/hpss:/apps/rocoto/1.3.1/bin:.:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ibutils/bin:/apps/local/bin:/apps/local/sbin:/apps/slurm/default/slurm/tools:/apps/slurm/default/bin:/apps/slurm/default/sbin:/apps/slurm/tools/sbank/bin)
 + ./NEMS/NEMSAppBuilder norebuild app=coupledFV3_MOM6_CICE
 ls: cannot access ../conf/component_*.mk: No such file or directory
 NEMSAppBuilder: make  app=coupledFV3_MOM6_CICE build
+<<<<<<< HEAD
 Convert /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/coupledFV3_MOM6_CICE.appBuilder
 ...into /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/coupledFV3_MOM6_CICE.appBuilder.mk
 Include /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/coupledFV3_MOM6_CICE.appBuilder.mk
@@ -18,6 +28,14 @@ Adding FV3 makeopts to FMS makeopts
 cp /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/conf/configure.fv3_coupled.hera.intel /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/NEMS/src/conf/configure.nems
 cp /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/modulefiles/hera.intel/fv3_coupled /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/NEMS/src/conf/modules.nems
 . /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; cd /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/fv3gfs                      ; \
+=======
+Convert /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/coupledFV3_MOM6_CICE.appBuilder
+...into /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/coupledFV3_MOM6_CICE.appBuilder.mk
+Include /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/coupledFV3_MOM6_CICE.appBuilder.mk
+echo 'FMS FV3 MOM6 CICE' > "/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf/components.mk"
+Adding FV3 makeopts to FMS makeopts
+. /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; cd /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/fv3gfs                      ; \
+>>>>>>> UFS/develop
 exec make  all
 
 Currently Loaded Modules:
@@ -29,6 +47,7 @@ Currently Loaded Modules:
 
  
 
+<<<<<<< HEAD
 make[1]: Entering directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/fv3gfs'
 Building dependencies ...
 make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/fv3gfs'
@@ -265,6 +284,21 @@ cp -fp /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/NEMS/s
        "/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3"/conf/modules.fv3
 . /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; cd /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3 ; \
   exec make COMP=FV3 COMP_SRCDIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3 COMP_BINDIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3/FV3_INSTALL MACHINE_ID=hera FMS_DIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/FMS_INSTALL  nemsinstall
+=======
+make[1]: Entering directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/fv3gfs'
+mkdir -p "/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL"
+mv fms.mk "/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL/."
+cp -fp *.a *.mod ../include/*.h "/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL"/.
+make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/fv3gfs'
+test -d /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL
+Compiling  into /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/FV3_INSTALL on hera
+cp -fp /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf/configure.nems \
+       "/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3"/conf/configure.fv3
+cp -fp /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf/modules.nems   \
+       "/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3"/conf/modules.fv3
+. /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; cd /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3 ; \
+  exec make COMP=FV3 COMP_SRCDIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3 COMP_BINDIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/FV3_INSTALL MACHINE_ID=hera FMS_DIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL  nemsinstall
+>>>>>>> UFS/develop
 
 Currently Loaded Modules:
   1) contrib            6) bacio/2.0.3   11) w3nco/2.0.7     16) png/1.2.44
@@ -275,6 +309,7 @@ Currently Loaded Modules:
 
  
 
+<<<<<<< HEAD
 make[1]: Entering directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3'
 Building dependencies ...
 make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3'
@@ -532,10 +567,36 @@ make[2]: Entering directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-m
 make[2]: Nothing to be done for `all'.
 make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3/ipd'
 make -C io                   FMS_DIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/FMS_INSTALL
+=======
+make[1]: Entering directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3'
+make -C cpl                  FMS_DIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL
+
+Build standalone FV3 io ...
+
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/cpl'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/cpl'
+make -C gfsphysics      FMS_DIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL 32BIT=N  # force gfs physics to 64bit
+
+Build standalone FV3 gfsphysics ...
+
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/gfsphysics'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/gfsphysics'
+make -C ipd                  FMS_DIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL 32BIT=N  # force gfs physics to 64bit
+
+Build standalone FV3 gfsphysics ...
+
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/ipd'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/ipd'
+make -C io                   FMS_DIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL
+>>>>>>> UFS/develop
 
 Build standalone FV3 io ...
 
 $ESMF_INC is [-I/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/mod -I/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/include -I/apps/netcdf/4.6.1/intel/16.1.150/include]
+<<<<<<< HEAD
 make[2]: Entering directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3/io'
 Building dependencies ...
 make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3/io'
@@ -641,6 +702,46 @@ rm -fr /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6/e
 set -e                                                        ; \
 cd /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6                                             ; \
 ./compile.sh --platform hera --fms-dir "/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/FMS_INSTALL"
+=======
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/io'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/io'
+make -C atmos_cubed_sphere   FMS_DIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL
+
+Build standalone FV3 fv3core ...
+
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/atmos_cubed_sphere'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/atmos_cubed_sphere'
+make -C ../stochastic_physics   FMS_DIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL 32BIT=N  # force gfs physics to 64bit
+
+Build standalone FV3 stochastic_physics ...
+
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/stochastic_physics'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/stochastic_physics'
+make libfv3cap.a  FMS_DIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3'
+make[2]: `libfv3cap.a' is up to date.
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3'
+make esmf_make_fragment FMS_DIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3'
+# additional include files needed for PGI
+#@echo "ESMF_DEP_INCPATH   = /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/nems_dir" >> fv3.mk
+
+Finished generating ESMF self-describing build dependency makefile fragment: fv3.mk
+
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3'
+Installation into "/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/FV3_INSTALL" complete!
+
+make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3'
+test -d /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/FV3_INSTALL
+rm -fr /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6/exec
+. /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; export COMP_SRCDIR="/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6" COMP_BINDIR="/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6_INSTALL" FMS_BINDIR="/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL" MACHINE_ID="hera"                     ; \
+set -e                                                        ; \
+cd /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6                                             ; \
+./compile.sh --platform hera --fms-dir "/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL"
+>>>>>>> UFS/develop
 
 Currently Loaded Modules:
   1) contrib            6) bacio/2.0.3   11) w3nco/2.0.7     16) png/1.2.44
@@ -651,9 +752,15 @@ Currently Loaded Modules:
 
  
 
+<<<<<<< HEAD
 Will use FMS from: /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/FMS_INSTALL
 ++ pwd
 + BASEDIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6
+=======
+Will use FMS from: /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL
+++ pwd
++ BASEDIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6
+>>>>>>> UFS/develop
 + MACHINE_ID=hera
 + COMPILE_OPTION=hera-intel.mk
 + compile_MOM6_LIB=1
@@ -662,7 +769,11 @@ Will use FMS from: /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-clean
 + [[ 1 == 1 ]]
 + echo 'compile MOM6 library ...'
 compile MOM6 library ...
+<<<<<<< HEAD
 + cd /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6
+=======
++ cd /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6
+>>>>>>> UFS/develop
 + mkdir -p build/intel/MOM6_LIB/repro
 + cd build/intel/MOM6_LIB/repro
 + [[ -f path_names ]]
@@ -673,11 +784,16 @@ generating file_paths ...
 A list of the files you checked out is in the file path_names.
 + echo 'generating makefile ...'
 generating makefile ...
+<<<<<<< HEAD
 + ../../../../src/mkmf/bin/mkmf -t ../../../../src/mkmf/templates/hera-intel.mk -p lib_ocean.a -o -I/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/FMS_INSTALL path_names
+=======
++ ../../../../src/mkmf/bin/mkmf -t ../../../../src/mkmf/templates/hera-intel.mk -p lib_ocean.a -o -I/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL path_names
+>>>>>>> UFS/develop
 ........................................................................................................................................................................................................................................... Makefile is ready.
 + echo 'compiling MOM6 library...'
 compiling MOM6 library...
 + make NETCDF=4 REPRO=1 lib_ocean.a
+<<<<<<< HEAD
 make[1]: Entering directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6/build/intel/MOM6_LIB/repro'
 mpiifort  -fpp -Wp,-w  -I/apps/netcdf/4.7.0/intel/18.0.5.274/include -I/scratch1/NCEPDEV/global/gwv/l819/lib/EXTERNAL/LOCAL_EXTERN/hdf5-1.8.18/include -fno-alias -auto -safe-cray-ptr -ftz -assume byterecl -i4 -r8 -nowarn -sox -traceback -O2 -debug minimal -fp-model source -I/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/FMS_INSTALL  -c	../../../../src/MOM6/src/parameterizations/CVmix/cvmix_kinds_and_types.F90
 mpiifort  -fpp -Wp,-w  -I/apps/netcdf/4.7.0/intel/18.0.5.274/include -I/scratch1/NCEPDEV/global/gwv/l819/lib/EXTERNAL/LOCAL_EXTERN/hdf5-1.8.18/include -fno-alias -auto -safe-cray-ptr -ftz -assume byterecl -i4 -r8 -nowarn -sox -traceback -O2 -debug minimal -fp-model source -I/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/FMS_INSTALL  -c	../../../../src/MOM6/src/framework/MOM_error_handler.F90
@@ -1147,24 +1263,43 @@ r - MOM_PressureForce_Montgomery.o
 r - MOM_isopycnal_slopes.o
 r - gsw_t_deriv_chem_potential_water_t_exact.o
 make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6/build/intel/MOM6_LIB/repro'
+=======
+make[1]: Entering directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6/build/intel/MOM6_LIB/repro'
+make[1]: `lib_ocean.a' is up to date.
+make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6/build/intel/MOM6_LIB/repro'
+>>>>>>> UFS/develop
 + echo 'compiling MOM6 library successful'
 compiling MOM6 library successful
 + echo 'compiling MOM6 library done'
 compiling MOM6 library done
+<<<<<<< HEAD
 + cd /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6
 + mkdir -p exec/hera/
 + ln -s /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6/build/intel/MOM6_LIB/repro exec/hera/lib_ocean
+=======
++ cd /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6
++ mkdir -p exec/hera/
++ ln -s /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6/build/intel/MOM6_LIB/repro exec/hera/lib_ocean
+>>>>>>> UFS/develop
 + [[ 0 == 1 ]]
 + echo ==================================================
 ==================================================
 + [[ 0 == 1 ]]
 + echo 'Next recommended step is to rejoice out of happiness from a successful compile.'
 Next recommended step is to rejoice out of happiness from a successful compile.
+<<<<<<< HEAD
 . /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; cd /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6                          ; \
   exec make -f makefile.nuopc COMP_SRCDIR="/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6" COMP_BINDIR="/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6_INSTALL" FMS_BINDIR="/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/FMS_INSTALL" MACHINE_ID="hera"               \
   "FMSDIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/FMS_INSTALL"                                        \
   "NEMSMOMDIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6/exec/hera"                \
   "INSTALLDIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6_INSTALL" install
+=======
+. /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; cd /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6                          ; \
+  exec make -f makefile.nuopc COMP_SRCDIR="/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6" COMP_BINDIR="/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6_INSTALL" FMS_BINDIR="/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL" MACHINE_ID="hera"               \
+  "FMSDIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL"                                        \
+  "NEMSMOMDIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6/exec/hera"                \
+  "INSTALLDIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6_INSTALL" install
+>>>>>>> UFS/develop
 
 Currently Loaded Modules:
   1) contrib            6) bacio/2.0.3   11) w3nco/2.0.7     16) png/1.2.44
@@ -1175,6 +1310,7 @@ Currently Loaded Modules:
 
  
 
+<<<<<<< HEAD
 make[1]: Entering directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6'
 mpiifort -c -g -traceback -fp-model precise -O2 -fPIC -assume realloc_lhs -m64 -mcmodel=small -threads  -qopenmp -DMOM6_CAP  -I/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/FMS_INSTALL -I/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6/exec/hera/lib_ocean -I. -I/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/mod -I/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/include -I/apps/netcdf/4.6.1/intel/16.1.150/include  -DESMF_NO_INTEGER_1_BYTE -DESMF_NO_INTEGER_2_BYTE -DESMFVERSIONGIT='ESMF_8_0_0' -DESMF_LAPACK=1 -DESMF_LAPACK_INTERNAL=1 -DESMF_MOAB=1 -DESMF_NO_ACC_SOFTWARE_STACK=1 -DESMF_NETCDF=1 -DESMF_YAMLCPP=1 -DESMF_YAML=1 -DESMF_PIO=1 -DESMF_MPIIO -DESMF_NO_OPENACC -DESMF_BOPT_O -DESMF_TESTCOMPTUNNEL -DSx86_64_small=1 -DESMF_OS_Linux=1 -DESMF_COMM=intelmpi -DESMF_DIR=/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/src/ESMF_8_0_0 src/MOM6/config_src/nuopc_driver/mom_cap_methods.F90
 mpiifort -c -g -traceback -fp-model precise -O2 -fPIC -assume realloc_lhs -m64 -mcmodel=small -threads  -qopenmp -DMOM6_CAP  -I/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/FMS_INSTALL -I/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6/exec/hera/lib_ocean -I. -I/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/mod -I/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/include -I/apps/netcdf/4.6.1/intel/16.1.150/include  -DESMF_NO_INTEGER_1_BYTE -DESMF_NO_INTEGER_2_BYTE -DESMFVERSIONGIT='ESMF_8_0_0' -DESMF_LAPACK=1 -DESMF_LAPACK_INTERNAL=1 -DESMF_MOAB=1 -DESMF_NO_ACC_SOFTWARE_STACK=1 -DESMF_NETCDF=1 -DESMF_YAMLCPP=1 -DESMF_YAML=1 -DESMF_PIO=1 -DESMF_MPIIO -DESMF_NO_OPENACC -DESMF_BOPT_O -DESMF_TESTCOMPTUNNEL -DSx86_64_small=1 -DESMF_OS_Linux=1 -DESMF_COMM=intelmpi -DESMF_DIR=/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/src/ESMF_8_0_0 src/MOM6/config_src/nuopc_driver/mom_cap_time.F90
@@ -1199,6 +1335,21 @@ test -s "/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6
 set -eu                                                           ; \
 export COMP_SRCDIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE COMP_BINDIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE_INSTALL SITE="NEMS.hera" SYSTEM_USERDIR="/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE" SRCDIR="/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE" EXEDIR="/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE" NEMS_GRID="T126_mx5"                                           ; \
 cd /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE                                                 ; \
+=======
+make[1]: Entering directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6'
+rm -f mom6.mk.install
+mkdir -p /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6_INSTALL
+cp -f /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6/exec/hera/lib_ocean/lib_ocean.a /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6_INSTALL
+cp -f libmom.a mom_cap_mod.mod /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6_INSTALL
+cp -f mom6.mk.install /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6_INSTALL/mom6.mk
+make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6'
+test -d "/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6_INSTALL"
+test -s "/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6_INSTALL/mom6.mk"
+. /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack                                                   ; \
+set -eu                                                           ; \
+export COMP_SRCDIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE COMP_BINDIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_INSTALL SITE="NEMS.hera" SYSTEM_USERDIR="/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE" SRCDIR="/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE" EXEDIR="/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE" NEMS_GRID="T126_mx5"                                           ; \
+cd /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE                                                 ; \
+>>>>>>> UFS/develop
 ./comp_ice.backend
 
 Currently Loaded Modules:
@@ -1213,6 +1364,7 @@ Currently Loaded Modules:
 NEMS_GRID = T126_mx025 
 tcx comp_ice.backend res grid mx025 1440x1080
 ARCH is Linux.NEMS.hera
+<<<<<<< HEAD
 gmake[1]: Entering directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE_SRC/lanl_cice/compile'
 Building dependency for shr_orb_mod.d
 Building dependency for ice_zbgc.d
@@ -1961,6 +2113,12 @@ mpiifort -c -O2 -fp-model precise -convert big_endian -assume byterecl -ftz -tra
 mpiifort -o /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE/cice  CICE.o CICE_FinalMod.o CICE_InitMod.o CICE_RunMod.o ice_aerosol.o ice_age.o ice_algae.o ice_atmo.o ice_blocks.o ice_boundary.o ice_brine.o ice_broadcast.o ice_calendar.o ice_communicate.o ice_constants.o ice_diagnostics.o ice_distribution.o ice_domain.o ice_domain_size.o ice_dyn_eap.o ice_dyn_evp.o ice_dyn_shared.o ice_exit.o ice_fileunits.o ice_firstyear.o ice_flux.o ice_forcing.o ice_gather_scatter.o ice_global_reductions.o ice_grid.o ice_history.o ice_history_bgc.o ice_history_drag.o ice_history_mechred.o ice_history_pond.o ice_history_shared.o ice_history_write.o ice_init.o ice_itd.o ice_kinds_mod.o ice_lvl.o ice_mechred.o ice_meltpond_cesm.o ice_meltpond_lvl.o ice_meltpond_topo.o ice_ocean.o ice_orbital.o ice_read_write.o ice_restart.o ice_restart_driver.o ice_restart_shared.o ice_restoring.o ice_shortwave.o ice_spacecurve.o ice_state.o ice_step_mod.o ice_therm_0layer.o ice_therm_bl99.o ice_therm_itd.o ice_therm_mushy.o ice_therm_shared.o ice_therm_vertical.o ice_timers.o ice_transport_driver.o ice_transport_remap.o ice_zbgc.o ice_zbgc_shared.o shr_orb_mod.o  -L/apps/netcdf/4.7.0/intel/18.0.5.274/lib -lnetcdf -L/apps/netcdf/4.7.0/intel/18.0.5.274/lib -lnetcdf -lnetcdff
 gmake[1]: Leaving directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE_SRC/lanl_cice/compile'
 /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE_SRC/lanl_cice
+=======
+gmake[1]: Entering directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_SRC/lanl_cice/compile'
+gmake[1]: Nothing to be done for `all'.
+gmake[1]: Leaving directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_SRC/lanl_cice/compile'
+/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_SRC/lanl_cice
+>>>>>>> UFS/develop
 NTASK = 48
 global N, block_size
 x    1440,    60
@@ -1974,9 +2132,15 @@ max_blocks = 1
 0 = TRBRI, brine height tracer
 7 = NBGCLYR, number of bio grid layers
 0 = TRBGCS, number of BGC tracers
+<<<<<<< HEAD
 . /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; cd /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE_CAP ; exec make -f makefile.nuopc    \
   COMP_SRCDIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE COMP_BINDIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE_INSTALL SITE="NEMS.hera" SYSTEM_USERDIR="/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE" SRCDIR="/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE" EXEDIR="/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE" NEMS_GRID="T126_mx5"                                                  \
   "LANLCICEDIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE" "INSTALLDIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE_INSTALL" install
+=======
+. /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; cd /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_CAP ; exec make -f makefile.nuopc    \
+  COMP_SRCDIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE COMP_BINDIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_INSTALL SITE="NEMS.hera" SYSTEM_USERDIR="/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE" SRCDIR="/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE" EXEDIR="/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE" NEMS_GRID="T126_mx5"                                                  \
+  "LANLCICEDIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE" "INSTALLDIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_INSTALL" install
+>>>>>>> UFS/develop
 
 Currently Loaded Modules:
   1) contrib            6) bacio/2.0.3   11) w3nco/2.0.7     16) png/1.2.44
@@ -1987,6 +2151,7 @@ Currently Loaded Modules:
 
  
 
+<<<<<<< HEAD
 make[1]: Entering directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE_SRC/lanl_cice_cap'
 rm -f cice.mk.install
 mkdir -p /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE_INSTALL
@@ -2011,6 +2176,32 @@ make nems                              \
           COMPONENTS="FMS FV3 MOM6 CICE"                      \
           FMS_DIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/FMS_INSTALL FV3_DIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3/FV3_INSTALL MOM6_DIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6_INSTALL CICE_DIR=/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE_INSTALL TARGET="/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/NEMS/exe/NEMS.x"    ; \
 test -x /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/NEMS/exe/NEMS.x
+=======
+make[1]: Entering directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_SRC/lanl_cice_cap'
+rm -f cice.mk.install
+mkdir -p /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_INSTALL
+cp -f /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE/liblanl_cice.a /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_INSTALL
+cp -f libcice.a cice_cap_mod.mod /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_INSTALL 
+cp -f cice.mk.install /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_INSTALL/cice.mk
+make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_SRC/lanl_cice_cap'
+test -f /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_INSTALL/cice.mk
+( \
+echo "# Do not edit this file.  It is automatically generated." ; \
+echo "# Edit the component list or /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf/configure.nems.NUOPC.in"                          ; \
+echo ; cat "/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf/configure.nems.NUOPC.in"                                                 ; \
+echo fms_mk="/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL/fms.mk" ; echo fv3_mk="/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/FV3_INSTALL/fv3.mk" ; echo mom6_mk="/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6_INSTALL/mom6.mk" ; echo cice_mk="/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_INSTALL/cice.mk" ; ) > "/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf/configure.nems.NUOPC"
+. /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack                                         ; \
+set -e                                                  ; \
+for m in /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL/fms.mk /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/FV3_INSTALL/fv3.mk /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6_INSTALL/mom6.mk /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_INSTALL/cice.mk ; do                   \
+  test -s $m                                           ; \
+done                                                    ; \
+echo build NEMS after /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL/fms.mk /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/FV3_INSTALL/fv3.mk /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6_INSTALL/mom6.mk /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_INSTALL/cice.mk         ; \
+cd /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src                                       ; \
+make nems                              \
+          COMPONENTS="FMS FV3 MOM6 CICE"                      \
+          FMS_DIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL FV3_DIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/FV3_INSTALL MOM6_DIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6_INSTALL CICE_DIR=/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_INSTALL TARGET="/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/exe/NEMS.x"    ; \
+test -x /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/exe/NEMS.x
+>>>>>>> UFS/develop
 
 Currently Loaded Modules:
   1) contrib            6) bacio/2.0.3   11) w3nco/2.0.7     16) png/1.2.44
@@ -2021,12 +2212,21 @@ Currently Loaded Modules:
 
  
 
+<<<<<<< HEAD
 build NEMS after /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/FMS_INSTALL/fms.mk /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3/FV3_INSTALL/fv3.mk /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6_INSTALL/mom6.mk /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE_INSTALL/cice.mk
 Components in linker order: CICE MOM6 FV3 FMS
 CICE: include /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE_INSTALL/cice.mk
 MOM6: include /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6_INSTALL/mom6.mk
 FV3: include /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3/FV3_INSTALL/fv3.mk
 FMS: include /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/FMS_INSTALL/fms.mk
+=======
+build NEMS after /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL/fms.mk /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/FV3_INSTALL/fv3.mk /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6_INSTALL/mom6.mk /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_INSTALL/cice.mk
+Components in linker order: CICE MOM6 FV3 FMS
+CICE: include /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_INSTALL/cice.mk
+MOM6: include /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6_INSTALL/mom6.mk
+FV3: include /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/FV3_INSTALL/fv3.mk
+FMS: include /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL/fms.mk
+>>>>>>> UFS/develop
 CPPFLAGS += ESMF_VERSION_STRING_GIT="ESMF_8_0_0"
 CPPFLAGS += ESMF_VERSION_BETASNAPSHOT="'F'"
 CPPFLAGS += ESMF_VERSION_MINOR="0"
@@ -2035,16 +2235,26 @@ CPPFLAGS += ESMF_VERSION_STRING="8.0.0"
 CPPFLAGS += ESMF_VERSION_REVISION="0"
 CPPFLAGS += ESMF_VERSION_MAJOR="8"
 CPPFLAGS += ESMF_VERSION_PUBLIC="'T'"
+<<<<<<< HEAD
 make[1]: Entering directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/NEMS/src'
 cd ENS_Cpl             && make stub
 make[2]: Entering directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/NEMS/src/ENS_Cpl'
 ar rv ENS_Cpl.a ENS_CplComp_ESMFMod_STUB.o
 r - ENS_CplComp_ESMFMod_STUB.o
 make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/NEMS/src/ENS_Cpl'
+=======
+make[1]: Entering directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src'
+cd ENS_Cpl             && make stub
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/ENS_Cpl'
+ar rv ENS_Cpl.a ENS_CplComp_ESMFMod_STUB.o
+r - ENS_CplComp_ESMFMod_STUB.o
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src/ENS_Cpl'
+>>>>>>> UFS/develop
 echo libgocart is 
 libgocart is
 echo extlibs is /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libncep_post_v8.0.0_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libnemsio_v2.2.4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libg2_v3.1.1_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libg2tmpl_v1.5.1.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libbacio_v2.0.3_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libsp_v2.0.3_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libw3emc_v2.3.1_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libw3nco_v2.0.7_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libcrtm_v2.2.6.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libpng_v1.2.44.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/gnu/4.8.5/lib/libjasper_v1.900.1.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libz_v1.2.11.a -L/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/lib -Wl,-rpath,/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/lib -lesmf  -cxxlib -lrt -ldl -lnetcdff -lnetcdf  -qopenmp  -L/apps/netcdf/4.7.0/intel/18.0.5.274/lib -lnetcdff -lnetcdf
 extlibs is /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libncep_post_v8.0.0_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libnemsio_v2.2.4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libg2_v3.1.1_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libg2tmpl_v1.5.1.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libbacio_v2.0.3_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libsp_v2.0.3_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libw3emc_v2.3.1_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libw3nco_v2.0.7_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libcrtm_v2.2.6.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libpng_v1.2.44.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/gnu/4.8.5/lib/libjasper_v1.900.1.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libz_v1.2.11.a -L/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/lib -Wl,-rpath,/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/lib -lesmf -cxxlib -lrt -ldl -lnetcdff -lnetcdf -qopenmp -L/apps/netcdf/4.7.0/intel/18.0.5.274/lib -lnetcdff -lnetcdf
+<<<<<<< HEAD
 mpiifort  -o /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/NEMS/exe/NEMS.x MAIN_NEMS.o module_NEMS_UTILS.o module_MEDIATOR_methods.o module_MEDIATOR.o module_MEDIATOR_SpaceWeather.o module_EARTH_INTERNAL_STATE.o module_EARTH_GRID_COMP.o module_NEMS_INTERNAL_STATE.o module_NEMS_GRID_COMP.o module_NEMS_Rusage.o nems_c_rusage.o  /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE_INSTALL/libcice.a /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/CICE_INSTALL/liblanl_cice.a /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6_INSTALL/libmom.a /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/MOM6_INSTALL/lib_ocean.a /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3/FV3_INSTALL/libfv3cap.a /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3/FV3_INSTALL/libfv3core.a /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3/FV3_INSTALL/libfv3io.a /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3/FV3_INSTALL/libipd.a /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3/FV3_INSTALL/libgfsphys.a /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3/FV3_INSTALL/libfv3cpl.a /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FV3/FV3_INSTALL/libstochastic_physics.a /scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model-cleanup-02/FMS/FMS_INSTALL/libfms.a ENS_Cpl/ENS_Cpl.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libncep_post_v8.0.0_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libnemsio_v2.2.4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libg2_v3.1.1_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libg2tmpl_v1.5.1.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libbacio_v2.0.3_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libsp_v2.0.3_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libw3emc_v2.3.1_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libw3nco_v2.0.7_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libcrtm_v2.2.6.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libpng_v1.2.44.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/gnu/4.8.5/lib/libjasper_v1.900.1.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libz_v1.2.11.a -L/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/lib -Wl,-rpath,/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/lib -lesmf  -cxxlib -lrt -ldl -lnetcdff -lnetcdf  -qopenmp  -L/apps/netcdf/4.7.0/intel/18.0.5.274/lib -lnetcdff -lnetcdf  
 /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/gnu/4.8.5/lib/libjasper_v1.900.1.a(jas_stream.o): In function `jas_stream_tmpfile':
 jas_stream.c:(.text+0x7a7): warning: the use of `tmpnam' is dangerous, better use `mkstemp'
@@ -2054,10 +2264,22 @@ make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-mo
 + cp -fp ../exe/NEMS.x /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.243879/exec/fv3_mom6_cice.exe
 + cp -fp conf/modules.nems /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.243879/include/modules_fv3_mom6_cice
 + md5sum /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.243879/exec/fv3_mom6_cice.exe
+=======
+mpiifort  -o /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/exe/NEMS.x MAIN_NEMS.o module_NEMS_UTILS.o module_MEDIATOR_methods.o module_MEDIATOR.o module_MEDIATOR_SpaceWeather.o module_EARTH_INTERNAL_STATE.o module_EARTH_GRID_COMP.o module_NEMS_INTERNAL_STATE.o module_NEMS_GRID_COMP.o module_NEMS_Rusage.o nems_c_rusage.o  /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_INSTALL/libcice.a /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/CICE_INSTALL/liblanl_cice.a /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6_INSTALL/libmom.a /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/MOM6_INSTALL/lib_ocean.a /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/FV3_INSTALL/libfv3cap.a /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/FV3_INSTALL/libfv3core.a /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/FV3_INSTALL/libfv3io.a /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/FV3_INSTALL/libipd.a /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/FV3_INSTALL/libgfsphys.a /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/FV3_INSTALL/libfv3cpl.a /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FV3/FV3_INSTALL/libstochastic_physics.a /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/FMS/FMS_INSTALL/libfms.a ENS_Cpl/ENS_Cpl.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libncep_post_v8.0.0_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libnemsio_v2.2.4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libg2_v3.1.1_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libg2tmpl_v1.5.1.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libbacio_v2.0.3_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libsp_v2.0.3_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libw3emc_v2.3.1_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libw3nco_v2.0.7_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libcrtm_v2.2.6.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libpng_v1.2.44.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/gnu/4.8.5/lib/libjasper_v1.900.1.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libz_v1.2.11.a -L/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/lib -Wl,-rpath,/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/lib -lesmf  -cxxlib -lrt -ldl -lnetcdff -lnetcdf  -qopenmp  -L/apps/netcdf/4.7.0/intel/18.0.5.274/lib -lnetcdff -lnetcdf  
+/scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/gnu/4.8.5/lib/libjasper_v1.900.1.a(jas_stream.o): In function `jas_stream_tmpfile':
+jas_stream.c:(.text+0x7a7): warning: the use of `tmpnam' is dangerous, better use `mkstemp'
+/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/exe/NEMS.x is created.
+make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src'
++ cd /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_3/NEMS/src
++ cp -fp ../exe/NEMS.x /scratch2/NCEPDEV/stmp1/Denise.Worthen/RTS/rtgen.25876/exec/fv3_mom6_cice.exe
++ cp -fp conf/modules.nems /scratch2/NCEPDEV/stmp1/Denise.Worthen/RTS/rtgen.25876/include/modules_fv3_mom6_cice
++ md5sum /scratch2/NCEPDEV/stmp1/Denise.Worthen/RTS/rtgen.25876/exec/fv3_mom6_cice.exe
+>>>>>>> UFS/develop
 + unset md5sum
 + unset OPTS
 + set -xe
 + set -xe
+<<<<<<< HEAD
 + test -s /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.243879/exec/fv3_mom6_cice.exe
 + test -x /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.243879/exec/fv3_mom6_cice.exe
 _______________________________________________________________
@@ -2065,3 +2287,12 @@ Start Epilog v19.07.23 on node h22c25 for job 791543 :: Fri Nov 15 04:25:39 UTC 
 Job 791543 (not serial) finished for user Jessica.Meixner in partition hera with exit code 0:0
 _______________________________________________________________
 End Epilogue v19.07.23 Fri Nov 15 04:25:39 UTC 2019
+=======
++ test -s /scratch2/NCEPDEV/stmp1/Denise.Worthen/RTS/rtgen.25876/exec/fv3_mom6_cice.exe
++ test -x /scratch2/NCEPDEV/stmp1/Denise.Worthen/RTS/rtgen.25876/exec/fv3_mom6_cice.exe
+_______________________________________________________________
+Start Epilog v19.07.23 on node h3c50 for job 879718 :: Tue Nov 19 21:12:53 UTC 2019
+Job 879718 (not serial) finished for user Denise.Worthen in partition hera with exit code 0:0
+_______________________________________________________________
+End Epilogue v19.07.23 Tue Nov 19 21:12:53 UTC 2019
+>>>>>>> UFS/develop
