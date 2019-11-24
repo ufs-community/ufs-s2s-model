@@ -54,7 +54,7 @@ embed bash compile.sh(MAKE_OPTS=' ',BUILD_NR='',fv3,modules,md5) [[[
                 ./compile.sh "@[plat%HOMEnems]/FV3" \
                 $( echo @[plat%MACHINE_ID] | sed 's,\.,_,g' ) \
                 @[MAKE_OPTS] @[BUILD_NR]
-        elif [[ @[plat%PLATFORM_NAME] == hera* || @[plat%PLATFORM_NAME] == cheyenne* || @[plat%PLATFORM_NAME] == gaea* || @[plat%PLATFORM_NAME] == jet* ]] ; then
+        elif [[ @[plat%PLATFORM_NAME] == hera* || @[plat%PLATFORM_NAME] == cheyenne* || @[plat%PLATFORM_NAME] == gaea* || @[plat%PLATFORM_NAME] == *jet* ]] ; then
             # Don't substitute the . with a _ on Cheyenne
             echo "DON'T SUBSTITUTE _ for . on @[plat%PLATFORM_NAME]"
             ./compile.sh "@[plat%HOMEnems]/FV3" \
@@ -468,7 +468,6 @@ test fv3_ccpp_control: fv3_ccpp_control.exe {
            '*configure' <=copyfrom= "@[FV3_input_data]"
                 'INPUT' <=copy=     "@[FV3_input_data]/INPUT"
   'global_o3prdlos.f77' <=copy= "@[FV3_input_data]/INPUT/global_o3prdlos.f77"
-       'ccpp_suite.xml' <=copy= "@[HOMEnems]/ccpp/suites/suite_FV3_GFS_2017.xml"
     }
 
     # Specify output files:
@@ -1211,9 +1210,9 @@ test fv3_gfdlmprad: fv3_ww3.exe {
         'RESTART/sfc_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
         'RESTART/sfc_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
         'RESTART/sfc_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'out_grd.glo_30m'                       .bitcmp. "@[CNTL]"
         "@[build%target]" .md5cmp. "@[fv3_ww3.exe%md5sum]"
     }
-
 
     spawn execute {
         {"@[build%target]", ranks="@[TASKS]" }
@@ -1635,7 +1634,6 @@ test fv3_wrtGauss_netcdf_esmf: fv3.exe {
     }
 }
 
-
 ########################################################################
 
 test fv3_wrtGauss_nemsio_c192: fv3.exe {
@@ -1764,7 +1762,6 @@ test fv3_wrtGauss_nemsio_c768: fv3_ww3.exe {
     CNTL_NAME="fv3_wrtGauss_nemsio_c768"
 
     TASKS='1752'
-    TPN='12'
     PPN="@[plat%C768_PPN]"
     INPES='16'
     JNPES='16'
@@ -1879,7 +1876,7 @@ test fv3_wrtGauss_nemsio_c768: fv3_ww3.exe {
         'RESTART/sfc_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
         'RESTART/sfc_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
         'RESTART/sfc_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
-
+        'out_grd.glo_30m'                       .bitcmp. "@[CNTL]"
       # Executable validation.  This makes an MD5 sum of the fv3.exe
       # for comparison against the MD5 sum made in the build job.
       # This is to ensure the executable did not change during the
