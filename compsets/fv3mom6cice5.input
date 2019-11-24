@@ -71,6 +71,7 @@ build fv3_mom6_cice.exe {
 
 cpl_defaults = {
     ATMRES=''
+    OCNRES='025'
     INPUT_NML="input.mom6.nml.IN"
     FIELD_TABLE="field_table"
     NSOUT='-1'
@@ -83,7 +84,7 @@ cpl_defaults = {
     ocn_model="mom6"
     ice_model="cice"
 # future use: for MOM6 river runoff 
-#   MOM6_RIVER_RUNOFF='False'
+    MOM6_RIVER_RUNOFF='True'
     NPROC_ICE='48'
     DT_ATMOS='900' #needed for C96 cases
     DT_DYNAM_MOM6='900'

@@ -26,15 +26,6 @@ test cpld_fv3_384_mom6_cice_cold_bmark: fv3_mom6_cice.exe {
      OZONE_data="@[FV3_input_data]/ozprdlos_2015_new_sbuvO3_tclm15_nuchem.f77"
        CO2_data="@[plat%INPUTS]/FV3_input_bm2/INPUT"
 
-    # - set total number of tasks to satisfy coupled application need 
-    #TASKS=480
-    #WRITE_GROUP=1
-    #WRTTASK_PER_GROUP=24
-    #INPES=6
-    #JNPES=8
-    #THRD=3
-    #TPN=8
- 
     # - set date YYYYMMDDHH
     SYEAR='2012'
     SMONTH='01'
@@ -53,12 +44,6 @@ test cpld_fv3_384_mom6_cice_cold_bmark: fv3_mom6_cice.exe {
         FV3_IC="@[BM_IC]/gfs/C384/INPUT"
        MOM6_IC="@[BM_IC]/mom6_da"
       CICE5_IC="@[BM_IC]/cpc"    
-
-    # - nems.configure --- 
-    #med_petlist_bounds="0 311"
-    #atm_petlist_bounds="0 311"
-    #ocn_petlist_bounds="312 431"
-    #ice_petlist_bounds="432 479"
 
     # Specify output files:
     criteria output {

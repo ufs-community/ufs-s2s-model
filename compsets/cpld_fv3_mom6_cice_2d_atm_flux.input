@@ -49,7 +49,7 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     # set default locations of ICs
         FV3_IC="@[FV3_input_data]/INPUT"
        MOM6_IC="@[UGCS_input_data]/MOM6_IC"
-      CICE5_IC="@[UGCS_input_data]/CICE"
+      CICE5_IC="@[UGCS_input_data]/CICE_IC"
     FV3_mosaic="C96"    
 
     # - nems.configure --- 
@@ -69,17 +69,16 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
            'global_o3prdlos.f77'  <=copy=     "@[OZONE_data]"
                           '*grb'  <=copyfrom= "@[FV3_input_data]"
                    'field_table'  <=copy=     "@[FV3_input_data]/@[FIELD_TABLE]"
-            'INPUT/grid_spec.nc'  <=copy=     "@[UGCS_input_data]/COUPLED@[ATMRES]/grid_spec.nc"
+            'INPUT/grid_spec.nc'  <=copy=     "@[UGCS_input_data]/CPL_FIX/a@[FV3_mosaic]o@[OCNRES]/grid_spec.nc"
    "INPUT/@[FV3_mosaic]_grid*nc"  <=copyfrom= "@[FV3_input_data]/INPUT"
              'INPUT/oro_data*nc'  <=copyfrom= "@[FV3_input_data]/INPUT"
  "INPUT/@[FV3_mosaic]_mosaic.nc"  <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
              'INPUT/gfs_ctrl.nc'  <=copyfrom= "@[FV3_input_data]/INPUT"
 #MOM6 fixed input
-                       'INPUT/*'  <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
-                    'data_table'  <=copy=     "@[UGCS_input_data]/MOM6_FIX_025deg/data_table"
+                       'INPUT/*'  <=copyfrom= "@[UGCS_input_data]/MOM6_FIX/@[OCNRES]"          
 #CICE5 fixed input
-       'grid_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/grid_cice_NEMS_mx025.nc"
-       'kmtu_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/kmtu_cice_NEMS_mx025.nc"
+       'grid_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE_FIX/@[OCNRES]/grid_cice_NEMS_mx025.nc"
+       'kmtu_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE_FIX/@[OCNRES]/kmtu_cice_NEMS_mx025.nc"
 # ICs
             'INPUT/sfc_data*.nc'  <=copyfrom= "@[FV3_IC]"
             'INPUT/gfs_data*.nc'  <=copyfrom= "@[FV3_IC]"
@@ -92,6 +91,7 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
                'ice_in_template'  <=copy=     "@[PARMnems]/ice_in_template"
       'INPUT/MOM_input_template'  <=copy=     "@[PARMnems]/MOM_input_template"
            'diag_table_template'  <=copy=     "@[PARMnems]/diag_table_template"
+                    'data_table'  <=copy=     "@[PARMnems]/data_table"
                 "nems.configure"  <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN"
     } 
  
