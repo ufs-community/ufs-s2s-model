@@ -6,13 +6,16 @@ load 'benchmark_warm.input'
    # eg: "/scratch2/NCEPDEV/stmp1/First.LastName/rtgen.NUMBER"
    ROOTDIR = "path-to-user-coldstarts"
 
+datesuite_defaults = {
     DAYS='5'
    FHMAX='120'
    walltime=10800   # seconds
+}
 
 ########################################################################
 test cpld_fv3_384_mom6_cice_5d_2012010100: fv3_mom6_cice.exe {
     use cpld_fv3_384_mom6_cice_2d_bmark
+    use datesuite_defaults
 
     # - set date YYYYMMDDHH
     SYEAR='2012'
@@ -26,6 +29,7 @@ test cpld_fv3_384_mom6_cice_5d_2012010100: fv3_mom6_cice.exe {
 
 test cpld_fv3_384_mom6_cice_5d_2012040100: fv3_mom6_cice.exe {
     use cpld_fv3_384_mom6_cice_2d_bmark
+    use datesuite_defaults
 
     # - set date YYYYMMDDHH
     SYEAR='2012'
@@ -39,6 +43,7 @@ test cpld_fv3_384_mom6_cice_5d_2012040100: fv3_mom6_cice.exe {
 
 test cpld_fv3_384_mom6_cice_5d_2012070100: fv3_mom6_cice.exe {
     use cpld_fv3_384_mom6_cice_2d_bmark
+    use datesuite_defaults
 
     # - set date YYYYMMDDHH
     SYEAR='2012'
@@ -52,6 +57,7 @@ test cpld_fv3_384_mom6_cice_5d_2012070100: fv3_mom6_cice.exe {
 
 test cpld_fv3_384_mom6_cice_5d_2012100100: fv3_mom6_cice.exe {
     use cpld_fv3_384_mom6_cice_2d_bmark
+    use datesuite_defaults
 
     # - set date YYYYMMDDHH
     SYEAR='2012'
