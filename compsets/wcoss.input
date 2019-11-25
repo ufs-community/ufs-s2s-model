@@ -26,8 +26,8 @@ platform wcoss.phase2 {
     LONG_TEST_QUEUE='&LONGQ;'
     BUILD_QUEUE='&BUILDQ;'
     MACHINE_ID='wcoss.phase2'
-    BASELINE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20191106"
-    BASELINE_TEMPLATE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20191106"
+    BASELINE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20191125"
+    BASELINE_TEMPLATE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20191125"
 
     default_resources={
         #TPN=8
