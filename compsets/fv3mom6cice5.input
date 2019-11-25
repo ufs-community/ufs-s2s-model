@@ -113,7 +113,7 @@ cpl_defaults = {
 # embeded bash script to create input files at prerun from specification 
 # in compset
 
-embed bash edit_inputs(CDATE,ATMRES,DT_CICE,NPROC_ICE,RUNTYPE,USE_RESTART_TIME,FRAZIL_FWSALT,RUNID,CICE_HIST_AVG,DUMPFREQ_N,DUMPFREQ,DT_THERM,DT_DYNAM) [[[ 
+embed bash edit_inputs(CDATE,ATMRES,DT_CICE,NPROC_ICE,RUNTYPE,USE_RESTART_TIME,FRAZIL_FWSALT,RUNID,CICE_HIST_AVG,DUMPFREQ_N,DUMPFREQ,DT_THERM,DT_DYNAM,MOM6_RIVER_RUNOFF) [[[ 
 
 python <<EOT
 import os
@@ -167,7 +167,8 @@ with open("INPUT/MOM_input_template",'rt') as inf:
  with open("INPUT/MOM_input",'wf') as outf:
    for x in inf.readlines():
     newline=x.replace("DT_THERM_MOM6","@[DT_THERM]") \
-             .replace("DT_DYNAM_MOM6","@[DT_DYNAM]")
+             .replace("DT_DYNAM_MOM6","@[DT_DYNAM]") \
+             .replace("MOM6_RIVER_RUNOFF","@[MOM6_RIVER_RUNOFF]")
     outf.write(newline)
 
 #diag_table
