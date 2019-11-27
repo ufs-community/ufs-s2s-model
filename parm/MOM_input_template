@@ -870,9 +870,9 @@ USE_RIGID_SEA_ICE = True        !   [Boolean] default = False
 SEA_ICE_RIGID_MASS = 100.0      !   [kg m-2] default = 1000.0
                                 ! The mass of sea-ice per unit area at which the sea-ice
                                 ! starts to exhibit rigidity
-!RIVER_RUNOFF_FROM_DATA = [MOM6_RIVER_RUNOFF]  !   [Boolean] default = False
-!                                ! If true, allows liquid river runoff to be specified via 
-!                                ! the data_table using the component name 'OCN'.
+LIQUID_RUNOFF_FROM_DATA = MOM6_RIVER_RUNOFF  !   [Boolean] default = False
+                                ! If true, allows liquid river runoff to be specified via
+                                ! the data_table using the component name 'OCN'.
 ! === module MOM_restart ===
 
 ! === module MOM_sum_output ===

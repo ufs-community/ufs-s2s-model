@@ -82,3 +82,5 @@ Change log:
                   660cb1c MOM6 (heads/develop)
                   22be22b NEMS (heads/develop)
                   25c3321 stochastic_physics (heads/master)
+* Nov. 20, 2019   FV3_input_data was synced with NEMSfv3gfs/trunk-20191109/FV3_input_data
+                  Input templates were removed and fix file directories were cleaned up 
