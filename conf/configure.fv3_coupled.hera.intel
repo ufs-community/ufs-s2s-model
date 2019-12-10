@@ -178,6 +178,10 @@ LDFLAGS += -L$(PATH_CCPP)/lib -lccpp
 endif
 endif
 
+ifeq ($(CMEPS),Y)
+CPPDEFS += -DCMEPS
+endif
+
 LDFLAGS += $(LIBS)
 
 ifdef InNemsMakefile
