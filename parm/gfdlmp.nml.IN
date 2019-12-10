@@ -168,12 +168,11 @@
        iopt_snf       = 4
        iopt_tbot      = 2
        iopt_stc       = 1
-       cplflx         = @[CPLFLX]
-       cplwav         = @[CPLWAV]
-       cplwav2atm     = @[CPLWAV]
        debug          = .false.
        h2o_phys       = @[H2O_PHYS]
        nstf_name      = @[NSTF_NAME]
+       cplflx         = @[CPLFLX]
+       cplwav         = @[CPLWAV]
        xkzminv        = 0.3
        xkzm_m         = 1.0
        xkzm_h         = 1.0
