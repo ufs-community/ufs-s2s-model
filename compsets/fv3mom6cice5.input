@@ -61,7 +61,22 @@ build fv3_mom6_cice.exe {
  
     # The NEMSAppBuilder is another embedded bash script in nemscommon.input 
     build=NEMSAppBuilder(NEMS.x="@[target]",modules.nems="@[modules.nems]", 
-                         OPTS="app=coupledFV3_MOM6_CICE",md5sum="@[md5sum]") 
+                         OPTS="app=coupledFV3_MOM6_CICE_NEMS",md5sum="@[md5sum]") 
+}
+
+build fv3_mom6_cice_cmeps.exe {
+    # Use NEMSAppBuilder to build a coupled app.
+    use plat
+    # Note:
+    #  plat%EXECrt = temporary directory for executables and md5 sums
+    #  plat%INCrt  = temporary directory for modulefiles
+    target="@[plat%EXECrt]/fv3_mom6_cice.exe"
+    modules.nems="@[plat%INCrt]/modules_fv3_mom6_cice"
+    md5sum="@[target].md5"
+    
+    # The NEMSAppBuilder is another embedded bash script in nemscommon.input
+    build=NEMSAppBuilder(NEMS.x="@[target]",modules.nems="@[modules.nems]",
+                         OPTS="app=coupledFV3_MOM6_CICE_CMEPS",md5sum="@[md5sum]")
 }
 ########################################################################
 #NOTE: DO NOT UPDATE the fv3_default variables for coupled fiels, 
@@ -108,6 +123,8 @@ cpl_defaults = {
     EXTERNAL_IC='.T.'
     NGGPS_IC='.T.'
     MOUNTAIN='.F.'
+# default mediator
+    MEDIATOR=''
 }
 ########################################################################
 # embeded bash script to create input files at prerun from specification 

@@ -1,0 +1,37 @@
+
+######################################################################## 
+# cold c384 benchmark cmeps
+ 
+test cpld_fv3_384_mom6_cice_cold_cmeps_bmark: fv3_mom6_cice_cmeps.exe { 
+    use cpld_fv3_384_mom6_cice_cold_bmark
+
+    MEDIATOR="cmeps."
+
+    build=fv3_mom6_cice_cmeps.exe
+
+    prep=fv3cpld_prep(
+        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice_cmeps.exe%modules.nems]",
+        CNTL="@[CNTL]")
+} 
+######################################################################## 
+# warm 2d c384 benchmark cmeps
+ 
+test cpld_fv3_384_mom6_cice_2d_cmeps_bmark: fv3_mom6_cice_cmeps.exe { 
+    use cpld_fv3_384_mom6_cice_2d_bmark 
+ 
+    MEDIATOR="cmeps."
+
+    build=fv3_mom6_cice_cmeps.exe
+
+    prep=fv3cpld_prep(
+        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice_cmeps.exe%modules.nems]",
+        CNTL="@[CNTL]")
+
+    # set location of cold start for mediator restarts
+    # THIS IS A USER's OWN RUN and should reflect the full path to the location of the cold start
+    # eg: "/scratch2/NCEPDEV/stmp1/First.LastName/rtgen.NUMBER/tmp/cpld_fv3_384_mom6_cice_cold_bmark"
+    #MED_restart_data="full-path-to-user-coldstart"
+    MED_restart_data="/scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_cmeps/@[CDATE]_cold/tmp/cpld_fv3_384_mom6_cice_cold_bmark_cmeps/"
+    # For ufs restarts, 1hr cold
+    RESTART_MED="ufs.s2s.c384_t025.jan.jul02.cpl.r.@[SYEAR]-@[SMONTH]-@[SDAY]-03600.nc"
+}

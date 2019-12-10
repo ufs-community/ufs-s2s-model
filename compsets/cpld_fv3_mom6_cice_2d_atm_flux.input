@@ -53,7 +53,7 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     FV3_mosaic="C96"    
 
     # - nems.configure --- 
-    nems_configure="med_atm_ocn_ice" 
+    nems_configure="@[MEDIATOR]med_atm_ocn_ice" 
     coupling_interval_slow_sec="@[CPL_SLOW]"
     coupling_interval_fast_sec="@[CPL_FAST]"
 
@@ -93,6 +93,10 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
            'diag_table_template'  <=copy=     "@[PARMnems]/diag_table_template"
                     'data_table'  <=copy=     "@[PARMnems]/data_table"
                 "nems.configure"  <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN"
+                       'fd.yaml'  <=copy=     "@[PARMnems]/fd.yaml"
+                        'pio_in'  <=copy=     "@[PARMnems]/pio_in"
+               'med_modelio.nml'  <=copy=     "@[PARMnems]/med_modelio.nml"
+                  'rpointer.med'  <=copy=     "@[PARMnems]/rpointer.med"
     } 
  
     # Edit the templates for the compset parameters
