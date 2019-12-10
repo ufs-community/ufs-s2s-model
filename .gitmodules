@@ -20,3 +20,6 @@
 [submodule "MOM6"]
 	path = MOM6
 	url = https://github.com/NOAA-EMC/MOM6-interface
+[submodule "CMEPS"]
+	path = CMEPS
+	url = https://github.com/ESCOMP/CMEPS.git
