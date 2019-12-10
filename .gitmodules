@@ -1,11 +1,11 @@
 [submodule "FV3"]
 	path = FV3
-	url = https://github.com/NOAA-EMC/fv3atm
-	branch = develop
+	url = https://github.com/DeniseWorthen/fv3atm
+	branch = feature/cmeps_integration
 [submodule "NEMS"]
 	path = NEMS
-	url = https://github.com/NOAA-EMC/NEMS.git
-	branch = develop
+	url = https://github.com/DeniseWorthen/NEMS.git
+	branch = feature/cmeps_integration
 [submodule "CICE_SRC"]
 	path = CICE_SRC
 	url = https://github.com/NOAA-EMC/CICE5.git
