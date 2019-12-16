@@ -181,7 +181,7 @@ ALLCOMP_attributes::
       brnch_retain_casename = .false.
       case_desc = UNSET
       case_name = ufs.s2s.c384_t025.jan.jul02
-      coldair_outbreak_mod = .true.
+      coldair_outbreak_mod = .false.
       flds_bgc_oi = .false.
       flds_co2a = .false.
       flds_co2b = .false.
