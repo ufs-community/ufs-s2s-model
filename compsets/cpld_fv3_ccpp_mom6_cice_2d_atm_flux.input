@@ -1,7 +1,7 @@
 ########################################################################
-test cpld_fv3_ccpp_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe { 
+test cpld_fv3_ccpp_mom6_cice_2d_atm_flux: fv3_ccpp_mom6_cice.exe { 
     use plat 
-    use plat%default_resources 
+    use plat%default_cpl
     use fv3_defaults 
     use cpl_defaults 
  
@@ -24,19 +24,14 @@ test cpld_fv3_ccpp_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     MED_restart_data="@[UGCS_input_data]/MEDIATOR@[ATMRES]"
          RESTART_MED="mediator_*"
 
-    build=fv3_mom6_cice.exe
+    build=fv3_ccpp_mom6_cice.exe
 
     prep=fv3cpld_prep(
-    RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice.exe%modules.nems]",
+    RUNDIR="@[RUNDIR]",modules="@[fv3_ccpp_mom6_cice.exe%modules.nems]",
     CNTL="@[CNTL]")
 
-    # - set total number of tasks to satisfy coupled application need 
-    TASKS=318
- 
     # - set component and coupling timesteps
           DT_CICE="@[DT_ATMOS]"
-    DT_DYNAM_MOM6='900'
-    DT_THERM_MOM6='1800'
          CPL_SLOW="@[DT_THERM_MOM6]"
          CPL_FAST="@[DT_ATMOS]"
 
@@ -54,19 +49,11 @@ test cpld_fv3_ccpp_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     # set default locations of ICs
         FV3_IC="@[FV3_input_data]/INPUT"
        MOM6_IC="@[UGCS_input_data]/MOM6_IC"
-      CICE5_IC="@[UGCS_input_data]/CICE"
+      CICE5_IC="@[UGCS_input_data]/CICE_IC"
     FV3_mosaic="C96"    
 
     # - nems.configure --- 
     nems_configure="med_atm_ocn_ice" 
-    med_model="nems" 
-    med_petlist_bounds="0 149"
-    atm_model="fv3"
-    atm_petlist_bounds="0 149"
-    ocn_model="mom6"
-    ocn_petlist_bounds="150 269"
-    ice_model="cice"
-    ice_petlist_bounds="270 317"
     coupling_interval_slow_sec="@[CPL_SLOW]"
     coupling_interval_fast_sec="@[CPL_FAST]"
 
@@ -82,17 +69,16 @@ test cpld_fv3_ccpp_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
            'global_o3prdlos.f77'  <=copy=     "@[OZONE_data]"
                           '*grb'  <=copyfrom= "@[FV3_input_data]"
                    'field_table'  <=copy=     "@[FV3_input_data]/@[FIELD_TABLE]"
-            'INPUT/grid_spec.nc'  <=copy=     "@[UGCS_input_data]/COUPLED@[ATMRES]/grid_spec.nc"
+            'INPUT/grid_spec.nc'  <=copy=     "@[UGCS_input_data]/CPL_FIX/a@[FV3_mosaic]o@[OCNRES]/grid_spec.nc"
    "INPUT/@[FV3_mosaic]_grid*nc"  <=copyfrom= "@[FV3_input_data]/INPUT"
              'INPUT/oro_data*nc'  <=copyfrom= "@[FV3_input_data]/INPUT"
  "INPUT/@[FV3_mosaic]_mosaic.nc"  <=copy=     "@[FV3_input_data]/INPUT/grid_spec.nc"
              'INPUT/gfs_ctrl.nc'  <=copyfrom= "@[FV3_input_data]/INPUT"
 #MOM6 fixed input
-                       'INPUT/*'  <=copyfrom= "@[UGCS_input_data]/MOM6_FIX_025deg"
-                    'data_table'  <=copy=     "@[UGCS_input_data]/MOM6_FIX_025deg/data_table"
+                       'INPUT/*'  <=copyfrom= "@[UGCS_input_data]/MOM6_FIX/@[OCNRES]"          
 #CICE5 fixed input
-       'grid_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/grid_cice_NEMS_mx025.nc"
-       'kmtu_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE/kmtu_cice_NEMS_mx025.nc"
+       'grid_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE_FIX/@[OCNRES]/grid_cice_NEMS_mx025.nc"
+       'kmtu_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE_FIX/@[OCNRES]/kmtu_cice_NEMS_mx025.nc"
 # ICs
             'INPUT/sfc_data*.nc'  <=copyfrom= "@[FV3_IC]"
             'INPUT/gfs_data*.nc'  <=copyfrom= "@[FV3_IC]"
@@ -105,8 +91,9 @@ test cpld_fv3_ccpp_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
                'ice_in_template'  <=copy=     "@[PARMnems]/ice_in_template"
       'INPUT/MOM_input_template'  <=copy=     "@[PARMnems]/MOM_input_template"
            'diag_table_template'  <=copy=     "@[PARMnems]/diag_table_template"
+                    'data_table'  <=copy=     "@[PARMnems]/data_table"
                 "nems.configure"  <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN"
-             "suite_@[SUITE_NAME].xml"  <=copyfrom=     "@[PARMnems]/../FV3/ccpp/suites"
+            "suite_@[SUITE_NAME].xml"  <=copyfrom=     "@[PARMnems]/../FV3/ccpp/suites"
     } 
  
     # Edit the templates for the compset parameters
@@ -122,7 +109,8 @@ test cpld_fv3_ccpp_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
                   DUMPFREQ_N="@[DUMPFREQ_N]",
                     DUMPFREQ="@[DUMPFREQ]",
                     DT_THERM="@[DT_THERM_MOM6]",
-                    DT_DYNAM="@[DT_DYNAM_MOM6]")
+                    DT_DYNAM="@[DT_DYNAM_MOM6]",
+           MOM6_RIVER_RUNOFF="@[MOM6_RIVER_RUNOFF]")
 
     # Specify output files:
     criteria output {
@@ -202,7 +190,7 @@ test cpld_fv3_ccpp_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
       # for comparison against the MD5 sum made in the build job.
       # This is to ensure the executable did not change during the
       # test suite.
-        "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
+        "@[build%target]" .md5cmp. "@[fv3_ccpp_mom6_cice.exe%md5sum]" 
     } 
  
     spawn execute { 

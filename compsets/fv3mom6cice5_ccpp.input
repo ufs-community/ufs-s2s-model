@@ -49,13 +49,13 @@ embed bash fv3cpld_prep(RUNDIR,modules,CNTL) [[[
 	ulimit -a
 ]]]
 
-build fv3_mom6_cice.exe { 
+build fv3_ccpp_mom6_cice.exe { 
     # Use NEMSAppBuilder to build a coupled app.   
     use plat 
     # Note:
     #  plat%EXECrt = temporary directory for executables and md5 sums
     #  plat%INCrt  = temporary directory for modulefiles
-    target="@[plat%EXECrt]/fv3_mom6_cice.exe" 
+    target="@[plat%EXECrt]/fv3_ccpp_mom6_cice.exe" 
     modules.nems="@[plat%INCrt]/modules_fv3_mom6_cice" 
     md5sum="@[target].md5" 
  
@@ -71,6 +71,7 @@ build fv3_mom6_cice.exe {
 
 cpl_defaults = {
     ATMRES=''
+    OCNRES='025'
     INPUT_NML="input.mom6.nml.IN"
     FIELD_TABLE="field_table"
     NSOUT='-1'
@@ -78,10 +79,16 @@ cpl_defaults = {
     CPL='.true.'
     NSTF_NAME='0,0,0,0,0'
     MOM6_RESTART_SETTING='n'
+    med_model="nems"
+    atm_model="fv3"
+    ocn_model="mom6"
+    ice_model="cice"
 # future use: for MOM6 river runoff 
-#   MOM6_RIVER_RUNOFF='False'
+    MOM6_RIVER_RUNOFF='True'
     NPROC_ICE='48'
     DT_ATMOS='900' #needed for C96 cases
+    DT_DYNAM_MOM6='900'
+    DT_THERM_MOM6='1800'
 # defaults for CICE runtype and restart writing
     RUNTYPE='initial' 
     DUMPFREQ='d' 
@@ -102,9 +109,8 @@ cpl_defaults = {
     NGGPS_IC='.T.'
     MOUNTAIN='.F.'
 }
-
 ccpp_defaults = {
-    SUITE_NAME='FV3_GFS_2017_couple'
+    SUITE_NAME='FV3_GFS_2017_coupled'
     INPUT_CCPP_NML='input.mom6_ccpp.nml.IN'
 }
 
@@ -112,7 +118,7 @@ ccpp_defaults = {
 # embeded bash script to create input files at prerun from specification 
 # in compset
 
-embed bash edit_inputs(CDATE,ATMRES,DT_CICE,NPROC_ICE,RUNTYPE,USE_RESTART_TIME,FRAZIL_FWSALT,RUNID,CICE_HIST_AVG,DUMPFREQ_N,DUMPFREQ,DT_THERM,DT_DYNAM) [[[ 
+embed bash edit_inputs(CDATE,ATMRES,DT_CICE,NPROC_ICE,RUNTYPE,USE_RESTART_TIME,FRAZIL_FWSALT,RUNID,CICE_HIST_AVG,DUMPFREQ_N,DUMPFREQ,DT_THERM,DT_DYNAM,MOM6_RIVER_RUNOFF) [[[ 
 
 python <<EOT
 import os
@@ -166,7 +172,8 @@ with open("INPUT/MOM_input_template",'rt') as inf:
  with open("INPUT/MOM_input",'wf') as outf:
    for x in inf.readlines():
     newline=x.replace("DT_THERM_MOM6","@[DT_THERM]") \
-             .replace("DT_DYNAM_MOM6","@[DT_DYNAM]")
+             .replace("DT_DYNAM_MOM6","@[DT_DYNAM]") \
+             .replace("MOM6_RIVER_RUNOFF","@[MOM6_RIVER_RUNOFF]")
     outf.write(newline)
 
 #diag_table
@@ -189,7 +196,7 @@ load 'cpld_fv3_ccpp_mom6_cice_2d_atm_flux.input'
 ######################################################################## 
 # cold c96
 
-test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe { 
+test cpld_fv3_ccpp_mom6_cice_cold_atm_flux: fv3_ccpp_mom6_cice.exe { 
     use ccpp_defaults
     use cpld_fv3_ccpp_mom6_cice_cold_atm_flux 
 
@@ -197,7 +204,7 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
 ######################################################################## 
 # warm 2d c96
 
-test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe { 
+test cpld_fv3_ccpp_mom6_cice_2d_atm_flux: fv3_ccpp_mom6_cice.exe { 
     use ccpp_defaults
     use cpld_fv3_ccpp_mom6_cice_2d_atm_flux 
  
@@ -205,7 +212,7 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
 ######################################################################## 
 # cold c384
  
-test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe { 
+test cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux: fv3_ccpp_mom6_cice.exe { 
     use ccpp_defaults
     use cpld_fv3_ccpp_mom6_cice_cold_atm_flux
 
@@ -228,7 +235,7 @@ test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
 ######################################################################## 
 # warm 2d c384
  
-test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe { 
+test cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux: fv3_ccpp_mom6_cice.exe { 
     use ccpp_defaults
     use cpld_fv3_ccpp_mom6_cice_2d_atm_flux 
  
