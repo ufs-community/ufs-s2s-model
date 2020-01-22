@@ -1,17 +1,20 @@
 Run rocotostat...
 Generate report...
-WORKFLOW STARTED AT Tue Nov 26 20:44:33 2019 (+1574801073)
+WORKFLOW STARTED AT Tue Jan 21 18:44:16 2020 (+1579632256)
 Repository information:
 
 
 REPO TOP:
-develop                  cd134bc [origin/develop] Feature/add comparisons (#4)
-Fetch URL: https://github.com/JessicaMeixner-NOAA/ufs-s2s-model
+develop                478b092 [origin/develop] Debug mode capablility (#15)
+Fetch URL: https://github.com/MinsukJi-NOAA/ufs-s2s-model
+ M CICE_SRC
+ M MOM6
+ M NEMS
  M log/report-hera.intel-log/build_fv3_mom6_cice.exe.log
  M log/report-hera.intel-log/rtreport.txt
 
 Entering 'CICE_SRC'
-develop a2dc77d [origin/develop] Merge pull request #3 from JessicaMeixner-NOAA/feature/cheyenne
+develop aafac32 [origin/develop] Code changes to support automatic debug compilation (#10)
 Fetch URL: https://github.com/NOAA-EMC/CICE5.git
 
 Entering 'FMS'
@@ -19,27 +22,27 @@ Entering 'FMS'
 Fetch URL: https://github.com/NOAA-EMC/FMS
 
 Entering 'FV3'
-develop ea91f65 [origin/develop] The HAFS related developments for the write_grid_component (#10)
+(HEAD detached at 26de321) 26de321 change ifmin to zero at fh00 for inline POST (#14)
 Fetch URL: https://github.com/NOAA-EMC/fv3atm
 
 Entering 'MOM6'
-(HEAD detached at 5821b91) 5821b91 update MOM6: updated way of adding river runoff update mkmf: remove HDF5 references, add Cheyenne
+develop 575f570 [origin/develop] Code change to compile.sh enables the following: DEBUG flag is passed down as an environment variable. Subsequently, DEBUG or REPRO is automatically selected.
 Fetch URL: https://github.com/NOAA-EMC/MOM6-interface
 
 Entering 'NEMS'
-(HEAD detached at 22be22b) 22be22b Re-apply PR 11 (#15)
+develop daae388 [origin/develop] Code changes to support DEBUG compilation based on appBuilder specification (#23)
 Fetch URL: https://github.com/NOAA-EMC/NEMS.git
 
 Entering 'stochastic_physics'
-(HEAD detached at 25c3321) 25c3321 Merge pull request #2 from climbfuji/remove_transition_mode
+(HEAD detached at 231e5b7) 231e5b7 Merge pull request #3 from climbfuji/fix_nonexistent_include_dir_warning
 Fetch URL: https://github.com/noaa-psd/stochastic_physics
 
 
 BUILD fv3_mom6_cice.exe: SUCCEEDED
 
 TEST #1: PASS
-  Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Tue Nov 26 20:44:44 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
-  Tue Nov 26 20:44:45 UTC 2019
+  Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Tue Jan 21 18:46:35 UTC 2020 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
+  Tue Jan 21 18:46:35 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -112,14 +115,14 @@ TEST #1: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.161564/exec/fv3_mom6_cice.exe
-    Expected md5sum: e9a026e9ef40aa76344612a8c37b37dd
-    Actual md5sum: e9a026e9ef40aa76344612a8c37b37dd
-  TEST PASSED AT Tue Nov 26 21:30:15 UTC 2019
+    File: /scratch1/NCEPDEV/stmp2/Minsuk.Ji/scrub/rtgen.107464/exec/fv3_mom6_cice.exe
+    Expected md5sum: 0aa9572b3f8f814cd247c50e7ba125bd
+    Actual md5sum: 0aa9572b3f8f814cd247c50e7ba125bd
+  TEST PASSED AT Tue Jan 21 19:31:26 UTC 2020
 
 TEST #2: PASS
-  Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Tue Nov 26 18:09:32 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold 384)
-  Tue Nov 26 18:09:32 UTC 2019
+  Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Tue Jan 21 18:46:45 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold 384)
+  Tue Jan 21 18:46:45 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -175,14 +178,14 @@ TEST #2: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.161564/exec/fv3_mom6_cice.exe
-    Expected md5sum: e9a026e9ef40aa76344612a8c37b37dd
-    Actual md5sum: e9a026e9ef40aa76344612a8c37b37dd
-  TEST PASSED AT Tue Nov 26 18:15:11 UTC 2019
+    File: /scratch1/NCEPDEV/stmp2/Minsuk.Ji/scrub/rtgen.107464/exec/fv3_mom6_cice.exe
+    Expected md5sum: 0aa9572b3f8f814cd247c50e7ba125bd
+    Actual md5sum: 0aa9572b3f8f814cd247c50e7ba125bd
+  TEST PASSED AT Tue Jan 21 18:51:59 UTC 2020
 
 TEST #3: PASS
-  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Tue Nov 26 18:09:31 UTC 2019 (Fully coupled FV3-MOM6-CICE system - cold start)
-  Tue Nov 26 18:09:32 UTC 2019
+  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Tue Jan 21 18:47:44 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold start)
+  Tue Jan 21 18:47:44 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -238,14 +241,14 @@ TEST #3: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.161564/exec/fv3_mom6_cice.exe
-    Expected md5sum: e9a026e9ef40aa76344612a8c37b37dd
-    Actual md5sum: e9a026e9ef40aa76344612a8c37b37dd
-  TEST PASSED AT Tue Nov 26 18:12:38 UTC 2019
+    File: /scratch1/NCEPDEV/stmp2/Minsuk.Ji/scrub/rtgen.107464/exec/fv3_mom6_cice.exe
+    Expected md5sum: 0aa9572b3f8f814cd247c50e7ba125bd
+    Actual md5sum: 0aa9572b3f8f814cd247c50e7ba125bd
+  TEST PASSED AT Tue Jan 21 18:50:23 UTC 2020
 
 TEST #4: PASS
-  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Tue Nov 26 20:45:08 UTC 2019 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
-  Tue Nov 26 20:45:08 UTC 2019
+  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Tue Jan 21 18:47:40 UTC 2020 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
+  Tue Jan 21 18:47:40 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -318,11 +321,11 @@ TEST #4: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.161564/exec/fv3_mom6_cice.exe
-    Expected md5sum: e9a026e9ef40aa76344612a8c37b37dd
-    Actual md5sum: e9a026e9ef40aa76344612a8c37b37dd
-  TEST PASSED AT Tue Nov 26 21:12:14 UTC 2019
-WORKFLOW REPORT AT Tue Nov 26 21:31:21 2019 (+1574803881)
+    File: /scratch1/NCEPDEV/stmp2/Minsuk.Ji/scrub/rtgen.107464/exec/fv3_mom6_cice.exe
+    Expected md5sum: 0aa9572b3f8f814cd247c50e7ba125bd
+    Actual md5sum: 0aa9572b3f8f814cd247c50e7ba125bd
+  TEST PASSED AT Tue Jan 21 19:14:38 UTC 2020
+WORKFLOW REPORT AT Tue Jan 21 19:32:58 2020 (+1579635178)
 Tests: 0 failed, 4 passed out of 4
 Builds: 0 failed, 1 passed out of 1
 REGRESSION TEST WAS SUCCESSFUL
