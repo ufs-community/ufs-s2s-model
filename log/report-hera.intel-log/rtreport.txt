@@ -1,13 +1,12 @@
 Run rocotostat...
 Generate report...
-WORKFLOW STARTED AT Wed Jan 22 14:21:09 2020 (+1579702869)
+WORKFLOW STARTED AT Wed Jan 22 17:03:36 2020 (+1579712616)
 Repository information:
 
 
 REPO TOP:
 develop                6a9bf46 [origin/develop] Merge pull request #7 from ufs-community/develop
 Fetch URL: git@github.com:DeniseWorthen/ufs-s2s-model.git
- M log/report-hera.intel-log/build_fv3_mom6_cice.exe.log
  M log/report-hera.intel-log/rtreport.txt
 
 Entering 'CICE_SRC'
@@ -322,7 +321,7 @@ TEST #4: PASS
     Expected md5sum: 97e0e42914b41daf7f00e04a1b90a323
     Actual md5sum: 97e0e42914b41daf7f00e04a1b90a323
   TEST PASSED AT Wed Jan 22 15:08:37 UTC 2020
-WORKFLOW REPORT AT Wed Jan 22 15:26:15 2020 (+1579706775)
+WORKFLOW REPORT AT Wed Jan 22 17:03:40 2020 (+1579712620)
 Tests: 0 failed, 4 passed out of 4
 Builds: 0 failed, 1 passed out of 1
 REGRESSION TEST WAS SUCCESSFUL
