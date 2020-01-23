@@ -12,8 +12,8 @@
 	branch = develop
 [submodule "FMS"]
 	path = FMS
-	url = https://github.com/NOAA-GFDL/FMS
-        branch = master
+	url = https://github.com/NOAA-EMC/FMS
+        branch = GFS-FMS
 [submodule "stochastic_physics"]
 	path = stochastic_physics
 	url = https://github.com/noaa-psd/stochastic_physics
