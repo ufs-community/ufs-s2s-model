@@ -1,10 +1,10 @@
 [submodule "FV3"]
 	path = FV3
-	url = https://github.com/DusanJovic-NOAA/fv3atm
+	url = https://github.com/NOAA-EMC/fv3atm
 	branch = develop
 [submodule "NEMS"]
 	path = NEMS
-	url = https://github.com/DeniseWorthen/NEMS.git
+	url = https://github.com/NOAA-EMC/NEMS.git
 	branch = develop
 [submodule "CICE_SRC"]
 	path = CICE_SRC
