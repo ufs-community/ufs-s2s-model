@@ -76,6 +76,19 @@ platform hera.intel {
         ice_petlist_bounds="272 319"
     }
 
+    default_cpl_threaded_resources={
+        TASKS=248
+        TPN=40
+        INPES=3
+        JNPES=4
+        THRD=2
+        WRTTASK_PER_GROUP=8
+        med_petlist_bounds="0 71"
+        atm_petlist_bounds="0 79"
+        ocn_petlist_bounds="80 199"
+        ice_petlist_bounds="200 247"
+    }
+
     default_cpl_benchmark={
         TASKS=480
         TPN=40
