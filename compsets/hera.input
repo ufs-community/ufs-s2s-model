@@ -61,32 +61,29 @@ platform hera.intel {
         WRTTASK_PER_GROUP=12
     }
     default_cpl={
-        #TASKS=320
-        TASKS=320
+        TASKS=318
         TPN=40
         INPES=3
         JNPES=8
         THRD=1
-        WRTTASK_PER_GROUP=8
+        WRTTASK_PER_GROUP=6
         med_petlist_bounds="0 143"
-        atm_petlist_bounds="0 151"
-        #ocn_petlist_bounds="150 271"
-        #ice_petlist_bounds="272 319"
-        ocn_petlist_bounds="152 271"
-        ice_petlist_bounds="272 319"
+        atm_petlist_bounds="0 149"
+        ocn_petlist_bounds="150 269"
+        ice_petlist_bounds="270 317"
     }
 
     default_cpl_threaded_resources={
-        TASKS=248
+        TASKS=246
         TPN=40
         INPES=3
         JNPES=4
         THRD=2
-        WRTTASK_PER_GROUP=8
-        med_petlist_bounds="0 71"
-        atm_petlist_bounds="0 79"
-        ocn_petlist_bounds="80 199"
-        ice_petlist_bounds="200 247"
+        WRTTASK_PER_GROUP=6
+        med_petlist_bounds="0 77"
+        atm_petlist_bounds="0 77"
+        ocn_petlist_bounds="78 197"
+        ice_petlist_bounds="198 245"
     }
 
     default_cpl_benchmark={
@@ -96,7 +93,7 @@ platform hera.intel {
         JNPES=8
         THRD=1
         WRTTASK_PER_GROUP=24
-        med_petlist_bounds="0 279"
+        med_petlist_bounds="0 287"
         atm_petlist_bounds="0 311"
         ocn_petlist_bounds="312 431"
         ice_petlist_bounds="432 479"
