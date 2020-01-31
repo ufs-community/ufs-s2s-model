@@ -203,6 +203,28 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
  
 } 
 ######################################################################## 
+# warm 2d c96 2 threads
+
+test cpld_fv3_mom6_cice_2d_2threads: fv3_mom6_cice.exe { 
+    use cpld_fv3_mom6_cice_2d_atm_flux 
+    use plat%default_cpl_threaded_resources
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2 threads"
+    CNTL_NAME="RT-Baselines_2d_warm@[ATMRES]"
+    spawn execute {
+        {"@[build%target]", ranks="@[TASKS]", threads="@[THRD]" }
+    }
+} 
+######################################################################## 
+# warm 2d c96 decomp
+
+test cpld_fv3_mom6_cice_2d_decomp: fv3_mom6_cice.exe { 
+    use cpld_fv3_mom6_cice_2d_atm_flux 
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - decomp"
+    CNTL_NAME="RT-Baselines_2d_warm@[ATMRES]"
+    INPES='6'
+    JNPES='4'
+} 
+######################################################################## 
 # cold c384
  
 test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe { 
