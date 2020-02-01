@@ -3,17 +3,22 @@
    # set this as the location of the 4 cold starts
    # THIS IS A USERS OWN RUN and should reflect the path to the location of the cold starts
    # eg: "/scratch2/NCEPDEV/stmp1/First.LastName/rtgen.NUMBER"
-   ROOTDIR = "path-to-user-coldstarts"
+   ROOTDIR = "/scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_cmeps/2012_cold"
 
 datesuite_defaults = {
     DAYS='35'
    FHMAX='840'
    walltime=28800   # seconds
+
+   # turn off CICE history averaging
+   CICE_HIST_AVG='.false.'
+   # matching 6hour FV3 output
+   NFHOUT='6'
 }
 
 ########################################################################
-test cpld_fv3_384_mom6_cice_2012010100: fv3_mom6_cice.exe {
-    use cpld_fv3_384_mom6_cice_2d_bmark
+test cpld_fv3_384_mom6_cice_cmeps_2012010100: fv3_mom6_cice_cmeps.exe {
+    use cpld_fv3_384_mom6_cice_2d_cmeps_bmark
     use datesuite_defaults
 
     # - set date YYYYMMDDHH
@@ -23,11 +28,11 @@ test cpld_fv3_384_mom6_cice_2012010100: fv3_mom6_cice.exe {
     SHOUR='00'
     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 
-    MED_restart_data="@[ROOTDIR]/tmp/cpld_fv3_384_mom6_cice_cold_2012010100"
+    MED_restart_data="@[ROOTDIR]/tmp/cpld_fv3_384_mom6_cice_cold_cmeps_2012010100"
 }
 
-test cpld_fv3_384_mom6_cice_2012040100: fv3_mom6_cice.exe {
-    use cpld_fv3_384_mom6_cice_2d_bmark
+test cpld_fv3_384_mom6_cice_cmeps_2012040100: fv3_mom6_cice_cmeps.exe {
+    use cpld_fv3_384_mom6_cice_2d_cmeps_bmark
     use datesuite_defaults
 
     # - set date YYYYMMDDHH
@@ -37,11 +42,11 @@ test cpld_fv3_384_mom6_cice_2012040100: fv3_mom6_cice.exe {
     SHOUR='00'
     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 
-    MED_restart_data="@[ROOTDIR]/tmp/cpld_fv3_384_mom6_cice_cold_2012040100"
+    MED_restart_data="@[ROOTDIR]/tmp/cpld_fv3_384_mom6_cice_cold_cmeps_2012040100"
 }
 
-test cpld_fv3_384_mom6_cice_2012070100: fv3_mom6_cice.exe {
-    use cpld_fv3_384_mom6_cice_2d_bmark
+test cpld_fv3_384_mom6_cice_cmeps_2012070100: fv3_mom6_cice_cmeps.exe {
+    use cpld_fv3_384_mom6_cice_2d_cmeps_bmark
     use datesuite_defaults
 
     # - set date YYYYMMDDHH
@@ -51,11 +56,11 @@ test cpld_fv3_384_mom6_cice_2012070100: fv3_mom6_cice.exe {
     SHOUR='00'
     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 
-    MED_restart_data="@[ROOTDIR]/tmp/cpld_fv3_384_mom6_cice_cold_2012070100"
+    MED_restart_data="@[ROOTDIR]/tmp/cpld_fv3_384_mom6_cice_cold_cmeps_2012070100"
 }
 
-test cpld_fv3_384_mom6_cice_2012100100: fv3_mom6_cice.exe {
-    use cpld_fv3_384_mom6_cice_2d_bmark
+test cpld_fv3_384_mom6_cice_cmeps_2012100100: fv3_mom6_cice_cmeps.exe {
+    use cpld_fv3_384_mom6_cice_2d_cmeps_bmark
     use datesuite_defaults
 
     # - set date YYYYMMDDHH
@@ -65,5 +70,5 @@ test cpld_fv3_384_mom6_cice_2012100100: fv3_mom6_cice.exe {
     SHOUR='00'
     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 
-    MED_restart_data="@[ROOTDIR]/tmp/cpld_fv3_384_mom6_cice_cold_2012100100"
+    MED_restart_data="@[ROOTDIR]/tmp/cpld_fv3_384_mom6_cice_cold_cmeps_2012100100"
 }

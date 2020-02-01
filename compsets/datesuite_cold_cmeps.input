@@ -1,8 +1,8 @@
 # cold starts for 4 standard days
 
 ########################################################################
-test cpld_fv3_384_mom6_cice_cold_2012010100: fv3_mom6_cice.exe {
-    use cpld_fv3_384_mom6_cice_cold_bmark
+test cpld_fv3_384_mom6_cice_cold_cmeps_2012010100: fv3_mom6_cice_cmeps.exe {
+    use cpld_fv3_384_mom6_cice_cold_cmeps_bmark
 
     # - set date YYYYMMDDHH
     SYEAR='2012'
@@ -12,8 +12,8 @@ test cpld_fv3_384_mom6_cice_cold_2012010100: fv3_mom6_cice.exe {
     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 }
 
-test cpld_fv3_384_mom6_cice_cold_2012040100: fv3_mom6_cice.exe {
-    use cpld_fv3_384_mom6_cice_cold_bmark
+test cpld_fv3_384_mom6_cice_cold_cmeps_2012040100: fv3_mom6_cice_cmeps.exe {
+    use cpld_fv3_384_mom6_cice_cold_cmeps_bmark
 
     # - set date YYYYMMDDHH
     SYEAR='2012'
@@ -23,8 +23,8 @@ test cpld_fv3_384_mom6_cice_cold_2012040100: fv3_mom6_cice.exe {
     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 }
 
-test cpld_fv3_384_mom6_cice_cold_2012070100: fv3_mom6_cice.exe {
-    use cpld_fv3_384_mom6_cice_cold_bmark
+test cpld_fv3_384_mom6_cice_cold_cmeps_2012070100: fv3_mom6_cice_cmeps.exe {
+    use cpld_fv3_384_mom6_cice_cold_cmeps_bmark
 
     # - set date YYYYMMDDHH
     SYEAR='2012'
@@ -34,8 +34,8 @@ test cpld_fv3_384_mom6_cice_cold_2012070100: fv3_mom6_cice.exe {
     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 }
 
-test cpld_fv3_384_mom6_cice_cold_2012100100: fv3_mom6_cice.exe {
-    use cpld_fv3_384_mom6_cice_cold_bmark
+test cpld_fv3_384_mom6_cice_cold_cmeps_2012100100: fv3_mom6_cice_cmeps.exe {
+    use cpld_fv3_384_mom6_cice_cold_cmeps_bmark
 
     # - set date YYYYMMDDHH
     SYEAR='2012'
