@@ -18,9 +18,9 @@ load 'fv3mom6cice5.input'
 #The full path to the cold start mediator files is specified as
 #MED_restart_data in benchmark_warm.input. 
 
-#load 'benchmark_cold.input'
-#load 'benchmark_warm.input'
-#load 'fv3mom6cice5cmeps.input'
+load 'benchmark_cold.input'
+load 'benchmark_warm.input'
+load 'fv3mom6cice5cmeps.input'
 
 #To run NEMS mediator
 #run cpld_fv3_384_mom6_cice_cold_bmark @ benchmark, coldBM2
@@ -28,7 +28,7 @@ load 'fv3mom6cice5.input'
 
 #To run CMEPS mediator
 #run cpld_fv3_384_mom6_cice_cold_cmeps_bmark @ benchmark, coldBM2
-#run cpld_fv3_384_mom6_cice_2d_cmeps_bmark @ benchmark, warmBM2
+run cpld_fv3_384_mom6_cice_2d_cmeps_bmark @ benchmark, warmBM2
 
 ########################################################################
 #Run the Benchmark-like inputs for 4 standard dates
@@ -39,9 +39,9 @@ load 'fv3mom6cice5.input'
 #full path to the cold start mediator files is specified as ROOTDIR
 ##in the datesuite_warm.input.
 
-load 'benchmark_cold.input'
-load 'benchmark_warm.input'
-load 'fv3mom6cice5cmeps.input'
+#load 'benchmark_cold.input'
+#load 'benchmark_warm.input'
+#load 'fv3mom6cice5cmeps.input'
 
 #To run NEMS mediator
 
@@ -64,9 +64,9 @@ load 'fv3mom6cice5cmeps.input'
 #run cpld_fv3_384_mom6_cice_cold_cmeps_2012070100 @ benchmark, coldBM2
 #run cpld_fv3_384_mom6_cice_cold_cmeps_2012100100 @ benchmark, coldBM2
 
-load 'datesuite_warm_cmeps.input'
-run cpld_fv3_384_mom6_cice_cmeps_2012010100 @ benchmark, warmBM2
-run cpld_fv3_384_mom6_cice_cmeps_2012040100 @ benchmark, warmBM2
-run cpld_fv3_384_mom6_cice_cmeps_2012070100 @ benchmark, warmBM2
-run cpld_fv3_384_mom6_cice_cmeps_2012100100 @ benchmark, warmBM2
+#load 'datesuite_warm_cmeps.input'
+#run cpld_fv3_384_mom6_cice_cmeps_2012010100 @ benchmark, warmBM2
+#run cpld_fv3_384_mom6_cice_cmeps_2012040100 @ benchmark, warmBM2
+#run cpld_fv3_384_mom6_cice_cmeps_2012070100 @ benchmark, warmBM2
+#run cpld_fv3_384_mom6_cice_cmeps_2012100100 @ benchmark, warmBM2
 

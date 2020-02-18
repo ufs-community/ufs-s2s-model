@@ -6,7 +6,7 @@
 	url = https://github.com/DeniseWorthen/NEMS.git
 [submodule "CICE_SRC"]
 	path = CICE_SRC
-	url = https://github.com/NOAA-EMC/CICE5.git
+	url = https://github.com/DeniseWorthen/CICE5.git
 	branch = develop
 [submodule "FMS"]
 	path = FMS
@@ -20,4 +20,4 @@
 	url = https://github.com/NOAA-EMC/MOM6-interface
 [submodule "CMEPS"]
 	path = CMEPS
-	url = https://github.com/ESCOMP/CMEPS.git
+	url = https://github.com/DeniseWorthen/CMEPS.git

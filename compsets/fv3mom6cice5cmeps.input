@@ -23,7 +23,7 @@ test cpld_fv3_384_mom6_cice_2d_cmeps_bmark: fv3_mom6_cice_cmeps.exe {
  
     MEDIATOR="cmeps."
     # cmeps requires increased walltime
-    walltime=3600   # seconds
+    #walltime=3600   # seconds
 
     build=fv3_mom6_cice_cmeps.exe
 
