@@ -264,6 +264,7 @@ fv3_defaults = {
     SKEB='-999.0'
 
     IAU_INC_FILES="''"
+    IAU_DRYMASSFIXER='.false.'
 
     CPLFLX='.F.'
     CPLWAV='.F.'
