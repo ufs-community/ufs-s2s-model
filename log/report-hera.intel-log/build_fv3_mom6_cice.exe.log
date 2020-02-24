@@ -1,21 +1,21 @@
 + [[ fv3_mom6_cice.exe == fv3_mom6_cice.exe ]]
-+ rm -f /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.168876/exec/fv3_mom6_cice.exe
-+ md5sum=/scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.168876/exec/fv3_mom6_cice.exe.md5
++ rm -f /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.7798/exec/fv3_mom6_cice.exe
++ md5sum=/scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.7798/exec/fv3_mom6_cice.exe.md5
 + OPTS=app=coupledFV3_MOM6_CICE
-+ mkdir -p /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.168876/exec /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.168876/include
-+ rm -f /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.168876/exec/fv3_mom6_cice.exe /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.168876/include/modules_fv3_mom6_cice
-+ cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model
++ mkdir -p /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.7798/exec /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.7798/include
++ rm -f /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.7798/exec/fv3_mom6_cice.exe /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.7798/include/modules_fv3_mom6_cice
++ cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model
 + which aprun
 which: no aprun in (/scratch1/NCEPDEV/nems/emc.nemspara/soft/emc-utils/1.1.0/bin:/apps/hpss:/apps/rocoto/1.3.1/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ibutils/bin:/apps/local/bin:/apps/local/sbin:/apps/slurm/default/slurm/tools:/apps/slurm/default/bin:/apps/slurm/default/sbin:/apps/slurm/tools/sbank/bin:/usr/lib:/usr/include:/sbin:/bin:.)
 + ./NEMS/NEMSAppBuilder norebuild app=coupledFV3_MOM6_CICE
 ls: cannot access ../conf/component_*.mk: No such file or directory
 NEMSAppBuilder: make  app=coupledFV3_MOM6_CICE build
-Convert /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/coupledFV3_MOM6_CICE.appBuilder
-...into /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/coupledFV3_MOM6_CICE.appBuilder.mk
-Include /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/coupledFV3_MOM6_CICE.appBuilder.mk
-echo 'FMS FV3 MOM6 CICE' > "/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf/components.mk"
+Convert /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/coupledFV3_MOM6_CICE.appBuilder
+...into /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/coupledFV3_MOM6_CICE.appBuilder.mk
+Include /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/coupledFV3_MOM6_CICE.appBuilder.mk
+echo 'FMS FV3 MOM6 CICE' > "/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf/components.mk"
 Adding FV3 makeopts to FMS makeopts
-. /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/fv3gfs                      ; \
+. /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/fv3gfs                      ; \
 exec make  all
 
 Currently Loaded Modules:
@@ -27,19 +27,19 @@ Currently Loaded Modules:
 
  
 
-make[1]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/fv3gfs'
-mkdir -p "/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL"
-mv fms.mk "/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL/."
-cp -fp *.a *.mod ../include/*.h "/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL"/.
-make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/fv3gfs'
-test -d /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL
-Compiling  into /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/FV3_INSTALL on hera
-cp -fp /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf/configure.nems \
-       "/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3"/conf/configure.fv3
-cp -fp /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf/modules.nems   \
-       "/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3"/conf/modules.fv3
-. /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3 ; \
-  exec make COMP=FV3 COMP_SRCDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3 COMP_BINDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/FV3_INSTALL MACHINE_ID=hera FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL  nemsinstall
+make[1]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/fv3gfs'
+mkdir -p "/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL"
+mv fms.mk "/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL/."
+cp -fp *.a *.mod ../include/*.h "/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL"/.
+make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/fv3gfs'
+test -d /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL
+Compiling  into /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/FV3_INSTALL on hera
+cp -fp /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf/configure.nems \
+       "/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3"/conf/configure.fv3
+cp -fp /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf/modules.nems   \
+       "/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3"/conf/modules.fv3
+. /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3 ; \
+  exec make COMP=FV3 COMP_SRCDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3 COMP_BINDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/FV3_INSTALL MACHINE_ID=hera FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL  nemsinstall
 
 Currently Loaded Modules:
   1) contrib            6) bacio/2.0.3   11) w3nco/2.0.7     16) png/1.2.44
@@ -50,71 +50,71 @@ Currently Loaded Modules:
 
  
 
-make[1]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3'
-make -C cpl                  FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL
+make[1]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3'
+make -C cpl                  FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL
 
 Build standalone FV3 io ...
 
-make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/cpl'
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/cpl'
 make[2]: Nothing to be done for `all'.
-make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/cpl'
-make -C gfsphysics      FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL 32BIT=N  # force gfs physics to 64bit
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/cpl'
+make -C gfsphysics      FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL 32BIT=N  # force gfs physics to 64bit
 
 Build standalone FV3 gfsphysics ...
 
-make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/gfsphysics'
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/gfsphysics'
 make[2]: Nothing to be done for `all'.
-make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/gfsphysics'
-make -C ipd                  FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL 32BIT=N  # force gfs physics to 64bit
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/gfsphysics'
+make -C ipd                  FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL 32BIT=N  # force gfs physics to 64bit
 
 Build standalone FV3 gfsphysics ...
 
-make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/ipd'
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/ipd'
 make[2]: Nothing to be done for `all'.
-make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/ipd'
-make -C io                   FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/ipd'
+make -C io                   FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL
 
 Build standalone FV3 io ...
 
 $ESMF_INC is [-I/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/mod -I/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/include -I/apps/netcdf/4.6.1/intel/16.1.150/include]
-make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/io'
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/io'
 make[2]: Nothing to be done for `all'.
-make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/io'
-make -C atmos_cubed_sphere   FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/io'
+make -C atmos_cubed_sphere   FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL
 
 Build standalone FV3 fv3core ...
 
-make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/atmos_cubed_sphere'
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/atmos_cubed_sphere'
 make[2]: Nothing to be done for `all'.
-make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/atmos_cubed_sphere'
-make -C ../stochastic_physics   FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL 32BIT=N  # force gfs physics to 64bit
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/atmos_cubed_sphere'
+make -C ../stochastic_physics   FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL 32BIT=N  # force gfs physics to 64bit
 
 Build standalone FV3 stochastic_physics ...
 
-make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/stochastic_physics'
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/stochastic_physics'
 make[2]: Nothing to be done for `all'.
-make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/stochastic_physics'
-make libfv3cap.a  FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL
-make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3'
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/stochastic_physics'
+make libfv3cap.a  FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3'
 make[2]: `libfv3cap.a' is up to date.
-make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3'
-make esmf_make_fragment FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL
-make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3'
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3'
+make esmf_make_fragment FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3'
 # additional include files needed for PGI
-#@echo "ESMF_DEP_INCPATH   = /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/nems_dir" >> fv3.mk
+#@echo "ESMF_DEP_INCPATH   = /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/nems_dir" >> fv3.mk
 
 Finished generating ESMF self-describing build dependency makefile fragment: fv3.mk
 
-make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3'
-Installation into "/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/FV3_INSTALL" complete!
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3'
+Installation into "/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/FV3_INSTALL" complete!
 
-make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3'
-test -d /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/FV3_INSTALL
-rm -fr /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/exec
-. /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; export COMP_SRCDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6" COMP_BINDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/MOM6_INSTALL" FMS_BINDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL" MACHINE_ID="hera"      ; \
+make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3'
+test -d /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/FV3_INSTALL
+rm -fr /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/exec
+. /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; export COMP_SRCDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6" COMP_BINDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/MOM6_INSTALL" FMS_BINDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL" MACHINE_ID="hera"      ; \
 set -e                                                        ; \
-cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6                                             ; \
-./compile.sh --platform hera --fms-dir "/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL"
+cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6                                             ; \
+./compile.sh --platform hera --fms-dir "/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL"
 
 Currently Loaded Modules:
   1) contrib            6) bacio/2.0.3   11) w3nco/2.0.7     16) png/1.2.44
@@ -125,9 +125,9 @@ Currently Loaded Modules:
 
  
 
-Will use FMS from: /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL
+Will use FMS from: /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL
 ++ pwd
-+ BASEDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6
++ BASEDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6
 + MACHINE_ID=hera
 + COMPILE_OPTION=hera-intel.mk
 + DEBUG=
@@ -142,7 +142,7 @@ MOM6 compile.sh ... DEBUG=, REPRO=1
 + [[ 1 == 1 ]]
 + echo 'compile MOM6 library ...'
 compile MOM6 library ...
-+ cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6
++ cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6
 + mkdir -p build/intel/MOM6_LIB/repro
 + cd build/intel/MOM6_LIB/repro
 + [[ -f path_names ]]
@@ -153,32 +153,32 @@ generating file_paths ...
 A list of the files you checked out is in the file path_names.
 + echo 'generating makefile ...'
 generating makefile ...
-+ ../../../../src/mkmf/bin/mkmf -t ../../../../src/mkmf/templates/hera-intel.mk -p lib_ocean.a -o -I/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL path_names
++ ../../../../src/mkmf/bin/mkmf -t ../../../../src/mkmf/templates/hera-intel.mk -p lib_ocean.a -o -I/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL path_names
 .......................................................................................................................................................................................................................................... Makefile is ready.
 + echo 'compiling MOM6 library...'
 compiling MOM6 library...
 + make NETCDF=4 REPRO=1 DEBUG= lib_ocean.a
-make[1]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/build/intel/MOM6_LIB/repro'
+make[1]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/build/intel/MOM6_LIB/repro'
 make[1]: `lib_ocean.a' is up to date.
-make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/build/intel/MOM6_LIB/repro'
+make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/build/intel/MOM6_LIB/repro'
 + echo 'compiling MOM6 library successful'
 compiling MOM6 library successful
 + echo 'compiling MOM6 library done'
 compiling MOM6 library done
-+ cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6
++ cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6
 + mkdir -p exec/hera/
-+ ln -s /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/build/intel/MOM6_LIB/repro exec/hera/lib_ocean
++ ln -s /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/build/intel/MOM6_LIB/repro exec/hera/lib_ocean
 + [[ 0 == 1 ]]
 + echo ==================================================
 ==================================================
 + [[ 0 == 1 ]]
 + echo 'Next recommended step is to rejoice out of happiness from a successful compile.'
 Next recommended step is to rejoice out of happiness from a successful compile.
-. /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6                          ; \
-  exec make -f makefile.nuopc COMP_SRCDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6" COMP_BINDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/MOM6_INSTALL" FMS_BINDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL" MACHINE_ID="hera"               \
-  "FMSDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL"                                        \
-  "NEMSMOMDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/exec/hera"                \
-  "INSTALLDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/MOM6_INSTALL" install
+. /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6                          ; \
+  exec make -f makefile.nuopc COMP_SRCDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6" COMP_BINDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/MOM6_INSTALL" FMS_BINDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL" MACHINE_ID="hera"               \
+  "FMSDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL"                                        \
+  "NEMSMOMDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/exec/hera"                \
+  "INSTALLDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/MOM6_INSTALL" install
 
 Currently Loaded Modules:
   1) contrib            6) bacio/2.0.3   11) w3nco/2.0.7     16) png/1.2.44
@@ -189,19 +189,19 @@ Currently Loaded Modules:
 
  
 
-make[1]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6'
+make[1]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6'
 rm -f mom6.mk.install
-mkdir -p /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/MOM6_INSTALL
-cp -f /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/exec/hera/lib_ocean/lib_ocean.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/MOM6_INSTALL
-cp -f libmom.a mom_cap_mod.mod /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/MOM6_INSTALL
-cp -f mom6.mk.install /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/MOM6_INSTALL/mom6.mk
-make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6'
-test -d "/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/MOM6_INSTALL"
-test -s "/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/MOM6_INSTALL/mom6.mk"
-. /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack                                                   ; \
+mkdir -p /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/MOM6_INSTALL
+cp -f /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/exec/hera/lib_ocean/lib_ocean.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/MOM6_INSTALL
+cp -f libmom.a mom_cap_mod.mod /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/MOM6_INSTALL
+cp -f mom6.mk.install /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/MOM6_INSTALL/mom6.mk
+make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6'
+test -d "/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/MOM6_INSTALL"
+test -s "/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/MOM6_INSTALL/mom6.mk"
+. /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack                                                   ; \
 set -eu                                                           ; \
-export COMP_SRCDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE COMP_BINDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE/CICE_INSTALL SITE="NEMS.hera" SYSTEM_USERDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE" SRCDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE" EXEDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE" NEMS_GRID="T126_mx5"                            ; \
-cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE                                                 ; \
+export COMP_SRCDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE COMP_BINDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE/CICE_INSTALL SITE="NEMS.hera" SYSTEM_USERDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE" SRCDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE" EXEDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE" NEMS_GRID="T126_mx5"                            ; \
+cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE                                                 ; \
 ./comp_ice.backend
 
 Currently Loaded Modules:
@@ -217,10 +217,10 @@ NEMS_GRID = T126_mx025
 tcx comp_ice.backend res grid mx025 1440x1080
 ARCH is Linux.NEMS.hera
 CICE comp_ice.backend ... DEBUG=N
-gmake[1]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE_SRC/lanl_cice/compile'
+gmake[1]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE_SRC/lanl_cice/compile'
 gmake[1]: Nothing to be done for `all'.
-gmake[1]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE_SRC/lanl_cice/compile'
-/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE_SRC/lanl_cice
+gmake[1]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE_SRC/lanl_cice/compile'
+/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE_SRC/lanl_cice
 NTASK = 48
 global N, block_size
 x    1440,    60
@@ -234,9 +234,9 @@ max_blocks = 1
 0 = TRBRI, brine height tracer
 7 = NBGCLYR, number of bio grid layers
 0 = TRBGCS, number of BGC tracers
-. /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE_CAP ; exec make -f makefile.nuopc    \
-  COMP_SRCDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE COMP_BINDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE/CICE_INSTALL SITE="NEMS.hera" SYSTEM_USERDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE" SRCDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE" EXEDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE" NEMS_GRID="T126_mx5"                                                  \
-  "LANLCICEDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE" "INSTALLDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE/CICE_INSTALL" install
+. /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack ; cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE_CAP ; exec make -f makefile.nuopc    \
+  COMP_SRCDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE COMP_BINDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE/CICE_INSTALL SITE="NEMS.hera" SYSTEM_USERDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE" SRCDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE" EXEDIR="/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE" NEMS_GRID="T126_mx5"                                                  \
+  "LANLCICEDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE" "INSTALLDIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE/CICE_INSTALL" install
 
 Currently Loaded Modules:
   1) contrib            6) bacio/2.0.3   11) w3nco/2.0.7     16) png/1.2.44
@@ -247,30 +247,30 @@ Currently Loaded Modules:
 
  
 
-make[1]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE_SRC/lanl_cice_cap'
+make[1]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE_SRC/lanl_cice_cap'
 rm -f cice.mk.install
-mkdir -p /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE/CICE_INSTALL
-cp -f /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE/liblanl_cice.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE/CICE_INSTALL
-cp -f libcice.a cice_cap_mod.mod /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE/CICE_INSTALL 
-cp -f cice.mk.install /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE/CICE_INSTALL/cice.mk
-make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE_SRC/lanl_cice_cap'
-test -f /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE/CICE_INSTALL/cice.mk
+mkdir -p /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE/CICE_INSTALL
+cp -f /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE/liblanl_cice.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE/CICE_INSTALL
+cp -f libcice.a cice_cap_mod.mod /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE/CICE_INSTALL 
+cp -f cice.mk.install /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE/CICE_INSTALL/cice.mk
+make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE_SRC/lanl_cice_cap'
+test -f /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE/CICE_INSTALL/cice.mk
 ( \
 echo "# Do not edit this file.  It is automatically generated." ; \
-echo "# Edit the component list or /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf/configure.nems.NUOPC.in"                          ; \
-echo ; cat "/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf/configure.nems.NUOPC.in"                                                 ; \
-echo fms_mk="/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL/fms.mk" ; echo fv3_mk="/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/FV3_INSTALL/fv3.mk" ; echo mom6_mk="/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/MOM6_INSTALL/mom6.mk" ; echo cice_mk="/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE/CICE_INSTALL/cice.mk" ; ) > "/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf/configure.nems.NUOPC"
-. /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack                                         ; \
+echo "# Edit the component list or /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf/configure.nems.NUOPC.in"                          ; \
+echo ; cat "/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf/configure.nems.NUOPC.in"                                                 ; \
+echo fms_mk="/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL/fms.mk" ; echo fv3_mk="/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/FV3_INSTALL/fv3.mk" ; echo mom6_mk="/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/MOM6_INSTALL/mom6.mk" ; echo cice_mk="/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE/CICE_INSTALL/cice.mk" ; ) > "/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf/configure.nems.NUOPC"
+. /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf/module-setup.sh.inc ; stack=`ulimit -S -s`                  ; ulimit -S -s 200000                     ; module use /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/conf                 ; module load modules.nems              ; module list                           ; ulimit -S -s $stack                                         ; \
 set -e                                                  ; \
-for m in /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL/fms.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/FV3_INSTALL/fv3.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/MOM6_INSTALL/mom6.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE/CICE_INSTALL/cice.mk ; do                   \
+for m in /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL/fms.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/FV3_INSTALL/fv3.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/MOM6_INSTALL/mom6.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE/CICE_INSTALL/cice.mk ; do                   \
   test -s $m                                           ; \
 done                                                    ; \
-echo build NEMS after /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL/fms.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/FV3_INSTALL/fv3.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/MOM6_INSTALL/mom6.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE/CICE_INSTALL/cice.mk         ; \
-cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src                                       ; \
+echo build NEMS after /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL/fms.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/FV3_INSTALL/fv3.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/MOM6_INSTALL/mom6.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE/CICE_INSTALL/cice.mk         ; \
+cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src                                       ; \
 make nems                              \
           COMPONENTS="FMS FV3 MOM6 CICE"                      \
-          FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL FV3_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/FV3_INSTALL MOM6_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/MOM6_INSTALL CICE_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE/CICE_INSTALL TARGET="/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/exe/NEMS.x"    ; \
-test -x /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/exe/NEMS.x
+          FMS_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL FV3_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/FV3_INSTALL MOM6_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/MOM6_INSTALL CICE_DIR=/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE/CICE_INSTALL TARGET="/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/exe/NEMS.x"    ; \
+test -x /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/exe/NEMS.x
 
 Currently Loaded Modules:
   1) contrib            6) bacio/2.0.3   11) w3nco/2.0.7     16) png/1.2.44
@@ -281,12 +281,12 @@ Currently Loaded Modules:
 
  
 
-build NEMS after /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL/fms.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/FV3_INSTALL/fv3.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/MOM6_INSTALL/mom6.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE/CICE_INSTALL/cice.mk
+build NEMS after /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL/fms.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/FV3_INSTALL/fv3.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/MOM6_INSTALL/mom6.mk /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE/CICE_INSTALL/cice.mk
 Components in linker order: CICE MOM6 FV3 FMS
-CICE: include /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE/CICE_INSTALL/cice.mk
-MOM6: include /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/MOM6_INSTALL/mom6.mk
-FV3: include /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/FV3_INSTALL/fv3.mk
-FMS: include /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL/fms.mk
+CICE: include /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE/CICE_INSTALL/cice.mk
+MOM6: include /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/MOM6_INSTALL/mom6.mk
+FV3: include /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/FV3_INSTALL/fv3.mk
+FMS: include /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL/fms.mk
 CPPFLAGS += ESMF_VERSION_STRING_GIT="ESMF_8_0_0"
 CPPFLAGS += ESMF_VERSION_BETASNAPSHOT="'F'"
 CPPFLAGS += ESMF_VERSION_MINOR="0"
@@ -295,33 +295,33 @@ CPPFLAGS += ESMF_VERSION_STRING="8.0.0"
 CPPFLAGS += ESMF_VERSION_REVISION="0"
 CPPFLAGS += ESMF_VERSION_MAJOR="8"
 CPPFLAGS += ESMF_VERSION_PUBLIC="'T'"
-make[1]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src'
+make[1]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src'
 cd ENS_Cpl             && make stub
-make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/ENS_Cpl'
+make[2]: Entering directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/ENS_Cpl'
 ar rv ENS_Cpl.a ENS_CplComp_ESMFMod_STUB.o
 r - ENS_CplComp_ESMFMod_STUB.o
-make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src/ENS_Cpl'
+make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src/ENS_Cpl'
 echo libgocart is 
 libgocart is
 echo extlibs is /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libncep_post_v8.0.1_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libnemsio_v2.2.4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libg2_v3.1.1_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libg2tmpl_v1.6.0.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libbacio_v2.0.3_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libsp_v2.0.3_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libw3emc_v2.3.1_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libw3nco_v2.0.7_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libcrtm_v2.2.6.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libpng_v1.2.44.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/gnu/4.8.5/lib/libjasper_v1.900.1.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libz_v1.2.11.a -L/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/lib -Wl,-rpath,/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/lib -lesmf  -cxxlib -lrt -ldl -lnetcdff -lnetcdf  -qopenmp  -L/apps/netcdf/4.7.0/intel/18.0.5.274/lib -lnetcdff -lnetcdf
 extlibs is /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libncep_post_v8.0.1_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libnemsio_v2.2.4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libg2_v3.1.1_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libg2tmpl_v1.6.0.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libbacio_v2.0.3_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libsp_v2.0.3_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libw3emc_v2.3.1_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libw3nco_v2.0.7_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libcrtm_v2.2.6.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libpng_v1.2.44.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/gnu/4.8.5/lib/libjasper_v1.900.1.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libz_v1.2.11.a -L/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/lib -Wl,-rpath,/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/lib -lesmf -cxxlib -lrt -ldl -lnetcdff -lnetcdf -qopenmp -L/apps/netcdf/4.7.0/intel/18.0.5.274/lib -lnetcdff -lnetcdf
-mpiifort  -o /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/exe/NEMS.x MAIN_NEMS.o module_NEMS_UTILS.o module_MEDIATOR_methods.o module_MEDIATOR.o module_MEDIATOR_SpaceWeather.o module_EARTH_INTERNAL_STATE.o module_EARTH_GRID_COMP.o module_NEMS_INTERNAL_STATE.o module_NEMS_GRID_COMP.o module_NEMS_Rusage.o nems_c_rusage.o  /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE/CICE_INSTALL/libcice.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/CICE/CICE_INSTALL/liblanl_cice.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/MOM6_INSTALL/libmom.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/MOM6/MOM6_INSTALL/lib_ocean.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/FV3_INSTALL/libfv3cap.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/FV3_INSTALL/libfv3core.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/FV3_INSTALL/libfv3io.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/FV3_INSTALL/libipd.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/FV3_INSTALL/libgfsphys.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/FV3_INSTALL/libfv3cpl.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FV3/FV3_INSTALL/libstochastic_physics.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/FMS/FMS_INSTALL/libfms.a ENS_Cpl/ENS_Cpl.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libncep_post_v8.0.1_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libnemsio_v2.2.4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libg2_v3.1.1_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libg2tmpl_v1.6.0.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libbacio_v2.0.3_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libsp_v2.0.3_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libw3emc_v2.3.1_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libw3nco_v2.0.7_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libcrtm_v2.2.6.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libpng_v1.2.44.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/gnu/4.8.5/lib/libjasper_v1.900.1.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libz_v1.2.11.a -L/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/lib -Wl,-rpath,/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/lib -lesmf  -cxxlib -lrt -ldl -lnetcdff -lnetcdf  -qopenmp  -L/apps/netcdf/4.7.0/intel/18.0.5.274/lib -lnetcdff -lnetcdf  
+mpiifort  -o /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/exe/NEMS.x MAIN_NEMS.o module_NEMS_UTILS.o module_MEDIATOR_methods.o module_MEDIATOR.o module_MEDIATOR_SpaceWeather.o module_EARTH_INTERNAL_STATE.o module_EARTH_GRID_COMP.o module_NEMS_INTERNAL_STATE.o module_NEMS_GRID_COMP.o module_NEMS_Rusage.o nems_c_rusage.o  /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE/CICE_INSTALL/libcice.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/CICE/CICE_INSTALL/liblanl_cice.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/MOM6_INSTALL/libmom.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/MOM6/MOM6_INSTALL/lib_ocean.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/FV3_INSTALL/libfv3cap.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/FV3_INSTALL/libfv3core.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/FV3_INSTALL/libfv3io.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/FV3_INSTALL/libipd.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/FV3_INSTALL/libgfsphys.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/FV3_INSTALL/libfv3cpl.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FV3/FV3_INSTALL/libstochastic_physics.a /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/FMS/FMS_INSTALL/libfms.a ENS_Cpl/ENS_Cpl.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libncep_post_v8.0.1_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libnemsio_v2.2.4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libg2_v3.1.1_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libg2tmpl_v1.6.0.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libbacio_v2.0.3_4.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libsp_v2.0.3_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libw3emc_v2.3.1_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libw3nco_v2.0.7_d.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libcrtm_v2.2.6.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libpng_v1.2.44.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/gnu/4.8.5/lib/libjasper_v1.900.1.a /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/intel/18.0.5.274/lib/libz_v1.2.11.a -L/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/lib -Wl,-rpath,/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/lib -lesmf  -cxxlib -lrt -ldl -lnetcdff -lnetcdf  -qopenmp  -L/apps/netcdf/4.7.0/intel/18.0.5.274/lib -lnetcdff -lnetcdf  
 /scratch2/NCEPDEV/nwprod/NCEPLIBS/compilers/gnu/4.8.5/lib/libjasper_v1.900.1.a(jas_stream.o): In function `jas_stream_tmpfile':
 jas_stream.c:(.text+0x7a7): warning: the use of `tmpnam' is dangerous, better use `mkstemp'
-/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/exe/NEMS.x is created.
-make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src'
-+ cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/update2020/ufs-s2s-model/NEMS/src
-+ cp -fp ../exe/NEMS.x /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.168876/exec/fv3_mom6_cice.exe
-+ cp -fp conf/modules.nems /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.168876/include/modules_fv3_mom6_cice
-+ md5sum /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.168876/exec/fv3_mom6_cice.exe
+/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/exe/NEMS.x is created.
+make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src'
++ cd /scratch2/NCEPDEV/climate/Bin.Li/scrub/ufs-s2s-model/NEMS/src
++ cp -fp ../exe/NEMS.x /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.7798/exec/fv3_mom6_cice.exe
++ cp -fp conf/modules.nems /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.7798/include/modules_fv3_mom6_cice
++ md5sum /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.7798/exec/fv3_mom6_cice.exe
 + unset md5sum
 + unset OPTS
 + set -xe
 + set -xe
-+ test -s /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.168876/exec/fv3_mom6_cice.exe
-+ test -x /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.168876/exec/fv3_mom6_cice.exe
++ test -s /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.7798/exec/fv3_mom6_cice.exe
++ test -x /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.7798/exec/fv3_mom6_cice.exe
 _______________________________________________________________
-Start Epilog v19.07.23 on node h25c48 for job 3233373 :: Thu Jan 30 19:48:04 UTC 2020
-Job 3233373 (not serial) finished for user Bin.Li in partition hera with exit code 0:0
+Start Epilog v19.07.23 on node h1c15 for job 3823124 :: Wed Feb 19 15:07:38 UTC 2020
+Job 3823124 (not serial) finished for user Bin.Li in partition hera with exit code 0:0
 _______________________________________________________________
-End Epilogue v19.07.23 Thu Jan 30 19:48:04 UTC 2020
+End Epilogue v19.07.23 Wed Feb 19 15:07:38 UTC 2020
