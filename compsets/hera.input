@@ -26,8 +26,8 @@ platform hera.intel {
     # INPUTS is the input directory, which should contain fix and parm
     # files, plus any restarts or other inputs.
 
-    BASELINE="/scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/master-20191125"
-    BASELINE_TEMPLATE="/scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/master-20191125"
+    BASELINE="/scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/master-20200228"
+    BASELINE_TEMPLATE="/scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/master-20200228"
     INPUTS="@[BASELINE]"
 
     default_resources={
@@ -71,6 +71,19 @@ platform hera.intel {
         atm_petlist_bounds="0 149"
         ocn_petlist_bounds="150 269"
         ice_petlist_bounds="270 317"
+    }
+
+    default_cpl_threaded_resources={
+        TASKS=246
+        TPN=40
+        INPES=3
+        JNPES=4
+        THRD=2
+        WRTTASK_PER_GROUP=6
+        med_petlist_bounds="0 77"
+        atm_petlist_bounds="0 77"
+        ocn_petlist_bounds="78 197"
+        ice_petlist_bounds="198 245"
     }
 
     default_cpl_benchmark={
