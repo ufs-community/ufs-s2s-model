@@ -26,8 +26,8 @@ platform wcoss.phase2 {
     LONG_TEST_QUEUE='&LONGQ;'
     BUILD_QUEUE='&BUILDQ;'
     MACHINE_ID='wcoss.phase2'
-    BASELINE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20191125"
-    BASELINE_TEMPLATE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20191125"
+    BASELINE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20200128"
+    BASELINE_TEMPLATE="/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20200128"
 
     default_resources={
         #TPN=8
@@ -253,8 +253,8 @@ platform wcoss_dell_p3 {
     LONG_TEST_QUEUE='&LONGQ;'
     BUILD_QUEUE='&BUILDQ;'
 
-    BASELINE="/gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20191025"
-    BASELINE_TEMPLATE="/gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20191025"
+    BASELINE="/gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20200128"
+    BASELINE_TEMPLATE="/gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20200128"
 
     default_resources={
         TASKS=156
@@ -374,8 +374,8 @@ platform wcoss.cray {
     BUILD_WALLTIME="3600"
     DEFAULT_TEST_WALLTIME=1800
 
-    BASELINE="/gpfs/hps3/emc/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20191025"
-    BASELINE_TEMPLATE="/gpfs/hps3/emc/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20191025"
+    BASELINE="/gpfs/hps3/emc/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20200128"
+    BASELINE_TEMPLATE="/gpfs/hps3/emc/nems/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/master-20200128"
 
     execution_time_modules=[[[
       module load alps

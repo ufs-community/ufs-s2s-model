@@ -84,3 +84,7 @@ Change log:
                   25c3321 stochastic_physics (heads/master)
 * Nov. 20, 2019   FV3_input_data was synced with NEMSfv3gfs/trunk-20191109/FV3_input_data
                   Input templates were removed and fix file directories were cleaned up 
+* Jan. 28, 2020   FV3 ensures imported ice_fraction is in range (0-1), merges between
+                  ice and ocean in prep_atm phase of mediator are removed
+* Feb. 27, 2020   Field name changes for CICE SW, removal of custom merges in prep_atm, removal
+                  of mediator fluxes for icy water in prep_ocn
