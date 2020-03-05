@@ -1,6 +1,19 @@
-need groups:
+On Hera need group memberships:
 stmp
 nems
 
 software reqts:
-python must be python2
+python must be python2 for the test case (as of 2 January 2020)
+
+Download source:
+% git clone https://github.com/ufs-community/ufs-s2s-model
+% cd ufs-s2s-model
+% git checkout develop (or tags)
+% git submodule update --init --recursive
+(do periodically to ensure no divergence from master)
+
+Build:
+./NEMS/NEMSAppBuilder app=coupledFV3_MOM6_CICE 
+
+Run test cases:
+./NEMS/NEMSCompsetRun --project=marine-cpu -f

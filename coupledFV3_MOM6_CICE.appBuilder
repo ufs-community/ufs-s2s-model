@@ -2,4 +2,4 @@
 #
 ## NEMS Application Builder file
 
-COMPONENTS=( FMS FV3 MOM6 CICE )
+COMPONENTS=( CICE FMS FV3 MOM6 )
