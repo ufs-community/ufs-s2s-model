@@ -47,7 +47,7 @@
   ntiles   = 6,
   npz    = @[NPZ]
   grid_type = -1
-  make_nh = .true.
+  make_nh = @[MAKE_NH]
   fv_debug = .false.
   range_warn = .false.
   reset_eta = .false.
@@ -71,7 +71,7 @@
   k_split = 2
   n_split = 6
   nwat = 6
-  na_init = 1
+  na_init = @[NA_INIT]
   d_ext = 0.
   dnats = 1
   fv_sg_adj = 450
@@ -83,11 +83,11 @@
   delt_max = 0.002
   ke_bg = 0.
   do_vort_damp = .true.
-  external_ic = .true.
+  external_ic = @[EXTERNAL_IC]
   external_eta = .true.
   gfs_phil = .false.
-  nggps_ic = .true.
-  mountain = .false.
+  nggps_ic = @[NGGPS_IC]
+  mountain = @[MOUNTAIN]
   ncep_ic = .false.
   d_con = 1.
   hord_mt = 5
@@ -102,7 +102,7 @@
   fill = .true.
   dwind_2d = .false.
   print_freq = 6
-  warm_start = .false.
+  warm_start = @[WARM_START]
   no_dycore = .false.
   z_tracer = .true.
   agrid_vel_rst = .true.

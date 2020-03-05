@@ -1,15 +1,15 @@
 ########################################################################
-test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe { 
+test cpld_fv3_mom6_cice_1d_atm_flux: fv3_mom6_cice.exe { 
     use plat 
     use plat%default_cpl
     use fv3_defaults 
     use cpl_defaults 
  
-    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm" 
-    CNTL_NAME="RT-Baselines_2d_warm@[ATMRES]@[MEDCOMP]" 
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 1d_warm" 
+    CNTL_NAME="RT-Baselines_1d_warm@[ATMRES]@[MEDCOMP]" 
  
-    DAYS='2'  # run for 2 days
-    FHMAX='48'
+    DAYS='1'  # run for 1 days
+    FHMAX='24'
     FDIAG='6' 
     walltime=3600   # seconds
  
@@ -101,7 +101,7 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
 # for cmeps case, the pointer file will contain the actual restart file name
 # for nems, it will be the blank file copied from PARMnems into coldstart
                   'rpointer.med'  <=copy=     "@[MED_restart_data]/rpointer.med"
-    } 
+    }
  
     # Edit the templates for the compset parameters
     prerun=edit_inputs(CDATE="@[CDATE]",
@@ -122,18 +122,18 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     # Specify output files:
     criteria output {
         # WORKFILE                            .comparison. TARGET
-        'phyf048.tile1.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile2.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile3.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile4.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile5.nc'      .bitcmp. "@[CNTL]"
-        'phyf048.tile6.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile1.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile2.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile3.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile4.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile5.nc'      .bitcmp. "@[CNTL]"
-        'dynf048.tile6.nc'      .bitcmp. "@[CNTL]"
+        'phyf024.tile1.nc'      .bitcmp. "@[CNTL]"
+        'phyf024.tile2.nc'      .bitcmp. "@[CNTL]"
+        'phyf024.tile3.nc'      .bitcmp. "@[CNTL]"
+        'phyf024.tile4.nc'      .bitcmp. "@[CNTL]"
+        'phyf024.tile5.nc'      .bitcmp. "@[CNTL]"
+        'phyf024.tile6.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile1.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile2.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile3.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile4.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile5.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile6.nc'      .bitcmp. "@[CNTL]"
         'RESTART/coupler.res'                     .bitcmp. "@[CNTL]/RESTART"
         'RESTART/fv_core.res.nc'                  .bitcmp. "@[CNTL]/RESTART"
         'RESTART/fv_core.res.tile1.nc'            .bitcmp. "@[CNTL]/RESTART"
@@ -170,7 +170,7 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
         'MOM6_RESTART/MOM.res_1.nc'               .bitcmp. "@[CNTL]/RESTART"
         'MOM6_RESTART/MOM.res_2.nc'               .bitcmp. "@[CNTL]/RESTART"
         'MOM6_RESTART/MOM.res_3.nc'               .bitcmp. "@[CNTL]/RESTART"
-        'restart/iced.2016-10-05-00000.nc'        .bitcmp. "@[CNTL]/RESTART"
+        'restart/iced.2016-10-04-00000.nc'        .bitcmp. "@[CNTL]/RESTART"
         'mediator_FBaccumAtm_restart.tile1.nc'    .bitcmp. "@[CNTL]/RESTART"
         'mediator_FBaccumAtm_restart.tile2.nc'    .bitcmp. "@[CNTL]/RESTART"
         'mediator_FBaccumAtm_restart.tile3.nc'    .bitcmp. "@[CNTL]/RESTART"

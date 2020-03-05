@@ -1,0 +1,557 @@
+######################################################################## 
+# cold c384 cmeps
+test cpld_fv3_384_mom6_cice_cold_cmeps_atm_flux: fv3_mom6_cice_cmeps.exe {
+    use cpld_fv3_mom6_cice_cold_atm_flux
+
+    MEDCOMP="cmeps"
+    ATMRES='384'
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold 384"
+
+    build=fv3_mom6_cice_cmeps.exe
+
+    prep=fv3cpld_prep(
+        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice_cmeps.exe%modules.nems]",
+        CNTL="@[CNTL]")
+
+    DT_ATMOS='450'
+    NPX='385'
+    NPY='385'
+    IMO='1536'
+    JMO='768'
+    FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
+    FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
+    FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
+    FNSMCC="'global_soilmgldas.t766.1536.768.grb',"
+    FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
+
+    FV3_mosaic="C@[ATMRES]"
+   
+    # The comparison section is required because the mediator file name changes 
+    # for CMEPS
+    
+    # Specify output files:
+    criteria output {
+        # WORKFILE                            .comparison. TARGET
+        'phyf001.tile1.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile2.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile3.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile4.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile5.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile6.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile1.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile2.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile3.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile4.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile5.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile6.nc'      .bitcmp. "@[CNTL]"
+        'RESTART/coupler.res'                   .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.nc'                .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile1.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile2.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile3.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile4.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile5.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile6.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile1.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile2.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile3.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile4.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile5.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile6.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile1.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile2.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile3.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile4.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile5.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile6.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile1.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile2.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile3.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile1.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile2.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile3.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'ufs.s2s.c384_t025.jan.jul02.cpl.r.@[SYEAR]-@[SMONTH]-@[SDAY]-03600.nc'     .bitcmp. "@[CNTLMED]/"
+      # Executable validation.  This makes an MD5 sum of the fv3.exe
+      # for comparison against the MD5 sum made in the build job.
+      # This is to ensure the executable did not change during the
+      # test suite.
+        "@[build%target]" .md5cmp. "@[fv3_mom6_cice_cmeps.exe%md5sum]" 
+    }
+ 
+}
+########################################################################
+# warm 1d c384 cmeps
+
+test cpld_fv3_mom6_cice_1d_cmeps_atm_flux: fv3_mom6_cice.exe {
+    use cpld_fv3_mom6_cice_1d_atm_flux
+
+    MEDCOMP="cmeps"
+    ATMRES='384'
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm"
+
+    build=fv3_mom6_cice_cmeps.exe
+
+    prep=fv3cpld_prep(
+        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice_cmeps.exe%modules.nems]",
+        CNTL="@[CNTL]")
+
+    DT_ATMOS='450'
+    NPX='385'
+    NPY='385'
+    IMO='1536'
+    JMO='768'
+    walltime=5600   # seconds
+    FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
+    FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
+    FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
+    FNSMCC="'global_soilmgldas.t766.1536.768.grb',"
+    FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
+
+    FV3_mosaic="C@[ATMRES]"
+
+    # Specify output files:
+    criteria output {
+        # WORKFILE                            .comparison. TARGET
+        'phyf024.tile1.nc'      .bitcmp. "@[CNTL]"
+        'phyf024.tile2.nc'      .bitcmp. "@[CNTL]"
+        'phyf024.tile3.nc'      .bitcmp. "@[CNTL]"
+        'phyf024.tile4.nc'      .bitcmp. "@[CNTL]"
+        'phyf024.tile5.nc'      .bitcmp. "@[CNTL]"
+        'phyf024.tile6.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile1.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile2.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile3.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile4.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile5.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile6.nc'      .bitcmp. "@[CNTL]"
+        'RESTART/coupler.res'                     .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.nc'                  .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile1.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile2.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile3.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile4.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile5.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile6.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile1.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile2.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile3.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile4.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile5.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile6.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile1.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile2.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile3.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile4.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile5.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile6.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile1.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile2.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile3.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile4.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile5.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile6.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile1.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile2.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile3.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile4.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile5.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile6.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'MOM6_RESTART/MOM.res.nc'                 .bitcmp. "@[CNTL]/RESTART"
+        'MOM6_RESTART/MOM.res_1.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'MOM6_RESTART/MOM.res_2.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'MOM6_RESTART/MOM.res_3.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'restart/iced.2016-10-04-00000.nc'        .bitcmp. "@[CNTL]/RESTART"
+        'ufs.s2s.c384_t025.jan.jul02.cpl.r.@[SYEAR]-@[SMONTH]-@[SDAY]-03600.nc'     .bitcmp. "@[CNTLMED]/"
+      # Executable validation.  This makes an MD5 sum of the fv3.exe
+      # for comparison against the MD5 sum made in the build job.
+      # This is to ensure the executable did not change during the
+      # test suite.
+        "@[build%target]" .md5cmp. "@[fv3_mom6_cice_cmeps.exe%md5sum]" 
+    } 
+}
+######################################################################## 
+# warm 2d c384 cmeps
+ 
+test cpld_fv3_384_mom6_cice_2d_cmeps_atm_flux: fv3_mom6_cice.exe { 
+    use cpld_fv3_mom6_cice_2d_atm_flux 
+ 
+    MEDCOMP="cmeps"
+    ATMRES='384'
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm"
+
+    build=fv3_mom6_cice_cmeps.exe
+
+    prep=fv3cpld_prep(
+        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice_cmeps.exe%modules.nems]",
+        CNTL="@[CNTL]")
+
+    DT_ATMOS='450'
+    NPX='385'
+    NPY='385'
+    IMO='1536'
+    JMO='768'
+    walltime=5600   # seconds
+    FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
+    FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
+    FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
+    FNSMCC="'global_soilmgldas.t766.1536.768.grb',"
+    FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
+
+    FV3_mosaic="C@[ATMRES]"
+
+    # Specify output files:
+    criteria output {
+        # WORKFILE                            .comparison. TARGET
+        'phyf048.tile1.nc'      .bitcmp. "@[CNTL]"
+        'phyf048.tile2.nc'      .bitcmp. "@[CNTL]"
+        'phyf048.tile3.nc'      .bitcmp. "@[CNTL]"
+        'phyf048.tile4.nc'      .bitcmp. "@[CNTL]"
+        'phyf048.tile5.nc'      .bitcmp. "@[CNTL]"
+        'phyf048.tile6.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile1.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile2.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile3.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile4.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile5.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile6.nc'      .bitcmp. "@[CNTL]"
+        'RESTART/coupler.res'                     .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.nc'                  .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile1.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile2.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile3.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile4.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile5.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile6.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile1.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile2.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile3.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile4.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile5.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile6.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile1.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile2.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile3.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile4.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile5.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile6.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile1.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile2.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile3.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile4.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile5.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile6.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile1.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile2.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile3.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile4.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile5.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile6.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'MOM6_RESTART/MOM.res.nc'                 .bitcmp. "@[CNTL]/RESTART"
+        'MOM6_RESTART/MOM.res_1.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'MOM6_RESTART/MOM.res_2.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'MOM6_RESTART/MOM.res_3.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'restart/iced.2016-10-05-00000.nc'        .bitcmp. "@[CNTL]/RESTART"
+        'ufs.s2s.c384_t025.jan.jul02.cpl.r.@[SYEAR]-@[SMONTH]-@[SDAY]-03600.nc'     .bitcmp. "@[CNTLMED]/"
+      # Executable validation.  This makes an MD5 sum of the fv3.exe
+      # for comparison against the MD5 sum made in the build job.
+      # This is to ensure the executable did not change during the
+      # test suite.
+        "@[build%target]" .md5cmp. "@[fv3_mom6_cice_cmeps.exe%md5sum]" 
+    } 
+} 
+######################################################################## 
+# warm 1d restart from 1d c384 cmeps
+
+test cpld_fv3_mom6_cice_restart_cmeps_atm_flux: fv3_mom6_cice.exe {
+    use cpld_fv3_mom6_cice_restart_atm_flux
+
+    MEDCOMP="cmeps"
+    ATMRES='384'
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm"
+
+    build=fv3_mom6_cice_cmeps.exe
+
+    prep=fv3cpld_prep(
+        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice_cmeps.exe%modules.nems]",
+        CNTL="@[CNTL]")
+
+    DT_ATMOS='450'
+    NPX='385'
+    NPY='385'
+    IMO='1536'
+    JMO='768'
+    walltime=5600   # seconds
+    FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
+    FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
+    FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
+    FNSMCC="'global_soilmgldas.t766.1536.768.grb',"
+    FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
+
+    FV3_mosaic="C@[ATMRES]"
+
+    # Specify output files:
+    criteria output {
+        # WORKFILE                            .comparison. TARGET
+        'phyf024.tile1.nc'      .bitcmp. "@[CNTL]"
+        'phyf024.tile2.nc'      .bitcmp. "@[CNTL]"
+        'phyf024.tile3.nc'      .bitcmp. "@[CNTL]"
+        'phyf024.tile4.nc'      .bitcmp. "@[CNTL]"
+        'phyf024.tile5.nc'      .bitcmp. "@[CNTL]"
+        'phyf024.tile6.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile1.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile2.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile3.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile4.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile5.nc'      .bitcmp. "@[CNTL]"
+        'dynf024.tile6.nc'      .bitcmp. "@[CNTL]"
+        'RESTART/coupler.res'                     .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.nc'                  .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile1.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile2.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile3.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile4.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile5.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile6.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile1.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile2.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile3.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile4.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile5.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile6.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile1.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile2.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile3.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile4.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile5.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile6.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile1.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile2.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile3.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile4.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile5.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile6.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile1.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile2.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile3.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile4.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile5.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile6.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'MOM6_RESTART/MOM.res.nc'                 .bitcmp. "@[CNTL]/RESTART"
+        'MOM6_RESTART/MOM.res_1.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'MOM6_RESTART/MOM.res_2.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'MOM6_RESTART/MOM.res_3.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'restart/iced.2016-10-04-00000.nc'        .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumAtm_restart.tile1.nc'    .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumAtm_restart.tile2.nc'    .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumAtm_restart.tile3.nc'    .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumAtm_restart.tile4.nc'    .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumAtm_restart.tile5.nc'    .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumAtm_restart.tile6.nc'    .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumOcn_restart.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumIce_restart.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumLnd_restart.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumHyd_restart.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumAtmOcn_restart.nc'       .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBAtm_a_restart.tile1.nc'       .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBAtm_a_restart.tile2.nc'       .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBAtm_a_restart.tile3.nc'       .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBAtm_a_restart.tile4.nc'       .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBAtm_a_restart.tile5.nc'       .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBAtm_a_restart.tile6.nc'       .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBIce_i_restart.nc'             .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBOcn_o_restart.nc'             .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBLnd_l_restart.nc'             .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBHyd_h_restart.nc'             .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBAtmOcn_o_restart.nc'          .bitcmp. "@[CNTL]/RESTART"
+       #
+       # compare against continuous run
+       #
+       # 'phyf024.tile1.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile1.nc"
+       # 'phyf024.tile2.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile2.nc"
+       # 'phyf024.tile3.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile3.nc"
+       # 'phyf024.tile4.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile4.nc"
+       # 'phyf024.tile5.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile5.nc"
+       # 'phyf024.tile6.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile6.nc"
+       # 'dynf024.tile1.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile1.nc"
+       # 'dynf024.tile2.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile2.nc"
+       # 'dynf024.tile3.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile3.nc"
+       # 'dynf024.tile4.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile4.nc"
+       # 'dynf024.tile5.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile5.nc"
+       # 'dynf024.tile6.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile6.nc"
+       # 'RESTART/coupler.res'                     .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_core.res.nc'                  .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_core.res.tile1.nc'            .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_core.res.tile2.nc'            .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_core.res.tile3.nc'            .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_core.res.tile4.nc'            .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_core.res.tile5.nc'            .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_core.res.tile6.nc'            .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_srf_wnd.res.tile1.nc'         .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_srf_wnd.res.tile2.nc'         .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_srf_wnd.res.tile3.nc'         .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_srf_wnd.res.tile4.nc'         .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_srf_wnd.res.tile5.nc'         .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_srf_wnd.res.tile6.nc'         .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_tracer.res.tile1.nc'          .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_tracer.res.tile2.nc'          .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_tracer.res.tile3.nc'          .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_tracer.res.tile4.nc'          .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_tracer.res.tile5.nc'          .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/fv_tracer.res.tile6.nc'          .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/phy_data.tile1.nc'               .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/phy_data.tile2.nc'               .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/phy_data.tile3.nc'               .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/phy_data.tile4.nc'               .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/phy_data.tile5.nc'               .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/phy_data.tile6.nc'               .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/sfc_data.tile1.nc'               .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/sfc_data.tile2.nc'               .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/sfc_data.tile3.nc'               .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/sfc_data.tile4.nc'               .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/sfc_data.tile5.nc'               .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'RESTART/sfc_data.tile6.nc'               .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'MOM6_RESTART/MOM.res.nc'                 .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'MOM6_RESTART/MOM.res_1.nc'               .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'MOM6_RESTART/MOM.res_2.nc'               .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'MOM6_RESTART/MOM.res_3.nc'               .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'restart/iced.2016-10-04-00000.nc'        .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBaccumAtm_restart.tile1.nc'    .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBaccumAtm_restart.tile2.nc'    .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBaccumAtm_restart.tile3.nc'    .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBaccumAtm_restart.tile4.nc'    .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBaccumAtm_restart.tile5.nc'    .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBaccumAtm_restart.tile6.nc'    .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBaccumOcn_restart.nc'          .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBaccumIce_restart.nc'          .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBaccumLnd_restart.nc'          .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBaccumHyd_restart.nc'          .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBaccumAtmOcn_restart.nc'       .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBAtm_a_restart.tile1.nc'       .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBAtm_a_restart.tile2.nc'       .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBAtm_a_restart.tile3.nc'       .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBAtm_a_restart.tile4.nc'       .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBAtm_a_restart.tile5.nc'       .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBAtm_a_restart.tile6.nc'       .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBIce_i_restart.nc'             .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBOcn_o_restart.nc'             .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBLnd_l_restart.nc'             .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBHyd_h_restart.nc'             .bitcmp. "@[CNTL_REST]/RESTART"
+       # 'mediator_FBAtmOcn_o_restart.nc'          .bitcmp. "@[CNTL_REST]/RESTART"
+      # Executable validation.  This makes an MD5 sum of the fv3.exe
+      # for comparison against the MD5 sum made in the build job.
+      # This is to ensure the executable did not change during the
+      # test suite.
+        "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
+    } 
+}
+######################################################################## 
+# cold c384 benchmark cmeps
+ 
+test cpld_fv3_384_mom6_cice_cold_cmeps_bmark: fv3_mom6_cice_cmeps.exe { 
+    use cpld_fv3_384_mom6_cice_cold_bmark
+
+    MEDCOMP="cmeps"
+
+    build=fv3_mom6_cice_cmeps.exe
+
+    prep=fv3cpld_prep(
+        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice_cmeps.exe%modules.nems]",
+        CNTL="@[CNTL]")
+} 
+######################################################################## 
+# warm 2d c384 benchmark cmeps
+ 
+test cpld_fv3_384_mom6_cice_2d_cmeps_bmark: fv3_mom6_cice_cmeps.exe { 
+    use cpld_fv3_384_mom6_cice_2d_bmark 
+ 
+    MEDCOMP="cmeps"
+    walltime=3600   # seconds   
+
+    #to test restarts, with field dumping on
+    DAYS='0.083333333'
+    FHMAX='2'
+    build=fv3_mom6_cice_cmeps.exe
+
+    prep=fv3cpld_prep(
+        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice_cmeps.exe%modules.nems]",
+        CNTL="@[CNTL]")
+
+    # set location of cold start for mediator restarts
+    # THIS IS A USER's OWN RUN and should reflect the full path to the location of the cold start
+    # eg: "/scratch2/NCEPDEV/stmp1/First.LastName/rtgen.NUMBER/tmp/cpld_fv3_384_mom6_cice_cold_bmark"
+    #MED_restart_data="full-path-to-user-coldstart"
+    MED_restart_data="/scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_rest/@[CDATE]_cold/tmp/cpld_fv3_384_mom6_cice_cold_cmeps_bmark/"
+    # For ufs restarts, 1hr cold
+    RESTART_MED="ufs.s2s.c384_t025.jan.jul02.cpl.r.@[SYEAR]-@[SMONTH]-@[SDAY]-03600.nc"
+}
+######################################################################## 
+# warm 1d c384 benchmark cmeps
+ 
+test cpld_fv3_384_mom6_cice_1d_cmeps_bmark: fv3_mom6_cice_cmeps.exe { 
+    use cpld_fv3_384_mom6_cice_1d_bmark 
+ 
+    MEDCOMP="cmeps"
+    walltime=3600   # seconds   
+
+    #to test restarts, with field dumping on
+    DAYS='0.041666666'
+    FHMAX='1'
+    
+    build=fv3_mom6_cice_cmeps.exe
+
+    prep=fv3cpld_prep(
+        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice_cmeps.exe%modules.nems]",
+        CNTL="@[CNTL]")
+
+    # set location of cold start for mediator restarts
+    # THIS IS A USER's OWN RUN and should reflect the full path to the location of the cold start
+    # eg: "/scratch2/NCEPDEV/stmp1/First.LastName/rtgen.NUMBER/tmp/cpld_fv3_384_mom6_cice_cold_bmark"
+    #MED_restart_data="full-path-to-user-coldstart"
+    MED_restart_data="/scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_rest/@[CDATE]_cold/tmp/cpld_fv3_384_mom6_cice_cold_cmeps_bmark/"
+    # For ufs restarts, 1hr cold
+    RESTART_MED="ufs.s2s.c384_t025.jan.jul02.cpl.r.@[SYEAR]-@[SMONTH]-@[SDAY]-03600.nc"
+}
+######################################################################## 
+# warm 1d c384 from restart benchmark cmeps
+ 
+test cpld_fv3_384_mom6_cice_restart_cmeps_bmark: fv3_mom6_cice_cmeps.exe { 
+    use cpld_fv3_384_mom6_cice_restart_bmark 
+ 
+    MEDCOMP="cmeps"
+    walltime=3600   # seconds   
+
+    #to test restarts, with field dumping on
+    DAYS='0.041666666'
+    FHMAX='1'
+
+    # - set date YYYYMMDDHH
+    SYEAR='2012'
+    SMONTH='01'
+      SDAY='01'
+     SHOUR='01'
+     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
+    
+    build=fv3_mom6_cice_cmeps.exe
+
+    # set locations of ICs
+    BM_IC="/scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_halo/2012010100_1hr/tmp/cpld_fv3_384_mom6_cice_1d_cmeps_bmark"
+    
+    prep=fv3cpld_prep(
+        RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice_cmeps.exe%modules.nems]",
+        CNTL="@[CNTL]")
+
+    # set location of cold start for mediator restarts
+    # THIS IS A USER's OWN RUN and should reflect the full path to the location of the cold start
+    # eg: "/scratch2/NCEPDEV/stmp1/First.LastName/rtgen.NUMBER/tmp/cpld_fv3_384_mom6_cice_cold_bmark"
+    #MED_restart_data="full-path-to-user-coldstart"
+    MED_restart_data="@[BM_IC]"
+    # For ufs restarts, 1hr cold
+    RESTART_MED="ufs.s2s.c384_t025.jan.jul02.cpl.r.@[SYEAR]-@[SMONTH]-@[SDAY]-03600.nc"
+}
+
