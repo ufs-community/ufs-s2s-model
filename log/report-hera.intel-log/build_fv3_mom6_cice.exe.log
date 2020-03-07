@@ -1,9 +1,9 @@
 + [[ fv3_mom6_cice.exe == fv3_mom6_cice.exe ]]
-+ rm -f /scratch1/NCEPDEV/stmp2/Denise.Worthen/scrub/rtgen.27493/exec/fv3_mom6_cice.exe
-+ md5sum=/scratch1/NCEPDEV/stmp2/Denise.Worthen/scrub/rtgen.27493/exec/fv3_mom6_cice.exe.md5
++ rm -f /scratch1/NCEPDEV/stmp2/Denise.Worthen/RTs/rtgen.213492/exec/fv3_mom6_cice.exe
++ md5sum=/scratch1/NCEPDEV/stmp2/Denise.Worthen/RTs/rtgen.213492/exec/fv3_mom6_cice.exe.md5
 + OPTS=app=coupledFV3_MOM6_CICE
-+ mkdir -p /scratch1/NCEPDEV/stmp2/Denise.Worthen/scrub/rtgen.27493/exec /scratch1/NCEPDEV/stmp2/Denise.Worthen/scrub/rtgen.27493/include
-+ rm -f /scratch1/NCEPDEV/stmp2/Denise.Worthen/scrub/rtgen.27493/exec/fv3_mom6_cice.exe /scratch1/NCEPDEV/stmp2/Denise.Worthen/scrub/rtgen.27493/include/modules_fv3_mom6_cice
++ mkdir -p /scratch1/NCEPDEV/stmp2/Denise.Worthen/RTs/rtgen.213492/exec /scratch1/NCEPDEV/stmp2/Denise.Worthen/RTs/rtgen.213492/include
++ rm -f /scratch1/NCEPDEV/stmp2/Denise.Worthen/RTs/rtgen.213492/exec/fv3_mom6_cice.exe /scratch1/NCEPDEV/stmp2/Denise.Worthen/RTs/rtgen.213492/include/modules_fv3_mom6_cice
 + cd /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_addRTs
 + which aprun
 which: no aprun in (/scratch1/NCEPDEV/nems/emc.nemspara/soft/emc-utils/1.1.0/bin:/apps/hpss:/apps/rocoto/1.3.1/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ibutils/bin:/apps/local/bin:/apps/local/sbin:/apps/slurm/default/slurm/tools:/apps/slurm/default/bin:/apps/slurm/default/sbin:/apps/slurm/tools/sbank/bin)
@@ -311,17 +311,17 @@ jas_stream.c:(.text+0x7a7): warning: the use of `tmpnam' is dangerous, better us
 /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_addRTs/NEMS/exe/NEMS.x is created.
 make[1]: Leaving directory `/scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_addRTs/NEMS/src'
 + cd /scratch2/NCEPDEV/climate/Denise.Worthen/WORK/S2S_addRTs/NEMS/src
-+ cp -fp ../exe/NEMS.x /scratch1/NCEPDEV/stmp2/Denise.Worthen/scrub/rtgen.27493/exec/fv3_mom6_cice.exe
-+ cp -fp conf/modules.nems /scratch1/NCEPDEV/stmp2/Denise.Worthen/scrub/rtgen.27493/include/modules_fv3_mom6_cice
-+ md5sum /scratch1/NCEPDEV/stmp2/Denise.Worthen/scrub/rtgen.27493/exec/fv3_mom6_cice.exe
++ cp -fp ../exe/NEMS.x /scratch1/NCEPDEV/stmp2/Denise.Worthen/RTs/rtgen.213492/exec/fv3_mom6_cice.exe
++ cp -fp conf/modules.nems /scratch1/NCEPDEV/stmp2/Denise.Worthen/RTs/rtgen.213492/include/modules_fv3_mom6_cice
++ md5sum /scratch1/NCEPDEV/stmp2/Denise.Worthen/RTs/rtgen.213492/exec/fv3_mom6_cice.exe
 + unset md5sum
 + unset OPTS
 + set -xe
 + set -xe
-+ test -s /scratch1/NCEPDEV/stmp2/Denise.Worthen/scrub/rtgen.27493/exec/fv3_mom6_cice.exe
-+ test -x /scratch1/NCEPDEV/stmp2/Denise.Worthen/scrub/rtgen.27493/exec/fv3_mom6_cice.exe
++ test -s /scratch1/NCEPDEV/stmp2/Denise.Worthen/RTs/rtgen.213492/exec/fv3_mom6_cice.exe
++ test -x /scratch1/NCEPDEV/stmp2/Denise.Worthen/RTs/rtgen.213492/exec/fv3_mom6_cice.exe
 _______________________________________________________________
-Start Epilog v19.07.23 on node h20c47 for job 4596468 :: Sat Mar 7 12:17:56 UTC 2020
-Job 4596468 (not serial) finished for user Denise.Worthen in partition hera with exit code 0:0
+Start Epilog v19.07.23 on node h14c41 for job 4606239 :: Sat Mar 7 18:20:40 UTC 2020
+Job 4606239 (not serial) finished for user Denise.Worthen in partition hera with exit code 0:0
 _______________________________________________________________
-End Epilogue v19.07.23 Sat Mar 7 12:17:56 UTC 2020
+End Epilogue v19.07.23 Sat Mar 7 18:20:40 UTC 2020
