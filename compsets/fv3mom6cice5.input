@@ -316,7 +316,7 @@ test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
 ########################################################################
 # warm 1d c384
 
-test cpld_fv3_mom6_cice_1d_atm_flux: fv3_mom6_cice.exe {
+test cpld_fv3_384_mom6_cice_1d_atm_flux: fv3_mom6_cice.exe {
     use cpld_fv3_mom6_cice_1d_atm_flux
 
     ATMRES='384'
@@ -362,7 +362,7 @@ test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
 ######################################################################## 
 # warm 1d restart from 1d c384
 
-test cpld_fv3_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
+test cpld_fv3_384_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
     use cpld_fv3_mom6_cice_restart_atm_flux
 
     ATMRES='384'

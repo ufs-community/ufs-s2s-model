@@ -7,8 +7,6 @@ test cpld_fv3_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
  
     TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 1d_warm" 
     CNTL_NAME="RT-Baselines_1d_restart@[ATMRES]@[MEDCOMP]"
-    # the source of the 1d restarts to use 
-    CNTL_REST="RT-Baselines_1d_warm@[ATMRES]@[MEDCOMP]"
 
     DAYS='1'  # run for 1 days
     FHMAX='24'
@@ -18,6 +16,8 @@ test cpld_fv3_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
     COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
     RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 
     CNTL="@[plat%BASELINE]/@[CNTL_NAME]"      # Control baseline area 
+    # the source of the 1d restarts to use 
+    CNTL_REST="@[plat%BASELINE]/RT-Baselines_1d_warm@[ATMRES]@[MEDCOMP]"
 
       FV3_input_data="@[plat%INPUTS]/FV3_input_data@[ATMRES]" 
      UGCS_input_data="@[plat%INPUTS]"
@@ -50,13 +50,15 @@ test cpld_fv3_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
     RUNTYPE='continue'
     USE_RESTART_TIME='.true.'
 
+    MOM6_RESTART_SETTING = 'r'
+
     WARM_START='.T.'
     MAKE_NH='.F.'
     NA_INIT='0'
     EXTERNAL_IC='.F.'
     NGGPS_IC='.F.'
     MOUNTAIN='.T.'
-
+    
     # set default locations of ICs
               FV3_IC="@[CNTL_REST]/RESTART"
              MOM6_IC="@[CNTL_REST]/RESTART"
@@ -93,9 +95,11 @@ test cpld_fv3_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
        'grid_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE_FIX/@[OCNRES]/grid_cice_NEMS_mx025.nc"
        'kmtu_cice_NEMS_mx025.nc'  <=copy=     "@[UGCS_input_data]/CICE_FIX/@[OCNRES]/kmtu_cice_NEMS_mx025.nc"
 # ICs
-                       'INPUT/*'  <=copyfrom= "@[FV3_IC]"
+                     'INPUT/fv*'  <=copyfrom= "@[FV3_IC]"
+            'INPUT/*_data*tile*'  <=copyfrom= "@[FV3_IC]"
+             'INPUT/coupler.res'  <=copy=     "@[FV3_IC]/coupler.res"
                  'INPUT/MOM*.nc'  <=copyfrom= "@[MOM6_IC]"
-                     "restart/*"  <=copyfrom= "@[CICE5_IC]"
+                  "restart/ice*"  <=copyfrom= "@[CICE5_IC]"
 # namelists,templates and configurations
                      'input.nml'  <=atparse=  "@[PARMnems]/@[INPUT_NML]"
                'model_configure'  <=atparse=  "@[PARMnems]/model_configure.IN"
