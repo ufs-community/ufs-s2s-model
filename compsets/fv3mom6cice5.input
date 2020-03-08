@@ -22,9 +22,9 @@ embed bash fv3cpld_prep(RUNDIR,modules,CNTL) [[[
 
         mkdir RESTART INPUT 
         #For MOM6
-        mkdir MOM6_RESTART MOM6_OUTPUT
+        mkdir MOM6_OUTPUT
         #For CICE
-        mkdir history restart
+        mkdir history
 
         export MPI_TYPE_DEPTH=20
         export OMP_STACKSIZE=512M
