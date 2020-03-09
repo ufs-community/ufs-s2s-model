@@ -86,7 +86,6 @@ runSeq::
      MED med_phases_prep_ocn_map        
      MED med_phases_prep_ocn_merge      
      MED med_phases_prep_ocn_accum_fast 
-     MED med_phases_history_write       
      MED med_phases_profile             
    @                                    
    OCN -> MED :remapMethod=redist       

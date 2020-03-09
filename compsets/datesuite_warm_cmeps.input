@@ -3,7 +3,7 @@
    # set this as the location of the 4 cold starts
    # THIS IS A USERS OWN RUN and should reflect the path to the location of the cold starts
    # eg: "/scratch2/NCEPDEV/stmp1/First.LastName/rtgen.NUMBER"
-   ROOTDIR = "/scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_cmeps/2012_cold"
+   ROOTDIR = "/scratch2/NCEPDEV/stmp1/First.LastName/rtgen.NUMBER"
 
 datesuite_defaults = {
     DAYS='35'

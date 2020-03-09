@@ -22,9 +22,9 @@ embed bash fv3cpld_prep(RUNDIR,modules,CNTL) [[[
 
         mkdir RESTART INPUT 
         #For MOM6
-        mkdir MOM6_RESTART MOM6_OUTPUT
+        mkdir MOM6_OUTPUT
         #For CICE
-        mkdir history restart
+        mkdir history
 
         export MPI_TYPE_DEPTH=20
         export OMP_STACKSIZE=512M
@@ -61,7 +61,7 @@ build fv3_mom6_cice.exe {
  
     # The NEMSAppBuilder is another embedded bash script in nemscommon.input 
     build=NEMSAppBuilder(NEMS.x="@[target]",modules.nems="@[modules.nems]", 
-                         OPTS="app=coupledFV3_MOM6_CICE_NEMS",md5sum="@[md5sum]") 
+                         OPTS="app=coupledFV3_MOM6_CICE",md5sum="@[md5sum]") 
 }
 
 build fv3_mom6_cice_cmeps.exe {
@@ -123,8 +123,8 @@ cpl_defaults = {
     EXTERNAL_IC='.T.'
     NGGPS_IC='.T.'
     MOUNTAIN='.F.'
-# default mediator
-    MEDIATOR=''
+# default mediator component (NEMS mediator)
+    MEDCOMP=''
 }
 ########################################################################
 # embeded bash script to create input files at prerun from specification 
@@ -203,7 +203,9 @@ EOT
 ########################################################################
 
 load 'cpld_fv3_mom6_cice_cold_atm_flux.input'
+load 'cpld_fv3_mom6_cice_1d_atm_flux.input'
 load 'cpld_fv3_mom6_cice_2d_atm_flux.input'
+load 'cpld_fv3_mom6_cice_restart_atm_flux.input'
 
 ######################################################################## 
 # cold c96
@@ -211,7 +213,14 @@ load 'cpld_fv3_mom6_cice_2d_atm_flux.input'
 test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe { 
     use cpld_fv3_mom6_cice_cold_atm_flux 
 
-} 
+}
+########################################################################
+# warm 1d c96
+
+test cpld_fv3_mom6_cice_1d_atm_flux: fv3_mom6_cice.exe {
+    use cpld_fv3_mom6_cice_1d_atm_flux
+
+    }
 ######################################################################## 
 # warm 2d c96
 
@@ -219,6 +228,69 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     use cpld_fv3_mom6_cice_2d_atm_flux 
  
 } 
+######################################################################## 
+# warm 1d restart from 1d c96
+
+test cpld_fv3_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
+    use cpld_fv3_mom6_cice_restart_atm_flux
+
+}
+######################################################################## 
+# warm 2d c96 2 threads
+
+test cpld_fv3_mom6_cice_2d_2threads: fv3_mom6_cice.exe { 
+    use cpld_fv3_mom6_cice_2d_atm_flux 
+    use plat%default_cpl_threaded_resources
+
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2 threads"
+    CNTL_NAME="RT-Baselines_2d_warm@[ATMRES]"
+
+    spawn execute {
+        {"@[build%target]", ranks="@[TASKS]", threads="@[THRD]" }
+    }
+} 
+######################################################################## 
+# warm 2d c96 decomp
+
+test cpld_fv3_mom6_cice_2d_decomp: fv3_mom6_cice.exe { 
+    use cpld_fv3_mom6_cice_2d_atm_flux 
+
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - decomp"
+    CNTL_NAME="RT-Baselines_2d_warm@[ATMRES]"
+
+    INPES='6'
+    JNPES='4'
+} 
+######################################################################## 
+# cold c96 satmedmf
+
+test cpld_fv3_mom6_cice_cold_satmedmf: fv3_mom6_cice.exe { 
+    use cpld_fv3_mom6_cice_cold_atm_flux 
+
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold_satmedmf"
+    CNTL_NAME="RT-Baselines_cold_satmedmf"
+    CNTL="@[plat%BASELINE]/@[CNTL_NAME]"      # Control baseline area
+    CNTLMED="@[plat%BASELINE]/MEDIATOR_satmedmf"
+
+    SATMEDMF='.true.'
+    HYBEDMF='.false.'
+    FIELD_TABLE='field_table_satmedmf'
+} 
+######################################################################## 
+# warm 1d c96 satmedmf
+
+test cpld_fv3_mom6_cice_1d_satmedmf: fv3_mom6_cice.exe { 
+    use cpld_fv3_mom6_cice_1d_atm_flux 
+
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - satmedmf"
+    CNTL_NAME="RT-Baselines_1d_warm_satmedmf"
+
+    SATMEDMF='.true.'
+    HYBEDMF='.false.'
+
+    FIELD_TABLE='field_table_satmedmf'
+    MED_restart_data="@[plat%BASELINE]/MEDIATOR_satmedmf"
+}
 ######################################################################## 
 # cold c384
  
@@ -241,6 +313,29 @@ test cpld_fv3_384_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
 
     FV3_mosaic="C@[ATMRES]"
 } 
+########################################################################
+# warm 1d c384
+
+test cpld_fv3_384_mom6_cice_1d_atm_flux: fv3_mom6_cice.exe {
+    use cpld_fv3_mom6_cice_1d_atm_flux
+
+    ATMRES='384'
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm"
+
+    DT_ATMOS='450'
+    NPX='385'
+    NPY='385'
+    IMO='1536'
+    JMO='768'
+    walltime=5600   # seconds
+    FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
+    FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
+    FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
+    FNSMCC="'global_soilmgldas.t766.1536.768.grb',"
+    FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
+
+    FV3_mosaic="C@[ATMRES]"
+}
 ######################################################################## 
 # warm 2d c384
  
@@ -264,3 +359,26 @@ test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
 
     FV3_mosaic="C@[ATMRES]"
 } 
+######################################################################## 
+# warm 1d restart from 1d c384
+
+test cpld_fv3_384_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
+    use cpld_fv3_mom6_cice_restart_atm_flux
+
+    ATMRES='384'
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm"
+
+    DT_ATMOS='450'
+    NPX='385'
+    NPY='385'
+    IMO='1536'
+    JMO='768'
+    walltime=5600   # seconds
+    FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
+    FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
+    FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
+    FNSMCC="'global_soilmgldas.t766.1536.768.grb',"
+    FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
+
+    FV3_mosaic="C@[ATMRES]"
+}
