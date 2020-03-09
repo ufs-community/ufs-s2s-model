@@ -187,6 +187,8 @@ EOT
 
 load 'cpld_fv3_mom6_cice_cold_atm_flux.input'
 load 'cpld_fv3_mom6_cice_2d_atm_flux.input'
+load 'benchmarkRT_cold.input'
+load 'benchmarkRT_warm.input'
 
 ######################################################################## 
 # cold c96
