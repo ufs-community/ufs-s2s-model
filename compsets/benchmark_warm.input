@@ -76,7 +76,7 @@ test cpld_fv3_384_mom6_cice_2d_bmark: fv3_mom6_cice.exe {
         "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
     }
 
-    #spawn execute { 
-    #    {"@[build%target]", ranks="@[TASKS]", threads="@[THRD]", ppn="@[TPN]" }
-    #} 
+    spawn execute { 
+        {"@[build%target]", ranks="@[TASKS]", threads="@[THRD]", ppn="@[TPN]" }
+    } 
 } 
