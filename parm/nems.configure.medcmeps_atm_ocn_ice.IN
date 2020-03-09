@@ -17,7 +17,7 @@ ATM_model:                      @[atm_model]
 ATM_petlist_bounds:             @[atm_petlist_bounds]
 ATM_attributes::
   Verbosity = 0
-  DumpFields = true
+  DumpFields = false
   ProfileMemory = false
   OverwriteSlice = true
 ::
@@ -27,7 +27,7 @@ OCN_model:                      @[ocn_model]
 OCN_petlist_bounds:             @[ocn_petlist_bounds]
 OCN_attributes::
   Verbosity = 0
-  DumpFields = true
+  DumpFields = false
   ProfileMemory = false
   OverwriteSlice = true
 ::
@@ -37,7 +37,7 @@ ICE_model:                      @[ice_model]
 ICE_petlist_bounds:             @[ice_petlist_bounds]
 ICE_attributes::
   Verbosity = 0
-  DumpFields = true
+  DumpFields = false
   ProfileMemory = false
   OverwriteSlice = true
 ::
