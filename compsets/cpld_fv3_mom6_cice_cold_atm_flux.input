@@ -90,10 +90,10 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
            'diag_table_template'  <=copy=     "@[PARMnems]/diag_table_template"
                     'data_table'  <=copy=     "@[PARMnems]/data_table"
                 "nems.configure"  <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN"
-                       'fd.yaml'  <=copy=     "@[PARMnems]/fd.yaml"
+                  'fd_nems.yaml'  <=copy=     "@[PARMnems]/fd_nems.yaml"
                         'pio_in'  <=copy=     "@[PARMnems]/pio_in"
                'med_modelio.nml'  <=copy=     "@[PARMnems]/med_modelio.nml"
-                  'rpointer.med'  <=copy=     "@[PARMnems]/rpointer.med"
+                  'rpointer.cpl'  <=copy=     "@[PARMnems]/rpointer.cpl"
     } 
  
     # Edit the templates for the compset parameters
