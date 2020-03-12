@@ -8,10 +8,10 @@ test cpld_fv3_384_mom6_cice_2d_bmark: fv3_mom6_cice.exe {
     TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold 384"
  
     #For a 35 day run:
-    #DAYS='35'
-    #FHMAX='840'
-    #walltime=28800   # seconds
-    walltime=1800   # seconds
+    DAYS='35'
+    FHMAX='840'
+    walltime=28800   # seconds
+    #walltime=1800   # seconds
 
     DT_ATMOS='450'
     NPX='385'
