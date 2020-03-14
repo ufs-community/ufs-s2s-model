@@ -104,7 +104,6 @@ cpl_defaults = {
     DT_ATMOS='900' #needed for C96 cases
     DT_DYNAM_MOM6='900'
     DT_THERM_MOM6='1800'
-    MOM6_RESTART_NAME_ROOT='MOM.res'
 # defaults for CICE runtype and restart writing
     RUNTYPE='initial' 
     DUMPFREQ='d' 
@@ -132,7 +131,7 @@ cpl_defaults = {
 # in compset
 
 embed bash edit_inputs(CDATE,ATMRES,DT_CICE,NPROC_ICE,RUNTYPE,USE_RESTART_TIME,FRAZIL_FWSALT,RUNID,CICE_HIST_AVG,
-DUMPFREQ_N,DUMPFREQ,DT_THERM,DT_DYNAM,MOM6_RIVER_RUNOFF,MOM6_RESTART_NAME_ROOT) [[[ 
+DUMPFREQ_N,DUMPFREQ,DT_THERM,DT_DYNAM,MOM6_RIVER_RUNOFF) [[[ 
 
 python <<EOT
 import os
@@ -187,8 +186,7 @@ with open("INPUT/MOM_input_template",'rt') as inf:
    for x in inf.readlines():
     newline=x.replace("DT_THERM_MOM6","@[DT_THERM]") \
              .replace("DT_DYNAM_MOM6","@[DT_DYNAM]") \
-             .replace("MOM6_RIVER_RUNOFF","@[MOM6_RIVER_RUNOFF]") \
-             .replace("MOM6_RESTART_NAME_ROOT","@[MOM6_RESTART_NAME_ROOT]")
+             .replace("MOM6_RIVER_RUNOFF","@[MOM6_RIVER_RUNOFF]") 
     outf.write(newline)
 
 #diag_table

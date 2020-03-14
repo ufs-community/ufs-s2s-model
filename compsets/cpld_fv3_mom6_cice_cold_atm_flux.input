@@ -110,8 +110,7 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
                     DUMPFREQ="@[DUMPFREQ]",
                     DT_THERM="@[DT_THERM_MOM6]",
                     DT_DYNAM="@[DT_DYNAM_MOM6]",
-           MOM6_RIVER_RUNOFF="@[MOM6_RIVER_RUNOFF]",
-      MOM6_RESTART_NAME_ROOT="@[MOM6_RESTART_NAME_ROOT]")
+           MOM6_RIVER_RUNOFF="@[MOM6_RIVER_RUNOFF]")
 
     # Specify output files:
     criteria output {

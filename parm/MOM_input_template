@@ -187,8 +187,6 @@ DTFREEZE_DP = -7.75E-08         !   [deg C Pa-1] default = 0.0
                                 ! temperature with pressure.
 
 ! === module MOM_restart ===
-RESTARTFILE = "MOM6_RESTART_NAME_ROOT"  ! default = "MOM.res"
-                                ! The name-root of the restart file.
 
 PARALLEL_RESTARTFILES = True    !   [Boolean] default = False
                                 ! If true, each processor writes its own restart file,
