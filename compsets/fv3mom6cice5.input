@@ -93,6 +93,7 @@ cpl_defaults = {
     CPLFLX='.T.'
     CPL='.true.'
     NSTF_NAME='0,0,0,0,0'
+    FV3_RESTART_INTERVAL='0'
     MOM6_RESTART_SETTING='n'
     med_model="nems"
     atm_model="fv3"

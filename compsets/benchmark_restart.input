@@ -1,11 +1,11 @@
 ########################################################################
 
-test cpld_fv3_384_mom6_cice_warm_bmark: fv3_mom6_cice.exe {
-    use cpld_fv3_mom6_cice_2d_atm_flux
+test cpld_fv3_384_mom6_cice_restart_bmark: fv3_mom6_cice.exe {
+    use cpld_fv3_mom6_cice_restart_atm_flux
     use plat%default_cpl_benchmark
 
     ATMRES='384'
-    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold 384"
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - restart 384"
  
     #For a 35 day run:
     #DAYS='35'
@@ -42,10 +42,10 @@ test cpld_fv3_384_mom6_cice_warm_bmark: fv3_mom6_cice.exe {
      OZONE_data="@[FV3_input_data]/ozprdlos_2015_new_sbuvO3_tclm15_nuchem.f77"
        CO2_data="@[plat%INPUTS]/FV3_input_bm2/INPUT"
 
-    # - set date YYYYMMDDHH
+    # - set date YYYYMMDDHH 
     SYEAR='2012'
     SMONTH='01'
-    SDAY='01'
+    SDAY='02'
     SHOUR='00'
     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 
@@ -55,16 +55,27 @@ test cpld_fv3_384_mom6_cice_warm_bmark: fv3_mom6_cice.exe {
     # - set initialization type for MOM6 
     MOM6_RESTART_SETTING = 'r'
 
-    # set locations of ICs
-         BM_IC="/scratch1/NCEPDEV/nems/Bin.Li/S2S/FROM_HPSS/@[CDATE]"
-        FV3_IC="@[BM_IC]/gfs/C384/INPUT"
-       MOM6_IC="@[BM_IC]/mom6_da"
-      CICE5_IC="@[BM_IC]/cpc"    
+    # - set parameters for warm-warm restart
+    RUNTYPE='continue'
+    USE_RESTART_TIME='.true.'
+
+    WARM_START='.T.'
+    MAKE_NH='.F.'
+    NA_INIT='0'
+    EXTERNAL_IC='.F.'
+    NGGPS_IC='.F.'
+    MOUNTAIN='.T.'
+ 
+    # set locations of restart files from previous warm run
+    BM_IC="/scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_rest/@[CDATE]_1d/tmp/cpld_fv3_384_mom6_cice_warm_bmark"
+    FV3_IC="@[BM_IC]/RESTART"
+    MOM6_IC="@[BM_IC]/RESTART"
+    CICE5_IC="@[BM_IC]/RESTART"
 
     # set location of cold start for mediator restarts
     # THIS IS A USER's OWN RUN and should reflect the full path to the location of the cold start
     # eg: "/scratch2/NCEPDEV/stmp1/First.LastName/rtgen.NUMBER/tmp/cpld_fv3_384_mom6_cice_cold_bmark"
-    MED_restart_data="full-path-to-user-coldstart"
+    MED_restart_data="@[BM_IC]"
     RESTART_MED="mediator_*"    
 
     # Specify output files:
