@@ -36,7 +36,8 @@ OCN_petlist_bounds:             @[ocn_petlist_bounds]
 OCN_attributes::
   Verbosity = 0
   DumpFields = false
-  restart_interval = 9999999
+  restart_option = nhours
+  restart_n = @[FV3_RESTART_INTERVAL]
   ProfileMemory = false
   OverwriteSlice = false
 ::

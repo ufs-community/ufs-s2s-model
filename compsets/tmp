@@ -1,0 +1,5 @@
+    FDIAG='6'
+    NFHOUT='6'
+    #no high freq fv3 output
+    NFHMAX_HF='-1'
+    NFHOUT_HF='-1'
