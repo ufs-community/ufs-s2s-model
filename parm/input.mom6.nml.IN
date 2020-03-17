@@ -107,7 +107,7 @@
 #&coupler_nml
 #       months = 0
 #       days  = 1
-#       hours = 0 
+#       hours = 0
 #       dt_atmos = 225
 #       dt_ocean = 225
 #       current_date =  2016,10,03,00,0,0
@@ -158,8 +158,8 @@
        random_clds    = .true.
        trans_trac     = .false.
        cnvcld         = .true.
-       imfshalcnv     = @[IMFSHALCNV]
-       imfdeepcnv     = @[IMFDEEPCNV]
+       imfshalcnv     = 2
+       imfdeepcnv     = 2
        isatmedmf      = @[ISATMEDMF]
        cdmbgwd        = 3.5,0.25
        prslrd0        = 0.
@@ -183,9 +183,11 @@
        nstf_name      = @[NSTF_NAME]
        cplflx         = @[CPLFLX]
        cplwav         = @[CPLWAV]
+       cplwav2atm     = @[CPLWAV2ATM]
        iau_delthrs    = 6
        iaufhrs        = 30
        iau_inc_files  = @[IAU_INC_FILES]
+       iau_drymassfixer = @[IAU_DRYMASSFIXER]
        do_sppt        = @[DO_SPPT]
        do_shum        = @[DO_SHUM]
        do_skeb        = @[DO_SKEB]
@@ -221,7 +223,7 @@
        FNTG3C   = "global_tg3clim.2.6x1.5.grb",
        FNVEGC   = "global_vegfrac.0.144.decpercent.grb",
        FNVETC   = @[FNVETC]
-       FNSOTC   = @[FNSOTC] 
+       FNSOTC   = @[FNSOTC]
        FNSMCC   = @[FNSMCC]
        FNMSKH   = "seaice_newland.grb",
        FNTSFA   = "",
@@ -252,7 +254,7 @@
 /
 &nam_stochy
   lon_s=768,
-  lat_s=384, 
+  lat_s=384,
   ntrunc=382,
   SKEBNORM=1,
   SKEB_NPASS=30,
@@ -285,6 +287,7 @@
   ISEED_SFC=0,
   SPPT_LAND=.FALSE.,
 /
+
 &cires_ugwp_nml
        knob_ugwp_solver  = 2
        knob_ugwp_source  = 1,1,0,0
@@ -306,4 +309,3 @@
          restart_output_dir = 'MOM6_RESTART/',
          parameter_filename = 'INPUT/MOM_input',
                               'INPUT/MOM_override' /
-
