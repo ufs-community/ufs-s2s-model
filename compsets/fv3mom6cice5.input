@@ -63,6 +63,22 @@ build fv3_mom6_cice.exe {
     build=NEMSAppBuilder(NEMS.x="@[target]",modules.nems="@[modules.nems]", 
                          OPTS="app=coupledFV3_MOM6_CICE",md5sum="@[md5sum]") 
 }
+
+build fv3_mom6_cice_ww3.exe {
+    # Use NEMSAppBuilder to build a coupled app.   
+    use plat
+    # Note:
+    #  plat%EXECrt = temporary directory for executables and md5 sums
+    #  plat%INCrt  = temporary directory for modulefiles
+    target="@[plat%EXECrt]/fv3_mom6_cice_ww3.exe"
+    modules.nems="@[plat%INCrt]/modules_fv3_mom6_cice_ww3"
+    md5sum="@[target].md5"
+
+    # The NEMSAppBuilder is another embedded bash script in nemscommon.input 
+    build=NEMSAppBuilder(NEMS.x="@[target]",modules.nems="@[modules.nems]",
+                         OPTS="app=coupledFV3_MOM6_CICE_WW3",md5sum="@[md5sum]")
+}
+
 ########################################################################
 #NOTE: DO NOT UPDATE the fv3_default variables for coupled fiels, 
 #update them within the tests themselves.  The fv3_default variables
@@ -83,6 +99,7 @@ cpl_defaults = {
     atm_model="fv3"
     ocn_model="mom6"
     ice_model="cice"
+    wav_model="ww3"
 # future use: for MOM6 river runoff 
     MOM6_RIVER_RUNOFF='True'
     NPROC_ICE='48'
@@ -189,6 +206,8 @@ load 'cpld_fv3_mom6_cice_cold_atm_flux.input'
 load 'cpld_fv3_mom6_cice_2d_atm_flux.input'
 load 'benchmarkRT_cold.input'
 load 'benchmarkRT_warm.input'
+load 'benchmarkWAV_cold.input'
+load 'benchmarkWAV_warm.input' 
 
 ######################################################################## 
 # cold c96

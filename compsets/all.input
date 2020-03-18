@@ -18,6 +18,9 @@ run cpld_fv3_mom6_cice_1d_satmedmf @ fv3, coupledapp, warm, physics
 run cpld_fv3_384_mom6_cice_cold_bmark_rt @ fv3, coupledapp, cold384, physics, bm
 run cpld_fv3_384_mom6_cice_1d_bmark_rt @ fv3, coupledapp, warm384, physics, bm
 
+run cpld_fv3_384_mom6_cice_ww3_cold_bmark_rt @ fv3, coupledapp, cold384, physics, bm, ww3
+run cpld_fv3_384_mom6_cice_ww3_1d_bmark_rt @ fv3, coupledapp, warm384, physics, bm, ww3
+
 #run cpld_fv3_mom6_cice_1d_gfdlmprad_gwd @ fv3, coupledapp, warm, physics
 #run cpld_fv3_mom6_cice_1d_gfdlmprad_noahmp @ fv3, coupledapp, warm, physics
 
