@@ -559,6 +559,7 @@ make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-mo
 Build standalone FV3 io ...
 
 make[2]: Entering directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model/FV3/cpl'
+
 mpiifort -Duse_libMPI -Duse_netCDF -DSPMD -DUSE_LOG_DIAG_FIELD_INFO -DUSE_GFSL63 -DGFS_PHYS -Duse_WRTCOMP -DNEW_TAUCTMAX -DINTERNAL_FILE_NML -DMOIST_CAPPA -DUSE_COND -DOPENMP  -fpp -Wp,-w -I/apps/netcdf/4.7.0/intel/18.0.5.274/include -I/apps/netcdf/4.7.0/intel/18.0.5.274/include -fno-alias -auto -safe-cray-ptr -save-temps -ftz -assume byterecl -nowarn -sox -align array64byte -i4 -real-size 64 -no-prec-div -no-prec-sqrt -xCORE-AVX2 -qno-opt-dynamic-align -O2 -debug minimal -fp-model source -qoverride-limits -qopt-prefetch=3 -qopenmp   -I/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/mod -I/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/include -I/apps/netcdf/4.6.1/intel/16.1.150/include -c module_cplfields.F90
 mpiifort -Duse_libMPI -Duse_netCDF -DSPMD -DUSE_LOG_DIAG_FIELD_INFO -DUSE_GFSL63 -DGFS_PHYS -Duse_WRTCOMP -DNEW_TAUCTMAX -DINTERNAL_FILE_NML -DMOIST_CAPPA -DUSE_COND -DOPENMP  -fpp -Wp,-w -I/apps/netcdf/4.7.0/intel/18.0.5.274/include -I/apps/netcdf/4.7.0/intel/18.0.5.274/include -fno-alias -auto -safe-cray-ptr -save-temps -ftz -assume byterecl -nowarn -sox -align array64byte -i4 -real-size 64 -no-prec-div -no-prec-sqrt -xCORE-AVX2 -qno-opt-dynamic-align -O2 -debug minimal -fp-model source -qoverride-limits -qopt-prefetch=3 -qopenmp   -I/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/mod -I/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.274-impi2018.0.4-netcdf4.6.1/include -I/apps/netcdf/4.6.1/intel/16.1.150/include -c module_cap_cpl.F90
 ar rv libfv3cpl.a module_cplfields.o module_cap_cpl.o
@@ -915,6 +916,7 @@ $ESMF_INC is [-I/scratch1/NCEPDEV/nems/emc.nemspara/soft/esmf/8.0.0-intel18.0.5.
 make[2]: Entering directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model/FV3/io'
 Building dependencies ...
 make[2]: Leaving directory `/scratch2/NCEPDEV/climate/Jessica.Meixner/ufs-s2s-model/FV3/io'
+
 
 Build standalone FV3 io ...
 
