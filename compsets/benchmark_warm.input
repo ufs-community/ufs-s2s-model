@@ -5,7 +5,7 @@ test cpld_fv3_384_mom6_cice_2d_bmark: fv3_mom6_cice.exe {
     use plat%default_cpl_benchmark
 
     ATMRES='384'
-    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold 384"
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - benchmark"
  
     #For a 35 day run:
     #DAYS='35'
@@ -76,7 +76,7 @@ test cpld_fv3_384_mom6_cice_2d_bmark: fv3_mom6_cice.exe {
         "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
     }
 
-    #spawn execute { 
-    #    {"@[build%target]", ranks="@[TASKS]", threads="@[THRD]", ppn="@[TPN]" }
-    #} 
+    spawn execute { 
+        {"@[build%target]", ranks="@[TASKS]", threads="@[THRD]", ppn="@[TPN]" }
+    } 
 } 
