@@ -88,3 +88,4 @@ Change log:
                   ice and ocean in prep_atm phase of mediator are removed
 * Feb. 27, 2020   Field name changes for CICE SW, removal of custom merges in prep_atm, removal
                   of mediator fluxes for icy water in prep_ocn
+* Mar. 27, 2020   Add CCPP tests, bugfixes for coupled model in fv3atm and ccpp-physics
