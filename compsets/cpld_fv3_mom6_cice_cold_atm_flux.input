@@ -185,7 +185,7 @@ test cpld_fv3_mom6_cice_cold_atm_flux_repro: fv3_mom6_cice_repro.exe {
     use cpl_defaults
  
     TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold start - repro" 
-    CNTL_NAME="RT-Baselines_cold_repro@[ATMRES]" 
+    CNTL_NAME="RT-Baselines_cold@[ATMRES]_repro"
  
     DAYS='0.041666666'
     FHMAX='1'  #Note this needs to be at least 2x CPL_SLOW
