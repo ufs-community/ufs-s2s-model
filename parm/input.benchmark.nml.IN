@@ -202,6 +202,8 @@
   do_ugwp      = .false.
   do_tofd      = .false.
   cplflx       = .T. 
+  cplwav         = @[CPLWAV]
+  cplwav2atm     = @[CPLWAV2ATM]
   
 /
 
