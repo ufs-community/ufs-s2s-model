@@ -61,7 +61,7 @@ build fv3_ccpp_mom6_cice.exe {
  
     # The NEMSAppBuilder is another embedded bash script in nemscommon.input 
     build=NEMSAppBuilder(NEMS.x="@[target]",modules.nems="@[modules.nems]", 
-                         OPTS="app=coupledFV3_CCPP_MOM6_CICE rebuild",md5sum="@[md5sum]") 
+                         OPTS="app=coupledFV3_CCPP_MOM6_CICE",md5sum="@[md5sum]") 
 }
 
 build fv3_ccpp_mom6_cice_ww3.exe {
@@ -91,7 +91,7 @@ build fv3_ccpp_mom6_cice_repro.exe {
  
     # The NEMSAppBuilder is another embedded bash script in nemscommon.input 
     build=NEMSAppBuilder(NEMS.x="@[target]",modules.nems="@[modules.nems]", 
-                         OPTS="app=coupledFV3_CCPP_MOM6_CICE_repro rebuild",md5sum="@[md5sum]") 
+                         OPTS="app=coupledFV3_CCPP_MOM6_CICE_repro",md5sum="@[md5sum]") 
 }
 
 build fv3_ccpp_mom6_cice_ww3_repro.exe {
