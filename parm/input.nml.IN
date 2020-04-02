@@ -158,8 +158,8 @@
        random_clds    = .true.
        trans_trac     = .false.
        cnvcld         = .true.
-       imfshalcnv     = 2
-       imfdeepcnv     = 2
+       imfshalcnv     = @[IMFSHALCNV]
+       imfdeepcnv     = @[IMFDEEPCNV]
        isatmedmf      = @[ISATMEDMF]
        cdmbgwd        = 3.5,0.25
        prslrd0        = 0.

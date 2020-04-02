@@ -1,12 +1,12 @@
 ########################################################################
-test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe { 
+test cpld_fv3_ccpp_mom6_cice_2d_atm_flux: fv3_ccpp_mom6_cice.exe { 
     use plat 
     use plat%default_cpl
     use fv3_defaults 
     use cpl_defaults 
  
-    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm" 
-    CNTL_NAME="RT-Baselines_2d_warm@[ATMRES]" 
+    TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE system - 2d_warm" 
+    CNTL_NAME="RT-Baselines_2d_warm_ccpp@[ATMRES]" 
  
     DAYS='2'  # run for 2 days
     FHMAX='48'
@@ -21,13 +21,13 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
      UGCS_input_data="@[plat%INPUTS]"
           OZONE_data="@[FV3_input_data]/INPUT/global_o3prdlos.f77"
             CO2_data="@[FV3_input_data]/INPUT"
-    MED_restart_data="@[UGCS_input_data]/MEDIATOR@[ATMRES]"
+    MED_restart_data="@[UGCS_input_data]/MEDIATOR@[ATMRES]_ccpp"
          RESTART_MED="mediator_*"
 
-    build=fv3_mom6_cice.exe
+    build=fv3_ccpp_mom6_cice.exe
 
     prep=fv3cpld_prep(
-    RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice.exe%modules.nems]",
+    RUNDIR="@[RUNDIR]",modules="@[fv3_ccpp_mom6_cice.exe%modules.nems]",
     CNTL="@[CNTL]")
 
     # - set component and coupling timesteps
@@ -93,6 +93,7 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
            'diag_table_template'  <=copy=     "@[PARMnems]/diag_table_template"
                     'data_table'  <=copy=     "@[PARMnems]/data_table"
                 "nems.configure"  <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN"
+            "suite_@[SUITE_NAME].xml"  <=copyfrom=     "@[PARMnems]/../FV3/ccpp/suites"
     } 
  
     # Edit the templates for the compset parameters
@@ -189,7 +190,7 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
       # for comparison against the MD5 sum made in the build job.
       # This is to ensure the executable did not change during the
       # test suite.
-        "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
+        "@[build%target]" .md5cmp. "@[fv3_ccpp_mom6_cice.exe%md5sum]" 
     } 
  
     spawn execute { 
@@ -198,13 +199,13 @@ test cpld_fv3_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     } 
 } 
 
-test cpld_fv3_mom6_cice_2d_atm_flux_repro: fv3_mom6_cice_repro.exe { 
+test cpld_fv3_ccpp_mom6_cice_2d_atm_flux_repro: fv3_ccpp_mom6_cice_repro.exe { 
     use plat 
     use plat%default_cpl
     use fv3_defaults 
     use cpl_defaults 
  
-    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm - repro" 
+    TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE system - 2d_warm - repro" 
     CNTL_NAME="RT-Baselines_2d_warm_repro@[ATMRES]" 
  
     DAYS='2'  # run for 2 days
@@ -223,10 +224,10 @@ test cpld_fv3_mom6_cice_2d_atm_flux_repro: fv3_mom6_cice_repro.exe {
     MED_restart_data="@[UGCS_input_data]/MEDIATOR@[ATMRES]_repro"
          RESTART_MED="mediator_*"
 
-    build=fv3_mom6_cice_repro.exe
+    build=fv3_ccpp_mom6_cice_repro.exe
 
     prep=fv3cpld_prep(
-    RUNDIR="@[RUNDIR]",modules="@[fv3_mom6_cice_repro.exe%modules.nems]",
+    RUNDIR="@[RUNDIR]",modules="@[fv3_ccpp_mom6_cice_repro.exe%modules.nems]",
     CNTL="@[CNTL]")
 
     # - set component and coupling timesteps
@@ -292,6 +293,7 @@ test cpld_fv3_mom6_cice_2d_atm_flux_repro: fv3_mom6_cice_repro.exe {
            'diag_table_template'  <=copy=     "@[PARMnems]/diag_table_template"
                     'data_table'  <=copy=     "@[PARMnems]/data_table"
                 "nems.configure"  <=atparse=  "@[PARMnems]/nems.configure.@[nems_configure].IN"
+            "suite_@[SUITE_NAME].xml"  <=copyfrom=     "@[PARMnems]/../FV3/ccpp/suites"
     } 
  
     # Edit the templates for the compset parameters
@@ -388,7 +390,7 @@ test cpld_fv3_mom6_cice_2d_atm_flux_repro: fv3_mom6_cice_repro.exe {
       # for comparison against the MD5 sum made in the build job.
       # This is to ensure the executable did not change during the
       # test suite.
-        "@[build%target]" .md5cmp. "@[fv3_mom6_cice_repro.exe%md5sum]" 
+        "@[build%target]" .md5cmp. "@[fv3_ccpp_mom6_cice_repro.exe%md5sum]" 
     } 
  
     spawn execute { 
