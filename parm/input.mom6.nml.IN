@@ -183,9 +183,11 @@
        nstf_name      = @[NSTF_NAME]
        cplflx         = @[CPLFLX]
        cplwav         = @[CPLWAV]
+       cplwav2atm     = @[CPLWAV2ATM]
        iau_delthrs    = 6
        iaufhrs        = 30
        iau_inc_files  = @[IAU_INC_FILES]
+       iau_drymassfixer = @[IAU_DRYMASSFIXER]
        do_sppt        = @[DO_SPPT]
        do_shum        = @[DO_SHUM]
        do_skeb        = @[DO_SKEB]
@@ -285,6 +287,7 @@
   ISEED_SFC=0,
   SPPT_LAND=.FALSE.,
 /
+
 &cires_ugwp_nml
        knob_ugwp_solver  = 2
        knob_ugwp_source  = 1,1,0,0
@@ -306,4 +309,3 @@
          restart_output_dir = 'RESTART/',
          parameter_filename = 'INPUT/MOM_input',
                               'INPUT/MOM_override' /
-

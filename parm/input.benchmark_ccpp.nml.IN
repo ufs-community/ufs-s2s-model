@@ -17,6 +17,7 @@
   fhout = 6
   fhmaxhf = 0
   fhouthf = -1
+  ccpp_suite = '@[SUITE_NAME]'
   
 /
 
@@ -47,7 +48,7 @@
   ntiles   = 6,
   npz    = @[NPZ]
   grid_type = -1
-  make_nh = @[MAKE_NH]
+  make_nh = .true.
   fv_debug = .false.
   range_warn = .false.
   reset_eta = .false.
@@ -71,7 +72,7 @@
   k_split = 2
   n_split = 6
   nwat = 6
-  na_init = @[NA_INIT]
+  na_init = 1
   d_ext = 0.
   dnats = 1
   fv_sg_adj = 450
@@ -83,11 +84,11 @@
   delt_max = 0.002
   ke_bg = 0.
   do_vort_damp = .true.
-  external_ic = @[EXTERNAL_IC]
+  external_ic = .true.
   external_eta = .true.
   gfs_phil = .false.
-  nggps_ic = @[NGGPS_IC]
-  mountain = @[MOUNTAIN]
+  nggps_ic = .true.
+  mountain = .false.
   ncep_ic = .false.
   d_con = 1.
   hord_mt = 5
@@ -102,7 +103,7 @@
   fill = .true.
   dwind_2d = .false.
   print_freq = 6
-  warm_start = @[WARM_START]
+  warm_start = .false.
   no_dycore = .false.
   z_tracer = .true.
   agrid_vel_rst = .true.
@@ -137,6 +138,8 @@
 
 &gfs_physics_nml
   fhzero       = 6
+  oz_phys      = .false.
+  oz_phys_2015 = .true.
   h2o_phys     = .true.
   ldiag3d      = .false.
   fhcyc        = 24
@@ -204,7 +207,7 @@
   cplflx       = .T. 
   cplwav         = @[CPLWAV]
   cplwav2atm     = @[CPLWAV2ATM]
-
+  
 /
 
 &gfdl_cloud_microphysics_nml
@@ -320,7 +323,7 @@
          output_directory = 'MOM6_OUTPUT/',
          input_filename = '@[MOM6_RESTART_SETTING]'
          restart_input_dir = 'INPUT/',
-         restart_output_dir = 'RESTART/',
+         restart_output_dir = 'MOM6_RESTART/',
          parameter_filename = 'INPUT/MOM_input',
                               'INPUT/MOM_override' /
 

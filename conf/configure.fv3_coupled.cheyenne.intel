@@ -57,7 +57,6 @@ HYDRO = N
 CCPP = N
 STATIC = N
 SION = N
-CMEPS = Y
 
 include       $(ESMFMKFILE)
 ESMF_INC    = $(ESMF_F90COMPILEPATHS)
@@ -199,6 +198,10 @@ LDFLAGS += -L$(PATH_CCPP)/lib -lccppphys -lccpp $(NCEPLIBS) -lxml2
 else
 LDFLAGS += -L$(PATH_CCPP)/lib -lccpp
 endif
+endif
+
+ifeq ($(CMEPS),Y)
+CPPDEFS += -DCMEPS
 endif
 
 ifeq ($(SION),Y)
