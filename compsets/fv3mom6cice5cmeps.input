@@ -76,7 +76,7 @@ test cpld_fv3_384_mom6_cice_cold_cmeps_atm_flux: fv3_mom6_cice_cmeps.exe {
         'RESTART/sfc_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART"
         'RESTART/sfc_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART"
         'RESTART/sfc_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART"
-        'ufs.s2s.c384_t025.jan.jul02.cpl.r.2016-10-03-03600.nc'     .bitcmp. "@[CNTLMED]"
+        'ufs.s2s.c384_t025.jan.jul02.cold.cpl.r.2016-10-03-03600.nc'     .bitcmp. "@[CNTLMED]"
       # Executable validation.  This makes an MD5 sum of the fv3.exe
       # for comparison against the MD5 sum made in the build job.
       # This is to ensure the executable did not change during the
@@ -116,7 +116,7 @@ test cpld_fv3_384_mom6_cice_1d_cmeps_atm_flux: fv3_mom6_cice_cmeps.exe {
     FV3_mosaic="C@[ATMRES]"
 
     MED_restart_data="@[UGCS_input_data]/MEDIATOR@[ATMRES]@[MEDCOMP]"
-         RESTART_MED="ufs.s2s.c384_t025.jan.jul02.cpl.r.@[SYEAR]-@[SMONTH]-@[SDAY]-03600.nc"
+         RESTART_MED="ufs.s2s.c384_t025.jan.jul02.cold.cpl.r.@[SYEAR]-@[SMONTH]-@[SDAY]-03600.nc"
 
     # Specify output files:
     criteria output {
@@ -209,7 +209,7 @@ test cpld_fv3_384_mom6_cice_2d_cmeps_atm_flux: fv3_mom6_cice_cmeps.exe {
     FV3_mosaic="C@[ATMRES]"
 
     MED_restart_data="@[UGCS_input_data]/MEDIATOR@[ATMRES]@[MEDCOMP]"
-         RESTART_MED="ufs.s2s.c384_t025.jan.jul02.cpl.r.@[SYEAR]-@[SMONTH]-@[SDAY]-03600.nc"
+         RESTART_MED="ufs.s2s.c384_t025.jan.jul02.cold.cpl.r.@[SYEAR]-@[SMONTH]-@[SDAY]-03600.nc"
 
     # Specify output files:
     criteria output {

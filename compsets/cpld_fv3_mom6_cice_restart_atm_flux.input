@@ -44,6 +44,9 @@ test cpld_fv3_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
      SHOUR='00'
      CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 
+    # set increment in hours between start time and restart time
+    FHROT='24'
+
     # write a CICE restart at DAYS
     DUMPFREQ_N="@[DAYS]"
     DUMPFREQ='d'
