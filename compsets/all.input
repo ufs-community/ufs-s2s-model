@@ -42,6 +42,7 @@ run cpld_fv3_384_mom6_cice_cold_atm_flux @ fv3, coupledapp, cold384
 
 #load 'benchmark_cold.input'
 #load 'benchmark_warm.input'
+#load 'benchmark_restart.input'
 #load 'fv3mom6cice5cmeps.input'
 
 #To run NEMS mediator

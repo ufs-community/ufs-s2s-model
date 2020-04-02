@@ -435,7 +435,7 @@ test cpld_fv3_384_mom6_cice_cold_cmeps_bmark: fv3_mom6_cice_cmeps.exe {
 # warm c384 benchmark cmeps
  
 test cpld_fv3_384_mom6_cice_warm_cmeps_bmark: fv3_mom6_cice_cmeps.exe { 
-    use cpld_fv3_384_mom6_cice_2d_bmark 
+    use cpld_fv3_384_mom6_cice_warm_bmark 
  
     MEDCOMP="cmeps"
 
