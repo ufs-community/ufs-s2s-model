@@ -27,10 +27,6 @@ test cpld_fv3_384_mom6_cice_restart_bmark: fv3_mom6_cice.exe {
 
     FV3_mosaic="C@[ATMRES]"
 
-    #no high freq fv3 output
-    NFHMAX_HF='-1'
-    NFHOUT_HF='-1'
-
     # turn off CICE history averaging
     #CICE_HIST_AVG='.false.'
     # matching 6hour FV3 output

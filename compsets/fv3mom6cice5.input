@@ -61,7 +61,7 @@ build fv3_mom6_cice.exe {
  
     # The NEMSAppBuilder is another embedded bash script in nemscommon.input 
     build=NEMSAppBuilder(NEMS.x="@[target]",modules.nems="@[modules.nems]", 
-                         OPTS="app=coupledFV3_MOM6_CICE",md5sum="@[md5sum]") 
+                         OPTS="app=coupledFV3_MOM6_CICE_NEMS",md5sum="@[md5sum]") 
 }
 
 build fv3_mom6_cice_cmeps.exe {
@@ -92,6 +92,9 @@ cpl_defaults = {
     FV3_RESTART_INTERVAL='0'
     FHROT='0'
     NSOUT='-1'
+    #no high freq fv3 output
+    NFHMAX_HF='-1'
+    NFHOUT_HF='-1'
     CPLFLX='.T.'
     CPL='.true.'
     NSTF_NAME='0,0,0,0,0'
@@ -330,7 +333,7 @@ test cpld_fv3_384_mom6_cice_1d_atm_flux: fv3_mom6_cice.exe {
     NPY='385'
     IMO='1536'
     JMO='768'
-    walltime=5600   # seconds
+
     FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
     FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
     FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
@@ -353,7 +356,10 @@ test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     NPY='385'
     IMO='1536'
     JMO='768'
+
+    test_size='long'
     walltime=5600   # seconds
+
     FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
     FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
     FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
@@ -376,7 +382,7 @@ test cpld_fv3_384_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
     NPY='385'
     IMO='1536'
     JMO='768'
-    walltime=5600   # seconds
+
     FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
     FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
     FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
