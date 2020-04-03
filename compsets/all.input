@@ -14,8 +14,8 @@ load 'fv3mom6cice5.input'
 #run cpld_fv3_mom6_cice_restart_atm_flux @ fv3, coupledapp, warm
 #run cpld_fv3_384_mom6_cice_restart_atm_flux @ fv3, coupledapp, warm384
 
-run cpld_fv3_mom6_cice_2d_atm_flux @ fv3, coupledapp, warm
-run cpld_fv3_384_mom6_cice_2d_atm_flux @ fv3, coupledapp, warm384
+#run cpld_fv3_mom6_cice_2d_atm_flux @ fv3, coupledapp, warm
+#run cpld_fv3_384_mom6_cice_2d_atm_flux @ fv3, coupledapp, warm384
 
 #run cpld_fv3_mom6_cice_2d_2threads @ fv3, coupledapp, warm
 #run cpld_fv3_mom6_cice_2d_decomp @ fv3, coupledapp, warm
@@ -27,9 +27,9 @@ run cpld_fv3_384_mom6_cice_2d_atm_flux @ fv3, coupledapp, warm384
 ##run cpld_fv3_mom6_cice_1d_gfdlmprad_noahmp @ fv3, coupledapp, warm, physics
 
 #CMEPS RTs
-#load 'fv3mom6cice5cmeps.input'
+load 'fv3mom6cice5cmeps.input'
 #run cpld_fv3_384_mom6_cice_cold_cmeps_atm_flux @ fv3, coupledapp, cold384
-#run cpld_fv3_384_mom6_cice_1d_cmeps_atm_flux @ fv3, coupledapp, warm384
+run cpld_fv3_384_mom6_cice_1d_cmeps_atm_flux @ fv3, coupledapp, warm384
 #run cpld_fv3_384_mom6_cice_2d_cmeps_atm_flux @ fv3, coupledapp, warm384
 #run cpld_fv3_384_mom6_cice_restart_cmeps_atm_flux @ fv3, coupledapp, warm384
 

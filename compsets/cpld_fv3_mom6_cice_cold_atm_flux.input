@@ -13,7 +13,7 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
     FHMAX='1'  #Note this needs to be at least 2x CPL_SLOW
  
     test_size='short'
-    walltime='1800'
+    walltime=1800
 
     COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
     RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 

@@ -2,7 +2,7 @@
 
 platform.defaults={
     BUILD_WALLTIME=1800 # Wallclock limit in seconds for build jobs
-    DEFAULT_TEST_WALLTIME=5600 # Default wallclock limit in seconds for test jobs
+    DEFAULT_TEST_WALLTIME=1800 # Default wallclock limit in seconds for test jobs
 
     SRCnems="@[HOMEnems]/NEMS/src"
     PARMnems="@[HOMEnems]/parm"
