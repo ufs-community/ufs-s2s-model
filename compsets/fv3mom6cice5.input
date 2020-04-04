@@ -85,6 +85,7 @@ build fv3_mom6_cice_cmeps.exe {
 #the cpl_defaults 
 
 cpl_defaults = {
+    test_size='short'
     ATMRES=''
     OCNRES='025'
     INPUT_NML="input.mom6.nml.IN"
@@ -92,6 +93,8 @@ cpl_defaults = {
     FV3_RESTART_INTERVAL='0'
     FHROT='0'
     NSOUT='-1'
+    FDIAG='6'
+    NFHOUT='6'
     #no high freq fv3 output
     NFHMAX_HF='-1'
     NFHOUT_HF='-1'
@@ -358,7 +361,7 @@ test cpld_fv3_384_mom6_cice_2d_atm_flux: fv3_mom6_cice.exe {
     JMO='768'
 
     test_size='long'
-    walltime=5600   # seconds
+    walltime=5600
 
     FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
     FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"

@@ -46,7 +46,6 @@ test cpld_fv3_384_mom6_cice_restart_cmeps_bmark: fv3_mom6_cice_cmeps.exe {
     use cpld_fv3_384_mom6_cice_restart_bmark 
  
     MEDIATOR="cmeps."
-    walltime=3600   # seconds   
 
     #to test restarts, with field dumping on
     DAYS='0.041666666'

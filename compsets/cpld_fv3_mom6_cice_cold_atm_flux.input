@@ -1,5 +1,4 @@
 ########################################################################
-
 test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe { 
     use plat 
     use plat%default_cpl
@@ -11,9 +10,8 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
  
     DAYS='0.041666666'
     FHMAX='1'  #Note this needs to be at least 2x CPL_SLOW
- 
-    test_size='short'
-    walltime=1800
+    NFHMAX_HF='12'
+    NFHOUT_HF='1'
 
     COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
     RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 

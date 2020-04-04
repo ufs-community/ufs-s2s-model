@@ -9,11 +9,10 @@ test cpld_fv3_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
     CNTL_NAME="RT-Baselines_1d_restart@[ATMRES]@[MEDCOMP]"
 
     DAYS='1'  # run for 1 days
-    FHMAX='24'
-    FDIAG='6'
-    
-    test_size='short'
-    walltime=1800
+    # set increment in hours between start time and restart time
+    FHROT='24'
+    # actual run lenght is FHMAX-FHROT
+    FHMAX='48' 
 
     COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
     RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 
@@ -42,12 +41,9 @@ test cpld_fv3_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
     # - set date YYYYMMDDHH
      SYEAR='2016'
     SMONTH='10'
-      SDAY='04'
+      SDAY='03'
      SHOUR='00'
      CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
-
-    # set increment in hours between start time and restart time
-    FHROT='24'
 
     # write a CICE restart at DAYS
     DUMPFREQ_N="@[DAYS]"
@@ -106,7 +102,7 @@ test cpld_fv3_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
             'INPUT/*_data*tile*'  <=copyfrom= "@[FV3_IC]"
              'INPUT/coupler.res'  <=copy=     "@[FV3_IC]/coupler.res"
                  'INPUT/MOM*.nc'  <=copyfrom= "@[MOM6_IC]"
-                      'RESTART/'  <=copy=     "@[CICE5_IC]/iced.@[SYEAR]-@[SMONTH]-@[SDAY]-00000.nc"
+                      'RESTART/'  <=copy=     "@[CICE5_IC]/iced.2016-10-04-00000.nc"
               "ice.restart_file"  <=copy=     "@[CICE5_IC]/ice.restart_file"
 # namelists,templates and configurations
                      'input.nml'  <=atparse=  "@[PARMnems]/@[INPUT_NML]"
@@ -146,18 +142,18 @@ test cpld_fv3_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
     # Specify output files:
     criteria output {
         # WORKFILE                            .comparison. TARGET
-        'phyf024.tile1.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile2.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile3.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile4.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile5.nc'      .bitcmp. "@[CNTL]"
-        'phyf024.tile6.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile1.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile2.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile3.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile4.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile5.nc'      .bitcmp. "@[CNTL]"
-        'dynf024.tile6.nc'      .bitcmp. "@[CNTL]"
+        'phyf048.tile1.nc'      .bitcmp. "@[CNTL]"
+        'phyf048.tile2.nc'      .bitcmp. "@[CNTL]"
+        'phyf048.tile3.nc'      .bitcmp. "@[CNTL]"
+        'phyf048.tile4.nc'      .bitcmp. "@[CNTL]"
+        'phyf048.tile5.nc'      .bitcmp. "@[CNTL]"
+        'phyf048.tile6.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile1.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile2.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile3.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile4.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile5.nc'      .bitcmp. "@[CNTL]"
+        'dynf048.tile6.nc'      .bitcmp. "@[CNTL]"
         'RESTART/coupler.res'                     .bitcmp. "@[CNTL]/RESTART"
         'RESTART/fv_core.res.nc'                  .bitcmp. "@[CNTL]/RESTART"
         'RESTART/fv_core.res.tile1.nc'            .bitcmp. "@[CNTL]/RESTART"
@@ -218,18 +214,18 @@ test cpld_fv3_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
         'mediator_FBHyd_h_restart.nc'             .bitcmp. "@[CNTL]/RESTART"
         'mediator_FBAtmOcn_o_restart.nc'          .bitcmp. "@[CNTL]/RESTART"
        # compare against continuous run
-       # 'phyf024.tile1.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile1.nc"
-       # 'phyf024.tile2.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile2.nc"
-       # 'phyf024.tile3.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile3.nc"
-       # 'phyf024.tile4.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile4.nc"
-       # 'phyf024.tile5.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile5.nc"
-       # 'phyf024.tile6.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile6.nc"
-       # 'dynf024.tile1.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile1.nc"
-       # 'dynf024.tile2.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile2.nc"
-       # 'dynf024.tile3.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile3.nc"
-       # 'dynf024.tile4.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile4.nc"
-       # 'dynf024.tile5.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile5.nc"
-       # 'dynf024.tile6.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile6.nc"
+       # 'phyf048.tile1.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile1.nc"
+       # 'phyf048.tile2.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile2.nc"
+       # 'phyf048.tile3.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile3.nc"
+       # 'phyf048.tile4.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile4.nc"
+       # 'phyf048.tile5.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile5.nc"
+       # 'phyf048.tile6.nc'      .bitcmp. "@[CNTL_REST]/phyf048.tile6.nc"
+       # 'dynf048.tile1.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile1.nc"
+       # 'dynf048.tile2.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile2.nc"
+       # 'dynf048.tile3.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile3.nc"
+       # 'dynf048.tile4.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile4.nc"
+       # 'dynf048.tile5.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile5.nc"
+       # 'dynf048.tile6.nc'      .bitcmp. "@[CNTL_REST]/dynf048.tile6.nc"
        # 'RESTART/coupler.res'                     .bitcmp. "@[CNTL_REST]/RESTART"
        # 'RESTART/fv_core.res.nc'                  .bitcmp. "@[CNTL_REST]/RESTART"
        # 'RESTART/fv_core.res.tile1.nc'            .bitcmp. "@[CNTL_REST]/RESTART"

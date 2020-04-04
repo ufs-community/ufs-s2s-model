@@ -125,7 +125,7 @@ platform hera.intel {
       <!-- Build job resources minus wallclock -->
       <queue>@[BUILD_QUEUE]</queue>
       <partition>@[PARTITION]</partition>
-      <cores>12</cores> <!-- 2 cores ensures exclusive access on Hera -->
+      <cores>40</cores> <!-- 2 cores ensures exclusive access on Hera -->
       <envar><name>PRODUTIL_RUN_NODESIZE</name><value>@[cores_per_node]</value></envar>
 ]]]
         short_test_resources=[[[
