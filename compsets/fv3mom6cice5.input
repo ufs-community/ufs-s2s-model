@@ -85,7 +85,6 @@ build fv3_mom6_cice_cmeps.exe {
 #the cpl_defaults 
 
 cpl_defaults = {
-    test_size='short'
     ATMRES=''
     OCNRES='025'
     INPUT_NML="input.mom6.nml.IN"

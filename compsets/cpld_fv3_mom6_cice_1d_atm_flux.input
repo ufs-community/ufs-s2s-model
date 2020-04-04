@@ -10,6 +10,8 @@ test cpld_fv3_mom6_cice_1d_atm_flux: fv3_mom6_cice.exe {
  
     DAYS='1'  # run for 1 days
     FHMAX='24'
+    test_size='short'
+    walltime=1800
 
     COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
     RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 

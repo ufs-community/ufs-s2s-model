@@ -13,6 +13,8 @@ test cpld_fv3_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
     FHROT='24'
     # actual run lenght is FHMAX-FHROT
     FHMAX='48' 
+    test_size='short'
+    walltime=1800
 
     COM="@[plat%COMrt]/@[TEST_NAME]"          # Test result area 
     RUNDIR="@[plat%TMPrt]/@[TEST_NAME]"       # Test work area 

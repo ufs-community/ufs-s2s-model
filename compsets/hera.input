@@ -117,7 +117,7 @@ platform hera.intel {
         log_dir="@[TMPrt]/log"
         scheduler="slurm"
         entities=[[[
-  <!ENTITY SHORTQ "debug">
+  <!ENTITY SHORTQ "batch">
   <!ENTITY LONGQ "batch">
   <!ENTITY BUILDQ "debug"> <!-- NOTE: If you change this, you must change the partition too -->
 ]]]
