@@ -283,6 +283,9 @@ test cpld_fv3_384_mom6_cice_restart_cmeps_atm_flux: fv3_mom6_cice_cmeps.exe {
     MEDCOMP="cmeps"
     ATMRES='384'
     TEST_DESCR="Fully coupled FV3-MOM6-CICE system - restart"
+    # comparisons require extra time
+    test_size='long'
+    walltime=5600
 
     build=fv3_mom6_cice_cmeps.exe
 
