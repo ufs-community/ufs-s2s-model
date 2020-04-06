@@ -57,4 +57,5 @@ test cpld_fv3_384_mom6_cice_cold_bmark: fv3_mom6_cice.exe {
 
     spawn execute {
         {"@[build%target]", ranks="@[TASKS]", threads="@[THRD]", ppn="@[TPN]" }
+                  }
 }

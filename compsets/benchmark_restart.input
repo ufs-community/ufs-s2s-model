@@ -7,13 +7,6 @@ test cpld_fv3_384_mom6_cice_restart_bmark: fv3_mom6_cice.exe {
     ATMRES='384'
     TEST_DESCR="Fully coupled FV3-MOM6-CICE system - restart 384"
  
-    #For a 35 day run:
-    #DAYS='35'
-    #FHMAX='840'
-    #walltime=28800   # seconds
-    #For a default 2d run
-    walltime=3600   # seconds
-
     DT_ATMOS='450'
     NPX='385'
     NPY='385'
@@ -41,7 +34,7 @@ test cpld_fv3_384_mom6_cice_restart_bmark: fv3_mom6_cice.exe {
     # - set date YYYYMMDDHH 
     SYEAR='2012'
     SMONTH='01'
-    SDAY='02'
+    SDAY='01'
     SHOUR='00'
     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 

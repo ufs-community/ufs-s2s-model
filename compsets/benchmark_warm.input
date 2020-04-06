@@ -12,7 +12,11 @@ test cpld_fv3_384_mom6_cice_warm_bmark: fv3_mom6_cice.exe {
     #FHMAX='840'
     #walltime=28800   # seconds
     #For a default 2d run
-    walltime=3600   # seconds
+    #test_size='long'
+    #walltime=3600   # seconds
+    #For a 1 day run:
+    DAYS='1'
+    FHMAX='24'
 
     DT_ATMOS='450'
     NPX='385'

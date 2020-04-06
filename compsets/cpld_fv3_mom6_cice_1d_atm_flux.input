@@ -44,9 +44,14 @@ test cpld_fv3_mom6_cice_1d_atm_flux: fv3_mom6_cice.exe {
      SHOUR='00'
      CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 
-    # write a CICE restart at DAYS
-    DUMPFREQ_N="@[DAYS]"
-    DUMPFREQ='d'
+    # write intermediate restarts for comparisons with 1d restarts
+    # FV3 is controlled through model_configure
+    # MOM6 is controlled via nems.configure
+    FV3_RESTART_INTERVAL='24'
+
+    # write a CICE restart at same interval
+    DUMPFREQ_N=FV3_RESTART_INTERVAL
+      DUMPFREQ='h'
     
     # set default locations of ICs
         FV3_IC="@[FV3_input_data]/INPUT"

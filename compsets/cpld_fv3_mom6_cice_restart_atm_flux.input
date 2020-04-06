@@ -47,9 +47,11 @@ test cpld_fv3_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
      SHOUR='00'
      CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 
-    # write a CICE restart at DAYS
-    DUMPFREQ_N="@[DAYS]"
-    DUMPFREQ='d'
+    FV3_RESTART_INTERVAL='24'
+
+    # write a CICE restart at same interval
+    DUMPFREQ_N=FV3_RESTART_INTERVAL
+      DUMPFREQ='h'
     
     # - set parameters for warm-warm restart
     RUNTYPE='continue'
