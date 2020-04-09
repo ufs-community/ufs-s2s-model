@@ -19,8 +19,8 @@
 	url = https://github.com/noaa-psd/stochastic_physics
 [submodule "MOM6"]
 	path = MOM6
-	url = https://github.com/NOAA-EMC/MOM6-interface
+	url = https://github.com/JessicaMeixner-NOAA/MOM6-interface
 [submodule "WW3"]
 	path = WW3
-	url = https://github.com/NOAA-EMC/WW3.git
+	url = https://github.com/JessicaMeixner-NOAA/WW3.git
         branch = develop
