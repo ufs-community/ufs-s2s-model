@@ -97,6 +97,7 @@ test cpld_fv3_mom6_cice_cold_atm_flux: fv3_mom6_cice.exe {
                         'pio_in'  <=copy=     "@[PARMnems]/pio_in"
                'med_modelio.nml'  <=copy=     "@[PARMnems]/med_modelio.nml"
                   'rpointer.cpl'  <=copy=     "@[PARMnems]/rpointer.cpl"
+       "suite_@[SUITE_NAME].xml"  <=copyfrom= "@[PARMnems]/../FV3/ccpp/suites"
     } 
  
     # Edit the templates for the compset parameters

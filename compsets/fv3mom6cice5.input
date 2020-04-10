@@ -87,7 +87,8 @@ build fv3_mom6_cice_cmeps.exe {
 cpl_defaults = {
     ATMRES=''
     OCNRES='025'
-    INPUT_NML="input.mom6.nml.IN"
+    SUITE_NAME='FV3_GFS_2017_coupled'
+    INPUT_NML='input.mom6_ccpp.nml.IN'
     FIELD_TABLE="field_table"
     FV3_RESTART_INTERVAL='0'
     FHROT='0'
@@ -105,6 +106,7 @@ cpl_defaults = {
     atm_model="fv3"
     ocn_model="mom6"
     ice_model="cice"
+    wav_model="ww3"
 # for MOM6 river runoff 
     MOM6_RIVER_RUNOFF='True'
     NPROC_ICE='48'
@@ -283,6 +285,7 @@ test cpld_fv3_mom6_cice_cold_satmedmf: fv3_mom6_cice.exe {
     SATMEDMF='.true.'
     HYBEDMF='.false.'
     FIELD_TABLE='field_table_satmedmf'
+    SUITE_NAME='FV3_GFS_2017_satmedmf_coupled'
 } 
 ######################################################################## 
 # warm 1d c96 satmedmf
@@ -297,6 +300,7 @@ test cpld_fv3_mom6_cice_1d_satmedmf: fv3_mom6_cice.exe {
     HYBEDMF='.false.'
 
     FIELD_TABLE='field_table_satmedmf'
+    SUITE_NAME='FV3_GFS_2017_satmedmf_coupled'
     MED_restart_data="@[plat%BASELINE]/MEDIATOR_satmedmf"
 }
 ######################################################################## 

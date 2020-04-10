@@ -6,7 +6,9 @@ test cpld_fv3_384_mom6_cice_cold_bmark: fv3_mom6_cice.exe {
 
     ATMRES='384'
     TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold 384"
- 
+    CNTL_NAME="RT-Baselines_cold_bmrt"
+    CNTLMED="@[plat%BASELINE]/MEDIATOR_bmrt"
+
     DT_ATMOS='450'
     NPX='385'
     NPY='385'
@@ -22,14 +24,13 @@ test cpld_fv3_384_mom6_cice_cold_bmark: fv3_mom6_cice.exe {
 
     # inputs and fixed files for benchmark runs to match workflow
       INPUT_NML="input.benchmark_ccpp.nml.IN"
-     SUITE_NAME='FV3_GFS_v15p2_coupled'
     FIELD_TABLE="field_table.gfdlmp"
      OZONE_data="@[FV3_input_data]/ozprdlos_2015_new_sbuvO3_tclm15_nuchem.f77"
        CO2_data="@[plat%INPUTS]/FV3_input_bm2/INPUT"
 
     # - set date YYYYMMDDHH
-    SYEAR='2012'
-    SMONTH='01'
+    SYEAR='2013'
+    SMONTH='04'
     SDAY='01'
     SHOUR='00'
     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
@@ -41,7 +42,7 @@ test cpld_fv3_384_mom6_cice_cold_bmark: fv3_mom6_cice.exe {
     MOM6_RESTART_SETTING = 'r'
 
     # set locations of ICs
-         BM_IC="/scratch1/NCEPDEV/nems/Bin.Li/S2S/FROM_HPSS/@[CDATE]"
+         BM_IC="@[plat%INPUTS]/BM_IC/@[CDATE]"
         FV3_IC="@[BM_IC]/gfs/C384/INPUT"
        MOM6_IC="@[BM_IC]/mom6_da"
       CICE5_IC="@[BM_IC]/cpc"    

@@ -125,6 +125,7 @@ test cpld_fv3_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
 # for cmeps case, the pointer file will contain the actual restart file name
 # for nems, it will be the blank file copied from PARMnems into coldstart
                  'rpointer.cpl'  <=copy=     "@[MED_restart_data]/rpointer.cpl"
+      "suite_@[SUITE_NAME].xml"  <=copyfrom= "@[PARMnems]/../FV3/ccpp/suites"
     } 
  
     # Edit the templates for the compset parameters
