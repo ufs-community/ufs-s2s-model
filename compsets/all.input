@@ -1,5 +1,7 @@
 load 'fv3mom6cice5.input'
 load 'fv3mom6cice5_ccpp.input'
+load 'bm3p5_cold_ccpp.input'
+load 'bm3p5_35d_ccpp.input'
 
 ########################################################################
 
@@ -96,10 +98,18 @@ run cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt @ fv3, coupledapp, warm384, phys
 #run cpld_fv3_ccpp_mom6_cice_1d_gfdlmprad_gwd @ fv3, coupledapp, warm, physics
 #run cpld_fv3_ccpp_mom6_cice_1d_gfdlmprad_noahmp @ fv3, coupledapp, warm, physics
 
+# Use Benchmark inputs with CCPP version.
+# Two cold-start runs and two 35-day runs
+run fv3_ccpp_384_mom6_cice_cold_2012010100 @ benchmark35, coldBM35
+run fv3_ccpp_384_mom6_cice_cold_2012070100 @ benchmark35, coldBM35
+
+run fv3_ccpp_384_mom6_cice_35d_2012010100 @ benchmark35, warmBM35
+run fv3_ccpp_384_mom6_cice_35d_2012070100 @ benchmark35, warmBM35
+
 ########################################################################
 #Run the Benchmark-like inputs for a single date 
 #These can be run separately from the baseline test cases 
-#above by commenting those 4 tests out. The user must then 
+#above by commenting those 2 tests out. The user must then 
 #first run the benchmark cold start alone. The location of
 #cold start mediator files is then used to run the warm start.  
 #The full path to the cold start mediator files is specified as
@@ -114,20 +124,52 @@ run cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt @ fv3, coupledapp, warm384, phys
 ########################################################################
 #Run the Benchmark-like inputs for 4 standard dates
 #These can be run separately from the baseline test cases
-#above by commenting those 4 tests out. The user must then
+#above by commenting those 16 tests out. The user must then
 #first run the 4 cold starts alone. The location of
 #cold start mediator files is then used to run the warm starts. The
 #full path to the cold start mediator files is specified as ROOTDIR
 #in the datesuite_warm.input.
 
+#IPD Version: 
+
 #load 'datesuite_cold.input'
-#run cpld_fv3_384_mom6_cice_cold_2012010100 @ benchmark, coldBM2
-#run cpld_fv3_384_mom6_cice_cold_2012040100 @ benchmark, coldBM2
-#run cpld_fv3_384_mom6_cice_cold_2012070100 @ benchmark, coldBM2
-#run cpld_fv3_384_mom6_cice_cold_2012100100 @ benchmark, coldBM2
+#run cpld_fv3_384_mom6_cice_cold_2012010100 @ benchmark, coldBM
+#run cpld_fv3_384_mom6_cice_cold_2012040100 @ benchmark, coldBM
+#run cpld_fv3_384_mom6_cice_cold_2012070100 @ benchmark, coldBM
+#run cpld_fv3_384_mom6_cice_cold_2012100100 @ benchmark, coldBM
+#run cpld_fv3_384_mom6_cice_cold_2013010100 @ benchmark, coldBM
+#run cpld_fv3_384_mom6_cice_cold_2013040100 @ benchmark, coldBM
+#run cpld_fv3_384_mom6_cice_cold_2013070100 @ benchmark, coldBM
+#run cpld_fv3_384_mom6_cice_cold_2013100100 @ benchmark, coldBM
 
 #load 'datesuite_warm.input'
-#run cpld_fv3_384_mom6_cice_5d_2012010100 @ benchmark, warmBM2
-#run cpld_fv3_384_mom6_cice_5d_2012040100 @ benchmark, warmBM2
-#run cpld_fv3_384_mom6_cice_5d_2012070100 @ benchmark, warmBM2
-#run cpld_fv3_384_mom6_cice_5d_2012100100 @ benchmark, warmBM2
+#run cpld_fv3_384_mom6_cice_5d_2012010100 @ benchmark, warmBM
+#run cpld_fv3_384_mom6_cice_5d_2012040100 @ benchmark, warmBM
+#run cpld_fv3_384_mom6_cice_5d_2012070100 @ benchmark, warmBM
+#run cpld_fv3_384_mom6_cice_5d_2012100100 @ benchmark, warmBM
+#run cpld_fv3_384_mom6_cice_5d_2013010100 @ benchmark, warmBM
+#run cpld_fv3_384_mom6_cice_5d_2013040100 @ benchmark, warmBM
+#run cpld_fv3_384_mom6_cice_5d_2013070100 @ benchmark, warmBM
+#run cpld_fv3_384_mom6_cice_5d_2013100100 @ benchmark, warmBM
+
+#CCPP version
+
+#load 'datesuite_cold_ccpp.input'
+#run cpld_fv3_ccpp_384_mom6_cice_cold_2012010100 @ benchmark, coldBM
+#run cpld_fv3_ccpp_384_mom6_cice_cold_2012040100 @ benchmark, coldBM
+#run cpld_fv3_ccpp_384_mom6_cice_cold_2012070100 @ benchmark, coldBM
+#run cpld_fv3_ccpp_384_mom6_cice_cold_2012100100 @ benchmark, coldBM
+#run cpld_fv3_ccpp_384_mom6_cice_cold_2013010100 @ benchmark, coldBM
+#run cpld_fv3_ccpp_384_mom6_cice_cold_2013040100 @ benchmark, coldBM
+#run cpld_fv3_ccpp_384_mom6_cice_cold_2013070100 @ benchmark, coldBM
+#run cpld_fv3_ccpp_384_mom6_cice_cold_2013100100 @ benchmark, coldBM
+
+#load 'datesuite_warm_ccpp.input'
+#run cpld_fv3_ccpp_384_mom6_cice_5d_2012010100 @ benchmark, warmBM
+#run cpld_fv3_ccpp_384_mom6_cice_5d_2012040100 @ benchmark, warmBM
+#run cpld_fv3_ccpp_384_mom6_cice_5d_2012070100 @ benchmark, warmBM
+#run cpld_fv3_ccpp_384_mom6_cice_5d_2012100100 @ benchmark, warmBM
+#run cpld_fv3_ccpp_384_mom6_cice_5d_2013010100 @ benchmark, warmBM
+#run cpld_fv3_ccpp_384_mom6_cice_5d_2013040100 @ benchmark, warmBM
+#run cpld_fv3_ccpp_384_mom6_cice_5d_2013070100 @ benchmark, warmBM
+#run cpld_fv3_ccpp_384_mom6_cice_5d_2013100100 @ benchmark, warmBM
