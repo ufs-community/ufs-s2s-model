@@ -1,7 +1,7 @@
 ########################################################################
 
 test cpld_fv3_384_mom6_cice_warm_bmark: fv3_mom6_cice.exe {
-    use cpld_fv3_mom6_cice_2d_atm_flux
+    use cpld_fv3_mom6_cice_1d_atm_flux
     use plat%default_cpl_benchmark
 
     ATMRES='384'
@@ -68,14 +68,7 @@ test cpld_fv3_384_mom6_cice_warm_bmark: fv3_mom6_cice.exe {
     MED_restart_data="full-path-to-user-coldstart"
     RESTART_MED="mediator_*"    
 
-    # Specify output files:
-    criteria output {
-        # WORKFILE                            .comparison. TARGET
-      # Executable validation.  This makes an MD5 sum of the fv3.exe
-      # for comparison against the MD5 sum made in the build job.
-      # This is to ensure the executable did not change during the
-      # test suite.
-        "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
-    }
-
+    spawn execute {
+        {"@[build%target]", ranks="@[TASKS]", threads="@[THRD]", ppn="@[TPN]" }
+                  }
 } 
