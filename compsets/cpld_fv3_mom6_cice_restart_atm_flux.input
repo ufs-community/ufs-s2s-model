@@ -46,7 +46,10 @@ test cpld_fv3_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
       SDAY='03'
      SHOUR='00'
      CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
-
+    # - set starting day of restart files for CICE (and cmeps mediator, if used)
+      RDAY='04'
+     RDATE="@[SYEAR]-@[SMONTH]-@[RDAY]"
+     
     FV3_RESTART_INTERVAL='24'
 
     # write a CICE restart at same interval
@@ -106,7 +109,7 @@ test cpld_fv3_mom6_cice_restart_atm_flux: fv3_mom6_cice.exe {
             'INPUT/*_data*tile*'  <=copyfrom= "@[FV3_IC]"
              'INPUT/coupler.res'  <=copy=     "@[FV3_IC]/coupler.res"
                  'INPUT/MOM*.nc'  <=copyfrom= "@[MOM6_IC]"
-                      'RESTART/'  <=copy=     "@[CICE5_IC]/iced.2016-10-04-00000.nc"
+                      'RESTART/'  <=copy=     "@[CICE5_IC]/iced.@[RDATE]-00000.nc"
               "ice.restart_file"  <=copy=     "@[CICE5_IC]/ice.restart_file"
 # namelists,templates and configurations
                      'input.nml'  <=atparse=  "@[PARMnems]/@[INPUT_NML]"
