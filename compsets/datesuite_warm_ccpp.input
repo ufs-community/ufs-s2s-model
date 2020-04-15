@@ -7,12 +7,12 @@ load 'benchmark_warm_ccpp.input'
    ROOTDIR = "path-to-user-coldstarts"
 
 datesuite_defaults = {
-   #DAYS='5'
-   #FHMAX='120'
-   #walltime=10800   # seconds
-   DAYS='35'
-   FHMAX='840'
-   walltime=27000   # seconds
+    DAYS='5'
+   FHMAX='120'
+   walltime=10800   # seconds
+    #DAYS='35'
+   #FHMAX='840'
+   #walltime=28800   # seconds
 }
 
 ########################################################################

@@ -1,7 +1,7 @@
 load 'fv3mom6cice5.input'
 load 'fv3mom6cice5_ccpp.input'
-load 'bm3p5_cold_ccpp.input'
-load 'bm3p5_35d_ccpp.input'
+#load 'bm3p5_cold_ccpp.input'
+#load 'bm3p5_35d_ccpp.input'
 
 ########################################################################
 
@@ -98,14 +98,6 @@ run cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt @ fv3, coupledapp, warm384, phys
 #run cpld_fv3_ccpp_mom6_cice_1d_gfdlmprad_gwd @ fv3, coupledapp, warm, physics
 #run cpld_fv3_ccpp_mom6_cice_1d_gfdlmprad_noahmp @ fv3, coupledapp, warm, physics
 
-# Use Benchmark inputs with CCPP version.
-# Two cold-start runs and two 35-day runs
-run fv3_ccpp_384_mom6_cice_cold_2012010100 @ benchmark35, coldBM35
-run fv3_ccpp_384_mom6_cice_cold_2012070100 @ benchmark35, coldBM35
-
-run fv3_ccpp_384_mom6_cice_35d_2012010100 @ benchmark35, warmBM35
-run fv3_ccpp_384_mom6_cice_35d_2012070100 @ benchmark35, warmBM35
-
 ########################################################################
 #Run the Benchmark-like inputs for a single date 
 #These can be run separately from the baseline test cases 
@@ -122,10 +114,10 @@ run fv3_ccpp_384_mom6_cice_35d_2012070100 @ benchmark35, warmBM35
 #run cpld_fv3_384_mom6_cice_2d_bmark @ benchmark, warmBM2
 
 ########################################################################
-#Run the Benchmark-like inputs for 4 standard dates
+#Run the Benchmark-like inputs for 8 standard dates
 #These can be run separately from the baseline test cases
 #above by commenting those 16 tests out. The user must then
-#first run the 4 cold starts alone. The location of
+#first run the 8 cold starts alone. The location of
 #cold start mediator files is then used to run the warm starts. The
 #full path to the cold start mediator files is specified as ROOTDIR
 #in the datesuite_warm.input.
@@ -173,3 +165,12 @@ run fv3_ccpp_384_mom6_cice_35d_2012070100 @ benchmark35, warmBM35
 #run cpld_fv3_ccpp_384_mom6_cice_5d_2013040100 @ benchmark, warmBM
 #run cpld_fv3_ccpp_384_mom6_cice_5d_2013070100 @ benchmark, warmBM
 #run cpld_fv3_ccpp_384_mom6_cice_5d_2013100100 @ benchmark, warmBM
+
+# Use Benchmark inputs with CCPP version.
+# Two cold-start runs and two 35-day runs
+# Baseline results are generated.
+#run fv3_ccpp_384_mom6_cice_cold_2012010100 @ benchmark35, coldBM35
+#run fv3_ccpp_384_mom6_cice_cold_2012070100 @ benchmark35, coldBM35
+
+#run fv3_ccpp_384_mom6_cice_35d_2012010100 @ benchmark35, warmBM35
+#run fv3_ccpp_384_mom6_cice_35d_2012070100 @ benchmark35, warmBM35
