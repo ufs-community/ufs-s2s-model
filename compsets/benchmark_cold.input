@@ -46,16 +46,6 @@ test cpld_fv3_384_mom6_cice_cold_bmark: fv3_mom6_cice.exe {
        MOM6_IC="@[BM_IC]/mom6_da"
       CICE5_IC="@[BM_IC]/cpc"    
 
-    # Specify output files:
-    criteria output {
-        # WORKFILE                            .comparison. TARGET
-      # Executable validation.  This makes an MD5 sum of the fv3.exe
-      # for comparison against the MD5 sum made in the build job.
-      # This is to ensure the executable did not change during the
-      # test suite.
-        "@[build%target]" .md5cmp. "@[fv3_mom6_cice.exe%md5sum]" 
-    }
-
     spawn execute {
         {"@[build%target]", ranks="@[TASKS]", threads="@[THRD]", ppn="@[TPN]" }
                   }
