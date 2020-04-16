@@ -1,15 +1,15 @@
 [submodule "FV3"]
 	path = FV3
-	url = https://github.com/NOAA-EMC/fv3atm
-	branch = develop
+	url = https://github.com/DusanJovic-NOAA/fv3atm
+	branch = orion
 [submodule "NEMS"]
 	path = NEMS
-	url = https://github.com/NOAA-EMC/NEMS.git
-	branch = develop
+	url = https://github.com/DusanJovic-NOAA/NEMS.git
+	branch = orion
 [submodule "CICE_SRC"]
 	path = CICE_SRC
-	url = https://github.com/NOAA-EMC/CICE5.git
-	branch = develop
+	url = https://github.com/DeniseWorthen/CICE5.git
+	branch = feature/orion
 [submodule "FMS"]
 	path = FMS
 	url = https://github.com/NOAA-GFDL/FMS
@@ -19,8 +19,8 @@
 	url = https://github.com/noaa-psd/stochastic_physics
 [submodule "MOM6"]
 	path = MOM6
-	url = https://github.com/NOAA-EMC/MOM6-interface
+	url = https://github.com/DeniseWorthen/MOM6-interface
 [submodule "WW3"]
 	path = WW3
-	url = https://github.com/NOAA-EMC/WW3.git
-        branch = develop
+	url = https://github.com/aliabdolali/WW3.git
+        branch = OrionPort
