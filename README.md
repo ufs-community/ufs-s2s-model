@@ -15,6 +15,8 @@ Start at the ufs-s2s-model wiki (https://github.com/ufs-community/ufs-s2s-model/
 | ```compsets```    | Files used for setting up regression test suite. |
 | ```conf```        | Configuration files used for compiling code on various computer systems. |
 | ```coupledFV3_MOM6_CICE.appBuilder``` | NEMS application builder file used by NEMS/NEMSAppBuilder. |
+| ```coupledFV3_MOM6_CICE_debug.appBuilder``` | NEMS application builder file used by NEMS/NEMSAppBuilder. |
+| ```coupledFV3_MOM6_CICE_WW3.appBuilder```| NEMS application builder file used by NEMS/NEMSAppBuilder. |
 | ```FMS```         | GFDL FMS with minor modifications from EMC. |
 | ```FV3```         | FV3GFS code. |
 | ```log```         | Log files from compiling and regression testing. |
@@ -23,6 +25,8 @@ Start at the ufs-s2s-model wiki (https://github.com/ufs-community/ufs-s2s-model/
 | ```NEMS```        | NEMS source code. |
 | ```parm```        | A directory containing input namelist files and model configuration files. |
 | ```stochastic_physics``` | A package containing the stochastic physics pattern generator developed at NOAA/ESRL/PSD. |
+| ```WW3```         | WAVEWATCH III source code. |
+
 
 # Disclaimer
 
