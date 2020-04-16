@@ -1,10 +1,10 @@
-Wed Apr 15 20:53:27 UTC 2020
+Thu Apr 16 18:06:21 UTC 2020
 Start Regression test
 
 
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/master-20200228/RT-Baselines_cold
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/master-20200228/MEDIATOR
-working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_189796/cpld_fv3_mom6_cice_cold_atm_flux
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_cold
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/MEDIATOR
+working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_99275/cpld_fv3_mom6_cice_cold_atm_flux
 Checking test 001 cpld_fv3_mom6_cice_cold_atm_flux results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -64,5 +64,5 @@ Test 001 cpld_fv3_mom6_cice_cold_atm_flux PASS
 
 
 REGRESSION TEST WAS SUCCESSFUL
-Wed Apr 15 21:13:33 UTC 2020
-Elapsed time: 00h:20m:07s. Have a nice day!
+Thu Apr 16 18:30:35 UTC 2020
+Elapsed time: 00h:24m:18s. Have a nice day!

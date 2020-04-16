@@ -156,6 +156,7 @@ export H2O_PHYS=.F.
 export CPL=.F. #TODO fv3_defaults use CPL=.false. check equivalency.
 export CPLFLX=.F.
 export CPLWAV=.F.
+export CPLWAV2ATM=.F.
 export DAYS=1
 export NPX=97
 export NPY=97
