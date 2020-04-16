@@ -17,9 +17,8 @@ module load contrib noaatools
 ## load programming environment
 ## this typically includes compiler, MPI and job scheduler
 ##
-module load intel/18.0.5.274
-module load impi/2018.0.4
-module load netcdf/4.7.0
+module load intel/2018
+module load impi/2018
 
 ##
 ## NCEP libraries (temporary version to match the CCPP requirements)
@@ -38,12 +37,11 @@ module load jasper/1.900.2
 module load png/1.2.44
 module load z/1.2.6
 
-## load modules for nceppost grib
-module load post/8.0.6
-
 ##
 ## load ESMF library for above compiler / MPI combination
 ## use pre-compiled EMSF library for above compiler / MPI combination
 ##
 module use /apps/contrib/NCEPLIBS/lib/modulefiles
-module load esmf/8.0.0
+module load netcdfp/4.7.4
+module load esmflocal/8.0.0.para
+module load post-intel-sandybridge/8.0.5
