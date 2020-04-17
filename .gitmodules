@@ -17,7 +17,7 @@
 	url = https://github.com/noaa-psd/stochastic_physics
 [submodule "MOM6"]
 	path = MOM6
-	url = https://github.com/DeniseWorthen/MOM6-interface
+	url = https://github.com/NOAA-EMC/MOM6-interface
 [submodule "CMEPS"]
 	path = CMEPS
-	url = https://github.com/DeniseWorthen/CMEPS.git
+	url = https://github.com/ESCOMP/CMEPS.git
