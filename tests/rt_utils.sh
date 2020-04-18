@@ -341,13 +341,18 @@ check_results() {
       printf %s " Comparing " $i " ....." >> ${REGRESSIONTEST_LOG}
       printf %s " Comparing " $i " ....."
 
+      crst=''
+      if [[ $i =~ MOM6_RESTART/ || $i =~ restart/ ]]; then
+        crst=RESTART/$(basename $i)
+      fi
+
       if [[ ! -f ${RUNDIR}/$i ]] ; then
 
         echo ".......MISSING file" >> ${REGRESSIONTEST_LOG}
         echo ".......MISSING file"
         test_status='FAIL'
 
-      elif [[ ! -f ${RTPWD}/${CNTL_DIR}/$i && ! -f ${RTPWD}/${CNTLMED_DIR}/$i ]] ; then
+      elif [[ ! -f ${RTPWD}/${CNTL_DIR}/$i && ! -f ${RTPWD}/${CNTLMED_DIR}/$i && ! -f ${RTPWD}/${CNTL_DIR}/$crst ]] ; then
 
         echo ".......MISSING baseline" >> ${REGRESSIONTEST_LOG}
         echo ".......MISSING baseline"
@@ -373,6 +378,8 @@ check_results() {
 
         if [[ $i =~ mediator ]]; then
           d=$( cmp ${RTPWD}/${CNTLMED_DIR}/$i ${RUNDIR}/$i | wc -l )
+        elif [[ $i =~ MOM6_RESTART/ || $i =~ restart/ ]]; then
+          d=$( cmp ${RTPWD}/${CNTL_DIR}/$crst ${RUNDIR}/$i | wc -l )
         else
           d=$( cmp ${RTPWD}/${CNTL_DIR}/$i ${RUNDIR}/$i | wc -l )
         fi
