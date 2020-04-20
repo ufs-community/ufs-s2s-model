@@ -1,11 +1,11 @@
-Fri Apr 17 23:37:36 UTC 2020
+Mon Apr 20 20:12:18 UTC 2020
 Start Regression test
 
 
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_cold
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/MEDIATOR
-working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_147787/cpld_fv3_mom6_cice_cold_atm_flux
-Checking test 001 cpld_fv3_mom6_cice_cold_atm_flux results ....
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_cold_ccpp
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/MEDIATOR_ccpp
+working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_21350/cpld_fv3_ccpp_mom6_cice_cold_atm_flux
+Checking test 001 cpld_fv3_ccpp_mom6_cice_cold_atm_flux results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
  Comparing phyf001.tile3.nc .........OK
@@ -60,87 +60,9 @@ Checking test 001 cpld_fv3_mom6_cice_cold_atm_flux results ....
  Comparing mediator_FBIce_i_restart.nc .........OK
  Comparing mediator_FBOcn_o_restart.nc .........OK
  Comparing mediator_scalars_restart.txt .........OK
-Test 001 cpld_fv3_mom6_cice_cold_atm_flux PASS
-
-
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_2d_warm
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_2d_warm/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_147787/cpld_fv3_mom6_cice_2d_atm_flux
-Checking test 002 cpld_fv3_mom6_cice_2d_atm_flux results ....
- Comparing phyf048.tile1.nc .........OK
- Comparing phyf048.tile2.nc .........OK
- Comparing phyf048.tile3.nc .........OK
- Comparing phyf048.tile4.nc .........OK
- Comparing phyf048.tile5.nc .........OK
- Comparing phyf048.tile6.nc .........OK
- Comparing dynf048.tile1.nc .........OK
- Comparing dynf048.tile2.nc .........OK
- Comparing dynf048.tile3.nc .........OK
- Comparing dynf048.tile4.nc .........OK
- Comparing dynf048.tile5.nc .........OK
- Comparing dynf048.tile6.nc .........OK
- Comparing RESTART/coupler.res .........OK
- Comparing RESTART/fv_core.res.nc .........OK
- Comparing RESTART/fv_core.res.tile1.nc .........OK
- Comparing RESTART/fv_core.res.tile2.nc .........OK
- Comparing RESTART/fv_core.res.tile3.nc .........OK
- Comparing RESTART/fv_core.res.tile4.nc .........OK
- Comparing RESTART/fv_core.res.tile5.nc .........OK
- Comparing RESTART/fv_core.res.tile6.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
- Comparing RESTART/fv_tracer.res.tile1.nc .........OK
- Comparing RESTART/fv_tracer.res.tile2.nc .........OK
- Comparing RESTART/fv_tracer.res.tile3.nc .........OK
- Comparing RESTART/fv_tracer.res.tile4.nc .........OK
- Comparing RESTART/fv_tracer.res.tile5.nc .........OK
- Comparing RESTART/fv_tracer.res.tile6.nc .........OK
- Comparing RESTART/phy_data.tile1.nc .........OK
- Comparing RESTART/phy_data.tile2.nc .........OK
- Comparing RESTART/phy_data.tile3.nc .........OK
- Comparing RESTART/phy_data.tile4.nc .........OK
- Comparing RESTART/phy_data.tile5.nc .........OK
- Comparing RESTART/phy_data.tile6.nc .........OK
- Comparing RESTART/sfc_data.tile1.nc .........OK
- Comparing RESTART/sfc_data.tile2.nc .........OK
- Comparing RESTART/sfc_data.tile3.nc .........OK
- Comparing RESTART/sfc_data.tile4.nc .........OK
- Comparing RESTART/sfc_data.tile5.nc .........OK
- Comparing RESTART/sfc_data.tile6.nc .........OK
- Comparing MOM6_RESTART/MOM.res.nc .........OK
- Comparing MOM6_RESTART/MOM.res_1.nc .........OK
- Comparing MOM6_RESTART/MOM.res_2.nc .........OK
- Comparing MOM6_RESTART/MOM.res_3.nc .........OK
- Comparing restart/iced.2016-10-05-00000.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile4.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile5.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile6.nc .........OK
- Comparing mediator_FBaccumOcn_restart.nc .........OK
- Comparing mediator_FBaccumIce_restart.nc .........OK
- Comparing mediator_FBaccumLnd_restart.nc .........OK
- Comparing mediator_FBaccumHyd_restart.nc .........OK
- Comparing mediator_FBaccumAtmOcn_restart.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile1.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile2.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile3.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile4.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile5.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile6.nc .........OK
- Comparing mediator_FBIce_i_restart.nc .........OK
- Comparing mediator_FBOcn_o_restart.nc .........OK
- Comparing mediator_FBLnd_l_restart.nc .........OK
- Comparing mediator_FBHyd_h_restart.nc .........OK
- Comparing mediator_FBAtmOcn_o_restart.nc .........OK
-Test 002 cpld_fv3_mom6_cice_2d_atm_flux PASS
+Test 001 cpld_fv3_ccpp_mom6_cice_cold_atm_flux PASS
 
 
 REGRESSION TEST WAS SUCCESSFUL
-Sat Apr 18 00:23:44 UTC 2020
-Elapsed time: 00h:46m:09s. Have a nice day!
+Mon Apr 20 20:41:34 UTC 2020
+Elapsed time: 00h:29m:18s. Have a nice day!

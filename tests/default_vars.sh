@@ -202,6 +202,7 @@ export_cpl ()
 export TASKS=318
 export ATMRES=''
 export OCNRES='025'
+export SUITE_NAME="FV3_GFS_2017_coupled"
 export INPUT_NML="input.mom6.nml.IN"
 export FIELD_TABLE="field_table"
 export NSOUT='-1'
