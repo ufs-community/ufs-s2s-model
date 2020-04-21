@@ -51,16 +51,28 @@ export LIST_FILES="phyf001.tile1.nc \
                    RESTART/sfc_data.tile4.nc \
                    RESTART/sfc_data.tile5.nc \
                    RESTART/sfc_data.tile6.nc \
+                   mediator_FBaccumAtm_restart.tile1.nc \
+                   mediator_FBaccumAtm_restart.tile2.nc \
+                   mediator_FBaccumAtm_restart.tile3.nc \
+                   mediator_FBaccumAtm_restart.tile4.nc \
+                   mediator_FBaccumAtm_restart.tile5.nc \
+                   mediator_FBaccumAtm_restart.tile6.nc \
+                   mediator_FBaccumOcn_restart.nc \
+                   mediator_FBaccumIce_restart.nc \
+                   mediator_FBaccumLnd_restart.nc \
+                   mediator_FBaccumHyd_restart.nc \
+                   mediator_FBaccumAtmOcn_restart.nc \
                    mediator_FBAtm_a_restart.tile1.nc \
                    mediator_FBAtm_a_restart.tile2.nc \
                    mediator_FBAtm_a_restart.tile3.nc \
                    mediator_FBAtm_a_restart.tile4.nc \
                    mediator_FBAtm_a_restart.tile5.nc \
                    mediator_FBAtm_a_restart.tile6.nc \
-                   mediator_FBAtmOcn_o_restart.nc \
                    mediator_FBIce_i_restart.nc \
                    mediator_FBOcn_o_restart.nc \
-                   mediator_scalars_restart.txt"
+                   mediator_FBLnd_l_restart.nc \
+                   mediator_FBHyd_h_restart.nc \
+                   mediator_FBAtmOcn_o_restart.nc"
 
 export_fv3
 export_cpl

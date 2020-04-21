@@ -406,11 +406,23 @@ check_results() {
       echo " mkdir -p ${NEW_BASELINE}/${CNTL_DIR}/RESTART" >> ${REGRESSIONTEST_LOG}
       mkdir -p ${NEW_BASELINE}/${CNTL_DIR}/RESTART
     fi
+    if [[ ${CNTLMED_DIR} =~ MEDIATOR && ! -d ${NEW_BASELINE}/${CNTLMED_DIR} ]]; then
+      echo " mkdir -p ${NEW_BASELINE}/${CNTLMED_DIR}" >> ${REGRESSIONTEST_LOG}
+      mkdir -p ${NEW_BASELINE}/${CNTLMED_DIR}
+    fi
 
     for i in ${LIST_FILES} ; do
       printf %s " Moving " $i " ....."   >> ${REGRESSIONTEST_LOG}
       if [[ -f ${RUNDIR}/$i ]] ; then
-        cp ${RUNDIR}/${i} ${NEW_BASELINE}/${CNTL_DIR}/${i}
+        if [[ $i =~ MOM6_RESTART/ ]]; then
+          cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTL_DIR}/RESTART/$(basename $i)
+        elif [[ $i =~ restart/ ]]; then
+          cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTL_DIR}/RESTART/$(basename $i)
+        elif [[ $i =~ mediator ]]; then
+          cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTLMED_DIR}
+        else
+          cp ${RUNDIR}/${i} ${NEW_BASELINE}/${CNTL_DIR}/${i}
+        fi
       else
         echo "Missing " ${RUNDIR}/$i " output file"
         echo;echo " Set ${TEST_NR} ${TEST_NAME} failed"
