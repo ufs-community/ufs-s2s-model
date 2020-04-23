@@ -34,7 +34,7 @@ OCN_model:                      @[ocn_model]
 OCN_petlist_bounds:             @[ocn_petlist_bounds]
 OCN_attributes::
   Verbosity = 0
-  DumpFields = false
+  DumpFields = true
   ProfileMemory = false
   OverwriteSlice = false
 ::
@@ -61,17 +61,20 @@ WAV_attributes::
 # Run Sequence #
 runSeq::
   @@[coupling_interval_slow_sec]
+    OCN -> WAV
+    WAV -> OCN :srcMaskValues=1
     @@[coupling_interval_fast_sec]
       MED MedPhase_prep_atm
       MED -> ATM :remapMethod=redist
-      WAV -> ATM 
+      WAV -> ATM :srcMaskValues=1
       ATM
       ATM -> WAV
       ATM -> MED :remapMethod=redist
       MED MedPhase_prep_ice
       MED -> ICE :remapMethod=redist
-      WAV
       ICE
+      ICE -> WAV 
+      WAV
       ICE -> MED :remapMethod=redist
       MED MedPhase_atm_ocn_flux
       MED MedPhase_accum_fast
