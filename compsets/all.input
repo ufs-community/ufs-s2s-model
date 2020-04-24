@@ -99,6 +99,11 @@ run cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt @ fv3, coupledapp, warm384, phys
 #run cpld_fv3_ccpp_mom6_cice_1d_gfdlmprad_noahmp @ fv3, coupledapp, warm, physics
 
 ########################################################################
+# Two debug tests
+run cpld_fv3_ccpp_mom6_cice_cold_debug @ fv3, coupledapp, cold, physics
+run cpld_fv3_ccpp_mom6_cice_6h_debug @ fv3, coupledapp, warm, physics
+
+########################################################################
 #Run the Benchmark-like inputs for a single date 
 #These can be run separately from the baseline test cases 
 #above by commenting those 2 tests out. The user must then 
