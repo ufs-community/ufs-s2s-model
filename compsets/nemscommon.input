@@ -31,7 +31,7 @@ embed bash NEMSAppBuilder(NEMS.x,modules.nems,OPTS,md5sum)
         if ( which aprun ) && [[ @[plat%PLATFORM_NAME] == wcoss.cray ]] ; then
        	    aprun -n 1 -j 1 -N 1 -d 24 bash -c "./NEMS/NEMSAppBuilder rebuild $OPTS"
 	else
-            ./NEMS/NEMSAppBuilder norebuild $OPTS
+            ./NEMS/NEMSAppBuilder rebuild $OPTS
         fi
         cd @[plat%SRCnems]
         cp -fp ../exe/NEMS.x "@[NEMS.x]"
