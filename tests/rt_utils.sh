@@ -342,7 +342,7 @@ check_results() {
       printf %s " Comparing " $i " ....."
 
       crst=''
-      if [[ $i =~ MOM6_RESTART/ || $i =~ restart/ ]]; then
+      if [[ $i =~ MOM6_RESTART/ || $i =~ restart ]]; then
         crst=RESTART/$(basename $i)
       fi
 
@@ -378,7 +378,7 @@ check_results() {
 
         if [[ $i =~ mediator ]]; then
           d=$( cmp ${RTPWD}/${CNTLMED_DIR}/$i ${RUNDIR}/$i | wc -l )
-        elif [[ $i =~ MOM6_RESTART/ || $i =~ restart/ ]]; then
+        elif [[ $i =~ MOM6_RESTART/ || $i =~ restart ]]; then
           d=$( cmp ${RTPWD}/${CNTL_DIR}/$crst ${RUNDIR}/$i | wc -l )
         else
           d=$( cmp ${RTPWD}/${CNTL_DIR}/$i ${RUNDIR}/$i | wc -l )
@@ -416,10 +416,10 @@ check_results() {
       if [[ -f ${RUNDIR}/$i ]] ; then
         if [[ $i =~ MOM6_RESTART/ ]]; then
           cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTL_DIR}/RESTART/$(basename $i)
-        elif [[ $i =~ restart/ ]]; then
-          cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTL_DIR}/RESTART/$(basename $i)
         elif [[ $i =~ mediator ]]; then
           cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTLMED_DIR}
+        elif [[ $i =~ restart ]]; then
+          cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTL_DIR}/RESTART/$(basename $i)
         else
           cp ${RUNDIR}/${i} ${NEW_BASELINE}/${CNTL_DIR}/${i}
         fi
@@ -497,6 +497,9 @@ rocoto_create_compile_task() {
   fi
   BUILD_WALLTIME="00:30:00"
   if [[ ${MACHINE_ID} == jet ]]; then
+    BUILD_WALLTIME="01:00:00"
+  fi
+  if [[ ${MACHINE_ID} == orion.* ]]; then
     BUILD_WALLTIME="01:00:00"
   fi
 

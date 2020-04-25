@@ -192,7 +192,7 @@ elif [[ $MACHINE_ID = hera.* ]]; then
   export PYTHONPATH=/scratch2/NCEPDEV/fv3-cam/Dusan.Jovic/ecflow/lib/python2.7/site-packages
   ECFLOW_START=/scratch2/NCEPDEV/fv3-cam/Dusan.Jovic/ecflow/bin/ecflow_start.sh
   ECF_PORT=$(( $(id -u) + 1500 ))
-  QUEUE=debug
+  QUEUE=batch
 #  ACCNR=fv3-cpu
   PARTITION=
   dprefix=/scratch1/NCEPDEV
@@ -202,6 +202,36 @@ elif [[ $MACHINE_ID = hera.* ]]; then
 
   SCHEDULER=slurm
   cp fv3_conf/fv3_slurm.IN_hera fv3_conf/fv3_slurm.IN
+
+elif [[ $MACHINE_ID = orion.* ]]; then
+
+  source $PATHTR/NEMS/src/conf/module-setup.sh.inc
+
+  module use $PATHTR/modulefiles/${MACHINE_ID}
+  module load fv3
+  module load gcc/8.3.0
+
+  # Re-instantiate COMPILER in case it gets deleted by module purge
+  COMPILER=${NEMS_COMPILER:-intel}
+
+  module load rocoto/1.3.1
+  ROCOTORUN=$(which rocotorun)
+  ROCOTOSTAT=$(which rocotostat)
+  ROCOTOCOMPLETE=$(which rocotocomplete)
+  export PATH=/work/noaa/fv3-cam/djovic/ecflow/bin:$PATH
+  export PYTHONPATH=/work/noaa/fv3-cam/djovic/ecflow/lib/python2.7/site-packages
+  ECFLOW_START=/work/noaa/fv3-cam/djovic/ecflow/bin/ecflow_start.sh
+  ECF_PORT=$(( $(id -u) + 1500 ))
+  QUEUE=batch
+#  ACCNR= # detected in detect_machine.sh
+  PARTITION=orion
+  dprefix=/work/noaa/stmp/${USER}
+  DISKNM=/work/noaa/fv3-cam/djovic/RT
+  STMP=$dprefix/stmp
+  PTMP=$dprefix/stmp
+
+  SCHEDULER=slurm
+  cp fv3_conf/fv3_slurm.IN_orion fv3_conf/fv3_slurm.IN
 
 elif [[ $MACHINE_ID = jet.* ]]; then
 
@@ -278,7 +308,8 @@ mkdir -p ${STMP}/${USER}
 
 # Different own baseline directories for different compilers
 NEW_BASELINE=${STMP}/${USER}/S2S_RT/REGRESSION_TEST
-if [[ $MACHINE_ID = cheyenne.* ]] || [[ $MACHINE_ID = jet.* ]] || [[ $MACHINE_ID = gaea.* ]]; then
+#if [[ $MACHINE_ID = cheyenne.* ]] || [[ $MACHINE_ID = jet.* ]] || [[ $MACHINE_ID = gaea.* ]]; then
+if [[ $MACHINE_ID = hera.* ]] || [[ $MACHINE_ID = orion.* ]] || [[ $MACHINE_ID = cheyenne.* ]]; then
     NEW_BASELINE=${NEW_BASELINE}_${COMPILER^^}
 fi
 
@@ -344,11 +375,11 @@ while getopts ":cfsl:mkreh" opt; do
   esac
 done
 
-if [[ $MACHINE_ID = cheyenne.* ]]; then
+if [[ $MACHINE_ID = orion.* ]] || [[ $MACHINE_ID = cheyenne.* ]]; then
   RTPWD=${RTPWD:-$DISKNM/develop-20200210/${COMPILER^^}}
 else
-  #RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200326}
-  RTPWD=/scratch1/NCEPDEV/stmp4/Minsuk.Ji/S2S_RT/REGRESSION_TEST
+  RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200326}
+  #RTPWD=/scratch1/NCEPDEV/stmp4/Minsuk.Ji/S2S_RT/REGRESSION_TEST_INTEL
 fi
 
 shift $((OPTIND-1))
@@ -429,6 +460,10 @@ if [[ $ROCOTO == true ]]; then
     COMPILE_QUEUE=dev_transfer
     ROCOTO_SCHEDULER=lsf
   elif [[ $MACHINE_ID = hera.* ]]; then
+    QUEUE=batch
+    COMPILE_QUEUE=batch
+    ROCOTO_SCHEDULER=slurm
+  elif [[ $MACHINE_ID = orion.* ]]; then
     QUEUE=batch
     COMPILE_QUEUE=batch
     ROCOTO_SCHEDULER=slurm
@@ -530,7 +565,6 @@ while read -r line; do
       else
         #./compile.sh $PATHTR/FV3 $MACHINE_ID "${NEMS_VER}" $COMPILE_NR > ${LOG_DIR}/compile_${COMPILE_NR}.log 2>&1
         ./compile.sh ${NEMS_VER} $COMPILE_NR > ${LOG_DIR}/compile_${COMPILE_NR}.log 2>&1
-        #./compile.sh -a coupledFV3_MOM6_CICE > ${LOG_DIR}/compile_${COMPILE_NR}.log 2>&1
         echo " bash Compile is done"
       fi
 
@@ -687,7 +721,7 @@ fi
 ## regression test is either failed or successful
 ##
 set +e
-cat ${LOG_DIR}/compile_*.log                   >  ${COMPILE_LOG}
+#cat ${LOG_DIR}/compile_*.log                   >  ${COMPILE_LOG}
 cat ${LOG_DIR}/rt_*.log                        >> ${REGRESSIONTEST_LOG}
 if [[ -e fail_test ]]; then
   echo "FAILED TESTS: "

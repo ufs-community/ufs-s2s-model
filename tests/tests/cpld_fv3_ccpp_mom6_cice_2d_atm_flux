@@ -2,10 +2,10 @@
 #  CPLD_FV3_MOM6_CICE 2d_atm_flux test
 #
 
-export TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm"
+export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE system - 2d_warm"
 
-export CNTL_DIR="RT-Baselines_2d_warm"
-export CNTLMED_DIR="RT-Baselines_2d_warm/RESTART"
+export CNTL_DIR="RT-Baselines_2d_warm_ccpp"
+export CNTLMED_DIR="RT-Baselines_2d_warm_ccpp/RESTART"
 
 export LIST_FILES="phyf048.tile1.nc \
                    phyf048.tile2.nc \
@@ -102,6 +102,7 @@ export NEMS_CONFIGURE="nems.configure.med_atm_ocn_ice.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 
-export FV3_RUN=cpld_fv3_mom6_cice_2d_atm_flux_run.IN
-
+export FV3_RUN=cpld_fv3_ccpp_mom6_cice_2d_atm_flux_run.IN
+export INPUT_NML=input.mom6_ccpp.nml.IN
 export ATMRES=C96
+export MED_restart_data='MEDIATOR_ccpp'

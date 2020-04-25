@@ -27,6 +27,13 @@ elif [ $MACHINE_ID = wcoss_dell_p3 ]; then
   TASKS_stretch=48 ; TPN_stretch=28 ; INPES_stretch=2 ; JNPES_stretch=4
   TASKS_strnest=96 ; TPN_strnest=28 ; INPES_strnest=2 ; JNPES_strnest=4
 
+elif [[ $MACHINE_ID = orion.* ]]; then
+
+  TASKS_dflt=150 ; TPN_dflt=24 ; INPES_dflt=3 ; JNPES_dflt=8
+  TASKS_thrd=84  ; TPN_thrd=12 ; INPES_thrd=3 ; JNPES_thrd=4
+  TASKS_stretch=48 ; TPN_stretch=12 ; INPES_stretch=2 ; JNPES_stretch=4
+  TASKS_strnest=96 ; TPN_strnest=12 ; INPES_strnest=2 ; JNPES_strnest=4
+
 elif [[ $MACHINE_ID = hera.* ]]; then
 
   TASKS_dflt=150 ; TPN_dflt=40 ; INPES_dflt=3 ; JNPES_dflt=8
@@ -199,6 +206,7 @@ export IAU_DRYMASSFIXER=.false.
 
 export_cpl ()
 { 
+export MED_restart_data='MEDIATOR'
 export TASKS=318
 export ATMRES=''
 export OCNRES='025'
@@ -214,6 +222,7 @@ export med_model="nems"
 export atm_model="fv3"
 export ocn_model="mom6"
 export ice_model="cice"
+export wav_model="ww3"
 # future use: for MOM6 river runoff 
 export MOM6_RIVER_RUNOFF='True'
 export NPROC_ICE='48'

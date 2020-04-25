@@ -14,9 +14,7 @@ if [ $OZ_PHYS_NEW = .T. ]; then
 elif [ $OZ_PHYS_OLD = .T. ]; then
   cp  @[RTPWD]/${FV3_DIR}/INPUT/global_o3prdlos.f77 .
 fi
-if [ $H2O_PHYS = .T. ]; then
-  cp  @[RTPWD]/${FV3_DIR}/global_h2o_pltc.f77 ./global_h2oprdlos.f77
-fi
+cp    @[RTPWD]/${FV3_DIR}/global_h2o_pltc.f77 ./global_h2oprdlos.f77
 cp    @[RTPWD]/${FV3_DIR}/*grb .
 cp    @[RTPWD]/${FV3_DIR}/field_table .
 #cp    @[RTPWD]/${FV3_DIR}/*configure .

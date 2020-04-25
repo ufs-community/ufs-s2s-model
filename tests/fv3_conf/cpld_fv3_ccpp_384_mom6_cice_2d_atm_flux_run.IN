@@ -1,6 +1,6 @@
 mkdir INPUT RESTART history MOM6_OUTPUT MOM6_RESTART restart
 
-FV3_DIR=FV3_input_data
+FV3_DIR=FV3_input_data384
 MOM6_DIR=MOM6_IC
 CICE5_DIR=UGCS_input_data
 
@@ -18,10 +18,10 @@ cp    @[RTPWD]/${FV3_DIR}/global_h2o_pltc.f77 ./global_h2oprdlos.f77
 cp    @[RTPWD]/${FV3_DIR}/*grb .
 cp    @[RTPWD]/${FV3_DIR}/field_table .
 #cp    @[RTPWD]/${FV3_DIR}/*configure .
-cp    @[RTPWD]/CPL_FIX/aC96o025/grid_spec.nc ./INPUT
-cp    @[RTPWD]/${FV3_DIR}/INPUT/C96_grid*.nc ./INPUT
+cp    @[RTPWD]/CPL_FIX/aC384o025/grid_spec.nc ./INPUT
+cp    @[RTPWD]/${FV3_DIR}/INPUT/C384_grid*.nc ./INPUT
 cp    @[RTPWD]/${FV3_DIR}/INPUT/oro_data*.nc ./INPUT
-cp    @[RTPWD]/${FV3_DIR}/INPUT/grid_spec.nc ./INPUT/C96_mosaic.nc
+cp    @[RTPWD]/${FV3_DIR}/INPUT/grid_spec.nc ./INPUT/C384_mosaic.nc
 cp    @[RTPWD]/${FV3_DIR}/INPUT/gfs_ctrl.nc ./INPUT
 
 # MOM6 fixed input
@@ -36,4 +36,6 @@ cp    @[RTPWD]/${FV3_DIR}/INPUT/sfc_data*.nc ./INPUT
 cp    @[RTPWD]/${FV3_DIR}/INPUT/gfs_data*.nc ./INPUT
 cp    @[RTPWD]/MOM6_IC/MOM*.nc ./INPUT
 cp    @[RTPWD]/CICE_IC/cice5_model_0.25.*.nc ./cice5_model.res.nc
-cp    @[RTPWD]/MEDIATOR/mediator_* .
+cp    @[RTPWD]/@[MED_restart_data]/mediator_* .
+
+cp ${PATHTR}/FV3/ccpp/suites/suite_${SUITE_NAME}.xml .

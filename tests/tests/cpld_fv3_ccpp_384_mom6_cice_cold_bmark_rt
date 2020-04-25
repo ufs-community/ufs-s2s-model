@@ -1,24 +1,24 @@
 #
-#  CPLD_FV3_MOM6_CICE 2d_atm_flux test
+#  CPLD_FV3_CCPP_MOM6_CICE cold_atm_flux test
 #
 
-export TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm"
+export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE system - cold 384"
 
-export CNTL_DIR="RT-Baselines_2d_warm"
-export CNTLMED_DIR="RT-Baselines_2d_warm/RESTART"
+export CNTL_DIR="RT-Baselines_cold_bmrt_ccpp"
+export CNTLMED_DIR="MEDIATOR_bmrt_ccpp"
 
-export LIST_FILES="phyf048.tile1.nc \
-                   phyf048.tile2.nc \
-                   phyf048.tile3.nc \
-                   phyf048.tile4.nc \
-                   phyf048.tile5.nc \
-                   phyf048.tile6.nc \
-                   dynf048.tile1.nc \
-                   dynf048.tile2.nc \
-                   dynf048.tile3.nc \
-                   dynf048.tile4.nc \
-                   dynf048.tile5.nc \
-                   dynf048.tile6.nc \
+export LIST_FILES="phyf001.tile1.nc \
+                   phyf001.tile2.nc \
+                   phyf001.tile3.nc \
+                   phyf001.tile4.nc \
+                   phyf001.tile5.nc \
+                   phyf001.tile6.nc \
+                   dynf001.tile1.nc \
+                   dynf001.tile2.nc \
+                   dynf001.tile3.nc \
+                   dynf001.tile4.nc \
+                   dynf001.tile5.nc \
+                   dynf001.tile6.nc \
                    RESTART/coupler.res \
                    RESTART/fv_core.res.nc \
                    RESTART/fv_core.res.tile1.nc \
@@ -51,11 +51,6 @@ export LIST_FILES="phyf048.tile1.nc \
                    RESTART/sfc_data.tile4.nc \
                    RESTART/sfc_data.tile5.nc \
                    RESTART/sfc_data.tile6.nc \
-                   MOM6_RESTART/MOM.res.nc \
-                   MOM6_RESTART/MOM.res_1.nc \
-                   MOM6_RESTART/MOM.res_2.nc \
-                   MOM6_RESTART/MOM.res_3.nc \
-                   restart/iced.2016-10-05-00000.nc \
                    mediator_FBaccumAtm_restart.tile1.nc \
                    mediator_FBaccumAtm_restart.tile2.nc \
                    mediator_FBaccumAtm_restart.tile3.nc \
@@ -83,25 +78,56 @@ export LIST_FILES="phyf048.tile1.nc \
 export_fv3
 export_cpl
 
-export DAYS="2"
-export FHMAX="48"
-export FDIAG="6"
-export WLCLK=30
+export SYEAR="2013"
+export SMONTH="04"
+export SDAY="01"
+export SHOUR="00"
+
+export DAYS="0.041666666"
+export FHMAX="1" # Note this needs to be at least 2x CPL_SLOW
+
+export DT_ATMOS="450"
+export NPX="385"
+export NPY="385"
+export IMO="1536"
+export JMO="768"
+export FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
+export FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
+export FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
+export FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
+export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"  
+
+export TASKS=480
+export TPN=40
+export INPES=6
+export JNPES=8
+export THRD=1
+export WRTTASK_PER_GROUP=24
+export med_petlist_bounds="0 287"
+export atm_petlist_bounds="0 311"
+export ocn_petlist_bounds="312 431"
+export ice_petlist_bounds="432 479"
 
 # set component and coupling timesteps
 export DT_CICE=${DT_ATMOS}
 export CPL_SLOW=${DT_THERM_MOM6}
 export CPL_FAST=${DT_ATMOS}
 
-# write a CICE restart at DAYS
-export DUMPFREQ_N=${DAYS}
-export DUMPFREQ="d"
+# write a CICE restart at FHMAX
+export DUMPFREQ_N=${FHMAX}
+export DUMPFREQ="h"
 
 # nems.configure
-export NEMS_CONFIGURE="nems.configure.med_atm_ocn_ice.IN"
+export NEMS_CONFIGURE="nems.configure.medcold_atm_ocn_ice.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 
-export FV3_RUN=cpld_fv3_mom6_cice_2d_atm_flux_run.IN
+export FV3_RUN=cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt_run.IN
+export INPUT_NML=input.benchmark_ccpp.nml.IN
+export ATMRES=384
+export SUITE_NAME="FV3_GFS_v15p2_coupled"
+export FIELD_TABLE="field_table.gfdlmp"
+export OZ_PHYS_NEW=".T."
 
-export ATMRES=C96
+export RUNID="cpcice"
+export MOM6_RESTART_SETTING="r"
