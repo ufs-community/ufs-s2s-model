@@ -109,6 +109,20 @@ build fv3_ccpp_mom6_cice_ww3_repro.exe {
                          OPTS="app=coupledFV3_CCPP_MOM6_CICE_WW3_repro",md5sum="@[md5sum]")
 }
 
+build fv3_ccpp_mom6_cice_debug.exe { 
+    # Use NEMSAppBuilder to build a coupled app.   
+    use plat 
+    # Note:
+    #  plat%EXECrt = temporary directory for executables and md5 sums
+    #  plat%INCrt  = temporary directory for modulefiles
+    target="@[plat%EXECrt]/fv3_ccpp_mom6_cice_debug.exe" 
+    modules.nems="@[plat%INCrt]/modules_fv3_ccpp_mom6_cice_debug" 
+    md5sum="@[target].md5" 
+ 
+    # The NEMSAppBuilder is another embedded bash script in nemscommon.input 
+    build=NEMSAppBuilder_debug(NEMS.x="@[target]",modules.nems="@[modules.nems]", 
+                         OPTS="app=coupledFV3_CCPP_MOM6_CICE_debug",md5sum="@[md5sum]") 
+}
 ########################################################################
 #NOTE: DO NOT UPDATE the fv3_default variables for coupled fiels, 
 #update them within the tests themselves.  The fv3_default variables
@@ -384,6 +398,187 @@ test cpld_fv3_ccpp_mom6_cice_1d_satmedmf: fv3_ccpp_mom6_cice.exe {
       # This is to ensure the executable did not change during the
       # test suite.
         "@[build%target]" .md5cmp. "@[fv3_ccpp_mom6_cice.exe%md5sum]" 
+    } 
+}
+######################################################################## 
+# cold c96 debug
+
+test cpld_fv3_ccpp_mom6_cice_cold_debug: fv3_ccpp_mom6_cice_debug.exe { 
+    use cpld_fv3_ccpp_mom6_cice_cold_atm_flux 
+    TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE system - debug"
+    CNTL_NAME="RT-Baselines_cold_debug_ccpp"
+    CNTL="@[plat%BASELINE]/@[CNTL_NAME]" 
+    CNTLMED="@[plat%BASELINE]/MEDIATOR_debug_ccpp"
+
+    build=fv3_ccpp_mom6_cice_debug.exe
+
+    prep=fv3cpld_prep(
+    RUNDIR="@[RUNDIR]",modules="@[fv3_ccpp_mom6_cice_debug.exe%modules.nems]",
+    CNTL="@[CNTL]")
+    
+    # Specify output files:
+    criteria output {
+        # WORKFILE                            .comparison. TARGET
+        'phyf001.tile1.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile2.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile3.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile4.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile5.nc'      .bitcmp. "@[CNTL]"
+        'phyf001.tile6.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile1.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile2.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile3.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile4.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile5.nc'      .bitcmp. "@[CNTL]"
+        'dynf001.tile6.nc'      .bitcmp. "@[CNTL]"
+        'RESTART/coupler.res'                   .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.nc'                .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile1.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile2.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile3.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile4.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile5.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_core.res.tile6.nc'          .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile1.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile2.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile3.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile4.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile5.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_srf_wnd.res.tile6.nc'       .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile1.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile2.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile3.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile4.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile5.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/fv_tracer.res.tile6.nc'        .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile1.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile2.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile3.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/phy_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile1.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile2.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile3.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile4.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile5.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'RESTART/sfc_data.tile6.nc'             .bitcmp. "@[CNTL]/RESTART/"
+        'mediator_FBAtm_a_restart.tile1.nc'     .bitcmp. "@[CNTLMED]/"
+        'mediator_FBAtm_a_restart.tile2.nc'     .bitcmp. "@[CNTLMED]/"
+        'mediator_FBAtm_a_restart.tile3.nc'     .bitcmp. "@[CNTLMED]/"
+        'mediator_FBAtm_a_restart.tile4.nc'     .bitcmp. "@[CNTLMED]/"
+        'mediator_FBAtm_a_restart.tile5.nc'     .bitcmp. "@[CNTLMED]/"
+        'mediator_FBAtm_a_restart.tile6.nc'     .bitcmp. "@[CNTLMED]/"
+        'mediator_FBAtmOcn_o_restart.nc'        .bitcmp. "@[CNTLMED]/"
+        'mediator_FBIce_i_restart.nc'     .bitcmp. "@[CNTLMED]/"
+        'mediator_FBOcn_o_restart.nc'     .bitcmp. "@[CNTLMED]/"
+        'mediator_scalars_restart.txt'    .bitcmp. "@[CNTLMED]/"
+      # Executable validation.  This makes an MD5 sum of the fv3.exe
+      # for comparison against the MD5 sum made in the build job.
+      # This is to ensure the executable did not change during the
+      # test suite.
+        "@[build%target]" .md5cmp. "@[fv3_ccpp_mom6_cice_debug.exe%md5sum]" 
+    }
+} 
+######################################################################## 
+# warm 6h c96 debug
+
+test cpld_fv3_ccpp_mom6_cice_6h_debug: fv3_ccpp_mom6_cice_debug.exe { 
+    use cpld_fv3_ccpp_mom6_cice_2d_atm_flux 
+    DAYS='0.25'  # run for 0.25 day
+    FHMAX='6'
+    NFHOUT_HF='1'
+    walltime=2400   # seconds
+    TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE system - debug"
+    CNTL_NAME="RT-Baselines_6h_warm_debug_ccpp"
+    CNTL="@[plat%BASELINE]/@[CNTL_NAME]" 
+
+    MED_restart_data="@[plat%BASELINE]/MEDIATOR_debug_ccpp"
+
+    build=fv3_ccpp_mom6_cice_debug.exe
+
+    prep=fv3cpld_prep(
+    RUNDIR="@[RUNDIR]",modules="@[fv3_ccpp_mom6_cice_debug.exe%modules.nems]",
+    CNTL="@[CNTL]")
+
+    # Specify output files:
+    criteria output {
+        # WORKFILE                            .comparison. TARGET
+        'phyf006.tile1.nc'      .bitcmp. "@[CNTL]"
+        'phyf006.tile2.nc'      .bitcmp. "@[CNTL]"
+        'phyf006.tile3.nc'      .bitcmp. "@[CNTL]"
+        'phyf006.tile4.nc'      .bitcmp. "@[CNTL]"
+        'phyf006.tile5.nc'      .bitcmp. "@[CNTL]"
+        'phyf006.tile6.nc'      .bitcmp. "@[CNTL]"
+        'dynf006.tile1.nc'      .bitcmp. "@[CNTL]"
+        'dynf006.tile2.nc'      .bitcmp. "@[CNTL]"
+        'dynf006.tile3.nc'      .bitcmp. "@[CNTL]"
+        'dynf006.tile4.nc'      .bitcmp. "@[CNTL]"
+        'dynf006.tile5.nc'      .bitcmp. "@[CNTL]"
+        'dynf006.tile6.nc'      .bitcmp. "@[CNTL]"
+        'RESTART/coupler.res'                     .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.nc'                  .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile1.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile2.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile3.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile4.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile5.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_core.res.tile6.nc'            .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile1.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile2.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile3.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile4.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile5.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_srf_wnd.res.tile6.nc'         .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile1.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile2.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile3.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile4.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile5.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/fv_tracer.res.tile6.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile1.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile2.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile3.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile4.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile5.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/phy_data.tile6.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile1.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile2.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile3.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile4.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile5.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'RESTART/sfc_data.tile6.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'MOM6_RESTART/MOM.res.nc'                 .bitcmp. "@[CNTL]/RESTART"
+        'MOM6_RESTART/MOM.res_1.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'MOM6_RESTART/MOM.res_2.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'MOM6_RESTART/MOM.res_3.nc'               .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumAtm_restart.tile1.nc'    .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumAtm_restart.tile2.nc'    .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumAtm_restart.tile3.nc'    .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumAtm_restart.tile4.nc'    .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumAtm_restart.tile5.nc'    .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumAtm_restart.tile6.nc'    .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumOcn_restart.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumIce_restart.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumLnd_restart.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumHyd_restart.nc'          .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBaccumAtmOcn_restart.nc'       .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBAtm_a_restart.tile1.nc'       .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBAtm_a_restart.tile2.nc'       .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBAtm_a_restart.tile3.nc'       .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBAtm_a_restart.tile4.nc'       .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBAtm_a_restart.tile5.nc'       .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBAtm_a_restart.tile6.nc'       .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBIce_i_restart.nc'             .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBOcn_o_restart.nc'             .bitcmp. "@[CNTL]/RESTART" 
+        'mediator_FBLnd_l_restart.nc'             .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBHyd_h_restart.nc'             .bitcmp. "@[CNTL]/RESTART"
+        'mediator_FBAtmOcn_o_restart.nc'          .bitcmp. "@[CNTL]/RESTART"
+      # Executable validation.  This makes an MD5 sum of the fv3.exe
+      # for comparison against the MD5 sum made in the build job.
+      # This is to ensure the executable did not change during the
+      # test suite.
+        "@[build%target]" .md5cmp. "@[fv3_ccpp_mom6_cice_debug.exe%md5sum]" 
     } 
 }
 ######################################################################## 
