@@ -1,5 +1,5 @@
 #
-#  CPLD_FV3_MOM6_CICE cold_atm_flux test
+#  CPLD_FV3_MOM6_CICE_COLD_ATM_FLUX test
 #
 
 export TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold start"
@@ -95,6 +95,4 @@ export NEMS_CONFIGURE="nems.configure.medcold_atm_ocn_ice.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 
-export FV3_RUN=cpld_fv3_mom6_cice_cold_atm_flux_run.IN
-
-export ATMRES=C96
+export FV3_RUN=cpld_fv3_mom6_cice_atm_flux_run.IN

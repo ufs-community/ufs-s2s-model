@@ -1,5 +1,5 @@
 #
-#  CPLD_FV3_MOM6_CICE 2d_atm_flux test
+#  CPLD_FV3_CCPP_MOM6_CICE_2D_ATM_FLUX test
 #
 
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE system - 2d_warm"
@@ -102,7 +102,8 @@ export NEMS_CONFIGURE="nems.configure.med_atm_ocn_ice.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 
-export FV3_RUN=cpld_fv3_ccpp_mom6_cice_2d_atm_flux_run.IN
+export FV3_RUN=cpld_fv3_mom6_cice_atm_flux_run.IN
 export INPUT_NML=input.mom6_ccpp.nml.IN
-export ATMRES=C96
+
+export SUITE_NAME="FV3_GFS_2017_coupled"
 export MED_restart_data='MEDIATOR_ccpp'

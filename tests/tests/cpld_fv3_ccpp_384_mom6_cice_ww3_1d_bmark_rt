@@ -1,8 +1,8 @@
 #
-#  CPLD_FV3_MOM6_CICE 2d_atm_flux test
+#  CPLD_FV3_CCPP_384_MOM6_CICE_WW3_1D_BMARK_RT test
 #
 
-export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-WW3 system - 1 day 384"
+export TEST_DESCR="Coupled FV3-CCPP-MOM6-CICE-WW3 system - 1 day"
 
 export CNTL_DIR="RT-Baselines_1d_bmwav_ccpp"
 export CNTLMED_DIR="RT-Baselines_1d_bmwav_ccpp/RESTART"
@@ -107,17 +107,18 @@ export FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
 export FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
 export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"  
 
-export TASKS=520
-export TPN=40
-export INPES=6
-export JNPES=8
-export THRD=1
-export WRTTASK_PER_GROUP=24
-export med_petlist_bounds="0 287"
-export atm_petlist_bounds="0 311"
-export ocn_petlist_bounds="312 431"
-export ice_petlist_bounds="432 479"
-export wav_petlist_bounds="480 519"
+export TASKS=$TASKS_cpl_wwav
+export TPN=$TPN_cpl_wwav
+export INPES=$INPES_cpl_wwav
+export JNPES=$JNPES_cpl_wwav
+export THRD=$THRD_cpl_wwav
+export WRTTASK_PER_GROUP=$WPG_cpl_wwav
+
+export med_petlist_bounds=$MPB_cpl_wwav
+export atm_petlist_bounds=$APB_cpl_wwav
+export ocn_petlist_bounds=$OPB_cpl_wwav
+export ice_petlist_bounds=$IPB_cpl_wwav
+export wav_petlist_bounds=$WPB_cpl_wwav
 
 # no high freq fv3 output
 NFHMAX_HF='-1'
@@ -137,16 +138,19 @@ export NEMS_CONFIGURE="nems.configure.med_atm_ocn_ice_wav.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 
-export FV3_RUN=cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt_run.IN
+export FV3_RUN=cpld_fv3_mom6_cice_ww3_bmark_rt_run.IN
 export INPUT_NML=input.benchmark_ccpp.nml.IN
-export ATMRES=384
-export SUITE_NAME="FV3_GFS_v15p2_coupled"
+
 export FIELD_TABLE="field_table.gfdlmp"
-export OZ_PHYS_NEW=".T."
+export SUITE_NAME="FV3_GFS_v15p2_coupled"
 export MED_restart_data='MEDIATOR_bmwav_ccpp'
+
+export OZ_PHYS_NEW=".T."
 
 export CPLWAV='.T.'
 export CPLWAV2ATM='.T.'
 
 export RUNID="cpcice"
 export MOM6_RESTART_SETTING="r"
+
+export ATMRES=C384

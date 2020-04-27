@@ -1,5 +1,5 @@
 #
-#  CPLD_FV3_CCPP_MOM6_CICE cold_atm_flux test
+#  CPLD_FV3_CCPP_384_MOM6_CICE_COLD_BMARK_RT test
 #
 
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE system - cold 384"
@@ -97,16 +97,17 @@ export FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
 export FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
 export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"  
 
-export TASKS=480
-export TPN=40
-export INPES=6
-export JNPES=8
-export THRD=1
-export WRTTASK_PER_GROUP=24
-export med_petlist_bounds="0 287"
-export atm_petlist_bounds="0 311"
-export ocn_petlist_bounds="312 431"
-export ice_petlist_bounds="432 479"
+export TASKS=$TASKS_cpl_bmrk
+export TPN=$TPN_cpl_bmrk
+export INPES=$INPES_cpl_bmrk
+export JNPES=$JNPES_cpl_bmrk
+export THRD=$THRD_cpl_bmrk
+export WRTTASK_PER_GROUP=$WPG_cpl_bmrk
+
+export med_petlist_bounds=$MPB_cpl_bmrk
+export atm_petlist_bounds=$APB_cpl_bmrk
+export ocn_petlist_bounds=$OPB_cpl_bmrk
+export ice_petlist_bounds=$IPB_cpl_bmrk
 
 # set component and coupling timesteps
 export DT_CICE=${DT_ATMOS}
@@ -122,12 +123,18 @@ export NEMS_CONFIGURE="nems.configure.medcold_atm_ocn_ice.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 
-export FV3_RUN=cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt_run.IN
+export FV3_RUN=cpld_fv3_mom6_cice_bmark_rt_run.IN
 export INPUT_NML=input.benchmark_ccpp.nml.IN
-export ATMRES=384
-export SUITE_NAME="FV3_GFS_v15p2_coupled"
+
 export FIELD_TABLE="field_table.gfdlmp"
+export SUITE_NAME="FV3_GFS_v15p2_coupled"
+
 export OZ_PHYS_NEW=".T."
 
+# set run type for CICE in ice_in
 export RUNID="cpcice"
+
+# set initialization type for MOM6
 export MOM6_RESTART_SETTING="r"
+
+export ATMRES=C384
