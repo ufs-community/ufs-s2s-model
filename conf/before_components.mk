@@ -11,8 +11,13 @@
 
 # ----------------------------------------------------------------------
 # Decide the conf and modulefile names.
-
-CHOSEN_MODULE=$(BUILD_TARGET)/fv3_coupled
+# S2S_DEBUG_MODULE is defined in GNUmakefile
+ifeq ($(S2S_DEBUG_MODULE),false)
+  CHOSEN_MODULE=$(BUILD_TARGET)/fv3_coupled
+else
+  CHOSEN_MODULE=$(BUILD_TARGET)/fv3_coupled_debug
+endif
+$(info CHOSEN_MODULE is $(CHOSEN_MODULE))
 
 CONFIGURE_NEMS_FILE=configure.fv3_coupled.$(BUILD_TARGET)
 
