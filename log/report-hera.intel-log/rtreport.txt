@@ -1,18 +1,20 @@
 Run rocotostat...
 Generate report...
-WORKFLOW STARTED AT Sat Apr 25 08:55:55 2020 (+1587804955)
+WORKFLOW STARTED AT Tue Apr 28 09:24:24 2020 (+1588065864)
 Repository information:
 
 
 REPO TOP:
-add_debug 7efd277 [origin/add_debug] Revised compsets/all.input and compsets/fv3mom6cice5_ccpp.input.
-Fetch URL: https://github.com/binli2337/ufs-s2s-model
- m NEMS
- M compsets/fv3mom6cice5.input
- M compsets/hera.input
- M compsets/nemscommon.input
- M compsets/platforms.input
+develop a846d8e [origin/develop] Add debug (#70)
+Fetch URL: https://github.com/ufs-community/ufs-s2s-model
+ M FV3
+ M compsets/cpld_fv3_ccpp_mom6_cice_cold_atm_flux.input
+ M compsets/cpld_fv3_mom6_cice_cold_atm_flux.input
+ M conf/before_components.mk
+ M conf/configure.fv3.hera.intel
+ M conf/configure.fv3_coupled.hera.intel
  M log/report-hera.intel-log/build_fv3_ccpp_mom6_cice.exe.log
+ M log/report-hera.intel-log/build_fv3_ccpp_mom6_cice_debug.exe.log
  M log/report-hera.intel-log/build_fv3_ccpp_mom6_cice_repro.exe.log
  M log/report-hera.intel-log/build_fv3_ccpp_mom6_cice_ww3.exe.log
  M log/report-hera.intel-log/build_fv3_ccpp_mom6_cice_ww3_repro.exe.log
@@ -21,7 +23,8 @@ Fetch URL: https://github.com/binli2337/ufs-s2s-model
  M log/report-hera.intel-log/build_fv3_mom6_cice_ww3.exe.log
  M log/report-hera.intel-log/build_fv3_mom6_cice_ww3_repro.exe.log
  M log/report-hera.intel-log/rtreport.txt
- M parm/model_configure.IN
+ M modulefiles/hera.intel/fv3_coupled
+ M modulefiles/hera.intel/fv3_coupled_debug
 
 Entering 'CICE_SRC'
 (HEAD detached at 27e5e3f) 27e5e3f Change field names (#13)
@@ -32,7 +35,7 @@ Entering 'FMS'
 Fetch URL: https://github.com/NOAA-GFDL/FMS
 
 Entering 'FV3'
-(HEAD detached at 7c3eade) 7c3eade Regional BC blending and BCs into GSI (#80)
+develop aac9ff9 [origin/develop] Remove dynamic CCPP build (#103)
 Fetch URL: https://github.com/NOAA-EMC/fv3atm
 
 Entering 'MOM6'
@@ -40,19 +43,8 @@ Entering 'MOM6'
 Fetch URL: https://github.com/NOAA-EMC/MOM6-interface
 
 Entering 'NEMS'
-(HEAD detached at 6a4254b) 6a4254b hera.gnu config & selective merge of UFS public release hotfix to develop (fixes problem with MPI_Comm_Split in openmpi when hash is negative) (#43)
+(HEAD detached at 6e36027) 6e36027 support for ufs-s2s-model debug compilaiton (#40)
 Fetch URL: https://github.com/NOAA-EMC/NEMS.git
- M .gitignore
- M .gitmodules
- M GNUmakefile
- M src/MAIN_NEMS.F90
- M src/conf/module-setup.csh.inc
- M src/conf/module-setup.sh.inc
- M src/incmake/buildenv.mk
- M src/incmake/relist_components.mk
- M src/module_NEMS_GRID_COMP.F90
- M src/module_NEMS_Rusage.F90
- m tests/produtil/NCEPLIBS-pyprodutil
 
 Entering 'WW3'
 (HEAD detached at 71380ea8) 71380ea8 Emergency fix for NCEP applications only: creating temporary WW3/exec directory to host ww3 utility programs prior to model directory cleanup. (#174)
@@ -74,8 +66,8 @@ BUILD fv3_mom6_cice_ww3_repro.exe: SUCCEEDED
 BUILD fv3_ccpp_mom6_cice_ww3_repro.exe: SUCCEEDED
 
 TEST #1: PASS
-  Test cpld_fv3_ccpp_mom6_cice_1d_satmedmf_repro starting at Sat Apr 25 09:19:08 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - satmedmf - repro)
-  Sat Apr 25 09:19:08 UTC 2020
+  Test cpld_fv3_ccpp_mom6_cice_1d_satmedmf_repro starting at Tue Apr 28 09:47:54 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - satmedmf - repro)
+  Tue Apr 28 09:47:54 UTC 2020
   phyf024.tile1.nc: bit-for-bit identical
   phyf024.tile2.nc: bit-for-bit identical
   phyf024.tile3.nc: bit-for-bit identical
@@ -148,14 +140,14 @@ TEST #1: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice_repro.exe
-    Expected md5sum: 2a405e9e681521f55e78ae1c4b892be3
-    Actual md5sum: 2a405e9e681521f55e78ae1c4b892be3
-  TEST PASSED AT Sat Apr 25 09:34:50 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice_repro.exe
+    Expected md5sum: bf35e940a2f159f11e0c0da8489e96bf
+    Actual md5sum: bf35e940a2f159f11e0c0da8489e96bf
+  TEST PASSED AT Tue Apr 28 10:03:16 UTC 2020
 
 TEST #2: PASS
-  Test cpld_fv3_ccpp_mom6_cice_2d_atm_flux_repro starting at Sat Apr 25 09:19:09 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - 2d_warm - repro)
-  Sat Apr 25 09:19:09 UTC 2020
+  Test cpld_fv3_ccpp_mom6_cice_2d_atm_flux_repro starting at Tue Apr 28 09:47:56 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - 2d_warm - repro)
+  Tue Apr 28 09:47:56 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -228,14 +220,14 @@ TEST #2: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice_repro.exe
-    Expected md5sum: 2a405e9e681521f55e78ae1c4b892be3
-    Actual md5sum: 2a405e9e681521f55e78ae1c4b892be3
-  TEST PASSED AT Sat Apr 25 09:46:54 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice_repro.exe
+    Expected md5sum: bf35e940a2f159f11e0c0da8489e96bf
+    Actual md5sum: bf35e940a2f159f11e0c0da8489e96bf
+  TEST PASSED AT Tue Apr 28 10:15:16 UTC 2020
 
 TEST #3: PASS
-  Test cpld_fv3_ccpp_mom6_cice_cold_debug starting at Sat Apr 25 09:22:42 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - debug)
-  Sat Apr 25 09:22:42 UTC 2020
+  Test cpld_fv3_ccpp_mom6_cice_cold_debug starting at Tue Apr 28 09:57:48 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - debug)
+  Tue Apr 28 09:57:48 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -291,14 +283,14 @@ TEST #3: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice_debug.exe
-    Expected md5sum: 29680eb32ce8e7789db244c0f07b4944
-    Actual md5sum: 29680eb32ce8e7789db244c0f07b4944
-  TEST PASSED AT Sat Apr 25 09:33:17 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice_debug.exe
+    Expected md5sum: b2123323f39f04ef378123a57b69d656
+    Actual md5sum: b2123323f39f04ef378123a57b69d656
+  TEST PASSED AT Tue Apr 28 10:08:15 UTC 2020
 
 TEST #4: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux_repro starting at Sat Apr 25 09:19:12 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - 2d_warm - repro)
-  Sat Apr 25 09:19:12 UTC 2020
+  Test cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux_repro starting at Tue Apr 28 09:48:58 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - 2d_warm - repro)
+  Tue Apr 28 09:48:58 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -371,14 +363,14 @@ TEST #4: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice_repro.exe
-    Expected md5sum: 2a405e9e681521f55e78ae1c4b892be3
-    Actual md5sum: 2a405e9e681521f55e78ae1c4b892be3
-  TEST PASSED AT Sat Apr 25 10:14:29 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice_repro.exe
+    Expected md5sum: bf35e940a2f159f11e0c0da8489e96bf
+    Actual md5sum: bf35e940a2f159f11e0c0da8489e96bf
+  TEST PASSED AT Tue Apr 28 10:44:34 UTC 2020
 
 TEST #5: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt_repro starting at Sat Apr 25 09:19:09 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE 1 day run - repro)
-  Sat Apr 25 09:19:09 UTC 2020
+  Test cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt_repro starting at Tue Apr 28 09:44:06 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE 1 day run - repro)
+  Tue Apr 28 09:44:06 UTC 2020
   phyf024.tile1.nc: bit-for-bit identical
   phyf024.tile2.nc: bit-for-bit identical
   phyf024.tile3.nc: bit-for-bit identical
@@ -451,14 +443,14 @@ TEST #5: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice_repro.exe
-    Expected md5sum: 2a405e9e681521f55e78ae1c4b892be3
-    Actual md5sum: 2a405e9e681521f55e78ae1c4b892be3
-  TEST PASSED AT Sat Apr 25 09:39:10 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice_repro.exe
+    Expected md5sum: bf35e940a2f159f11e0c0da8489e96bf
+    Actual md5sum: bf35e940a2f159f11e0c0da8489e96bf
+  TEST PASSED AT Tue Apr 28 10:03:42 UTC 2020
 
 TEST #6: PASS
-  Test cpld_fv3_384_mom6_cice_ww3_cold_bmark_rt starting at Sat Apr 25 09:47:35 UTC 2020 (Coupled FV3-MOM6-CICE-WW3 system - cold 384)
-  Sat Apr 25 09:47:35 UTC 2020
+  Test cpld_fv3_384_mom6_cice_ww3_cold_bmark_rt starting at Tue Apr 28 10:22:16 UTC 2020 (Coupled FV3-MOM6-CICE-WW3 system - cold 384)
+  Tue Apr 28 10:22:16 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -514,14 +506,14 @@ TEST #6: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice_ww3.exe
-    Expected md5sum: 8aedc7a2d9a26492974da75272198c67
-    Actual md5sum: 8aedc7a2d9a26492974da75272198c67
-  TEST PASSED AT Sat Apr 25 09:54:38 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice_ww3.exe
+    Expected md5sum: 748cac9d9381be841318386acdb3d45b
+    Actual md5sum: 748cac9d9381be841318386acdb3d45b
+  TEST PASSED AT Tue Apr 28 10:29:13 UTC 2020
 
 TEST #7: PASS
-  Test cpld_fv3_384_mom6_cice_cold_atm_flux_repro starting at Sat Apr 25 10:05:26 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold 384 - repro)
-  Sat Apr 25 10:05:26 UTC 2020
+  Test cpld_fv3_384_mom6_cice_cold_atm_flux_repro starting at Tue Apr 28 10:38:49 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold 384 - repro)
+  Tue Apr 28 10:38:49 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -577,14 +569,14 @@ TEST #7: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice_repro.exe
-    Expected md5sum: ace423815f30a409b3494069b3e4f326
-    Actual md5sum: ace423815f30a409b3494069b3e4f326
-  TEST PASSED AT Sat Apr 25 10:10:47 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice_repro.exe
+    Expected md5sum: ab67fe727e15d4e0470d4d57957be209
+    Actual md5sum: ab67fe727e15d4e0470d4d57957be209
+  TEST PASSED AT Tue Apr 28 10:44:00 UTC 2020
 
 TEST #8: PASS
-  Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Sat Apr 25 10:23:06 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold 384)
-  Sat Apr 25 10:23:06 UTC 2020
+  Test cpld_fv3_384_mom6_cice_cold_atm_flux starting at Tue Apr 28 10:57:34 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold 384)
+  Tue Apr 28 10:57:34 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -640,14 +632,14 @@ TEST #8: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice.exe
-    Expected md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-    Actual md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-  TEST PASSED AT Sat Apr 25 10:28:08 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice.exe
+    Expected md5sum: 438c415f1de9d44a98f2292143c83365
+    Actual md5sum: 438c415f1de9d44a98f2292143c83365
+  TEST PASSED AT Tue Apr 28 11:02:28 UTC 2020
 
 TEST #9: PASS
-  Test cpld_fv3_ccpp_mom6_cice_cold_satmedmf starting at Sat Apr 25 10:44:42 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold_satmedmf)
-  Sat Apr 25 10:44:42 UTC 2020
+  Test cpld_fv3_ccpp_mom6_cice_cold_satmedmf starting at Tue Apr 28 11:23:58 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold_satmedmf)
+  Tue Apr 28 11:23:58 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -703,14 +695,14 @@ TEST #9: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 5d43987534b155c48d8a94e29d2f953e
-    Actual md5sum: 5d43987534b155c48d8a94e29d2f953e
-  TEST PASSED AT Sat Apr 25 10:47:05 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice.exe
+    Expected md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+    Actual md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+  TEST PASSED AT Tue Apr 28 11:26:21 UTC 2020
 
 TEST #10: PASS
-  Test cpld_fv3_ccpp_mom6_cice_2d_atm_flux starting at Sat Apr 25 10:44:44 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - 2d_warm)
-  Sat Apr 25 10:44:44 UTC 2020
+  Test cpld_fv3_ccpp_mom6_cice_2d_atm_flux starting at Tue Apr 28 11:24:02 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - 2d_warm)
+  Tue Apr 28 11:24:02 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -783,14 +775,14 @@ TEST #10: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 5d43987534b155c48d8a94e29d2f953e
-    Actual md5sum: 5d43987534b155c48d8a94e29d2f953e
-  TEST PASSED AT Sat Apr 25 11:10:56 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice.exe
+    Expected md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+    Actual md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+  TEST PASSED AT Tue Apr 28 11:50:29 UTC 2020
 
 TEST #11: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt starting at Sat Apr 25 11:11:01 UTC 2020 (Coupled FV3-CCPP-MOM6-CICE-WW3 system - cold 384)
-  Sat Apr 25 11:11:01 UTC 2020
+  Test cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt starting at Tue Apr 28 11:49:22 UTC 2020 (Coupled FV3-CCPP-MOM6-CICE-WW3 system - cold 384)
+  Tue Apr 28 11:49:22 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -846,14 +838,14 @@ TEST #11: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice_ww3.exe
-    Expected md5sum: c6ab36251abe0329348f64d57b4204a2
-    Actual md5sum: c6ab36251abe0329348f64d57b4204a2
-  TEST PASSED AT Sat Apr 25 11:17:57 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice_ww3.exe
+    Expected md5sum: 35709afeb5e5fd31ef65bd016913c1de
+    Actual md5sum: 35709afeb5e5fd31ef65bd016913c1de
+  TEST PASSED AT Tue Apr 28 11:56:16 UTC 2020
 
 TEST #12: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt starting at Sat Apr 25 10:44:37 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold 384)
-  Sat Apr 25 10:44:37 UTC 2020
+  Test cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt starting at Tue Apr 28 11:23:04 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold 384)
+  Tue Apr 28 11:23:04 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -909,14 +901,14 @@ TEST #12: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 5d43987534b155c48d8a94e29d2f953e
-    Actual md5sum: 5d43987534b155c48d8a94e29d2f953e
-  TEST PASSED AT Sat Apr 25 10:49:36 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice.exe
+    Expected md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+    Actual md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+  TEST PASSED AT Tue Apr 28 11:28:04 UTC 2020
 
 TEST #13: PASS
-  Test cpld_fv3_384_mom6_cice_cold_bmark_rt starting at Sat Apr 25 10:23:03 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold 384)
-  Sat Apr 25 10:23:03 UTC 2020
+  Test cpld_fv3_384_mom6_cice_cold_bmark_rt starting at Tue Apr 28 10:56:44 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold 384)
+  Tue Apr 28 10:56:44 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -972,14 +964,14 @@ TEST #13: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice.exe
-    Expected md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-    Actual md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-  TEST PASSED AT Sat Apr 25 10:28:02 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice.exe
+    Expected md5sum: 438c415f1de9d44a98f2292143c83365
+    Actual md5sum: 438c415f1de9d44a98f2292143c83365
+  TEST PASSED AT Tue Apr 28 11:01:47 UTC 2020
 
 TEST #14: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt starting at Sat Apr 25 11:10:59 UTC 2020 (Coupled FV3-CCPP-MOM6-CICE-WW3 system - 1 day)
-  Sat Apr 25 11:10:59 UTC 2020
+  Test cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt starting at Tue Apr 28 11:49:41 UTC 2020 (Coupled FV3-CCPP-MOM6-CICE-WW3 system - 1 day)
+  Tue Apr 28 11:49:41 UTC 2020
   phyf024.tile1.nc: bit-for-bit identical
   phyf024.tile2.nc: bit-for-bit identical
   phyf024.tile3.nc: bit-for-bit identical
@@ -1055,14 +1047,14 @@ TEST #14: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice_ww3.exe
-    Expected md5sum: c6ab36251abe0329348f64d57b4204a2
-    Actual md5sum: c6ab36251abe0329348f64d57b4204a2
-  TEST PASSED AT Sat Apr 25 11:40:31 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice_ww3.exe
+    Expected md5sum: 35709afeb5e5fd31ef65bd016913c1de
+    Actual md5sum: 35709afeb5e5fd31ef65bd016913c1de
+  TEST PASSED AT Tue Apr 28 12:18:24 UTC 2020
 
 TEST #15: PASS
-  Test cpld_fv3_mom6_cice_2d_2threads_repro starting at Sat Apr 25 10:05:58 UTC 2020 (Fully coupled FV3-MOM6-CICE system - 2 threads - repro)
-  Sat Apr 25 10:05:58 UTC 2020
+  Test cpld_fv3_mom6_cice_2d_2threads_repro starting at Tue Apr 28 10:39:02 UTC 2020 (Fully coupled FV3-MOM6-CICE system - 2 threads - repro)
+  Tue Apr 28 10:39:02 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -1135,14 +1127,14 @@ TEST #15: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice_repro.exe
-    Expected md5sum: ace423815f30a409b3494069b3e4f326
-    Actual md5sum: ace423815f30a409b3494069b3e4f326
-  TEST PASSED AT Sat Apr 25 10:33:55 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice_repro.exe
+    Expected md5sum: ab67fe727e15d4e0470d4d57957be209
+    Actual md5sum: ab67fe727e15d4e0470d4d57957be209
+  TEST PASSED AT Tue Apr 28 11:07:10 UTC 2020
 
 TEST #16: PASS
-  Test cpld_fv3_384_mom6_cice_ww3_1d_bmark_rt starting at Sat Apr 25 09:51:41 UTC 2020 (Coupled FV3-MOM6-CICE-WW3 system - 1 day)
-  Sat Apr 25 09:51:41 UTC 2020
+  Test cpld_fv3_384_mom6_cice_ww3_1d_bmark_rt starting at Tue Apr 28 10:22:15 UTC 2020 (Coupled FV3-MOM6-CICE-WW3 system - 1 day)
+  Tue Apr 28 10:22:15 UTC 2020
   phyf024.tile1.nc: bit-for-bit identical
   phyf024.tile2.nc: bit-for-bit identical
   phyf024.tile3.nc: bit-for-bit identical
@@ -1218,14 +1210,14 @@ TEST #16: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice_ww3.exe
-    Expected md5sum: 8aedc7a2d9a26492974da75272198c67
-    Actual md5sum: 8aedc7a2d9a26492974da75272198c67
-  TEST PASSED AT Sat Apr 25 10:21:11 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice_ww3.exe
+    Expected md5sum: 748cac9d9381be841318386acdb3d45b
+    Actual md5sum: 748cac9d9381be841318386acdb3d45b
+  TEST PASSED AT Tue Apr 28 10:51:28 UTC 2020
 
 TEST #17: PASS
-  Test cpld_fv3_mom6_cice_1d_satmedmf starting at Sat Apr 25 10:23:42 UTC 2020 (Fully coupled FV3-MOM6-CICE system - satmedmf)
-  Sat Apr 25 10:23:42 UTC 2020
+  Test cpld_fv3_mom6_cice_1d_satmedmf starting at Tue Apr 28 10:57:34 UTC 2020 (Fully coupled FV3-MOM6-CICE system - satmedmf)
+  Tue Apr 28 10:57:34 UTC 2020
   phyf024.tile1.nc: bit-for-bit identical
   phyf024.tile2.nc: bit-for-bit identical
   phyf024.tile3.nc: bit-for-bit identical
@@ -1298,14 +1290,14 @@ TEST #17: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice.exe
-    Expected md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-    Actual md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-  TEST PASSED AT Sat Apr 25 10:38:21 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice.exe
+    Expected md5sum: 438c415f1de9d44a98f2292143c83365
+    Actual md5sum: 438c415f1de9d44a98f2292143c83365
+  TEST PASSED AT Tue Apr 28 11:12:02 UTC 2020
 
 TEST #18: PASS
-  Test cpld_fv3_ccpp_mom6_cice_2d_decomp_repro starting at Sat Apr 25 09:19:09 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - decomp - repro)
-  Sat Apr 25 09:19:09 UTC 2020
+  Test cpld_fv3_ccpp_mom6_cice_2d_decomp_repro starting at Tue Apr 28 09:48:59 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - decomp - repro)
+  Tue Apr 28 09:48:59 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -1378,14 +1370,14 @@ TEST #18: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice_repro.exe
-    Expected md5sum: 2a405e9e681521f55e78ae1c4b892be3
-    Actual md5sum: 2a405e9e681521f55e78ae1c4b892be3
-  TEST PASSED AT Sat Apr 25 09:46:58 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice_repro.exe
+    Expected md5sum: bf35e940a2f159f11e0c0da8489e96bf
+    Actual md5sum: bf35e940a2f159f11e0c0da8489e96bf
+  TEST PASSED AT Tue Apr 28 10:16:10 UTC 2020
 
 TEST #19: PASS
-  Test cpld_fv3_384_mom6_cice_cold_bmark_rt_repro starting at Sat Apr 25 10:05:24 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold 384 - repro)
-  Sat Apr 25 10:05:24 UTC 2020
+  Test cpld_fv3_384_mom6_cice_cold_bmark_rt_repro starting at Tue Apr 28 10:38:41 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold 384 - repro)
+  Tue Apr 28 10:38:41 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -1441,14 +1433,14 @@ TEST #19: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice_repro.exe
-    Expected md5sum: ace423815f30a409b3494069b3e4f326
-    Actual md5sum: ace423815f30a409b3494069b3e4f326
-  TEST PASSED AT Sat Apr 25 10:10:45 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice_repro.exe
+    Expected md5sum: ab67fe727e15d4e0470d4d57957be209
+    Actual md5sum: ab67fe727e15d4e0470d4d57957be209
+  TEST PASSED AT Tue Apr 28 10:44:00 UTC 2020
 
 TEST #20: PASS
-  Test cpld_fv3_mom6_cice_1d_satmedmf_repro starting at Sat Apr 25 10:05:27 UTC 2020 (Fully coupled FV3-MOM6-CICE system - satmedmf - repro)
-  Sat Apr 25 10:05:27 UTC 2020
+  Test cpld_fv3_mom6_cice_1d_satmedmf_repro starting at Tue Apr 28 10:38:49 UTC 2020 (Fully coupled FV3-MOM6-CICE system - satmedmf - repro)
+  Tue Apr 28 10:38:49 UTC 2020
   phyf024.tile1.nc: bit-for-bit identical
   phyf024.tile2.nc: bit-for-bit identical
   phyf024.tile3.nc: bit-for-bit identical
@@ -1521,14 +1513,14 @@ TEST #20: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice_repro.exe
-    Expected md5sum: ace423815f30a409b3494069b3e4f326
-    Actual md5sum: ace423815f30a409b3494069b3e4f326
-  TEST PASSED AT Sat Apr 25 10:21:08 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice_repro.exe
+    Expected md5sum: ab67fe727e15d4e0470d4d57957be209
+    Actual md5sum: ab67fe727e15d4e0470d4d57957be209
+  TEST PASSED AT Tue Apr 28 10:54:26 UTC 2020
 
 TEST #21: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux_repro starting at Sat Apr 25 09:19:12 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold 384 - repro)
-  Sat Apr 25 09:19:12 UTC 2020
+  Test cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux_repro starting at Tue Apr 28 09:48:59 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold 384 - repro)
+  Tue Apr 28 09:48:59 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -1584,14 +1576,14 @@ TEST #21: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice_repro.exe
-    Expected md5sum: 2a405e9e681521f55e78ae1c4b892be3
-    Actual md5sum: 2a405e9e681521f55e78ae1c4b892be3
-  TEST PASSED AT Sat Apr 25 09:24:39 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice_repro.exe
+    Expected md5sum: bf35e940a2f159f11e0c0da8489e96bf
+    Actual md5sum: bf35e940a2f159f11e0c0da8489e96bf
+  TEST PASSED AT Tue Apr 28 09:54:13 UTC 2020
 
 TEST #22: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux starting at Sat Apr 25 10:44:45 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold 384)
-  Sat Apr 25 10:44:45 UTC 2020
+  Test cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux starting at Tue Apr 28 11:24:56 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold 384)
+  Tue Apr 28 11:24:56 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -1647,14 +1639,14 @@ TEST #22: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 5d43987534b155c48d8a94e29d2f953e
-    Actual md5sum: 5d43987534b155c48d8a94e29d2f953e
-  TEST PASSED AT Sat Apr 25 10:49:42 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice.exe
+    Expected md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+    Actual md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+  TEST PASSED AT Tue Apr 28 11:29:45 UTC 2020
 
 TEST #23: PASS
-  Test cpld_fv3_mom6_cice_2d_atm_flux_repro starting at Sat Apr 25 10:05:31 UTC 2020 (Fully coupled FV3-MOM6-CICE system - 2d_warm - repro)
-  Sat Apr 25 10:05:31 UTC 2020
+  Test cpld_fv3_mom6_cice_2d_atm_flux_repro starting at Tue Apr 28 10:38:51 UTC 2020 (Fully coupled FV3-MOM6-CICE system - 2d_warm - repro)
+  Tue Apr 28 10:38:51 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -1727,14 +1719,14 @@ TEST #23: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice_repro.exe
-    Expected md5sum: ace423815f30a409b3494069b3e4f326
-    Actual md5sum: ace423815f30a409b3494069b3e4f326
-  TEST PASSED AT Sat Apr 25 10:33:09 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice_repro.exe
+    Expected md5sum: ab67fe727e15d4e0470d4d57957be209
+    Actual md5sum: ab67fe727e15d4e0470d4d57957be209
+  TEST PASSED AT Tue Apr 28 11:06:25 UTC 2020
 
 TEST #24: PASS
-  Test cpld_fv3_ccpp_mom6_cice_cold_atm_flux starting at Sat Apr 25 10:44:50 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold start)
-  Sat Apr 25 10:44:50 UTC 2020
+  Test cpld_fv3_ccpp_mom6_cice_cold_atm_flux starting at Tue Apr 28 11:25:04 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold start)
+  Tue Apr 28 11:25:04 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -1790,14 +1782,14 @@ TEST #24: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 5d43987534b155c48d8a94e29d2f953e
-    Actual md5sum: 5d43987534b155c48d8a94e29d2f953e
-  TEST PASSED AT Sat Apr 25 10:47:19 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice.exe
+    Expected md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+    Actual md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+  TEST PASSED AT Tue Apr 28 11:27:21 UTC 2020
 
 TEST #25: PASS
-  Test cpld_fv3_384_mom6_cice_ww3_1d_bmark_rt_repro starting at Sat Apr 25 11:34:00 UTC 2020 (Coupled FV3-MOM6-CICE-WW3 system - 1 day - repro)
-  Sat Apr 25 11:34:00 UTC 2020
+  Test cpld_fv3_384_mom6_cice_ww3_1d_bmark_rt_repro starting at Tue Apr 28 12:15:25 UTC 2020 (Coupled FV3-MOM6-CICE-WW3 system - 1 day - repro)
+  Tue Apr 28 12:15:25 UTC 2020
   phyf024.tile1.nc: bit-for-bit identical
   phyf024.tile2.nc: bit-for-bit identical
   phyf024.tile3.nc: bit-for-bit identical
@@ -1873,14 +1865,14 @@ TEST #25: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice_ww3_repro.exe
-    Expected md5sum: aa8e12432061057622c5715c80e8275f
-    Actual md5sum: aa8e12432061057622c5715c80e8275f
-  TEST PASSED AT Sat Apr 25 12:03:29 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice_ww3_repro.exe
+    Expected md5sum: caf0d0b1794ec1e0171f56e3079f88fd
+    Actual md5sum: caf0d0b1794ec1e0171f56e3079f88fd
+  TEST PASSED AT Tue Apr 28 12:44:54 UTC 2020
 
 TEST #26: PASS
-  Test cpld_fv3_ccpp_mom6_cice_cold_atm_flux_repro starting at Sat Apr 25 09:19:09 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold start - repro)
-  Sat Apr 25 09:19:09 UTC 2020
+  Test cpld_fv3_ccpp_mom6_cice_cold_atm_flux_repro starting at Tue Apr 28 09:49:45 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold start - repro)
+  Tue Apr 28 09:49:45 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -1936,14 +1928,14 @@ TEST #26: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice_repro.exe
-    Expected md5sum: 2a405e9e681521f55e78ae1c4b892be3
-    Actual md5sum: 2a405e9e681521f55e78ae1c4b892be3
-  TEST PASSED AT Sat Apr 25 09:21:45 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice_repro.exe
+    Expected md5sum: bf35e940a2f159f11e0c0da8489e96bf
+    Actual md5sum: bf35e940a2f159f11e0c0da8489e96bf
+  TEST PASSED AT Tue Apr 28 09:52:12 UTC 2020
 
 TEST #27: PASS
-  Test cpld_fv3_mom6_cice_cold_satmedmf_repro starting at Sat Apr 25 10:05:39 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold_satmedmf - repro)
-  Sat Apr 25 10:05:39 UTC 2020
+  Test cpld_fv3_mom6_cice_cold_satmedmf_repro starting at Tue Apr 28 10:38:49 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold_satmedmf - repro)
+  Tue Apr 28 10:38:49 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -1999,14 +1991,14 @@ TEST #27: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice_repro.exe
-    Expected md5sum: ace423815f30a409b3494069b3e4f326
-    Actual md5sum: ace423815f30a409b3494069b3e4f326
-  TEST PASSED AT Sat Apr 25 10:08:09 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice_repro.exe
+    Expected md5sum: ab67fe727e15d4e0470d4d57957be209
+    Actual md5sum: ab67fe727e15d4e0470d4d57957be209
+  TEST PASSED AT Tue Apr 28 10:41:14 UTC 2020
 
 TEST #28: PASS
-  Test cpld_fv3_ccpp_mom6_cice_2d_decomp starting at Sat Apr 25 10:44:51 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - decomp)
-  Sat Apr 25 10:44:51 UTC 2020
+  Test cpld_fv3_ccpp_mom6_cice_2d_decomp starting at Tue Apr 28 11:27:53 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - decomp)
+  Tue Apr 28 11:27:53 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -2079,14 +2071,14 @@ TEST #28: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 5d43987534b155c48d8a94e29d2f953e
-    Actual md5sum: 5d43987534b155c48d8a94e29d2f953e
-  TEST PASSED AT Sat Apr 25 11:10:51 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice.exe
+    Expected md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+    Actual md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+  TEST PASSED AT Tue Apr 28 11:53:40 UTC 2020
 
 TEST #29: PASS
-  Test cpld_fv3_mom6_cice_2d_2threads starting at Sat Apr 25 10:26:20 UTC 2020 (Fully coupled FV3-MOM6-CICE system - 2 threads)
-  Sat Apr 25 10:26:20 UTC 2020
+  Test cpld_fv3_mom6_cice_2d_2threads starting at Tue Apr 28 10:58:30 UTC 2020 (Fully coupled FV3-MOM6-CICE system - 2 threads)
+  Tue Apr 28 10:58:30 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -2159,14 +2151,14 @@ TEST #29: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice.exe
-    Expected md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-    Actual md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-  TEST PASSED AT Sat Apr 25 10:53:15 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice.exe
+    Expected md5sum: 438c415f1de9d44a98f2292143c83365
+    Actual md5sum: 438c415f1de9d44a98f2292143c83365
+  TEST PASSED AT Tue Apr 28 11:24:59 UTC 2020
 
 TEST #30: PASS
-  Test cpld_fv3_mom6_cice_2d_decomp starting at Sat Apr 25 10:24:05 UTC 2020 (Fully coupled FV3-MOM6-CICE system - decomp)
-  Sat Apr 25 10:24:05 UTC 2020
+  Test cpld_fv3_mom6_cice_2d_decomp starting at Tue Apr 28 10:57:34 UTC 2020 (Fully coupled FV3-MOM6-CICE system - decomp)
+  Tue Apr 28 10:57:34 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -2239,14 +2231,14 @@ TEST #30: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice.exe
-    Expected md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-    Actual md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-  TEST PASSED AT Sat Apr 25 10:50:10 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice.exe
+    Expected md5sum: 438c415f1de9d44a98f2292143c83365
+    Actual md5sum: 438c415f1de9d44a98f2292143c83365
+  TEST PASSED AT Tue Apr 28 11:23:53 UTC 2020
 
 TEST #31: PASS
-  Test cpld_fv3_mom6_cice_cold_atm_flux_repro starting at Sat Apr 25 10:05:39 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold start - repro)
-  Sat Apr 25 10:05:39 UTC 2020
+  Test cpld_fv3_mom6_cice_cold_atm_flux_repro starting at Tue Apr 28 10:38:55 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold start - repro)
+  Tue Apr 28 10:38:55 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -2302,14 +2294,14 @@ TEST #31: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice_repro.exe
-    Expected md5sum: ace423815f30a409b3494069b3e4f326
-    Actual md5sum: ace423815f30a409b3494069b3e4f326
-  TEST PASSED AT Sat Apr 25 10:08:04 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice_repro.exe
+    Expected md5sum: ab67fe727e15d4e0470d4d57957be209
+    Actual md5sum: ab67fe727e15d4e0470d4d57957be209
+  TEST PASSED AT Tue Apr 28 10:41:20 UTC 2020
 
 TEST #32: PASS
-  Test cpld_fv3_384_mom6_cice_ww3_cold_bmark_rt_repro starting at Sat Apr 25 11:34:00 UTC 2020 (Coupled FV3-MOM6-CICE-WW3 system - cold 384 - repro)
-  Sat Apr 25 11:34:00 UTC 2020
+  Test cpld_fv3_384_mom6_cice_ww3_cold_bmark_rt_repro starting at Tue Apr 28 12:16:33 UTC 2020 (Coupled FV3-MOM6-CICE-WW3 system - cold 384 - repro)
+  Tue Apr 28 12:16:33 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -2365,14 +2357,14 @@ TEST #32: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice_ww3_repro.exe
-    Expected md5sum: aa8e12432061057622c5715c80e8275f
-    Actual md5sum: aa8e12432061057622c5715c80e8275f
-  TEST PASSED AT Sat Apr 25 11:41:04 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice_ww3_repro.exe
+    Expected md5sum: caf0d0b1794ec1e0171f56e3079f88fd
+    Actual md5sum: caf0d0b1794ec1e0171f56e3079f88fd
+  TEST PASSED AT Tue Apr 28 12:23:37 UTC 2020
 
 TEST #33: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt_repro starting at Sat Apr 25 11:58:44 UTC 2020 (Coupled FV3-CCPP-MOM6-CICE-WW3 system - 1 day - repro)
-  Sat Apr 25 11:58:44 UTC 2020
+  Test cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt_repro starting at Tue Apr 28 12:51:57 UTC 2020 (Coupled FV3-CCPP-MOM6-CICE-WW3 system - 1 day - repro)
+  Tue Apr 28 12:51:57 UTC 2020
   phyf024.tile1.nc: bit-for-bit identical
   phyf024.tile2.nc: bit-for-bit identical
   phyf024.tile3.nc: bit-for-bit identical
@@ -2448,14 +2440,14 @@ TEST #33: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice_ww3_repro.exe
-    Expected md5sum: d375ca59552e6c46feea28608fab724d
-    Actual md5sum: d375ca59552e6c46feea28608fab724d
-  TEST PASSED AT Sat Apr 25 12:27:51 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice_ww3_repro.exe
+    Expected md5sum: 20dd83288131b9c32babf83902e8d935
+    Actual md5sum: 20dd83288131b9c32babf83902e8d935
+  TEST PASSED AT Tue Apr 28 13:23:08 UTC 2020
 
 TEST #34: PASS
-  Test cpld_fv3_mom6_cice_cold_satmedmf starting at Sat Apr 25 10:24:11 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold_satmedmf)
-  Sat Apr 25 10:24:11 UTC 2020
+  Test cpld_fv3_mom6_cice_cold_satmedmf starting at Tue Apr 28 10:57:34 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold_satmedmf)
+  Tue Apr 28 10:57:34 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -2511,14 +2503,14 @@ TEST #34: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice.exe
-    Expected md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-    Actual md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-  TEST PASSED AT Sat Apr 25 10:26:37 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice.exe
+    Expected md5sum: 438c415f1de9d44a98f2292143c83365
+    Actual md5sum: 438c415f1de9d44a98f2292143c83365
+  TEST PASSED AT Tue Apr 28 10:59:58 UTC 2020
 
 TEST #35: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt_repro starting at Sat Apr 25 09:19:08 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold 384 - repro)
-  Sat Apr 25 09:19:08 UTC 2020
+  Test cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt_repro starting at Tue Apr 28 09:44:05 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold 384 - repro)
+  Tue Apr 28 09:44:05 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -2574,14 +2566,14 @@ TEST #35: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice_repro.exe
-    Expected md5sum: 2a405e9e681521f55e78ae1c4b892be3
-    Actual md5sum: 2a405e9e681521f55e78ae1c4b892be3
-  TEST PASSED AT Sat Apr 25 09:24:50 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice_repro.exe
+    Expected md5sum: bf35e940a2f159f11e0c0da8489e96bf
+    Actual md5sum: bf35e940a2f159f11e0c0da8489e96bf
+  TEST PASSED AT Tue Apr 28 09:49:25 UTC 2020
 
 TEST #36: PASS
-  Test cpld_fv3_mom6_cice_2d_decomp_repro starting at Sat Apr 25 10:05:39 UTC 2020 (Fully coupled FV3-MOM6-CICE system - decomp - repro)
-  Sat Apr 25 10:05:39 UTC 2020
+  Test cpld_fv3_mom6_cice_2d_decomp_repro starting at Tue Apr 28 10:38:55 UTC 2020 (Fully coupled FV3-MOM6-CICE system - decomp - repro)
+  Tue Apr 28 10:38:55 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -2654,14 +2646,14 @@ TEST #36: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice_repro.exe
-    Expected md5sum: ace423815f30a409b3494069b3e4f326
-    Actual md5sum: ace423815f30a409b3494069b3e4f326
-  TEST PASSED AT Sat Apr 25 10:32:58 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice_repro.exe
+    Expected md5sum: ab67fe727e15d4e0470d4d57957be209
+    Actual md5sum: ab67fe727e15d4e0470d4d57957be209
+  TEST PASSED AT Tue Apr 28 11:06:13 UTC 2020
 
 TEST #37: PASS
-  Test cpld_fv3_ccpp_mom6_cice_2d_2threads starting at Sat Apr 25 10:45:06 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - 2 threads)
-  Sat Apr 25 10:45:06 UTC 2020
+  Test cpld_fv3_ccpp_mom6_cice_2d_2threads starting at Tue Apr 28 11:27:58 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - 2 threads)
+  Tue Apr 28 11:27:58 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -2734,14 +2726,14 @@ TEST #37: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 5d43987534b155c48d8a94e29d2f953e
-    Actual md5sum: 5d43987534b155c48d8a94e29d2f953e
-  TEST PASSED AT Sat Apr 25 11:11:55 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice.exe
+    Expected md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+    Actual md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+  TEST PASSED AT Tue Apr 28 11:54:40 UTC 2020
 
 TEST #38: PASS
-  Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Sat Apr 25 10:24:34 UTC 2020 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
-  Sat Apr 25 10:24:34 UTC 2020
+  Test cpld_fv3_384_mom6_cice_2d_atm_flux starting at Tue Apr 28 10:57:42 UTC 2020 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
+  Tue Apr 28 10:57:42 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -2814,14 +2806,14 @@ TEST #38: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice.exe
-    Expected md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-    Actual md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-  TEST PASSED AT Sat Apr 25 11:08:58 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice.exe
+    Expected md5sum: 438c415f1de9d44a98f2292143c83365
+    Actual md5sum: 438c415f1de9d44a98f2292143c83365
+  TEST PASSED AT Tue Apr 28 11:41:26 UTC 2020
 
 TEST #39: PASS
-  Test cpld_fv3_ccpp_mom6_cice_1d_satmedmf starting at Sat Apr 25 10:44:51 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - satmedmf)
-  Sat Apr 25 10:44:51 UTC 2020
+  Test cpld_fv3_ccpp_mom6_cice_1d_satmedmf starting at Tue Apr 28 11:27:54 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - satmedmf)
+  Tue Apr 28 11:27:54 UTC 2020
   phyf024.tile1.nc: bit-for-bit identical
   phyf024.tile2.nc: bit-for-bit identical
   phyf024.tile3.nc: bit-for-bit identical
@@ -2894,14 +2886,14 @@ TEST #39: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 5d43987534b155c48d8a94e29d2f953e
-    Actual md5sum: 5d43987534b155c48d8a94e29d2f953e
-  TEST PASSED AT Sat Apr 25 10:59:52 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice.exe
+    Expected md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+    Actual md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+  TEST PASSED AT Tue Apr 28 11:42:39 UTC 2020
 
 TEST #40: PASS
-  Test cpld_fv3_384_mom6_cice_1d_bmark_rt starting at Sat Apr 25 10:23:03 UTC 2020 (Fully coupled FV3-MOM6-CICE 1 day run)
-  Sat Apr 25 10:23:03 UTC 2020
+  Test cpld_fv3_384_mom6_cice_1d_bmark_rt starting at Tue Apr 28 10:57:34 UTC 2020 (Fully coupled FV3-MOM6-CICE 1 day run)
+  Tue Apr 28 10:57:34 UTC 2020
   phyf024.tile1.nc: bit-for-bit identical
   phyf024.tile2.nc: bit-for-bit identical
   phyf024.tile3.nc: bit-for-bit identical
@@ -2974,14 +2966,14 @@ TEST #40: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice.exe
-    Expected md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-    Actual md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-  TEST PASSED AT Sat Apr 25 10:40:35 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice.exe
+    Expected md5sum: 438c415f1de9d44a98f2292143c83365
+    Actual md5sum: 438c415f1de9d44a98f2292143c83365
+  TEST PASSED AT Tue Apr 28 11:14:41 UTC 2020
 
 TEST #41: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux starting at Sat Apr 25 10:44:52 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - 2d_warm)
-  Sat Apr 25 10:44:52 UTC 2020
+  Test cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux starting at Tue Apr 28 11:27:53 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - 2d_warm)
+  Tue Apr 28 11:27:53 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -3054,14 +3046,14 @@ TEST #41: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 5d43987534b155c48d8a94e29d2f953e
-    Actual md5sum: 5d43987534b155c48d8a94e29d2f953e
-  TEST PASSED AT Sat Apr 25 11:28:31 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice.exe
+    Expected md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+    Actual md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+  TEST PASSED AT Tue Apr 28 12:11:56 UTC 2020
 
 TEST #42: PASS
-  Test cpld_fv3_384_mom6_cice_1d_bmark_rt_repro starting at Sat Apr 25 10:05:24 UTC 2020 (Fully coupled FV3-MOM6-CICE 1 day run - repro)
-  Sat Apr 25 10:05:24 UTC 2020
+  Test cpld_fv3_384_mom6_cice_1d_bmark_rt_repro starting at Tue Apr 28 10:38:43 UTC 2020 (Fully coupled FV3-MOM6-CICE 1 day run - repro)
+  Tue Apr 28 10:38:43 UTC 2020
   phyf024.tile1.nc: bit-for-bit identical
   phyf024.tile2.nc: bit-for-bit identical
   phyf024.tile3.nc: bit-for-bit identical
@@ -3134,14 +3126,14 @@ TEST #42: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice_repro.exe
-    Expected md5sum: ace423815f30a409b3494069b3e4f326
-    Actual md5sum: ace423815f30a409b3494069b3e4f326
-  TEST PASSED AT Sat Apr 25 10:25:19 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice_repro.exe
+    Expected md5sum: ab67fe727e15d4e0470d4d57957be209
+    Actual md5sum: ab67fe727e15d4e0470d4d57957be209
+  TEST PASSED AT Tue Apr 28 10:58:22 UTC 2020
 
 TEST #43: PASS
-  Test cpld_fv3_ccpp_mom6_cice_2d_2threads_repro starting at Sat Apr 25 09:19:15 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - 2 threads - repro)
-  Sat Apr 25 09:19:15 UTC 2020
+  Test cpld_fv3_ccpp_mom6_cice_2d_2threads_repro starting at Tue Apr 28 09:49:45 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - 2 threads - repro)
+  Tue Apr 28 09:49:45 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -3214,14 +3206,14 @@ TEST #43: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice_repro.exe
-    Expected md5sum: 2a405e9e681521f55e78ae1c4b892be3
-    Actual md5sum: 2a405e9e681521f55e78ae1c4b892be3
-  TEST PASSED AT Sat Apr 25 09:47:28 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice_repro.exe
+    Expected md5sum: bf35e940a2f159f11e0c0da8489e96bf
+    Actual md5sum: bf35e940a2f159f11e0c0da8489e96bf
+  TEST PASSED AT Tue Apr 28 10:17:45 UTC 2020
 
 TEST #44: PASS
-  Test cpld_fv3_ccpp_mom6_cice_6h_debug starting at Sat Apr 25 09:22:45 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - debug)
-  Sat Apr 25 09:22:45 UTC 2020
+  Test cpld_fv3_ccpp_mom6_cice_6h_debug starting at Tue Apr 28 09:58:53 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - debug)
+  Tue Apr 28 09:58:53 UTC 2020
   phyf006.tile1.nc: bit-for-bit identical
   phyf006.tile2.nc: bit-for-bit identical
   phyf006.tile3.nc: bit-for-bit identical
@@ -3293,14 +3285,14 @@ TEST #44: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice_debug.exe
-    Expected md5sum: 29680eb32ce8e7789db244c0f07b4944
-    Actual md5sum: 29680eb32ce8e7789db244c0f07b4944
-  TEST PASSED AT Sat Apr 25 09:59:03 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice_debug.exe
+    Expected md5sum: b2123323f39f04ef378123a57b69d656
+    Actual md5sum: b2123323f39f04ef378123a57b69d656
+  TEST PASSED AT Tue Apr 28 10:34:02 UTC 2020
 
 TEST #45: PASS
-  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Sat Apr 25 10:24:46 UTC 2020 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
-  Sat Apr 25 10:24:46 UTC 2020
+  Test cpld_fv3_mom6_cice_2d_atm_flux starting at Tue Apr 28 10:57:53 UTC 2020 (Fully coupled FV3-MOM6-CICE system - 2d_warm)
+  Tue Apr 28 10:57:53 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -3373,14 +3365,14 @@ TEST #45: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice.exe
-    Expected md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-    Actual md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-  TEST PASSED AT Sat Apr 25 10:50:27 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice.exe
+    Expected md5sum: 438c415f1de9d44a98f2292143c83365
+    Actual md5sum: 438c415f1de9d44a98f2292143c83365
+  TEST PASSED AT Tue Apr 28 11:23:47 UTC 2020
 
 TEST #46: PASS
-  Test cpld_fv3_ccpp_mom6_cice_cold_satmedmf_repro starting at Sat Apr 25 09:19:12 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold_satmedmf - repro)
-  Sat Apr 25 09:19:12 UTC 2020
+  Test cpld_fv3_ccpp_mom6_cice_cold_satmedmf_repro starting at Tue Apr 28 09:49:45 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold_satmedmf - repro)
+  Tue Apr 28 09:49:46 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -3436,14 +3428,14 @@ TEST #46: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice_repro.exe
-    Expected md5sum: 2a405e9e681521f55e78ae1c4b892be3
-    Actual md5sum: 2a405e9e681521f55e78ae1c4b892be3
-  TEST PASSED AT Sat Apr 25 09:21:46 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice_repro.exe
+    Expected md5sum: bf35e940a2f159f11e0c0da8489e96bf
+    Actual md5sum: bf35e940a2f159f11e0c0da8489e96bf
+  TEST PASSED AT Tue Apr 28 09:52:11 UTC 2020
 
 TEST #47: PASS
-  Test cpld_fv3_384_mom6_cice_2d_atm_flux_repro starting at Sat Apr 25 10:05:55 UTC 2020 (Fully coupled FV3-MOM6-CICE system - 2d_warm - repro)
-  Sat Apr 25 10:05:55 UTC 2020
+  Test cpld_fv3_384_mom6_cice_2d_atm_flux_repro starting at Tue Apr 28 10:38:56 UTC 2020 (Fully coupled FV3-MOM6-CICE system - 2d_warm - repro)
+  Tue Apr 28 10:38:56 UTC 2020
   phyf048.tile1.nc: bit-for-bit identical
   phyf048.tile2.nc: bit-for-bit identical
   phyf048.tile3.nc: bit-for-bit identical
@@ -3516,14 +3508,14 @@ TEST #47: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice_repro.exe
-    Expected md5sum: ace423815f30a409b3494069b3e4f326
-    Actual md5sum: ace423815f30a409b3494069b3e4f326
-  TEST PASSED AT Sat Apr 25 11:01:16 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice_repro.exe
+    Expected md5sum: ab67fe727e15d4e0470d4d57957be209
+    Actual md5sum: ab67fe727e15d4e0470d4d57957be209
+  TEST PASSED AT Tue Apr 28 11:33:26 UTC 2020
 
 TEST #48: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt starting at Sat Apr 25 10:44:41 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE 1 day run)
-  Sat Apr 25 10:44:41 UTC 2020
+  Test cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt starting at Tue Apr 28 11:23:40 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE 1 day run)
+  Tue Apr 28 11:23:40 UTC 2020
   phyf024.tile1.nc: bit-for-bit identical
   phyf024.tile2.nc: bit-for-bit identical
   phyf024.tile3.nc: bit-for-bit identical
@@ -3596,14 +3588,14 @@ TEST #48: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 5d43987534b155c48d8a94e29d2f953e
-    Actual md5sum: 5d43987534b155c48d8a94e29d2f953e
-  TEST PASSED AT Sat Apr 25 11:02:15 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice.exe
+    Expected md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+    Actual md5sum: 7b0a7e8bfe64dc21106a9dd713d1cfa3
+  TEST PASSED AT Tue Apr 28 11:40:56 UTC 2020
 
 TEST #49: PASS
-  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Sat Apr 25 10:24:38 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold start)
-  Sat Apr 25 10:24:39 UTC 2020
+  Test cpld_fv3_mom6_cice_cold_atm_flux starting at Tue Apr 28 10:58:24 UTC 2020 (Fully coupled FV3-MOM6-CICE system - cold start)
+  Tue Apr 28 10:58:24 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -3659,14 +3651,14 @@ TEST #49: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_mom6_cice.exe
-    Expected md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-    Actual md5sum: 213bd0e6ae093f9eb0e3b92474f39a16
-  TEST PASSED AT Sat Apr 25 10:27:04 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_mom6_cice.exe
+    Expected md5sum: 438c415f1de9d44a98f2292143c83365
+    Actual md5sum: 438c415f1de9d44a98f2292143c83365
+  TEST PASSED AT Tue Apr 28 11:00:42 UTC 2020
 
 TEST #50: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt_repro starting at Sat Apr 25 11:58:44 UTC 2020 (Coupled FV3-CCPP-MOM6-CICE-WW3 system - cold 384 - repro)
-  Sat Apr 25 11:58:44 UTC 2020
+  Test cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt_repro starting at Tue Apr 28 12:52:12 UTC 2020 (Coupled FV3-CCPP-MOM6-CICE-WW3 system - cold 384 - repro)
+  Tue Apr 28 12:52:12 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -3722,11 +3714,11 @@ TEST #50: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.240481/exec/fv3_ccpp_mom6_cice_ww3_repro.exe
-    Expected md5sum: d375ca59552e6c46feea28608fab724d
-    Actual md5sum: d375ca59552e6c46feea28608fab724d
-  TEST PASSED AT Sat Apr 25 12:05:42 UTC 2020
-WORKFLOW REPORT AT Sat Apr 25 12:28:56 2020 (+1587817736)
+    File: /scratch1/NCEPDEV/stmp2/Bin.Li/scrub/rtgen.160335/exec/fv3_ccpp_mom6_cice_ww3_repro.exe
+    Expected md5sum: 20dd83288131b9c32babf83902e8d935
+    Actual md5sum: 20dd83288131b9c32babf83902e8d935
+  TEST PASSED AT Tue Apr 28 12:59:13 UTC 2020
+WORKFLOW REPORT AT Tue Apr 28 13:24:38 2020 (+1588080278)
 Tests: 0 failed, 50 passed out of 50
 Builds: 0 failed, 9 passed out of 9
 REGRESSION TEST WAS SUCCESSFUL
