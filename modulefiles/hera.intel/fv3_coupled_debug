@@ -51,3 +51,11 @@ module load post/8.0.6
 ##
 module use -a /scratch1/NCEPDEV/nems/emc.nemspara/soft/modulefiles
 module load esmf/8.0.0g
+## load cmake
+###
+module use /contrib/modulefiles
+module load cmake/3.9.0
+setenv CMAKE_C_COMPILER mpiicc
+setenv CMAKE_CXX_COMPILER mpiicpc
+setenv CMAKE_Fortran_COMPILER mpiifort
+setenv CMAKE_Platform hera.intel
