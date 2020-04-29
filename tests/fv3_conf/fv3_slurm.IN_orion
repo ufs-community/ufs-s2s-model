@@ -33,7 +33,7 @@ export OMP_NUM_THREADS=@[THRD]
 # Avoid job errors because of filesystem synchronization delays
 sync && sleep 1
 
-srun --label -n @[TASKS] ./fv3.exe
+srun --label -n @[TASKS] ./fv3_mom6_cice.exe
 
 echo "Model ended:    " `date`
 
