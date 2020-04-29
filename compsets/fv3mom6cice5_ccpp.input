@@ -151,6 +151,8 @@ cpl_defaults = {
     DT_ATMOS='900' #needed for C96 cases
     DT_DYNAM_MOM6='900'
     DT_THERM_MOM6='1800'
+    mom6_restart_option='nhours'
+    mom6_restart_n='24'
 # defaults for CICE runtype and restart writing
     RUNTYPE='initial' 
     DUMPFREQ='d' 
