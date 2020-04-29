@@ -509,7 +509,7 @@ suite ${ECFLOW_SUITE}
     edit ECF_KILL_CMD kill -15 %ECF_RID% > %ECF_JOB%.kill 2>&1
     edit ECF_TRIES 1
     label rundir_root '${RUNDIR_ROOT}'
-    limit max_builds 6
+    limit max_builds 1
     limit max_jobs 30
 EOF
 
@@ -557,6 +557,7 @@ while read -r line; do
       [[ $MACHINES != ' ' && $MACHINES != "${MACHINE_ID}" ]] && continue
       [[ $CREATE_BASELINE == true && $CB != *fv3* ]] && continue
 
+      COMPILE_NR_DEP=${COMPILE_NR}
       (( COMPILE_NR += 1 ))
 
       if [[ $ROCOTO == true ]]; then
