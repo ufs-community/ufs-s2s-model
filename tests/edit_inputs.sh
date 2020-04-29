@@ -8,7 +8,7 @@ function edit_ice_in {
   fi
 
   jday=$(date -d "${SYEAR}-${SMONTH}-${SDAY} ${SHOUR}:00:00" +%j)
-  istep0=$(( ((jday-1)*86400 + 10#$SHOUR*3600) / DT_CICE ))
+  istep0=$(( ((10#$jday-1)*86400 + 10#$SHOUR*3600) / DT_CICE ))
 
   sed -e "s/YEAR_INIT/$SYEAR/g" \
       -e "s/ISTEP0/$istep0/g" \

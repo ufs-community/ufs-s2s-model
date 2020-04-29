@@ -1,11 +1,11 @@
 #
-#  CPLD_FV3_MOM6_CICE_2D_ATM_FLUX test
+#  CPLD_FV3_CCPP_MOM6_CICE_2D_DECOMP test
 #
 
-export TEST_DESCR="Fully coupled FV3-MOM6-CICE system - 2d_warm"
+export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE system - decomp"
 
-export CNTL_DIR="RT-Baselines_2d_warm"
-export CNTLMED_DIR="RT-Baselines_2d_warm/RESTART"
+export CNTL_DIR="RT-Baselines_2d_warm_ccpp"
+export CNTLMED_DIR="RT-Baselines_2d_warm_ccpp/RESTART"
 
 export LIST_FILES="phyf048.tile1.nc \
                    phyf048.tile2.nc \
@@ -88,6 +88,9 @@ export FHMAX="48"
 export FDIAG="6"
 export WLCLK=30
 
+export INPES='6'
+export JNPES='4'
+
 # set component and coupling timesteps
 export DT_CICE=${DT_ATMOS}
 export CPL_SLOW=${DT_THERM_MOM6}
@@ -103,5 +106,7 @@ export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 
 export FV3_RUN=cpld_fv3_mom6_cice_atm_flux_run.IN
+export INPUT_NML=input.mom6_ccpp.nml.IN
 
-export MED_restart_data='MEDIATOR'
+export SUITE_NAME="FV3_GFS_2017_coupled"
+export MED_restart_data='MEDIATOR_ccpp'

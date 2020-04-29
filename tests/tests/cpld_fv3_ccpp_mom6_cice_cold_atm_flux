@@ -1,5 +1,5 @@
 #
-#  CPLD_FV3_CCPP_MOM6_CICE cold_atm_flux test
+#  CPLD_FV3_CCPP_MOM6_CICE_COLD_ATM_FLUX test
 #
 
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE system - cold start"
@@ -51,15 +51,28 @@ export LIST_FILES="phyf001.tile1.nc \
                    RESTART/sfc_data.tile4.nc \
                    RESTART/sfc_data.tile5.nc \
                    RESTART/sfc_data.tile6.nc \
+                   mediator_FBaccumAtm_restart.tile1.nc \
+                   mediator_FBaccumAtm_restart.tile2.nc \
+                   mediator_FBaccumAtm_restart.tile3.nc \
+                   mediator_FBaccumAtm_restart.tile4.nc \
+                   mediator_FBaccumAtm_restart.tile5.nc \
+                   mediator_FBaccumAtm_restart.tile6.nc \
+                   mediator_FBaccumOcn_restart.nc \
+                   mediator_FBaccumIce_restart.nc \
+                   mediator_FBaccumLnd_restart.nc \
+                   mediator_FBaccumHyd_restart.nc \
+                   mediator_FBaccumAtmOcn_restart.nc \
                    mediator_FBAtm_a_restart.tile1.nc \
                    mediator_FBAtm_a_restart.tile2.nc \
                    mediator_FBAtm_a_restart.tile3.nc \
                    mediator_FBAtm_a_restart.tile4.nc \
                    mediator_FBAtm_a_restart.tile5.nc \
                    mediator_FBAtm_a_restart.tile6.nc \
-                   mediator_FBAtmOcn_o_restart.nc \
                    mediator_FBIce_i_restart.nc \
                    mediator_FBOcn_o_restart.nc \
+                   mediator_FBLnd_l_restart.nc \
+                   mediator_FBHyd_h_restart.nc \
+                   mediator_FBAtmOcn_o_restart.nc \
                    mediator_scalars_restart.txt"
 
 export_fv3
@@ -82,6 +95,7 @@ export NEMS_CONFIGURE="nems.configure.medcold_atm_ocn_ice.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 
-export FV3_RUN=cpld_fv3_ccpp_mom6_cice_cold_atm_flux_run.IN
+export FV3_RUN=cpld_fv3_mom6_cice_atm_flux_run.IN
 export INPUT_NML=input.mom6_ccpp.nml.IN
-export ATMRES=C96
+
+export SUITE_NAME="FV3_GFS_2017_coupled"

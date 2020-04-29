@@ -27,12 +27,51 @@ elif [ $MACHINE_ID = wcoss_dell_p3 ]; then
   TASKS_stretch=48 ; TPN_stretch=28 ; INPES_stretch=2 ; JNPES_stretch=4
   TASKS_strnest=96 ; TPN_strnest=28 ; INPES_strnest=2 ; JNPES_strnest=4
 
+elif [[ $MACHINE_ID = orion.* ]]; then
+
+  TASKS_dflt=150 ; TPN_dflt=24 ; INPES_dflt=3 ; JNPES_dflt=8
+  TASKS_thrd=84  ; TPN_thrd=12 ; INPES_thrd=3 ; JNPES_thrd=4
+  TASKS_stretch=48 ; TPN_stretch=12 ; INPES_stretch=2 ; JNPES_stretch=4
+  TASKS_strnest=96 ; TPN_strnest=12 ; INPES_strnest=2 ; JNPES_strnest=4
+
+  TASKS_cpl_dflt=318; TPN_cpl_dflt=40; INPES_cpl_dflt=3; JNPES_cpl_dflt=8
+  THRD_cpl_dflt=1; WPG_cpl_dflt=6;  MPB_cpl_dflt="0 143"; APB_cpl_dflt="0 149"
+  OPB_cpl_dflt="150 269"; IPB_cpl_dflt="270 317"
+
+  TASKS_cpl_thrd=246; TPN_cpl_thrd=40; INPES_cpl_thrd=3; JNPES_cpl_thrd=4
+  THRD_cpl_thrd=2; WPG_cpl_thrd=6;  MPB_cpl_thrd="0 77";  APB_cpl_thrd="0 77"
+  OPB_cpl_thrd="78 197";  IPB_cpl_thrd="198 245"
+
+  TASKS_cpl_bmrk=480; TPN_cpl_bmrk=40; INPES_cpl_bmrk=6; JNPES_cpl_bmrk=8
+  THRD_cpl_bmrk=1; WPG_cpl_bmrk=24; MPB_cpl_bmrk="0 287"; APB_cpl_bmrk="0 311"
+  OPB_cpl_bmrk="312 431"; IPB_cpl_bmrk="432 479"
+
+  TASKS_cpl_wwav=520; TPN_cpl_wwav=40; INPES_cpl_wwav=6; JNPES_cpl_wwav=8
+  THRD_cpl_wwav=1; WPG_cpl_wwav=24; MPB_cpl_wwav="0 287"; APB_cpl_wwav="0 311"
+  OPB_cpl_wwav="312 431"; IPB_cpl_wwav="432 479"; WPB_cpl_wwav="480 519"
+
 elif [[ $MACHINE_ID = hera.* ]]; then
 
   TASKS_dflt=150 ; TPN_dflt=40 ; INPES_dflt=3 ; JNPES_dflt=8
   TASKS_thrd=84  ; TPN_thrd=20 ; INPES_thrd=3 ; JNPES_thrd=4
   TASKS_stretch=48 ; TPN_stretch=12 ; INPES_stretch=2 ; JNPES_stretch=4
   TASKS_strnest=96 ; TPN_strnest=12 ; INPES_strnest=2 ; JNPES_strnest=4
+
+  TASKS_cpl_dflt=318; TPN_cpl_dflt=40; INPES_cpl_dflt=3; JNPES_cpl_dflt=8
+  THRD_cpl_dflt=1; WPG_cpl_dflt=6;  MPB_cpl_dflt="0 143"; APB_cpl_dflt="0 149"
+  OPB_cpl_dflt="150 269"; IPB_cpl_dflt="270 317"
+
+  TASKS_cpl_thrd=246; TPN_cpl_thrd=40; INPES_cpl_thrd=3; JNPES_cpl_thrd=4
+  THRD_cpl_thrd=2; WPG_cpl_thrd=6;  MPB_cpl_thrd="0 77";  APB_cpl_thrd="0 77"
+  OPB_cpl_thrd="78 197";  IPB_cpl_thrd="198 245"
+
+  TASKS_cpl_bmrk=480; TPN_cpl_bmrk=40; INPES_cpl_bmrk=6; JNPES_cpl_bmrk=8
+  THRD_cpl_bmrk=1; WPG_cpl_bmrk=24; MPB_cpl_bmrk="0 287"; APB_cpl_bmrk="0 311"
+  OPB_cpl_bmrk="312 431"; IPB_cpl_bmrk="432 479"
+
+  TASKS_cpl_wwav=520; TPN_cpl_wwav=40; INPES_cpl_wwav=6; JNPES_cpl_wwav=8
+  THRD_cpl_wwav=1; WPG_cpl_wwav=24; MPB_cpl_wwav="0 287"; APB_cpl_wwav="0 311"
+  OPB_cpl_wwav="312 431"; IPB_cpl_wwav="432 479"; WPB_cpl_wwav="480 519"
 
 elif [[ $MACHINE_ID = jet.* ]]; then
 
@@ -74,7 +113,7 @@ COMPILER=${NEMS_COMPILER:-intel}
 if [[ $COMPILER = gnu ]] || [[ $COMPILER = pgi ]]; then
     WLCLK_dflt=30
 else
-    WLCLK_dflt=15
+    WLCLK_dflt=30
 fi
 
 export_fv3 ()
@@ -199,10 +238,22 @@ export IAU_DRYMASSFIXER=.false.
 
 export_cpl ()
 { 
-export TASKS=318
-export ATMRES=''
+export TASKS=$TASKS_cpl_dflt
+export TPN=$TPN_cpl_dflt
+export INPES=$INPES_cpl_dflt
+export JNPES=$JNPES_cpl_dflt
+export THRD=$THRD_cpl_dflt
+
+export WRTTASK_PER_GROUP=$WPG_cpl_dflt
+export med_petlist_bounds=$MPB_cpl_dflt
+export atm_petlist_bounds=$APB_cpl_dflt
+export ocn_petlist_bounds=$OPB_cpl_dflt
+export ice_petlist_bounds=$IPB_cpl_dflt
+
+export ATMRES='C96'
 export OCNRES='025'
-export SUITE_NAME="FV3_GFS_2017_coupled"
+export SUITE_NAME=''
+export MED_restart_data=''
 export INPUT_NML="input.mom6.nml.IN"
 export FIELD_TABLE="field_table"
 export NSOUT='-1'
@@ -214,6 +265,7 @@ export med_model="nems"
 export atm_model="fv3"
 export ocn_model="mom6"
 export ice_model="cice"
+export wav_model="ww3"
 # future use: for MOM6 river runoff 
 export MOM6_RIVER_RUNOFF='True'
 export NPROC_ICE='48'
@@ -239,9 +291,4 @@ export NA_INIT='1'
 export EXTERNAL_IC='.T.'
 export NGGPS_IC='.T.'
 export MOUNTAIN='.F.'
-
-export med_petlist_bounds="0 143"
-export atm_petlist_bounds="0 149"
-export ocn_petlist_bounds="150 269"
-export ice_petlist_bounds="270 317"
 }
