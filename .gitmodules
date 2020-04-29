@@ -1,9 +1,9 @@
 [submodule "FV3"]
 	path = FV3
-	url = https://github.com/DeniseWorthen/fv3atm
+	url = https://github.com/NOAA-EMC/fv3atm
 [submodule "NEMS"]
 	path = NEMS
-	url = https://github.com/DeniseWorthen/NEMS.git
+	url = https://github.com/NOAA-EMC/NEMS.git
 [submodule "CICE_SRC"]
 	path = CICE_SRC
 	url = https://github.com/DeniseWorthen/CICE5.git
