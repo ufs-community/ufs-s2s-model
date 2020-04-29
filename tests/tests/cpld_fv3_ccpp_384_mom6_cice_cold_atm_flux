@@ -80,6 +80,8 @@ export_cpl
 
 export DAYS="0.041666666"
 export FHMAX="1" # Note this needs to be at least 2x CPL_SLOW
+export NFHMAX="12"
+export NFHOUT_HF="1"
 
 export DT_ATMOS="450"
 export NPX="385"

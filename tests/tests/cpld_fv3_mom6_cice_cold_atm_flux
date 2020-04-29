@@ -1,11 +1,11 @@
 #
-#  CPLD_FV3_CCPP_MOM6_CICE_COLD_SATMEDMF test
+#  CPLD_FV3_MOM6_CICE_COLD_ATM_FLUX test
 #
 
-export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE system - cold satmedmf"
+export TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold start"
 
-export CNTL_DIR="RT-Baselines_cold_satmedmf_ccpp"
-export CNTLMED_DIR="MEDIATOR_satmedmf_ccpp"
+export CNTL_DIR="RT-Baselines_cold"
+export CNTLMED_DIR="MEDIATOR"
 
 export LIST_FILES="phyf001.tile1.nc \
                    phyf001.tile2.nc \
@@ -98,9 +98,3 @@ export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 
 export FV3_RUN=cpld_fv3_mom6_cice_atm_flux_run.IN
-export INPUT_NML=input.mom6_ccpp.nml.IN
-
-export SATMEDMF='.true.'
-export HYBEDMF='.false.'
-export FIELD_TABLE='field_table_satmedmf'
-export SUITE_NAME='FV3_GFS_2017_satmedmf_coupled'

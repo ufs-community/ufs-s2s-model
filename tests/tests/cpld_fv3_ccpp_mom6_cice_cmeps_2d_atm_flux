@@ -1,11 +1,11 @@
 #
-#  CPLD_FV3_CCPP_MOM6_CICE_2D_ATM_FLUX test
+#  CPLD_FV3_CCPP_MOM6_CICE_CMEPS_2D_ATM_FLUX test
 #
 
-export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE system - 2d_warm"
+export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - 2d_warm"
 
-export CNTL_DIR="RT-Baselines_2d_warm_ccpp"
-export CNTLMED_DIR="RT-Baselines_2d_warm_ccpp/RESTART"
+export CNTL_DIR="RT-Baselines_2d_warm_ccpp_cmeps"
+export CNTLMED_DIR="RT-Baselines_2d_warm_ccpp_cmeps/RESTART"
 
 export LIST_FILES="phyf048.tile1.nc \
                    phyf048.tile2.nc \
@@ -56,29 +56,7 @@ export LIST_FILES="phyf048.tile1.nc \
                    RESTART/MOM.res_2.nc \
                    RESTART/MOM.res_3.nc \
                    RESTART/iced.2016-10-05-00000.nc \
-                   mediator_FBaccumAtm_restart.tile1.nc \
-                   mediator_FBaccumAtm_restart.tile2.nc \
-                   mediator_FBaccumAtm_restart.tile3.nc \
-                   mediator_FBaccumAtm_restart.tile4.nc \
-                   mediator_FBaccumAtm_restart.tile5.nc \
-                   mediator_FBaccumAtm_restart.tile6.nc \
-                   mediator_FBaccumOcn_restart.nc \
-                   mediator_FBaccumIce_restart.nc \
-                   mediator_FBaccumLnd_restart.nc \
-                   mediator_FBaccumHyd_restart.nc \
-                   mediator_FBaccumAtmOcn_restart.nc \
-                   mediator_FBAtm_a_restart.tile1.nc \
-                   mediator_FBAtm_a_restart.tile2.nc \
-                   mediator_FBAtm_a_restart.tile3.nc \
-                   mediator_FBAtm_a_restart.tile4.nc \
-                   mediator_FBAtm_a_restart.tile5.nc \
-                   mediator_FBAtm_a_restart.tile6.nc \
-                   mediator_FBIce_i_restart.nc \
-                   mediator_FBOcn_o_restart.nc \
-                   mediator_FBLnd_l_restart.nc \
-                   mediator_FBHyd_h_restart.nc \
-                   mediator_FBAtmOcn_o_restart.nc \
-                   mediator_scalars_restart.txt"
+                   ufs.s2s.c384_t025.jan.jul02.cpl.r.2016-10-05-00000.nc \
 
 export_fv3
 export_cpl
@@ -98,7 +76,7 @@ export DUMPFREQ_N=${DAYS}
 export DUMPFREQ="d"
 
 # nems.configure
-export NEMS_CONFIGURE="nems.configure.med_atm_ocn_ice.IN"
+export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 
@@ -106,4 +84,4 @@ export FV3_RUN=cpld_fv3_mom6_cice_atm_flux_run.IN
 export INPUT_NML=input.mom6_ccpp.nml.IN
 
 export SUITE_NAME="FV3_GFS_2017_coupled"
-export MED_restart_data='MEDIATOR_ccpp'
+export MED_restart_data='MEDIATOR_ccpp_cmeps'
