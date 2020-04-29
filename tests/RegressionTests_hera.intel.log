@@ -1,10 +1,10 @@
-Tue Apr 28 23:04:22 UTC 2020
+Wed Apr 29 01:50:12 UTC 2020
 Start Regression test
 
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_cold
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/MEDIATOR
-working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_7505/cpld_fv3_mom6_cice_cold_atm_flux
+working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_144276/cpld_fv3_mom6_cice_cold_atm_flux
 Checking test 001 cpld_fv3_mom6_cice_cold_atm_flux results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -78,7 +78,7 @@ Test 001 cpld_fv3_mom6_cice_cold_atm_flux PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_2d_warm
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_2d_warm/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_7505/cpld_fv3_mom6_cice_2d_atm_flux
+working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_144276/cpld_fv3_mom6_cice_2d_atm_flux
 Checking test 002 cpld_fv3_mom6_cice_2d_atm_flux results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -157,7 +157,7 @@ Test 002 cpld_fv3_mom6_cice_2d_atm_flux PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_cold_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/MEDIATOR_ccpp
-working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_7505/cpld_fv3_ccpp_mom6_cice_cold_atm_flux
+working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_144276/cpld_fv3_ccpp_mom6_cice_cold_atm_flux
 Checking test 003 cpld_fv3_ccpp_mom6_cice_cold_atm_flux results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -231,7 +231,7 @@ Test 003 cpld_fv3_ccpp_mom6_cice_cold_atm_flux PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_cold384_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/MEDIATOR384_ccpp
-working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_7505/cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux
+working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_144276/cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux
 Checking test 004 cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -305,7 +305,7 @@ Test 004 cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_2d_warm_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_2d_warm_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_7505/cpld_fv3_ccpp_mom6_cice_2d_atm_flux
+working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_144276/cpld_fv3_ccpp_mom6_cice_2d_atm_flux
 Checking test 005 cpld_fv3_ccpp_mom6_cice_2d_atm_flux results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -384,7 +384,7 @@ Test 005 cpld_fv3_ccpp_mom6_cice_2d_atm_flux PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_2d_warm_ccpp384
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_2d_warm_ccpp384/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_7505/cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux
+working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_144276/cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux
 Checking test 006 cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -463,7 +463,7 @@ Test 006 cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_2d_warm_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_2d_warm_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_7505/cpld_fv3_ccpp_mom6_cice_2d_2threads
+working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_144276/cpld_fv3_ccpp_mom6_cice_2d_2threads
 Checking test 007 cpld_fv3_ccpp_mom6_cice_2d_2threads results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -542,7 +542,7 @@ Test 007 cpld_fv3_ccpp_mom6_cice_2d_2threads PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_2d_warm_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_2d_warm_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_7505/cpld_fv3_ccpp_mom6_cice_2d_decomp
+working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_144276/cpld_fv3_ccpp_mom6_cice_2d_decomp
 Checking test 008 cpld_fv3_ccpp_mom6_cice_2d_decomp results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -621,7 +621,7 @@ Test 008 cpld_fv3_ccpp_mom6_cice_2d_decomp PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_cold_satmedmf_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/MEDIATOR_satmedmf_ccpp
-working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_7505/cpld_fv3_ccpp_mom6_cice_cold_satmedmf
+working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_144276/cpld_fv3_ccpp_mom6_cice_cold_satmedmf
 Checking test 009 cpld_fv3_ccpp_mom6_cice_cold_satmedmf results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -695,7 +695,7 @@ Test 009 cpld_fv3_ccpp_mom6_cice_cold_satmedmf PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_1d_warm_satmedmf_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_1d_warm_satmedmf_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_7505/cpld_fv3_ccpp_mom6_cice_1d_satmedmf
+working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_144276/cpld_fv3_ccpp_mom6_cice_1d_satmedmf
 Checking test 010 cpld_fv3_ccpp_mom6_cice_1d_satmedmf results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -774,7 +774,7 @@ Test 010 cpld_fv3_ccpp_mom6_cice_1d_satmedmf PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_cold_bmrt_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/MEDIATOR_bmrt_ccpp
-working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_7505/cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt
+working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_144276/cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt
 Checking test 011 cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -848,7 +848,7 @@ Test 011 cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_1d_bmrt_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_1d_bmrt_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_7505/cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt
+working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_144276/cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt
 Checking test 012 cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -927,7 +927,7 @@ Test 012 cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_cold_bmwav_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/MEDIATOR_bmwav_ccpp
-working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_7505/cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt
+working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_144276/cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt
 Checking test 013 cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -1001,7 +1001,7 @@ Test 013 cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_1d_bmwav_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326/RT-Baselines_1d_bmwav_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_7505/cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt
+working dir  = /scratch1/NCEPDEV/stmp2/Minsuk.Ji/S2S_RT/rt_144276/cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt
 Checking test 014 cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -1082,5 +1082,5 @@ Test 014 cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt PASS
 
 
 REGRESSION TEST WAS SUCCESSFUL
-Wed Apr 29 00:53:41 UTC 2020
-Elapsed time: 01h:49m:21s. Have a nice day!
+Wed Apr 29 03:40:05 UTC 2020
+Elapsed time: 01h:49m:59s. Have a nice day!
