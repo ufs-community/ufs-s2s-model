@@ -7,16 +7,16 @@ load 'benchmark_warm_ccpp.input'
    ROOTDIR = "path-to-user-coldstarts"
 
 datesuite_defaults = {
-    DAYS='5'
+   DAYS='5'
    FHMAX='120'
    walltime=10800   # seconds
-    #DAYS='35'
+   #DAYS='35'
    #FHMAX='840'
    #walltime=28800   # seconds
 }
 
 ########################################################################
-test cpld_fv3_ccpp_384_mom6_cice_5d_2012010100: fv3_ccpp_mom6_cice.exe {
+test cpld_fv3_ccpp_384_mom6_cice_5d_2012010100: fv3_ccpp_mom6_cice_ww3.exe {
     use cpld_fv3_ccpp_384_mom6_cice_2d_bmark
     use datesuite_defaults
 
@@ -30,7 +30,7 @@ test cpld_fv3_ccpp_384_mom6_cice_5d_2012010100: fv3_ccpp_mom6_cice.exe {
     MED_restart_data="@[ROOTDIR]/tmp/cpld_fv3_ccpp_384_mom6_cice_cold_2012010100"
 }
 
-test cpld_fv3_ccpp_384_mom6_cice_5d_2012040100: fv3_ccpp_mom6_cice.exe {
+test cpld_fv3_ccpp_384_mom6_cice_5d_2012040100: fv3_ccpp_mom6_cice_ww3.exe {
     use cpld_fv3_ccpp_384_mom6_cice_2d_bmark
     use datesuite_defaults
 
@@ -44,7 +44,7 @@ test cpld_fv3_ccpp_384_mom6_cice_5d_2012040100: fv3_ccpp_mom6_cice.exe {
     MED_restart_data="@[ROOTDIR]/tmp/cpld_fv3_ccpp_384_mom6_cice_cold_2012040100"
 }
 
-test cpld_fv3_ccpp_384_mom6_cice_5d_2012070100: fv3_ccpp_mom6_cice.exe {
+test cpld_fv3_ccpp_384_mom6_cice_5d_2012070100: fv3_ccpp_mom6_cice_ww3.exe {
     use cpld_fv3_ccpp_384_mom6_cice_2d_bmark
     use datesuite_defaults
 
@@ -58,7 +58,7 @@ test cpld_fv3_ccpp_384_mom6_cice_5d_2012070100: fv3_ccpp_mom6_cice.exe {
     MED_restart_data="@[ROOTDIR]/tmp/cpld_fv3_ccpp_384_mom6_cice_cold_2012070100"
 }
 
-test cpld_fv3_ccpp_384_mom6_cice_5d_2012100100: fv3_ccpp_mom6_cice.exe {
+test cpld_fv3_ccpp_384_mom6_cice_5d_2012100100: fv3_ccpp_mom6_cice_ww3.exe {
     use cpld_fv3_ccpp_384_mom6_cice_2d_bmark
     use datesuite_defaults
 
@@ -72,7 +72,7 @@ test cpld_fv3_ccpp_384_mom6_cice_5d_2012100100: fv3_ccpp_mom6_cice.exe {
     MED_restart_data="@[ROOTDIR]/tmp/cpld_fv3_ccpp_384_mom6_cice_cold_2012100100"
 }
 
-test cpld_fv3_ccpp_384_mom6_cice_5d_2013010100: fv3_ccpp_mom6_cice.exe {
+test cpld_fv3_ccpp_384_mom6_cice_5d_2013010100: fv3_ccpp_mom6_cice_ww3.exe {
     use cpld_fv3_ccpp_384_mom6_cice_2d_bmark
     use datesuite_defaults
 
@@ -85,7 +85,7 @@ test cpld_fv3_ccpp_384_mom6_cice_5d_2013010100: fv3_ccpp_mom6_cice.exe {
     MED_restart_data="@[ROOTDIR]/tmp/cpld_fv3_ccpp_384_mom6_cice_cold_2013010100"
 }
 
-test cpld_fv3_ccpp_384_mom6_cice_5d_2013040100: fv3_ccpp_mom6_cice.exe {
+test cpld_fv3_ccpp_384_mom6_cice_5d_2013040100: fv3_ccpp_mom6_cice_ww3.exe {
     use cpld_fv3_ccpp_384_mom6_cice_2d_bmark
     use datesuite_defaults
 
@@ -98,7 +98,7 @@ test cpld_fv3_ccpp_384_mom6_cice_5d_2013040100: fv3_ccpp_mom6_cice.exe {
     MED_restart_data="@[ROOTDIR]/tmp/cpld_fv3_ccpp_384_mom6_cice_cold_2013040100"
 }
 
-test cpld_fv3_ccpp_384_mom6_cice_5d_2013070100: fv3_ccpp_mom6_cice.exe {
+test cpld_fv3_ccpp_384_mom6_cice_5d_2013070100: fv3_ccpp_mom6_cice_ww3.exe {
     use cpld_fv3_ccpp_384_mom6_cice_2d_bmark
     use datesuite_defaults
 
@@ -111,7 +111,7 @@ test cpld_fv3_ccpp_384_mom6_cice_5d_2013070100: fv3_ccpp_mom6_cice.exe {
     MED_restart_data="@[ROOTDIR]/tmp/cpld_fv3_ccpp_384_mom6_cice_cold_2013070100"
 }
 
-test cpld_fv3_ccpp_384_mom6_cice_5d_2013100100: fv3_ccpp_mom6_cice.exe {
+test cpld_fv3_ccpp_384_mom6_cice_5d_2013100100: fv3_ccpp_mom6_cice_ww3.exe {
     use cpld_fv3_ccpp_384_mom6_cice_2d_bmark
     use datesuite_defaults
 
