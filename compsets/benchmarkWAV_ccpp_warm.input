@@ -201,4 +201,3 @@ test cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt: fv3_ccpp_mom6_cice_ww3.exe {
         {"@[build%target]", ranks="@[TASKS]", threads="@[THRD]", ppn="@[TPN]" }
     } 
 } 
-

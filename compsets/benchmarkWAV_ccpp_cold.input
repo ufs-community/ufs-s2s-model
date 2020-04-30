@@ -171,4 +171,3 @@ WW3_input_data="@[plat%INPUTS]/WW3_input_data"
         {"@[build%target]", ranks="@[TASKS]", threads="@[THRD]", ppn="@[TPN]" }
     } 
 } 
-
