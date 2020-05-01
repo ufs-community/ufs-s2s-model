@@ -35,7 +35,7 @@ OCN_model:                      @[ocn_model]
 OCN_petlist_bounds:             @[ocn_petlist_bounds]
 OCN_attributes::
   Verbosity = 0
-  DumpFields = true
+  DumpFields = false
   restart_option = @[mom6_restart_option]
   restart_n = @[mom6_restart_n]
   ProfileMemory = false
