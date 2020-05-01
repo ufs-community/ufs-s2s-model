@@ -1,5 +1,0 @@
-# Coupled FV3-MOM6-CICE
-#
-## NEMS Application Builder file
-
-COMPONENTS=( FMS FV3 MOM6 CICE )
