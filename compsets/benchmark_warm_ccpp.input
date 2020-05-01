@@ -1,12 +1,18 @@
 ########################################################################
 
-test cpld_fv3_384_mom6_cice_cold_bmark: fv3_mom6_cice.exe {
-    use cpld_fv3_mom6_cice_cold_atm_flux
+test cpld_fv3_ccpp_384_mom6_cice_2d_bmark: fv3_ccpp_mom6_cice.exe {
+    use cpld_fv3_ccpp_mom6_cice_2d_atm_flux
     use plat%default_cpl_benchmark
 
     ATMRES='384'
-    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - cold 384"
+    TEST_DESCR="Fully coupled FV3-MOM6-CICE system - benchmark"
  
+    #For a 35 day run:
+    #DAYS='35'
+    #FHMAX='840'
+    #walltime=28800   # seconds
+    walltime=1800   # seconds
+
     DT_ATMOS='450'
     NPX='385'
     NPY='385'
@@ -19,6 +25,15 @@ test cpld_fv3_384_mom6_cice_cold_bmark: fv3_mom6_cice.exe {
     FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
 
     FV3_mosaic="C@[ATMRES]"
+
+    #no high freq fv3 output
+    NFHMAX_HF='-1'
+    NFHOUT_HF='-1'
+
+    # turn off CICE history averaging
+    #CICE_HIST_AVG='.false.'
+    # matching 6hour FV3 output
+    #NFHOUT='6'
 
     # inputs and fixed files for benchmark runs to match workflow
       INPUT_NML="input.benchmark_ccpp.nml.IN"
@@ -46,7 +61,23 @@ test cpld_fv3_384_mom6_cice_cold_bmark: fv3_mom6_cice.exe {
        MOM6_IC="@[BM_IC]/mom6_da"
       CICE5_IC="@[BM_IC]/cpc"    
 
-    spawn execute {
+    # set location of cold start for mediator restarts
+    # THIS IS A USER's OWN RUN and should reflect the full path to the location of the cold start
+    # eg: "/scratch2/NCEPDEV/stmp1/First.LastName/rtgen.NUMBER/tmp/cpld_fv3_ccpp_384_mom6_cice_cold_bmark"
+    MED_restart_data="full-path-to-user-coldstart"
+    RESTART_MED="mediator_*"    
+
+    # Specify output files:
+    criteria output {
+        # WORKFILE                            .comparison. TARGET
+      # Executable validation.  This makes an MD5 sum of the fv3.exe
+      # for comparison against the MD5 sum made in the build job.
+      # This is to ensure the executable did not change during the
+      # test suite.
+        "@[build%target]" .md5cmp. "@[fv3_ccpp_mom6_cice.exe%md5sum]" 
+    }
+
+    spawn execute { 
         {"@[build%target]", ranks="@[TASKS]", threads="@[THRD]", ppn="@[TPN]" }
-                  }
-}
+    } 
+} 

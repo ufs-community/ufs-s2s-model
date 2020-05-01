@@ -38,19 +38,18 @@ embed bash NEMSAppBuilder(NEMS.x,modules.nems,OPTS,md5sum)
         cp -fp conf/modules.nems "@[modules.nems]"
         md5sum "@[NEMS.x]" > "@[md5sum]"
 ]]]
-
 embed bash NEMSAppBuilder_debug(NEMS.x,modules.nems,OPTS,md5sum)
 [[[
         mkdir -p "@[plat%EXECrt]" "@[plat%INCrt]"
         rm -f "@[NEMS.x]" "@[modules.nems]"
         cd @[plat%HOMEnems]
-        export S2S_DEBUG_MODULE=true
+	export S2S_DEBUG_MODULE=true
 
         # NOTE: Replace "rebuild" with "norebuild" to disable "gmake clean"
         @[plat%execution_time_modules]
         if ( which aprun ) && [[ @[plat%PLATFORM_NAME] == wcoss.cray ]] ; then
-            aprun -n 1 -j 1 -N 1 -d 24 bash -c "./NEMS/NEMSAppBuilder rebuild $OPTS"
-        else
+       	    aprun -n 1 -j 1 -N 1 -d 24 bash -c "./NEMS/NEMSAppBuilder rebuild $OPTS"
+	else
             ./NEMS/NEMSAppBuilder rebuild $OPTS
         fi
         cd @[plat%SRCnems]

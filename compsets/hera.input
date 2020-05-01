@@ -25,10 +25,9 @@ platform hera.intel {
 
     # INPUTS is the input directory, which should contain fix and parm
     # files, plus any restarts or other inputs.
-    #BASELINE="/scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326"
-    #BASELINE_TEMPLATE="/scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326"
-    BASELINE="/scratch2/NCEPDEV/climate/Denise.Worthen/update-20200403"
-    BASELINE_TEMPLATE="/scratch2/NCEPDEV/climate/Denise.Worthen/update-20200403"
+
+    BASELINE="/scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326"
+    BASELINE_TEMPLATE="/scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200326"
     INPUTS="@[BASELINE]"
 
     default_resources={
@@ -100,7 +99,7 @@ platform hera.intel {
         ice_petlist_bounds="432 479"
     }
 
-   default_cpl_wwav={
+    default_cpl_wwav={
         TASKS=520
         TPN=40
         INPES=6
@@ -113,6 +112,7 @@ platform hera.intel {
         ice_petlist_bounds="432 479"
         wav_petlist_bounds="480 519"
     }
+
 
     # PLATFORM DETECTION -----------------------------------------------
     embed bash detect [[[
