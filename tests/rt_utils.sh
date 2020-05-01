@@ -342,7 +342,7 @@ check_results() {
       printf %s " Comparing " $i " ....."
 
       crst=''
-      if [[ $i =~ MOM6_RESTART/ || $i =~ restart/ ]]; then
+      if [[ $i =~ MOM6_RESTART/ || $i =~ restart ]]; then
         crst=RESTART/$(basename $i)
       fi
 
@@ -378,7 +378,7 @@ check_results() {
 
         if [[ $i =~ mediator ]]; then
           d=$( cmp ${RTPWD}/${CNTLMED_DIR}/$i ${RUNDIR}/$i | wc -l )
-        elif [[ $i =~ MOM6_RESTART/ || $i =~ restart/ ]]; then
+        elif [[ $i =~ MOM6_RESTART/ || $i =~ restart ]]; then
           d=$( cmp ${RTPWD}/${CNTL_DIR}/$crst ${RUNDIR}/$i | wc -l )
         else
           d=$( cmp ${RTPWD}/${CNTL_DIR}/$i ${RUNDIR}/$i | wc -l )
@@ -416,10 +416,10 @@ check_results() {
       if [[ -f ${RUNDIR}/$i ]] ; then
         if [[ $i =~ MOM6_RESTART/ ]]; then
           cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTL_DIR}/RESTART/$(basename $i)
-        elif [[ $i =~ restart/ ]]; then
-          cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTL_DIR}/RESTART/$(basename $i)
         elif [[ $i =~ mediator ]]; then
           cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTLMED_DIR}
+        elif [[ $i =~ restart ]]; then
+          cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTL_DIR}/RESTART/$(basename $i)
         else
           cp ${RUNDIR}/${i} ${NEW_BASELINE}/${CNTL_DIR}/${i}
         fi
@@ -481,7 +481,8 @@ rocoto_create_compile_task() {
   if [[ "Q$APP" != Q ]] ; then
       rocoto_cmd="&PATHRT;/appbuild.sh &PATHTR;/FV3 $APP $COMPILE_NR"
   else
-      rocoto_cmd="&PATHRT;/compile_cmake.sh &PATHTR; $MACHINE_ID \"${NEMS_VER}\" $COMPILE_NR"
+      #rocoto_cmd="&PATHRT;/compile_cmake.sh &PATHTR; $MACHINE_ID \"${NEMS_VER}\" $COMPILE_NR"
+      rocoto_cmd="&PATHRT;/compile.sh ${NEMS_VER} $COMPILE_NR"
   fi
 
   NATIVE=""
@@ -499,7 +500,26 @@ rocoto_create_compile_task() {
   if [[ ${MACHINE_ID} == jet ]]; then
     BUILD_WALLTIME="01:00:00"
   fi
+  if [[ ${MACHINE_ID} == orion.* ]]; then
+    BUILD_WALLTIME="01:00:00"
+  fi
 
+  if [[ ${COMPILE_NR_DEP} -gt 0 ]]; then
+  cat << EOF >> $ROCOTO_XML
+  <task name="compile_${COMPILE_NR}" maxtries="3">
+    <dependency> <taskdep task="compile_${COMPILE_NR_DEP}"/></dependency>
+    <command>$rocoto_cmd</command>
+    <jobname>compile_${COMPILE_NR}</jobname>
+    <account>${ACCNR}</account>
+    <queue>${COMPILE_QUEUE}</queue>
+    <partition>${PARTITION}</partition>
+    <cores>${BUILD_CORES}</cores>
+    <walltime>${BUILD_WALLTIME}</walltime>
+    <join>&LOG;/compile_${COMPILE_NR}.log</join>
+    ${NATIVE}
+  </task>
+EOF
+  else
   cat << EOF >> $ROCOTO_XML
   <task name="compile_${COMPILE_NR}" maxtries="3">
     <command>$rocoto_cmd</command>
@@ -513,6 +533,7 @@ rocoto_create_compile_task() {
     ${NATIVE}
   </task>
 EOF
+  fi
 }
 
 
@@ -589,7 +610,8 @@ ecflow_create_compile_task() {
   if [[ "Q$APP" != Q ]] ; then
       ecflow_cmd="$PATHRT/appbuild.sh ${PATHTR}/FV3 $APP $COMPILE_NR > ${LOG_DIR}/compile_${COMPILE_NR}.log 2>&1"
   else
-      ecflow_cmd="$PATHRT/compile_cmake.sh ${PATHTR} $MACHINE_ID \"${NEMS_VER}\" $COMPILE_NR > ${LOG_DIR}/compile_${COMPILE_NR}.log 2>&1"
+      #ecflow_cmd="$PATHRT/compile_cmake.sh ${PATHTR} $MACHINE_ID \"${NEMS_VER}\" $COMPILE_NR > ${LOG_DIR}/compile_${COMPILE_NR}.log 2>&1"
+      ecflow_cmd="$PATHRT/compile.sh ${NEMS_VER} $COMPILE_NR > ${LOG_DIR}/compile_${COMPILE_NR}.log 2>&1"
   fi
 
   cat << EOF > ${ECFLOW_RUN}/${ECFLOW_SUITE}/compile_${COMPILE_NR}.ecf
