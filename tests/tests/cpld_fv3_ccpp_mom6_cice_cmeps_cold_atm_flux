@@ -51,8 +51,9 @@ export LIST_FILES="phyf001.tile1.nc \
                    RESTART/sfc_data.tile4.nc \
                    RESTART/sfc_data.tile5.nc \
                    RESTART/sfc_data.tile6.nc \
-                   RESTART/ufs.s2s.c384_t025.jan.jul02.cold.cpl.r.2016-10-03-03600.nc 
-
+                   RESTART/ufs.s2s.c384_t025.jan.jul02.cold.cpl.r.2016-10-03-03600.nc \ 
+                   rpointer.cp
+l
 export_fv3
 export_cpl
 
@@ -70,12 +71,15 @@ export CPL_FAST=${DT_ATMOS}
 export DUMPFREQ_N=${FHMAX}
 export DUMPFREQ="h"
 
+# use CMEPS as the mediator component
+export MEDCOMP="cmeps"
+
 # nems.configure
 export NEMS_CONFIGURE="nems.configure.medcoldcmeps_atm_ocn_ice.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 
-export FV3_RUN=cpld_fv3_mom6_cice_cmeps_atm_flux_run.IN
+export FV3_RUN=cpld_fv3_mom6_cice_atm_flux_run.IN
 export INPUT_NML=input.mom6_ccpp.nml.IN
 
 export SUITE_NAME="FV3_GFS_2017_coupled"

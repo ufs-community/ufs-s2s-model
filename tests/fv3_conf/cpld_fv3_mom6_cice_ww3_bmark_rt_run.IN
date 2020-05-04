@@ -1,4 +1,4 @@
-mkdir INPUT RESTART history MOM6_OUTPUT MOM6_RESTART restart
+mkdir INPUT RESTART history MOM6_OUTPUT 
 
 if [[ $ATMRES == 'C96' ]]; then
   FV3_DIR=FV3_input_data
@@ -47,9 +47,14 @@ cp    @[RTPWD]/${FV3_IC}/gfs_data*.nc ./INPUT
 cp    @[RTPWD]/${MOM6_IC}/MOM*.nc ./INPUT
 cp    @[RTPWD]/${CICE_IC}/cice5_model_0.25.*.nc ./cice5_model.res.nc
 
-# WARM START
+# WARM START, NEMS or CMEPS
 if [[ ! $MED_restart_data == '' ]]; then
+ if [[ $MEDCOMP == 'cmeps' ]]; then
+  cp  @[RTPWD]/@[MED_restart_data]/ufs* .
+  cp  @[RTPWD]/@[MED_restart_data]/rpointer.cpl .
+ elif
   cp  @[RTPWD]/@[MED_restart_data]/mediator_* .
+ fi
 fi
 
 # CCPP

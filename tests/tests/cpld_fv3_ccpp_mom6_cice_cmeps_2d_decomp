@@ -1,8 +1,8 @@
 #
-#  CPLD_FV3_CCPP_MOM6_CICE_CMEPS_2D_ATM_FLUX test
+#  CPLD_FV3_CCPP_MOM6_CICE_CMEPS_2D_DECOMP test
 #
 
-export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - 2d_warm"
+export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - decomp"
 
 export CNTL_DIR="RT-Baselines_2d_warm_ccpp_cmeps"
 export CNTLMED_DIR="RT-Baselines_2d_warm_ccpp_cmeps/RESTART"
@@ -66,6 +66,9 @@ export DAYS="2"
 export FHMAX="48"
 export FDIAG="6"
 export WLCLK=30
+
+export INPES='6'
+export JNPES='4'
 
 # set component and coupling timesteps
 export DT_CICE=${DT_ATMOS}
