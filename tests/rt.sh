@@ -520,6 +520,8 @@ EOF
     QUEUE=dev
   elif [[ $MACHINE_ID = hera.* ]]; then
     QUEUE=batch
+  elif [[ $MACHINE_ID = orion.* ]]; then
+    QUEUE=batch
   elif [[ $MACHINE_ID = jet.* ]]; then
     QUEUE=batch
   else
