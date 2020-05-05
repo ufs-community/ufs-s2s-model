@@ -4,7 +4,7 @@
 	branch = develop
 [submodule "NEMS"]
 	path = NEMS
-	url = https://github.com/NOAA-EMC/NEMS.git
+	url = https://github.com/DeniseWorthen/NEMS.git
 	branch = develop
 [submodule "CICE_SRC"]
 	path = CICE_SRC
