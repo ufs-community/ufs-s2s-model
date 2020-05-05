@@ -234,6 +234,11 @@ export SHUM=-999.
 #IAU
 export IAU_INC_FILES="''"
 export IAU_DRYMASSFIXER=.false.
+
+#Cellular automata
+export DO_CA=.F.
+export CA_SGS=.F.
+export CA_GLOBAL=.F.
 }
 
 export_cpl ()

@@ -1,7 +1,7 @@
 [submodule "FV3"]
 	path = FV3
 	url = https://github.com/NOAA-EMC/fv3atm
-	branch = orion
+	branch = develop
 [submodule "NEMS"]
 	path = NEMS
 	url = https://github.com/NOAA-EMC/NEMS.git
@@ -15,6 +15,7 @@
 [submodule "stochastic_physics"]
 	path = stochastic_physics
 	url = https://github.com/noaa-psd/stochastic_physics
+        branch = master
 [submodule "MOM6"]
 	path = MOM6
 	url = git@github.com:JessicaMeixner-NOAA/MOM6-interface.git
