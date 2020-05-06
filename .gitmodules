@@ -13,14 +13,15 @@
 [submodule "FMS"]
 	path = FMS
 	url = https://github.com/NOAA-GFDL/FMS
-        branch = master
+	branch = master
 [submodule "stochastic_physics"]
 	path = stochastic_physics
 	url = https://github.com/noaa-psd/stochastic_physics
 [submodule "MOM6"]
 	path = MOM6
 	url = https://github.com/NOAA-EMC/MOM6-interface
+	branch = develop
 [submodule "WW3"]
 	path = WW3
 	url = https://github.com/NOAA-EMC/WW3.git
-        branch = develop
+	branch = develop
