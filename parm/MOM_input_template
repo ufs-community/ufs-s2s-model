@@ -31,7 +31,7 @@ DT_THERM = DT_THERM_MOM6        !   [s] default = 900.0
                                 ! THERMO_SPANS_COUPLING is true, in which case DT_THERM
                                 ! can be an integer multiple of the coupling timestep.  By
                                 ! default DT_THERM is set to DT.
-THERMO_SPANS_COUPLING = False   !   [Boolean] default = False
+THERMO_SPANS_COUPLING = MOM6_THERMO_SPAN   !   [Boolean] default = False
                                 ! If true, the MOM will take thermodynamic and tracer
                                 ! timesteps that can be longer than the coupling timestep.
                                 ! The actual thermodynamic timestep that is used in this
@@ -773,7 +773,7 @@ EPBL_TRANSITION_SCALE = 0.01    !   [nondim] default = 0.1
                                 ! A scale for the mixing length in the transition layer
                                 ! at the edge of the boundary layer as a fraction of the
                                 ! boundary layer thickness.  The default is 0.1.
-USE_LA_LI2016 = False           !   [nondim] default = False
+USE_LA_LI2016 = MOM6_REPRO_LA   !   [nondim] default = False
                                 ! A logical to use the Li et al. 2016 (submitted) formula to
                                 !  determine the Langmuir number.
 LT_ENHANCE = 3                  !   [nondim] default = 0

@@ -1,7 +1,0 @@
-# Coupled FV3-CCPP-MOM6-CICE debug
-#
-## NEMS Application Builder file
-
-COMPONENTS=( FMS CCPP FV3 MOM6%DEBUG=Y CICE%DEBUG=Y )
-
-FV3_MAKEOPT="CCPP=Y STATIC=Y DEBUG=Y SUITES=FV3_GFS_2017_coupled,FV3_GFS_2017_satmedmf_coupled,FV3_GFS_v15p2_coupled"

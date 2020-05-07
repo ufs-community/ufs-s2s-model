@@ -275,6 +275,10 @@ export ice_model="cice"
 export wav_model="ww3"
 # MOM6 river runoff 
 export MOM6_RIVER_RUNOFF='True'
+# set USE_LA_LI2016 to the current default; this must be set False for restart repro 
+export MOM6_REPRO_LA='True'
+# set the THERMO_SPANS_COUPLING to the current default; according to Gustavo and Alper, the correct setting is "False"
+export MOM6_THERMO_SPAN='True'
 export NPROC_ICE='48'
 export DT_ATMOS='900' #needed for C96 cases
 export DT_DYNAM_MOM6='900'

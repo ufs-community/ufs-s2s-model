@@ -1,7 +1,7 @@
 ## NEMS configuration file
 ##
 ## Platform: Cheyenne
-## Compiler: Intel with SGI MPT
+## Compiler: Intel with IntelMPI
 
 SHELL=/bin/sh
 
@@ -35,14 +35,10 @@ endif
 ############
 # commands #
 ############
-SFC             =       ifort
-SCC             =       icc
-CCOMP           =       icc
-DM_FC           =       mpif90 -f90=$(SFC)
-DM_CC           =       mpicc -cc=$(SCC) -DMPI2_SUPPORT
-FC              =       $(DM_FC)
-CC              =       $(DM_CC) -DFSEEKO64_OK 
-LD              =       $(FC) -mkl=sequential
+FC = mpiifort
+CC = mpiicc
+CXX = mpiicpc
+LD = mpiifort -mkl=sequential
 
 #########
 # flags #
@@ -200,14 +196,14 @@ LDFLAGS += -L$(PATH_CCPP)/lib -lccpp
 endif
 endif
 
-ifeq ($(CMEPS),Y)
-CPPDEFS += -DCMEPS
-endif
-
 ifeq ($(SION),Y)
 CPPDEFS += -DSION
 CFLAGS += $(SIONLIB_INC)
 FFLAGS += $(SIONLIB_INC)
+endif
+
+ifeq ($(CMEPS),Y)
+CPPDEFS += -DCMEPS
 endif
 
 LDFLAGS += $(LIBS)
