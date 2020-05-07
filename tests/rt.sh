@@ -378,8 +378,7 @@ done
 if [[ $MACHINE_ID = cheyenne.* ]]; then
   RTPWD=${RTPWD:-$DISKNM/develop-20200210/${COMPILER^^}}
 else
-  RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200326}
-  #RTPWD=/scratch1/NCEPDEV/stmp4/Minsuk.Ji/S2S_RT/REGRESSION_TEST_INTEL
+  RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200504}
 fi
 
 shift $((OPTIND-1))
@@ -520,6 +519,8 @@ EOF
   elif [[ $MACHINE_ID = wcoss_dell_p3 ]]; then
     QUEUE=dev
   elif [[ $MACHINE_ID = hera.* ]]; then
+    QUEUE=batch
+  elif [[ $MACHINE_ID = orion.* ]]; then
     QUEUE=batch
   elif [[ $MACHINE_ID = jet.* ]]; then
     QUEUE=batch
