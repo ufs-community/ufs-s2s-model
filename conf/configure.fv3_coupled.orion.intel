@@ -1,6 +1,6 @@
 ## NEMS configuration file
 ##
-## Platform: Hera
+## Platform: Orion
 ## Compiler: Intel with IntelMPI
 
 SHELL=/bin/sh
