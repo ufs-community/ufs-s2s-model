@@ -103,6 +103,10 @@ cpl_defaults = {
     ATMRES=''
     OCNRES='025'
     SUITE_NAME='FV3_GFS_2017_coupled'
+    OZ_PHYS_OLD='.T.'
+    OZ_PHYS_NEW='.F.'
+    DO_RRTMGP='.F.'
+
     INPUT_NML='input.mom6_ccpp.nml.IN'
     FIELD_TABLE="field_table"
     NSOUT='-1'
