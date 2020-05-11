@@ -1,0 +1,7 @@
+# Coupled FV3-CCPP-MOM6-CICE6-CMEPS
+
+## NEMS Application Builder file
+
+COMPONENTS=( FMS CCPP FV3 MOM6 CICE6 CMEPS )
+
+FV3_MAKEOPT="CMEPS=Y CCPP=Y STATIC=Y SUITES=FV3_GFS_2017_coupled,FV3_GFS_2017_satmedmf_coupled,FV3_GFS_v15p2_coupled"
