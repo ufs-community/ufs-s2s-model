@@ -4,8 +4,9 @@
 	branch = develop
 [submodule "NEMS"]
 	path = NEMS
-	url = https://github.com/NOAA-EMC/NEMS.git
-	branch = develop
+	#url = https://github.com/NOAA-EMC/NEMS.git
+	url = https://github.com/MinsukJi-NOAA/NEMS
+	branch = module_setup/fix_i2a
 [submodule "CICE_SRC"]
 	path = CICE_SRC
 	url = https://github.com/NOAA-EMC/CICE5.git
