@@ -472,6 +472,8 @@ test cpld_fv3_ccpp_mom6_cice_6h_debug: fv3_ccpp_mom6_cice_debug.exe {
     CNTL_NAME="RT-Baselines_6h_warm_debug_ccpp"
     CNTL="@[plat%BASELINE]/@[CNTL_NAME]" 
 
+    mom6_restart_n='6'
+
     MED_restart_data="@[plat%BASELINE]/MEDIATOR_debug_ccpp"
 
     build=fv3_ccpp_mom6_cice_debug.exe
