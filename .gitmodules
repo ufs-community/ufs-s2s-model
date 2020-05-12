@@ -22,5 +22,5 @@
         branch = cplwav
 [submodule "WW3"]
 	path = WW3
-	url = git@github.com:JessicaMeixner-NOAA/WW3.git
-        branch = PR/waveoceancpl
+	url = https://github.com/NOAA-EMC/WW3.git
+        branch = develop
