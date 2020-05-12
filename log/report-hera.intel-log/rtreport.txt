@@ -1,15 +1,14 @@
 Run rocotostat...
 Generate report...
-WORKFLOW STARTED AT Mon May 11 21:02:13 2020 (+1589230933)
+WORKFLOW STARTED AT Tue May 12 16:34:29 2020 (+1589301269)
 Repository information:
 
 
 REPO TOP:
 develop              d039a49 [origin/develop] Merge remote-tracking branch 'UFS/develop' into develop
 Fetch URL: git@github.com:JessicaMeixner-NOAA/ufs-s2s-model.git
- M compsets/fv3mom6cice5_ccpp.input
+ M MOM6
  M log/report-hera.intel-log/build_fv3_ccpp_mom6_cice.exe.log
- M log/report-hera.intel-log/build_fv3_ccpp_mom6_cice_debug.exe.log
  M log/report-hera.intel-log/build_fv3_ccpp_mom6_cice_ww3.exe.log
  M log/report-hera.intel-log/rtreport.txt
 
@@ -26,16 +25,16 @@ Entering 'FV3'
 Fetch URL: https://github.com/NOAA-EMC/fv3atm
 
 Entering 'MOM6'
-cplwav  286d58d [origin/cplwav] point to PR branch
+cplwav  ba5afa8 [origin/cplwav: ahead 1] removing iob usewaves
 Fetch URL: git@github.com:JessicaMeixner-NOAA/MOM6-interface.git
 
 Entering 'NEMS'
-(HEAD detached at 82138ff) 82138ff cmeps integration changes (#55)
+(HEAD detached at e88fd93) e88fd93 Bugfix i2a & Add Orion to module-setup (#61)
 Fetch URL: https://github.com/NOAA-EMC/NEMS.git
 
 Entering 'WW3'
-PR/waveoceancpl daf6566c [origin/PR/waveoceancpl] Merge remote-tracking branch 'EMC/develop' into PR/waveoceancpl
-Fetch URL: git@github.com:JessicaMeixner-NOAA/WW3.git
+(HEAD detached at 46bcb868) 46bcb868 Updating WW3 version in ww3_from_ftp.sh, adding curlev.nc file required in ww3_tp2.18
+Fetch URL: https://github.com/NOAA-EMC/WW3.git
 
 Entering 'stochastic_physics'
 (HEAD detached at 987f5a2) 987f5a2 Merge pull request #17 from noaa-psd/psd/develop
@@ -44,11 +43,10 @@ Fetch URL: https://github.com/noaa-psd/stochastic_physics
 
 BUILD fv3_ccpp_mom6_cice.exe: SUCCEEDED
 BUILD fv3_ccpp_mom6_cice_ww3.exe: SUCCEEDED
-BUILD fv3_ccpp_mom6_cice_debug.exe: SUCCEEDED
 
 TEST #1: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux starting at Mon May 11 02:14:07 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold 384)
-  Mon May 11 02:14:07 UTC 2020
+  Test cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt starting at Tue May 12 18:28:37 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold 384)
+  Tue May 12 18:28:37 UTC 2020
   phyf001.tile1.nc: bit-for-bit identical
   phyf001.tile2.nc: bit-for-bit identical
   phyf001.tile3.nc: bit-for-bit identical
@@ -104,215 +102,26 @@ TEST #1: PASS
   mediator_FBOcn_o_restart.nc: bit-for-bit identical
   mediator_scalars_restart.txt: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.54716/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 3b48946f7bacdb329c7e239ffc30181e
-    Actual md5sum: 3b48946f7bacdb329c7e239ffc30181e
-  TEST PASSED AT Mon May 11 02:19:12 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.186942/exec/fv3_ccpp_mom6_cice.exe
+    Expected md5sum: 9b62d6f6ec242d2dc2f0e59b5114080f
+    Actual md5sum: 9b62d6f6ec242d2dc2f0e59b5114080f
+  TEST PASSED AT Tue May 12 18:33:29 UTC 2020
 
 TEST #2: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt starting at Mon May 11 15:54:46 UTC 2020 (Coupled FV3-CCPP-MOM6-CICE-WW3 system - cold 384)
-  Mon May 11 15:54:46 UTC 2020
-  phyf001.tile1.nc: bit-for-bit identical
-  phyf001.tile2.nc: bit-for-bit identical
-  phyf001.tile3.nc: bit-for-bit identical
-  phyf001.tile4.nc: bit-for-bit identical
-  phyf001.tile5.nc: bit-for-bit identical
-  phyf001.tile6.nc: bit-for-bit identical
-  dynf001.tile1.nc: bit-for-bit identical
-  dynf001.tile2.nc: bit-for-bit identical
-  dynf001.tile3.nc: bit-for-bit identical
-  dynf001.tile4.nc: bit-for-bit identical
-  dynf001.tile5.nc: bit-for-bit identical
-  dynf001.tile6.nc: bit-for-bit identical
-  RESTART/coupler.res: bit-for-bit identical
-  RESTART/fv_core.res.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile6.nc: bit-for-bit identical
-  RESTART/phy_data.tile1.nc: bit-for-bit identical
-  RESTART/phy_data.tile2.nc: bit-for-bit identical
-  RESTART/phy_data.tile3.nc: bit-for-bit identical
-  RESTART/phy_data.tile4.nc: bit-for-bit identical
-  RESTART/phy_data.tile5.nc: bit-for-bit identical
-  RESTART/phy_data.tile6.nc: bit-for-bit identical
-  RESTART/sfc_data.tile1.nc: bit-for-bit identical
-  RESTART/sfc_data.tile2.nc: bit-for-bit identical
-  RESTART/sfc_data.tile3.nc: bit-for-bit identical
-  RESTART/sfc_data.tile4.nc: bit-for-bit identical
-  RESTART/sfc_data.tile5.nc: bit-for-bit identical
-  RESTART/sfc_data.tile6.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile1.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile2.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile3.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile4.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile5.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile6.nc: bit-for-bit identical
-  mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
-  mediator_FBIce_i_restart.nc: bit-for-bit identical
-  mediator_FBOcn_o_restart.nc: bit-for-bit identical
-  mediator_scalars_restart.txt: bit-for-bit identical
-  Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.54716/exec/fv3_ccpp_mom6_cice_ww3.exe
-    Expected md5sum: 1b5f07dc4415b96e2e9f3d8a78812428
-    Actual md5sum: 1b5f07dc4415b96e2e9f3d8a78812428
-  TEST PASSED AT Mon May 11 16:02:15 UTC 2020
-
-TEST #3: PASS
-  Test cpld_fv3_ccpp_mom6_cice_cold_atm_flux starting at Mon May 11 02:15:13 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold start)
-  Mon May 11 02:15:13 UTC 2020
-  phyf001.tile1.nc: bit-for-bit identical
-  phyf001.tile2.nc: bit-for-bit identical
-  phyf001.tile3.nc: bit-for-bit identical
-  phyf001.tile4.nc: bit-for-bit identical
-  phyf001.tile5.nc: bit-for-bit identical
-  phyf001.tile6.nc: bit-for-bit identical
-  dynf001.tile1.nc: bit-for-bit identical
-  dynf001.tile2.nc: bit-for-bit identical
-  dynf001.tile3.nc: bit-for-bit identical
-  dynf001.tile4.nc: bit-for-bit identical
-  dynf001.tile5.nc: bit-for-bit identical
-  dynf001.tile6.nc: bit-for-bit identical
-  RESTART/coupler.res: bit-for-bit identical
-  RESTART/fv_core.res.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile6.nc: bit-for-bit identical
-  RESTART/phy_data.tile1.nc: bit-for-bit identical
-  RESTART/phy_data.tile2.nc: bit-for-bit identical
-  RESTART/phy_data.tile3.nc: bit-for-bit identical
-  RESTART/phy_data.tile4.nc: bit-for-bit identical
-  RESTART/phy_data.tile5.nc: bit-for-bit identical
-  RESTART/phy_data.tile6.nc: bit-for-bit identical
-  RESTART/sfc_data.tile1.nc: bit-for-bit identical
-  RESTART/sfc_data.tile2.nc: bit-for-bit identical
-  RESTART/sfc_data.tile3.nc: bit-for-bit identical
-  RESTART/sfc_data.tile4.nc: bit-for-bit identical
-  RESTART/sfc_data.tile5.nc: bit-for-bit identical
-  RESTART/sfc_data.tile6.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile1.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile2.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile3.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile4.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile5.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile6.nc: bit-for-bit identical
-  mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
-  mediator_FBIce_i_restart.nc: bit-for-bit identical
-  mediator_FBOcn_o_restart.nc: bit-for-bit identical
-  mediator_scalars_restart.txt: bit-for-bit identical
-  Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.54716/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 3b48946f7bacdb329c7e239ffc30181e
-    Actual md5sum: 3b48946f7bacdb329c7e239ffc30181e
-  TEST PASSED AT Mon May 11 02:17:30 UTC 2020
-
-TEST #4: PASS
-  Test cpld_fv3_ccpp_mom6_cice_cold_debug starting at Mon May 11 02:14:42 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - debug)
-  Mon May 11 02:14:42 UTC 2020
-  phyf001.tile1.nc: bit-for-bit identical
-  phyf001.tile2.nc: bit-for-bit identical
-  phyf001.tile3.nc: bit-for-bit identical
-  phyf001.tile4.nc: bit-for-bit identical
-  phyf001.tile5.nc: bit-for-bit identical
-  phyf001.tile6.nc: bit-for-bit identical
-  dynf001.tile1.nc: bit-for-bit identical
-  dynf001.tile2.nc: bit-for-bit identical
-  dynf001.tile3.nc: bit-for-bit identical
-  dynf001.tile4.nc: bit-for-bit identical
-  dynf001.tile5.nc: bit-for-bit identical
-  dynf001.tile6.nc: bit-for-bit identical
-  RESTART/coupler.res: bit-for-bit identical
-  RESTART/fv_core.res.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile6.nc: bit-for-bit identical
-  RESTART/phy_data.tile1.nc: bit-for-bit identical
-  RESTART/phy_data.tile2.nc: bit-for-bit identical
-  RESTART/phy_data.tile3.nc: bit-for-bit identical
-  RESTART/phy_data.tile4.nc: bit-for-bit identical
-  RESTART/phy_data.tile5.nc: bit-for-bit identical
-  RESTART/phy_data.tile6.nc: bit-for-bit identical
-  RESTART/sfc_data.tile1.nc: bit-for-bit identical
-  RESTART/sfc_data.tile2.nc: bit-for-bit identical
-  RESTART/sfc_data.tile3.nc: bit-for-bit identical
-  RESTART/sfc_data.tile4.nc: bit-for-bit identical
-  RESTART/sfc_data.tile5.nc: bit-for-bit identical
-  RESTART/sfc_data.tile6.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile1.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile2.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile3.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile4.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile5.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile6.nc: bit-for-bit identical
-  mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
-  mediator_FBIce_i_restart.nc: bit-for-bit identical
-  mediator_FBOcn_o_restart.nc: bit-for-bit identical
-  mediator_scalars_restart.txt: bit-for-bit identical
-  Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.54716/exec/fv3_ccpp_mom6_cice_debug.exe
-    Expected md5sum: d9ec68cee23d19eee1dd9e0c1269c380
-    Actual md5sum: d9ec68cee23d19eee1dd9e0c1269c380
-  TEST PASSED AT Mon May 11 02:23:01 UTC 2020
-
-TEST #5: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux starting at Mon May 11 02:15:12 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - 2d_warm)
-  Mon May 11 02:15:12 UTC 2020
-  phyf048.tile1.nc: bit-for-bit identical
-  phyf048.tile2.nc: bit-for-bit identical
-  phyf048.tile3.nc: bit-for-bit identical
-  phyf048.tile4.nc: bit-for-bit identical
-  phyf048.tile5.nc: bit-for-bit identical
-  phyf048.tile6.nc: bit-for-bit identical
-  dynf048.tile1.nc: bit-for-bit identical
-  dynf048.tile2.nc: bit-for-bit identical
-  dynf048.tile3.nc: bit-for-bit identical
-  dynf048.tile4.nc: bit-for-bit identical
-  dynf048.tile5.nc: bit-for-bit identical
-  dynf048.tile6.nc: bit-for-bit identical
+  Test cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt starting at Tue May 12 18:28:39 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE 1 day run)
+  Tue May 12 18:28:39 UTC 2020
+  phyf024.tile1.nc: bit-for-bit identical
+  phyf024.tile2.nc: bit-for-bit identical
+  phyf024.tile3.nc: bit-for-bit identical
+  phyf024.tile4.nc: bit-for-bit identical
+  phyf024.tile5.nc: bit-for-bit identical
+  phyf024.tile6.nc: bit-for-bit identical
+  dynf024.tile1.nc: bit-for-bit identical
+  dynf024.tile2.nc: bit-for-bit identical
+  dynf024.tile3.nc: bit-for-bit identical
+  dynf024.tile4.nc: bit-for-bit identical
+  dynf024.tile5.nc: bit-for-bit identical
+  dynf024.tile6.nc: bit-for-bit identical
   RESTART/coupler.res: bit-for-bit identical
   RESTART/fv_core.res.nc: bit-for-bit identical
   RESTART/fv_core.res.tile1.nc: bit-for-bit identical
@@ -349,7 +158,7 @@ TEST #5: PASS
   MOM6_RESTART/MOM.res_1.nc: bit-for-bit identical
   MOM6_RESTART/MOM.res_2.nc: bit-for-bit identical
   MOM6_RESTART/MOM.res_3.nc: bit-for-bit identical
-  restart/iced.2016-10-05-00000.nc: bit-for-bit identical
+  restart/iced.2013-04-02-00000.nc: bit-for-bit identical
   mediator_FBaccumAtm_restart.tile1.nc: bit-for-bit identical
   mediator_FBaccumAtm_restart.tile2.nc: bit-for-bit identical
   mediator_FBaccumAtm_restart.tile3.nc: bit-for-bit identical
@@ -373,14 +182,77 @@ TEST #5: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.54716/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 3b48946f7bacdb329c7e239ffc30181e
-    Actual md5sum: 3b48946f7bacdb329c7e239ffc30181e
-  TEST PASSED AT Mon May 11 03:00:38 UTC 2020
+    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.186942/exec/fv3_ccpp_mom6_cice.exe
+    Expected md5sum: 9b62d6f6ec242d2dc2f0e59b5114080f
+    Actual md5sum: 9b62d6f6ec242d2dc2f0e59b5114080f
+  TEST PASSED AT Tue May 12 18:44:58 UTC 2020
 
-TEST #6: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt starting at Mon May 11 20:11:19 UTC 2020 (Coupled FV3-CCPP-MOM6-CICE-WW3 system - 1 day)
-  Mon May 11 20:11:19 UTC 2020
+TEST #3: PASS
+  Test cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt starting at Tue May 12 19:02:26 UTC 2020 (Coupled FV3-CCPP-MOM6-CICE-WW3 system - cold 384)
+  Tue May 12 19:02:26 UTC 2020
+  phyf001.tile1.nc: bit-for-bit identical
+  phyf001.tile2.nc: bit-for-bit identical
+  phyf001.tile3.nc: bit-for-bit identical
+  phyf001.tile4.nc: bit-for-bit identical
+  phyf001.tile5.nc: bit-for-bit identical
+  phyf001.tile6.nc: bit-for-bit identical
+  dynf001.tile1.nc: bit-for-bit identical
+  dynf001.tile2.nc: bit-for-bit identical
+  dynf001.tile3.nc: bit-for-bit identical
+  dynf001.tile4.nc: bit-for-bit identical
+  dynf001.tile5.nc: bit-for-bit identical
+  dynf001.tile6.nc: bit-for-bit identical
+  RESTART/coupler.res: bit-for-bit identical
+  RESTART/fv_core.res.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile1.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile2.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile3.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile4.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile5.nc: bit-for-bit identical
+  RESTART/fv_core.res.tile6.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit identical
+  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile1.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile2.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile3.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile4.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile5.nc: bit-for-bit identical
+  RESTART/fv_tracer.res.tile6.nc: bit-for-bit identical
+  RESTART/phy_data.tile1.nc: bit-for-bit identical
+  RESTART/phy_data.tile2.nc: bit-for-bit identical
+  RESTART/phy_data.tile3.nc: bit-for-bit identical
+  RESTART/phy_data.tile4.nc: bit-for-bit identical
+  RESTART/phy_data.tile5.nc: bit-for-bit identical
+  RESTART/phy_data.tile6.nc: bit-for-bit identical
+  RESTART/sfc_data.tile1.nc: bit-for-bit identical
+  RESTART/sfc_data.tile2.nc: bit-for-bit identical
+  RESTART/sfc_data.tile3.nc: bit-for-bit identical
+  RESTART/sfc_data.tile4.nc: bit-for-bit identical
+  RESTART/sfc_data.tile5.nc: bit-for-bit identical
+  RESTART/sfc_data.tile6.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile1.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile2.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile3.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile4.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile5.nc: bit-for-bit identical
+  mediator_FBAtm_a_restart.tile6.nc: bit-for-bit identical
+  mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
+  mediator_FBIce_i_restart.nc: bit-for-bit identical
+  mediator_FBOcn_o_restart.nc: bit-for-bit identical
+  mediator_scalars_restart.txt: bit-for-bit identical
+  Executable did not change during test suite:
+    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.186942/exec/fv3_ccpp_mom6_cice_ww3.exe
+    Expected md5sum: 1c188382171d2ef0407fec6e336828cb
+    Actual md5sum: 1c188382171d2ef0407fec6e336828cb
+  TEST PASSED AT Tue May 12 19:10:03 UTC 2020
+
+TEST #4: PASS
+  Test cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt starting at Tue May 12 19:02:26 UTC 2020 (Coupled FV3-CCPP-MOM6-CICE-WW3 system - 1 day)
+  Tue May 12 19:02:26 UTC 2020
   phyf024.tile1.nc: bit-for-bit identical
   phyf024.tile2.nc: bit-for-bit identical
   phyf024.tile3.nc: bit-for-bit identical
@@ -456,617 +328,11 @@ TEST #6: PASS
   mediator_FBHyd_h_restart.nc: bit-for-bit identical
   mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
   Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.54716/exec/fv3_ccpp_mom6_cice_ww3.exe
-    Expected md5sum: 1b5f07dc4415b96e2e9f3d8a78812428
-    Actual md5sum: 1b5f07dc4415b96e2e9f3d8a78812428
-  TEST PASSED AT Mon May 11 20:45:01 UTC 2020
-
-TEST #7: PASS
-  Test cpld_fv3_ccpp_mom6_cice_2d_decomp starting at Mon May 11 02:11:18 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - decomp)
-  Mon May 11 02:11:18 UTC 2020
-  phyf048.tile1.nc: bit-for-bit identical
-  phyf048.tile2.nc: bit-for-bit identical
-  phyf048.tile3.nc: bit-for-bit identical
-  phyf048.tile4.nc: bit-for-bit identical
-  phyf048.tile5.nc: bit-for-bit identical
-  phyf048.tile6.nc: bit-for-bit identical
-  dynf048.tile1.nc: bit-for-bit identical
-  dynf048.tile2.nc: bit-for-bit identical
-  dynf048.tile3.nc: bit-for-bit identical
-  dynf048.tile4.nc: bit-for-bit identical
-  dynf048.tile5.nc: bit-for-bit identical
-  dynf048.tile6.nc: bit-for-bit identical
-  RESTART/coupler.res: bit-for-bit identical
-  RESTART/fv_core.res.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile6.nc: bit-for-bit identical
-  RESTART/phy_data.tile1.nc: bit-for-bit identical
-  RESTART/phy_data.tile2.nc: bit-for-bit identical
-  RESTART/phy_data.tile3.nc: bit-for-bit identical
-  RESTART/phy_data.tile4.nc: bit-for-bit identical
-  RESTART/phy_data.tile5.nc: bit-for-bit identical
-  RESTART/phy_data.tile6.nc: bit-for-bit identical
-  RESTART/sfc_data.tile1.nc: bit-for-bit identical
-  RESTART/sfc_data.tile2.nc: bit-for-bit identical
-  RESTART/sfc_data.tile3.nc: bit-for-bit identical
-  RESTART/sfc_data.tile4.nc: bit-for-bit identical
-  RESTART/sfc_data.tile5.nc: bit-for-bit identical
-  RESTART/sfc_data.tile6.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_1.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_2.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_3.nc: bit-for-bit identical
-  restart/iced.2016-10-05-00000.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile1.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile2.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile3.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile4.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile5.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile6.nc: bit-for-bit identical
-  mediator_FBaccumOcn_restart.nc: bit-for-bit identical
-  mediator_FBaccumIce_restart.nc: bit-for-bit identical
-  mediator_FBaccumLnd_restart.nc: bit-for-bit identical
-  mediator_FBaccumHyd_restart.nc: bit-for-bit identical
-  mediator_FBaccumAtmOcn_restart.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile1.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile2.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile3.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile4.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile5.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile6.nc: bit-for-bit identical
-  mediator_FBIce_i_restart.nc: bit-for-bit identical
-  mediator_FBOcn_o_restart.nc: bit-for-bit identical
-  mediator_FBLnd_l_restart.nc: bit-for-bit identical
-  mediator_FBHyd_h_restart.nc: bit-for-bit identical
-  mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
-  Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.54716/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 3b48946f7bacdb329c7e239ffc30181e
-    Actual md5sum: 3b48946f7bacdb329c7e239ffc30181e
-  TEST PASSED AT Mon May 11 02:31:45 UTC 2020
-
-TEST #8: PASS
-  Test cpld_fv3_ccpp_mom6_cice_6h_debug starting at Mon May 11 21:02:31 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - debug)
-  Mon May 11 21:02:32 UTC 2020
-  phyf006.tile1.nc: bit-for-bit identical
-  phyf006.tile2.nc: bit-for-bit identical
-  phyf006.tile3.nc: bit-for-bit identical
-  phyf006.tile4.nc: bit-for-bit identical
-  phyf006.tile5.nc: bit-for-bit identical
-  phyf006.tile6.nc: bit-for-bit identical
-  dynf006.tile1.nc: bit-for-bit identical
-  dynf006.tile2.nc: bit-for-bit identical
-  dynf006.tile3.nc: bit-for-bit identical
-  dynf006.tile4.nc: bit-for-bit identical
-  dynf006.tile5.nc: bit-for-bit identical
-  dynf006.tile6.nc: bit-for-bit identical
-  RESTART/coupler.res: bit-for-bit identical
-  RESTART/fv_core.res.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile6.nc: bit-for-bit identical
-  RESTART/phy_data.tile1.nc: bit-for-bit identical
-  RESTART/phy_data.tile2.nc: bit-for-bit identical
-  RESTART/phy_data.tile3.nc: bit-for-bit identical
-  RESTART/phy_data.tile4.nc: bit-for-bit identical
-  RESTART/phy_data.tile5.nc: bit-for-bit identical
-  RESTART/phy_data.tile6.nc: bit-for-bit identical
-  RESTART/sfc_data.tile1.nc: bit-for-bit identical
-  RESTART/sfc_data.tile2.nc: bit-for-bit identical
-  RESTART/sfc_data.tile3.nc: bit-for-bit identical
-  RESTART/sfc_data.tile4.nc: bit-for-bit identical
-  RESTART/sfc_data.tile5.nc: bit-for-bit identical
-  RESTART/sfc_data.tile6.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_1.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_2.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_3.nc: bit-for-bit identical
-  restart/iced.2016-10-03-21600.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile1.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile2.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile3.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile4.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile5.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile6.nc: bit-for-bit identical
-  mediator_FBaccumOcn_restart.nc: bit-for-bit identical
-  mediator_FBaccumIce_restart.nc: bit-for-bit identical
-  mediator_FBaccumLnd_restart.nc: bit-for-bit identical
-  mediator_FBaccumHyd_restart.nc: bit-for-bit identical
-  mediator_FBaccumAtmOcn_restart.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile1.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile2.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile3.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile4.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile5.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile6.nc: bit-for-bit identical
-  mediator_FBIce_i_restart.nc: bit-for-bit identical
-  mediator_FBOcn_o_restart.nc: bit-for-bit identical
-  mediator_FBLnd_l_restart.nc: bit-for-bit identical
-  mediator_FBHyd_h_restart.nc: bit-for-bit identical
-  mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
-  Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.54716/exec/fv3_ccpp_mom6_cice_debug.exe
-    Expected md5sum: d9ec68cee23d19eee1dd9e0c1269c380
-    Actual md5sum: d9ec68cee23d19eee1dd9e0c1269c380
-  TEST PASSED AT Mon May 11 21:25:58 UTC 2020
-
-TEST #9: PASS
-  Test cpld_fv3_ccpp_mom6_cice_1d_satmedmf starting at Mon May 11 02:15:12 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - satmedmf)
-  Mon May 11 02:15:12 UTC 2020
-  phyf024.tile1.nc: bit-for-bit identical
-  phyf024.tile2.nc: bit-for-bit identical
-  phyf024.tile3.nc: bit-for-bit identical
-  phyf024.tile4.nc: bit-for-bit identical
-  phyf024.tile5.nc: bit-for-bit identical
-  phyf024.tile6.nc: bit-for-bit identical
-  dynf024.tile1.nc: bit-for-bit identical
-  dynf024.tile2.nc: bit-for-bit identical
-  dynf024.tile3.nc: bit-for-bit identical
-  dynf024.tile4.nc: bit-for-bit identical
-  dynf024.tile5.nc: bit-for-bit identical
-  dynf024.tile6.nc: bit-for-bit identical
-  RESTART/coupler.res: bit-for-bit identical
-  RESTART/fv_core.res.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile6.nc: bit-for-bit identical
-  RESTART/phy_data.tile1.nc: bit-for-bit identical
-  RESTART/phy_data.tile2.nc: bit-for-bit identical
-  RESTART/phy_data.tile3.nc: bit-for-bit identical
-  RESTART/phy_data.tile4.nc: bit-for-bit identical
-  RESTART/phy_data.tile5.nc: bit-for-bit identical
-  RESTART/phy_data.tile6.nc: bit-for-bit identical
-  RESTART/sfc_data.tile1.nc: bit-for-bit identical
-  RESTART/sfc_data.tile2.nc: bit-for-bit identical
-  RESTART/sfc_data.tile3.nc: bit-for-bit identical
-  RESTART/sfc_data.tile4.nc: bit-for-bit identical
-  RESTART/sfc_data.tile5.nc: bit-for-bit identical
-  RESTART/sfc_data.tile6.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_1.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_2.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_3.nc: bit-for-bit identical
-  restart/iced.2016-10-04-00000.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile1.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile2.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile3.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile4.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile5.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile6.nc: bit-for-bit identical
-  mediator_FBaccumOcn_restart.nc: bit-for-bit identical
-  mediator_FBaccumIce_restart.nc: bit-for-bit identical
-  mediator_FBaccumLnd_restart.nc: bit-for-bit identical
-  mediator_FBaccumHyd_restart.nc: bit-for-bit identical
-  mediator_FBaccumAtmOcn_restart.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile1.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile2.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile3.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile4.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile5.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile6.nc: bit-for-bit identical
-  mediator_FBIce_i_restart.nc: bit-for-bit identical
-  mediator_FBOcn_o_restart.nc: bit-for-bit identical
-  mediator_FBLnd_l_restart.nc: bit-for-bit identical
-  mediator_FBHyd_h_restart.nc: bit-for-bit identical
-  mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
-  Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.54716/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 3b48946f7bacdb329c7e239ffc30181e
-    Actual md5sum: 3b48946f7bacdb329c7e239ffc30181e
-  TEST PASSED AT Mon May 11 02:27:04 UTC 2020
-
-TEST #10: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt starting at Sun May 10 21:19:54 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE 1 day run)
-  Sun May 10 21:19:55 UTC 2020
-  phyf024.tile1.nc: bit-for-bit identical
-  phyf024.tile2.nc: bit-for-bit identical
-  phyf024.tile3.nc: bit-for-bit identical
-  phyf024.tile4.nc: bit-for-bit identical
-  phyf024.tile5.nc: bit-for-bit identical
-  phyf024.tile6.nc: bit-for-bit identical
-  dynf024.tile1.nc: bit-for-bit identical
-  dynf024.tile2.nc: bit-for-bit identical
-  dynf024.tile3.nc: bit-for-bit identical
-  dynf024.tile4.nc: bit-for-bit identical
-  dynf024.tile5.nc: bit-for-bit identical
-  dynf024.tile6.nc: bit-for-bit identical
-  RESTART/coupler.res: bit-for-bit identical
-  RESTART/fv_core.res.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile6.nc: bit-for-bit identical
-  RESTART/phy_data.tile1.nc: bit-for-bit identical
-  RESTART/phy_data.tile2.nc: bit-for-bit identical
-  RESTART/phy_data.tile3.nc: bit-for-bit identical
-  RESTART/phy_data.tile4.nc: bit-for-bit identical
-  RESTART/phy_data.tile5.nc: bit-for-bit identical
-  RESTART/phy_data.tile6.nc: bit-for-bit identical
-  RESTART/sfc_data.tile1.nc: bit-for-bit identical
-  RESTART/sfc_data.tile2.nc: bit-for-bit identical
-  RESTART/sfc_data.tile3.nc: bit-for-bit identical
-  RESTART/sfc_data.tile4.nc: bit-for-bit identical
-  RESTART/sfc_data.tile5.nc: bit-for-bit identical
-  RESTART/sfc_data.tile6.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_1.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_2.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_3.nc: bit-for-bit identical
-  restart/iced.2013-04-02-00000.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile1.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile2.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile3.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile4.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile5.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile6.nc: bit-for-bit identical
-  mediator_FBaccumOcn_restart.nc: bit-for-bit identical
-  mediator_FBaccumIce_restart.nc: bit-for-bit identical
-  mediator_FBaccumLnd_restart.nc: bit-for-bit identical
-  mediator_FBaccumHyd_restart.nc: bit-for-bit identical
-  mediator_FBaccumAtmOcn_restart.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile1.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile2.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile3.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile4.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile5.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile6.nc: bit-for-bit identical
-  mediator_FBIce_i_restart.nc: bit-for-bit identical
-  mediator_FBOcn_o_restart.nc: bit-for-bit identical
-  mediator_FBLnd_l_restart.nc: bit-for-bit identical
-  mediator_FBHyd_h_restart.nc: bit-for-bit identical
-  mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
-  Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.54716/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 3b48946f7bacdb329c7e239ffc30181e
-    Actual md5sum: 3b48946f7bacdb329c7e239ffc30181e
-  TEST PASSED AT Sun May 10 21:36:26 UTC 2020
-
-TEST #11: PASS
-  Test cpld_fv3_ccpp_mom6_cice_cold_satmedmf starting at Mon May 11 02:11:18 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold_satmedmf)
-  Mon May 11 02:11:18 UTC 2020
-  phyf001.tile1.nc: bit-for-bit identical
-  phyf001.tile2.nc: bit-for-bit identical
-  phyf001.tile3.nc: bit-for-bit identical
-  phyf001.tile4.nc: bit-for-bit identical
-  phyf001.tile5.nc: bit-for-bit identical
-  phyf001.tile6.nc: bit-for-bit identical
-  dynf001.tile1.nc: bit-for-bit identical
-  dynf001.tile2.nc: bit-for-bit identical
-  dynf001.tile3.nc: bit-for-bit identical
-  dynf001.tile4.nc: bit-for-bit identical
-  dynf001.tile5.nc: bit-for-bit identical
-  dynf001.tile6.nc: bit-for-bit identical
-  RESTART/coupler.res: bit-for-bit identical
-  RESTART/fv_core.res.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile6.nc: bit-for-bit identical
-  RESTART/phy_data.tile1.nc: bit-for-bit identical
-  RESTART/phy_data.tile2.nc: bit-for-bit identical
-  RESTART/phy_data.tile3.nc: bit-for-bit identical
-  RESTART/phy_data.tile4.nc: bit-for-bit identical
-  RESTART/phy_data.tile5.nc: bit-for-bit identical
-  RESTART/phy_data.tile6.nc: bit-for-bit identical
-  RESTART/sfc_data.tile1.nc: bit-for-bit identical
-  RESTART/sfc_data.tile2.nc: bit-for-bit identical
-  RESTART/sfc_data.tile3.nc: bit-for-bit identical
-  RESTART/sfc_data.tile4.nc: bit-for-bit identical
-  RESTART/sfc_data.tile5.nc: bit-for-bit identical
-  RESTART/sfc_data.tile6.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile1.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile2.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile3.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile4.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile5.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile6.nc: bit-for-bit identical
-  mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
-  mediator_FBIce_i_restart.nc: bit-for-bit identical
-  mediator_FBOcn_o_restart.nc: bit-for-bit identical
-  mediator_scalars_restart.txt: bit-for-bit identical
-  Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.54716/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 3b48946f7bacdb329c7e239ffc30181e
-    Actual md5sum: 3b48946f7bacdb329c7e239ffc30181e
-  TEST PASSED AT Mon May 11 02:13:39 UTC 2020
-
-TEST #12: PASS
-  Test cpld_fv3_ccpp_mom6_cice_2d_atm_flux starting at Mon May 11 02:11:18 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - 2d_warm)
-  Mon May 11 02:11:18 UTC 2020
-  phyf048.tile1.nc: bit-for-bit identical
-  phyf048.tile2.nc: bit-for-bit identical
-  phyf048.tile3.nc: bit-for-bit identical
-  phyf048.tile4.nc: bit-for-bit identical
-  phyf048.tile5.nc: bit-for-bit identical
-  phyf048.tile6.nc: bit-for-bit identical
-  dynf048.tile1.nc: bit-for-bit identical
-  dynf048.tile2.nc: bit-for-bit identical
-  dynf048.tile3.nc: bit-for-bit identical
-  dynf048.tile4.nc: bit-for-bit identical
-  dynf048.tile5.nc: bit-for-bit identical
-  dynf048.tile6.nc: bit-for-bit identical
-  RESTART/coupler.res: bit-for-bit identical
-  RESTART/fv_core.res.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile6.nc: bit-for-bit identical
-  RESTART/phy_data.tile1.nc: bit-for-bit identical
-  RESTART/phy_data.tile2.nc: bit-for-bit identical
-  RESTART/phy_data.tile3.nc: bit-for-bit identical
-  RESTART/phy_data.tile4.nc: bit-for-bit identical
-  RESTART/phy_data.tile5.nc: bit-for-bit identical
-  RESTART/phy_data.tile6.nc: bit-for-bit identical
-  RESTART/sfc_data.tile1.nc: bit-for-bit identical
-  RESTART/sfc_data.tile2.nc: bit-for-bit identical
-  RESTART/sfc_data.tile3.nc: bit-for-bit identical
-  RESTART/sfc_data.tile4.nc: bit-for-bit identical
-  RESTART/sfc_data.tile5.nc: bit-for-bit identical
-  RESTART/sfc_data.tile6.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_1.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_2.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_3.nc: bit-for-bit identical
-  restart/iced.2016-10-05-00000.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile1.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile2.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile3.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile4.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile5.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile6.nc: bit-for-bit identical
-  mediator_FBaccumOcn_restart.nc: bit-for-bit identical
-  mediator_FBaccumIce_restart.nc: bit-for-bit identical
-  mediator_FBaccumLnd_restart.nc: bit-for-bit identical
-  mediator_FBaccumHyd_restart.nc: bit-for-bit identical
-  mediator_FBaccumAtmOcn_restart.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile1.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile2.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile3.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile4.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile5.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile6.nc: bit-for-bit identical
-  mediator_FBIce_i_restart.nc: bit-for-bit identical
-  mediator_FBOcn_o_restart.nc: bit-for-bit identical
-  mediator_FBLnd_l_restart.nc: bit-for-bit identical
-  mediator_FBHyd_h_restart.nc: bit-for-bit identical
-  mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
-  Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.54716/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 3b48946f7bacdb329c7e239ffc30181e
-    Actual md5sum: 3b48946f7bacdb329c7e239ffc30181e
-  TEST PASSED AT Mon May 11 02:39:09 UTC 2020
-
-TEST #13: PASS
-  Test cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt starting at Sun May 10 21:19:55 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - cold 384)
-  Sun May 10 21:19:55 UTC 2020
-  phyf001.tile1.nc: bit-for-bit identical
-  phyf001.tile2.nc: bit-for-bit identical
-  phyf001.tile3.nc: bit-for-bit identical
-  phyf001.tile4.nc: bit-for-bit identical
-  phyf001.tile5.nc: bit-for-bit identical
-  phyf001.tile6.nc: bit-for-bit identical
-  dynf001.tile1.nc: bit-for-bit identical
-  dynf001.tile2.nc: bit-for-bit identical
-  dynf001.tile3.nc: bit-for-bit identical
-  dynf001.tile4.nc: bit-for-bit identical
-  dynf001.tile5.nc: bit-for-bit identical
-  dynf001.tile6.nc: bit-for-bit identical
-  RESTART/coupler.res: bit-for-bit identical
-  RESTART/fv_core.res.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile6.nc: bit-for-bit identical
-  RESTART/phy_data.tile1.nc: bit-for-bit identical
-  RESTART/phy_data.tile2.nc: bit-for-bit identical
-  RESTART/phy_data.tile3.nc: bit-for-bit identical
-  RESTART/phy_data.tile4.nc: bit-for-bit identical
-  RESTART/phy_data.tile5.nc: bit-for-bit identical
-  RESTART/phy_data.tile6.nc: bit-for-bit identical
-  RESTART/sfc_data.tile1.nc: bit-for-bit identical
-  RESTART/sfc_data.tile2.nc: bit-for-bit identical
-  RESTART/sfc_data.tile3.nc: bit-for-bit identical
-  RESTART/sfc_data.tile4.nc: bit-for-bit identical
-  RESTART/sfc_data.tile5.nc: bit-for-bit identical
-  RESTART/sfc_data.tile6.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile1.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile2.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile3.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile4.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile5.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile6.nc: bit-for-bit identical
-  mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
-  mediator_FBIce_i_restart.nc: bit-for-bit identical
-  mediator_FBOcn_o_restart.nc: bit-for-bit identical
-  mediator_scalars_restart.txt: bit-for-bit identical
-  Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.54716/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 3b48946f7bacdb329c7e239ffc30181e
-    Actual md5sum: 3b48946f7bacdb329c7e239ffc30181e
-  TEST PASSED AT Sun May 10 21:24:52 UTC 2020
-
-TEST #14: PASS
-  Test cpld_fv3_ccpp_mom6_cice_2d_2threads starting at Mon May 11 15:54:59 UTC 2020 (Fully coupled FV3-CCPP-MOM6-CICE system - 2 threads)
-  Mon May 11 15:55:00 UTC 2020
-  phyf048.tile1.nc: bit-for-bit identical
-  phyf048.tile2.nc: bit-for-bit identical
-  phyf048.tile3.nc: bit-for-bit identical
-  phyf048.tile4.nc: bit-for-bit identical
-  phyf048.tile5.nc: bit-for-bit identical
-  phyf048.tile6.nc: bit-for-bit identical
-  dynf048.tile1.nc: bit-for-bit identical
-  dynf048.tile2.nc: bit-for-bit identical
-  dynf048.tile3.nc: bit-for-bit identical
-  dynf048.tile4.nc: bit-for-bit identical
-  dynf048.tile5.nc: bit-for-bit identical
-  dynf048.tile6.nc: bit-for-bit identical
-  RESTART/coupler.res: bit-for-bit identical
-  RESTART/fv_core.res.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_core.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_srf_wnd.res.tile6.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile1.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile2.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile3.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile4.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile5.nc: bit-for-bit identical
-  RESTART/fv_tracer.res.tile6.nc: bit-for-bit identical
-  RESTART/phy_data.tile1.nc: bit-for-bit identical
-  RESTART/phy_data.tile2.nc: bit-for-bit identical
-  RESTART/phy_data.tile3.nc: bit-for-bit identical
-  RESTART/phy_data.tile4.nc: bit-for-bit identical
-  RESTART/phy_data.tile5.nc: bit-for-bit identical
-  RESTART/phy_data.tile6.nc: bit-for-bit identical
-  RESTART/sfc_data.tile1.nc: bit-for-bit identical
-  RESTART/sfc_data.tile2.nc: bit-for-bit identical
-  RESTART/sfc_data.tile3.nc: bit-for-bit identical
-  RESTART/sfc_data.tile4.nc: bit-for-bit identical
-  RESTART/sfc_data.tile5.nc: bit-for-bit identical
-  RESTART/sfc_data.tile6.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_1.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_2.nc: bit-for-bit identical
-  MOM6_RESTART/MOM.res_3.nc: bit-for-bit identical
-  restart/iced.2016-10-05-00000.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile1.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile2.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile3.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile4.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile5.nc: bit-for-bit identical
-  mediator_FBaccumAtm_restart.tile6.nc: bit-for-bit identical
-  mediator_FBaccumOcn_restart.nc: bit-for-bit identical
-  mediator_FBaccumIce_restart.nc: bit-for-bit identical
-  mediator_FBaccumLnd_restart.nc: bit-for-bit identical
-  mediator_FBaccumHyd_restart.nc: bit-for-bit identical
-  mediator_FBaccumAtmOcn_restart.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile1.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile2.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile3.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile4.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile5.nc: bit-for-bit identical
-  mediator_FBAtm_a_restart.tile6.nc: bit-for-bit identical
-  mediator_FBIce_i_restart.nc: bit-for-bit identical
-  mediator_FBOcn_o_restart.nc: bit-for-bit identical
-  mediator_FBLnd_l_restart.nc: bit-for-bit identical
-  mediator_FBHyd_h_restart.nc: bit-for-bit identical
-  mediator_FBAtmOcn_o_restart.nc: bit-for-bit identical
-  Executable did not change during test suite:
-    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.54716/exec/fv3_ccpp_mom6_cice.exe
-    Expected md5sum: 3b48946f7bacdb329c7e239ffc30181e
-    Actual md5sum: 3b48946f7bacdb329c7e239ffc30181e
-  TEST PASSED AT Mon May 11 16:15:35 UTC 2020
-WORKFLOW REPORT AT Mon May 11 21:27:03 2020 (+1589232423)
-Tests: 0 failed, 14 passed out of 14
-Builds: 0 failed, 3 passed out of 3
+    File: /scratch1/NCEPDEV/stmp2/Jessica.Meixner/scrub/rtgen.186942/exec/fv3_ccpp_mom6_cice_ww3.exe
+    Expected md5sum: 1c188382171d2ef0407fec6e336828cb
+    Actual md5sum: 1c188382171d2ef0407fec6e336828cb
+  TEST PASSED AT Tue May 12 19:36:07 UTC 2020
+WORKFLOW REPORT AT Tue May 12 19:38:08 2020 (+1589312288)
+Tests: 0 failed, 4 passed out of 4
+Builds: 0 failed, 2 passed out of 2
 REGRESSION TEST WAS SUCCESSFUL
