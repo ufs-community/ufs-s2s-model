@@ -278,6 +278,7 @@ export NPROC_ICE='48'
 export DT_ATMOS='900' #needed for C96 cases
 export DT_DYNAM_MOM6='900'
 export DT_THERM_MOM6='1800'
+export MOM_INPUT=MOM_input_template
 export mom6_restart_option='nhours'
 export mom6_restart_n='24' 
 # defaults for CICE runtype and restart writing
