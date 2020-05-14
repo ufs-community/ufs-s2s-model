@@ -101,6 +101,8 @@ if [[ "${MAKE_OPT}" == *"WW3=Y"* ]]; then
   COMPONENTS="$COMPONENTS,WW3"
 fi
 
+export S2S_DEBUG_MODULE=true
+
 # Make variables:
 #   COMPONENTS = list of components to build
 #   BUILD_ENV = theia.intel, wcoss_dell_p3, etc.
