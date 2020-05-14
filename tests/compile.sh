@@ -101,7 +101,9 @@ if [[ "${MAKE_OPT}" == *"WW3=Y"* ]]; then
   COMPONENTS="$COMPONENTS,WW3"
 fi
 
-export S2S_DEBUG_MODULE=true
+if [[ "${MAKE_OPT}" == *"DEBUG=Y"* ]]; then
+  export S2S_DEBUG_MODULE=true
+fi
 
 # Make variables:
 #   COMPONENTS = list of components to build
