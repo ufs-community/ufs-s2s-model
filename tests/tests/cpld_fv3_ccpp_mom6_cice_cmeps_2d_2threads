@@ -57,7 +57,7 @@ export LIST_FILES="phyf048.tile1.nc \
                    RESTART/MOM.res_3.nc \
                    restart/iced.2016-10-05-00000.nc \
                    ufs.s2s.c384_t025.jan.jul02.cpl.r.2016-10-05-00000.nc \
-                   rpointer.cpl
+                   rpointer.cpl"
 
 export_fv3
 export_cpl

@@ -52,8 +52,8 @@ export LIST_FILES="phyf001.tile1.nc \
                    RESTART/sfc_data.tile5.nc \
                    RESTART/sfc_data.tile6.nc \
                    RESTART/ufs.s2s.c384_t025.jan.jul02.cold.cpl.r.2016-10-03-03600.nc \ 
-                   rpointer.cp
-l
+                   rpointer.cpl"
+
 export_fv3
 export_cpl
 
