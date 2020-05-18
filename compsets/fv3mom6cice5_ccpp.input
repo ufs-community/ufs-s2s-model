@@ -103,6 +103,10 @@ cpl_defaults = {
     ATMRES=''
     OCNRES='025'
     SUITE_NAME='FV3_GFS_2017_coupled'
+    OZ_PHYS_OLD='.T.'
+    OZ_PHYS_NEW='.F.'
+    DO_RRTMGP='.F.'
+
     INPUT_NML='input.mom6_ccpp.nml.IN'
     FIELD_TABLE="field_table"
     NSOUT='-1'
@@ -121,6 +125,8 @@ cpl_defaults = {
     DT_ATMOS='900' #needed for C96 cases
     DT_DYNAM_MOM6='900'
     DT_THERM_MOM6='1800'
+    mom6_restart_option='nhours'
+    mom6_restart_n='24'
 # defaults for CICE runtype and restart writing
     RUNTYPE='initial' 
     DUMPFREQ='d' 
@@ -465,6 +471,8 @@ test cpld_fv3_ccpp_mom6_cice_6h_debug: fv3_ccpp_mom6_cice_debug.exe {
     TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE system - debug"
     CNTL_NAME="RT-Baselines_6h_warm_debug_ccpp"
     CNTL="@[plat%BASELINE]/@[CNTL_NAME]" 
+
+    mom6_restart_n='6'
 
     MED_restart_data="@[plat%BASELINE]/MEDIATOR_debug_ccpp"
 

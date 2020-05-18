@@ -2,7 +2,7 @@
 load 'benchmark_cold_ccpp.input'
 
 ########################################################################
-test cpld_fv3_ccpp_384_mom6_cice_cold_2012010100: fv3_ccpp_mom6_cice.exe {
+test cpld_fv3_ccpp_384_mom6_cice_cold_2012010100: fv3_ccpp_mom6_cice_ww3.exe {
     use cpld_fv3_ccpp_384_mom6_cice_cold_bmark
 
     # - set date YYYYMMDDHH
@@ -13,7 +13,7 @@ test cpld_fv3_ccpp_384_mom6_cice_cold_2012010100: fv3_ccpp_mom6_cice.exe {
     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 }
 
-test cpld_fv3_ccpp_384_mom6_cice_cold_2012040100: fv3_ccpp_mom6_cice.exe {
+test cpld_fv3_ccpp_384_mom6_cice_cold_2012040100: fv3_ccpp_mom6_cice_ww3.exe {
     use cpld_fv3_ccpp_384_mom6_cice_cold_bmark
 
     # - set date YYYYMMDDHH
@@ -24,7 +24,7 @@ test cpld_fv3_ccpp_384_mom6_cice_cold_2012040100: fv3_ccpp_mom6_cice.exe {
     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 }
 
-test cpld_fv3_ccpp_384_mom6_cice_cold_2012070100: fv3_ccpp_mom6_cice.exe {
+test cpld_fv3_ccpp_384_mom6_cice_cold_2012070100: fv3_ccpp_mom6_cice_ww3.exe {
     use cpld_fv3_ccpp_384_mom6_cice_cold_bmark
 
     # - set date YYYYMMDDHH
@@ -35,7 +35,7 @@ test cpld_fv3_ccpp_384_mom6_cice_cold_2012070100: fv3_ccpp_mom6_cice.exe {
     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 }
 
-test cpld_fv3_ccpp_384_mom6_cice_cold_2012100100: fv3_ccpp_mom6_cice.exe {
+test cpld_fv3_ccpp_384_mom6_cice_cold_2012100100: fv3_ccpp_mom6_cice_ww3.exe {
     use cpld_fv3_ccpp_384_mom6_cice_cold_bmark
 
     # - set date YYYYMMDDHH
@@ -46,7 +46,7 @@ test cpld_fv3_ccpp_384_mom6_cice_cold_2012100100: fv3_ccpp_mom6_cice.exe {
     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 }
 
-test cpld_fv3_ccpp_384_mom6_cice_cold_2013010100: fv3_ccpp_mom6_cice.exe {
+test cpld_fv3_ccpp_384_mom6_cice_cold_2013010100: fv3_ccpp_mom6_cice_ww3.exe {
     use cpld_fv3_ccpp_384_mom6_cice_cold_bmark
 
     # - set date YYYYMMDDHH
@@ -57,7 +57,7 @@ test cpld_fv3_ccpp_384_mom6_cice_cold_2013010100: fv3_ccpp_mom6_cice.exe {
     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 }
 
-test cpld_fv3_ccpp_384_mom6_cice_cold_2013040100: fv3_ccpp_mom6_cice.exe {
+test cpld_fv3_ccpp_384_mom6_cice_cold_2013040100: fv3_ccpp_mom6_cice_ww3.exe {
     use cpld_fv3_ccpp_384_mom6_cice_cold_bmark
 
     # - set date YYYYMMDDHH
@@ -68,7 +68,7 @@ test cpld_fv3_ccpp_384_mom6_cice_cold_2013040100: fv3_ccpp_mom6_cice.exe {
     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 }
 
-test cpld_fv3_ccpp_384_mom6_cice_cold_2013070100: fv3_ccpp_mom6_cice.exe {
+test cpld_fv3_ccpp_384_mom6_cice_cold_2013070100: fv3_ccpp_mom6_cice_ww3.exe {
     use cpld_fv3_ccpp_384_mom6_cice_cold_bmark
 
     # - set date YYYYMMDDHH
@@ -79,7 +79,7 @@ test cpld_fv3_ccpp_384_mom6_cice_cold_2013070100: fv3_ccpp_mom6_cice.exe {
     CDATE="@[SYEAR]@[SMONTH]@[SDAY]@[SHOUR]"
 }
 
-test cpld_fv3_ccpp_384_mom6_cice_cold_2013100100: fv3_ccpp_mom6_cice.exe {
+test cpld_fv3_ccpp_384_mom6_cice_cold_2013100100: fv3_ccpp_mom6_cice_ww3.exe {
     use cpld_fv3_ccpp_384_mom6_cice_cold_bmark
 
     # - set date YYYYMMDDHH

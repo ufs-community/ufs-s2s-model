@@ -39,7 +39,7 @@ cp    @[RTPWD]/CICE_FIX/@[OCNRES]/kmtu_cice_NEMS_mx025.nc .
 
 # WW3 fix/input
 cp    @[RTPWD]/WW3_input_data/mod_def.* .
-cp    @[RTPWD]/WW3_input_data/${SYEAR}${SMONTH}${SDAY}/ww3_multi.inp .
+cp    @[RTPWD]/WW3_input_data/ww3_multi.inp .
 
 # ICs
 cp    @[RTPWD]/${FV3_IC}/sfc_data*.nc ./INPUT

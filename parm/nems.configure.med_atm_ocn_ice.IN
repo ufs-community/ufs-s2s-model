@@ -36,7 +36,8 @@ OCN_petlist_bounds:             @[ocn_petlist_bounds]
 OCN_attributes::
   Verbosity = 0
   DumpFields = false
-  restart_interval = 9999999
+  restart_option = @[mom6_restart_option] 
+  restart_n = @[mom6_restart_n]
   ProfileMemory = false
   OverwriteSlice = false
 ::
