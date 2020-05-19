@@ -19,9 +19,9 @@ export LIST_FILES="phyf024.tile1.nc \
                    dynf024.tile4.nc \
                    dynf024.tile5.nc \
                    dynf024.tile6.nc \
-                   20130402.000000.out_grd.glo_30m \
+                   20130402.000000.out_grd.gwes_30m \
                    20130402.000000.out_pnt.points \
-                   20130402.000000.restart.glo_30m \
+                   20130402.000000.restart.gwes_30m \
                    RESTART/coupler.res \
                    RESTART/fv_core.res.nc \
                    RESTART/fv_core.res.tile1.nc \

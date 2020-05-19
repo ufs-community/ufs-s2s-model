@@ -56,14 +56,17 @@ runSeq::
 @@[coupling_interval_slow_sec]
    MED med_phases_prep_ocn_accum_avg
    MED -> OCN :remapMethod=redist
+   OCN -> WAV
+   WAV -> OCN :srcMaskValues=1
    OCN
    @@[coupling_interval_fast_sec]
      MED med_phases_prep_atm
      MED med_phases_prep_ice
      MED -> ATM :remapMethod=redist
      MED -> ICE :remapMethod=redist
-     WAV -> ATM
+     WAV -> ATM :srcMaskValues=1
      ATM -> WAV
+     ICE -> WAV
      ATM
      ICE
      WAV
