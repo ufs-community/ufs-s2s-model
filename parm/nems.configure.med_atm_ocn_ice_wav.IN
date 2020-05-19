@@ -36,7 +36,8 @@ OCN_petlist_bounds:             @[ocn_petlist_bounds]
 OCN_attributes::
   Verbosity = 0
   DumpFields = false
-  restart_interval = 9999999
+  restart_option = @[mom6_restart_option]
+  restart_n = @[mom6_restart_n]
   ProfileMemory = false
   OverwriteSlice = false
 ::
@@ -64,14 +65,17 @@ runSeq::
   @@[coupling_interval_slow_sec]
     MED MedPhase_prep_ocn
     MED -> OCN :remapMethod=redist
+    OCN -> WAV 
+    WAV -> OCN :srcMaskValues=1
     OCN
     @@[coupling_interval_fast_sec]
       MED MedPhase_prep_ice
       MED MedPhase_prep_atm
       MED -> ATM :remapMethod=redist
       MED -> ICE :remapMethod=redist
-      WAV -> ATM
-      ATM -> WAV 
+      WAV -> ATM :srcMaskValues=1
+      ATM -> WAV
+      ICE -> WAV
       ATM
       ICE
       WAV 
