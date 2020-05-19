@@ -94,9 +94,12 @@ export DT_CICE=${DT_ATMOS}
 export CPL_SLOW=${DT_THERM_MOM6}
 export CPL_FAST=${DT_ATMOS}
 
-# write a CICE restart at DAYS
+# write a CICE restart at FHMAX
 export DUMPFREQ_N=${FHMAX}
 export DUMPFREQ="h"
+
+# write MOM6 restart at FHMAX
+export mom6_restart_n=${FHMAX}
 
 # nems.configure
 export NEMS_CONFIGURE="nems.configure.med_atm_ocn_ice.IN"
