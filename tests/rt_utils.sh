@@ -418,6 +418,8 @@ check_results() {
           cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTL_DIR}/RESTART/$(basename $i)
         elif [[ $i =~ mediator ]]; then
           cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTLMED_DIR}
+        elif [[ $i =~ 'ufs.s2s' || $i =~ 'rpointer.cpl' ]]; then
+          cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTLMED_DIR}
         else
           cp ${RUNDIR}/${i} ${NEW_BASELINE}/${CNTL_DIR}/${i}
         fi

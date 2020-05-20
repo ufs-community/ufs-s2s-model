@@ -51,7 +51,7 @@ export LIST_FILES="phyf001.tile1.nc \
                    RESTART/sfc_data.tile4.nc \
                    RESTART/sfc_data.tile5.nc \
                    RESTART/sfc_data.tile6.nc \
-                   RESTART/ufs.s2s.c384_t025.jan.jul02.cold.cpl.r.2016-10-03-03600.nc \ 
+                   ufs.s2s.cold.cpl.r.2016-10-03-03600.nc \ 
                    rpointer.cpl"
 
 export_fv3
@@ -59,7 +59,7 @@ export_cpl
 
 export DAYS="0.041666666"
 export FHMAX="1" # Note this needs to be at least 2x CPL_SLOW
-export NFHMAX="12"
+export NFHMAX_HF="12"
 export NFHOUT_HF="1"
 
 # set component and coupling timesteps
@@ -75,7 +75,7 @@ export DUMPFREQ="h"
 export MEDCOMP="cmeps"
 
 # nems.configure
-export NEMS_CONFIGURE="nems.configure.medcmepscold_atm_ocn_ice.IN"
+export NEMS_CONFIGURE="nems.configure.medcoldcmeps_atm_ocn_ice.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 

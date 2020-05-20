@@ -103,7 +103,7 @@ ALLCOMP_attributes::
       ScalarFieldIdxGridNY = 2
       ScalarFieldName = cpl_scalars
       start_type = startup
-      case_name = ufs.s2s.c384_t025.jan.jul02.cold
+      case_name = ufs.s2s.cold
       restart_n = 1
       restart_option = nhours
       restart_ymd = -999

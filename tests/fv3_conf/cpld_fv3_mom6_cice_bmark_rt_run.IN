@@ -48,7 +48,7 @@ if [[ ! $MED_restart_data == '' ]]; then
  if [[ $MEDCOMP == 'cmeps' ]]; then
   cp  @[RTPWD]/@[MED_restart_data]/ufs* .
   cp  @[RTPWD]/@[MED_restart_data]/rpointer.cpl .
- elif
+ else
   cp  @[RTPWD]/@[MED_restart_data]/mediator_* .
  fi
 fi
