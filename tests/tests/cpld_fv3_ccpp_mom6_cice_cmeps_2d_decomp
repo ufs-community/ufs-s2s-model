@@ -81,6 +81,8 @@ export DUMPFREQ="d"
 
 # use CMEPS as the mediator component
 export MEDCOMP="cmeps"
+# CMEPS controls intervals in ALLCOMP
+export FV3_RESTART_INTERVAL=${FHMAX}
 
 # nems.configure
 export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice.IN"
