@@ -123,6 +123,13 @@ FFLAGS += $(FFLAGS_VERBOSE)
 LDFLAGS += $(LDFLAGS_VERBOSE)
 endif
 
+ifeq ($(CCPP),Y)
+CPPDEFS += -DCCPP
+CFLAGS += -I$(PATH_CCPP)/include
+FFLAGS += -I$(PATH_CCPP)/include
+LDFLAGS += -L$(PATH_CCPP)/lib -lccppphys -lccpp $(NCEPLIBS) -lxml2
+endif
+
 ifneq ($(findstring NetCDF/4,$(LOADEDMODULES)),)
   LIBS += -lnetcdff -lhdf5 $(Z_LIB)
 else
