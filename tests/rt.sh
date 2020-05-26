@@ -194,6 +194,7 @@ elif [[ $MACHINE_ID = hera.* ]]; then
   ECF_PORT=$(( $(id -u) + 1500 ))
   QUEUE=batch
 #  ACCNR=fv3-cpu
+  ACCNR=marine-cpu
   PARTITION=
   dprefix=/scratch1/NCEPDEV
   DISKNM=$dprefix/nems/emc.nemspara/RT
@@ -378,7 +379,7 @@ done
 if [[ $MACHINE_ID = cheyenne.* ]]; then
   RTPWD=${RTPWD:-$DISKNM/develop-20200210/${COMPILER^^}}
 else
-  RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200515}
+  RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200524}
 fi
 
 shift $((OPTIND-1))
