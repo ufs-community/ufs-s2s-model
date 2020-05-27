@@ -5,8 +5,8 @@
 # the appbuilder file (if any) is read.
 
 # IMPORTANT: This file MUST NOT CONTAIN any logic specific to building
-# FV3, CCPP, FMS, MOM6, CICE, or NEMS.  Otherwise, applications will
-# break.  There should only be logic specific this ufs app. 
+# FV3, CCPP, FMS, MOM6, CICE, WW3 or NEMS.  Otherwise, applications will
+# break.  There should only be logic specific this coupled app. 
 #
 # Logic specific to FV3, CCPP, FMS, WW3, or NEMS belong in NEMS/src/incmake.
 
@@ -35,9 +35,9 @@ CONFIGURE_NEMS_FILE=configure.fv3.$(BUILD_TARGET)
 # Exit for systems that are currently not supported
 
 ifeq ($(BUILD_TARGET),theia.pgi)
-  $(error NEMSfv3gfs currently not supported on $(BUILD_TARGET))
+  $(error Model currently not supported on $(BUILD_TARGET))
 else ifeq ($(BUILD_TARGET),cheyenne.pgi)
-  $(error NEMSfv3gfs currently not supported on $(BUILD_TARGET))
+  $(error Model currently not supported on $(BUILD_TARGET))
 endif
 
 
