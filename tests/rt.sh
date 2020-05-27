@@ -194,7 +194,6 @@ elif [[ $MACHINE_ID = hera.* ]]; then
   ECF_PORT=$(( $(id -u) + 1500 ))
   QUEUE=batch
 #  ACCNR=fv3-cpu
-  ACCNR=marine-cpu
   PARTITION=
   dprefix=/scratch1/NCEPDEV
   DISKNM=$dprefix/nems/emc.nemspara/RT
