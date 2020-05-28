@@ -104,14 +104,19 @@ export DT_CICE=${DT_ATMOS}
 export CPL_SLOW=${DT_THERM_MOM6}
 export CPL_FAST=${DT_ATMOS}
 
-# write a CICE restart at DAYS
-export DUMPFREQ_N=${DAYS}
-export DUMPFREQ="d"
+# restart test: write a CICE restart 12 hour intervals
+export DUMPFREQ_N='12'
+export DUMPFREQ="h"
+
+# restart test: CMEPS controls intervals in ALLCOMP
+export FV3_RESTART_INTERVAL='12'
+
+# restart test: required for restart repro
+export MOM6_REPRO_LA='False'
+export MOM6_THERMO_SPAN='False'
 
 # use CMEPS as the mediator component
 export MEDCOMP="cmeps"
-# CMEPS controls intervals in ALLCOMP
-export FV3_RESTART_INTERVAL=${FHMAX}
 
 # nems.configure
 export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice.IN"
