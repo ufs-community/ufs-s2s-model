@@ -9,6 +9,7 @@
 [submodule "CICE_SRC"]
 	path = CICE_SRC
 	url = https://github.com/NOAA-EMC/CICE5.git
+	branch = develop
 [submodule "FMS"]
 	path = FMS
 	url = https://github.com/NOAA-GFDL/FMS
@@ -23,7 +24,7 @@
 	branch = develop
 [submodule "CMEPS"]
 	path = CMEPS
-	url = https://github.com/DeniseWorthen/CMEPS.git
+	url = https://github.com/ESCOMP/CMEPS.git
 	branch = master
 [submodule "WW3"]
 	path = WW3

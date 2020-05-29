@@ -313,4 +313,6 @@ export NGGPS_IC='.T.'
 export MOUNTAIN='.F.'
 # default mediator component (NEMS mediator)
 export MEDCOMP=''
+export RESTART_PREFIX=''
+export RESTART_SUFFIX=''
 }
