@@ -5,9 +5,8 @@
 # the appbuilder file (if any) is read.
 
 # IMPORTANT: This file MUST NOT CONTAIN any logic specific to building
-# FV3, CCPP, FMS, or NEMS.  Otherwise, coupled FV3 applications will
-# break.  There should only be logic specific to the NEMSfv3gfs test
-# system and NEMSfv3gfs file naming in this makefile fragment.
+# FV3, CCPP, FMS, MOM6, CICE, WW3 or NEMS.  Otherwise, applications will
+# break.  There should only be logic specific this coupled app. 
 #
 # Logic specific to FV3, CCPP, FMS, or NEMS belong in NEMS/src/incmake.
 
@@ -22,21 +21,14 @@ endif
 
 #$(info CHOSEN_MODULE is $(CHOSEN_MODULE))
 
-ifneq (,$(findstring INTEL16=Y,$(FV3_MAKEOPT)))
-  ifeq ($(CHOSEN_MODULE),gaea.intel/fv3)
-    override CHOSEN_MODULE=$(BUILD_TARGET)/fv3.intel-16.0.3.210
-    $(warning Overriding CHOSEN_MODULE with $(CHOSEN_MODULE) as requested per MAKEOPT)
-  endif
-endif
-
 CONFIGURE_NEMS_FILE=configure.fv3_coupled.$(BUILD_TARGET)
 
 # ----------------------------------------------------------------------
 # Exit for systems that are currently not supported
 ifeq ($(BUILD_TARGET),theia.pgi)
-  $(error NEMSfv3gfs currently not supported on $(BUILD_TARGET))
+  $(error Model currently not supported on $(BUILD_TARGET))
 else ifeq ($(BUILD_TARGET),cheyenne.pgi)
-  $(error NEMSfv3gfs currently not supported on $(BUILD_TARGET))
+  $(error Model currently not supported on $(BUILD_TARGET))
 endif
 
 # ----------------------------------------------------------------------
