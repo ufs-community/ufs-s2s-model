@@ -1,4 +1,0 @@
-RUN     | cpld_fv3_ccpp_mom6_cice_cmeps_cold_atm_flux      |   |             | fv3 |
-RUN     | cpld_fv3_ccpp_384_mom6_cice_cmeps_cold_atm_flux  |   |             | fv3 |
-RUN     | cpld_fv3_ccpp_mom6_cice_cmeps_cold_satmedmf      |   |             | fv3 |
-RUN     | cpld_fv3_ccpp_384_mom6_cice_cmeps_cold_bmark_rt  |   |             | fv3 |

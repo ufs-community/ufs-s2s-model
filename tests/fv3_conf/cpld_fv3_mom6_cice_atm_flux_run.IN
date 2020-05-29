@@ -47,7 +47,7 @@ if [[ ! $MED_restart_data == '' ]]; then
   cp  @[RTPWD]/@[MED_restart_data]/mediator_* .
  fi
 fi
-  
+
 # CCPP
 if [[ ! $SUITE_NAME == '' ]]; then
   cp  ${PATHTR}/FV3/ccpp/suites/suite_@[SUITE_NAME].xml .
