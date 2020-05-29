@@ -72,7 +72,7 @@ export FHMAX="24"
 export FDIAG="6"
 export WLCLK=30
 
-# warm start
+# ATM warm start
 WARM_START='.T.'
 MAKE_NH='.F.'
 NA_INIT='0'
@@ -80,6 +80,9 @@ EXTERNAL_IC='.F.'
 NGGPS_IC='.F.'
 MOUNTAIN='.T.'
 FHROT='12'
+# ICE warm start
+RUNTYPE='continue'
+export USE_RESTART_TIME='.true.'
 
 export DT_ATMOS="450"
 export NPX="385"

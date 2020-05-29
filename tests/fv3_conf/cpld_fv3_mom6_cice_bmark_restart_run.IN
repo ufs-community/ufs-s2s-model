@@ -10,9 +10,10 @@ BM_IC=BM_IC/${SYEAR}${SMONTH}${SDAY}${SHOUR}
 FV3_IC=${BM_IC}/gfs/@[ATMRES]/INPUT
 MOM6_IC=${BM_IC}/mom6_da
 CICE_IC=${BM_IC}/cpc
-RESTART_PREFIX=${SYEAR}${SMONTH}${SDAY}.${FHROT}0000
-RESTART_SUFFIX=${SYEAR}-${SMONTH}-${SDAY}-${FHROT}-00-00
+RESTART_PREFIX=${SYEAR}${SMONTH}${SDAY}.${FHROT}0000.
+RESTART_SUFFIX=.${SYEAR}-${SMONTH}-${SDAY}-${FHROT}-00-00
 RESTART_INPUTDIR=RT-Baselines_1d_bmrt_ccpp_cmeps/RESTART
+SECS=$((FHROT*3600))
 
 # FV3 fixed input
 cp    @[RTPWD]/${FV3_DIR}/INPUT/aerosol.dat .
@@ -40,29 +41,33 @@ cp    @[RTPWD]/MOM6_FIX/@[OCNRES]/* ./INPUT
 cp    @[RTPWD]/CICE_FIX/@[OCNRES]/grid_cice_NEMS_mx025.nc .
 cp    @[RTPWD]/CICE_FIX/@[OCNRES]/kmtu_cice_NEMS_mx025.nc .
 
-# ICs
-#cp  @[RTPWD]/${RESTART_INPUTDIR}/${RESTART_PREFIX}.* ./INPUT
-#    for RFILE in ./INPUT/; do
-#      [ -e $RFILE ] || exit 1
-#      RFILE_OLD=$(basename $RFILE)
-#      RFILE_NEW="${RFILE_OLD//${RESTART_FILE_PREFIX}./}"
-#      cp $RFILE ${RFILE_NEW}
-#    done 
-#cp    @[RTPWD]/${FV3_IC}/sfc_data*.nc ./INPUT
-#cp    @[RTPWD]/${FV3_IC}/gfs_data*.nc ./INPUT
-#cp    @[RTPWD]/${MOM6_IC}/MOM*.nc ./INPUT
-#cp    @[RTPWD]/${CICE_IC}/cice5_model_0.25.*.nc ./cice5_model.res.nc
+# ICs: FV3 timestamped prefix
+cp @[RTPWD]/${RESTART_INPUTDIR}/${RESTART_PREFIX}* ./INPUT
+RFILE="INPUT/${RESTART_PREFIX}"
+for oldname in ${RFILE}*;  do
+   lengthRFILE=${#RFILE}
+   newname=${oldname:$lengthRFILE}
+   mv $oldname INPUT/$newname
+done
 
-# WARM RESTART CMEPS
+# ICs: MOM6 timestamped suffix
+cp  @[RTPWD]/MOM.res${RESTART_SUFFIX}* ./INPUT
+RFILE="INPUT/MOM.res${RESTART_SUFFIX}"
+for oldname in ${RFILE}*;  do
+   lengthRFILE=${#RFILE}
+   newname=${oldname:$lengthRFILE}
+   mv $oldname INPUT/"MOM.res"$newname
+done
 
-#if [[ ! $MED_restart_data == '' ]]; then
-# if [[ $MEDCOMP == 'cmeps' ]]; then
-#  cp  @[RTPWD]/@[MED_restart_data]/ufs* .
-#  cp  @[RTPWD]/@[MED_restart_data]/rpointer.cpl .
-# else
-#  cp  @[RTPWD]/@[MED_restart_data]/mediator_* .
-# fi
-#fi
+# ICs: Mediator restart and pointer file
+cp  @[RTPWD]/${RESTART_INPUTDIR}/ufs.s2s.cpl.r.${SYEAR}-${SMONTH}-${SDAY}-${SECS}.nc . 
+RFILE="ufs.s2s.cpl.r.${SYEAR}-${SMONTH}-${SDAY}-${SECS}.nc"
+ls -1 ${RFILE}>rpointer.cpl
+
+# ICs: CICE restart and pointer file
+cp  @[RTPWD]/${RESTART_INPUTDIR}/iced.${SYEAR}-${SMONTH}-${SDAY}-${SECS}.nc ./INPUT
+RFILE="iced.${SYEAR}-${SMONTH}-${SDAY}-${SECS}.nc"
+ls -1 "./INPUT/"${RFILE}>ice.restart_file
 
 # CCPP
 if [[ ! $SUITE_NAME == '' ]]; then
