@@ -378,6 +378,8 @@ check_results() {
 
         if [[ $i =~ mediator ]]; then
           d=$( cmp ${RTPWD}/${CNTLMED_DIR}/$i ${RUNDIR}/$i | wc -l )
+        elif [[ $i =~ ufs.s2s ]]; then
+          d=$( cmp ${RTPWD}/${CNTLMED_DIR}/$i ${RUNDIR}/$i | wc -l )
         elif [[ $i =~ RESTART/ ]]; then
           d=$( cmp ${RTPWD}/${CNTL_DIR}/$crst ${RUNDIR}/$i | wc -l )
         else
@@ -418,7 +420,7 @@ check_results() {
           cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTL_DIR}/RESTART/$(basename $i)
         elif [[ $i =~ mediator ]]; then
           cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTLMED_DIR}
-        elif [[ $i =~ 'ufs.s2s' || $i =~ 'rpointer.cpl' ]]; then
+        elif [[ $i =~ ufs.s2s ]]; then
           cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTLMED_DIR}
         else
           cp ${RUNDIR}/${i} ${NEW_BASELINE}/${CNTL_DIR}/${i}

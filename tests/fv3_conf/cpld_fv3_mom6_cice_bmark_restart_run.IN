@@ -12,7 +12,7 @@ MOM6_IC=${BM_IC}/mom6_da
 CICE_IC=${BM_IC}/cpc
 RESTART_PREFIX=${SYEAR}${SMONTH}${SDAY}.${FHROT}0000.
 RESTART_SUFFIX=.${SYEAR}-${SMONTH}-${SDAY}-${FHROT}-00-00
-RESTART_INPUTDIR=RT-Baselines_1d_bmrt_ccpp_cmeps/RESTART
+RESTART_INPUTDIR=RT-Baselines_1d_bmrt_ccpp_cmeps
 SECS=$((FHROT*3600))
 
 # FV3 fixed input
@@ -42,7 +42,7 @@ cp    @[RTPWD]/CICE_FIX/@[OCNRES]/grid_cice_NEMS_mx025.nc .
 cp    @[RTPWD]/CICE_FIX/@[OCNRES]/kmtu_cice_NEMS_mx025.nc .
 
 # ICs: FV3 timestamped prefix
-cp @[RTPWD]/${RESTART_INPUTDIR}/${RESTART_PREFIX}* ./INPUT
+cp @[RTPWD]/${RESTART_INPUTDIR}/RESTART/${RESTART_PREFIX}* ./INPUT
 RFILE="INPUT/${RESTART_PREFIX}"
 for oldname in ${RFILE}*;  do
    lengthRFILE=${#RFILE}
@@ -51,7 +51,7 @@ for oldname in ${RFILE}*;  do
 done
 
 # ICs: MOM6 timestamped suffix
-cp  @[RTPWD]/MOM.res${RESTART_SUFFIX}* ./INPUT
+cp  @[RTPWD]/${RESTART_INPUTDIR}/RESTART/MOM.res${RESTART_SUFFIX}* ./INPUT
 RFILE="INPUT/MOM.res${RESTART_SUFFIX}"
 for oldname in ${RFILE}*;  do
    lengthRFILE=${#RFILE}
@@ -60,12 +60,12 @@ for oldname in ${RFILE}*;  do
 done
 
 # ICs: Mediator restart and pointer file
-cp  @[RTPWD]/${RESTART_INPUTDIR}/ufs.s2s.cpl.r.${SYEAR}-${SMONTH}-${SDAY}-${SECS}.nc . 
+cp  @[RTPWD]/${RESTART_INPUTDIR}/RESTART/ufs.s2s.cpl.r.${SYEAR}-${SMONTH}-${SDAY}-${SECS}.nc . 
 RFILE="ufs.s2s.cpl.r.${SYEAR}-${SMONTH}-${SDAY}-${SECS}.nc"
 ls -1 ${RFILE}>rpointer.cpl
 
 # ICs: CICE restart and pointer file
-cp  @[RTPWD]/${RESTART_INPUTDIR}/iced.${SYEAR}-${SMONTH}-${SDAY}-${SECS}.nc ./INPUT
+cp  @[RTPWD]/${RESTART_INPUTDIR}/RESTART/iced.${SYEAR}-${SMONTH}-${SDAY}-${SECS}.nc ./INPUT
 RFILE="iced.${SYEAR}-${SMONTH}-${SDAY}-${SECS}.nc"
 ls -1 "./INPUT/"${RFILE}>ice.restart_file
 

@@ -52,25 +52,25 @@ export LIST_FILES="phyf024.tile1.nc \
                    RESTART/sfc_data.tile5.nc \
                    RESTART/sfc_data.tile6.nc \
                    RESTART/20130401.120000.coupler.res \
-                   RESTART/20130401.120000.core.res.nc \
-                   RESTART/20130401.120000.core.res.tile1.nc \
-                   RESTART/20130401.120000.core.res.tile2.nc \
-                   RESTART/20130401.120000.core.res.tile3.nc \
-                   RESTART/20130401.120000.core.res.tile4.nc \
-                   RESTART/20130401.120000.core.res.tile5.nc \
-                   RESTART/20130401.120000.core.res.tile6.nc \
-                   RESTART/20130401.120000.srf_wnd.res.tile1.nc \
-                   RESTART/20130401.120000.srf_wnd.res.tile2.nc \
-                   RESTART/20130401.120000.srf_wnd.res.tile3.nc \
-                   RESTART/20130401.120000.srf_wnd.res.tile4.nc \
-                   RESTART/20130401.120000.srf_wnd.res.tile5.nc \
-                   RESTART/20130401.120000.srf_wnd.res.tile6.nc \
-                   RESTART/20130401.120000.tracer.res.tile1.nc \
-                   RESTART/20130401.120000.tracer.res.tile2.nc \
-                   RESTART/20130401.120000.tracer.res.tile3.nc \
-                   RESTART/20130401.120000.tracer.res.tile4.nc \
-                   RESTART/20130401.120000.tracer.res.tile5.nc \
-                   RESTART/20130401.120000.tracer.res.tile6.nc \
+                   RESTART/20130401.120000.fv_core.res.nc \
+                   RESTART/20130401.120000.fv_core.res.tile1.nc \
+                   RESTART/20130401.120000.fv_core.res.tile2.nc \
+                   RESTART/20130401.120000.fv_core.res.tile3.nc \
+                   RESTART/20130401.120000.fv_core.res.tile4.nc \
+                   RESTART/20130401.120000.fv_core.res.tile5.nc \
+                   RESTART/20130401.120000.fv_core.res.tile6.nc \
+                   RESTART/20130401.120000.fv_srf_wnd.res.tile1.nc \
+                   RESTART/20130401.120000.fv_srf_wnd.res.tile2.nc \
+                   RESTART/20130401.120000.fv_srf_wnd.res.tile3.nc \
+                   RESTART/20130401.120000.fv_srf_wnd.res.tile4.nc \
+                   RESTART/20130401.120000.fv_srf_wnd.res.tile5.nc \
+                   RESTART/20130401.120000.fv_srf_wnd.res.tile6.nc \
+                   RESTART/20130401.120000.fv_tracer.res.tile1.nc \
+                   RESTART/20130401.120000.fv_tracer.res.tile2.nc \
+                   RESTART/20130401.120000.fv_tracer.res.tile3.nc \
+                   RESTART/20130401.120000.fv_tracer.res.tile4.nc \
+                   RESTART/20130401.120000.fv_tracer.res.tile5.nc \
+                   RESTART/20130401.120000.fv_tracer.res.tile6.nc \
                    RESTART/20130401.120000.phy_data.tile1.nc \
                    RESTART/20130401.120000.phy_data.tile2.nc \
                    RESTART/20130401.120000.phy_data.tile3.nc \
@@ -87,15 +87,14 @@ export LIST_FILES="phyf024.tile1.nc \
                    RESTART/MOM.res_1.nc \
                    RESTART/MOM.res_2.nc \
                    RESTART/MOM.res_3.nc \
-                   RESTART/MOM.2013-04-01-12-00-00.res.nc \
+                   RESTART/MOM.res.2013-04-01-12-00-00.nc \
                    RESTART/MOM.res.2013-04-01-12-00-00_1.nc \
                    RESTART/MOM.res.2013-04-01-12-00-00_2.nc \
                    RESTART/MOM.res.2013-04-01-12-00-00_3.nc \
                    RESTART/iced.2013-04-02-00000.nc \
                    RESTART/iced.2013-04-01-43200.nc \
-                   ufs.s2s.cpl.r.2013-04-02-00000.nc \
                    ufs.s2s.cpl.r.2013-04-01-43200.nc \
-                   rpointer.cpl"
+                   ufs.s2s.cpl.r.2013-04-02-00000.nc"
 
 export_fv3
 export_cpl

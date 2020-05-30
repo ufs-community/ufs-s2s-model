@@ -38,11 +38,12 @@ cp    @[RTPWD]/${FV3_DIR}/INPUT/gfs_data*.nc ./INPUT
 cp    @[RTPWD]/MOM6_IC/MOM*.nc ./INPUT
 cp    @[RTPWD]/CICE_IC/cice5_model_0.25.*.nc ./cice5_model.res.nc
 
-# WARM START, NEMS or CMEPS
+# Restart from coldstart, NEMS or CMEPS
 if [[ ! $MED_restart_data == '' ]]; then
  if [[ $MEDCOMP == 'cmeps' ]]; then
-  cp  @[RTPWD]/@[MED_restart_data]/ufs* .
-  cp  @[RTPWD]/@[MED_restart_data]/rpointer.cpl .
+  RFILE="ufs.s2s.cold.cpl.r.${SYEAR}-${SMONTH}-${SDAY}-03600.nc"
+  cp  @[RTPWD]/@[MED_restart_data]/${RFILE} .
+  ls -1 ${RFILE}>rpointer.cpl
  else
   cp  @[RTPWD]/@[MED_restart_data]/mediator_* .
  fi
