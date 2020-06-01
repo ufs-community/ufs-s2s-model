@@ -1,24 +1,24 @@
 #
-#  CPLD_FV3_CCPP_MOM6_CICE_CMEPS_2D_DECOMP test
+#  CPLD_FV3_CCPP_MOM6_CICE_CMEPS_RESTART test
 #
 
-export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - decomp"
+export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - 1d restart"
 
-export CNTL_DIR="RT-Baselines_2d_warm_ccpp_cmeps"
-export CNTLMED_DIR="RT-Baselines_2d_warm_ccpp_cmeps/RESTART"
+export CNTL_DIR="RT-Baselines_3d_warm_ccpp_cmeps"
+export CNTLMED_DIR="RT-Baselines_3d_warm_ccpp_cmeps/RESTART"
 
-export LIST_FILES="phyf048.tile1.nc \
-                   phyf048.tile2.nc \
-                   phyf048.tile3.nc \
-                   phyf048.tile4.nc \
-                   phyf048.tile5.nc \
-                   phyf048.tile6.nc \
-                   dynf048.tile1.nc \
-                   dynf048.tile2.nc \
-                   dynf048.tile3.nc \
-                   dynf048.tile4.nc \
-                   dynf048.tile5.nc \
-                   dynf048.tile6.nc \
+export LIST_FILES="phyf072.tile1.nc \
+                   phyf072.tile2.nc \
+                   phyf072.tile3.nc \
+                   phyf072.tile4.nc \
+                   phyf072.tile5.nc \
+                   phyf072.tile6.nc \
+                   dynf072.tile1.nc \
+                   dynf072.tile2.nc \
+                   dynf072.tile3.nc \
+                   dynf072.tile4.nc \
+                   dynf072.tile5.nc \
+                   dynf072.tile6.nc \
                    RESTART/coupler.res \
                    RESTART/fv_core.res.nc \
                    RESTART/fv_core.res.tile1.nc \
@@ -55,19 +55,32 @@ export LIST_FILES="phyf048.tile1.nc \
                    RESTART/MOM.res_1.nc \
                    RESTART/MOM.res_2.nc \
                    RESTART/MOM.res_3.nc \
-                   RESTART/iced.2016-10-05-00000.nc \
-                   ufs.s2s.cpl.r.2016-10-05-00000.nc"
+                   RESTART/iced.2016-10-06-00000.nc \
+                   ufs.s2s.cpl.r.2016-10-06-00000.nc"
 
 export_fv3
 export_cpl
 
-export DAYS="2"
-export FHMAX="48"
+export DAYS="1"
+export FHMAX="72"
 export FDIAG="6"
 export WLCLK=30
 
-export INPES='6'
-export JNPES='4'
+# ATM warm start
+FHROT='48'
+WARM_START='.T.'
+MAKE_NH='.F.'
+NA_INIT='0'
+EXTERNAL_IC='.F.'
+NGGPS_IC='.F.'
+MOUNTAIN='.T.'
+# ICE warm start
+RUNTYPE='continue'
+export USE_RESTART_TIME='.true.'
+export MOM6_RESTART_SETTING="r"
+
+export MOM6_REPRO_LA='False'
+export MOM6_THERMO_SPAN='False'
 
 # set component and coupling timesteps
 export DT_CICE=${DT_ATMOS}
@@ -81,18 +94,14 @@ export DUMPFREQ="d"
 # use CMEPS as the mediator component
 export MEDCOMP="cmeps"
 # CMEPS controls intervals in ALLCOMP
-export FV3_RESTART_INTERVAL=${FHMAX}
-
-# restart test: required for restart repro
-export MOM6_REPRO_LA='False'
-export MOM6_THERMO_SPAN='False'
+export FV3_RESTART_INTERVAL='24'
 
 # nems.configure
 export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 
-export FV3_RUN=cpld_fv3_mom6_cice_atm_flux_run.IN
+export FV3_RUN=cpld_fv3_mom6_cice_atm_flux_restart_run.IN
 export INPUT_NML=input.mom6_ccpp.nml.IN
 
 export SUITE_NAME="FV3_GFS_2017_coupled"

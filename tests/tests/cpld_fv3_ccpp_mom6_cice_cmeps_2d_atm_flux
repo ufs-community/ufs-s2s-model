@@ -80,6 +80,10 @@ export MEDCOMP="cmeps"
 # CMEPS controls intervals in ALLCOMP
 export FV3_RESTART_INTERVAL=${FHMAX}
 
+# restart test: required for restart repro
+export MOM6_REPRO_LA='False'
+export MOM6_THERMO_SPAN='False'
+
 # nems.configure
 export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}
