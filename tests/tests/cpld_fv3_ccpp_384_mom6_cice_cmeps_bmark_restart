@@ -5,7 +5,7 @@
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS 0.5 day restart run"
 
 export CNTL_DIR="RT-Baselines_1d_bmrt_ccpp_cmeps"
-export CNTLMED_DIR=""
+export CNTLMED_DIR="RT-Baselines_1d_bmrt_ccpp_cmeps/RESTART"
 
 export LIST_FILES="phyf024.tile1.nc \
                    phyf024.tile2.nc \
@@ -72,13 +72,13 @@ export FDIAG="6"
 export WLCLK=30
 
 # ATM warm start
+FHROT='12'
 WARM_START='.T.'
 MAKE_NH='.F.'
 NA_INIT='0'
 EXTERNAL_IC='.F.'
 NGGPS_IC='.F.'
 MOUNTAIN='.T.'
-FHROT='12'
 # ICE warm start
 RUNTYPE='continue'
 export USE_RESTART_TIME='.true.'
@@ -115,9 +115,12 @@ export DT_CICE=${DT_ATMOS}
 export CPL_SLOW=${DT_THERM_MOM6}
 export CPL_FAST=${DT_ATMOS}
 
-# write a CICE restart at FHMAX
-export DUMPFREQ_N=$((FHMAX/2))
+# write a CICE restart at 12 hour intervals
+export DUMPFREQ_N='12'
 export DUMPFREQ="h"
+
+# CMEPS controls intervals in ALLCOMP
+export FV3_RESTART_INTERVAL='12'
 
 # restart test: required for restart repro
 export MOM6_REPRO_LA='False'
@@ -125,8 +128,6 @@ export MOM6_THERMO_SPAN='False'
 
 # use CMEPS as the mediator component
 export MEDCOMP="cmeps"
-# CMEPS controls intervals in ALLCOMP
-export FV3_RESTART_INTERVAL=$((FHMAX/2))
 
 # nems.configure
 export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice.IN"

@@ -141,7 +141,7 @@ export DT_CICE=${DT_ATMOS}
 export CPL_SLOW=${DT_THERM_MOM6}
 export CPL_FAST=${DT_ATMOS}
 
-# restart test: write a CICE restart 12 hour intervals
+# restart test: write a CICE restart at 12 hour intervals
 export DUMPFREQ_N='12'
 export DUMPFREQ="h"
 
