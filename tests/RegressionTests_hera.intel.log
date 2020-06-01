@@ -1,10 +1,10 @@
-Fri May 29 16:22:56 UTC 2020
+Thu May 28 19:11:56 UTC 2020
 Start Regression test
 
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_cold_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/MEDIATOR_ccpp
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_154176/cpld_fv3_ccpp_mom6_cice_cold_atm_flux
+working dir  = /scratch1/NCEPDEV/stmp2/Jun.Wang/S2S_RT/rt_125818/cpld_fv3_ccpp_mom6_cice_cold_atm_flux
 Checking test 001 cpld_fv3_ccpp_mom6_cice_cold_atm_flux results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -78,7 +78,7 @@ Test 001 cpld_fv3_ccpp_mom6_cice_cold_atm_flux PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_cold384_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/MEDIATOR384_ccpp
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_154176/cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux
+working dir  = /scratch1/NCEPDEV/stmp2/Jun.Wang/S2S_RT/rt_125818/cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux
 Checking test 002 cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -152,7 +152,7 @@ Test 002 cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_2d_warm_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_2d_warm_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_154176/cpld_fv3_ccpp_mom6_cice_2d_atm_flux
+working dir  = /scratch1/NCEPDEV/stmp2/Jun.Wang/S2S_RT/rt_125818/cpld_fv3_ccpp_mom6_cice_2d_atm_flux
 Checking test 003 cpld_fv3_ccpp_mom6_cice_2d_atm_flux results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -198,11 +198,11 @@ Checking test 003 cpld_fv3_ccpp_mom6_cice_2d_atm_flux results ....
  Comparing RESTART/sfc_data.tile4.nc .........OK
  Comparing RESTART/sfc_data.tile5.nc .........OK
  Comparing RESTART/sfc_data.tile6.nc .........OK
- Comparing RESTART/MOM.res.nc ............NOT OK
- Comparing RESTART/MOM.res_1.nc ............NOT OK
- Comparing RESTART/MOM.res_2.nc ............NOT OK
- Comparing RESTART/MOM.res_3.nc ............NOT OK
- Comparing RESTART/iced.2016-10-05-00000.nc .........OK
+ Comparing MOM6_RESTART/MOM.res.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_1.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_2.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_3.nc .........OK
+ Comparing restart/iced.2016-10-05-00000.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
@@ -226,12 +226,12 @@ Checking test 003 cpld_fv3_ccpp_mom6_cice_2d_atm_flux results ....
  Comparing mediator_FBHyd_h_restart.nc .........OK
  Comparing mediator_FBAtmOcn_o_restart.nc .........OK
  Comparing mediator_scalars_restart.txt .........OK
-Test 003 cpld_fv3_ccpp_mom6_cice_2d_atm_flux FAIL
+Test 003 cpld_fv3_ccpp_mom6_cice_2d_atm_flux PASS
 
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_2d_warm_ccpp384
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_2d_warm_ccpp384/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_154176/cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux
+working dir  = /scratch1/NCEPDEV/stmp2/Jun.Wang/S2S_RT/rt_125818/cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux
 Checking test 004 cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -277,11 +277,11 @@ Checking test 004 cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux results ....
  Comparing RESTART/sfc_data.tile4.nc .........OK
  Comparing RESTART/sfc_data.tile5.nc .........OK
  Comparing RESTART/sfc_data.tile6.nc .........OK
- Comparing RESTART/MOM.res.nc ............NOT OK
- Comparing RESTART/MOM.res_1.nc ............NOT OK
- Comparing RESTART/MOM.res_2.nc ............NOT OK
- Comparing RESTART/MOM.res_3.nc ............NOT OK
- Comparing RESTART/iced.2016-10-05-00000.nc .........OK
+ Comparing MOM6_RESTART/MOM.res.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_1.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_2.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_3.nc .........OK
+ Comparing restart/iced.2016-10-05-00000.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
@@ -305,12 +305,12 @@ Checking test 004 cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux results ....
  Comparing mediator_FBHyd_h_restart.nc .........OK
  Comparing mediator_FBAtmOcn_o_restart.nc .........OK
  Comparing mediator_scalars_restart.txt .........OK
-Test 004 cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux FAIL
+Test 004 cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux PASS
 
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_2d_warm_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_2d_warm_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_154176/cpld_fv3_ccpp_mom6_cice_2d_2threads
+working dir  = /scratch1/NCEPDEV/stmp2/Jun.Wang/S2S_RT/rt_125818/cpld_fv3_ccpp_mom6_cice_2d_2threads
 Checking test 005 cpld_fv3_ccpp_mom6_cice_2d_2threads results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -356,11 +356,11 @@ Checking test 005 cpld_fv3_ccpp_mom6_cice_2d_2threads results ....
  Comparing RESTART/sfc_data.tile4.nc .........OK
  Comparing RESTART/sfc_data.tile5.nc .........OK
  Comparing RESTART/sfc_data.tile6.nc .........OK
- Comparing RESTART/MOM.res.nc ............NOT OK
- Comparing RESTART/MOM.res_1.nc ............NOT OK
- Comparing RESTART/MOM.res_2.nc ............NOT OK
- Comparing RESTART/MOM.res_3.nc ............NOT OK
- Comparing RESTART/iced.2016-10-05-00000.nc .........OK
+ Comparing MOM6_RESTART/MOM.res.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_1.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_2.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_3.nc .........OK
+ Comparing restart/iced.2016-10-05-00000.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
@@ -384,12 +384,12 @@ Checking test 005 cpld_fv3_ccpp_mom6_cice_2d_2threads results ....
  Comparing mediator_FBHyd_h_restart.nc .........OK
  Comparing mediator_FBAtmOcn_o_restart.nc .........OK
  Comparing mediator_scalars_restart.txt .........OK
-Test 005 cpld_fv3_ccpp_mom6_cice_2d_2threads FAIL
+Test 005 cpld_fv3_ccpp_mom6_cice_2d_2threads PASS
 
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_2d_warm_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_2d_warm_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_154176/cpld_fv3_ccpp_mom6_cice_2d_decomp
+working dir  = /scratch1/NCEPDEV/stmp2/Jun.Wang/S2S_RT/rt_125818/cpld_fv3_ccpp_mom6_cice_2d_decomp
 Checking test 006 cpld_fv3_ccpp_mom6_cice_2d_decomp results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -435,11 +435,11 @@ Checking test 006 cpld_fv3_ccpp_mom6_cice_2d_decomp results ....
  Comparing RESTART/sfc_data.tile4.nc .........OK
  Comparing RESTART/sfc_data.tile5.nc .........OK
  Comparing RESTART/sfc_data.tile6.nc .........OK
- Comparing RESTART/MOM.res.nc ............NOT OK
- Comparing RESTART/MOM.res_1.nc ............NOT OK
- Comparing RESTART/MOM.res_2.nc ............NOT OK
- Comparing RESTART/MOM.res_3.nc ............NOT OK
- Comparing RESTART/iced.2016-10-05-00000.nc .........OK
+ Comparing MOM6_RESTART/MOM.res.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_1.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_2.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_3.nc .........OK
+ Comparing restart/iced.2016-10-05-00000.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
@@ -463,12 +463,12 @@ Checking test 006 cpld_fv3_ccpp_mom6_cice_2d_decomp results ....
  Comparing mediator_FBHyd_h_restart.nc .........OK
  Comparing mediator_FBAtmOcn_o_restart.nc .........OK
  Comparing mediator_scalars_restart.txt .........OK
-Test 006 cpld_fv3_ccpp_mom6_cice_2d_decomp FAIL
+Test 006 cpld_fv3_ccpp_mom6_cice_2d_decomp PASS
 
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_cold_satmedmf_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/MEDIATOR_satmedmf_ccpp
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_154176/cpld_fv3_ccpp_mom6_cice_cold_satmedmf
+working dir  = /scratch1/NCEPDEV/stmp2/Jun.Wang/S2S_RT/rt_125818/cpld_fv3_ccpp_mom6_cice_cold_satmedmf
 Checking test 007 cpld_fv3_ccpp_mom6_cice_cold_satmedmf results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -542,7 +542,7 @@ Test 007 cpld_fv3_ccpp_mom6_cice_cold_satmedmf PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_1d_warm_satmedmf_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_1d_warm_satmedmf_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_154176/cpld_fv3_ccpp_mom6_cice_1d_satmedmf
+working dir  = /scratch1/NCEPDEV/stmp2/Jun.Wang/S2S_RT/rt_125818/cpld_fv3_ccpp_mom6_cice_1d_satmedmf
 Checking test 008 cpld_fv3_ccpp_mom6_cice_1d_satmedmf results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -588,11 +588,11 @@ Checking test 008 cpld_fv3_ccpp_mom6_cice_1d_satmedmf results ....
  Comparing RESTART/sfc_data.tile4.nc .........OK
  Comparing RESTART/sfc_data.tile5.nc .........OK
  Comparing RESTART/sfc_data.tile6.nc .........OK
- Comparing RESTART/MOM.res.nc ............NOT OK
- Comparing RESTART/MOM.res_1.nc ............NOT OK
- Comparing RESTART/MOM.res_2.nc ............NOT OK
- Comparing RESTART/MOM.res_3.nc ............NOT OK
- Comparing RESTART/iced.2016-10-04-00000.nc .........OK
+ Comparing MOM6_RESTART/MOM.res.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_1.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_2.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_3.nc .........OK
+ Comparing restart/iced.2016-10-04-00000.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
@@ -616,12 +616,12 @@ Checking test 008 cpld_fv3_ccpp_mom6_cice_1d_satmedmf results ....
  Comparing mediator_FBHyd_h_restart.nc .........OK
  Comparing mediator_FBAtmOcn_o_restart.nc .........OK
  Comparing mediator_scalars_restart.txt .........OK
-Test 008 cpld_fv3_ccpp_mom6_cice_1d_satmedmf FAIL
+Test 008 cpld_fv3_ccpp_mom6_cice_1d_satmedmf PASS
 
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_cold_bmrt_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/MEDIATOR_bmrt_ccpp
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_154176/cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt
+working dir  = /scratch1/NCEPDEV/stmp2/Jun.Wang/S2S_RT/rt_125818/cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt
 Checking test 009 cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -695,7 +695,7 @@ Test 009 cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_1d_bmrt_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_1d_bmrt_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_154176/cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt
+working dir  = /scratch1/NCEPDEV/stmp2/Jun.Wang/S2S_RT/rt_125818/cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt
 Checking test 010 cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -741,11 +741,11 @@ Checking test 010 cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt results ....
  Comparing RESTART/sfc_data.tile4.nc .........OK
  Comparing RESTART/sfc_data.tile5.nc .........OK
  Comparing RESTART/sfc_data.tile6.nc .........OK
- Comparing RESTART/MOM.res.nc ............NOT OK
- Comparing RESTART/MOM.res_1.nc ............NOT OK
- Comparing RESTART/MOM.res_2.nc ............NOT OK
- Comparing RESTART/MOM.res_3.nc ............NOT OK
- Comparing RESTART/iced.2013-04-02-00000.nc .........OK
+ Comparing MOM6_RESTART/MOM.res.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_1.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_2.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_3.nc .........OK
+ Comparing restart/iced.2013-04-02-00000.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
@@ -769,12 +769,12 @@ Checking test 010 cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt results ....
  Comparing mediator_FBHyd_h_restart.nc .........OK
  Comparing mediator_FBAtmOcn_o_restart.nc .........OK
  Comparing mediator_scalars_restart.txt .........OK
-Test 010 cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt FAIL
+Test 010 cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt PASS
 
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_cold_bmwav_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/MEDIATOR_bmwav_ccpp
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_154176/cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt
+working dir  = /scratch1/NCEPDEV/stmp2/Jun.Wang/S2S_RT/rt_125818/cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt
 Checking test 011 cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -848,7 +848,7 @@ Test 011 cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_1d_bmwav_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_1d_bmwav_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_154176/cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt
+working dir  = /scratch1/NCEPDEV/stmp2/Jun.Wang/S2S_RT/rt_125818/cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt
 Checking test 012 cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -897,11 +897,11 @@ Checking test 012 cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt results ....
  Comparing RESTART/sfc_data.tile4.nc .........OK
  Comparing RESTART/sfc_data.tile5.nc .........OK
  Comparing RESTART/sfc_data.tile6.nc .........OK
- Comparing RESTART/MOM.res.nc ............NOT OK
- Comparing RESTART/MOM.res_1.nc ............NOT OK
- Comparing RESTART/MOM.res_2.nc ............NOT OK
- Comparing RESTART/MOM.res_3.nc ............NOT OK
- Comparing RESTART/iced.2013-04-02-00000.nc .........OK
+ Comparing MOM6_RESTART/MOM.res.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_1.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_2.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_3.nc .........OK
+ Comparing restart/iced.2013-04-02-00000.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
@@ -925,12 +925,12 @@ Checking test 012 cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt results ....
  Comparing mediator_FBHyd_h_restart.nc .........OK
  Comparing mediator_FBAtmOcn_o_restart.nc .........OK
  Comparing mediator_scalars_restart.txt .........OK
-Test 012 cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt FAIL
+Test 012 cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt PASS
 
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_cold_debug_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/MEDIATOR_debug_ccpp
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_154176/cpld_fv3_ccpp_mom6_cice_cold_debug
+working dir  = /scratch1/NCEPDEV/stmp2/Jun.Wang/S2S_RT/rt_125818/cpld_fv3_ccpp_mom6_cice_cold_debug
 Checking test 013 cpld_fv3_ccpp_mom6_cice_cold_debug results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -1004,7 +1004,7 @@ Test 013 cpld_fv3_ccpp_mom6_cice_cold_debug PASS
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_6h_warm_debug_ccpp
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200524/RT-Baselines_6h_warm_debug_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_154176/cpld_fv3_ccpp_mom6_cice_6h_debug
+working dir  = /scratch1/NCEPDEV/stmp2/Jun.Wang/S2S_RT/rt_125818/cpld_fv3_ccpp_mom6_cice_6h_debug
 Checking test 014 cpld_fv3_ccpp_mom6_cice_6h_debug results ....
  Comparing phyf006.tile1.nc .........OK
  Comparing phyf006.tile2.nc .........OK
@@ -1050,11 +1050,11 @@ Checking test 014 cpld_fv3_ccpp_mom6_cice_6h_debug results ....
  Comparing RESTART/sfc_data.tile4.nc .........OK
  Comparing RESTART/sfc_data.tile5.nc .........OK
  Comparing RESTART/sfc_data.tile6.nc .........OK
- Comparing RESTART/MOM.res.nc ............NOT OK
- Comparing RESTART/MOM.res_1.nc ............NOT OK
- Comparing RESTART/MOM.res_2.nc ............NOT OK
- Comparing RESTART/MOM.res_3.nc ............NOT OK
- Comparing RESTART/iced.2016-10-03-21600.nc .........OK
+ Comparing MOM6_RESTART/MOM.res.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_1.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_2.nc .........OK
+ Comparing MOM6_RESTART/MOM.res_3.nc .........OK
+ Comparing restart/iced.2016-10-03-21600.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
@@ -1078,18 +1078,9 @@ Checking test 014 cpld_fv3_ccpp_mom6_cice_6h_debug results ....
  Comparing mediator_FBHyd_h_restart.nc .........OK
  Comparing mediator_FBAtmOcn_o_restart.nc .........OK
  Comparing mediator_scalars_restart.txt .........OK
-Test 014 cpld_fv3_ccpp_mom6_cice_6h_debug FAIL
+Test 014 cpld_fv3_ccpp_mom6_cice_6h_debug PASS
 
-FAILED TESTS: 
-Test cpld_fv3_ccpp_mom6_cice_1d_satmedmf failed 
-Test cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt failed 
-Test cpld_fv3_ccpp_mom6_cice_2d_atm_flux failed 
-Test cpld_fv3_ccpp_mom6_cice_2d_2threads failed 
-Test cpld_fv3_ccpp_mom6_cice_2d_decomp failed 
-Test cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux failed 
-Test cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt failed 
-Test cpld_fv3_ccpp_mom6_cice_6h_debug failed 
 
-REGRESSION TEST FAILED
-Fri May 29 17:42:16 UTC 2020
-Elapsed time: 01h:19m:22s. Have a nice day!
+REGRESSION TEST WAS SUCCESSFUL
+Thu May 28 20:36:58 UTC 2020
+Elapsed time: 01h:25m:04s. Have a nice day!
