@@ -41,6 +41,10 @@ cp    @[RTPWD]/MOM6_FIX/@[OCNRES]/* ./INPUT
 cp    @[RTPWD]/CICE_FIX/@[OCNRES]/grid_cice_NEMS_mx025.nc .
 cp    @[RTPWD]/CICE_FIX/@[OCNRES]/kmtu_cice_NEMS_mx025.nc .
 
+#
+# FIXME: need to copy in from just completed 1-d run, not baseline
+# PREFIX and SUFFIX are known
+#
 # ICs: FV3 timestamped prefix
 cp @[RTPWD]/${RESTART_INPUTDIR}/RESTART/${RESTART_PREFIX}* ./INPUT
 RFILE="INPUT/${RESTART_PREFIX}"

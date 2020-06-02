@@ -85,15 +85,13 @@ runSeq::
 
 # CMEPS variables
 
-component_list: ATM OCN ICE MED
-
 DRIVER_attributes::
       mediator_read_restart = .false.
 ::
 MED_attributes::
-      ATM_model = fv3gfs
-      ICE_model = cice
-      OCN_model = mom
+      ATM_model = @[atm_model]
+      ICE_model = @[ice_model]
+      OCN_model = @[ocn_model]
       history_n = 1
       history_option = nhours
       history_ymd = -999

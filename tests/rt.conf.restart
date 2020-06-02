@@ -1,3 +1,0 @@
-COMPILE | coupledFV3_CCPP_MOM6_CICE_CMEPS           |   | hera.intel  | fv3 |
-COMPILE | coupledFV3_CCPP_MOM6_CICE_CMEPS           |   | orion.intel | fv3 |
-RUN     | cpld_fv3_ccpp_mom6_cice_cmeps_restart     |   |             | fv3 |

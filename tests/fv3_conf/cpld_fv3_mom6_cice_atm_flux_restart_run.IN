@@ -6,10 +6,6 @@ else
   FV3_DIR=FV3_input_data${ATMRES#C}
 fi
 
-RESTART_INPUTDIR=RT-Baselines_2d_warm_ccpp_cmeps
-RDAY='05'
-SECS='00000'
-
 # FV3 fixed input
 cp    @[RTPWD]/${FV3_DIR}/INPUT/aerosol.dat .
 cp    @[RTPWD]/${FV3_DIR}/INPUT/co2historicaldata_201*.txt .
@@ -36,21 +32,25 @@ cp    @[RTPWD]/MOM6_FIX/@[OCNRES]/* ./INPUT
 cp    @[RTPWD]/CICE_FIX/@[OCNRES]/grid_cice_NEMS_mx025.nc .
 cp    @[RTPWD]/CICE_FIX/@[OCNRES]/kmtu_cice_NEMS_mx025.nc .
 
-# Restart from warm run, CMEPS
-# ICs
-cp @[RTPWD]/${RESTART_INPUTDIR}/RESTART/coupler.res ./INPUT
-cp @[RTPWD]/${RESTART_INPUTDIR}/RESTART/fv_*.nc ./INPUT
-cp @[RTPWD]/${RESTART_INPUTDIR}/RESTART/sfc_data*.nc ./INPUT
-cp @[RTPWD]/${RESTART_INPUTDIR}/RESTART/phy_data*.nc ./INPUT
-cp @[RTPWD]/${RESTART_INPUTDIR}/RESTART/MOM*.nc ./INPUT
+# Restart run, CMEPS
+# Set the dependent run (DEP_RUN) manually for now
+#DEP_RUN="../cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux"
+DEP_RUN="@[RTPWD]/RT-Baselines_2d_warm_ccpp_cmeps"
 
-cp  @[RTPWD]/${RESTART_INPUTDIR}/RESTART/ufs.s2s.cpl.r.${SYEAR}-${SMONTH}-${RDAY}-${SECS}.nc .
-RFILE="ufs.s2s.cpl.r.${SYEAR}-${SMONTH}-${RDAY}-00000.nc"
+# FV3 ICs
+cp ${DEP_RUN}/RESTART/coupler.res ./INPUT
+cp ${DEP_RUN}/RESTART/fv_*.nc ./INPUT
+cp ${DEP_RUN}/RESTART/sfc_data*.nc ./INPUT
+cp ${DEP_RUN}/RESTART/phy_data*.nc ./INPUT
+cp ${DEP_RUN}/RESTART/MOM*.nc ./INPUT
+
+cp  ${DEP_RUN}/RESTART/ufs.s2s.cpl.r.2016-10-05-00000.nc .
+RFILE="ufs.s2s.cpl.r.2016-10-05-00000.nc"
 ls -1 ${RFILE}>rpointer.cpl
 
 # ICs: CICE restart and pointer file
-cp  @[RTPWD]/${RESTART_INPUTDIR}/RESTART/iced.${SYEAR}-${SMONTH}-${RDAY}-${SECS}.nc ./INPUT
-RFILE="iced.${SYEAR}-${SMONTH}-${RDAY}-00000.nc"
+cp  ${DEP_RUN}/RESTART/iced.2016-10-05-00000.nc ./INPUT
+RFILE="iced.2016-10-05-00000.nc"
 ls -1 "./INPUT/"${RFILE}>ice.restart_file
 
 # CCPP

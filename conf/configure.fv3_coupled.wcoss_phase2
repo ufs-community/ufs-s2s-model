@@ -123,6 +123,10 @@ FFLAGS += $(FFLAGS_VERBOSE)
 LDFLAGS += $(LDFLAGS_VERBOSE)
 endif
 
+ifeq ($(CMEPS),Y)
+CPPDEFS += -DCMEPS
+endif
+
 ifneq ($(findstring NetCDF/4,$(LOADEDMODULES)),)
   LIBS += -lnetcdff -lhdf5 $(Z_LIB)
 else

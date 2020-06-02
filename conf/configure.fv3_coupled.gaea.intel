@@ -159,6 +159,10 @@ FFLAGS += -I$(PATH_CCPP)/include
 LDFLAGS += -L$(PATH_CCPP)/lib -lccppphys -lccpp $(NCEPLIBS) -lxml2
 endif
 
+ifeq ($(CMEPS),Y)
+CPPDEFS += -DCMEPS
+endif
+
 ifneq ($(findstring netcdf/4,$(LOADEDMODULES)),)
   LIBS += -lnetcdff -lnetcdf -L$(HDF5)/lib -lhdf5_hl -lhdf5 -lz
 else

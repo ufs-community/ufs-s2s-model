@@ -224,6 +224,7 @@ elif [[ $MACHINE_ID = orion.* ]]; then
   ECF_PORT=$(( $(id -u) + 1500 ))
   QUEUE=batch
 #  ACCNR= # detected in detect_machine.sh
+  ACCNR=marine-cpu
   PARTITION=orion
   dprefix=/work/noaa/stmp/${USER}
   DISKNM=/work/noaa/stmp/jminsuk/RT
@@ -378,7 +379,7 @@ done
 if [[ $MACHINE_ID = cheyenne.* ]]; then
   RTPWD=${RTPWD:-$DISKNM/develop-20200210/${COMPILER^^}}
 else
-  RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200530}
+  RTPWD="/work/noaa/stmp/dworthen/stmp/dworthen/develop-20200530"
 fi
 
 shift $((OPTIND-1))
