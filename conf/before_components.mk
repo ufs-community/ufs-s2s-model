@@ -14,7 +14,8 @@
 # Decide the conf and modulefile names.
 # S2S_DEBUG_MODULE is defined in GNUmakefile
 
-CHOSEN_MODULE=$(BUILD_TARGET)/fv3
+#CHOSEN_MODULE=$(BUILD_TARGET)/fv3
+CHOSEN_MODULE=$(BUILD_TARGET)/fv3_coupled
 
 ifeq ($(S2S_DEBUG_MODULE),true)
   CHOSEN_MODULE=$(BUILD_TARGET)/fv3_debug

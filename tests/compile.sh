@@ -16,7 +16,7 @@ fi
 readonly PATHTR=$1
 readonly BUILD_TARGET=$2
 readonly MAKE_OPT=${3:-}
-readonly BUILD_NAME=fv3${4:+_$4}
+readonly BUILD_NAME=fv3_mom6_cice${4:+_$4}
 
 readonly clean_before=${5:-YES}
 readonly clean_after=${6:-YES}
@@ -126,19 +126,34 @@ else
   NEMS_BUILDOPT=""
 fi
 
+# Pass DEBUG to MOM6
+MOM6_MAKEOPT=""
+if [[ "${MAKE_OPT}" == *"DEBUG=Y"* && "${MAKE_OPT}" == *"MOM6=Y"* ]]; then
+  MOM6_MAKEOPT="DEBUG=Y"
+fi
+
+# Pass DEBUG to CICE
+CICE_MAKEOPT=""
+if [[ "${MAKE_OPT}" == *"DEBUG=Y"* && "${MAKE_OPT}" == *"CICE=Y"* ]]; then
+  CICE_MAKEOPT="DEBUG=Y"
+fi
+
 if [ $clean_before = YES ] ; then
   $gnu_make -k COMPONENTS="$COMPONENTS" TEST_BUILD_NAME="$BUILD_NAME" \
            BUILD_ENV="$BUILD_TARGET" FV3_MAKEOPT="$MAKE_OPT" \
+           MOM6_MAKEOPT="${MOM6_MAKEOPT}" CICE_MAKEOPT="${CICE_MAKEOPT}" \
            NEMS_BUILDOPT="$NEMS_BUILDOPT" distclean
 fi
 
   $gnu_make -k COMPONENTS="$COMPONENTS" TEST_BUILD_NAME="$BUILD_NAME" \
            BUILD_ENV="$BUILD_TARGET" FV3_MAKEOPT="$MAKE_OPT" \
+           MOM6_MAKEOPT="${MOM6_MAKEOPT}" CICE_MAKEOPT="${CICE_MAKEOPT}" \
            NEMS_BUILDOPT="$NEMS_BUILDOPT" build
 
 if [ $clean_after = YES ] ; then
   $gnu_make -k COMPONENTS="$COMPONENTS" TEST_BUILD_NAME="$BUILD_NAME" \
            BUILD_ENV="$BUILD_TARGET" FV3_MAKEOPT="$MAKE_OPT" \
+           MOM6_MAKEOPT="${MOM6_MAKEOPT}" CICE_MAKEOPT="${CICE_MAKEOPT}" \
            NEMS_BUILDOPT="$NEMS_BUILDOPT" clean
 fi
 
