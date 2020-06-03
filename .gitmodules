@@ -22,6 +22,10 @@
 	path = MOM6
 	url = https://github.com/NOAA-EMC/MOM6-interface
 	branch = develop
+[submodule "CMEPS"]
+	path = CMEPS
+	url = https://github.com/ESCOMP/CMEPS.git
+	branch = master
 [submodule "WW3"]
 	path = WW3
 	url = https://github.com/NOAA-EMC/WW3.git

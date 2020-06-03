@@ -262,7 +262,14 @@ export SUITE_NAME=''
 export MED_restart_data=''
 export INPUT_NML="input.mom6.nml.IN"
 export FIELD_TABLE="field_table"
+export FV3_RESTART_INTERVAL='0'
+export FHROT='0'
 export NSOUT='-1'
+export FDIAG='6'
+export NFHOUT='6'
+#no high freq fv3 output
+export NFHMAX_HF='-1'
+export NFHOUT_HF='-1'
 export CPLFLX='.T.'
 export CPL='.true.'
 export NSTF_NAME='0,0,0,0,0'
@@ -272,8 +279,12 @@ export atm_model="fv3"
 export ocn_model="mom6"
 export ice_model="cice"
 export wav_model="ww3"
-# future use: for MOM6 river runoff 
+# MOM6 river runoff 
 export MOM6_RIVER_RUNOFF='True'
+# set USE_LA_LI2016 to the current default; this must be set False for restart repro 
+export MOM6_REPRO_LA='True'
+# set the THERMO_SPANS_COUPLING to the current default; according to Gustavo and Alper, the correct setting is "False"
+export MOM6_THERMO_SPAN='True'
 export NPROC_ICE='48'
 export DT_ATMOS='900' #needed for C96 cases
 export DT_DYNAM_MOM6='900'
@@ -300,4 +311,8 @@ export NA_INIT='1'
 export EXTERNAL_IC='.T.'
 export NGGPS_IC='.T.'
 export MOUNTAIN='.F.'
+# default mediator component (NEMS mediator)
+export MEDCOMP=''
+export RESTART_PREFIX=''
+export RESTART_SUFFIX=''
 }
