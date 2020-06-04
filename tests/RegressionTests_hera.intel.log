@@ -1,10 +1,10 @@
-Sat May 16 20:18:40 UTC 2020
+Wed Jun  3 09:03:51 UTC 2020
 Start Regression test
 
 
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_cold_ccpp
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/MEDIATOR_ccpp
-working dir  = /scratch1/NCEPDEV/stmp2/Jessica.Meixner/S2S_RT/rt_33235/cpld_fv3_ccpp_mom6_cice_cold_atm_flux
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_ccpp
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_ccpp
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_cold_atm_flux
 Checking test 001 cpld_fv3_ccpp_mom6_cice_cold_atm_flux results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -76,10 +76,10 @@ Checking test 001 cpld_fv3_ccpp_mom6_cice_cold_atm_flux results ....
 Test 001 cpld_fv3_ccpp_mom6_cice_cold_atm_flux PASS
 
 
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_cold384_ccpp
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/MEDIATOR384_ccpp
-working dir  = /scratch1/NCEPDEV/stmp2/Jessica.Meixner/S2S_RT/rt_33235/cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux
-Checking test 002 cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux results ....
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_satmedmf_ccpp
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_satmedmf_ccpp
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_cold_satmedmf
+Checking test 002 cpld_fv3_ccpp_mom6_cice_cold_satmedmf results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
  Comparing phyf001.tile3.nc .........OK
@@ -147,329 +147,13 @@ Checking test 002 cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux results ....
  Comparing mediator_FBHyd_h_restart.nc .........OK
  Comparing mediator_FBAtmOcn_o_restart.nc .........OK
  Comparing mediator_scalars_restart.txt .........OK
-Test 002 cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux PASS
+Test 002 cpld_fv3_ccpp_mom6_cice_cold_satmedmf PASS
 
 
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_2d_warm_ccpp
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_2d_warm_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Jessica.Meixner/S2S_RT/rt_33235/cpld_fv3_ccpp_mom6_cice_2d_atm_flux
-Checking test 003 cpld_fv3_ccpp_mom6_cice_2d_atm_flux results ....
- Comparing phyf048.tile1.nc .........OK
- Comparing phyf048.tile2.nc .........OK
- Comparing phyf048.tile3.nc .........OK
- Comparing phyf048.tile4.nc .........OK
- Comparing phyf048.tile5.nc .........OK
- Comparing phyf048.tile6.nc .........OK
- Comparing dynf048.tile1.nc .........OK
- Comparing dynf048.tile2.nc .........OK
- Comparing dynf048.tile3.nc .........OK
- Comparing dynf048.tile4.nc .........OK
- Comparing dynf048.tile5.nc .........OK
- Comparing dynf048.tile6.nc .........OK
- Comparing RESTART/coupler.res .........OK
- Comparing RESTART/fv_core.res.nc .........OK
- Comparing RESTART/fv_core.res.tile1.nc .........OK
- Comparing RESTART/fv_core.res.tile2.nc .........OK
- Comparing RESTART/fv_core.res.tile3.nc .........OK
- Comparing RESTART/fv_core.res.tile4.nc .........OK
- Comparing RESTART/fv_core.res.tile5.nc .........OK
- Comparing RESTART/fv_core.res.tile6.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
- Comparing RESTART/fv_tracer.res.tile1.nc .........OK
- Comparing RESTART/fv_tracer.res.tile2.nc .........OK
- Comparing RESTART/fv_tracer.res.tile3.nc .........OK
- Comparing RESTART/fv_tracer.res.tile4.nc .........OK
- Comparing RESTART/fv_tracer.res.tile5.nc .........OK
- Comparing RESTART/fv_tracer.res.tile6.nc .........OK
- Comparing RESTART/phy_data.tile1.nc .........OK
- Comparing RESTART/phy_data.tile2.nc .........OK
- Comparing RESTART/phy_data.tile3.nc .........OK
- Comparing RESTART/phy_data.tile4.nc .........OK
- Comparing RESTART/phy_data.tile5.nc .........OK
- Comparing RESTART/phy_data.tile6.nc .........OK
- Comparing RESTART/sfc_data.tile1.nc .........OK
- Comparing RESTART/sfc_data.tile2.nc .........OK
- Comparing RESTART/sfc_data.tile3.nc .........OK
- Comparing RESTART/sfc_data.tile4.nc .........OK
- Comparing RESTART/sfc_data.tile5.nc .........OK
- Comparing RESTART/sfc_data.tile6.nc .........OK
- Comparing MOM6_RESTART/MOM.res.nc .........OK
- Comparing MOM6_RESTART/MOM.res_1.nc .........OK
- Comparing MOM6_RESTART/MOM.res_2.nc .........OK
- Comparing MOM6_RESTART/MOM.res_3.nc .........OK
- Comparing restart/iced.2016-10-05-00000.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile4.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile5.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile6.nc .........OK
- Comparing mediator_FBaccumOcn_restart.nc .........OK
- Comparing mediator_FBaccumIce_restart.nc .........OK
- Comparing mediator_FBaccumLnd_restart.nc .........OK
- Comparing mediator_FBaccumHyd_restart.nc .........OK
- Comparing mediator_FBaccumAtmOcn_restart.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile1.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile2.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile3.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile4.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile5.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile6.nc .........OK
- Comparing mediator_FBIce_i_restart.nc .........OK
- Comparing mediator_FBOcn_o_restart.nc .........OK
- Comparing mediator_FBLnd_l_restart.nc .........OK
- Comparing mediator_FBHyd_h_restart.nc .........OK
- Comparing mediator_FBAtmOcn_o_restart.nc .........OK
- Comparing mediator_scalars_restart.txt .........OK
-Test 003 cpld_fv3_ccpp_mom6_cice_2d_atm_flux PASS
-
-
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_2d_warm_ccpp384
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_2d_warm_ccpp384/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Jessica.Meixner/S2S_RT/rt_33235/cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux
-Checking test 004 cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux results ....
- Comparing phyf048.tile1.nc .........OK
- Comparing phyf048.tile2.nc .........OK
- Comparing phyf048.tile3.nc .........OK
- Comparing phyf048.tile4.nc .........OK
- Comparing phyf048.tile5.nc .........OK
- Comparing phyf048.tile6.nc .........OK
- Comparing dynf048.tile1.nc .........OK
- Comparing dynf048.tile2.nc .........OK
- Comparing dynf048.tile3.nc .........OK
- Comparing dynf048.tile4.nc .........OK
- Comparing dynf048.tile5.nc .........OK
- Comparing dynf048.tile6.nc .........OK
- Comparing RESTART/coupler.res .........OK
- Comparing RESTART/fv_core.res.nc .........OK
- Comparing RESTART/fv_core.res.tile1.nc .........OK
- Comparing RESTART/fv_core.res.tile2.nc .........OK
- Comparing RESTART/fv_core.res.tile3.nc .........OK
- Comparing RESTART/fv_core.res.tile4.nc .........OK
- Comparing RESTART/fv_core.res.tile5.nc .........OK
- Comparing RESTART/fv_core.res.tile6.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
- Comparing RESTART/fv_tracer.res.tile1.nc .........OK
- Comparing RESTART/fv_tracer.res.tile2.nc .........OK
- Comparing RESTART/fv_tracer.res.tile3.nc .........OK
- Comparing RESTART/fv_tracer.res.tile4.nc .........OK
- Comparing RESTART/fv_tracer.res.tile5.nc .........OK
- Comparing RESTART/fv_tracer.res.tile6.nc .........OK
- Comparing RESTART/phy_data.tile1.nc .........OK
- Comparing RESTART/phy_data.tile2.nc .........OK
- Comparing RESTART/phy_data.tile3.nc .........OK
- Comparing RESTART/phy_data.tile4.nc .........OK
- Comparing RESTART/phy_data.tile5.nc .........OK
- Comparing RESTART/phy_data.tile6.nc .........OK
- Comparing RESTART/sfc_data.tile1.nc .........OK
- Comparing RESTART/sfc_data.tile2.nc .........OK
- Comparing RESTART/sfc_data.tile3.nc .........OK
- Comparing RESTART/sfc_data.tile4.nc .........OK
- Comparing RESTART/sfc_data.tile5.nc .........OK
- Comparing RESTART/sfc_data.tile6.nc .........OK
- Comparing MOM6_RESTART/MOM.res.nc .........OK
- Comparing MOM6_RESTART/MOM.res_1.nc .........OK
- Comparing MOM6_RESTART/MOM.res_2.nc .........OK
- Comparing MOM6_RESTART/MOM.res_3.nc .........OK
- Comparing restart/iced.2016-10-05-00000.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile4.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile5.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile6.nc .........OK
- Comparing mediator_FBaccumOcn_restart.nc .........OK
- Comparing mediator_FBaccumIce_restart.nc .........OK
- Comparing mediator_FBaccumLnd_restart.nc .........OK
- Comparing mediator_FBaccumHyd_restart.nc .........OK
- Comparing mediator_FBaccumAtmOcn_restart.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile1.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile2.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile3.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile4.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile5.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile6.nc .........OK
- Comparing mediator_FBIce_i_restart.nc .........OK
- Comparing mediator_FBOcn_o_restart.nc .........OK
- Comparing mediator_FBLnd_l_restart.nc .........OK
- Comparing mediator_FBHyd_h_restart.nc .........OK
- Comparing mediator_FBAtmOcn_o_restart.nc .........OK
- Comparing mediator_scalars_restart.txt .........OK
-Test 004 cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux PASS
-
-
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_2d_warm_ccpp
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_2d_warm_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Jessica.Meixner/S2S_RT/rt_33235/cpld_fv3_ccpp_mom6_cice_2d_2threads
-Checking test 005 cpld_fv3_ccpp_mom6_cice_2d_2threads results ....
- Comparing phyf048.tile1.nc .........OK
- Comparing phyf048.tile2.nc .........OK
- Comparing phyf048.tile3.nc .........OK
- Comparing phyf048.tile4.nc .........OK
- Comparing phyf048.tile5.nc .........OK
- Comparing phyf048.tile6.nc .........OK
- Comparing dynf048.tile1.nc .........OK
- Comparing dynf048.tile2.nc .........OK
- Comparing dynf048.tile3.nc .........OK
- Comparing dynf048.tile4.nc .........OK
- Comparing dynf048.tile5.nc .........OK
- Comparing dynf048.tile6.nc .........OK
- Comparing RESTART/coupler.res .........OK
- Comparing RESTART/fv_core.res.nc .........OK
- Comparing RESTART/fv_core.res.tile1.nc .........OK
- Comparing RESTART/fv_core.res.tile2.nc .........OK
- Comparing RESTART/fv_core.res.tile3.nc .........OK
- Comparing RESTART/fv_core.res.tile4.nc .........OK
- Comparing RESTART/fv_core.res.tile5.nc .........OK
- Comparing RESTART/fv_core.res.tile6.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
- Comparing RESTART/fv_tracer.res.tile1.nc .........OK
- Comparing RESTART/fv_tracer.res.tile2.nc .........OK
- Comparing RESTART/fv_tracer.res.tile3.nc .........OK
- Comparing RESTART/fv_tracer.res.tile4.nc .........OK
- Comparing RESTART/fv_tracer.res.tile5.nc .........OK
- Comparing RESTART/fv_tracer.res.tile6.nc .........OK
- Comparing RESTART/phy_data.tile1.nc .........OK
- Comparing RESTART/phy_data.tile2.nc .........OK
- Comparing RESTART/phy_data.tile3.nc .........OK
- Comparing RESTART/phy_data.tile4.nc .........OK
- Comparing RESTART/phy_data.tile5.nc .........OK
- Comparing RESTART/phy_data.tile6.nc .........OK
- Comparing RESTART/sfc_data.tile1.nc .........OK
- Comparing RESTART/sfc_data.tile2.nc .........OK
- Comparing RESTART/sfc_data.tile3.nc .........OK
- Comparing RESTART/sfc_data.tile4.nc .........OK
- Comparing RESTART/sfc_data.tile5.nc .........OK
- Comparing RESTART/sfc_data.tile6.nc .........OK
- Comparing MOM6_RESTART/MOM.res.nc .........OK
- Comparing MOM6_RESTART/MOM.res_1.nc .........OK
- Comparing MOM6_RESTART/MOM.res_2.nc .........OK
- Comparing MOM6_RESTART/MOM.res_3.nc .........OK
- Comparing restart/iced.2016-10-05-00000.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile4.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile5.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile6.nc .........OK
- Comparing mediator_FBaccumOcn_restart.nc .........OK
- Comparing mediator_FBaccumIce_restart.nc .........OK
- Comparing mediator_FBaccumLnd_restart.nc .........OK
- Comparing mediator_FBaccumHyd_restart.nc .........OK
- Comparing mediator_FBaccumAtmOcn_restart.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile1.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile2.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile3.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile4.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile5.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile6.nc .........OK
- Comparing mediator_FBIce_i_restart.nc .........OK
- Comparing mediator_FBOcn_o_restart.nc .........OK
- Comparing mediator_FBLnd_l_restart.nc .........OK
- Comparing mediator_FBHyd_h_restart.nc .........OK
- Comparing mediator_FBAtmOcn_o_restart.nc .........OK
- Comparing mediator_scalars_restart.txt .........OK
-Test 005 cpld_fv3_ccpp_mom6_cice_2d_2threads PASS
-
-
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_2d_warm_ccpp
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_2d_warm_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Jessica.Meixner/S2S_RT/rt_33235/cpld_fv3_ccpp_mom6_cice_2d_decomp
-Checking test 006 cpld_fv3_ccpp_mom6_cice_2d_decomp results ....
- Comparing phyf048.tile1.nc .........OK
- Comparing phyf048.tile2.nc .........OK
- Comparing phyf048.tile3.nc .........OK
- Comparing phyf048.tile4.nc .........OK
- Comparing phyf048.tile5.nc .........OK
- Comparing phyf048.tile6.nc .........OK
- Comparing dynf048.tile1.nc .........OK
- Comparing dynf048.tile2.nc .........OK
- Comparing dynf048.tile3.nc .........OK
- Comparing dynf048.tile4.nc .........OK
- Comparing dynf048.tile5.nc .........OK
- Comparing dynf048.tile6.nc .........OK
- Comparing RESTART/coupler.res .........OK
- Comparing RESTART/fv_core.res.nc .........OK
- Comparing RESTART/fv_core.res.tile1.nc .........OK
- Comparing RESTART/fv_core.res.tile2.nc .........OK
- Comparing RESTART/fv_core.res.tile3.nc .........OK
- Comparing RESTART/fv_core.res.tile4.nc .........OK
- Comparing RESTART/fv_core.res.tile5.nc .........OK
- Comparing RESTART/fv_core.res.tile6.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
- Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
- Comparing RESTART/fv_tracer.res.tile1.nc .........OK
- Comparing RESTART/fv_tracer.res.tile2.nc .........OK
- Comparing RESTART/fv_tracer.res.tile3.nc .........OK
- Comparing RESTART/fv_tracer.res.tile4.nc .........OK
- Comparing RESTART/fv_tracer.res.tile5.nc .........OK
- Comparing RESTART/fv_tracer.res.tile6.nc .........OK
- Comparing RESTART/phy_data.tile1.nc .........OK
- Comparing RESTART/phy_data.tile2.nc .........OK
- Comparing RESTART/phy_data.tile3.nc .........OK
- Comparing RESTART/phy_data.tile4.nc .........OK
- Comparing RESTART/phy_data.tile5.nc .........OK
- Comparing RESTART/phy_data.tile6.nc .........OK
- Comparing RESTART/sfc_data.tile1.nc .........OK
- Comparing RESTART/sfc_data.tile2.nc .........OK
- Comparing RESTART/sfc_data.tile3.nc .........OK
- Comparing RESTART/sfc_data.tile4.nc .........OK
- Comparing RESTART/sfc_data.tile5.nc .........OK
- Comparing RESTART/sfc_data.tile6.nc .........OK
- Comparing MOM6_RESTART/MOM.res.nc .........OK
- Comparing MOM6_RESTART/MOM.res_1.nc .........OK
- Comparing MOM6_RESTART/MOM.res_2.nc .........OK
- Comparing MOM6_RESTART/MOM.res_3.nc .........OK
- Comparing restart/iced.2016-10-05-00000.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile4.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile5.nc .........OK
- Comparing mediator_FBaccumAtm_restart.tile6.nc .........OK
- Comparing mediator_FBaccumOcn_restart.nc .........OK
- Comparing mediator_FBaccumIce_restart.nc .........OK
- Comparing mediator_FBaccumLnd_restart.nc .........OK
- Comparing mediator_FBaccumHyd_restart.nc .........OK
- Comparing mediator_FBaccumAtmOcn_restart.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile1.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile2.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile3.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile4.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile5.nc .........OK
- Comparing mediator_FBAtm_a_restart.tile6.nc .........OK
- Comparing mediator_FBIce_i_restart.nc .........OK
- Comparing mediator_FBOcn_o_restart.nc .........OK
- Comparing mediator_FBLnd_l_restart.nc .........OK
- Comparing mediator_FBHyd_h_restart.nc .........OK
- Comparing mediator_FBAtmOcn_o_restart.nc .........OK
- Comparing mediator_scalars_restart.txt .........OK
-Test 006 cpld_fv3_ccpp_mom6_cice_2d_decomp PASS
-
-
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_cold_satmedmf_ccpp
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/MEDIATOR_satmedmf_ccpp
-working dir  = /scratch1/NCEPDEV/stmp2/Jessica.Meixner/S2S_RT/rt_33235/cpld_fv3_ccpp_mom6_cice_cold_satmedmf
-Checking test 007 cpld_fv3_ccpp_mom6_cice_cold_satmedmf results ....
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold384_ccpp
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR384_ccpp
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux
+Checking test 003 cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
  Comparing phyf001.tile3.nc .........OK
@@ -537,12 +221,323 @@ Checking test 007 cpld_fv3_ccpp_mom6_cice_cold_satmedmf results ....
  Comparing mediator_FBHyd_h_restart.nc .........OK
  Comparing mediator_FBAtmOcn_o_restart.nc .........OK
  Comparing mediator_scalars_restart.txt .........OK
-Test 007 cpld_fv3_ccpp_mom6_cice_cold_satmedmf PASS
+Test 003 cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux PASS
 
 
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_1d_warm_satmedmf_ccpp
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_1d_warm_satmedmf_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Jessica.Meixner/S2S_RT/rt_33235/cpld_fv3_ccpp_mom6_cice_1d_satmedmf
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_bmrt_ccpp
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_bmrt_ccpp
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt
+Checking test 004 cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt results ....
+ Comparing phyf001.tile1.nc .........OK
+ Comparing phyf001.tile2.nc .........OK
+ Comparing phyf001.tile3.nc .........OK
+ Comparing phyf001.tile4.nc .........OK
+ Comparing phyf001.tile5.nc .........OK
+ Comparing phyf001.tile6.nc .........OK
+ Comparing dynf001.tile1.nc .........OK
+ Comparing dynf001.tile2.nc .........OK
+ Comparing dynf001.tile3.nc .........OK
+ Comparing dynf001.tile4.nc .........OK
+ Comparing dynf001.tile5.nc .........OK
+ Comparing dynf001.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile4.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile5.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile6.nc .........OK
+ Comparing mediator_FBaccumOcn_restart.nc .........OK
+ Comparing mediator_FBaccumIce_restart.nc .........OK
+ Comparing mediator_FBaccumLnd_restart.nc .........OK
+ Comparing mediator_FBaccumHyd_restart.nc .........OK
+ Comparing mediator_FBaccumAtmOcn_restart.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile1.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile2.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile3.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile4.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile5.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile6.nc .........OK
+ Comparing mediator_FBIce_i_restart.nc .........OK
+ Comparing mediator_FBOcn_o_restart.nc .........OK
+ Comparing mediator_FBLnd_l_restart.nc .........OK
+ Comparing mediator_FBHyd_h_restart.nc .........OK
+ Comparing mediator_FBAtmOcn_o_restart.nc .........OK
+ Comparing mediator_scalars_restart.txt .........OK
+Test 004 cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_2d_atm_flux
+Checking test 005 cpld_fv3_ccpp_mom6_cice_2d_atm_flux results ....
+ Comparing phyf048.tile1.nc .........OK
+ Comparing phyf048.tile2.nc .........OK
+ Comparing phyf048.tile3.nc .........OK
+ Comparing phyf048.tile4.nc .........OK
+ Comparing phyf048.tile5.nc .........OK
+ Comparing phyf048.tile6.nc .........OK
+ Comparing dynf048.tile1.nc .........OK
+ Comparing dynf048.tile2.nc .........OK
+ Comparing dynf048.tile3.nc .........OK
+ Comparing dynf048.tile4.nc .........OK
+ Comparing dynf048.tile5.nc .........OK
+ Comparing dynf048.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2016-10-05-00000.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile4.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile5.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile6.nc .........OK
+ Comparing mediator_FBaccumOcn_restart.nc .........OK
+ Comparing mediator_FBaccumIce_restart.nc .........OK
+ Comparing mediator_FBaccumLnd_restart.nc .........OK
+ Comparing mediator_FBaccumHyd_restart.nc .........OK
+ Comparing mediator_FBaccumAtmOcn_restart.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile1.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile2.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile3.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile4.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile5.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile6.nc .........OK
+ Comparing mediator_FBIce_i_restart.nc .........OK
+ Comparing mediator_FBOcn_o_restart.nc .........OK
+ Comparing mediator_FBLnd_l_restart.nc .........OK
+ Comparing mediator_FBHyd_h_restart.nc .........OK
+ Comparing mediator_FBAtmOcn_o_restart.nc .........OK
+ Comparing mediator_scalars_restart.txt .........OK
+Test 005 cpld_fv3_ccpp_mom6_cice_2d_atm_flux PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_2d_2threads
+Checking test 006 cpld_fv3_ccpp_mom6_cice_2d_2threads results ....
+ Comparing phyf048.tile1.nc .........OK
+ Comparing phyf048.tile2.nc .........OK
+ Comparing phyf048.tile3.nc .........OK
+ Comparing phyf048.tile4.nc .........OK
+ Comparing phyf048.tile5.nc .........OK
+ Comparing phyf048.tile6.nc .........OK
+ Comparing dynf048.tile1.nc .........OK
+ Comparing dynf048.tile2.nc .........OK
+ Comparing dynf048.tile3.nc .........OK
+ Comparing dynf048.tile4.nc .........OK
+ Comparing dynf048.tile5.nc .........OK
+ Comparing dynf048.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2016-10-05-00000.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile4.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile5.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile6.nc .........OK
+ Comparing mediator_FBaccumOcn_restart.nc .........OK
+ Comparing mediator_FBaccumIce_restart.nc .........OK
+ Comparing mediator_FBaccumLnd_restart.nc .........OK
+ Comparing mediator_FBaccumHyd_restart.nc .........OK
+ Comparing mediator_FBaccumAtmOcn_restart.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile1.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile2.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile3.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile4.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile5.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile6.nc .........OK
+ Comparing mediator_FBIce_i_restart.nc .........OK
+ Comparing mediator_FBOcn_o_restart.nc .........OK
+ Comparing mediator_FBLnd_l_restart.nc .........OK
+ Comparing mediator_FBHyd_h_restart.nc .........OK
+ Comparing mediator_FBAtmOcn_o_restart.nc .........OK
+ Comparing mediator_scalars_restart.txt .........OK
+Test 006 cpld_fv3_ccpp_mom6_cice_2d_2threads PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_2d_decomp
+Checking test 007 cpld_fv3_ccpp_mom6_cice_2d_decomp results ....
+ Comparing phyf048.tile1.nc .........OK
+ Comparing phyf048.tile2.nc .........OK
+ Comparing phyf048.tile3.nc .........OK
+ Comparing phyf048.tile4.nc .........OK
+ Comparing phyf048.tile5.nc .........OK
+ Comparing phyf048.tile6.nc .........OK
+ Comparing dynf048.tile1.nc .........OK
+ Comparing dynf048.tile2.nc .........OK
+ Comparing dynf048.tile3.nc .........OK
+ Comparing dynf048.tile4.nc .........OK
+ Comparing dynf048.tile5.nc .........OK
+ Comparing dynf048.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2016-10-05-00000.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile4.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile5.nc .........OK
+ Comparing mediator_FBaccumAtm_restart.tile6.nc .........OK
+ Comparing mediator_FBaccumOcn_restart.nc .........OK
+ Comparing mediator_FBaccumIce_restart.nc .........OK
+ Comparing mediator_FBaccumLnd_restart.nc .........OK
+ Comparing mediator_FBaccumHyd_restart.nc .........OK
+ Comparing mediator_FBaccumAtmOcn_restart.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile1.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile2.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile3.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile4.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile5.nc .........OK
+ Comparing mediator_FBAtm_a_restart.tile6.nc .........OK
+ Comparing mediator_FBIce_i_restart.nc .........OK
+ Comparing mediator_FBOcn_o_restart.nc .........OK
+ Comparing mediator_FBLnd_l_restart.nc .........OK
+ Comparing mediator_FBHyd_h_restart.nc .........OK
+ Comparing mediator_FBAtmOcn_o_restart.nc .........OK
+ Comparing mediator_scalars_restart.txt .........OK
+Test 007 cpld_fv3_ccpp_mom6_cice_2d_decomp PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_warm_satmedmf_ccpp
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_warm_satmedmf_ccpp/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_1d_satmedmf
 Checking test 008 cpld_fv3_ccpp_mom6_cice_1d_satmedmf results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -588,11 +583,11 @@ Checking test 008 cpld_fv3_ccpp_mom6_cice_1d_satmedmf results ....
  Comparing RESTART/sfc_data.tile4.nc .........OK
  Comparing RESTART/sfc_data.tile5.nc .........OK
  Comparing RESTART/sfc_data.tile6.nc .........OK
- Comparing MOM6_RESTART/MOM.res.nc .........OK
- Comparing MOM6_RESTART/MOM.res_1.nc .........OK
- Comparing MOM6_RESTART/MOM.res_2.nc .........OK
- Comparing MOM6_RESTART/MOM.res_3.nc .........OK
- Comparing restart/iced.2016-10-04-00000.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2016-10-04-00000.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
@@ -619,22 +614,22 @@ Checking test 008 cpld_fv3_ccpp_mom6_cice_1d_satmedmf results ....
 Test 008 cpld_fv3_ccpp_mom6_cice_1d_satmedmf PASS
 
 
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_cold_bmrt_ccpp
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/MEDIATOR_bmrt_ccpp
-working dir  = /scratch1/NCEPDEV/stmp2/Jessica.Meixner/S2S_RT/rt_33235/cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt
-Checking test 009 cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt results ....
- Comparing phyf001.tile1.nc .........OK
- Comparing phyf001.tile2.nc .........OK
- Comparing phyf001.tile3.nc .........OK
- Comparing phyf001.tile4.nc .........OK
- Comparing phyf001.tile5.nc .........OK
- Comparing phyf001.tile6.nc .........OK
- Comparing dynf001.tile1.nc .........OK
- Comparing dynf001.tile2.nc .........OK
- Comparing dynf001.tile3.nc .........OK
- Comparing dynf001.tile4.nc .........OK
- Comparing dynf001.tile5.nc .........OK
- Comparing dynf001.tile6.nc .........OK
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp384
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp384/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux
+Checking test 009 cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux results ....
+ Comparing phyf048.tile1.nc .........OK
+ Comparing phyf048.tile2.nc .........OK
+ Comparing phyf048.tile3.nc .........OK
+ Comparing phyf048.tile4.nc .........OK
+ Comparing phyf048.tile5.nc .........OK
+ Comparing phyf048.tile6.nc .........OK
+ Comparing dynf048.tile1.nc .........OK
+ Comparing dynf048.tile2.nc .........OK
+ Comparing dynf048.tile3.nc .........OK
+ Comparing dynf048.tile4.nc .........OK
+ Comparing dynf048.tile5.nc .........OK
+ Comparing dynf048.tile6.nc .........OK
  Comparing RESTART/coupler.res .........OK
  Comparing RESTART/fv_core.res.nc .........OK
  Comparing RESTART/fv_core.res.tile1.nc .........OK
@@ -667,6 +662,11 @@ Checking test 009 cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt results ....
  Comparing RESTART/sfc_data.tile4.nc .........OK
  Comparing RESTART/sfc_data.tile5.nc .........OK
  Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2016-10-05-00000.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
@@ -690,12 +690,12 @@ Checking test 009 cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt results ....
  Comparing mediator_FBHyd_h_restart.nc .........OK
  Comparing mediator_FBAtmOcn_o_restart.nc .........OK
  Comparing mediator_scalars_restart.txt .........OK
-Test 009 cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt PASS
+Test 009 cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux PASS
 
 
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_1d_bmrt_ccpp
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_1d_bmrt_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Jessica.Meixner/S2S_RT/rt_33235/cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_bmrt_ccpp
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_bmrt_ccpp/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt
 Checking test 010 cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -741,11 +741,11 @@ Checking test 010 cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt results ....
  Comparing RESTART/sfc_data.tile4.nc .........OK
  Comparing RESTART/sfc_data.tile5.nc .........OK
  Comparing RESTART/sfc_data.tile6.nc .........OK
- Comparing MOM6_RESTART/MOM.res.nc .........OK
- Comparing MOM6_RESTART/MOM.res_1.nc .........OK
- Comparing MOM6_RESTART/MOM.res_2.nc .........OK
- Comparing MOM6_RESTART/MOM.res_3.nc .........OK
- Comparing restart/iced.2013-04-02-00000.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2013-04-02-00000.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
@@ -772,9 +772,9 @@ Checking test 010 cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt results ....
 Test 010 cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt PASS
 
 
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_cold_bmwav_ccpp
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/MEDIATOR_bmwav_ccpp
-working dir  = /scratch1/NCEPDEV/stmp2/Jessica.Meixner/S2S_RT/rt_33235/cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_bmwav_ccpp
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_bmwav_ccpp
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt
 Checking test 011 cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -846,9 +846,9 @@ Checking test 011 cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt results ....
 Test 011 cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt PASS
 
 
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_1d_bmwav_ccpp
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_1d_bmwav_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Jessica.Meixner/S2S_RT/rt_33235/cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_bmwav_ccpp
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_bmwav_ccpp/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt
 Checking test 012 cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -897,11 +897,11 @@ Checking test 012 cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt results ....
  Comparing RESTART/sfc_data.tile4.nc .........OK
  Comparing RESTART/sfc_data.tile5.nc .........OK
  Comparing RESTART/sfc_data.tile6.nc .........OK
- Comparing MOM6_RESTART/MOM.res.nc .........OK
- Comparing MOM6_RESTART/MOM.res_1.nc .........OK
- Comparing MOM6_RESTART/MOM.res_2.nc .........OK
- Comparing MOM6_RESTART/MOM.res_3.nc .........OK
- Comparing restart/iced.2013-04-02-00000.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2013-04-02-00000.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
@@ -928,9 +928,9 @@ Checking test 012 cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt results ....
 Test 012 cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt PASS
 
 
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_cold_debug_ccpp
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/MEDIATOR_debug_ccpp
-working dir  = /scratch1/NCEPDEV/stmp2/Jessica.Meixner/S2S_RT/rt_33235/cpld_fv3_ccpp_mom6_cice_cold_debug
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_debug_ccpp
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_debug_ccpp
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_cold_debug
 Checking test 013 cpld_fv3_ccpp_mom6_cice_cold_debug results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -1002,9 +1002,9 @@ Checking test 013 cpld_fv3_ccpp_mom6_cice_cold_debug results ....
 Test 013 cpld_fv3_ccpp_mom6_cice_cold_debug PASS
 
 
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_6h_warm_debug_ccpp
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200515/RT-Baselines_6h_warm_debug_ccpp/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Jessica.Meixner/S2S_RT/rt_33235/cpld_fv3_ccpp_mom6_cice_6h_debug
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_6h_warm_debug_ccpp
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_6h_warm_debug_ccpp/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_6h_debug
 Checking test 014 cpld_fv3_ccpp_mom6_cice_6h_debug results ....
  Comparing phyf006.tile1.nc .........OK
  Comparing phyf006.tile2.nc .........OK
@@ -1050,11 +1050,11 @@ Checking test 014 cpld_fv3_ccpp_mom6_cice_6h_debug results ....
  Comparing RESTART/sfc_data.tile4.nc .........OK
  Comparing RESTART/sfc_data.tile5.nc .........OK
  Comparing RESTART/sfc_data.tile6.nc .........OK
- Comparing MOM6_RESTART/MOM.res.nc .........OK
- Comparing MOM6_RESTART/MOM.res_1.nc .........OK
- Comparing MOM6_RESTART/MOM.res_2.nc .........OK
- Comparing MOM6_RESTART/MOM.res_3.nc .........OK
- Comparing restart/iced.2016-10-03-21600.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2016-10-03-21600.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile1.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile2.nc .........OK
  Comparing mediator_FBaccumAtm_restart.tile3.nc .........OK
@@ -1081,6 +1081,929 @@ Checking test 014 cpld_fv3_ccpp_mom6_cice_6h_debug results ....
 Test 014 cpld_fv3_ccpp_mom6_cice_6h_debug PASS
 
 
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_ccpp_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_ccpp_cmeps
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_cmeps_cold_atm_flux
+Checking test 015 cpld_fv3_ccpp_mom6_cice_cmeps_cold_atm_flux results ....
+ Comparing phyf001.tile1.nc .........OK
+ Comparing phyf001.tile2.nc .........OK
+ Comparing phyf001.tile3.nc .........OK
+ Comparing phyf001.tile4.nc .........OK
+ Comparing phyf001.tile5.nc .........OK
+ Comparing phyf001.tile6.nc .........OK
+ Comparing dynf001.tile1.nc .........OK
+ Comparing dynf001.tile2.nc .........OK
+ Comparing dynf001.tile3.nc .........OK
+ Comparing dynf001.tile4.nc .........OK
+ Comparing dynf001.tile5.nc .........OK
+ Comparing dynf001.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing ufs.s2s.cold.cpl.r.2016-10-03-03600.nc .........OK
+Test 015 cpld_fv3_ccpp_mom6_cice_cmeps_cold_atm_flux PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_satmedmf_ccpp_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_satmedmf_ccpp_cmeps
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_cmeps_cold_satmedmf
+Checking test 016 cpld_fv3_ccpp_mom6_cice_cmeps_cold_satmedmf results ....
+ Comparing phyf001.tile1.nc .........OK
+ Comparing phyf001.tile2.nc .........OK
+ Comparing phyf001.tile3.nc .........OK
+ Comparing phyf001.tile4.nc .........OK
+ Comparing phyf001.tile5.nc .........OK
+ Comparing phyf001.tile6.nc .........OK
+ Comparing dynf001.tile1.nc .........OK
+ Comparing dynf001.tile2.nc .........OK
+ Comparing dynf001.tile3.nc .........OK
+ Comparing dynf001.tile4.nc .........OK
+ Comparing dynf001.tile5.nc .........OK
+ Comparing dynf001.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing ufs.s2s.cold.cpl.r.2016-10-03-03600.nc .........OK
+Test 016 cpld_fv3_ccpp_mom6_cice_cmeps_cold_satmedmf PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold384_ccpp_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR384_ccpp_cmeps
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_384_mom6_cice_cmeps_cold_atm_flux
+Checking test 017 cpld_fv3_ccpp_384_mom6_cice_cmeps_cold_atm_flux results ....
+ Comparing phyf001.tile1.nc .........OK
+ Comparing phyf001.tile2.nc .........OK
+ Comparing phyf001.tile3.nc .........OK
+ Comparing phyf001.tile4.nc .........OK
+ Comparing phyf001.tile5.nc .........OK
+ Comparing phyf001.tile6.nc .........OK
+ Comparing dynf001.tile1.nc .........OK
+ Comparing dynf001.tile2.nc .........OK
+ Comparing dynf001.tile3.nc .........OK
+ Comparing dynf001.tile4.nc .........OK
+ Comparing dynf001.tile5.nc .........OK
+ Comparing dynf001.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing ufs.s2s.cold.cpl.r.2016-10-03-03600.nc .........OK
+Test 017 cpld_fv3_ccpp_384_mom6_cice_cmeps_cold_atm_flux PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_bmrt_ccpp_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_bmrt_ccpp_cmeps
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_384_mom6_cice_cmeps_cold_bmark_rt
+Checking test 018 cpld_fv3_ccpp_384_mom6_cice_cmeps_cold_bmark_rt results ....
+ Comparing phyf001.tile1.nc .........OK
+ Comparing phyf001.tile2.nc .........OK
+ Comparing phyf001.tile3.nc .........OK
+ Comparing phyf001.tile4.nc .........OK
+ Comparing phyf001.tile5.nc .........OK
+ Comparing phyf001.tile6.nc .........OK
+ Comparing dynf001.tile1.nc .........OK
+ Comparing dynf001.tile2.nc .........OK
+ Comparing dynf001.tile3.nc .........OK
+ Comparing dynf001.tile4.nc .........OK
+ Comparing dynf001.tile5.nc .........OK
+ Comparing dynf001.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing ufs.s2s.cold.cpl.r.2013-04-01-03600.nc .........OK
+Test 018 cpld_fv3_ccpp_384_mom6_cice_cmeps_cold_bmark_rt PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp_cmeps/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux
+Checking test 019 cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux results ....
+ Comparing phyf048.tile1.nc .........OK
+ Comparing phyf048.tile2.nc .........OK
+ Comparing phyf048.tile3.nc .........OK
+ Comparing phyf048.tile4.nc .........OK
+ Comparing phyf048.tile5.nc .........OK
+ Comparing phyf048.tile6.nc .........OK
+ Comparing dynf048.tile1.nc .........OK
+ Comparing dynf048.tile2.nc .........OK
+ Comparing dynf048.tile3.nc .........OK
+ Comparing dynf048.tile4.nc .........OK
+ Comparing dynf048.tile5.nc .........OK
+ Comparing dynf048.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2016-10-05-00000.nc .........OK
+ Comparing ufs.s2s.cpl.r.2016-10-05-00000.nc .........OK
+Test 019 cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_3d_warm_ccpp_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_3d_warm_ccpp_cmeps/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_cmeps_3d_atm_flux
+Checking test 020 cpld_fv3_ccpp_mom6_cice_cmeps_3d_atm_flux results ....
+ Comparing phyf072.tile1.nc .........OK
+ Comparing phyf072.tile2.nc .........OK
+ Comparing phyf072.tile3.nc .........OK
+ Comparing phyf072.tile4.nc .........OK
+ Comparing phyf072.tile5.nc .........OK
+ Comparing phyf072.tile6.nc .........OK
+ Comparing dynf072.tile1.nc .........OK
+ Comparing dynf072.tile2.nc .........OK
+ Comparing dynf072.tile3.nc .........OK
+ Comparing dynf072.tile4.nc .........OK
+ Comparing dynf072.tile5.nc .........OK
+ Comparing dynf072.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2016-10-06-00000.nc .........OK
+ Comparing ufs.s2s.cpl.r.2016-10-06-00000.nc .........OK
+Test 020 cpld_fv3_ccpp_mom6_cice_cmeps_3d_atm_flux PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_3d_warm_ccpp_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_3d_warm_ccpp_cmeps/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_cmeps_restart
+Checking test 021 cpld_fv3_ccpp_mom6_cice_cmeps_restart results ....
+ Comparing phyf072.tile1.nc .........OK
+ Comparing phyf072.tile2.nc .........OK
+ Comparing phyf072.tile3.nc .........OK
+ Comparing phyf072.tile4.nc .........OK
+ Comparing phyf072.tile5.nc .........OK
+ Comparing phyf072.tile6.nc .........OK
+ Comparing dynf072.tile1.nc .........OK
+ Comparing dynf072.tile2.nc .........OK
+ Comparing dynf072.tile3.nc .........OK
+ Comparing dynf072.tile4.nc .........OK
+ Comparing dynf072.tile5.nc .........OK
+ Comparing dynf072.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2016-10-06-00000.nc .........OK
+ Comparing ufs.s2s.cpl.r.2016-10-06-00000.nc .........OK
+Test 021 cpld_fv3_ccpp_mom6_cice_cmeps_restart PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp_cmeps/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_cmeps_2d_2threads
+Checking test 022 cpld_fv3_ccpp_mom6_cice_cmeps_2d_2threads results ....
+ Comparing phyf048.tile1.nc .........OK
+ Comparing phyf048.tile2.nc .........OK
+ Comparing phyf048.tile3.nc .........OK
+ Comparing phyf048.tile4.nc .........OK
+ Comparing phyf048.tile5.nc .........OK
+ Comparing phyf048.tile6.nc .........OK
+ Comparing dynf048.tile1.nc .........OK
+ Comparing dynf048.tile2.nc .........OK
+ Comparing dynf048.tile3.nc .........OK
+ Comparing dynf048.tile4.nc .........OK
+ Comparing dynf048.tile5.nc .........OK
+ Comparing dynf048.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2016-10-05-00000.nc .........OK
+ Comparing ufs.s2s.cpl.r.2016-10-05-00000.nc .........OK
+Test 022 cpld_fv3_ccpp_mom6_cice_cmeps_2d_2threads PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp_cmeps/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_cmeps_2d_decomp
+Checking test 023 cpld_fv3_ccpp_mom6_cice_cmeps_2d_decomp results ....
+ Comparing phyf048.tile1.nc .........OK
+ Comparing phyf048.tile2.nc .........OK
+ Comparing phyf048.tile3.nc .........OK
+ Comparing phyf048.tile4.nc .........OK
+ Comparing phyf048.tile5.nc .........OK
+ Comparing phyf048.tile6.nc .........OK
+ Comparing dynf048.tile1.nc .........OK
+ Comparing dynf048.tile2.nc .........OK
+ Comparing dynf048.tile3.nc .........OK
+ Comparing dynf048.tile4.nc .........OK
+ Comparing dynf048.tile5.nc .........OK
+ Comparing dynf048.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2016-10-05-00000.nc .........OK
+ Comparing ufs.s2s.cpl.r.2016-10-05-00000.nc .........OK
+Test 023 cpld_fv3_ccpp_mom6_cice_cmeps_2d_decomp PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_warm_satmedmf_ccpp_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_warm_satmedmf_ccpp_cmeps/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_cmeps_1d_satmedmf
+Checking test 024 cpld_fv3_ccpp_mom6_cice_cmeps_1d_satmedmf results ....
+ Comparing phyf024.tile1.nc .........OK
+ Comparing phyf024.tile2.nc .........OK
+ Comparing phyf024.tile3.nc .........OK
+ Comparing phyf024.tile4.nc .........OK
+ Comparing phyf024.tile5.nc .........OK
+ Comparing phyf024.tile6.nc .........OK
+ Comparing dynf024.tile1.nc .........OK
+ Comparing dynf024.tile2.nc .........OK
+ Comparing dynf024.tile3.nc .........OK
+ Comparing dynf024.tile4.nc .........OK
+ Comparing dynf024.tile5.nc .........OK
+ Comparing dynf024.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2016-10-04-00000.nc .........OK
+ Comparing ufs.s2s.cpl.r.2016-10-04-00000.nc .........OK
+Test 024 cpld_fv3_ccpp_mom6_cice_cmeps_1d_satmedmf PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp384_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp384_cmeps/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_384_mom6_cice_cmeps_2d_atm_flux
+Checking test 025 cpld_fv3_ccpp_384_mom6_cice_cmeps_2d_atm_flux results ....
+ Comparing phyf048.tile1.nc .........OK
+ Comparing phyf048.tile2.nc .........OK
+ Comparing phyf048.tile3.nc .........OK
+ Comparing phyf048.tile4.nc .........OK
+ Comparing phyf048.tile5.nc .........OK
+ Comparing phyf048.tile6.nc .........OK
+ Comparing dynf048.tile1.nc .........OK
+ Comparing dynf048.tile2.nc .........OK
+ Comparing dynf048.tile3.nc .........OK
+ Comparing dynf048.tile4.nc .........OK
+ Comparing dynf048.tile5.nc .........OK
+ Comparing dynf048.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2016-10-05-00000.nc .........OK
+ Comparing ufs.s2s.cpl.r.2016-10-05-00000.nc .........OK
+Test 025 cpld_fv3_ccpp_384_mom6_cice_cmeps_2d_atm_flux PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_bmrt_ccpp_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_bmrt_ccpp_cmeps/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_384_mom6_cice_cmeps_1d_bmark_rt
+Checking test 026 cpld_fv3_ccpp_384_mom6_cice_cmeps_1d_bmark_rt results ....
+ Comparing phyf024.tile1.nc .........OK
+ Comparing phyf024.tile2.nc .........OK
+ Comparing phyf024.tile3.nc .........OK
+ Comparing phyf024.tile4.nc .........OK
+ Comparing phyf024.tile5.nc .........OK
+ Comparing phyf024.tile6.nc .........OK
+ Comparing dynf024.tile1.nc .........OK
+ Comparing dynf024.tile2.nc .........OK
+ Comparing dynf024.tile3.nc .........OK
+ Comparing dynf024.tile4.nc .........OK
+ Comparing dynf024.tile5.nc .........OK
+ Comparing dynf024.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing RESTART/20130401.120000.coupler.res .........OK
+ Comparing RESTART/20130401.120000.fv_core.res.nc .........OK
+ Comparing RESTART/20130401.120000.fv_core.res.tile1.nc .........OK
+ Comparing RESTART/20130401.120000.fv_core.res.tile2.nc .........OK
+ Comparing RESTART/20130401.120000.fv_core.res.tile3.nc .........OK
+ Comparing RESTART/20130401.120000.fv_core.res.tile4.nc .........OK
+ Comparing RESTART/20130401.120000.fv_core.res.tile5.nc .........OK
+ Comparing RESTART/20130401.120000.fv_core.res.tile6.nc .........OK
+ Comparing RESTART/20130401.120000.fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/20130401.120000.fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/20130401.120000.fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/20130401.120000.fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/20130401.120000.fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/20130401.120000.fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/20130401.120000.fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/20130401.120000.fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/20130401.120000.fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/20130401.120000.fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/20130401.120000.fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/20130401.120000.fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/20130401.120000.phy_data.tile1.nc .........OK
+ Comparing RESTART/20130401.120000.phy_data.tile2.nc .........OK
+ Comparing RESTART/20130401.120000.phy_data.tile3.nc .........OK
+ Comparing RESTART/20130401.120000.phy_data.tile4.nc .........OK
+ Comparing RESTART/20130401.120000.phy_data.tile5.nc .........OK
+ Comparing RESTART/20130401.120000.phy_data.tile6.nc .........OK
+ Comparing RESTART/20130401.120000.sfc_data.tile1.nc .........OK
+ Comparing RESTART/20130401.120000.sfc_data.tile2.nc .........OK
+ Comparing RESTART/20130401.120000.sfc_data.tile3.nc .........OK
+ Comparing RESTART/20130401.120000.sfc_data.tile4.nc .........OK
+ Comparing RESTART/20130401.120000.sfc_data.tile5.nc .........OK
+ Comparing RESTART/20130401.120000.sfc_data.tile6.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/MOM.res.2013-04-01-12-00-00.nc .........OK
+ Comparing RESTART/MOM.res.2013-04-01-12-00-00_1.nc .........OK
+ Comparing RESTART/MOM.res.2013-04-01-12-00-00_2.nc .........OK
+ Comparing RESTART/MOM.res.2013-04-01-12-00-00_3.nc .........OK
+ Comparing RESTART/iced.2013-04-02-00000.nc .........OK
+ Comparing RESTART/iced.2013-04-01-43200.nc .........OK
+ Comparing ufs.s2s.cpl.r.2013-04-01-43200.nc .........OK
+ Comparing ufs.s2s.cpl.r.2013-04-02-00000.nc .........OK
+Test 026 cpld_fv3_ccpp_384_mom6_cice_cmeps_1d_bmark_rt PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_bmwav_ccpp_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_bmwav_ccpp_cmeps
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_cold_bmark_rt
+Checking test 027 cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_cold_bmark_rt results ....
+ Comparing phyf001.tile1.nc .........OK
+ Comparing phyf001.tile2.nc .........OK
+ Comparing phyf001.tile3.nc .........OK
+ Comparing phyf001.tile4.nc .........OK
+ Comparing phyf001.tile5.nc .........OK
+ Comparing phyf001.tile6.nc .........OK
+ Comparing dynf001.tile1.nc .........OK
+ Comparing dynf001.tile2.nc .........OK
+ Comparing dynf001.tile3.nc .........OK
+ Comparing dynf001.tile4.nc .........OK
+ Comparing dynf001.tile5.nc .........OK
+ Comparing dynf001.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing ufs.s2s.cold.cpl.r.2013-04-01-03600.nc .........OK
+Test 027 cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_cold_bmark_rt PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_bmwav_ccpp_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_bmwav_ccpp_cmeps/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt
+Checking test 028 cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt results ....
+ Comparing phyf024.tile1.nc .........OK
+ Comparing phyf024.tile2.nc .........OK
+ Comparing phyf024.tile3.nc .........OK
+ Comparing phyf024.tile4.nc .........OK
+ Comparing phyf024.tile5.nc .........OK
+ Comparing phyf024.tile6.nc .........OK
+ Comparing dynf024.tile1.nc .........OK
+ Comparing dynf024.tile2.nc .........OK
+ Comparing dynf024.tile3.nc .........OK
+ Comparing dynf024.tile4.nc .........OK
+ Comparing dynf024.tile5.nc .........OK
+ Comparing dynf024.tile6.nc .........OK
+ Comparing 20130402.000000.out_grd.gwes_30m .........OK
+ Comparing 20130402.000000.out_pnt.points .........OK
+ Comparing 20130402.000000.restart.gwes_30m .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2013-04-02-00000.nc .........OK
+ Comparing ufs.s2s.cpl.r.2013-04-02-00000.nc .........OK
+Test 028 cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_debug_ccpp_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_debug_ccpp_cmeps
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_cmeps_cold_debug
+Checking test 029 cpld_fv3_ccpp_mom6_cice_cmeps_cold_debug results ....
+ Comparing phyf001.tile1.nc .........OK
+ Comparing phyf001.tile2.nc .........OK
+ Comparing phyf001.tile3.nc .........OK
+ Comparing phyf001.tile4.nc .........OK
+ Comparing phyf001.tile5.nc .........OK
+ Comparing phyf001.tile6.nc .........OK
+ Comparing dynf001.tile1.nc .........OK
+ Comparing dynf001.tile2.nc .........OK
+ Comparing dynf001.tile3.nc .........OK
+ Comparing dynf001.tile4.nc .........OK
+ Comparing dynf001.tile5.nc .........OK
+ Comparing dynf001.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing ufs.s2s.cold.cpl.r.2016-10-03-03600.nc .........OK
+Test 029 cpld_fv3_ccpp_mom6_cice_cmeps_cold_debug PASS
+
+
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_6h_warm_debug_ccpp_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_6h_warm_debug_ccpp_cmeps/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_91135/cpld_fv3_ccpp_mom6_cice_cmeps_6h_debug
+Checking test 030 cpld_fv3_ccpp_mom6_cice_cmeps_6h_debug results ....
+ Comparing phyf006.tile1.nc .........OK
+ Comparing phyf006.tile2.nc .........OK
+ Comparing phyf006.tile3.nc .........OK
+ Comparing phyf006.tile4.nc .........OK
+ Comparing phyf006.tile5.nc .........OK
+ Comparing phyf006.tile6.nc .........OK
+ Comparing dynf006.tile1.nc .........OK
+ Comparing dynf006.tile2.nc .........OK
+ Comparing dynf006.tile3.nc .........OK
+ Comparing dynf006.tile4.nc .........OK
+ Comparing dynf006.tile5.nc .........OK
+ Comparing dynf006.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2016-10-03-21600.nc .........OK
+ Comparing ufs.s2s.cpl.r.2016-10-03-21600.nc .........OK
+Test 030 cpld_fv3_ccpp_mom6_cice_cmeps_6h_debug PASS
+
+
 REGRESSION TEST WAS SUCCESSFUL
-Sat May 16 21:51:25 UTC 2020
-Elapsed time: 01h:32m:47s. Have a nice day!
+Wed Jun  3 11:38:15 UTC 2020
+Elapsed time: 02h:34m:25s. Have a nice day!

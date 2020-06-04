@@ -198,6 +198,10 @@ endif
 
 LDFLAGS += $(LIBS)
 
+ifeq ($(CMEPS),Y)
+CPPDEFS += -DCMEPS
+endif
+
 ifdef InNemsMakefile
 FFLAGS += $(ESMF_INC)
 CPPFLAGS += -DFV3_CPLD -traditional
