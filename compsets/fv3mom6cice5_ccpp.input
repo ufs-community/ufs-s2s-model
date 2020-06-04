@@ -119,8 +119,12 @@ cpl_defaults = {
     ocn_model="mom6"
     ice_model="cice"
     wav_model="ww3"
-# future use: for MOM6 river runoff 
+# MOM6 river runoff 
     MOM6_RIVER_RUNOFF='True'
+# set USE_LA_LI2016 to the current default; this must be set False for restart repro
+    MOM6_REPRO_LA='True'
+# set the THERMO_SPANS_COUPLING to the current default; according to Gustavo and Alper, the correct setting is "False"
+    MOM6_THERMO_SPAN='True'
     NPROC_ICE='48'
     DT_ATMOS='900' #needed for C96 cases
     DT_DYNAM_MOM6='900'
@@ -151,7 +155,7 @@ cpl_defaults = {
 # embeded bash script to create input files at prerun from specification 
 # in compset
 
-embed bash edit_inputs(CDATE,ATMRES,DT_CICE,NPROC_ICE,RUNTYPE,USE_RESTART_TIME,FRAZIL_FWSALT,RUNID,CICE_HIST_AVG,DUMPFREQ_N,DUMPFREQ,DT_THERM,DT_DYNAM,MOM6_RIVER_RUNOFF) [[[ 
+embed bash edit_inputs(CDATE,ATMRES,DT_CICE,NPROC_ICE,RUNTYPE,USE_RESTART_TIME,FRAZIL_FWSALT,RUNID,CICE_HIST_AVG,DUMPFREQ_N,DUMPFREQ,DT_THERM,DT_DYNAM,MOM6_RIVER_RUNOFF, MOM6_REPRO_LA, MOM6_THERMO_SPAN) [[[ 
 
 python <<EOT
 import os
@@ -206,7 +210,9 @@ with open("INPUT/MOM_input_template",'rt') as inf:
    for x in inf.readlines():
     newline=x.replace("DT_THERM_MOM6","@[DT_THERM]") \
              .replace("DT_DYNAM_MOM6","@[DT_DYNAM]") \
-             .replace("MOM6_RIVER_RUNOFF","@[MOM6_RIVER_RUNOFF]")
+             .replace("MOM6_RIVER_RUNOFF","@[MOM6_RIVER_RUNOFF]") \
+             .replace("MOM6_REPRO_LA","@[MOM6_REPRO_LA]") \
+             .replace("MOM6_THERMO_SPAN","@[MOM6_THERMO_SPAN]") 
     outf.write(newline)
 
 #diag_table

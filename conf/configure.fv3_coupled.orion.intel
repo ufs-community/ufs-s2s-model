@@ -168,6 +168,10 @@ FFLAGS += -I$(PATH_CCPP)/include
 LDFLAGS += -L$(PATH_CCPP)/lib -lccppphys -lccpp $(NCEPLIBS) -lxml2
 endif
 
+ifeq ($(CMEPS),Y)
+CPPDEFS += -DCMEPS
+endif
+
 LDFLAGS += $(LIBS)
 
 ifdef InNemsMakefile

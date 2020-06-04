@@ -110,7 +110,9 @@ test cpld_fv3_ccpp_mom6_cice_2d_atm_flux: fv3_ccpp_mom6_cice.exe {
                     DUMPFREQ="@[DUMPFREQ]",
                     DT_THERM="@[DT_THERM_MOM6]",
                     DT_DYNAM="@[DT_DYNAM_MOM6]",
-           MOM6_RIVER_RUNOFF="@[MOM6_RIVER_RUNOFF]")
+           MOM6_RIVER_RUNOFF="@[MOM6_RIVER_RUNOFF]",
+               MOM6_REPRO_LA="@[MOM6_REPRO_LA]",
+            MOM6_THERMO_SPAN="@[MOM6_THERMO_SPAN]")
 
     # Specify output files:
     criteria output {
