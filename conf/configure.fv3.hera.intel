@@ -37,11 +37,6 @@ NO_INLINE_POST =
 include       $(ESMFMKFILE)
 ESMF_INC    = $(ESMF_F90COMPILEPATHS)
 
-ifeq ($(CUST_POST),Y)
-  POST_INC =  /scratch1/NCEPDEV/global/Shrinivas.Moorthi/save/postdir/EMC_post/sorc/ncep_post.fd/incmod/post_4
-  POST_LIB =  /scratch1/NCEPDEV/global/Shrinivas.Moorthi/save/postdir/EMC_post/sorc/ncep_post.fd/libnceppost.a
-endif
-
 NEMSIOINC = -I$(NEMSIO_INC)
 NCEPLIBS = $(POST_LIB) $(NEMSIO_LIB) $(G2_LIB4) $(G2TMPL_LIB) $(BACIO_LIB4) $(SP_LIBd) $(W3EMC_LIBd) $(W3NCO_LIBd) $(CRTM_LIB) $(PNG_LIB) $(JASPER_LIB) $(Z_LIB)
 

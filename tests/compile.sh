@@ -99,6 +99,9 @@ fi
 if [[ "${MAKE_OPT}" == *"CICE=Y"* ]]; then
   COMPONENTS="$COMPONENTS,CICE"
 fi
+if [[ "${MAKE_OPT}" == *"CICE6=Y"* ]]; then
+  COMPONENTS="$COMPONENTS,CICE6"
+fi
 if [[ "${MAKE_OPT}" == *"WW3=Y"* ]]; then
   COMPONENTS="$COMPONENTS,WW3"
 fi
@@ -141,6 +144,12 @@ fi
 CICE_MAKEOPT=""
 if [[ "${MAKE_OPT}" == *"DEBUG=Y"* && "${MAKE_OPT}" == *"CICE=Y"* ]]; then
   CICE_MAKEOPT="DEBUG=Y"
+fi
+
+# Pass DEBUG to CICE6
+CICE6_MAKEOPT=""
+if [[ "${MAKE_OPT}" == *"DEBUG=Y"* && "${MAKE_OPT}" == *"CICE6=Y"* ]]; then
+  CICE6_MAKEOPT="DEBUG=Y"
 fi
 
 # Pass DEBUG to CMEPS
