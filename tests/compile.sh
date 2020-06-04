@@ -43,12 +43,14 @@ if [[ $BUILD_TARGET == cheyenne.* || $BUILD_TARGET == stampede.* ]] ; then
     MAKE_THREADS=${MAKE_THREADS:-3}
 fi
 
-MAKE_THREADS=${MAKE_THREADS:-8}
+# CMEPS component fails to build when using multiple threads, thus set to 1
+MAKE_THREADS=${MAKE_THREADS:-1}
 
 if [[ "$MAKE_THREADS" -gt 1 ]] ; then
     echo Using \$MAKE_THREADS=$MAKE_THREADS threads to build FV3 and FMS.
     echo Consider reducing \$MAKE_THREADS if you hit memory or process limits.
     gnu_make="$gnu_make -j $MAKE_THREADS"
+    #gnu_make="$gnu_make"
 fi
 
 # ----------------------------------------------------------------------
@@ -100,6 +102,9 @@ fi
 if [[ "${MAKE_OPT}" == *"WW3=Y"* ]]; then
   COMPONENTS="$COMPONENTS,WW3"
 fi
+if [[ "${MAKE_OPT}" == *"CMEPS=Y"* ]]; then
+  COMPONENTS="$COMPONENTS,CMEPS"
+fi
 
 if [[ "${MAKE_OPT}" == *"DEBUG=Y"* ]]; then
   export S2S_DEBUG_MODULE=true
@@ -138,23 +143,29 @@ if [[ "${MAKE_OPT}" == *"DEBUG=Y"* && "${MAKE_OPT}" == *"CICE=Y"* ]]; then
   CICE_MAKEOPT="DEBUG=Y"
 fi
 
+# Pass DEBUG to CMEPS
+CMEPS_MAKEOPT=""
+if [[ "${MAKE_OPT}" == *"DEBUG=Y"* && "${MAKE_OPT}" == *"CMEPS=Y"* ]]; then
+  CMEPS_MAKEOPT="DEBUG=Y"
+fi
+
 if [ $clean_before = YES ] ; then
   $gnu_make -k COMPONENTS="$COMPONENTS" TEST_BUILD_NAME="$BUILD_NAME" \
            BUILD_ENV="$BUILD_TARGET" FV3_MAKEOPT="$MAKE_OPT" \
            MOM6_MAKEOPT="${MOM6_MAKEOPT}" CICE_MAKEOPT="${CICE_MAKEOPT}" \
-           NEMS_BUILDOPT="$NEMS_BUILDOPT" distclean
+           CMEPS_MAKEOPT="${CMEPS_MAKEOPT}" NEMS_BUILDOPT="$NEMS_BUILDOPT" distclean
 fi
 
   $gnu_make -k COMPONENTS="$COMPONENTS" TEST_BUILD_NAME="$BUILD_NAME" \
            BUILD_ENV="$BUILD_TARGET" FV3_MAKEOPT="$MAKE_OPT" \
            MOM6_MAKEOPT="${MOM6_MAKEOPT}" CICE_MAKEOPT="${CICE_MAKEOPT}" \
-           NEMS_BUILDOPT="$NEMS_BUILDOPT" build
+           CMEPS_MAKEOPT="${CMEPS_MAKEOPT}" NEMS_BUILDOPT="$NEMS_BUILDOPT" build
 
 if [ $clean_after = YES ] ; then
   $gnu_make -k COMPONENTS="$COMPONENTS" TEST_BUILD_NAME="$BUILD_NAME" \
            BUILD_ENV="$BUILD_TARGET" FV3_MAKEOPT="$MAKE_OPT" \
            MOM6_MAKEOPT="${MOM6_MAKEOPT}" CICE_MAKEOPT="${CICE_MAKEOPT}" \
-           NEMS_BUILDOPT="$NEMS_BUILDOPT" clean
+           CMEPS_MAKEOPT="${CMEPS_MAKEOPT}" NEMS_BUILDOPT="$NEMS_BUILDOPT" clean
 fi
 
 elapsed=$SECONDS
