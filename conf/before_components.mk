@@ -18,7 +18,7 @@
 CHOSEN_MODULE=$(BUILD_TARGET)/fv3_coupled
 
 ifeq ($(S2S_DEBUG_MODULE),true)
-  CHOSEN_MODULE=$(BUILD_TARGET)/fv3_debug
+  CHOSEN_MODULE=$(BUILD_TARGET)/fv3_coupled_debug
 endif
 
 #$(info CHOSEN_MODULE is $(CHOSEN_MODULE))
