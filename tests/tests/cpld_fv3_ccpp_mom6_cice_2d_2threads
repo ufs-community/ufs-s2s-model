@@ -55,7 +55,7 @@ export LIST_FILES="phyf048.tile1.nc \
                    RESTART/MOM.res_1.nc \
                    RESTART/MOM.res_2.nc \
                    RESTART/MOM.res_3.nc \
-                   restart/iced.2016-10-05-00000.nc \
+                   RESTART/iced.2016-10-05-00000.nc \
                    mediator_FBaccumAtm_restart.tile1.nc \
                    mediator_FBaccumAtm_restart.tile2.nc \
                    mediator_FBaccumAtm_restart.tile3.nc \

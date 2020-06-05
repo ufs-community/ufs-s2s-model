@@ -108,6 +108,9 @@ export CPL_FAST=${DT_ATMOS}
 export DUMPFREQ_N=${DAYS}
 export DUMPFREQ="d"
 
+# write a MOM6 restart at FHMAX
+mom6_restart_n=${FHMAX}
+
 # nems.configure
 export NEMS_CONFIGURE="nems.configure.med_atm_ocn_ice.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}

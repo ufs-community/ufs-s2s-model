@@ -55,9 +55,8 @@ export LIST_FILES="phyf048.tile1.nc \
                    RESTART/MOM.res_1.nc \
                    RESTART/MOM.res_2.nc \
                    RESTART/MOM.res_3.nc \
-                   restart/iced.2016-10-05-00000.nc \
-                   ufs.s2s.c384_t025.jan.jul02.cpl.r.2016-10-05-00000.nc \
-                   rpointer.cpl
+                   RESTART/iced.2016-10-05-00000.nc \
+                   ufs.s2s.cpl.r.2016-10-05-00000.nc"
 
 export_fv3
 export_cpl
@@ -90,6 +89,12 @@ export DUMPFREQ="d"
 
 # use CMEPS as the mediator component
 export MEDCOMP="cmeps"
+# CMEPS controls intervals in ALLCOMP
+export FV3_RESTART_INTERVAL=${FHMAX}
+
+# restart test: required for restart repro
+export MOM6_REPRO_LA='False'
+export MOM6_THERMO_SPAN='False'
 
 # nems.configure
 export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice.IN"

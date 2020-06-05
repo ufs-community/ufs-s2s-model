@@ -147,7 +147,8 @@ export EXTERNAL_IC=.T.
 export MAKE_NH=.T.
 export MOUNTAIN=.F.
 export NA_INIT=1
-
+# Radiation
+export DO_RRTMGP=.F.
 # Microphysics
 export IMP_PHYSICS=11
 # GFDL MP
@@ -234,6 +235,11 @@ export SHUM=-999.
 #IAU
 export IAU_INC_FILES="''"
 export IAU_DRYMASSFIXER=.false.
+
+#Cellular automata
+export DO_CA=.F.
+export CA_SGS=.F.
+export CA_GLOBAL=.F.
 }
 
 export_cpl ()
@@ -283,6 +289,9 @@ export NPROC_ICE='48'
 export DT_ATMOS='900' #needed for C96 cases
 export DT_DYNAM_MOM6='900'
 export DT_THERM_MOM6='1800'
+export MOM_INPUT=MOM_input_template
+export mom6_restart_option='nhours'
+export mom6_restart_n='24' 
 # defaults for CICE runtype and restart writing
 export RUNTYPE='initial' 
 export DUMPFREQ='d' 
@@ -304,4 +313,6 @@ export NGGPS_IC='.T.'
 export MOUNTAIN='.F.'
 # default mediator component (NEMS mediator)
 export MEDCOMP=''
+export RESTART_PREFIX=''
+export RESTART_SUFFIX=''
 }

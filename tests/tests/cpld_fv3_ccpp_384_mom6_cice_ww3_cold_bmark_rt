@@ -85,7 +85,7 @@ export SHOUR="00"
 
 export DAYS="0.041666666"
 export FHMAX="1" # Note this needs to be at least 2x CPL_SLOW
-export NFHMAX="12"
+export NFHMAX_HF="12"
 export NFHOUT_HF="1"
 
 export DT_ATMOS="450"
@@ -125,6 +125,7 @@ export DUMPFREQ="h"
 export NEMS_CONFIGURE="nems.configure.medcold_atm_ocn_ice_wav.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
+export MOM_INPUT=MOM_input_wave_template
 
 export FV3_RUN=cpld_fv3_mom6_cice_ww3_bmark_rt_run.IN
 export INPUT_NML=input.benchmark_ccpp.nml.IN

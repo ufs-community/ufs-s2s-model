@@ -1,0 +1,6 @@
+# Coupled FV3-MOM6-CICE-CMEPS
+#
+## NEMS Application Builder file
+
+COMPONENTS=( FMS FV3%CMEPS=Y MOM6 CICE CMEPS )
+

@@ -20,6 +20,13 @@ PATHTR=${PATHTR:-$(cd ${compile_root_dir}/.. && pwd)}
 echo "PATHTR is $PATHTR"
 cd ${PATHTR}/NEMS
 
+if [[ ${app_name} =~ _debug ]]; then
+  S2S_DEBUG_MODULE=true
+else
+  S2S_DEBUG_MODULE=false
+fi
+export S2S_DEBUG_MODULE
+
 if [[ ${clean_before} == YES ]]; then
   make app=${app_name} distclean
 fi

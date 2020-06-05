@@ -51,8 +51,7 @@ export LIST_FILES="phyf001.tile1.nc \
                    RESTART/sfc_data.tile4.nc \
                    RESTART/sfc_data.tile5.nc \
                    RESTART/sfc_data.tile6.nc \
-                   RESTART/ufs.s2s.c384_t025.jan.jul02.cold.cpl.r.2013-04-01-03600.nc \ 
-                   rpointer.cpl
+                   ufs.s2s.cold.cpl.r.2013-04-01-03600.nc" 
 
 export_fv3
 export_cpl
@@ -64,7 +63,7 @@ export SHOUR="00"
 
 export DAYS="0.041666666"
 export FHMAX="1" # Note this needs to be at least 2x CPL_SLOW
-export NFHMAX="12"
+export NFHMAX_HF="12"
 export NFHOUT_HF="1"
 
 export DT_ATMOS="450"

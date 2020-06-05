@@ -56,14 +56,17 @@ runSeq::
 @@[coupling_interval_slow_sec]
    MED med_phases_prep_ocn_accum_avg
    MED -> OCN :remapMethod=redist
+   OCN -> WAV
+   WAV -> OCN :srcMaskValues=1
    OCN
    @@[coupling_interval_fast_sec]
      MED med_phases_prep_atm
      MED med_phases_prep_ice
      MED -> ATM :remapMethod=redist
      MED -> ICE :remapMethod=redist
-     WAV -> ATM
+     WAV -> ATM :srcMaskValues=1
      ATM -> WAV
+     ICE -> WAV
      ATM
      ICE
      WAV
@@ -82,15 +85,13 @@ runSeq::
 
 # CMEPS variables
 
-component_list: ATM OCN ICE MED
-
 DRIVER_attributes::
       mediator_read_restart = .true.
 ::
 MED_attributes::
-      ATM_model = fv3gfs
-      ICE_model = cice
-      OCN_model = mom
+      ATM_model = @[atm_model]
+      ICE_model = @[ice_model]
+      OCN_model = @[ocn_model]
       history_n = 0
       history_option = nhours
       history_ymd = -999
@@ -102,7 +103,7 @@ ALLCOMP_attributes::
       ScalarFieldIdxGridNY = 2
       ScalarFieldName = cpl_scalars
       start_type = startup
-      case_name = ufs.s2s.c384_t025.jan.jul02
+      case_name = ufs.s2s
       restart_n = @[FV3_RESTART_INTERVAL]
       restart_option = nhours
       restart_ymd = -999
