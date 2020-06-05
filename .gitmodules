@@ -32,3 +32,4 @@
 [submodule "CICE6"]
 	path = CICE6
 	url = https://github.com/ESCOMP/CICE.git
+	branch = nuopc
