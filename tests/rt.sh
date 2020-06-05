@@ -566,20 +566,20 @@ while read -r line; do
       elif [[ $ECFLOW == true ]]; then
         ecflow_create_compile_task
       else
-        #./compile.sh $PATHTR/FV3 $MACHINE_ID "${NEMS_VER}" $COMPILE_NR > ${LOG_DIR}/compile_${COMPILE_NR}.log 2>&1
-        ./compile.sh ${NEMS_VER} $COMPILE_NR > ${LOG_DIR}/compile_${COMPILE_NR}.log 2>&1
+        ./compile.sh $PATHTR/FV3 $MACHINE_ID "${NEMS_VER}" $COMPILE_NR > ${LOG_DIR}/compile_${COMPILE_NR}.log 2>&1
+        #./compile.sh ${NEMS_VER} $COMPILE_NR > ${LOG_DIR}/compile_${COMPILE_NR}.log 2>&1
         echo " bash Compile is done"
       fi
 
       # Set RT_SUFFIX (regression test run directories and log files) and BL_SUFFIX
       # (regression test baseline directories) for REPRO (IPD, CCPP) or PROD (CCPP) runs
-      if [[ ${NEMS_VER^^} =~ "REPRO=Y" ]]; then
-        RT_SUFFIX="_repro"
-        BL_SUFFIX="_repro"
-      elif [[ ${NEMS_VER^^} =~ "CCPP=Y" ]]; then
-        RT_SUFFIX="_prod"
-        BL_SUFFIX="_ccpp"
-      fi
+      #if [[ ${NEMS_VER^^} =~ "REPRO=Y" ]]; then
+      #  RT_SUFFIX="_repro"
+      #  BL_SUFFIX="_repro"
+      #elif [[ ${NEMS_VER^^} =~ "CCPP=Y" ]]; then
+      #  RT_SUFFIX="_prod"
+      #  BL_SUFFIX="_ccpp"
+      #fi
 
       if [[ ${NEMS_VER^^} =~ "WW3=Y" ]]; then
          COMPILE_PREV_WW3_NR=${COMPILE_NR}
