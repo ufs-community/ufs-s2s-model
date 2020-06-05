@@ -26,7 +26,9 @@ function edit_ice_in {
 function edit_mom_input {
   sed -e "s/DT_THERM_MOM6/$DT_THERM_MOM6/g" \
       -e "s/DT_DYNAM_MOM6/$DT_DYNAM_MOM6/g" \
-      -e "s/MOM6_RIVER_RUNOFF/$MOM6_RIVER_RUNOFF/g"
+      -e "s/MOM6_RIVER_RUNOFF/$MOM6_RIVER_RUNOFF/g" \
+      -e "s/MOM6_THERMO_SPAN/$MOM6_THERMO_SPAN/g" \
+      -e "s/MOM6_REPRO_LA/$MOM6_REPRO_LA/g" 
 }
 
 function edit_diag_table {
