@@ -8,42 +8,45 @@
 # FV3, CCPP, FMS, MOM6, CICE, WW3 or NEMS.  Otherwise, applications will
 # break.  There should only be logic specific this coupled app. 
 #
-# Logic specific to FV3, CCPP, FMS, or NEMS belong in NEMS/src/incmake.
+# Logic specific to FV3, CCPP, FMS, WW3, or NEMS belong in NEMS/src/incmake.
 
 # ----------------------------------------------------------------------
 # Decide the conf and modulefile names.
 # S2S_DEBUG_MODULE is defined in GNUmakefile
-ifeq ($(S2S_DEBUG_MODULE),false)
-  CHOSEN_MODULE=$(BUILD_TARGET)/fv3_coupled
-else
+
+#CHOSEN_MODULE=$(BUILD_TARGET)/fv3
+CHOSEN_MODULE=$(BUILD_TARGET)/fv3_coupled
+
+ifeq ($(S2S_DEBUG_MODULE),true)
   CHOSEN_MODULE=$(BUILD_TARGET)/fv3_coupled_debug
 endif
 
 #$(info CHOSEN_MODULE is $(CHOSEN_MODULE))
 
-CONFIGURE_NEMS_FILE=configure.fv3_coupled.$(BUILD_TARGET)
+CONFIGURE_NEMS_FILE=configure.fv3.$(BUILD_TARGET)
 
 # ----------------------------------------------------------------------
 # Exit for systems that are currently not supported
+
 ifeq ($(BUILD_TARGET),theia.pgi)
   $(error Model currently not supported on $(BUILD_TARGET))
 else ifeq ($(BUILD_TARGET),cheyenne.pgi)
   $(error Model currently not supported on $(BUILD_TARGET))
 endif
 
+
 # ----------------------------------------------------------------------
 # Copy the executable and modules.nems files into the tests/ directory
 # if a TEST_BUILD_NAME is specified.
-
+ 
 ifneq ($(TEST_BUILD_NAME),)
-$(info Will copy modules.nems and NEMS.x as $(TEST_BUILD_NAME) under tests/)
-$(ROOTDIR)/tests/$(TEST_BUILD_NAME).exe: $(NEMS_EXE)
+ $(info Will copy modules.nems and NEMS.x as $(TEST_BUILD_NAME) under tests/)
+ $(ROOTDIR)/tests/$(TEST_BUILD_NAME).exe: $(NEMS_EXE)
 	set -xe ; cp "$<" "$@"
-
-$(ROOTDIR)/tests/modules.$(TEST_BUILD_NAME): $(NEMSDIR)/src/conf/modules.nems
+ 
+ $(ROOTDIR)/tests/modules.$(TEST_BUILD_NAME): $(NEMSDIR)/src/conf/modules.nems
 	set -xe ; cp "$<" "$@"
-
-configure: $(ROOTDIR)/tests/modules.$(TEST_BUILD_NAME) ;
-build: $(ROOTDIR)/tests/$(TEST_BUILD_NAME).exe ;
+ 
+ configure: $(ROOTDIR)/tests/modules.$(TEST_BUILD_NAME) ;
+ build: $(ROOTDIR)/tests/$(TEST_BUILD_NAME).exe ;
 endif
-

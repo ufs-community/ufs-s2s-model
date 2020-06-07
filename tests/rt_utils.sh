@@ -484,7 +484,8 @@ rocoto_create_compile_task() {
       rocoto_cmd="&PATHRT;/appbuild.sh &PATHTR;/FV3 $APP $COMPILE_NR"
   else
       #rocoto_cmd="&PATHRT;/compile_cmake.sh &PATHTR; $MACHINE_ID \"${NEMS_VER}\" $COMPILE_NR"
-      rocoto_cmd="&PATHRT;/compile.sh ${NEMS_VER} $COMPILE_NR"
+      rocoto_cmd="$PATHRT/compile.sh ${PATHTR}/FV3 $MACHINE_ID \"${NEMS_VER}\" $COMPILE_NR"
+      #rocoto_cmd="&PATHRT;/compile.sh ${NEMS_VER} $COMPILE_NR"
   fi
 
   NATIVE=""
@@ -613,7 +614,8 @@ ecflow_create_compile_task() {
       ecflow_cmd="$PATHRT/appbuild.sh ${PATHTR}/FV3 $APP $COMPILE_NR > ${LOG_DIR}/compile_${COMPILE_NR}.log 2>&1"
   else
       #ecflow_cmd="$PATHRT/compile_cmake.sh ${PATHTR} $MACHINE_ID \"${NEMS_VER}\" $COMPILE_NR > ${LOG_DIR}/compile_${COMPILE_NR}.log 2>&1"
-      ecflow_cmd="$PATHRT/compile.sh ${NEMS_VER} $COMPILE_NR > ${LOG_DIR}/compile_${COMPILE_NR}.log 2>&1"
+      ecflow_cmd="$PATHRT/compile.sh ${PATHTR}/FV3 $MACHINE_ID \"${NEMS_VER}\" $COMPILE_NR > ${LOG_DIR}/compile_${COMPILE_NR}.log 2>&1"
+      #ecflow_cmd="$PATHRT/compile.sh ${NEMS_VER} $COMPILE_NR > ${LOG_DIR}/compile_${COMPILE_NR}.log 2>&1"
   fi
 
   cat << EOF > ${ECFLOW_RUN}/${ECFLOW_SUITE}/compile_${COMPILE_NR}.ecf

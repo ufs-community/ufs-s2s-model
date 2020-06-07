@@ -7,9 +7,10 @@ proc ModulesHelp {} {
 }
 
 module-whatis "loads NEMS FV3 prerequisites for Orion/Intel"
+
 ##
 ## load contrib environment
-## load slurm utils (arbitrary.pl  layout.pl)
+## load noaatools (slurm utils (arbitrary.pl  layout.pl))
 ##
 module load contrib noaatools
 
@@ -47,8 +48,8 @@ module load esmflocal/8.0.0.para
 module load post-intel-sandybridge/8.0.5
 
 ##
-### load cmake
-###
+## load cmake
+##
 module load cmake/3.15.4
 setenv CMAKE_C_COMPILER mpiicc
 setenv CMAKE_CXX_COMPILER mpiicpc
