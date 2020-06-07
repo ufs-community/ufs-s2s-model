@@ -226,7 +226,7 @@ elif [[ $MACHINE_ID = orion.* ]]; then
 #  ACCNR= # detected in detect_machine.sh
   PARTITION=orion
   dprefix=/work/noaa/stmp/${USER}
-  DISKNM=/work/noaa/stmp/jminsuk/RT
+  DISKNM=/work/noaa/stmp/libin/RT
   STMP=$dprefix/stmp
   PTMP=$dprefix/stmp
 
