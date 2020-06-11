@@ -31,5 +31,5 @@
 	branch = develop
 [submodule "CICE6"]
 	path = CICE6
-	url = https://github.com/ESCOMP/CICE.git
+	url = https://github.com/DeniseWorthen/CICE.git
 	branch = nuopc
