@@ -633,6 +633,7 @@ while read -r line; do
     MACHINES=$( echo $line | cut -d'|' -f4)
     CB=$(       echo $line | cut -d'|' -f5)
     DEP_RUN=$(  echo $line | cut -d'|' -f6 | sed -e 's/^ *//' -e 's/ *$//')
+    export DEP_RUN
     [[ -e "tests/$TEST_NAME" ]] || die "run test file tests/$TEST_NAME does not exist"
     [[ $SET_ID != ' ' && $SET != *${SET_ID}* ]] && continue
     [[ $MACHINES != ' ' && $MACHINES != *${MACHINE_ID}* ]] && continue
