@@ -277,7 +277,7 @@ export MOM6_RESTART_SETTING='n'
 export med_model="nems"
 export atm_model="fv3"
 export ocn_model="mom6"
-export ice_model="cice"
+export ice_model="cice6"
 export wav_model="ww3"
 # MOM6 river runoff 
 export MOM6_RIVER_RUNOFF='True'
