@@ -13,10 +13,10 @@ cd $RUNDIR
 ###############################################################################
 
 # FV3 executable:
-cp ${PATHRT}/$FV3X                                 fv3_mom6_cice.exe
+cp ${PATHRT}/$FV3X                                 fcst.exe
 
 # modulefile for FV3 prerequisites:
-cp ${PATHRT}/modules.fv3_mom6_cice_${COMPILE_NR}             modules.fv3
+cp ${PATHRT}/modules.fcst_${COMPILE_NR}             modules.fcst
 
 # Get the shell file that loads the "module" command and purges modules:
 cp ${PATHRT}/../NEMS/src/conf/module-setup.sh.inc  module-setup.sh

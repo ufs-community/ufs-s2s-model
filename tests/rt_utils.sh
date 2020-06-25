@@ -542,7 +542,7 @@ EOF
 
 rocoto_create_run_task() {
 
-  if [[ $DEP_RUN != '' ]]; then
+  if [[ $CREATE_BASELINE == true && $DEP_RUN != '' ]] || [[ $WARM_START == .T. && $DEP_RUN != '' ]]; then
     DEP_STRING="<and> <taskdep task=\"compile_${COMPILE_NR}\"/> <taskdep task=\"${DEP_RUN}${RT_SUFFIX}\"/> </and>"
   else
     DEP_STRING="<taskdep task=\"compile_${COMPILE_NR}\"/>"
@@ -642,12 +642,10 @@ EOF
 
   echo "    task ${TEST_NAME}${RT_SUFFIX}" >> ${ECFLOW_RUN}/${ECFLOW_SUITE}.def
   echo "      inlimit max_jobs" >> ${ECFLOW_RUN}/${ECFLOW_SUITE}.def
-  if [[ $DEP_RUN != '' ]]; then
-    if [[ ${UNIT_TEST} == false ]]; then
-      echo "      trigger compile_${COMPILE_NR} == complete and ${DEP_RUN}${RT_SUFFIX} == complete" >> ${ECFLOW_RUN}/${ECFLOW_SUITE}.def
-    else
-      echo "      trigger compile_${COMPILE_NR} == complete and ${DEP_RUN} == complete" >> ${ECFLOW_RUN}/${ECFLOW_SUITE}.def
-    fi
+  if [[ ${UNIT_TEST} == true && $DEP_RUN != '' ]]; then
+    echo "      trigger compile_${COMPILE_NR} == complete and ${DEP_RUN} == complete" >> ${ECFLOW_RUN}/${ECFLOW_SUITE}.def
+  elif [[ $CREATE_BASELINE == true && $DEP_RUN != '' ]] || [[ $WARM_START == .T. && $DEP_RUN != '' ]]; then
+    echo "      trigger compile_${COMPILE_NR} == complete and ${DEP_RUN}${RT_SUFFIX} == complete" >> ${ECFLOW_RUN}/${ECFLOW_SUITE}.def
   else
     echo "      trigger compile_${COMPILE_NR} == complete" >> ${ECFLOW_RUN}/${ECFLOW_SUITE}.def
   fi
