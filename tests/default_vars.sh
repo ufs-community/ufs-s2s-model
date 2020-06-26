@@ -316,3 +316,9 @@ export MEDCOMP=''
 export RESTART_PREFIX=''
 export RESTART_SUFFIX=''
 }
+export_35d_run ()
+{
+export CNTL_DIR=""
+export CNTLMED_DIR=""
+export LIST_FILES=""
+}
