@@ -24,8 +24,8 @@
 	branch = develop
 [submodule "CMEPS"]
 	path = CMEPS
-	url = https://github.com/ESCOMP/CMEPS.git
-	branch = master
+	url = https://github.com/NOAA-EMC/CMEPS.git
+	branch = emc/develop
 [submodule "WW3"]
 	path = WW3
 	url = https://github.com/NOAA-EMC/WW3.git
