@@ -196,7 +196,7 @@
   iopt_stc     = 1
   debug        = .false.
   nstf_name    = 0,0,0,0,0
-  frac_grid    = .false.
+  frac_grid    = @[FRAC_GRID]
   nst_anl      = .false.
   psautco      = 0.0008,0.0005
   prautco      = 0.00015,0.00015
