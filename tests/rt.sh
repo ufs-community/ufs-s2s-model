@@ -364,6 +364,7 @@ while getopts ":cfsl:mn:kreh" opt; do
       SINGLE_NAME=$OPTARG
       TESTS_FILE='rt.conf.single'
       SET_ID=' '
+      rm -f $TESTS_FILE
       ;;
     k)
       KEEP_RUNDIR=true
