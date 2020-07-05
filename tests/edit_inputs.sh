@@ -17,6 +17,7 @@ function edit_ice_in {
       -e "s/RUNTYPE/$RUNTYPE/g" \
       -e "s/RUNID/$RUNID/g" \
       -e "s/CICE_HIST_AVG/$CICE_HIST_AVG/g" \
+      -e "s/RESTART_EXT/$RESTART_EXT/g" \
       -e "s/USE_RESTART_TIME/$USE_RESTART_TIME/g" \
       -e "s/DUMPFREQ_N/$DUMPFREQ_N/g" \
       -e "s/DUMPFREQ/$DUMPFREQ/g" \
