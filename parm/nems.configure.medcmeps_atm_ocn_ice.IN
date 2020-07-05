@@ -41,6 +41,10 @@ ICE_attributes::
   DumpFields = false
   ProfileMemory = false
   OverwriteSlice = true
+  mesh_ice = @[MESHICE]
+  stop_n = @[FHMAX]
+  stop_option = nhours
+  stop_ymd = -999
 ::
 
 # CMEPS warm run sequence

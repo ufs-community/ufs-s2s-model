@@ -297,6 +297,7 @@ export RUNTYPE='initial'
 export DUMPFREQ='d' 
 export DUMPFREQ_N='35' 
 export USE_RESTART_TIME='.false.'
+export MESHICE='tx0.25v1_190204_ESMFmesh.nc'
 # setting to true will allow Frazil FW and Salt to be
 # included in fluxes sent to ocean
 export FRAZIL_FWSALT='.true.'
