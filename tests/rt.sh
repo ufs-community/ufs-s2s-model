@@ -418,6 +418,8 @@ if [[ $CREATE_BASELINE == true ]]; then
   #rsync -a "${RTPWD}"/fv3_stretched/INPUT            "${NEW_BASELINE}"/fv3_stretched/
   #rsync -a "${RTPWD}"/fv3_stretched_nest/INPUT       "${NEW_BASELINE}"/fv3_stretched_nest/
   #rsync -a "${RTPWD}"/fv3_stretched_nest_quilt/INPUT "${NEW_BASELINE}"/fv3_stretched_nest_quilt/
+
+  RTPWD=${NEW_BASELINE}
 fi
 
 COMPILE_LOG=${PATHRT}/Compile_$MACHINE_ID.log
