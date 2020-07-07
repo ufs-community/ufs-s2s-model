@@ -11,6 +11,7 @@
     ice_ic         = 'cice5_model.res.nc'
     restart        = .true.
     restart_ext    = RESTART_EXT
+    restart_coszen = .true.
     use_restart_time = USE_RESTART_TIME
     restart_format = 'nc'
     lcdf64         = .false.
