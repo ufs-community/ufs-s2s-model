@@ -1,10 +1,10 @@
-Fri Jun 26 05:23:43 CDT 2020
+Mon Jul  6 22:05:28 CDT 2020
 Start Regression test
 
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_ccpp
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_ccpp
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_cold_atm_flux
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_cold_atm_flux
 Checking test 001 cpld_fv3_ccpp_mom6_cice_cold_atm_flux results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -78,7 +78,7 @@ Test 001 cpld_fv3_ccpp_mom6_cice_cold_atm_flux PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_satmedmf_ccpp
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_satmedmf_ccpp
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_cold_satmedmf
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_cold_satmedmf
 Checking test 002 cpld_fv3_ccpp_mom6_cice_cold_satmedmf results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -152,7 +152,7 @@ Test 002 cpld_fv3_ccpp_mom6_cice_cold_satmedmf PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold384_ccpp
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR384_ccpp
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux
 Checking test 003 cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -226,7 +226,7 @@ Test 003 cpld_fv3_ccpp_384_mom6_cice_cold_atm_flux PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_bmrt_ccpp
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_bmrt_ccpp
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt
 Checking test 004 cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -300,7 +300,7 @@ Test 004 cpld_fv3_ccpp_384_mom6_cice_cold_bmark_rt PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_2d_atm_flux
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_2d_atm_flux
 Checking test 005 cpld_fv3_ccpp_mom6_cice_2d_atm_flux results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -379,7 +379,7 @@ Test 005 cpld_fv3_ccpp_mom6_cice_2d_atm_flux PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_2d_2threads
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_2d_2threads
 Checking test 006 cpld_fv3_ccpp_mom6_cice_2d_2threads results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -458,7 +458,7 @@ Test 006 cpld_fv3_ccpp_mom6_cice_2d_2threads PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_2d_decomp
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_2d_decomp
 Checking test 007 cpld_fv3_ccpp_mom6_cice_2d_decomp results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -537,7 +537,7 @@ Test 007 cpld_fv3_ccpp_mom6_cice_2d_decomp PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_warm_satmedmf_ccpp
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_warm_satmedmf_ccpp/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_1d_satmedmf
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_1d_satmedmf
 Checking test 008 cpld_fv3_ccpp_mom6_cice_1d_satmedmf results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -616,7 +616,7 @@ Test 008 cpld_fv3_ccpp_mom6_cice_1d_satmedmf PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp384
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp384/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux
 Checking test 009 cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -695,7 +695,7 @@ Test 009 cpld_fv3_ccpp_384_mom6_cice_2d_atm_flux PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_bmrt_ccpp
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_bmrt_ccpp/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt
 Checking test 010 cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -774,7 +774,7 @@ Test 010 cpld_fv3_ccpp_384_mom6_cice_1d_bmark_rt PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_bmwav_ccpp
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_bmwav_ccpp
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt
 Checking test 011 cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -848,7 +848,7 @@ Test 011 cpld_fv3_ccpp_384_mom6_cice_ww3_cold_bmark_rt PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_bmwav_ccpp
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_bmwav_ccpp/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt
 Checking test 012 cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -930,7 +930,7 @@ Test 012 cpld_fv3_ccpp_384_mom6_cice_ww3_1d_bmark_rt PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_debug_ccpp
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_debug_ccpp
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_cold_debug
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_cold_debug
 Checking test 013 cpld_fv3_ccpp_mom6_cice_cold_debug results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -1004,7 +1004,7 @@ Test 013 cpld_fv3_ccpp_mom6_cice_cold_debug PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_6h_warm_debug_ccpp
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_6h_warm_debug_ccpp/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_6h_debug
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_6h_debug
 Checking test 014 cpld_fv3_ccpp_mom6_cice_6h_debug results ....
  Comparing phyf006.tile1.nc .........OK
  Comparing phyf006.tile2.nc .........OK
@@ -1083,7 +1083,7 @@ Test 014 cpld_fv3_ccpp_mom6_cice_6h_debug PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_ccpp_cmeps
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_ccpp_cmeps
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_cmeps_cold_atm_flux
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_cmeps_cold_atm_flux
 Checking test 015 cpld_fv3_ccpp_mom6_cice_cmeps_cold_atm_flux results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -1135,7 +1135,7 @@ Test 015 cpld_fv3_ccpp_mom6_cice_cmeps_cold_atm_flux PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_satmedmf_ccpp_cmeps
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_satmedmf_ccpp_cmeps
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_cmeps_cold_satmedmf
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_cmeps_cold_satmedmf
 Checking test 016 cpld_fv3_ccpp_mom6_cice_cmeps_cold_satmedmf results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -1187,7 +1187,7 @@ Test 016 cpld_fv3_ccpp_mom6_cice_cmeps_cold_satmedmf PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold384_ccpp_cmeps
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR384_ccpp_cmeps
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_384_mom6_cice_cmeps_cold_atm_flux
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_384_mom6_cice_cmeps_cold_atm_flux
 Checking test 017 cpld_fv3_ccpp_384_mom6_cice_cmeps_cold_atm_flux results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -1239,7 +1239,7 @@ Test 017 cpld_fv3_ccpp_384_mom6_cice_cmeps_cold_atm_flux PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_bmrt_ccpp_cmeps
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_bmrt_ccpp_cmeps
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_384_mom6_cice_cmeps_cold_bmark_rt
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_384_mom6_cice_cmeps_cold_bmark_rt
 Checking test 018 cpld_fv3_ccpp_384_mom6_cice_cmeps_cold_bmark_rt results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -1291,7 +1291,7 @@ Test 018 cpld_fv3_ccpp_384_mom6_cice_cmeps_cold_bmark_rt PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp_cmeps
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux
 Checking test 019 cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -1348,7 +1348,7 @@ Test 019 cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_3d_warm_ccpp_cmeps
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_3d_warm_ccpp_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_cmeps_3d_atm_flux
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_cmeps_3d_atm_flux
 Checking test 020 cpld_fv3_ccpp_mom6_cice_cmeps_3d_atm_flux results ....
  Comparing phyf072.tile1.nc .........OK
  Comparing phyf072.tile2.nc .........OK
@@ -1405,7 +1405,7 @@ Test 020 cpld_fv3_ccpp_mom6_cice_cmeps_3d_atm_flux PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_3d_warm_ccpp_cmeps
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_3d_warm_ccpp_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_cmeps_restart
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_cmeps_restart
 Checking test 021 cpld_fv3_ccpp_mom6_cice_cmeps_restart results ....
  Comparing phyf072.tile1.nc .........OK
  Comparing phyf072.tile2.nc .........OK
@@ -1462,7 +1462,7 @@ Test 021 cpld_fv3_ccpp_mom6_cice_cmeps_restart PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp_cmeps
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_cmeps_2d_2threads
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_cmeps_2d_2threads
 Checking test 022 cpld_fv3_ccpp_mom6_cice_cmeps_2d_2threads results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -1519,7 +1519,7 @@ Test 022 cpld_fv3_ccpp_mom6_cice_cmeps_2d_2threads PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp_cmeps
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_cmeps_2d_decomp
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_cmeps_2d_decomp
 Checking test 023 cpld_fv3_ccpp_mom6_cice_cmeps_2d_decomp results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -1576,7 +1576,7 @@ Test 023 cpld_fv3_ccpp_mom6_cice_cmeps_2d_decomp PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_warm_satmedmf_ccpp_cmeps
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_warm_satmedmf_ccpp_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_cmeps_1d_satmedmf
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_cmeps_1d_satmedmf
 Checking test 024 cpld_fv3_ccpp_mom6_cice_cmeps_1d_satmedmf results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -1633,7 +1633,7 @@ Test 024 cpld_fv3_ccpp_mom6_cice_cmeps_1d_satmedmf PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp384_cmeps
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_2d_warm_ccpp384_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_384_mom6_cice_cmeps_2d_atm_flux
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_384_mom6_cice_cmeps_2d_atm_flux
 Checking test 025 cpld_fv3_ccpp_384_mom6_cice_cmeps_2d_atm_flux results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -1690,7 +1690,7 @@ Test 025 cpld_fv3_ccpp_384_mom6_cice_cmeps_2d_atm_flux PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_bmrt_ccpp_cmeps
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_bmrt_ccpp_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_384_mom6_cice_cmeps_1d_bmark_rt
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_384_mom6_cice_cmeps_1d_bmark_rt
 Checking test 026 cpld_fv3_ccpp_384_mom6_cice_cmeps_1d_bmark_rt results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -1785,7 +1785,7 @@ Test 026 cpld_fv3_ccpp_384_mom6_cice_cmeps_1d_bmark_rt PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_bmwav_ccpp_cmeps
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_bmwav_ccpp_cmeps
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_cold_bmark_rt
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_cold_bmark_rt
 Checking test 027 cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_cold_bmark_rt results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -1837,7 +1837,7 @@ Test 027 cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_cold_bmark_rt PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_bmwav_ccpp_cmeps
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_1d_bmwav_ccpp_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt
 Checking test 028 cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -1897,7 +1897,7 @@ Test 028 cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_cold_debug_ccpp_cmeps
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/MEDIATOR_debug_ccpp_cmeps
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_cmeps_cold_debug
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_cmeps_cold_debug
 Checking test 029 cpld_fv3_ccpp_mom6_cice_cmeps_cold_debug results ....
  Comparing phyf001.tile1.nc .........OK
  Comparing phyf001.tile2.nc .........OK
@@ -1949,7 +1949,7 @@ Test 029 cpld_fv3_ccpp_mom6_cice_cmeps_cold_debug PASS
 
 baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_6h_warm_debug_ccpp_cmeps
 mediator baseline dir = /work/noaa/stmp/jminsuk/RT/FV3-MOM6-CICE5/develop-20200530/RT-Baselines_6h_warm_debug_ccpp_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_7917/cpld_fv3_ccpp_mom6_cice_cmeps_6h_debug
+working dir  = /work/noaa/stmp/jminsuk/stmp/jminsuk/S2S_RT/rt_49279/cpld_fv3_ccpp_mom6_cice_cmeps_6h_debug
 Checking test 030 cpld_fv3_ccpp_mom6_cice_cmeps_6h_debug results ....
  Comparing phyf006.tile1.nc .........OK
  Comparing phyf006.tile2.nc .........OK
@@ -2005,5 +2005,5 @@ Test 030 cpld_fv3_ccpp_mom6_cice_cmeps_6h_debug PASS
 
 
 REGRESSION TEST WAS SUCCESSFUL
-Fri Jun 26 10:39:07 CDT 2020
-Elapsed time: 05h:16m:25s. Have a nice day!
+Tue Jul  7 00:36:30 CDT 2020
+Elapsed time: 02h:31m:03s. Have a nice day!
