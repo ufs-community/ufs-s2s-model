@@ -30,3 +30,15 @@
 	path = WW3
 	url = https://github.com/NOAA-EMC/WW3.git
 	branch = develop
+[submodule "CICE-interface/CICE"]
+	path = CICE-interface/CICE
+	url = https://github.com/noaa-emc/CICE
+	branch = emc/develop
+[submodule "MOM6-interface/mkmf"]
+	path = MOM6-interface/mkmf
+	url = https://github.com/noaa-emc/mkmf
+	branch = develop
+[submodule "MOM6-interface/MOM6"]
+	path = MOM6-interface/MOM6
+	url = https://github.com/noaa-emc/MOM6
+	branch = dev/emc
