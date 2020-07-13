@@ -21,7 +21,8 @@ Start at the ufs-s2s-model wiki (https://github.com/ufs-community/ufs-s2s-model/
 | ```FV3```         | FV3GFS code. |
 | ```log```         | Log files from compiling and regression testing. |
 | ```modulefiles``` | Files used for loading modules required for building and running ufs-s2s-model under NEMS on different computer systems. |
-| ```MOM6```        | GFDL MOM6 source code with modifications from EMC. |
+| ```MOM6-interface```        | GFDL MOM6 source code with modifications from EMC. |
+| ```CICE-interface```        | CICE6 source code with modifications from EMC. |
 | ```NEMS```        | NEMS source code. |
 | ```parm```        | A directory containing input namelist files and model configuration files. |
 | ```stochastic_physics``` | A package containing the stochastic physics pattern generator developed at NOAA/ESRL/PSD. |
