@@ -8,9 +8,9 @@ ESMF_INC        = $(ESMF_F90COMPILEPATHS)
 ESMF_LIB        = $(ESMF_F90LINKPATHS) $(ESMF_F90LINKRPATHS) $(ESMF_F90ESMFLINKLIBS)
 UTILINCS        = -I$(FMSDIR) -I$(NEMSMOMDIR)/lib_ocean -I.
 MOM             = mom6
-NUOPCAPDIR      = src/MOM6/config_src/nuopc_driver
+NUOPCAPDIR      = MOM6/config_src/nuopc_driver
 
-USER_CFLAGS=-DMOM6_CAP 
+USER_CFLAGS=-DMOM6_CAP
 
 .SUFFIXES: .F90
 
