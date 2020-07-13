@@ -6,9 +6,6 @@
 	path = NEMS
 	url = https://github.com/DeniseWorthen/NEMS.git
 	branch = develop
-[submodule "CICE_SRC"]
-	path = CICE_SRC
-	url = https://github.com/NOAA-EMC/CICE5.git
 [submodule "FMS"]
 	path = FMS
 	url = https://github.com/NOAA-GFDL/FMS
