@@ -35,8 +35,8 @@ cp    @[RTPWD]/${FV3_DIR}/INPUT/gfs_ctrl.nc ./INPUT
 cp    @[RTPWD]/MOM6_FIX/@[OCNRES]/* ./INPUT
 
 # CICE5 fixed input
-cp    @[RTPWD]/CICE_FIX/@[OCNRES]/grid_cice_NEMS_mx025.nc .
-cp    @[RTPWD]/CICE_FIX/@[OCNRES]/kmtu_cice_NEMS_mx025.nc .
+cp    @[RTPWD]/CICE_FIX/@[OCNRES]/grid_cice_NEMS_mx@[OCNRES].nc .
+cp    @[RTPWD]/CICE_FIX/@[OCNRES]/kmtu_cice_NEMS_mx@[OCNRES].nc .
 if [[ $MEDCOMP == 'cmeps' ]]; then
   cp    @[RTPWD]/CICE_FIX/025/tx0.25v1_190204_ESMFmesh.nc .
 fi

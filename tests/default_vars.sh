@@ -257,7 +257,10 @@ export ocn_petlist_bounds=$OPB_cpl_dflt
 export ice_petlist_bounds=$IPB_cpl_dflt
 
 export ATMRES='C96'
+# default ice and ocean resolution
 export OCNRES='025'
+export nxglobal=1440
+export nyglobal=1080
 export SUITE_NAME=''
 export MED_restart_data=''
 export INPUT_NML="input.mom6.nml.IN"
