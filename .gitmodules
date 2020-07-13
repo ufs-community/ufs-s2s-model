@@ -38,3 +38,7 @@
 	path = MOM6-interface/MOM6
 	url = https://github.com/noaa-emc/MOM6
 	branch = dev/emc
+[submodule "MOM6-interface/mkmf"]
+	path = MOM6-interface/mkmf
+	url = https://github.com/NOAA-EMC/mkmf
+	branch = develop
