@@ -1,3 +1,5 @@
+include(GNUInstallDirs)
+
 include("cice_files.cmake")
 
 # Configuration Options

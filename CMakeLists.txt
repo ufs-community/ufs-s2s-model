@@ -19,6 +19,8 @@ project(ufs-s2s-model
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
+include(GNUInstallDirs)
+
 message("")
 message("Setting configuration for $ENV{CMAKE_Platform}")
 message("")

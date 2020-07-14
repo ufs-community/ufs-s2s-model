@@ -1,3 +1,5 @@
+include(GNUInstallDirs)
+
 include("mom6_files.cmake")
 
 list(APPEND lib_src_files
