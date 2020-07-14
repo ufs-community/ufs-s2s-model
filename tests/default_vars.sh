@@ -259,8 +259,9 @@ export ice_petlist_bounds=$IPB_cpl_dflt
 export ATMRES='C96'
 # default ice and ocean resolution
 export OCNRES='025'
-export NIGLOB=1440
-export NJGLOB=1080
+export ICERES='0.25'
+export NX_GLB=1440
+export NY_GLB=1080
 export SUITE_NAME=''
 export MED_restart_data=''
 export INPUT_NML="input.mom6.nml.IN"

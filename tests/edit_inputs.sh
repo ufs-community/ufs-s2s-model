@@ -10,8 +10,8 @@ function edit_ice_in {
   jday=$(date -d "${SYEAR}-${SMONTH}-${SDAY} ${SHOUR}:00:00" +%j)
   istep0=$(( ((10#$jday-1)*86400 + 10#$SHOUR*3600) / DT_CICE ))
 
-  CICEGRID = "grid_cice_NEMS_mx"$OCNRES".nc"
-  CICEMASK = "kmtu_cice_NEMS_mx"$OCNRES".nc"
+  CICEGRID="grid_cice_NEMS_mx"$OCNRES".nc"
+  CICEMASK="kmtu_cice_NEMS_mx"$OCNRES".nc"
 
   sed -e "s/YEAR_INIT/$SYEAR/g" \
       -e "s/ISTEP0/$istep0/g" \
@@ -30,21 +30,21 @@ function edit_ice_in {
 
 function edit_mom_input {
 
-  CHLCLIM = "seawifs-clim-1997-2010."$NIGLOB"x"$NJGLOB".v20180328.nc"
+  CHLCLIM="seawifs-clim-1997-2010."$NX_GLB"x"$NY_GLB".v20180328.nc"
 
   sed -e "s/DT_THERM_MOM6/$DT_THERM_MOM6/g" \
       -e "s/DT_DYNAM_MOM6/$DT_DYNAM_MOM6/g" \
       -e "s/MOM6_RIVER_RUNOFF/$MOM6_RIVER_RUNOFF/g" \
       -e "s/MOM6_THERMO_SPAN/$MOM6_THERMO_SPAN/g" \
       -e "s/MOM6_REPRO_LA/$MOM6_REPRO_LA/g" \
-      -e "s/NIGLOB/$NIGLOB/g" \
-      -e "s/NJGLOB/$NJGLOB/g" \
+      -e "s/NX_GLB/$NX_GLB/g" \
+      -e "s/NY_GLB/$NY_GLB/g" \
       -e "s/CHLCLIM/$CHLCLIM/g" 
 }
 
 function edit_data_table {
 
-  FRUNOFF = "INPUT/runoff.daitren.clim."$NIGLOB"x"$NJGLOB".v20180328.nc"
+  FRUNOFF="runoff.daitren.clim."$NX_GLB"x"$NY_GLB".v20180328.nc"
 
   sed -e "s/FRUNOFF/$FRUNOFF/g" 
 }
