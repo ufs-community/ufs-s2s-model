@@ -36,9 +36,9 @@ atparse < ${PATHTR}/parm/${MODEL_CONFIGURE:-model_configure.IN} > model_configur
 atparse < ${PATHTR}/parm/${NEMS_CONFIGURE:-nems.configure} > nems.configure
 
 edit_ice_in < ${PATHTR}/parm/ice_in_template > ice_in
-edit_mom_input < ${PATHTR}/parm/${MOM_INPUT:-MOM_input_template} > INPUT/MOM_input
+edit_mom_input < ${PATHTR}/parm/${MOM_INPUT:-MOM_input_template_$OCNRES} > INPUT/MOM_input
 edit_diag_table < ${PATHTR}/parm/diag_table_template > diag_table
-cp ${PATHTR}/parm/data_table data_table
+edit_data_table < ${PATHTR}/parm/data_table_template > data_table
 # CMEPS 
 if [[ $MEDCOMP != '' ]]; then
 cp ${PATHTR}/parm/fd_nems.yaml fd_nems.yaml

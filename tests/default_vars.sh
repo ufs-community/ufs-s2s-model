@@ -257,7 +257,10 @@ export ocn_petlist_bounds=$OPB_cpl_dflt
 export ice_petlist_bounds=$IPB_cpl_dflt
 
 export ATMRES='C96'
+# default ice and ocean resolution
 export OCNRES='025'
+export NIGLOB=1440
+export NJGLOB=1080
 export SUITE_NAME=''
 export MED_restart_data=''
 export INPUT_NML="input.mom6.nml.IN"
@@ -289,7 +292,7 @@ export NPROC_ICE='48'
 export DT_ATMOS='900' #needed for C96 cases
 export DT_DYNAM_MOM6='900'
 export DT_THERM_MOM6='1800'
-export MOM_INPUT=MOM_input_template
+export MOM_INPUT=MOM_input_template_025
 export mom6_restart_option='nhours'
 export mom6_restart_n='24' 
 # defaults for CICE runtype and restart writing
@@ -297,6 +300,9 @@ export RUNTYPE='initial'
 export DUMPFREQ='d' 
 export DUMPFREQ_N='35' 
 export USE_RESTART_TIME='.false.'
+# resolution dependent files
+export CICEGRID='grid_cice_NEMS_mx025.nc'
+export CICEMASK='kmtu_cice_NEMS_mx025.nc'
 # setting to true will allow Frazil FW and Salt to be
 # included in fluxes sent to ocean
 export FRAZIL_FWSALT='.true.'
