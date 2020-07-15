@@ -6,6 +6,8 @@ else
   FV3_DIR=FV3_input_data${ATMRES#C}
 fi
 
+ICERES="${OCNRES:0:1}.${OCNRES:1}"
+
 # FV3 fixed input
 cp    @[RTPWD]/${FV3_DIR}/INPUT/aerosol.dat .
 cp    @[RTPWD]/${FV3_DIR}/INPUT/co2historicaldata_201*.txt .
@@ -41,7 +43,7 @@ if [ $WARM_START = .F. ]; then
   cp  @[RTPWD]/${FV3_DIR}/INPUT/sfc_data*.nc ./INPUT
   cp  @[RTPWD]/${FV3_DIR}/INPUT/gfs_data*.nc ./INPUT
   cp  @[RTPWD]/MOM6_IC/MOM*.nc ./INPUT
-  cp  @[RTPWD]/CICE_IC/cice5_model_0.25.*.nc ./cice5_model.res.nc
+  cp  @[RTPWD]/CICE_IC/cice5_model_$[ICERES].*.nc ./cice5_model.res.nc
 
   # Restart from coldstart, NEMS or CMEPS
   if [[ ! $MED_restart_data == '' ]]; then

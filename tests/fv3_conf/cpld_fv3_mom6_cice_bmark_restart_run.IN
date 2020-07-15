@@ -6,6 +6,8 @@ else
   FV3_DIR=FV3_input_data${ATMRES#C}
 fi
 
+ICERES="${OCNRES:0:1}.${OCNRES:1}"
+
 BM_IC=BM_IC/${SYEAR}${SMONTH}${SDAY}${SHOUR}
 FV3_IC=${BM_IC}/gfs/@[ATMRES]/INPUT
 MOM6_IC=${BM_IC}/mom6_da
