@@ -94,7 +94,7 @@ export SHOUR="00"
 export DAYS="1"
 export FHMAX="24"
 export FDIAG="6"
-export WLCLK=30
+export WLCLK=60
 
 export DT_ATMOS="450"
 export NPX="385"
