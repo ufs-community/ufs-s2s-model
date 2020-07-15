@@ -21,6 +21,10 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 include(GNUInstallDirs)
 
+message(STATUS      "UFS-S2S-MODEL cmake build capability is a work in progress")
+message(STATUS      "Please use the existing GNUMake capabiltiy")
+message(FATAL_ERROR "Once ready, this message will be removed, and configuration will proceed.")
+
 message("")
 message("Setting configuration for $ENV{CMAKE_Platform}")
 message("")
