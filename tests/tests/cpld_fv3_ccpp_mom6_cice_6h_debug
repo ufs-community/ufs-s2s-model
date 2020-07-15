@@ -87,7 +87,7 @@ export DAYS="0.25"
 export FHMAX="6"
 export NFHOUT_HF="1"
 export FDIAG="6"
-export WLCLK=30
+export WLCLK=60
 
 # set component and coupling timesteps
 export DT_CICE=${DT_ATMOS}
