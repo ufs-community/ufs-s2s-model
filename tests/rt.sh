@@ -151,7 +151,7 @@ elif [[ $MACHINE_ID = wcoss_dell_p3 ]]; then
   ECF_PORT=$(grep $USER /usrx/local/sys/ecflow/assigned_ports.txt | awk '{print $2}')
 
   DISKNM=/gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT
-  QUEUE=debug
+  QUEUE=dev
   PARTITION=
   ACCNR=GFS-DEV
   STMP=/gpfs/dell2/stmp
@@ -398,7 +398,7 @@ fi
 if [[ $MACHINE_ID = cheyenne.* ]]; then
   RTPWD=${RTPWD:-$DISKNM/develop-20200210/${COMPILER^^}}
 else
-  RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200530}
+  RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200711}
 fi
 
 shift $((OPTIND-1))
