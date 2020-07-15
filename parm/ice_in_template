@@ -48,8 +48,8 @@
 &grid_nml
     grid_format  = 'nc'
     grid_type    = 'displaced_pole'
-    grid_file    = 'grid_cice_NEMS_mx025.nc'
-    kmt_file     = 'kmtu_cice_NEMS_mx025.nc'
+    grid_file    = 'CICEGRID'
+    kmt_file     = 'CICEMASK'
     use_bathymetry = .false.
     kcatbound    = 0
     ncat         = 5
@@ -187,10 +187,10 @@
 
 &domain_nml
     nprocs            = NPROC_ICE
-    nx_global         = 1440
-    ny_global         = 1080
-    block_size_x      = 60
-    block_size_y      = 540
+    nx_global         = NIGLOB
+    ny_global         = NJGLOB
+    block_size_x      = BLCKX
+    block_size_y      = BLCKY
     max_blocks        = -1
     processor_shape   = 'slenderX2'
     distribution_type = 'cartesian'
