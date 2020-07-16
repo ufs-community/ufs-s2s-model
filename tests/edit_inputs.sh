@@ -13,6 +13,8 @@ function edit_ice_in {
   sed -e "s/YEAR_INIT/$SYEAR/g" \
       -e "s/ISTEP0/$istep0/g" \
       -e "s/DT_CICE/$DT_CICE/g" \
+      -e "s/CICEGRID/$CICEGRID/g" \
+      -e "s/CICEMASK/$CICEMASK/g" \
       -e "s/NPROC_ICE/$NPROC_ICE/g" \
       -e "s/RUNTYPE/$RUNTYPE/g" \
       -e "s/RUNID/$RUNID/g" \
@@ -28,7 +30,14 @@ function edit_mom_input {
       -e "s/DT_DYNAM_MOM6/$DT_DYNAM_MOM6/g" \
       -e "s/MOM6_RIVER_RUNOFF/$MOM6_RIVER_RUNOFF/g" \
       -e "s/MOM6_THERMO_SPAN/$MOM6_THERMO_SPAN/g" \
-      -e "s/MOM6_REPRO_LA/$MOM6_REPRO_LA/g" 
+      -e "s/MOM6_REPRO_LA/$MOM6_REPRO_LA/g" \
+      -e "s/NX_GLB/$NX_GLB/g" \
+      -e "s/NY_GLB/$NY_GLB/g" \
+      -e "s/CHLCLIM/$CHLCLIM/g" 
+}
+
+function edit_data_table {
+  sed -e "s/FRUNOFF/$FRUNOFF/g" 
 }
 
 function edit_diag_table {
