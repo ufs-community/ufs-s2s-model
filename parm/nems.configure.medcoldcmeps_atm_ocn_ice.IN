@@ -85,7 +85,7 @@ MED_attributes::
       history_n = 1
       history_option = nhours
       history_ymd = -999
-      coupling_mode = nems_orig
+      coupling_mode = @[CPLMODE]
 ::
 ALLCOMP_attributes::
       ScalarFieldCount = 2
