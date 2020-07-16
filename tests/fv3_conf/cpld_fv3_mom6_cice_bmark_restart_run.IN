@@ -6,6 +6,8 @@ else
   FV3_DIR=FV3_input_data${ATMRES#C}
 fi
 
+ICERES="${OCNRES:0:1}.${OCNRES:1}"
+
 BM_IC=BM_IC/${SYEAR}${SMONTH}${SDAY}${SHOUR}
 FV3_IC=${BM_IC}/gfs/@[ATMRES]/INPUT
 MOM6_IC=${BM_IC}/mom6_da
@@ -38,8 +40,8 @@ cp    @[RTPWD]/${FV3_DIR}/INPUT/gfs_ctrl.nc ./INPUT
 cp    @[RTPWD]/MOM6_FIX/@[OCNRES]/* ./INPUT
 
 # CICE5 fixed input
-cp    @[RTPWD]/CICE_FIX/@[OCNRES]/grid_cice_NEMS_mx025.nc .
-cp    @[RTPWD]/CICE_FIX/@[OCNRES]/kmtu_cice_NEMS_mx025.nc .
+cp    @[RTPWD]/CICE_FIX/@[OCNRES]/grid_cice_NEMS_mx@[OCNRES].nc .
+cp    @[RTPWD]/CICE_FIX/@[OCNRES]/kmtu_cice_NEMS_mx@[OCNRES].nc .
 
 #
 # FIXME: need to copy in from just completed 1-d run, not baseline
