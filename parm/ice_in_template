@@ -187,8 +187,8 @@
 
 &domain_nml
     nprocs            = NPROC_ICE
-    nx_global         = NIGLOB
-    ny_global         = NJGLOB
+    nx_global         = NX_GLB
+    ny_global         = NY_GLB
     block_size_x      = BLCKX
     block_size_y      = BLCKY
     max_blocks        = -1
