@@ -322,8 +322,10 @@ export USE_RESTART_TIME='.false.'
 export RESTART_EXT='.true'
 # resolution dependent files
 export MESHICE='tx0.25v1_190204_ESMFmesh.nc'
-export CICEGRID='grid_cice_NEMS_mx025.nc'
-export CICEMASK='kmtu_cice_NEMS_mx025.nc'
+export CICEGRID="grid_cice_NEMS_mx${OCNRES}.nc"
+export CICEMASK="kmtu_cice_NEMS_mx${OCNRES}.nc"
+export CHLCLIM="seawifs-clim-1997-2010.${NX_GLB}x${NY_GLB}.v20180328.nc"
+export FRUNOFF="runoff.daitren.clim.${NX_GLB}x${NY_GLB}.v20180328.nc"
 # setting to true will allow Frazil FW and Salt to be
 # included in fluxes sent to ocean
 export FRAZIL_FWSALT='.true.'

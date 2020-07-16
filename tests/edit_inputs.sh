@@ -12,11 +12,8 @@ function edit_ice_in {
 
   # assumes processor shape = "slenderX2"
   np2=$((NPROC_ICE/2))
-  BLCKX=$((NJGLOB/2))
-  BLCKY=$((NIGLOB/$np2))
-
-  CICEGRID = "grid_cice_NEMS_mx"$OCNRES".nc"
-  CICEMASK = "kmtu_cice_NEMS_mx"$OCNRES".nc"
+  BLCKX=$((NX_GLB/2))
+  BLCKY=$((NY_GLB/$np2))
 
   sed -e "s/YEAR_INIT/$SYEAR/g" \
       -e "s/ISTEP0/$istep0/g" \
@@ -24,8 +21,8 @@ function edit_ice_in {
       -e "s/CICEGRID/$CICEGRID/g" \
       -e "s/CICEMASK/$CICEMASK/g" \
       -e "s/NPROC_ICE/$NPROC_ICE/g" \
-      -e "s/NIGLOB/$NIGLOB/g" \
-      -e "s/NJGLOB/$NJGLOB/g" \
+      -e "s/NX_GLB/$NX_GLB/g" \
+      -e "s/NY_GLB/$NY_GLB/g" \
       -e "s/BLCKX/$BLCKX/g" \
       -e "s/BLCKY/$BLCKY/g" \
       -e "s/RUNTYPE/$RUNTYPE/g" \
@@ -40,21 +37,17 @@ function edit_ice_in {
 
 function edit_mom_input {
 
-  CHLCLIM = "seawifs-clim-1997-2010."$NIGLOB"x"$NJGLOB".v20180328.nc"
-
   sed -e "s/DT_THERM_MOM6/$DT_THERM_MOM6/g" \
       -e "s/DT_DYNAM_MOM6/$DT_DYNAM_MOM6/g" \
       -e "s/MOM6_RIVER_RUNOFF/$MOM6_RIVER_RUNOFF/g" \
       -e "s/MOM6_THERMO_SPAN/$MOM6_THERMO_SPAN/g" \
       -e "s/MOM6_REPRO_LA/$MOM6_REPRO_LA/g" \
-      -e "s/NIGLOB/$NIGLOB/g" \
-      -e "s/NJGLOB/$NJGLOB/g" \
+      -e "s/NX_GLB/$NX_GLB/g" \
+      -e "s/NY_GLB/$NY_GLB/g" \
       -e "s/CHLCLIM/$CHLCLIM/g" 
 }
 
 function edit_data_table {
-
-  FRUNOFF = "INPUT/runoff.daitren.clim."$NIGLOB"x"$NJGLOB".v20180328.nc"
 
   sed -e "s/FRUNOFF/$FRUNOFF/g" 
 }
