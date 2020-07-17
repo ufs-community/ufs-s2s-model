@@ -151,7 +151,7 @@ elif [[ $MACHINE_ID = wcoss_dell_p3 ]]; then
   ECF_PORT=$(grep $USER /usrx/local/sys/ecflow/assigned_ports.txt | awk '{print $2}')
 
   DISKNM=/gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT
-  QUEUE=debug
+  QUEUE=dev
   PARTITION=
   ACCNR=GFS-DEV
   STMP=/gpfs/dell2/stmp

@@ -319,7 +319,7 @@ export DUMPFREQ='d'
 export DUMPFREQ_N='35' 
 export USE_RESTART_TIME='.false.'
 # set false for CICE6
-export RESTART_EXT='.true'
+export RESTART_EXT='.false'
 # resolution dependent files
 export MESHICE='tx0.25v1_190204_ESMFmesh.nc'
 export CICEGRID="grid_cice_NEMS_mx${OCNRES}.nc"

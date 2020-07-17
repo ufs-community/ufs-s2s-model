@@ -94,9 +94,6 @@ export DT_CICE=${DT_ATMOS}
 export CPL_SLOW=${DT_THERM_MOM6}
 export CPL_FAST=${DT_ATMOS}
 
-# CICE6 uses restart_ext = false
-export RESTART_EXT='.false.'
-
 # write a CICE restart at FHMAX
 export DUMPFREQ_N=${FHMAX}
 export DUMPFREQ="h"
