@@ -4,6 +4,8 @@ set -eux
 write_fail_test() {
   if [[ ${UNIT_TEST} == true ]]; then
     echo ${TEST_NR} $TEST_NAME >> $PATHRT/fail_unit_test
+  else
+    echo $TEST_NAME >> $PATHRT/fail_test
   fi
 }
 
