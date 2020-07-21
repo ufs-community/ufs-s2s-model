@@ -47,7 +47,7 @@
 
 &grid_nml
     grid_format  = 'nc'
-    grid_type    = 'displaced_pole'
+    grid_type    = 'tripole'
     grid_file    = 'CICEGRID'
     kmt_file     = 'CICEMASK'
     use_bathymetry = .false.
@@ -134,7 +134,7 @@
     R_snw           = 1.5
     dT_mlt          = 1.5
     rsnw_mlt        = 1500.
-    kalg            = 0.6
+    kalg            = 0.0
 /
 
 &ponds_nml

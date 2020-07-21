@@ -12,8 +12,8 @@ function edit_ice_in {
 
   # assumes processor shape = "slenderX2"
   np2=$((NPROC_ICE/2))
-  BLCKX=$((NX_GLB/2))
-  BLCKY=$((NY_GLB/$np2))
+  BLCKX=$((NX_GLB/$np2))
+  BLCKY=$((NY_GLB/2))
 
   sed -e "s/YEAR_INIT/$SYEAR/g" \
       -e "s/ISTEP0/$istep0/g" \
