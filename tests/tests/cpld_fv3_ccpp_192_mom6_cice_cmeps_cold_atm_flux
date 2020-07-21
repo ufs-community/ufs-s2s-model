@@ -69,12 +69,15 @@ export NPX=193
 export NPY=193
 export IMO=768
 export JMO=384
+export WRITE_GROUP=1
+export WRTTASK_PER_GROUP=12
 
 export OCNRES='050'
 export ICERES='0.50'
 export NX_GLB=720
 export NY_GLB=576
 
+export NPROC_ICE='24'
 DT_ATMOS='900'
 DT_DYNAM_MOM6='900'
 DT_THERM_MOM6='1800'
@@ -89,6 +92,18 @@ export FNVETC="'global_vegtype.igbp.t382.768.384.rg.grb',"
 export FNSOTC="'global_soiltype.statsgo.t382.768.384.rg.grb',"
 export FNSMCC="'global_soilmgldas.t382.768.384.grb',"
 export FNABSC="'global_mxsnoalb.uariz.t382.768.384.rg.grb',"
+
+export TASKS=$TASKS_cpl_c192
+export TPN=$TPN_cpl_c192
+export INPES=$INPES_cpl_c192
+export JNPES=$JNPES_cpl_c192
+export THRD=$THRD_cpl_c192
+export WRTTASK_PER_GROUP=$WPG_cpl_c192
+
+export med_petlist_bounds=$MPB_cpl_c192
+export atm_petlist_bounds=$APB_cpl_c192
+export ocn_petlist_bounds=$OPB_cpl_c192
+export ice_petlist_bounds=$IPB_cpl_c192
 
 export MOM_INPUT=MOM_input_template_${OCNRES}
 export MESHICE='tx0.50v1_190204_ESMFmesh.nc'

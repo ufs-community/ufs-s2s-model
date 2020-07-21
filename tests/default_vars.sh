@@ -89,6 +89,10 @@ elif [[ $MACHINE_ID = hera.* ]]; then
   THRD_cpl_wwav=1; WPG_cpl_wwav=24; MPB_cpl_wwav="0 287"; APB_cpl_wwav="0 311"
   OPB_cpl_wwav="312 431"; IPB_cpl_wwav="432 479"; WPB_cpl_wwav="480 519"
 
+  TASKS_cpl_c192=384; TPN_cpl_c192=40; INPES_cpl_c192=6; JNPES_cpl_c192=8
+  THRD_cpl_c192=1; WPG_cpl_c192=12;  MPB_cpl_c192="0 287"; APB_cpl_c192="0 299"
+  OPB_cpl_c192="300 359"; IPB_cpl_c192="360 383"
+
 elif [[ $MACHINE_ID = jet.* ]]; then
 
   TASKS_dflt=150 ; TPN_dflt=24 ; INPES_dflt=3 ; JNPES_dflt=8
