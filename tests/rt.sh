@@ -218,7 +218,7 @@ elif [[ $MACHINE_ID = orion.* ]]; then
 
   module use $PATHTR/modulefiles/${MACHINE_ID}
   module load fv3
-  #module load gcc/8.3.0
+  module load gcc/8.3.0
 
   # Re-instantiate COMPILER in case it gets deleted by module purge
   COMPILER=${NEMS_COMPILER:-intel}
