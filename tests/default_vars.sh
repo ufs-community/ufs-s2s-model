@@ -89,9 +89,9 @@ elif [[ $MACHINE_ID = hera.* ]]; then
   THRD_cpl_wwav=1; WPG_cpl_wwav=24; MPB_cpl_wwav="0 287"; APB_cpl_wwav="0 311"
   OPB_cpl_wwav="312 431"; IPB_cpl_wwav="432 479"; WPB_cpl_wwav="480 519"
 
-  TASKS_cpl_c192=384; TPN_cpl_c192=40; INPES_cpl_c192=6; JNPES_cpl_c192=8
-  THRD_cpl_c192=1; WPG_cpl_c192=12;  MPB_cpl_c192="0 287"; APB_cpl_c192="0 299"
-  OPB_cpl_c192="300 359"; IPB_cpl_c192="360 383"
+  TASKS_cpl_c192=288; TPN_cpl_c192=40; INPES_cpl_c192=4; JNPES_cpl_c192=8
+  THRD_cpl_c192=1; WPG_cpl_c192=12;  MPB_cpl_c192="0 191"; APB_cpl_c192="0 203"
+  OPB_cpl_c192="204 263"; IPB_cpl_c192="264 287"
 
 elif [[ $MACHINE_ID = jet.* ]]; then
 
@@ -325,7 +325,7 @@ export USE_RESTART_TIME='.false.'
 # set false for CICE6
 export RESTART_EXT='.false'
 # resolution dependent files
-export MESHICE='tx${ICERES}v1_190204_ESMFmesh.nc'
+export MESHICE="tx${ICERES}v1_190204_ESMFmesh.nc"
 export CICEGRID="grid_cice_NEMS_mx${OCNRES}.nc"
 export CICEMASK="kmtu_cice_NEMS_mx${OCNRES}.nc"
 export CHLCLIM="seawifs-clim-1997-2010.${NX_GLB}x${NY_GLB}.v20180328.nc"
