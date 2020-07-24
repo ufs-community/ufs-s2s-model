@@ -1,11 +1,11 @@
 #
-#  CPLD_FV3_CCPP_MOM6_CICE_CMEPS_COLD_ATM_FLUX test
+#  CPLD_FV3_CCPP_192_MOM6_CICE_CMEPS_COLD_ATM_FLUX test
 #
 
-export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - cold start"
+export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - cold 192 "
 
-export CNTL_DIR="RT-Baselines_cold_ccpp_cmeps"
-export CNTLMED_DIR="MEDIATOR_ccpp_cmeps"
+export CNTL_DIR="RT-Baselines_cold192_ccpp_cmeps"
+export CNTLMED_DIR="MEDIATOR192_ccpp_cmeps"
 
 export LIST_FILES="phyf001.tile1.nc \
                    phyf001.tile2.nc \
@@ -63,7 +63,7 @@ export NFHOUT_HF="1"
 
 # set resolution
 export ATMRES='C192'
-export INPES=6
+export INPES=4
 export JNPES=8
 export NPX=193
 export NPY=193
@@ -106,7 +106,7 @@ export ocn_petlist_bounds=$OPB_cpl_c192
 export ice_petlist_bounds=$IPB_cpl_c192
 
 export MOM_INPUT=MOM_input_template_${OCNRES}
-export MESHICE='tx0.50v1_190204_ESMFmesh.nc'
+export MESHICE="tx${ICERES}v1_190204_ESMFmesh.nc"
 export CICEGRID="grid_cice_NEMS_mx${OCNRES}.nc"
 export CICEMASK="kmtu_cice_NEMS_mx${OCNRES}.nc"
 export CHLCLIM="seawifs-clim-1997-2010.${NX_GLB}x${NY_GLB}.v20180328.nc"
