@@ -871,6 +871,7 @@ OCEAN_SURFACE_STAGGER = "A"     ! default = "C"
                                 ! staggering of the surface velocity field that is
                                 ! returned to the coupler.  Valid values include
                                 ! 'A', 'B', or 'C'.
+RESTART_CHECKSUMS_REQUIRED = False
 ! === module MOM_sum_output ===
 MAXTRUNC = 100000               !   [truncations save_interval-1] default = 0
                                 ! The run will be stopped, and the day set to a very
