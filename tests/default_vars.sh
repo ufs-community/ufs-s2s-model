@@ -322,7 +322,6 @@ export RUNTYPE='initial'
 export DUMPFREQ='d' 
 export DUMPFREQ_N='35' 
 export USE_RESTART_TIME='.false.'
-# set false for CICE6
 export RESTART_EXT='.false'
 # resolution dependent files
 export MESHICE="tx${ICERES}v1_190204_ESMFmesh.nc"

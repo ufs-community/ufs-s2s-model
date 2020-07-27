@@ -48,7 +48,6 @@ function edit_mom_input {
 }
 
 function edit_data_table {
-
   sed -e "s/FRUNOFF/$FRUNOFF/g" 
 }
 

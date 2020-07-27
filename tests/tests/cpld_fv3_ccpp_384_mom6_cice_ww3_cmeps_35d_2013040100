@@ -3,7 +3,6 @@
 #
 
 export TEST_DESCR="Coupled FV3-CCPP-MOM6-CICE-CMEPS-WW3 system"
-
 export_35d_run
 export_fv3
 export_cpl

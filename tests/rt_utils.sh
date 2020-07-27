@@ -705,8 +705,8 @@ ecflow_stop() {
    SUITES=$( ecflow_client --get | grep "^suite" )
    echo "SUITES=${SUITES}"
    if [ -z "${SUITES}" ]; then
-   ecflow_client --halt=yes
-   ecflow_client --check_pt
-   ecflow_client --terminate=yes
+     ecflow_client --halt=yes
+     ecflow_client --check_pt
+     ecflow_client --terminate=yes
    fi
 }

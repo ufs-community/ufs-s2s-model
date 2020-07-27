@@ -191,8 +191,6 @@ PARALLEL_RESTARTFILES = True    !   [Boolean] default = False
                                 ! If true, each processor writes its own restart file,
                                 ! otherwise a single restart file is generated
 
-RESTART_CHECKSUMS_REQUIRED= False
-
 ! === module MOM_tracer_flow_control ===
 USE_IDEAL_AGE_TRACER = False    !   [Boolean] default = False
                                 ! If true, use the ideal_age_example tracer package.
@@ -874,7 +872,7 @@ LIQUID_RUNOFF_FROM_DATA = MOM6_RIVER_RUNOFF  !   [Boolean] default = False
                                 ! If true, allows liquid river runoff to be specified via
                                 ! the data_table using the component name 'OCN'.
 ! === module MOM_restart ===
-
+RESTART_CHECKSUMS_REQUIRED = False
 ! === module MOM_sum_output ===
 CALCULATE_APE = False           !   [Boolean] default = True
                                 ! If true, calculate the available potential energy of
