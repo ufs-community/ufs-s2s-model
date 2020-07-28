@@ -799,7 +799,7 @@ else
   rm -f fcst_*.x fcst_*.exe modules.fcst_*
   [[ ${KEEP_RUNDIR} == false ]] && rm -rf ${RUNDIR_ROOT}
   [[ ${ROCOTO} == true ]] && rm -f ${ROCOTO_XML} ${ROCOTO_DB} *_lock.db
-  [[ ${TEST_35D} == true ]] && rm -f tests/cpld*_20*
+  [[ ${TEST_35D} == true ]] && rm -f tests/cpld_*cmeps*_20*
 fi
 
 date >> ${REGRESSIONTEST_LOG}
