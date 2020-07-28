@@ -72,11 +72,9 @@ rt_35d() {
     sed -i -e "s/\(export SMONTH\)/\1=\"$sm\"/" $new_test_name
     sed -i -e "s/\(export MED_restart_data\)/\1='MEDIATOR_bmwav_cmeps_${DATE_35D}'/" $new_test_name
     DEP_RUN=${DEP_RUN}_${DATE_35D}
-    echo "==== 35 day run DEP_RUN is ${DEP_RUN}"
   fi
 
   TEST_NAME=${new_test_name#tests/}
-  echo "==== 35 day run TEST_NAME is ${TEST_NAME}"
 }
 
 rt_trap() {
