@@ -189,7 +189,6 @@ PARALLEL_RESTARTFILES = True    !   [Boolean] default = False
                                 ! If true, each processor writes its own restart file,
                                 ! otherwise a single restart file is generated
 RESTART_CHECKSUMS_REQUIRED= False
-
 ! === module MOM_tracer_flow_control ===
 USE_IDEAL_AGE_TRACER = False    !   [Boolean] default = False
                                 ! If true, use the ideal_age_example tracer package.

@@ -178,4 +178,3 @@ fi
 
 elapsed=$SECONDS
 echo "Elapsed time $elapsed seconds. Compiling ${MAKE_OPT} finished"
-
