@@ -7,8 +7,8 @@ export_35d_run
 export_fv3
 export_cpl
 
-export SYEAR="2012"
-export SMONTH="10"
+export SYEAR
+export SMONTH
 export SDAY="01"
 export SHOUR="00"
 
@@ -70,7 +70,7 @@ export INPUT_NML=input.benchmark_ccpp.nml.IN
 
 export FIELD_TABLE="field_table.gfdlmp"
 export SUITE_NAME="FV3_GFS_v15p2_coupled"
-export MED_restart_data='MEDIATOR_bmwav_cmeps_2012100100'
+export MED_restart_data
 
 export OZ_PHYS_NEW=".T."
 
