@@ -55,6 +55,28 @@ rt_single() {
   fi
 }
 
+rt_35d() {
+  local sy=$(echo ${DATE_35D} | cut -c 1-4)
+  local sm=$(echo ${DATE_35D} | cut -c 5-6)
+  local new_test_name="tests/${TEST_NAME}_${DATE_35D}"
+  rm -f tests/$new_test_name
+  cp tests/$TEST_NAME $new_test_name
+
+  if [[ $TEST_NAME =~ cold$ ]]; then
+    sed -i -e "s/\(export SYEAR\)/\1=\"$sy\"/" $new_test_name
+    sed -i -e "s/\(export SMONTH\)/\1=\"$sm\"/" $new_test_name
+    sed -i -e "s/\(export CNTL_DIR\)/\1='RT-Baselines_cold_bmwav_cmeps_${sy}'/" $new_test_name
+    sed -i -e "s/\(export CNTLMED_DIR\)/\1='MEDIATOR_bmwav_cmeps_${DATE_35D}'/" $new_test_name
+  elif [[ $TEST_NAME =~ 35d$ ]]; then
+    sed -i -e "s/\(export SYEAR\)/\1=\"$sy\"/" $new_test_name
+    sed -i -e "s/\(export SMONTH\)/\1=\"$sm\"/" $new_test_name
+    sed -i -e "s/\(export MED_restart_data\)/\1='MEDIATOR_bmwav_cmeps_${DATE_35D}'/" $new_test_name
+    DEP_RUN=${DEP_RUN}_${DATE_35D}
+  fi
+
+  TEST_NAME=${new_test_name#tests/}
+}
+
 rt_trap() {
   [[ ${ROCOTO:-false} == true ]] && rocoto_kill
   cleanup
@@ -331,6 +353,7 @@ ROCOTO=false
 ECFLOW=false
 KEEP_RUNDIR=false
 SINGLE_NAME=''
+TEST_35D=false
 
 TESTS_FILE='rt.conf'
 # Switch to special regression test config on wcoss_cray:
@@ -393,6 +416,10 @@ done
 
 if [[ $SINGLE_NAME != '' ]]; then
   rt_single
+fi
+
+if [[ $TESTS_FILE =~ '35d' ]]; then
+  TEST_35D=true
 fi
 
 if [[ $MACHINE_ID = cheyenne.* ]]; then
@@ -655,11 +682,15 @@ while read -r line; do
     MACHINES=$( echo $line | cut -d'|' -f4)
     CB=$(       echo $line | cut -d'|' -f5)
     DEP_RUN=$(  echo $line | cut -d'|' -f6 | sed -e 's/^ *//' -e 's/ *$//')
+    DATE_35D=$( echo $line | cut -d'|' -f7 | sed -e 's/^ *//' -e 's/ *$//')
 
     [[ -e "tests/$TEST_NAME" ]] || die "run test file tests/$TEST_NAME does not exist"
     [[ $SET_ID != ' ' && $SET != *${SET_ID}* ]] && continue
     [[ $MACHINES != ' ' && $MACHINES != *${MACHINE_ID}* ]] && continue
     [[ $CREATE_BASELINE == true && $CB != *fv3* ]] && continue
+
+    # 35 day tests
+    [[ $TEST_35D == true ]] && rt_35d
 
     # skip all *_appbuild runs if rocoto or ecFlow is used. FIXME
     if [[ ${ROCOTO} == true && ${ECFLOW} == true ]]; then
@@ -767,6 +798,7 @@ else
   rm -f fcst_*.x fcst_*.exe modules.fcst_*
   [[ ${KEEP_RUNDIR} == false ]] && rm -rf ${RUNDIR_ROOT}
   [[ ${ROCOTO} == true ]] && rm -f ${ROCOTO_XML} ${ROCOTO_DB} *_lock.db
+  [[ ${TEST_35D} == true ]] && rm -f tests/cpld_*cmeps*_20*
 fi
 
 date >> ${REGRESSIONTEST_LOG}
