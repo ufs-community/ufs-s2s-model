@@ -42,7 +42,7 @@ module load libpng/1.2.59
 module load zlib/1.2.11
 
 # load post lib
-module load post/8.0.5
+module load post/8.0.6
 
 module use /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/soft/modulefiles
 module load esmf/8.0.0
@@ -50,7 +50,7 @@ module load esmf/8.0.0
 ##
 ## load cmake
 ##
-module load cmake/3.10.0
+module load cmake/3.16.2
 setenv CMAKE_C_COMPILER mpiicc
 setenv CMAKE_CXX_COMPILER mpiicpc
 setenv CMAKE_Fortran_COMPILER mpiifort
