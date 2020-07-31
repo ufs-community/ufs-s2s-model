@@ -188,7 +188,7 @@ DTFREEZE_DP = -7.75E-08         !   [deg C Pa-1] default = 0.0
 PARALLEL_RESTARTFILES = True    !   [Boolean] default = False
                                 ! If true, each processor writes its own restart file,
                                 ! otherwise a single restart file is generated
-
+RESTART_CHECKSUMS_REQUIRED= False
 ! === module MOM_tracer_flow_control ===
 USE_IDEAL_AGE_TRACER = False    !   [Boolean] default = False
                                 ! If true, use the ideal_age_example tracer package.
@@ -871,7 +871,6 @@ OCEAN_SURFACE_STAGGER = "A"     ! default = "C"
                                 ! staggering of the surface velocity field that is
                                 ! returned to the coupler.  Valid values include
                                 ! 'A', 'B', or 'C'.
-RESTART_CHECKSUMS_REQUIRED = False
 ! === module MOM_sum_output ===
 MAXTRUNC = 100000               !   [truncations save_interval-1] default = 0
                                 ! The run will be stopped, and the day set to a very

@@ -93,6 +93,10 @@ elif [[ $MACHINE_ID = hera.* ]]; then
   THRD_cpl_c192=1; WPG_cpl_c192=12;  MPB_cpl_c192="0 191"; APB_cpl_c192="0 203"
   OPB_cpl_c192="204 263"; IPB_cpl_c192="264 287"
 
+  TASKS_cpl_c096=192; TPN_cpl_c096=40; INPES_cpl_c096=3; JNPES_cpl_c096=8
+  THRD_cpl_c096=1; WPG_cpl_c096=6;  MPB_cpl_c096="0 143"; APB_cpl_c096="0 149"
+  OPB_cpl_c096="150 179"; IPB_cpl_c096="180 191"
+
 elif [[ $MACHINE_ID = jet.* ]]; then
 
   TASKS_dflt=150 ; TPN_dflt=24 ; INPES_dflt=3 ; JNPES_dflt=8
@@ -322,6 +326,7 @@ export RUNTYPE='initial'
 export DUMPFREQ='d' 
 export DUMPFREQ_N='35' 
 export USE_RESTART_TIME='.false.'
+# set false for CICE6
 export RESTART_EXT='.false'
 # resolution dependent files
 export MESHICE="tx${ICERES}v1_190204_ESMFmesh.nc"
