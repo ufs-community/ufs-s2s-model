@@ -28,17 +28,17 @@ export FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
 export FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
 export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"  
 
-export TASKS=866
-export TPN=40
-export INPES=6
-export JNPES=12
+export TASKS=$TASKS_cpl_bmrk
+export TPN=$TPN_cpl_bmrk
+export INPES=$INPES_cpl_bmrk
+export JNPES=$JNPES_cpl_bmrk
 export THRD=1
-export WRTTASK_PER_GROUP=24
+export WRTTASK_PER_GROUP=$WPG_cpl_bmrk
 
-export med_petlist_bounds="0 431"
-export atm_petlist_bounds="0 455"
-export ocn_petlist_bounds="456 695"
-export ice_petlist_bounds="696 743"
+export med_petlist_bounds=$MPB_cpl_bmrk
+export atm_petlist_bounds=$APB_cpl_bmrk
+export ocn_petlist_bounds=$OPB_cpl_bmrk
+export ice_petlist_bounds=$IPB_cpl_bmrk
 
 # no high freq fv3 output
 NFHMAX_HF='-1'
