@@ -47,7 +47,6 @@
 
 &grid_nml
     grid_format  = 'nc'
-<<<<<<< HEAD
     grid_type    = 'tripole'
     grid_file    = 'CICEGRID'
     kmt_file     = 'CICEMASK'
@@ -59,24 +58,6 @@
     nslyr        = 1
     nblyr        = 1
     nfsd         = 1
-=======
-  , grid_type    = 'displaced_pole'
-  , grid_file    = 'CICEGRID'
-  , kmt_file     = 'CICEMASK'
-  , kcatbound    = 0
-/
-
-&domain_nml
-    nprocs = NPROC_ICE 
-  , processor_shape   = 'slenderX2'
-  , distribution_type = 'cartesian'
-  , distribution_wght = 'latitude'
-  , ew_boundary_type  = 'cyclic'
-  , ns_boundary_type  = 'tripole'
-  , maskhalo_dyn      = .false.
-  , maskhalo_remap    = .false.
-  , maskhalo_bound    = .false.
->>>>>>> develop
 /
 
 &tracer_nml
@@ -109,7 +90,7 @@
 &thermo_nml
     kitd              = 1
     ktherm            = 1
-    conduct           = 'bubbly'
+    conduct           = 'MU71'
     a_rapid_mode      =  0.5e-3
     Rac_rapid_mode    =    10.0
     aspect_rapid_mode =     1.0
