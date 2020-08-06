@@ -31,6 +31,7 @@ OCN_attributes::
   DumpFields = false
   ProfileMemory = false
   OverwriteSlice = true
+  dbug_flag = @[cap_dbug_flag]
 ::
 
 # ICE #
@@ -45,6 +46,7 @@ ICE_attributes::
   stop_n = @[FHMAX]
   stop_option = nhours
   stop_ymd = -999
+  dbug_flag = @[cap_dbug_flag]
 ::
 
 # WAV #
