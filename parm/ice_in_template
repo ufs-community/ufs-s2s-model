@@ -97,6 +97,7 @@
     dSdt_slow_mode    = -5.0e-8
     phi_c_slow_mode   =    0.05
     phi_i_mushy       =    0.85
+    sw_redist         = .true.
 /
 
 &dynamics_nml
@@ -106,6 +107,7 @@
     kevp_kernel     = 0
     brlx            = 300.0
     arlx            = 300.0
+    ssh_stress      = 'coupled'
     advection       = 'remap'
     kstrength       = 1
     krdg_partic     = 1
