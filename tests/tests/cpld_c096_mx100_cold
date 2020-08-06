@@ -89,7 +89,7 @@ export ocn_petlist_bounds=$OPB_cpl_c096
 export ice_petlist_bounds=$IPB_cpl_c096
 
 export MOM_INPUT=MOM_input_template_${OCNRES}
-export MESHICE="tx${ICERES}v1_190204_ESMFmesh.nc"
+export MESHICE="mesh.mx${OCNRES}.nc"
 export CICEGRID="grid_cice_NEMS_mx${OCNRES}.nc"
 export CICEMASK="kmtu_cice_NEMS_mx${OCNRES}.nc"
 export CHLCLIM="seawifs_1998-2006_smoothed_2X.nc"

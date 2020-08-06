@@ -39,7 +39,7 @@ cp    @[RTPWD]/MOM6_FIX/@[OCNRES]/* ./INPUT
 cp    @[RTPWD]/CICE_FIX/@[OCNRES]/grid_cice_NEMS_mx@[OCNRES].nc .
 cp    @[RTPWD]/CICE_FIX/@[OCNRES]/kmtu_cice_NEMS_mx@[OCNRES].nc .
 if [[ $MEDCOMP == 'cmeps' ]]; then
-  cp    @[RTPWD]/CICE_FIX/@[OCNRES]/tx@[ICERES]v1_190204_ESMFmesh.nc .
+    cp    @[RTPWD]/CICE_FIX/@[OCNRES]/mesh.mx@[OCNRES].nc .
 fi
 
 # ICs

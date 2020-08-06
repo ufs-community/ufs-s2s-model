@@ -12,8 +12,10 @@ export SMONTH
 export SDAY="01"
 export SHOUR="00"
 
-export DAYS="35"
-export FHMAX="840"
+export DAYS="5"
+export FHMAX="120"
+#export DAYS="35"
+#export FHMAX="840"
 export FDIAG="6"
 export WLCLK=480
 
