@@ -20,7 +20,7 @@
 	branch = master
 [submodule "MOM6"]
 	path = MOM6
-	url = https://github.com/DeniseWorthen/MOM6-interface
+	url = https://github.com/NOAA-EMC/MOM6-interface
 	branch = develop
 [submodule "CMEPS"]
 	path = CMEPS
