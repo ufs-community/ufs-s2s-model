@@ -33,4 +33,4 @@
 [submodule "MOM6-interface/MOM6"]
 	path = MOM6-interface/MOM6
 	url = https://github.com/NOAA-EMC/MOM6
-	branch = feature/statediagnose
+	branch = dev/emc
