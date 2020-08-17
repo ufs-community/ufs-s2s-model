@@ -11,7 +11,6 @@
     ice_ic         = 'cice5_model.res.nc'
     restart        = .true.
     restart_ext    = RESTART_EXT
-    restart_coszen = .true.
     use_restart_time = USE_RESTART_TIME
     restart_format = 'nc'
     lcdf64         = .false.
@@ -163,6 +162,7 @@
     update_ocn_f    = FRAZIL_FWSALT
     l_mpond_fresh   = .false.
     tfrz_option     = 'linear_salt'
+    restart_coszen  = .true.
     oceanmixed_ice  = .false.
     wave_spec_type  = 'none'
     wave_spec_file  = 'unknown_wave_spec_file'
