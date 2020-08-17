@@ -300,6 +300,7 @@ export atm_model="fv3"
 export ocn_model="mom6"
 export ice_model="cice"
 export wav_model="ww3"
+export cap_dbug_flag="0"
 # MOM6 river runoff 
 export MOM6_RIVER_RUNOFF='True'
 # set USE_LA_LI2016 to the current default; this must be set False for restart repro 
