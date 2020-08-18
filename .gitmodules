@@ -1,11 +1,11 @@
 [submodule "FV3"]
 	path = FV3
-	url = https://github.com/NOAA-EMC/fv3atm
-	branch = develop
+	url = https://github.com/junwang-noaa/fv3atm
+	branch = esmf810bs21
 [submodule "NEMS"]
 	path = NEMS
-	url = https://github.com/NOAA-EMC/NEMS.git
-	branch = develop
+	url = https://github.com/junwang-noaa/nems
+	branch = esmf810bs21
 [submodule "CICE_SRC"]
 	path = CICE_SRC
 	url = https://github.com/NOAA-EMC/CICE5.git
@@ -24,8 +24,8 @@
 	branch = develop
 [submodule "CMEPS"]
 	path = CMEPS
-	url = https://github.com/NOAA-EMC/CMEPS.git
-	branch = emc/develop
+	url = https://github.com/junwang-noaa/CMEPS
+	branch = compile_esmf810
 [submodule "WW3"]
 	path = WW3
 	url = https://github.com/NOAA-EMC/WW3.git
