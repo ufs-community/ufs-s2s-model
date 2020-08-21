@@ -4,7 +4,7 @@
 	branch = develop
 [submodule "NEMS"]
 	path = NEMS
-	url = https://github.com/NOAA-EMC/NEMS.git
+	url = https://github.com/DeniseWorthen/NEMS.git
 	branch = develop
 [submodule "FMS"]
 	path = FMS
@@ -24,7 +24,7 @@
 	branch = develop
 [submodule "CICE6"]
 	path = CICE-interface/CICE
-	url = https://github.com/NOAA-EMC/CICE.git
+	url = https://github.com/DeniseWorthen/CICE.git
 	branch = emc/develop
 [submodule "MOM6-interface/mkmf"]
 	path = MOM6-interface/mkmf
