@@ -45,6 +45,8 @@ if [ $WARM_START = .F. ]; then
   cp  @[RTPWD]/MOM6_IC/MOM*.nc ./INPUT
   cp  @[RTPWD]/CICE_IC/cice5_model_@[ICERES].res_2016100300.nc ./cice5_model.res.nc
 
+
+if [ $use_coldstart = .T. ]; then
   # Restart from coldstart, NEMS or CMEPS
   if [[ ! $MED_restart_data == '' ]]; then
     if [[ $MEDCOMP == 'cmeps' ]]; then
@@ -55,6 +57,7 @@ if [ $WARM_START = .F. ]; then
       cp  @[RTPWD]/@[MED_restart_data]/mediator_* .
     fi
   fi
+fi
 
 # Restart
 else
