@@ -107,7 +107,7 @@ export NEMS_CONFIGURE="nems.configure.medcoldcmeps_atm_ocn_ice.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 
-export FV3_RUN=cpld_fv3_mom6_cice_atm_flux_run.IN
+export FV3_RUN=cpld_lowres.IN
 export INPUT_NML=input.mom6_ccpp.nml.IN
 
 export SUITE_NAME="FV3_GFS_2017_coupled"
