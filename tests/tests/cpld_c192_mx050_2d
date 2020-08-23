@@ -84,8 +84,8 @@ export NY_GLB=576
 
 export NPROC_ICE='24'
 DT_ATMOS='900'
-DT_DYNAM_MOM6='900'
-DT_THERM_MOM6='1800'
+DT_DYNAM_MOM6='1800'
+DT_THERM_MOM6='3600'
 
 # set component and coupling timesteps
 export DT_CICE=${DT_ATMOS}
