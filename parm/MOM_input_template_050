@@ -840,7 +840,7 @@ CHL_VARNAME = "chlor_a"         ! default = "CHL_A"
                                 ! Name of CHL_A variable in CHL_FILE.
 PEN_SW_NBANDS = 3               ! default = 1
                                 ! The number of bands of penetrating shortwave radiation.
-HL_FILE is the file containing chl_a concentrations i
+
 ! === module MOM_tracer_advect ===
 TRACER_ADVECTION_SCHEME = "PPM:H3" ! default = "PLM"
                                 ! The horizontal transport scheme for tracers:
