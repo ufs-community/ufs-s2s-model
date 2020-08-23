@@ -833,7 +833,7 @@ VAR_PEN_SW = True               !   [Boolean] default = False
                                 ! If true, use one of the CHL_A schemes specified by
                                 ! OPACITY_SCHEME to determine the e-folding depth of
                                 ! incoming short wave radiation.
-CHL_FILE = CHLCLIM              ! CHL_FILE is the file containing chl_a concentrations in
+CHL_FILE = CHLCLIM    ! CHL_FILE is the file containing chl_a concentrations in
                                 ! the variable CHL_A. It is used when VAR_PEN_SW and
                                 ! CHL_FROM_FILE are true.
 CHL_VARNAME = "chlor_a"         ! default = "CHL_A"
@@ -873,6 +873,10 @@ OCEAN_SURFACE_STAGGER = "A"     ! default = "C"
                                 ! 'A', 'B', or 'C'.
 RESTART_CHECKSUMS_REQUIRED = False
 ! === module MOM_sum_output ===
+CALCULATE_APE = False           !   [Boolean] default = True
+                                ! If true, calculate the available potential energy of
+                                ! the interfaces.  Setting this to false reduces the
+                                ! memory footprint of high-PE-count models dramatically.
 MAXTRUNC = 100000               !   [truncations save_interval-1] default = 0
                                 ! The run will be stopped, and the day set to a very
                                 ! large value if the velocity is truncated more than
