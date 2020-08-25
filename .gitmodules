@@ -1,11 +1,11 @@
 [submodule "FV3"]
 	path = FV3
-	url = https://github.com/junwang-noaa/fv3atm
-	branch = esmf810bs21
+	url = https://github.com/NOAA-EMC/fv3atm
+	branch = develop
 [submodule "NEMS"]
 	path = NEMS
-	url = https://github.com/junwang-noaa/nems
-	branch = esmf810bs21
+	url = https://github.com/NOAA-EMC/nems
+	branch = develop
 [submodule "CICE_SRC"]
 	path = CICE_SRC
 	url = https://github.com/NOAA-EMC/CICE5.git
