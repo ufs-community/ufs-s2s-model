@@ -33,14 +33,13 @@ HYDRO = N
 CCPP = N
 QUAD_PRECISION = Y
 MULTI_GASES = N
-CUST_POST = Y
-NO_INLINE_POST =
 
 include       $(ESMFMKFILE)
 ESMF_INC    = $(ESMF_F90COMPILEPATHS)
 
 NEMSIOINC = -I$(NEMSIO_INC)
-NCEPLIBS = $(POST_LIB) $(NEMSIO_LIB) $(G2_LIB4) $(G2TMPL_LIB) $(BACIO_LIB4) $(SP_LIBd) $(W3EMC_LIBd) $(W3NCO_LIBd) $(CRTM_LIB) $(PNG_LIB) $(JASPER_LIB) $(Z_LIB)
+NCEPLIBS = $(POST_LIB) $(NEMSIO_LIB) $(G2_LIB4) $(G2TMPL_LIB) $(BACIO_LIB4) $(SP_LIBd) $(W3EMC_LIBd) $(W3NCO_LIBd) $(CRTM_LIB) -lpng -ljasper -lz
+# $(PNG_LIB) $(JASPER_LIB) $(Z_LIB)
 
 ##############################################
 # Need to use at least GNU Make version 3.81 #
@@ -69,49 +68,46 @@ CPPDEFS += -Duse_libMPI -Duse_netCDF -DSPMD -DUSE_LOG_DIAG_FIELD_INFO -DUSE_GFSL
 CPPDEFS += -DNEW_TAUCTMAX -DINTERNAL_FILE_NML
 
 ifeq ($(HYDRO),Y)
-  CPPDEFS +=
+CPPDEFS +=
 else
-  CPPDEFS += -DMOIST_CAPPA -DUSE_COND
+CPPDEFS += -DMOIST_CAPPA -DUSE_COND
 endif
 
 ifeq ($(32BIT),Y)
-  CPPDEFS += -DOVERLOAD_R4 -DOVERLOAD_R8
-  FFLAGS += -i4 -real-size 32
+CPPDEFS += -DOVERLOAD_R4 -DOVERLOAD_R8
+FFLAGS += -i4 -real-size 32
 else
-  ifeq ($(REPRO),Y)
-    FFLAGS += -i4 -real-size 64
-  else
-    FFLAGS += -i4 -real-size 64 -no-prec-div -no-prec-sqrt
-  endif
+ifeq ($(REPRO),Y)
+FFLAGS += -i4 -real-size 64
+else
+FFLAGS += -i4 -real-size 64 -no-prec-div -no-prec-sqrt
+endif
 endif
 
 ifeq ($(REPRO),Y)
-  FFLAGS += -qno-opt-dynamic-align
-  CFLAGS += -qno-opt-dynamic-align
+FFLAGS += -qno-opt-dynamic-align
+CFLAGS += -qno-opt-dynamic-align
 else
-  ifeq ($(AVX2),Y)
+ifeq ($(AVX2),Y)
 # Don't use the AVX512 flags yet on hera
-#   FFLAGS += -axSSE4.2,AVX,CORE-AVX2,CORE-AVX512 -qno-opt-dynamic-align
-#   CFLAGS += -axSSE4.2,AVX,CORE-AVX2,CORE-AVX512 -qno-opt-dynamic-align
-    FFLAGS += -xCORE-AVX2 -qno-opt-dynamic-align
-    CFLAGS += -xCORE-AVX2 -qno-opt-dynamic-align
-  else
-    FFLAGS += -qno-opt-dynamic-align
-    CFLAGS += -qno-opt-dynamic-align
-  endif
+#FFLAGS += -axSSE4.2,AVX,CORE-AVX2,CORE-AVX512 -qno-opt-dynamic-align
+#CFLAGS += -axSSE4.2,AVX,CORE-AVX2,CORE-AVX512 -qno-opt-dynamic-align
+FFLAGS += -xCORE-AVX2 -qno-opt-dynamic-align
+CFLAGS += -xCORE-AVX2 -qno-opt-dynamic-align
+else
+FFLAGS += -qno-opt-dynamic-align
+CFLAGS += -qno-opt-dynamic-align
+endif
 endif
 
 ifeq ($(MULTI_GASES),Y)
-  CPPDEFS += -DMULTI_GASES
+CPPDEFS += -DMULTI_GASES
 endif
 
 ifeq ($(QUAD_PRECISION),Y)
 CPPDEFS += -DENABLE_QUAD_PRECISION
 endif
 
-ifeq ($(NO_INLINE_POST),Y)
-  CPPDEFS += -DNO_INLINE_POST
-endif
 
 FFLAGS_OPT = -O2 -debug minimal -fp-model source -qoverride-limits -qopt-prefetch=3
 FFLAGS_REPRO = -O2 -debug minimal -fp-model consistent -qoverride-limits -g -traceback
@@ -141,53 +137,49 @@ LDFLAGS_VERBOSE := -Wl,-V,--verbose,-cref,-M
 LIBS :=
 
 ifeq ($(REPRO),Y)
-  CPPDEFS += -DREPRO
-  CFLAGS += $(CFLAGS_REPRO)
-  FFLAGS += $(FFLAGS_REPRO)
-  FAST :=
+CPPDEFS += -DREPRO
+CFLAGS += $(CFLAGS_REPRO)
+FFLAGS += $(FFLAGS_REPRO)
+FAST :=
 else ifeq ($(DEBUG),Y)
-  CPPDEFS += -DDEBUG
-  CFLAGS += $(CFLAGS_DEBUG)
-  FFLAGS += $(FFLAGS_DEBUG)
-  FAST :=
+CPPDEFS += -DDEBUG
+CFLAGS += $(CFLAGS_DEBUG)
+FFLAGS += $(FFLAGS_DEBUG)
+FAST :=
 else ifeq ($(TEST),Y)
-  CFLAGS += $(CFLAGS_TEST)
-  FFLAGS += $(FFLAGS_TEST)
-  FAST :=
+CFLAGS += $(CFLAGS_TEST)
+FFLAGS += $(FFLAGS_TEST)
+FAST :=
 else
-  CFLAGS += $(CFLAGS_OPT)
-  FFLAGS += $(FFLAGS_OPT)
-  FAST := $(TRANSCENDENTALS)
+CFLAGS += $(CFLAGS_OPT)
+FFLAGS += $(FFLAGS_OPT)
+FAST := $(TRANSCENDENTALS)
 endif
 
 ifeq ($(OPENMP),Y)
-  CPPDEFS += -DOPENMP
-  CFLAGS += $(CFLAGS_OPENMP)
-  FFLAGS += $(FFLAGS_OPENMP)
-  LDFLAGS += $(LDFLAGS_OPENMP)
+CPPDEFS += -DOPENMP
+CFLAGS += $(CFLAGS_OPENMP)
+FFLAGS += $(FFLAGS_OPENMP)
+LDFLAGS += $(LDFLAGS_OPENMP)
 endif
 
 ifeq ($(VERBOSE),Y)
-  CFLAGS += $(CFLAGS_VERBOSE)
-  FFLAGS += $(FFLAGS_VERBOSE)
-  LDFLAGS += $(LDFLAGS_VERBOSE)
+CFLAGS += $(CFLAGS_VERBOSE)
+FFLAGS += $(FFLAGS_VERBOSE)
+LDFLAGS += $(LDFLAGS_VERBOSE)
 endif
 
 ifeq ($(CCPP),Y)
-  CPPDEFS += -DCCPP
-  CFLAGS += -I$(PATH_CCPP)/include
-  FFLAGS += -I$(PATH_CCPP)/include
-  LDFLAGS += -L$(PATH_CCPP)/lib -lccppphys -lccpp $(NCEPLIBS) -lxml2
-endif
-
-ifeq ($(CMEPS),Y)
-  CPPDEFS += -DCMEPS
+CPPDEFS += -DCCPP
+CFLAGS += -I$(PATH_CCPP)/include
+FFLAGS += -I$(PATH_CCPP)/include
+LDFLAGS += -L$(PATH_CCPP)/lib -lccppphys -lccpp $(NCEPLIBS) -lxml2
 endif
 
 LDFLAGS += $(LIBS)
 
 ifdef InNemsMakefile
-  FFLAGS += $(ESMF_INC)
-  CPPFLAGS += -DFV3_CPLD -traditional
-  EXTLIBS = $(NCEPLIBS) $(ESMF_LIB) $(LDFLAGS) $(NETCDF_LIB)
+FFLAGS += $(ESMF_INC)
+CPPFLAGS += -DFV3_CPLD -traditional
+EXTLIBS = $(NCEPLIBS) $(ESMF_LIB) $(LDFLAGS) $(NETCDF_LIB)
 endif
