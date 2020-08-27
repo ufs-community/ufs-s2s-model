@@ -4,7 +4,7 @@
 	branch = develop
 [submodule "NEMS"]
 	path = NEMS
-	url = https://github.com/NOAA-EMC/nems
+	url = https://github.com/NOAA-EMC/NEMS.git
 	branch = develop
 [submodule "CICE_SRC"]
 	path = CICE_SRC
@@ -24,8 +24,8 @@
 	branch = develop
 [submodule "CMEPS"]
 	path = CMEPS
-	url = https://github.com/junwang-noaa/CMEPS
-	branch = compile_esmf810
+	url = https://github.com/NOAA-EMC/CMEPS
+	branch = emc/develop
 [submodule "WW3"]
 	path = WW3
 	url = https://github.com/NOAA-EMC/WW3.git
