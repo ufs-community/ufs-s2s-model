@@ -267,7 +267,7 @@ elif [[ $MACHINE_ID = orion.* ]]; then
 #  ACCNR= # detected in detect_machine.sh
   PARTITION=orion
   dprefix=/work/noaa/stmp/${USER}
-  DISKNM=/work/noaa/stmp/jminsuk/RT
+  DISKNM=/work/noaa/nems/emc.nemspara/RT
   STMP=$dprefix/stmp
   PTMP=$dprefix/stmp
 
@@ -435,7 +435,7 @@ fi
 if [[ $MACHINE_ID = cheyenne.* ]]; then
   RTPWD=${RTPWD:-$DISKNM/develop-20200210/${COMPILER^^}}
 else
-  RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200812}
+  RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200825}
 fi
 
 shift $((OPTIND-1))
