@@ -77,6 +77,7 @@ export FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
 export FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
 export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"  
 
+export NPROC_ICE="90"
 export TASKS=$TASKS_cpl_wwav
 export TPN=$TPN_cpl_wwav
 export INPES=$INPES_cpl_wwav
