@@ -64,7 +64,7 @@ elif [[ $MACHINE_ID = orion.* ]]; then
 
   TASKS_cpl_wwav=522; TPN_cpl_wwav=40; INPES_cpl_wwav=6; JNPES_cpl_wwav=8
   THRD_cpl_wwav=1; WPG_cpl_wwav=24; MPB_cpl_wwav="0 287"; APB_cpl_wwav="0 311"
-  OPB_cpl_wwav="312 431"; IPB_cpl_wwav="432 521"; WPB_cpl_wwav="480 521"
+  OPB_cpl_wwav="312 431"; IPB_cpl_wwav="432 521"; WPB_cpl_wwav="432 521"
 
 elif [[ $MACHINE_ID = hera.* ]]; then
 
