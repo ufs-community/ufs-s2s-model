@@ -342,8 +342,6 @@ export NA_INIT='1'
 export EXTERNAL_IC='.T.'
 export NGGPS_IC='.T.'
 export MOUNTAIN='.F.'
-# default mediator component (NEMS mediator)
-export MEDCOMP=''
 export CPLMODE='nems_orig'
 export RESTART_PREFIX=''
 export RESTART_SUFFIX=''
