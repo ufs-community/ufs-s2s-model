@@ -14,26 +14,15 @@
 # Decide the conf and modulefile names.
 # S2S_DEBUG_MODULE is defined in GNUmakefile
 
-#CHOSEN_MODULE=$(BUILD_TARGET)/fv3
-CHOSEN_MODULE=$(BUILD_TARGET)/fv3_coupled
+CHOSEN_MODULE=$(BUILD_TARGET)/fv3
 
 ifeq ($(S2S_DEBUG_MODULE),true)
-  CHOSEN_MODULE=$(BUILD_TARGET)/fv3_coupled_debug
+  CHOSEN_MODULE=$(BUILD_TARGET)/fv3_debug
 endif
 
 #$(info CHOSEN_MODULE is $(CHOSEN_MODULE))
 
 CONFIGURE_NEMS_FILE=configure.fv3.$(BUILD_TARGET)
-
-# ----------------------------------------------------------------------
-# Exit for systems that are currently not supported
-
-ifeq ($(BUILD_TARGET),theia.pgi)
-  $(error Model currently not supported on $(BUILD_TARGET))
-else ifeq ($(BUILD_TARGET),cheyenne.pgi)
-  $(error Model currently not supported on $(BUILD_TARGET))
-endif
-
 
 # ----------------------------------------------------------------------
 # Copy the executable and modules.nems files into the tests/ directory
