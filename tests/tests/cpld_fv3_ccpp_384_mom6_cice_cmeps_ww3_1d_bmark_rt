@@ -92,6 +92,7 @@ export JNPES=$JNPES_cpl_wwav
 export THRD=$THRD_cpl_wwav
 export WRTTASK_PER_GROUP=$WPG_cpl_wwav
 
+export NPROC_ICE="90"
 export med_petlist_bounds=$MPB_cpl_wwav
 export atm_petlist_bounds=$APB_cpl_wwav
 export ocn_petlist_bounds=$OPB_cpl_wwav
@@ -111,8 +112,6 @@ export CPL_FAST=${DT_ATMOS}
 export DUMPFREQ_N=${DAYS}
 export DUMPFREQ="d"
 
-# use CMEPS as the mediator component
-export MEDCOMP="cmeps"
 # CMEPS controls intervals in ALLCOMP
 export FV3_RESTART_INTERVAL=${FHMAX}
 

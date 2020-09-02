@@ -39,9 +39,9 @@ elif [ $MACHINE_ID = wcoss_dell_p3 ]; then
   THRD_cpl_bmrk=1; WPG_cpl_bmrk=24; MPB_cpl_bmrk="0 287"; APB_cpl_bmrk="0 311"
   OPB_cpl_bmrk="312 431"; IPB_cpl_bmrk="432 479"
 
-  TASKS_cpl_wwav=520; TPN_cpl_wwav=28; INPES_cpl_wwav=6; JNPES_cpl_wwav=8
+  TASKS_cpl_wwav=522; TPN_cpl_wwav=28; INPES_cpl_wwav=6; JNPES_cpl_wwav=8
   THRD_cpl_wwav=1; WPG_cpl_wwav=24; MPB_cpl_wwav="0 287"; APB_cpl_wwav="0 311"
-  OPB_cpl_wwav="312 431"; IPB_cpl_wwav="432 479"; WPB_cpl_wwav="480 519"
+  OPB_cpl_wwav="312 431"; IPB_cpl_wwav="432 521"; WPB_cpl_wwav="432 521"
 
 elif [[ $MACHINE_ID = orion.* ]]; then
 
@@ -62,9 +62,9 @@ elif [[ $MACHINE_ID = orion.* ]]; then
   THRD_cpl_bmrk=1; WPG_cpl_bmrk=24; MPB_cpl_bmrk="0 287"; APB_cpl_bmrk="0 311"
   OPB_cpl_bmrk="312 431"; IPB_cpl_bmrk="432 479"
 
-  TASKS_cpl_wwav=520; TPN_cpl_wwav=40; INPES_cpl_wwav=6; JNPES_cpl_wwav=8
+  TASKS_cpl_wwav=522; TPN_cpl_wwav=40; INPES_cpl_wwav=6; JNPES_cpl_wwav=8
   THRD_cpl_wwav=1; WPG_cpl_wwav=24; MPB_cpl_wwav="0 287"; APB_cpl_wwav="0 311"
-  OPB_cpl_wwav="312 431"; IPB_cpl_wwav="432 479"; WPB_cpl_wwav="480 519"
+  OPB_cpl_wwav="312 431"; IPB_cpl_wwav="432 521"; WPB_cpl_wwav="432 521"
 
 elif [[ $MACHINE_ID = hera.* ]]; then
 
@@ -85,17 +85,9 @@ elif [[ $MACHINE_ID = hera.* ]]; then
   THRD_cpl_bmrk=1; WPG_cpl_bmrk=24; MPB_cpl_bmrk="0 287"; APB_cpl_bmrk="0 311"
   OPB_cpl_bmrk="312 431"; IPB_cpl_bmrk="432 479"
 
-  TASKS_cpl_wwav=520; TPN_cpl_wwav=40; INPES_cpl_wwav=6; JNPES_cpl_wwav=8
+  TASKS_cpl_wwav=522; TPN_cpl_wwav=40; INPES_cpl_wwav=6; JNPES_cpl_wwav=8
   THRD_cpl_wwav=1; WPG_cpl_wwav=24; MPB_cpl_wwav="0 287"; APB_cpl_wwav="0 311"
-  OPB_cpl_wwav="312 431"; IPB_cpl_wwav="432 479"; WPB_cpl_wwav="480 519"
-
-  TASKS_cpl_c192=288; TPN_cpl_c192=40; INPES_cpl_c192=4; JNPES_cpl_c192=8
-  THRD_cpl_c192=1; WPG_cpl_c192=12;  MPB_cpl_c192="0 191"; APB_cpl_c192="0 203"
-  OPB_cpl_c192="204 263"; IPB_cpl_c192="264 287"
-
-  TASKS_cpl_c096=192; TPN_cpl_c096=40; INPES_cpl_c096=3; JNPES_cpl_c096=8
-  THRD_cpl_c096=1; WPG_cpl_c096=6;  MPB_cpl_c096="0 143"; APB_cpl_c096="0 149"
-  OPB_cpl_c096="150 179"; IPB_cpl_c096="180 191"
+  OPB_cpl_wwav="312 431"; IPB_cpl_wwav="432 521"; WPB_cpl_wwav="432 521"
 
 elif [[ $MACHINE_ID = jet.* ]]; then
 
@@ -350,8 +342,6 @@ export NA_INIT='1'
 export EXTERNAL_IC='.T.'
 export NGGPS_IC='.T.'
 export MOUNTAIN='.F.'
-# default mediator component (NEMS mediator)
-export MEDCOMP=''
 export CPLMODE='nems_orig'
 export RESTART_PREFIX=''
 export RESTART_SUFFIX=''

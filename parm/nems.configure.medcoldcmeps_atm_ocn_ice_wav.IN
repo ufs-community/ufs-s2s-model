@@ -112,5 +112,4 @@ ALLCOMP_attributes::
       restart_option = nhours
       restart_ymd = -999
       dbug_flag = @[cap_dbug_flag]
-      use_coldstart = false
 ::
