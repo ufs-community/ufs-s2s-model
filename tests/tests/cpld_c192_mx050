@@ -1,24 +1,24 @@
 #
-#  CPLD_FV3_CCPP_192_MOM6_CICE_CMEPS_COLD_ATM_FLUX test
+#  CPLD_FV3_CCPP_192_MOM6_CICE_CMEPS_2D_ATM_FLUX test
 #
 
-export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - cold 192 "
+export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C192MX050"
 
-export CNTL_DIR="RT-Baselines_cold192_mx050"
-export CNTLMED_DIR="MEDIATOR192_mx050"
+export CNTL_DIR="RT-Baselines_C192_mx050"
+export CNTLMED_DIR=""
 
-export LIST_FILES="phyf001.tile1.nc \
-                   phyf001.tile2.nc \
-                   phyf001.tile3.nc \
-                   phyf001.tile4.nc \
-                   phyf001.tile5.nc \
-                   phyf001.tile6.nc \
-                   dynf001.tile1.nc \
-                   dynf001.tile2.nc \
-                   dynf001.tile3.nc \
-                   dynf001.tile4.nc \
-                   dynf001.tile5.nc \
-                   dynf001.tile6.nc \
+export LIST_FILES="phyf048.tile1.nc \
+                   phyf048.tile2.nc \
+                   phyf048.tile3.nc \
+                   phyf048.tile4.nc \
+                   phyf048.tile5.nc \
+                   phyf048.tile6.nc \
+                   dynf048.tile1.nc \
+                   dynf048.tile2.nc \
+                   dynf048.tile3.nc \
+                   dynf048.tile4.nc \
+                   dynf048.tile5.nc \
+                   dynf048.tile6.nc \
                    RESTART/coupler.res \
                    RESTART/fv_core.res.nc \
                    RESTART/fv_core.res.tile1.nc \
@@ -51,26 +51,27 @@ export LIST_FILES="phyf001.tile1.nc \
                    RESTART/sfc_data.tile4.nc \
                    RESTART/sfc_data.tile5.nc \
                    RESTART/sfc_data.tile6.nc \
-                   ufs.s2s.cold.cpl.r.2016-10-03-03600.nc"
+                   RESTART/MOM.res.nc \
+                   RESTART/MOM.res_1.nc \
+                   RESTART/MOM.res_2.nc \
+                   RESTART/MOM.res_3.nc \
+                   RESTART/iced.2016-10-05-00000.nc \
+                   ufs.s2s.cpl.r.2016-10-05-00000.nc"
 
 export_fv3
 export_cpl
 
-export DAYS="0.041666666"
-export FHMAX="1" # Note this needs to be at least 2x CPL_SLOW
-export NFHMAX_HF="12"
-export NFHOUT_HF="1"
+export DAYS="2"
+export FHMAX="48"
+export FDIAG="6"
+export WLCLK=30
 
 # set resolution
 export ATMRES='C192'
-export INPES=4
-export JNPES=8
 export NPX=193
 export NPY=193
 export IMO=768
 export JMO=384
-export WRITE_GROUP=1
-export WRTTASK_PER_GROUP=12
 
 export OCNRES='050'
 export ICERES='0.50'
@@ -79,8 +80,8 @@ export NY_GLB=576
 
 export NPROC_ICE='24'
 DT_ATMOS='900'
-DT_DYNAM_MOM6='900'
-DT_THERM_MOM6='1800'
+DT_DYNAM_MOM6='1800'
+DT_THERM_MOM6='3600'
 
 # set component and coupling timesteps
 export DT_CICE=${DT_ATMOS}
@@ -99,6 +100,7 @@ export INPES=$INPES_cpl_c192
 export JNPES=$JNPES_cpl_c192
 export THRD=$THRD_cpl_c192
 export WRTTASK_PER_GROUP=$WPG_cpl_c192
+export WRITE_GROUP=1
 
 export med_petlist_bounds=$MPB_cpl_c192
 export atm_petlist_bounds=$APB_cpl_c192
@@ -112,15 +114,22 @@ export CICEMASK="kmtu_cice_NEMS_mx${OCNRES}.nc"
 export CHLCLIM="seawifs-clim-1997-2010.${NX_GLB}x${NY_GLB}.v20180328.nc"
 export FRUNOFF="runoff.daitren.clim.${NX_GLB}x${NY_GLB}.v20180328.nc"
 
-# write a CICE restart at FHMAX
-export DUMPFREQ_N=${FHMAX}
-export DUMPFREQ="h"
+# write a CICE restart at DAYS
+export DUMPFREQ_N=${DAYS}
+export DUMPFREQ="d"
 
-# use CMEPS as the mediator component
-export MEDCOMP="cmeps"
+# CMEPS controls intervals in ALLCOMP
+export FV3_RESTART_INTERVAL=${FHMAX}
+
+# restart test: required for restart repro
+export MOM6_REPRO_LA='False'
+export MOM6_THERMO_SPAN='False'
+# use one step coldstart
+export use_coldstart="false"
+export debug_flag='0'
 
 # nems.configure
-export NEMS_CONFIGURE="nems.configure.medcoldcmeps_atm_ocn_ice.IN"
+export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 
@@ -128,3 +137,4 @@ export FV3_RUN=cpld_lowres.IN
 export INPUT_NML=input.mom6_ccpp.nml.IN
 
 export SUITE_NAME="FV3_GFS_2017_coupled"
+export MED_restart_data=''
