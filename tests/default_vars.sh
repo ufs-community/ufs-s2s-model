@@ -66,6 +66,14 @@ elif [[ $MACHINE_ID = orion.* ]]; then
   THRD_cpl_wwav=1; WPG_cpl_wwav=24; MPB_cpl_wwav="0 287"; APB_cpl_wwav="0 311"
   OPB_cpl_wwav="312 431"; IPB_cpl_wwav="432 479"; WPB_cpl_wwav="480 519"
 
+  TASKS_cpl_c192=288; TPN_cpl_c192=40; INPES_cpl_c192=4; JNPES_cpl_c192=8
+  THRD_cpl_c192=1; WPG_cpl_c192=12;  MPB_cpl_c192="0 191"; APB_cpl_c192="0 203"
+  OPB_cpl_c192="204 263"; IPB_cpl_c192="264 287"
+
+  TASKS_cpl_c096=192; TPN_cpl_c096=40; INPES_cpl_c096=3; JNPES_cpl_c096=8
+  THRD_cpl_c096=1; WPG_cpl_c096=6;  MPB_cpl_c096="0 143"; APB_cpl_c096="0 149"
+  OPB_cpl_c096="150 179"; IPB_cpl_c096="180 191"
+
 elif [[ $MACHINE_ID = hera.* ]]; then
 
   TASKS_dflt=150 ; TPN_dflt=40 ; INPES_dflt=3 ; JNPES_dflt=8
@@ -88,6 +96,14 @@ elif [[ $MACHINE_ID = hera.* ]]; then
   TASKS_cpl_wwav=520; TPN_cpl_wwav=40; INPES_cpl_wwav=6; JNPES_cpl_wwav=8
   THRD_cpl_wwav=1; WPG_cpl_wwav=24; MPB_cpl_wwav="0 287"; APB_cpl_wwav="0 311"
   OPB_cpl_wwav="312 431"; IPB_cpl_wwav="432 479"; WPB_cpl_wwav="480 519"
+
+  TASKS_cpl_c192=288; TPN_cpl_c192=40; INPES_cpl_c192=4; JNPES_cpl_c192=8
+  THRD_cpl_c192=1; WPG_cpl_c192=12;  MPB_cpl_c192="0 191"; APB_cpl_c192="0 203"
+  OPB_cpl_c192="204 263"; IPB_cpl_c192="264 287"
+
+  TASKS_cpl_c096=192; TPN_cpl_c096=40; INPES_cpl_c096=3; JNPES_cpl_c096=8
+  THRD_cpl_c096=1; WPG_cpl_c096=6;  MPB_cpl_c096="0 143"; APB_cpl_c096="0 149"
+  OPB_cpl_c096="150 179"; IPB_cpl_c096="180 191"
 
 elif [[ $MACHINE_ID = jet.* ]]; then
 
