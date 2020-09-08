@@ -435,14 +435,7 @@ fi
 if [[ $MACHINE_ID = cheyenne.* ]]; then
   RTPWD=${RTPWD:-$DISKNM/develop-20200210/${COMPILER^^}}
 else
-  #RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200718}
-  # for cice6 on orion
-  #RTPWD="/work/noaa/stmp/dworthen/stmp/dworthen/update-cice6"
-  # for cice6 on hera
-  #RTPWD="/scratch1/NCEPDEV/stmp4/Denise.Worthen/update-cice6"
   RTPWD="/scratch1/NCEPDEV/stmp4/Denise.Worthen/cice6-lowres"
-  # for cice6 on dell-p3
-  #RTPWD="/gpfs/dell2/emc/modeling/noscrub/Denise.Worthen/update-cice6"
 fi
 
 shift $((OPTIND-1))
