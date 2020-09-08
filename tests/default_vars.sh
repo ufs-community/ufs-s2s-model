@@ -243,7 +243,8 @@ export FHCYC=24
 export DO_SPPT=.F.
 export DO_SHUM=.F.
 export DO_SKEB=.F.
-export DO_SFCPERTS=.F.
+export LNDP_TYPE=0
+export N_VAR_LNDP=0
 export SKEB=-999.
 export SPPT=-999.
 export SHUM=-999.
@@ -298,10 +299,9 @@ export MOM6_RESTART_SETTING='n'
 export med_model="nems"
 export atm_model="fv3"
 export ocn_model="mom6"
-export ice_model="cice6"
+export ice_model="cice"
 export wav_model="ww3"
 export cap_dbug_flag="0"
-export use_coldstart="true"
 # MOM6 river runoff 
 export MOM6_RIVER_RUNOFF='True'
 # set USE_LA_LI2016 to the current default; this must be set False for restart repro 
@@ -320,10 +320,7 @@ export RUNTYPE='initial'
 export DUMPFREQ='d' 
 export DUMPFREQ_N='35' 
 export USE_RESTART_TIME='.false.'
-# set false for CICE6
-export RESTART_EXT='.false'
 # resolution dependent files
-export MESHICE="mesh.mx${OCNRES}.nc"
 export CICEGRID="grid_cice_NEMS_mx${OCNRES}.nc"
 export CICEMASK="kmtu_cice_NEMS_mx${OCNRES}.nc"
 export CHLCLIM="seawifs-clim-1997-2010.${NX_GLB}x${NY_GLB}.v20180328.nc"
@@ -342,7 +339,8 @@ export NA_INIT='1'
 export EXTERNAL_IC='.T.'
 export NGGPS_IC='.T.'
 export MOUNTAIN='.F.'
-export CPLMODE='nems_orig'
+# default mediator component (NEMS mediator)
+export MEDCOMP=''
 export RESTART_PREFIX=''
 export RESTART_SUFFIX=''
 }
