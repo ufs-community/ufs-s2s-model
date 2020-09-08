@@ -32,5 +32,5 @@
 	branch = develop
 [submodule "MOM6-interface/MOM6"]
 	path = MOM6-interface/MOM6
-	url = https://github.com/NOAA-EMC/MOM6
+	url = https://github.com/DeniseWorthen/MOM6
 	branch = dev/emc
