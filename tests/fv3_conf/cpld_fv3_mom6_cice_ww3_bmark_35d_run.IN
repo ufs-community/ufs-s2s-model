@@ -36,9 +36,10 @@ cp    @[RTPWD]/${FV3_DIR}/INPUT/gfs_ctrl.nc ./INPUT
 # MOM6 fixed input
 cp    @[RTPWD]/MOM6_FIX/@[OCNRES]/* ./INPUT
 
-# CICE5 fixed input
+# CICE fixed input
 cp    @[RTPWD]/CICE_FIX/@[OCNRES]/grid_cice_NEMS_mx@[OCNRES].nc .
 cp    @[RTPWD]/CICE_FIX/@[OCNRES]/kmtu_cice_NEMS_mx@[OCNRES].nc .
+cp    @[RTPWD]/CICE_FIX/@[OCNRES]/mesh.mx@[OCNRES].nc .
 
 # WW3 fix/input
 cp    @[RTPWD]/WW3_input_data/mod_def.* .
@@ -51,15 +52,11 @@ cp    @[RTPWD]/${MOM6_IC}/MOM*.nc ./INPUT
 cp    @[RTPWD]/${CICE_IC}/cice5_model_@[ICERES].*.nc ./cice5_model.res.nc
 cp    @[RTPWD]/${WW3_IC}/*.000000.restart.gwes_30m ./restart.gwes_30m
 
-# Restart from coldstart, NEMS or CMEPS
+# Restart from CMEPS mediator
 if [[ ! $MED_restart_data == '' ]]; then
- if [[ $MEDCOMP == 'cmeps' ]]; then
   RFILE="ufs.s2s.cold.cpl.r.${SYEAR}-${SMONTH}-${SDAY}-03600.nc"
   cp  @[RTPWD]/@[MED_restart_data]/${RFILE} .
   ls -1 ${RFILE}>rpointer.cpl
- else
-  cp  @[RTPWD]/@[MED_restart_data]/mediator_* .
- fi
 fi
 
 # CCPP
