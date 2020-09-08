@@ -55,9 +55,6 @@ export CPL_FAST=${DT_ATMOS}
 export DUMPFREQ_N=${FHMAX}
 export DUMPFREQ="h"
 
-# use CMEPS as the mediator component
-export MEDCOMP="cmeps"
-
 # nems.configure
 export NEMS_CONFIGURE="nems.configure.medcoldcmeps_atm_ocn_ice_wav.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}

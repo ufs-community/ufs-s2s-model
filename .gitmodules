@@ -6,10 +6,6 @@
 	path = NEMS
 	url = https://github.com/NOAA-EMC/NEMS.git
 	branch = develop
-[submodule "CICE_SRC"]
-	path = CICE_SRC
-	url = https://github.com/NOAA-EMC/CICE5.git
-	branch = develop
 [submodule "FMS"]
 	path = FMS
 	url = https://github.com/NOAA-GFDL/FMS
@@ -18,10 +14,6 @@
 	path = stochastic_physics
 	url = https://github.com/noaa-psd/stochastic_physics
 	branch = master
-[submodule "MOM6"]
-	path = MOM6
-	url = https://github.com/NOAA-EMC/MOM6-interface
-	branch = develop
 [submodule "CMEPS"]
 	path = CMEPS
 	url = https://github.com/NOAA-EMC/CMEPS.git
@@ -30,3 +22,15 @@
 	path = WW3
 	url = https://github.com/NOAA-EMC/WW3.git
 	branch = develop
+[submodule "CICE6"]
+	path = CICE-interface/CICE
+	url = https://github.com/NOAA-EMC/CICE.git
+	branch = emc/develop
+[submodule "MOM6-interface/mkmf"]
+	path = MOM6-interface/mkmf
+	url = https://github.com/NOAA-EMC/mkmf
+	branch = develop
+[submodule "MOM6-interface/MOM6"]
+	path = MOM6-interface/MOM6
+	url = https://github.com/NOAA-EMC/MOM6
+	branch = dev/emc

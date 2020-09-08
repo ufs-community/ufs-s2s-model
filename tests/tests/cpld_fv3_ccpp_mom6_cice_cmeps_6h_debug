@@ -76,8 +76,6 @@ export CPL_FAST=${DT_ATMOS}
 export DUMPFREQ_N=${FHMAX}
 export DUMPFREQ="h"
 
-# use CMEPS as the mediator component
-export MEDCOMP="cmeps"
 # CMEPS controls intervals in ALLCOMP
 export FV3_RESTART_INTERVAL=${FHMAX}
 
