@@ -1,9 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 
-foreach(env_var IN ITEMS
-         CMAKE_C_COMPILER CMAKE_CXX_COMPILER CMAKE_Fortran_COMPILER
-         CMAKE_Platform)
-  if ( NOT DEFINED ENV{${env_var}})
+foreach(env_var IN ITEMS CMAKE_C_COMPILER CMAKE_CXX_COMPILER CMAKE_Fortran_COMPILER)
+  if(NOT DEFINED ENV{${env_var}})
     message(FATAL_ERROR "${env_var} is not defined")
   endif()
 endforeach()
@@ -19,11 +17,49 @@ project(ufs-s2s-model
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
-include(GNUInstallDirs)
+set(32BIT           OFF CACHE BOOL "Enable 32BIT (single precision arithmetic in dycore)")
+set(AVX2            ON  CACHE BOOL "Enable AVX2 instruction set")
+set(SIMDMULTIARCH   OFF CACHE BOOL "Enable multi-target SIMD instruction sets")
+set(CCPP            ON  CACHE BOOL "Enable CCPP")
+set(DEBUG           OFF CACHE BOOL "Enable DEBUG mode")
+set(INLINE_POST     OFF CACHE BOOL "Enable inline post")
+set(MULTI_GASES     OFF CACHE BOOL "Enable MULTI_GASES")
+set(OPENMP          ON  CACHE BOOL "Enable OpenMP threading")
+set(PARALLEL_NETCDF OFF CACHE BOOL "Enable parallel NetCDF")
+set(QUAD_PRECISION  ON  CACHE BOOL "Enable QUAD_PRECISION (for certain grid metric terms in dycore)")
+set(REPRO           OFF CACHE BOOL "Enable REPRO mode")
+set(WW3             ON CACHE BOOL "Enable WW3")
+set(MOM6            ON CACHE BOOL "Enable MOM6")
+set(CICE            ON CACHE BOOL "Enable CICE")
+set(CMEPS           ON CACHE BOOL "Enable CMEPS Mediator")
 
-message(STATUS      "UFS-S2S-MODEL cmake build capability is a work in progress")
-message(STATUS      "Please use the existing GNUMake capabiltiy")
-message(FATAL_ERROR "Once ready, this message will be removed, and configuration will proceed.")
+if(CMAKE_Platform)
+  message("")
+  if(EXISTS ${PROJECT_SOURCE_DIR}/cmake/configure_${CMAKE_Platform}.cmake)
+    message("Setting configuration for ${CMAKE_Platform}")
+    include(${PROJECT_SOURCE_DIR}/cmake/configure_${CMAKE_Platform}.cmake)
+  else()
+    message("Platform '${CMAKE_Platform}' configuration file does not exist")
+  endif()
+endif()
+
+message("")
+message("32BIT ............ ${32BIT}")
+message("AVX2 ............. ${AVX2}")
+message("SIMDMULTIARCH      ${SIMDMULTIARCH}")
+message("CCPP ............. ${CCPP}")
+message("DEBUG ............ ${DEBUG}")
+message("INLINE_POST ...... ${INLINE_POST}")
+message("MULTI_GASES ...... ${MULTI_GASES}")
+message("OPENMP ........... ${OPENMP}")
+message("PARALLEL_NETCDF .. ${PARALLEL_NETCDF}")
+message("QUAD_PRECISION ... ${QUAD_PRECISION}")
+message("REPRO ............ ${REPRO}")
+message("WW3 .............. ${WW3}")
+message("MOM6 ............. ${MOM6}")
+message("CICE ............. ${CICE}")
+message("CMEPS ............ ${CMEPS}")
+message("")
 
 get_filename_component (C_COMPILER_NAME ${CMAKE_C_COMPILER} NAME)
 get_filename_component (CXX_COMPILER_NAME ${CMAKE_CXX_COMPILER} NAME)
@@ -33,52 +69,49 @@ message("CXX     compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION
 message("Fortran compiler: ${CMAKE_Fortran_COMPILER_ID} ${CMAKE_Fortran_COMPILER_VERSION} (${Fortran_COMPILER_NAME})")
 message("")
 
-if (CMAKE_Fortran_COMPILER_ID MATCHES "GNU" AND CMAKE_Fortran_COMPILER_VERSION VERSION_LESS 9.0.0)
-  message(FATAL_ERROR "GNU Compiler >= 9 is required")
-endif()
-
 include(cmake/${CMAKE_Fortran_COMPILER_ID}.cmake)
 message("")
 
-# Find dependency packages
 find_package(NetCDF REQUIRED C Fortran)
 find_package(MPI REQUIRED)
 find_package(ESMF MODULE REQUIRED)
-find_package(FMS REQUIRED)
 
+find_package(bacio REQUIRED)
 find_package(nemsio REQUIRED)
 find_package(sp REQUIRED)
 find_package(w3emc REQUIRED)
 find_package(w3nco REQUIRED)
-
 if(INLINE_POST)
   find_package(nceppost REQUIRED)
 endif()
 
-if(CCPP)
-    find_package(Python 3 QUIET COMPONENTS Interpreter)
-    if (NOT Python_Interpreter_FOUND)
-      find_package(Python 2.7 QUIET REQUIRED COMPONENTS Interpreter)
-    endif()
-    message("Found Python: ${Python_EXECUTABLE}")
-endif()
+# See https://github.com/NOAA-EMC/NCEPLIBS-nemsio/pull/22
+target_link_libraries(nemsio::nemsio INTERFACE w3emc::w3emc_d bacio::bacio_4)
 
-# This after FindESMF.cmake,
-# because ESMF_MOD depends on variables defined in the find.
-message("")
-message("Setting configuration for $ENV{CMAKE_Platform}")
-message("")
-include(${PROJECT_SOURCE_DIR}/cmake/configure_${CMAKE_Platform}.cmake)
-
+add_definitions(-Duse_libMPI)
+add_definitions(-Duse_netCDF)
 add_definitions(-Duse_WRTCOMP)
+add_definitions(-DSPMD)
+add_definitions(-DUSE_LOG_DIAG_FIELD_INFO)
 #add_definitions(-Duse_LARGEFILE)
 add_definitions(-DUSE_GFSL63)
 add_definitions(-DGFS_PHYS)
 add_definitions(-DMOIST_CAPPA)
 add_definitions(-DUSE_COND)
 add_definitions(-DNEW_TAUCTMAX)
+add_definitions(-DINTERNAL_FILE_NML)
+
+if (CMAKE_Fortran_COMPILER_ID MATCHES "GNU" AND CMAKE_Fortran_COMPILER_VERSION VERSION_LESS 9.0.0)
+  message(FATAL_ERROR "GNU Compiler >= 9 is required")
+endif()
 
 if(CCPP)
+
+    find_package(Python 3 QUIET COMPONENTS Interpreter)
+    if (NOT Python_Interpreter_FOUND)
+      find_package(Python 2.7 QUIET REQUIRED COMPONENTS Interpreter)
+    endif()
+    message("Found Python: ${Python_EXECUTABLE}")
 
     if(DEFINED CCPP_SUITES)
         message("Calling CCPP code generator (ccpp_prebuild.py) for SUITES = ${CCPP_SUITES}")
@@ -122,7 +155,52 @@ if(CCPP)
     set(ENV{CCPP_CAPS} "${CAPS}")
     set(ENV{CCPP_TYPEDEFS} "${TYPEDEFS}")
 
-endif(CCPP)
+endif()
+
+###############################################################################
+### FMS
+###############################################################################
+include(fms_files.cmake)
+add_library(fms ${fms_src_files})
+# stupid cmake can not figure out dependency of fft.F90 on fft99.F90 because 'use fft99_mod' is inside ifdefs
+set_property(SOURCE FMS/fft/fft.F90 APPEND_STRING PROPERTY COMPILE_FLAGS "-DSGICRAY=0 -DNAGFFT=0")
+
+target_include_directories(fms PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/FMS/include>
+                                      $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/FMS/fms>
+                                      $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/FMS/fms2_io/include>
+                                      $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/FMS/mpp/include>)
+
+target_link_libraries(fms PRIVATE NetCDF::NetCDF_Fortran)
+set_target_properties(fms PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/FMS)
+set_target_properties(fms PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/FMS/mod)
+target_include_directories(fms PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/FMS/mod>)
+
+###############################################################################
+### CMEPS
+###############################################################################
+if(CMEPS)
+    include(cmeps_files.cmake)
+    add_library(cmeps ${cmeps_src_files})
+
+    target_include_directories(cmeps PRIVATE $ENV{PIO_INCLUDES})
+    target_include_directories(cmeps PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/CMEPS/mediator>)
+
+    target_link_libraries(cmeps PUBLIC $ENV{PIO_LIBRARIES}/libpiof.a)
+    target_link_libraries(cmeps PUBLIC $ENV{PIO_LIBRARIES}/libpioc.a)
+    if(ESMF_FOUND)
+        target_link_libraries(cmeps PUBLIC esmf)
+    endif()
+
+    set_target_properties(cmeps PROPERTIES COMPILE_FLAGS "-standard-realloc-lhs -m64 -mcmodel=small -threads")
+    target_compile_definitions(cmeps PRIVATE "-DINTERNAL_PIO_INIT")
+    set_target_properties(cmeps PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS)
+    set_target_properties(cmeps PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod)
+    target_include_directories(cmeps PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>)
+endif()
+###############################################################################
+### stochastic_physics
+###############################################################################
+add_subdirectory(stochastic_physics)
 
 ###############################################################################
 ### FV3
@@ -130,14 +208,18 @@ endif(CCPP)
 add_subdirectory(FV3)
 
 ###############################################################################
-### MOM6
+### CICE_interface
 ###############################################################################
-add_subdirectory(MOM6-interface)
+if(CICE)
+    add_subdirectory(CICE-interface)
+endif()
 
 ###############################################################################
-### CICE
+### MOM6-interface
 ###############################################################################
-add_subdirectory(CICE-interface)
+if(MOM6)
+    add_subdirectory(MOM6-interface)
+endif()
 
 ###############################################################################
 ### WW3
@@ -157,22 +239,22 @@ if(WW3)
 
   add_custom_target(ww3_nems
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/WW3/model/esmf
-    COMMAND ${CMAKE_BUILD_TOOL} WW3_PARCOMPN=4 WW3_COMP=${WW3_COMP} ww3_nemslibonly > make.log 2>&1
+    COMMAND ${CMAKE_BUILD_TOOL} WW3_PARCOMPN=4 WW3_COMP=${WW3_COMP} ww3_nemslibonly > ${PROJECT_BINARY_DIR}/ww3_make.log 2>&1
   )
 
     set(WW3_LIBS ${PROJECT_SOURCE_DIR}/WW3/model/obj/libww3_multi_esmf.a)
-endif(WW3)
+endif()
 
 ###############################################################################
-### NEMS
+### NEMS (ufs-s2s-model-lib)
 ###############################################################################
 add_library(
     ufs-s2s-model-lib
 
     NEMS/src/module_NEMS_UTILS.F90
-    NEMS/src/module_MEDIATOR_methods.F90
-    NEMS/src/module_MEDIATOR.F90
-    NEMS/src/module_MEDIATOR_SpaceWeather.F90
+#    NEMS/src/module_MEDIATOR_methods.F90
+#    NEMS/src/module_MEDIATOR.F90
+#    NEMS/src/module_MEDIATOR_SpaceWeather.F90
     NEMS/src/module_EARTH_INTERNAL_STATE.F90
     NEMS/src/module_EARTH_GRID_COMP.F90
     NEMS/src/module_NEMS_INTERNAL_STATE.F90
@@ -181,7 +263,7 @@ add_library(
     NEMS/src/nems_c_rusage.c
     NEMS/src/ENS_Cpl/ENS_CplComp_ESMFMod_STUB.F90
 )
-add_dependencies(ufs-s2s-model-lib fv3cap)
+add_dependencies(ufs-s2s-model-lib fv3atm fms)
 target_link_libraries(ufs-s2s-model-lib PRIVATE esmf)
 
 target_compile_definitions(ufs-s2s-model-lib PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR})
@@ -190,12 +272,38 @@ target_compile_definitions(ufs-s2s-model-lib PRIVATE -DFRONT_FV3=fv3gfs_cap_mod)
 
 target_include_directories(ufs-s2s-model-lib PRIVATE ${PROJECT_BINARY_DIR}/NEMS/src)
 target_include_directories(ufs-s2s-model-lib PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/FV3/mod)
+target_include_directories(ufs-s2s-model-lib PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/FMS/mod)
+
+if(CCPP)
+    target_compile_definitions(ufs-s2s-model-lib PRIVATE -DFRONT_CCPP)
+endif()
 
 if(WW3)
     target_compile_definitions(ufs-s2s-model-lib PRIVATE -DFRONT_WW3=WMESMFMD)
     target_include_directories(ufs-s2s-model-lib PRIVATE ${PROJECT_SOURCE_DIR}/WW3/model/mod)
     set_target_properties(ufs-s2s-model-lib PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_SOURCE_DIR}/WW3/model/mod)
     add_dependencies(ufs-s2s-model-lib ww3_nems)
+endif()
+
+if(MOM6)
+    target_compile_definitions(ufs-s2s-model-lib PRIVATE -DFRONT_MOM6=mom_cap_mod)
+    target_include_directories(ufs-s2s-model-lib PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/include/nuopcmom6)
+    set_target_properties(ufs-s2s-model-lib PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/include/nuopcmom6)
+    add_dependencies(ufs-s2s-model-lib nuopcmom6)
+endif()
+
+if(CICE)
+    target_compile_definitions(ufs-s2s-model-lib PRIVATE -DFRONT_CICE6=ice_comp_nuopc)
+    target_include_directories(ufs-s2s-model-lib PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/include/nuopccice)
+    set_target_properties(ufs-s2s-model-lib PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/include/nuopccice)
+    add_dependencies(ufs-s2s-model-lib nuopccice)
+endif()
+
+if(CMEPS)
+    target_compile_definitions(ufs-s2s-model-lib PRIVATE -DFRONT_CMEPS=MED)
+    target_include_directories(ufs-s2s-model-lib PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod)
+    set_target_properties(ufs-s2s-model-lib PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod)
+    add_dependencies(ufs-s2s-model-lib cmeps)
 endif()
 
 set_target_properties(ufs-s2s-model-lib PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/mod)
@@ -214,68 +322,70 @@ configure_file(${PROJECT_SOURCE_DIR}/NEMS/src/ESMFConvenienceMacros.h
                ${PROJECT_BINARY_DIR}/NEMS/src/ESMFConvenienceMacros.h
                COPYONLY)
 
-###############################################################################
-### ufs-s2s-model
-###############################################################################
-add_executable(
-    NEMS.exe
+target_link_libraries(ufs-s2s-model-lib PUBLIC fv3atm )
 
-    NEMS/src/MAIN_NEMS.F90
+###############################################################################
+### UFS executable
+###############################################################################
+add_executable(NEMS.exe
+               NEMS/src/MAIN_NEMS.F90
 )
-add_dependencies(NEMS.exe ufs-s2s-model-lib)
+add_dependencies(NEMS.exe ufs-s2s-model-lib fms)
 
 target_compile_definitions(NEMS.exe PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR})
 target_include_directories(NEMS.exe PRIVATE ${PROJECT_BINARY_DIR}/NEMS/src)
+target_include_directories(NEMS.exe PRIVATE $ENV{PIO_INCLUDES})
 
 set_target_properties(NEMS.exe PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/mod)
+
+if(CCPP)
+    target_compile_definitions(NEMS.exe PRIVATE -DFRONT_CCPP)
+endif()
+
+if(CMEPS)
+    target_compile_definitions(NEMS.exe PRIVATE -DCMEPS -DFRONT_CMEPS=MED)
+    set_target_properties(NEMS.exe PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod)
+    add_dependencies(NEMS.exe cmeps)
+#    target_link_libraries(NEMS.exe cmeps)
+endif()
 
 if(WW3)
     target_compile_definitions(NEMS.exe PRIVATE -DFRONT_WW3=WMESMFMD)
     set_target_properties(NEMS.exe PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_SOURCE_DIR}/WW3/model/mod)
     add_dependencies(NEMS.exe ww3_nems)
+#    target_link_libraries(NEMS.exe ${WW3_LIBS})
 endif()
 
-if(CCPP)
-    set(CCPP_LIBRARIES ccppdriver ccppphys ccpp)
-else()
-    set(IPD_LIBRARIES ipd)
+if(MOM6)
+    target_compile_definitions(NEMS.exe PRIVATE -DFRONT_MOM6=mom_cap_mod)
+    set_target_properties(NEMS.exe PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/include/nuopcmom6)
+    add_dependencies(NEMS.exe nuopcmom6)
+#    target_link_libraries(NEMS.exe nuopcmom6)
 endif()
+
+if(CICE)
+    target_compile_definitions(NEMS.exe PRIVATE -DFRONT_CICE6=ice_comp_nuopc)
+    set_target_properties(NEMS.exe PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/include/nuopccice)
+    add_dependencies(NEMS.exe nuopccice)
+#    target_link_libraries(NEMS.exe nuopccice)
+endif()
+
 
 target_link_libraries(NEMS.exe
                       ufs-s2s-model-lib
-                      fv3cap
-                      fv3core
-                      io
-                      ipd
-                      gfsphysics
-                      ${CCPP_LIBRARIES}
-                      cpl
-                      stochastic_physics
-                      FMS::fms_r4
+                      nuopcmom6
+                      nuopccice
+                      cmeps
                       ${WW3_LIBS}
-                      nemsio::nemsio w3emc::w3emc_d w3nco::w3nco_d sp::sp_d
-                      esmf NetCDF::NetCDF_Fortran ${MKL_LIB})
-
-target_link_libraries(ufs-s2s-model-lib INTERFACE
-                      fv3cap
-                      fv3core
-                      io
-                      ipd
-                      gfsphysics
-                      ${CCPP_LIBRARIES}
-                      cpl
-                      stochastic_physics
-                      FMS::fms_r4
-                      ${WW3_LIBS}
-                      nemsio::nemsio w3emc::w3emc_d w3nco::w3nco_d sp::sp_d
-                      esmf NetCDF::NetCDF_Fortran ${MKL_LIB})
+                      esmf NetCDF::NetCDF_Fortran ${MKL_LIB}
+                      $ENV{PIO_LIBRARIES}/libpioc.a
+                      $ENV{PIO_LIBRARIES}/libpiof.a)
 
 ###############################################################################
 ### Install
 ###############################################################################
-
 install(
-  TARGETS ufs-s2s-model-lib fv3cap fv3core io ipd gfsphysics ${CCPP_LIBRARIES} fv3cpl stochastic_physics
+  TARGETS ufs-s2s-model-lib fms
   EXPORT ufs-s2s-model-lib-config
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib)
