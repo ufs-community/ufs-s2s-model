@@ -31,6 +31,7 @@ OCN_attributes::
   DumpFields = false
   ProfileMemory = false
   OverwriteSlice = true
+  use_colstart = false
 ::
 
 # ICE #
@@ -100,5 +101,4 @@ ALLCOMP_attributes::
       restart_option = nhours
       restart_ymd = -999
       dbug_flag = @[cap_dbug_flag]
-      use_colstart = false
 ::
