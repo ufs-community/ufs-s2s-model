@@ -4,8 +4,8 @@
 
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - 1 step cold start"
 
-export CNTL_DIR="RT-Baselines_cold_ccpp_cmeps"
-export CNTLMED_DIR="MEDIATOR_ccpp_cmeps"
+export CNTL_DIR="RT-Baselines_1stepcold_ccpp_cmeps"
+export CNTLMED_DIR="RT-Baselines_1stepcold_ccpp_cmeps"
 
 export LIST_FILES="phyf024.tile1.nc \
                    phyf024.tile2.nc \
@@ -51,14 +51,14 @@ export LIST_FILES="phyf024.tile1.nc \
                    RESTART/sfc_data.tile4.nc \
                    RESTART/sfc_data.tile5.nc \
                    RESTART/sfc_data.tile6.nc \
-                   ufs.s2s.cold.cpl.r.2016-10-03-03600.nc"
+                   ufs.s2s.cold.cpl.r.2016-10-04-00000.nc"
 
 export_fv3
 export_cpl
 
 export DAYS="1"
 export FHMAX="24" # Note this needs to be at least 2x CPL_SLOW
-export NFHMAX_HF="12"
+export NFHMAX_HF="-1"
 export NFHOUT_HF="1"
 
 # set component and coupling timesteps

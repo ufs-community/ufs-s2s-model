@@ -96,7 +96,7 @@ ALLCOMP_attributes::
       ScalarFieldName = cpl_scalars
       start_type = startup
       case_name = ufs.s2s.cold
-      restart_n = @[FV3_RESTART_INTERVAL]
+      restart_n = @[FHMAX]
       restart_option = nhours
       restart_ymd = -999
       dbug_flag = @[cap_dbug_flag]
