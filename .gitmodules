@@ -1,7 +1,7 @@
 [submodule "FV3"]
 	path = FV3
-	url = https://github.com/DeniseWorthen/fv3atm
-	branch = develop
+	url = https://github.com/junwang-noaa/fv3atm
+	branch = fv3_cmepsIC
 [submodule "NEMS"]
 	path = NEMS
 	url = https://github.com/NOAA-EMC/NEMS.git
@@ -32,5 +32,5 @@
 	branch = develop
 [submodule "MOM6-interface/MOM6"]
 	path = MOM6-interface/MOM6
-	url = https://github.com/DeniseWorthen/MOM6
+	url = https://github.com/NOAA-EMC/MOM6
 	branch = dev/emc
