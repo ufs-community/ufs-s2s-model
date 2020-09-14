@@ -6,31 +6,17 @@ list(APPEND lib_src_files
   ${mom6_src_files}
   ${mom6_config_src_files})
 
-if(32BIT)
-  remove_definitions(-DOVERLOAD_R4)
-  remove_definitions(-DOVERLOAD_R8)
-  message("Force 64 bits in MOM6")
-  if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
-      if(REPRO)
-          string (REPLACE "-i4 -real-size 32" "-i4 -real-size 64" CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
-      else()
-          string (REPLACE "-i4 -real-size 32" "-i4 -real-size 64 -no-prec-div -no-prec-sqrt" CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
-      endif()
-  endif()
-endif()
-
 set(libName "nuopcmom6")
-set(moduleDir "${CMAKE_CURRENT_BINARY_DIR}/include/${libName}")
+set(moduleDir "${CMAKE_CURRENT_BINARY_DIR}/mod")
 
 add_library(${libName} STATIC ${lib_src_files})
 add_library(${libName}::${libName} ALIAS ${libName})
-
-set_target_properties(${libName} PROPERTIES COMPILE_FLAGS "-Wp,-w -r8 -traceback")
 
 set_target_properties(${libName} PROPERTIES Fortran_MODULE_DIRECTORY ${moduleDir})
 target_include_directories(${libName} PUBLIC $<BUILD_INTERFACE:${moduleDir}>)
 
 target_compile_definitions(${libName} PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR})
+target_compile_definitions(${libName} PRIVATE -DMOM6_CAP)
 target_include_directories(${libName} PRIVATE ${ESMF_MOD})
 
 
@@ -46,7 +32,7 @@ target_include_directories(${libName} INTERFACE
 target_link_libraries(${libName} PUBLIC fms)
 target_link_libraries(${libName} PUBLIC NetCDF::NetCDF_Fortran)
 target_link_libraries(${libName} PUBLIC esmf)
-if(OpenMP_Fortran_FOUND)
+if(OpenMP)
   target_link_libraries(${libName} PUBLIC OpenMP::OpenMP_Fortran)
 endif()
 
@@ -61,4 +47,4 @@ install(
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   COMPONENT Library)
-install(DIRECTORY ${moduleDir} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(DIRECTORY ${moduleDir} DESTINATION ${CMAKE_INSTALL_PREFIX})

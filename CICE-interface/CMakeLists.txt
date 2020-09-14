@@ -65,7 +65,7 @@ list(APPEND lib_src_files
 )
 
 set(libName "nuopccice")
-set(moduleDir "${CMAKE_CURRENT_BINARY_DIR}/include/${libName}")
+set(moduleDir "${CMAKE_CURRENT_BINARY_DIR}/mod")
 
 add_library(${libName} STATIC ${lib_src_files})
 add_library(${libName}::${libName} ALIAS ${libName})
@@ -76,26 +76,22 @@ add_library(${libName}::${libName} ALIAS ${libName})
 target_link_libraries(${libName} PUBLIC esmf)
 
 target_compile_definitions(${libName} PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR})
+target_compile_definitions(${libName} PRIVATE "-DFORTRANUNDERSCORE -Dcoupled")
 target_include_directories(${libName} PRIVATE ${ESMF_MOD})
 
 target_include_directories(${libName} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/CICE/cicecore/cicedynB/infrastructure>)
 
 if(NetCDF_Fortran_FOUND)
   target_link_libraries(${libName} PUBLIC NetCDF::NetCDF_Fortran)
-endif()
-
-if(PIO_Fortran_FOUND)
+elseif(PIO_Fortran_FOUND)
   target_link_libraries(${libName} PUBLIC PIO::PIO_Fortran)
 endif()
 
-if(MPI_Fortran_FOUND)
-    target_include_directories(${libName} PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/CICE/cicecore/cicedynB/infrastructure/comm/mpi>)
-endif()
 
-if(OpenMP_Fortran_FOUND)
+if(OPENMP)
   target_link_libraries(${libName} PUBLIC OpenMP::OpenMP_Fortran)
 endif()
+target_include_directories(${libName} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/CICE/cicecore/cicedynB/infrastructure/comm/mpi>)
 
 if(CMEPS)
     target_include_directories(${libName} PUBLIC
@@ -107,12 +103,11 @@ target_include_directories(${libName} INTERFACE
   $<BUILD_INTERFACE:${moduleDir}>
   $<INSTALL_INTERFACE:include/${libName}>)
 
-# Install compiled Fortran modules
-install(DIRECTORY ${moduleDir} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-
 # Install library
 install(
   TARGETS ${libName}
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   COMPONENT Library)
+# Install compiled Fortran modules
+install(DIRECTORY ${moduleDir} DESTINATION ${CMAKE_INSTALL_PREFIX})

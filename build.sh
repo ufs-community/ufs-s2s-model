@@ -11,8 +11,8 @@ export NETCDF=${NETCDF:?"Please set NETCDF environment variable"}
 export ESMFMKFILE=${ESMFMKFILE:?"Please set ESMFMKFILE environment variable"}
 
 BUILD_DIR=${MYDIR}/build
-rm -rf ${BUILD_DIR}
-mkdir ${BUILD_DIR}
+#rm -rf ${BUILD_DIR}
+mkdir -p ${BUILD_DIR}
 
 CCPP_SUITES="${CCPP_SUITES:-FV3_GFS_v15p2}"
 CMAKE_FLAGS+=" -DCCPP_SUITES=${CCPP_SUITES} -DNETCDF_DIR=${NETCDF}"
