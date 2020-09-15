@@ -54,7 +54,7 @@ if [[ $MACHINE_ID == macosx.* ]] || [[ $MACHINE_ID == linux.* ]]; then
   source $PATHTR/modulefiles/${MACHINE_ID}/fv3
 else
   module use $PATHTR/modulefiles/${MACHINE_ID}
-  module load fv3
+  module load fv3_stack
   module list
 fi
 set -x
@@ -134,6 +134,15 @@ fi
 if [[ "${MAKE_OPT}" == *"WW3=Y"* ]]; then
     CCPP_CMAKE_FLAGS="${CCPP_CMAKE_FLAGS} -DWW3=Y"
 fi
+if [[ "${MAKE_OPT}" == *"CICE6=Y"* ]]; then                                                                  
+    CCPP_CMAKE_FLAGS="${CCPP_CMAKE_FLAGS} -DCICE6=Y"
+fi
+if [[ "${MAKE_OPT}" == *"MOM6=Y"* ]]; then
+    CCPP_CMAKE_FLAGS="${CCPP_CMAKE_FLAGS} -DMOM6=Y"
+fi
+if [[ "${MAKE_OPT}" == *"CMEPS=Y"* ]]; then
+    CCPP_CMAKE_FLAGS="${CCPP_CMAKE_FLAGS} -DCMEPS=Y"
+fi
 
 CCPP_CMAKE_FLAGS=$(trim "${CCPP_CMAKE_FLAGS}")
 
@@ -143,7 +152,7 @@ CCPP_CMAKE_FLAGS=$(trim "${CCPP_CMAKE_FLAGS}")
   cmake ${PATHTR} ${CCPP_CMAKE_FLAGS}
   make -j ${MAKE_THREADS}
   mv NEMS.exe ${PATHTR}/tests/${BUILD_NAME}.exe
-  cp ${PATHTR}/modulefiles/${MACHINE_ID}/fv3 ${PATHTR}/tests/modules.${BUILD_NAME}
+  cp ${PATHTR}/modulefiles/${MACHINE_ID}/fv3_stack ${PATHTR}/tests/modules.${BUILD_NAME}
   cd ..
 )
 
