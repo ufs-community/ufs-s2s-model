@@ -28,9 +28,9 @@ set(OPENMP          OFF  CACHE BOOL "Enable OpenMP threading")
 set(PARALLEL_NETCDF OFF CACHE BOOL "Enable parallel NetCDF")
 set(QUAD_PRECISION  ON  CACHE BOOL "Enable QUAD_PRECISION (for certain grid metric terms in dycore)")
 set(REPRO           OFF CACHE BOOL "Enable REPRO mode")
-set(WW3             ON CACHE BOOL "Enable WW3")
+set(WW3             OFF CACHE BOOL "Enable WW3")
 set(MOM6            ON CACHE BOOL "Enable MOM6")
-set(CICE            ON CACHE BOOL "Enable CICE")
+set(CICE6           ON CACHE BOOL "Enable CICE6")
 set(CMEPS           ON CACHE BOOL "Enable CMEPS Mediator")
 
 if(CMAKE_Platform)
@@ -57,7 +57,7 @@ message("QUAD_PRECISION ... ${QUAD_PRECISION}")
 message("REPRO ............ ${REPRO}")
 message("WW3 .............. ${WW3}")
 message("MOM6 ............. ${MOM6}")
-message("CICE ............. ${CICE}")
+message("CICE6 ............ ${CICE6}")
 message("CMEPS ............ ${CMEPS}")
 message("")
 
@@ -209,7 +209,7 @@ add_subdirectory(FV3)
 ###############################################################################
 ### CICE_interface
 ###############################################################################
-if(CICE)
+if(CICE6)
     add_subdirectory(CICE-interface)
 endif()
 
@@ -295,9 +295,10 @@ if(MOM6)
     target_link_libraries(ufs-weather-model-lib PUBLIC nuopcmom6)
     target_include_directories(ufs-weather-model-lib PUBLIC
                                        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/mod>)
+    list(APPEND optional_targets nuopcmom6)
 endif()
 
-if(CICE)
+if(CICE6)
     target_compile_definitions(ufs-weather-model-lib PRIVATE -DFRONT_CICE6=ice_comp_nuopc)
     target_include_directories(ufs-weather-model-lib PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod)
     set_target_properties(ufs-weather-model-lib PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod)
@@ -305,6 +306,7 @@ if(CICE)
     target_link_libraries(ufs-weather-model-lib PUBLIC nuopccice)
     target_include_directories(ufs-weather-model-lib PUBLIC
                                        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod>)
+    list(APPEND optional_targets nuopccice)
 endif()
 
 if(CMEPS)
@@ -315,6 +317,7 @@ if(CMEPS)
     target_link_libraries(ufs-weather-model-lib PUBLIC cmeps)
     target_include_directories(ufs-weather-model-lib PUBLIC
                                        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>)
+    list(APPEND optional_targets cmeps)
 endif()
 
 set_target_properties(ufs-weather-model-lib PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/mod)
@@ -349,38 +352,12 @@ target_include_directories(NEMS.exe PRIVATE $ENV{PIO_INCLUDES})
 
 set_target_properties(NEMS.exe PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/mod)
 
-#if(CCPP)
-#    target_compile_definitions(NEMS.exe PRIVATE -DFRONT_CCPP)
-#endif()
-
 if(WW3)
     target_compile_definitions(NEMS.exe PRIVATE -DFRONT_WW3=WMESMFMD)
     set_target_properties(NEMS.exe PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_SOURCE_DIR}/WW3/model/mod)
     add_dependencies(NEMS.exe ww3_nems)
     target_link_libraries(NEMS.exe ${WW3_LIBS})
 endif()
-
-#if(CMEPS)
-#    target_compile_definitions(NEMS.exe PRIVATE -DFRONT_CMEPS=MED)
-#    set_target_properties(NEMS.exe PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod)
-#    add_dependencies(NEMS.exe cmeps)
-#    target_link_libraries(NEMS.exe cmeps)
-#endif()
-
-#if(MOM6)
-#    target_compile_definitions(NEMS.exe PRIVATE -DFRONT_MOM6=mom_cap_mod)
-#    set_target_properties(NEMS.exe PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/include/nuopcmom6)
-#    add_dependencies(NEMS.exe nuopcmom6)
-#    target_link_libraries(NEMS.exe nuopcmom6)
-#endif()
-
-#if(CICE)
-#    target_compile_definitions(NEMS.exe PRIVATE -DFRONT_CICE6=ice_comp_nuopc)
-#    set_target_properties(NEMS.exe PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/include/nuopccice)
-#    add_dependencies(NEMS.exe nuopccice)
-#    target_link_libraries(NEMS.exe nuopccice)
-#endif()
-
 
 target_link_libraries(NEMS.exe
                       ufs-weather-model-lib
@@ -392,7 +369,7 @@ target_link_libraries(NEMS.exe
 ### Install
 ###############################################################################
 install(
-  TARGETS ufs-weather-model-lib fms nuopccice nuopcmom6 cmeps
+  TARGETS ufs-weather-model-lib fms ${optional_targets}
   EXPORT ufs-weather-model-lib-config
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib)
