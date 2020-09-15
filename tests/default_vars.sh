@@ -259,7 +259,8 @@ export FHCYC=24
 export DO_SPPT=.F.
 export DO_SHUM=.F.
 export DO_SKEB=.F.
-export DO_SFCPERTS=.F.
+export LNDP_TYPE=0
+export N_VAR_LNDP=0
 export SKEB=-999.
 export SPPT=-999.
 export SHUM=-999.
@@ -317,7 +318,7 @@ export ocn_model="mom6"
 export ice_model="cice6"
 export wav_model="ww3"
 export cap_dbug_flag="0"
-export use_coldstart="true"
+export use_coldstart="false"
 # MOM6 river runoff 
 export MOM6_RIVER_RUNOFF='True'
 # set USE_LA_LI2016 to the current default; this must be set False for restart repro 
