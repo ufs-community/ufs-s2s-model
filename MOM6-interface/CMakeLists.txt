@@ -32,7 +32,7 @@ target_include_directories(${libName} INTERFACE
 target_link_libraries(${libName} PUBLIC fms)
 target_link_libraries(${libName} PUBLIC NetCDF::NetCDF_Fortran)
 target_link_libraries(${libName} PUBLIC esmf)
-if(OpenMP)
+if(OPENMP)
   target_link_libraries(${libName} PUBLIC OpenMP::OpenMP_Fortran)
 endif()
 
