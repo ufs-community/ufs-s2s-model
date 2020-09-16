@@ -134,14 +134,8 @@ fi
 if [[ "${MAKE_OPT}" == *"WW3=Y"* ]]; then
     CCPP_CMAKE_FLAGS="${CCPP_CMAKE_FLAGS} -DWW3=Y"
 fi
-if [[ "${MAKE_OPT}" == *"CICE6=Y"* ]]; then                                                                  
-    CCPP_CMAKE_FLAGS="${CCPP_CMAKE_FLAGS} -DCICE6=Y"
-fi
-if [[ "${MAKE_OPT}" == *"MOM6=Y"* ]]; then
-    CCPP_CMAKE_FLAGS="${CCPP_CMAKE_FLAGS} -DMOM6=Y"
-fi
-if [[ "${MAKE_OPT}" == *"CMEPS=Y"* ]]; then
-    CCPP_CMAKE_FLAGS="${CCPP_CMAKE_FLAGS} -DCMEPS=Y"
+if [[ "${MAKE_OPT}" == *"CICE6=Y"* ]] || [[ "${MAKE_OPT}" == *"MOM6=Y"* ]] || [[ "${MAKE_OPT}" == *"CMEPS=Y"* ]]; then                                                                  
+    CCPP_CMAKE_FLAGS="${CCPP_CMAKE_FLAGS} -DS2S=Y"
 fi
 
 CCPP_CMAKE_FLAGS=$(trim "${CCPP_CMAKE_FLAGS}")

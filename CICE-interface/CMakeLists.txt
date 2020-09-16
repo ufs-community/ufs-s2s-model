@@ -64,7 +64,7 @@ list(APPEND lib_src_files
   ${driver_list}
 )
 
-set(libName "nuopccice")
+set(libName "cice")
 set(moduleDir "${CMAKE_CURRENT_BINARY_DIR}/mod")
 
 add_library(${libName} STATIC ${lib_src_files})
@@ -82,9 +82,10 @@ target_include_directories(${libName} PRIVATE ${ESMF_MOD})
 target_include_directories(${libName} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/CICE/cicecore/cicedynB/infrastructure>)
 
 if(NetCDF_Fortran_FOUND)
+  target_compile_definitions(${libName} PRIVATE -DUSE_NETCDF)
   target_link_libraries(${libName} PUBLIC NetCDF::NetCDF_Fortran)
 elseif(PIO_Fortran_FOUND)
-  target_link_libraries(${libName} PUBLIC PIO::PIO_Fortran)
+  target_link_libraries(${libName} PUBLIC PIO::PIO_Fortran PIO::PIO_C)
 endif()
 
 

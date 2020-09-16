@@ -6,7 +6,7 @@ list(APPEND lib_src_files
   ${mom6_src_files}
   ${mom6_config_src_files})
 
-set(libName "nuopcmom6")
+set(libName "mom6")
 set(moduleDir "${CMAKE_CURRENT_BINARY_DIR}/mod")
 
 add_library(${libName} STATIC ${lib_src_files})

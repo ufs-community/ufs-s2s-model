@@ -19,6 +19,6 @@ CMAKE_FLAGS+=" -DCCPP_SUITES=${CCPP_SUITES} -DNETCDF_DIR=${NETCDF}"
 
 cd ${BUILD_DIR}
 cmake .. ${CMAKE_FLAGS}
-make -j ${BUILD_JOBS:-4}
+make -j ${BUILD_JOBS:-4} VERBOSE=1
 
 cp NEMS.exe ${MYDIR}/ufs_model

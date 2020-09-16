@@ -11,7 +11,7 @@ set(CMAKE_CXX_COMPILER $ENV{CMAKE_CXX_COMPILER})
 set(CMAKE_Fortran_COMPILER $ENV{CMAKE_Fortran_COMPILER})
 set(CMAKE_Platform $ENV{CMAKE_Platform})
 
-project(ufs-weather-model
+project(ufs-s2s-model
         VERSION 1.0
         LANGUAGES C CXX Fortran)
 
@@ -24,14 +24,12 @@ set(CCPP            ON  CACHE BOOL "Enable CCPP")
 set(DEBUG           OFF CACHE BOOL "Enable DEBUG mode")
 set(INLINE_POST     OFF CACHE BOOL "Enable inline post")
 set(MULTI_GASES     OFF CACHE BOOL "Enable MULTI_GASES")
-set(OPENMP          OFF  CACHE BOOL "Enable OpenMP threading")
+set(OPENMP          OFF CACHE BOOL "Enable OpenMP threading")
 set(PARALLEL_NETCDF OFF CACHE BOOL "Enable parallel NetCDF")
 set(QUAD_PRECISION  ON  CACHE BOOL "Enable QUAD_PRECISION (for certain grid metric terms in dycore)")
 set(REPRO           OFF CACHE BOOL "Enable REPRO mode")
 set(WW3             OFF CACHE BOOL "Enable WW3")
-set(MOM6            OFF CACHE BOOL "Enable MOM6")
-set(CICE6           OFF CACHE BOOL "Enable CICE6")
-set(CMEPS           OFF CACHE BOOL "Enable CMEPS Mediator")
+set(S2S             ON  CACHE BOOL "Enable S2S Components MOM6/CICE6/CMEPS")
 
 if(CMAKE_Platform)
   message("")
@@ -56,9 +54,7 @@ message("PARALLEL_NETCDF .. ${PARALLEL_NETCDF}")
 message("QUAD_PRECISION ... ${QUAD_PRECISION}")
 message("REPRO ............ ${REPRO}")
 message("WW3 .............. ${WW3}")
-message("MOM6 ............. ${MOM6}")
-message("CICE6 ............ ${CICE6}")
-message("CMEPS ............ ${CMEPS}")
+message("S2S .............. ${S2S}")
 message("")
 
 get_filename_component (C_COMPILER_NAME ${CMAKE_C_COMPILER} NAME)
@@ -84,6 +80,7 @@ find_package(w3nco REQUIRED)
 if(INLINE_POST)
   find_package(nceppost REQUIRED)
 endif()
+find_package(PIO REQUIRED COMPONENTS C Fortran STATIC)
 
 # See https://github.com/NOAA-EMC/NCEPLIBS-nemsio/pull/22
 target_link_libraries(nemsio::nemsio INTERFACE w3emc::w3emc_d bacio::bacio_4)
@@ -176,27 +173,6 @@ set_target_properties(fms PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BI
 target_include_directories(fms PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/FMS/mod>)
 
 ###############################################################################
-### CMEPS
-###############################################################################
-if(CMEPS)
-    include(cmeps_files.cmake)
-    add_library(cmeps ${cmeps_src_files})
-
-    target_include_directories(cmeps PRIVATE $ENV{PIO_INCLUDES})
-    target_include_directories(cmeps PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/CMEPS/mediator>)
-
-    target_link_libraries(cmeps PUBLIC $ENV{PIO_LIBRARIES}/libpiof.a)
-    target_link_libraries(cmeps PUBLIC $ENV{PIO_LIBRARIES}/libpioc.a)
-    if(ESMF_FOUND)
-        target_link_libraries(cmeps PUBLIC esmf)
-    endif()
-
-    target_compile_definitions(cmeps PRIVATE "-DINTERNAL_PIO_INIT")
-    set_target_properties(cmeps PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS)
-    set_target_properties(cmeps PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod)
-    target_include_directories(cmeps PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>)
-endif()
-###############################################################################
 ### stochastic_physics
 ###############################################################################
 add_subdirectory(stochastic_physics)
@@ -205,20 +181,6 @@ add_subdirectory(stochastic_physics)
 ### FV3
 ###############################################################################
 add_subdirectory(FV3)
-
-###############################################################################
-### CICE_interface
-###############################################################################
-if(CICE6)
-    add_subdirectory(CICE-interface)
-endif()
-
-###############################################################################
-### MOM6-interface
-###############################################################################
-if(MOM6)
-    add_subdirectory(MOM6-interface)
-endif()
 
 ###############################################################################
 ### WW3
@@ -245,10 +207,37 @@ if(WW3)
 endif()
 
 ###############################################################################
-### NEMS (ufs-weather-model-lib)
+### S2S - Seasonal to Subseasonal Components
+###############################################################################
+if(S2S)
+    ### CMEPS
+    include(cmeps_files.cmake)
+    add_library(cmeps ${cmeps_src_files})
+
+    target_include_directories(cmeps PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/CMEPS/mediator>)
+
+    target_link_libraries(cmeps PUBLIC PIO::PIO_Fortran PIO::PIO_C)
+    if(ESMF_FOUND)
+        target_link_libraries(cmeps PUBLIC esmf)
+    endif()
+
+    target_compile_definitions(cmeps PRIVATE "-DINTERNAL_PIO_INIT")
+    set_target_properties(cmeps PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS)
+    set_target_properties(cmeps PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod)
+    target_include_directories(cmeps PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>)
+
+    ### CICE_interface
+    add_subdirectory(CICE-interface)
+
+    ### MOM6-interface
+    add_subdirectory(MOM6-interface)
+endif()
+
+###############################################################################
+### NEMS (ufs)
 ###############################################################################
 add_library(
-    ufs-weather-model-lib
+    ufs
 
     NEMS/src/module_NEMS_UTILS.F90
     NEMS/src/module_MEDIATOR_methods.F90
@@ -262,66 +251,51 @@ add_library(
     NEMS/src/nems_c_rusage.c
     NEMS/src/ENS_Cpl/ENS_CplComp_ESMFMod_STUB.F90
 )
-add_dependencies(ufs-weather-model-lib fv3atm fms)
-target_link_libraries(ufs-weather-model-lib PRIVATE esmf)
+add_dependencies(ufs fv3atm fms)
+target_link_libraries(ufs PRIVATE esmf)
+target_link_libraries(ufs PUBLIC PIO::PIO_Fortran PIO::PIO_C)
 
-target_compile_definitions(ufs-weather-model-lib PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR})
-target_compile_definitions(ufs-weather-model-lib PRIVATE -DFRONT_FMS)
-target_compile_definitions(ufs-weather-model-lib PRIVATE -DFRONT_FV3=fv3gfs_cap_mod)
+target_compile_definitions(ufs PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR}
+                                       -DFRONT_FMS
+                                       -DFRONT_FV3=fv3gfs_cap_mod)
 
-target_include_directories(ufs-weather-model-lib PRIVATE ${PROJECT_BINARY_DIR}/NEMS/src)
-target_include_directories(ufs-weather-model-lib PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/FV3/mod)
-target_include_directories(ufs-weather-model-lib PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/FMS/mod)
+target_include_directories(ufs PRIVATE ${PROJECT_BINARY_DIR}/NEMS/src
+                                       ${CMAKE_CURRENT_BINARY_DIR}/FV3/mod
+                                       ${CMAKE_CURRENT_BINARY_DIR}/FMS/mod)
 
 if(CCPP)
-    target_compile_definitions(ufs-weather-model-lib PRIVATE -DFRONT_CCPP)
+    target_compile_definitions(ufs PRIVATE -DFRONT_CCPP)
 endif()
 
 if(WW3)
-    target_compile_definitions(ufs-weather-model-lib PRIVATE -DFRONT_WW3=WMESMFMD)
-    target_include_directories(ufs-weather-model-lib PRIVATE ${PROJECT_SOURCE_DIR}/WW3/model/mod)
-    set_target_properties(ufs-weather-model-lib PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_SOURCE_DIR}/WW3/model/mod)
-    add_dependencies(ufs-weather-model-lib ww3_nems)
-    target_link_libraries(ufs-weather-model-lib PUBLIC ${WW3_LIBS})
-    target_include_directories(ufs-weather-model-lib PUBLIC
+    target_compile_definitions(ufs PRIVATE -DFRONT_WW3=WMESMFMD)
+    target_include_directories(ufs PRIVATE ${PROJECT_SOURCE_DIR}/WW3/model/mod)
+    set_target_properties(ufs PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_SOURCE_DIR}/WW3/model/mod)
+    add_dependencies(ufs ww3_nems)
+    target_link_libraries(ufs PUBLIC ${WW3_LIBS})
+    target_include_directories(ufs PUBLIC
                                        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/WW3/model/mod>)
 endif()
 
-if(MOM6)
-    target_compile_definitions(ufs-weather-model-lib PRIVATE -DFRONT_MOM6=mom_cap_mod)
-    target_include_directories(ufs-weather-model-lib PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/mod)
-    set_target_properties(ufs-weather-model-lib PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/mod)
-    add_dependencies(ufs-weather-model-lib nuopcmom6)
-    target_link_libraries(ufs-weather-model-lib PUBLIC nuopcmom6)
-    target_include_directories(ufs-weather-model-lib PUBLIC
-                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/mod>)
-    list(APPEND optional_targets nuopcmom6)
-endif()
-
-if(CICE6)
-    target_compile_definitions(ufs-weather-model-lib PRIVATE -DFRONT_CICE6=ice_comp_nuopc)
-    target_include_directories(ufs-weather-model-lib PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod)
-    set_target_properties(ufs-weather-model-lib PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod)
-    add_dependencies(ufs-weather-model-lib nuopccice)
-    target_link_libraries(ufs-weather-model-lib PUBLIC nuopccice)
-    target_include_directories(ufs-weather-model-lib PUBLIC
-                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod>)
-    list(APPEND optional_targets nuopccice)
-endif()
-
-if(CMEPS)
-    target_compile_definitions(ufs-weather-model-lib PRIVATE -DFRONT_CMEPS=MED)
-    target_include_directories(ufs-weather-model-lib PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod)
-    set_target_properties(ufs-weather-model-lib PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod)
-    add_dependencies(ufs-weather-model-lib cmeps)
-    target_link_libraries(ufs-weather-model-lib PUBLIC cmeps)
-    target_include_directories(ufs-weather-model-lib PUBLIC
+if(S2S)
+    target_compile_definitions(ufs PRIVATE -DFRONT_MOM6=mom_cap_mod
+                                           -DFRONT_CICE6=ice_comp_nuopc
+                                           -DCMEPS -DFRONT_CMEPS=MED)
+    target_include_directories(ufs PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/mod
+                                           ${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod
+                                           ${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod)
+    add_dependencies(ufs mom6 cice cmeps)
+    target_link_libraries(ufs PUBLIC mom6 cice cmeps)
+    target_include_directories(ufs PUBLIC
+                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/mod>
+                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod>
                                        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>)
-    list(APPEND optional_targets cmeps)
+    list(APPEND ufs_targets mom6 cice cmeps)
 endif()
 
-set_target_properties(ufs-weather-model-lib PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/mod)
-target_include_directories(ufs-weather-model-lib PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
+
+set_target_properties(ufs PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/mod)
+target_include_directories(ufs PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
                                        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/FV3/mod>
                                        $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/mod>)
 
@@ -336,7 +310,7 @@ configure_file(${PROJECT_SOURCE_DIR}/NEMS/src/ESMFConvenienceMacros.h
                ${PROJECT_BINARY_DIR}/NEMS/src/ESMFConvenienceMacros.h
                COPYONLY)
 
-target_link_libraries(ufs-weather-model-lib PUBLIC fv3atm )
+target_link_libraries(ufs PUBLIC fv3atm )
 
 ###############################################################################
 ### UFS executable
@@ -344,11 +318,10 @@ target_link_libraries(ufs-weather-model-lib PUBLIC fv3atm )
 add_executable(NEMS.exe
                NEMS/src/MAIN_NEMS.F90
 )
-add_dependencies(NEMS.exe ufs-weather-model-lib fms)
+add_dependencies(NEMS.exe ufs)
 
 target_compile_definitions(NEMS.exe PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR})
 target_include_directories(NEMS.exe PRIVATE ${PROJECT_BINARY_DIR}/NEMS/src)
-target_include_directories(NEMS.exe PRIVATE $ENV{PIO_INCLUDES})
 
 set_target_properties(NEMS.exe PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/mod)
 
@@ -359,23 +332,26 @@ if(WW3)
     target_link_libraries(NEMS.exe ${WW3_LIBS})
 endif()
 
+if(S2S)
+    target_compile_definitions(NEMS.exe PRIVATE -DUSE_NETCDF)
+endif()
+
 target_link_libraries(NEMS.exe
-                      ufs-weather-model-lib
+                      ufs
                       esmf NetCDF::NetCDF_Fortran ${MKL_LIB}
-                      $ENV{PIO_LIBRARIES}/libpioc.a
-                      $ENV{PIO_LIBRARIES}/libpiof.a)
+                      PIO::PIO_Fortran PIO::PIO_C)
 
 ###############################################################################
 ### Install
 ###############################################################################
 install(
-  TARGETS ufs-weather-model-lib fms ${optional_targets}
-  EXPORT ufs-weather-model-lib-config
+  TARGETS ufs fms ${ufs_targets}
+  EXPORT ufs-config
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib)
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/mod DESTINATION ${CMAKE_INSTALL_PREFIX})
 
-install(EXPORT ufs-weather-model-lib-config
+install(EXPORT ufs-config
   DESTINATION lib/cmake
 )
 

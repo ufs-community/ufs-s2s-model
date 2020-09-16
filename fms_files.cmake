@@ -70,7 +70,6 @@ list(APPEND fms_src_files
     FMS/tracer_manager/tracer_manager.F90
     FMS/tridiagonal/tridiagonal.F90
 
-    FMS/affinity/affinity.c
     FMS/memutils/memuse.c
     FMS/mosaic/create_xgrid.c
     FMS/mosaic/gradient_c2l.c
