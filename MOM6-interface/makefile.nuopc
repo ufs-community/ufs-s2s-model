@@ -1,0 +1,52 @@
+# User must customize the following two make variables
+
+ifneq ($(origin ESMFMKFILE), environment)
+$(error Environment variable ESMFMKFILE was not set.)
+endif
+include         $(ESMFMKFILE)
+ESMF_INC        = $(ESMF_F90COMPILEPATHS)
+ESMF_LIB        = $(ESMF_F90LINKPATHS) $(ESMF_F90LINKRPATHS) $(ESMF_F90ESMFLINKLIBS)
+UTILINCS        = -I$(FMSDIR) -I$(NEMSMOMDIR)/lib_ocean -I.
+MOM             = mom6
+NUOPCAPDIR      = MOM6/config_src/nuopc_driver
+
+USER_CFLAGS=-DMOM6_CAP
+
+.SUFFIXES: .F90
+
+%.o : $(NUOPCAPDIR)/%.F90
+	$(ESMF_F90COMPILER) -c $(ESMF_F90COMPILEOPTS) $(USER_CFLAGS) $(UTILINCS) $(ESMF_F90COMPILEPATHS) $(ESMF_F90COMPILEFREECPP) $(ESMF_F90COMPILECPPFLAGS) $<
+mom_cap.o : time_utils.o mom_cap_methods.o mom_cap_time.o
+
+.PRECIOUS: %.o
+
+PWDDIR := $(shell pwd)
+
+MAKEFILE = makefile.nuopc
+
+LIBRARY  = libmom.a
+
+MODULES  = mom_cap.o time_utils.o mom_cap_methods.o mom_cap_time.o
+
+all default:
+	@gmake -f $(MAKEFILE) $(LIBRARY)
+
+$(LIBRARY): $(MODULES)
+	$(AR) $(ARFLAGS) $@ $?
+
+install: $(LIBRARY)
+	rm -f $(MOM).mk.install
+	@echo "# ESMF self-describing build dependency makefile fragment" > $(MOM).mk.install
+	@echo "# src location: $pwd" >> $(MOM).mk.install
+	@echo  >> $(MOM).mk.install
+	@echo "ESMF_DEP_FRONT     = mom_cap_mod" >> $(MOM).mk.install
+	@echo "ESMF_DEP_INCPATH   = $(INSTALLDIR)" >> $(MOM).mk.install
+	@echo "ESMF_DEP_CMPL_OBJS = " >> $(MOM).mk.install
+	@echo "ESMF_DEP_LINK_OBJS = $(INSTALLDIR)/libmom.a $(INSTALLDIR)/lib_ocean.a" >> $(MOM).mk.install
+	mkdir -p $(INSTALLDIR)
+	cp -f $(NEMSMOMDIR)/lib_ocean/lib_ocean.a $(INSTALLDIR)
+	cp -f libmom.a mom_cap_mod.mod $(INSTALLDIR)
+	cp -f $(MOM).mk.install $(INSTALLDIR)/$(MOM).mk
+
+clean:
+	$(RM) -f $(LIBRARY) *.f90 *.o *.mod *.lst depend

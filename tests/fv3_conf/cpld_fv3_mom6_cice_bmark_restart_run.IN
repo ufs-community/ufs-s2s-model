@@ -39,9 +39,10 @@ cp    @[RTPWD]/${FV3_DIR}/INPUT/gfs_ctrl.nc ./INPUT
 # MOM6 fixed input
 cp    @[RTPWD]/MOM6_FIX/@[OCNRES]/* ./INPUT
 
-# CICE5 fixed input
+# CICE fixed input
 cp    @[RTPWD]/CICE_FIX/@[OCNRES]/grid_cice_NEMS_mx@[OCNRES].nc .
 cp    @[RTPWD]/CICE_FIX/@[OCNRES]/kmtu_cice_NEMS_mx@[OCNRES].nc .
+cp    @[RTPWD]/CICE_FIX/@[OCNRES]/mesh.mx@[OCNRES].nc .
 
 #
 # FIXME: need to copy in from just completed 1-d run, not baseline
