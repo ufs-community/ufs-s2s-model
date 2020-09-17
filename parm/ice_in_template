@@ -8,7 +8,7 @@
     ndtd           = 1
     runtype        = 'RUNTYPE'
     runid          = 'RUNID'
-    ice_ic         = 'cice5_model.res.nc'
+    ice_ic         = 'cice_model.res.nc'
     restart        = .true.
     restart_ext    = RESTART_EXT
     use_restart_time = USE_RESTART_TIME
