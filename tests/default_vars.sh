@@ -317,7 +317,7 @@ export MOM_INPUT=MOM_input_template_025
 export mom6_restart_option='nhours'
 export mom6_restart_n='24' 
 # defaults for CICE runtype and restart writing
-export RUNTYPE='initial' 
+export RUNTYPE='startup' 
 export DUMPFREQ='d' 
 export DUMPFREQ_N='35' 
 export USE_RESTART_TIME='.false.'
