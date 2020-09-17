@@ -1,49 +1,64 @@
-Thu Sep 17 12:13:00 UTC 2020
+Thu Sep 17 16:25:09 UTC 2020
 Start Regression test
 
 
-baseline dir = /scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_RT/REGRESSION_TEST_INTEL/RT-Baselines_1stepcold_ccpp_cmeps
-mediator baseline dir = /scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_RT/REGRESSION_TEST_INTEL/RT-Baselines_1stepcold_ccpp_cmeps/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_267895/cpld_fv3_ccpp_mom6_cice_cmeps_1stepcold_atm_flux
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200907/RT-Baselines_1stepcold_ccpp_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200907/RT-Baselines_1stepcold_ccpp_cmeps/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_48980/cpld_fv3_ccpp_mom6_cice_cmeps_1stepcold_atm_flux
 Checking test 001 cpld_fv3_ccpp_mom6_cice_cmeps_1stepcold_atm_flux results ....
- mkdir -p /scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_RT/REGRESSION_TEST_INTEL/RT-Baselines_1stepcold_ccpp_cmeps/RESTART
- Moving phyf048.tile1.nc ..... Moving phyf048.tile2.nc ..... Moving phyf048.tile3.nc ..... Moving phyf048.tile4.nc ..... Moving phyf048.tile5.nc ..... Moving phyf048.tile6.nc ..... Moving dynf048.tile1.nc ..... Moving dynf048.tile2.nc ..... Moving dynf048.tile3.nc ..... Moving dynf048.tile4.nc ..... Moving dynf048.tile5.nc ..... Moving dynf048.tile6.nc ..... Moving RESTART/coupler.res ..... Moving RESTART/fv_core.res.nc ..... Moving RESTART/fv_core.res.tile1.nc ..... Moving RESTART/fv_core.res.tile2.nc ..... Moving RESTART/fv_core.res.tile3.nc ..... Moving RESTART/fv_core.res.tile4.nc ..... Moving RESTART/fv_core.res.tile5.nc ..... Moving RESTART/fv_core.res.tile6.nc ..... Moving RESTART/fv_srf_wnd.res.tile1.nc ..... Moving RESTART/fv_srf_wnd.res.tile2.nc ..... Moving RESTART/fv_srf_wnd.res.tile3.nc ..... Moving RESTART/fv_srf_wnd.res.tile4.nc ..... Moving RESTART/fv_srf_wnd.res.tile5.nc ..... Moving RESTART/fv_srf_wnd.res.tile6.nc ..... Moving RESTART/fv_tracer.res.tile1.nc ..... Moving RESTART/fv_tracer.res.tile2.nc ..... Moving RESTART/fv_tracer.res.tile3.nc ..... Moving RESTART/fv_tracer.res.tile4.nc ..... Moving RESTART/fv_tracer.res.tile5.nc ..... Moving RESTART/fv_tracer.res.tile6.nc ..... Moving RESTART/phy_data.tile1.nc ..... Moving RESTART/phy_data.tile2.nc ..... Moving RESTART/phy_data.tile3.nc ..... Moving RESTART/phy_data.tile4.nc ..... Moving RESTART/phy_data.tile5.nc ..... Moving RESTART/phy_data.tile6.nc ..... Moving RESTART/sfc_data.tile1.nc ..... Moving RESTART/sfc_data.tile2.nc ..... Moving RESTART/sfc_data.tile3.nc ..... Moving RESTART/sfc_data.tile4.nc ..... Moving RESTART/sfc_data.tile5.nc ..... Moving RESTART/sfc_data.tile6.nc ..... Moving RESTART/MOM.res.nc ..... Moving RESTART/MOM.res_1.nc ..... Moving RESTART/MOM.res_2.nc ..... Moving RESTART/MOM.res_3.nc ..... Moving RESTART/iced.2016-10-05-00000.nc ..... Moving ufs.s2s.cpl.r.2016-10-05-00000.nc .....Test 001 cpld_fv3_ccpp_mom6_cice_cmeps_1stepcold_atm_flux PASS
+ Comparing phyf048.tile1.nc .........OK
+ Comparing phyf048.tile2.nc .........OK
+ Comparing phyf048.tile3.nc .........OK
+ Comparing phyf048.tile4.nc .........OK
+ Comparing phyf048.tile5.nc .........OK
+ Comparing phyf048.tile6.nc .........OK
+ Comparing dynf048.tile1.nc .........OK
+ Comparing dynf048.tile2.nc .........OK
+ Comparing dynf048.tile3.nc .........OK
+ Comparing dynf048.tile4.nc .........OK
+ Comparing dynf048.tile5.nc .........OK
+ Comparing dynf048.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2016-10-05-00000.nc .........OK
+ Comparing ufs.s2s.cpl.r.2016-10-05-00000.nc .........OK
+Test 001 cpld_fv3_ccpp_mom6_cice_cmeps_1stepcold_atm_flux PASS
 
 
-baseline dir = /scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_RT/REGRESSION_TEST_INTEL/RT-Baselines_2d_warm_ccpp_cmeps
-mediator baseline dir = /scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_RT/REGRESSION_TEST_INTEL/RT-Baselines_2d_warm_ccpp_cmeps/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_267895/cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux
-Checking test 002 cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux results ....
- mkdir -p /scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_RT/REGRESSION_TEST_INTEL/RT-Baselines_2d_warm_ccpp_cmeps/RESTART
- Moving phyf048.tile1.nc ..... Moving phyf048.tile2.nc ..... Moving phyf048.tile3.nc ..... Moving phyf048.tile4.nc ..... Moving phyf048.tile5.nc ..... Moving phyf048.tile6.nc ..... Moving dynf048.tile1.nc ..... Moving dynf048.tile2.nc ..... Moving dynf048.tile3.nc ..... Moving dynf048.tile4.nc ..... Moving dynf048.tile5.nc ..... Moving dynf048.tile6.nc ..... Moving RESTART/coupler.res ..... Moving RESTART/fv_core.res.nc ..... Moving RESTART/fv_core.res.tile1.nc ..... Moving RESTART/fv_core.res.tile2.nc ..... Moving RESTART/fv_core.res.tile3.nc ..... Moving RESTART/fv_core.res.tile4.nc ..... Moving RESTART/fv_core.res.tile5.nc ..... Moving RESTART/fv_core.res.tile6.nc ..... Moving RESTART/fv_srf_wnd.res.tile1.nc ..... Moving RESTART/fv_srf_wnd.res.tile2.nc ..... Moving RESTART/fv_srf_wnd.res.tile3.nc ..... Moving RESTART/fv_srf_wnd.res.tile4.nc ..... Moving RESTART/fv_srf_wnd.res.tile5.nc ..... Moving RESTART/fv_srf_wnd.res.tile6.nc ..... Moving RESTART/fv_tracer.res.tile1.nc ..... Moving RESTART/fv_tracer.res.tile2.nc ..... Moving RESTART/fv_tracer.res.tile3.nc ..... Moving RESTART/fv_tracer.res.tile4.nc ..... Moving RESTART/fv_tracer.res.tile5.nc ..... Moving RESTART/fv_tracer.res.tile6.nc ..... Moving RESTART/phy_data.tile1.nc ..... Moving RESTART/phy_data.tile2.nc ..... Moving RESTART/phy_data.tile3.nc ..... Moving RESTART/phy_data.tile4.nc ..... Moving RESTART/phy_data.tile5.nc ..... Moving RESTART/phy_data.tile6.nc ..... Moving RESTART/sfc_data.tile1.nc ..... Moving RESTART/sfc_data.tile2.nc ..... Moving RESTART/sfc_data.tile3.nc ..... Moving RESTART/sfc_data.tile4.nc ..... Moving RESTART/sfc_data.tile5.nc ..... Moving RESTART/sfc_data.tile6.nc ..... Moving RESTART/MOM.res.nc ..... Moving RESTART/MOM.res_1.nc ..... Moving RESTART/MOM.res_2.nc ..... Moving RESTART/MOM.res_3.nc ..... Moving RESTART/iced.2016-10-05-00000.nc ..... Moving ufs.s2s.cpl.r.2016-10-05-00000.nc .....Test 002 cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux PASS
-
-
-baseline dir = /scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_RT/REGRESSION_TEST_INTEL/RT-Baselines_3d_warm_ccpp_cmeps
-mediator baseline dir = /scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_RT/REGRESSION_TEST_INTEL/RT-Baselines_3d_warm_ccpp_cmeps/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_267895/cpld_fv3_ccpp_mom6_cice_cmeps_3d_atm_flux
-Checking test 003 cpld_fv3_ccpp_mom6_cice_cmeps_3d_atm_flux results ....
- mkdir -p /scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_RT/REGRESSION_TEST_INTEL/RT-Baselines_3d_warm_ccpp_cmeps/RESTART
- Moving phyf072.tile1.nc ..... Moving phyf072.tile2.nc ..... Moving phyf072.tile3.nc ..... Moving phyf072.tile4.nc ..... Moving phyf072.tile5.nc ..... Moving phyf072.tile6.nc ..... Moving dynf072.tile1.nc ..... Moving dynf072.tile2.nc ..... Moving dynf072.tile3.nc ..... Moving dynf072.tile4.nc ..... Moving dynf072.tile5.nc ..... Moving dynf072.tile6.nc ..... Moving RESTART/coupler.res ..... Moving RESTART/fv_core.res.nc ..... Moving RESTART/fv_core.res.tile1.nc ..... Moving RESTART/fv_core.res.tile2.nc ..... Moving RESTART/fv_core.res.tile3.nc ..... Moving RESTART/fv_core.res.tile4.nc ..... Moving RESTART/fv_core.res.tile5.nc ..... Moving RESTART/fv_core.res.tile6.nc ..... Moving RESTART/fv_srf_wnd.res.tile1.nc ..... Moving RESTART/fv_srf_wnd.res.tile2.nc ..... Moving RESTART/fv_srf_wnd.res.tile3.nc ..... Moving RESTART/fv_srf_wnd.res.tile4.nc ..... Moving RESTART/fv_srf_wnd.res.tile5.nc ..... Moving RESTART/fv_srf_wnd.res.tile6.nc ..... Moving RESTART/fv_tracer.res.tile1.nc ..... Moving RESTART/fv_tracer.res.tile2.nc ..... Moving RESTART/fv_tracer.res.tile3.nc ..... Moving RESTART/fv_tracer.res.tile4.nc ..... Moving RESTART/fv_tracer.res.tile5.nc ..... Moving RESTART/fv_tracer.res.tile6.nc ..... Moving RESTART/phy_data.tile1.nc ..... Moving RESTART/phy_data.tile2.nc ..... Moving RESTART/phy_data.tile3.nc ..... Moving RESTART/phy_data.tile4.nc ..... Moving RESTART/phy_data.tile5.nc ..... Moving RESTART/phy_data.tile6.nc ..... Moving RESTART/sfc_data.tile1.nc ..... Moving RESTART/sfc_data.tile2.nc ..... Moving RESTART/sfc_data.tile3.nc ..... Moving RESTART/sfc_data.tile4.nc ..... Moving RESTART/sfc_data.tile5.nc ..... Moving RESTART/sfc_data.tile6.nc ..... Moving RESTART/MOM.res.nc ..... Moving RESTART/MOM.res_1.nc ..... Moving RESTART/MOM.res_2.nc ..... Moving RESTART/MOM.res_3.nc ..... Moving RESTART/iced.2016-10-06-00000.nc ..... Moving ufs.s2s.cpl.r.2016-10-06-00000.nc .....Test 003 cpld_fv3_ccpp_mom6_cice_cmeps_3d_atm_flux PASS
-
-
-baseline dir = /scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_RT/REGRESSION_TEST_INTEL/RT-Baselines_1d_warm_satmedmf_ccpp_cmeps
-mediator baseline dir = /scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_RT/REGRESSION_TEST_INTEL/RT-Baselines_1d_warm_satmedmf_ccpp_cmeps/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_267895/cpld_fv3_ccpp_mom6_cice_cmeps_1d_satmedmf
-Checking test 004 cpld_fv3_ccpp_mom6_cice_cmeps_1d_satmedmf results ....
- mkdir -p /scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_RT/REGRESSION_TEST_INTEL/RT-Baselines_1d_warm_satmedmf_ccpp_cmeps/RESTART
- Moving phyf024.tile1.nc ..... Moving phyf024.tile2.nc ..... Moving phyf024.tile3.nc ..... Moving phyf024.tile4.nc ..... Moving phyf024.tile5.nc ..... Moving phyf024.tile6.nc ..... Moving dynf024.tile1.nc ..... Moving dynf024.tile2.nc ..... Moving dynf024.tile3.nc ..... Moving dynf024.tile4.nc ..... Moving dynf024.tile5.nc ..... Moving dynf024.tile6.nc ..... Moving RESTART/coupler.res ..... Moving RESTART/fv_core.res.nc ..... Moving RESTART/fv_core.res.tile1.nc ..... Moving RESTART/fv_core.res.tile2.nc ..... Moving RESTART/fv_core.res.tile3.nc ..... Moving RESTART/fv_core.res.tile4.nc ..... Moving RESTART/fv_core.res.tile5.nc ..... Moving RESTART/fv_core.res.tile6.nc ..... Moving RESTART/fv_srf_wnd.res.tile1.nc ..... Moving RESTART/fv_srf_wnd.res.tile2.nc ..... Moving RESTART/fv_srf_wnd.res.tile3.nc ..... Moving RESTART/fv_srf_wnd.res.tile4.nc ..... Moving RESTART/fv_srf_wnd.res.tile5.nc ..... Moving RESTART/fv_srf_wnd.res.tile6.nc ..... Moving RESTART/fv_tracer.res.tile1.nc ..... Moving RESTART/fv_tracer.res.tile2.nc ..... Moving RESTART/fv_tracer.res.tile3.nc ..... Moving RESTART/fv_tracer.res.tile4.nc ..... Moving RESTART/fv_tracer.res.tile5.nc ..... Moving RESTART/fv_tracer.res.tile6.nc ..... Moving RESTART/phy_data.tile1.nc ..... Moving RESTART/phy_data.tile2.nc ..... Moving RESTART/phy_data.tile3.nc ..... Moving RESTART/phy_data.tile4.nc ..... Moving RESTART/phy_data.tile5.nc ..... Moving RESTART/phy_data.tile6.nc ..... Moving RESTART/sfc_data.tile1.nc ..... Moving RESTART/sfc_data.tile2.nc ..... Moving RESTART/sfc_data.tile3.nc ..... Moving RESTART/sfc_data.tile4.nc ..... Moving RESTART/sfc_data.tile5.nc ..... Moving RESTART/sfc_data.tile6.nc ..... Moving RESTART/MOM.res.nc ..... Moving RESTART/MOM.res_1.nc ..... Moving RESTART/MOM.res_2.nc ..... Moving RESTART/MOM.res_3.nc ..... Moving RESTART/iced.2016-10-04-00000.nc ..... Moving ufs.s2s.cpl.r.2016-10-04-00000.nc .....Test 004 cpld_fv3_ccpp_mom6_cice_cmeps_1d_satmedmf PASS
-
-
-baseline dir = /scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_RT/REGRESSION_TEST_INTEL/RT-Baselines_2d_warm_ccpp384_cmeps
-mediator baseline dir = /scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_RT/REGRESSION_TEST_INTEL/RT-Baselines_2d_warm_ccpp384_cmeps/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_267895/cpld_fv3_ccpp_384_mom6_cice_cmeps_2d_atm_flux
-Checking test 005 cpld_fv3_ccpp_384_mom6_cice_cmeps_2d_atm_flux results ....
- mkdir -p /scratch1/NCEPDEV/stmp4/Denise.Worthen/S2S_RT/REGRESSION_TEST_INTEL/RT-Baselines_2d_warm_ccpp384_cmeps/RESTART
- Moving phyf048.tile1.nc ..... Moving phyf048.tile2.nc ..... Moving phyf048.tile3.nc ..... Moving phyf048.tile4.nc ..... Moving phyf048.tile5.nc ..... Moving phyf048.tile6.nc ..... Moving dynf048.tile1.nc ..... Moving dynf048.tile2.nc ..... Moving dynf048.tile3.nc ..... Moving dynf048.tile4.nc ..... Moving dynf048.tile5.nc ..... Moving dynf048.tile6.nc ..... Moving RESTART/coupler.res ..... Moving RESTART/fv_core.res.nc ..... Moving RESTART/fv_core.res.tile1.nc ..... Moving RESTART/fv_core.res.tile2.nc ..... Moving RESTART/fv_core.res.tile3.nc ..... Moving RESTART/fv_core.res.tile4.nc ..... Moving RESTART/fv_core.res.tile5.nc ..... Moving RESTART/fv_core.res.tile6.nc ..... Moving RESTART/fv_srf_wnd.res.tile1.nc ..... Moving RESTART/fv_srf_wnd.res.tile2.nc ..... Moving RESTART/fv_srf_wnd.res.tile3.nc ..... Moving RESTART/fv_srf_wnd.res.tile4.nc ..... Moving RESTART/fv_srf_wnd.res.tile5.nc ..... Moving RESTART/fv_srf_wnd.res.tile6.nc ..... Moving RESTART/fv_tracer.res.tile1.nc ..... Moving RESTART/fv_tracer.res.tile2.nc ..... Moving RESTART/fv_tracer.res.tile3.nc ..... Moving RESTART/fv_tracer.res.tile4.nc ..... Moving RESTART/fv_tracer.res.tile5.nc ..... Moving RESTART/fv_tracer.res.tile6.nc ..... Moving RESTART/phy_data.tile1.nc ..... Moving RESTART/phy_data.tile2.nc ..... Moving RESTART/phy_data.tile3.nc ..... Moving RESTART/phy_data.tile4.nc ..... Moving RESTART/phy_data.tile5.nc ..... Moving RESTART/phy_data.tile6.nc ..... Moving RESTART/sfc_data.tile1.nc ..... Moving RESTART/sfc_data.tile2.nc ..... Moving RESTART/sfc_data.tile3.nc ..... Moving RESTART/sfc_data.tile4.nc ..... Moving RESTART/sfc_data.tile5.nc ..... Moving RESTART/sfc_data.tile6.nc ..... Moving RESTART/MOM.res.nc ..... Moving RESTART/MOM.res_1.nc ..... Moving RESTART/MOM.res_2.nc ..... Moving RESTART/MOM.res_3.nc ..... Moving RESTART/iced.2016-10-05-00000.nc ..... Moving ufs.s2s.cpl.r.2016-10-05-00000.nc .....Test 005 cpld_fv3_ccpp_384_mom6_cice_cmeps_2d_atm_flux PASS
-
-FAILED TESTS: 
-Test cpld_fv3_ccpp_384_mom6_cice_cmeps_1d_bmark_rt failed 
-
-REGRESSION TEST FAILED
-Thu Sep 17 12:55:55 UTC 2020
-Elapsed time: 00h:45m:21s. Have a nice day!
+REGRESSION TEST WAS SUCCESSFUL
+Thu Sep 17 16:46:59 UTC 2020
+Elapsed time: 00h:21m:51s. Have a nice day!
