@@ -293,7 +293,7 @@ export NFHMAX_HF='-1'
 export NFHOUT_HF='-1'
 export CPLFLX='.T.'
 export CPL='.true.'
-export FRAC_GRID='.F'
+export FRAC_GRID='.F.'
 export NSTF_NAME='0,0,0,0,0'
 export MOM6_RESTART_SETTING='n'
 export med_model="nems"
@@ -314,8 +314,6 @@ export DT_ATMOS='900' #needed for C96 cases
 export DT_DYNAM_MOM6='900'
 export DT_THERM_MOM6='1800'
 export MOM_INPUT=MOM_input_template_025
-export mom6_restart_option='nhours'
-export mom6_restart_n='24' 
 # defaults for CICE runtype and restart writing
 export RUNTYPE='startup' 
 export DUMPFREQ='d' 
