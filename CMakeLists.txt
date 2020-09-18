@@ -333,7 +333,9 @@ if(WW3)
 endif()
 
 if(S2S)
-    target_compile_definitions(NEMS.exe PRIVATE -DCPPCMEPS="-DCMEPS")
+    target_compile_definitions(ufs PRIVATE -DFRONT_MOM6=mom_cap_mod
+                                           -DFRONT_CICE6=ice_comp_nuopc
+                                           -DCMEPS -DFRONT_CMEPS=MED)
 endif()
 
 target_link_libraries(NEMS.exe

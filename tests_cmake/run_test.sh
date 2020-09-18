@@ -99,19 +99,19 @@ if [ $S2S != true ]; then
   atparse < ${PATHTR}/parm_weather/${MODEL_CONFIGURE:-model_configure.IN} > model_configure
   atparse < ${PATHTR}/parm_weather/${NEMS_CONFIGURE:-nems.configure} > nems.configure
 else
-  atparse < ${PATHTR}/parm_s2s/${INPUT_NML:-input.nml.IN} > input.nml
-  atparse < ${PATHTR}/parm_s2s/${MODEL_CONFIGURE:-model_configure.IN} > model_configure
-  atparse < ${PATHTR}/parm_s2s/${NEMS_CONFIGURE:-nems.configure} > nems.configure
+  atparse < ${PATHTR}/parm/${INPUT_NML:-input.nml.IN} > input.nml
+  atparse < ${PATHTR}/parm/${MODEL_CONFIGURE:-model_configure.IN} > model_configure
+  atparse < ${PATHTR}/parm/${NEMS_CONFIGURE:-nems.configure} > nems.configure
 fi
 if [ $S2S == true ]; then
-  edit_ice_in < ${PATHTR}/parm_s2s/ice_in_template > ice_in
-  edit_mom_input < ${PATHTR}/parm_s2s/${MOM_INPUT:-MOM_input_template_$OCNRES} > INPUT/MOM_input
-  edit_diag_table < ${PATHTR}/parm_s2s/diag_table_template > diag_table
-  edit_data_table < ${PATHTR}/parm_s2s/data_table_template > data_table
+  edit_ice_in < ${PATHTR}/parm/ice_in_template > ice_in
+  edit_mom_input < ${PATHTR}/parm/${MOM_INPUT:-MOM_input_template_$OCNRES} > INPUT/MOM_input
+  edit_diag_table < ${PATHTR}/parm/diag_table_template > diag_table
+  edit_data_table < ${PATHTR}/parm/data_table_template > data_table
 
-  cp ${PATHTR}/parm_s2s/fd_nems.yaml fd_nems.yaml
-  cp ${PATHTR}/parm_s2s/pio_in pio_in
-  cp ${PATHTR}/parm_s2s/med_modelio.nml med_modelio.nml
+  cp ${PATHTR}/parm/fd_nems.yaml fd_nems.yaml
+  cp ${PATHTR}/parm/pio_in pio_in
+  cp ${PATHTR}/parm/med_modelio.nml med_modelio.nml
 fi
 
 if [[ "Q${INPUT_NEST02_NML:-}" != Q ]] ; then
@@ -143,7 +143,7 @@ fi
 if [ $S2S != true ]; then
 atparse < ${PATHTR}/parm_weather/${NEMS_CONFIGURE:-nems.configure} > nems.configure
 else
-atparse < ${PATHTR}/parm_s2s/${NEMS_CONFIGURE:-nems.configure} > nems.configure
+atparse < ${PATHTR}/parm/${NEMS_CONFIGURE:-nems.configure} > nems.configure
 fi
 
 ################################################################################
