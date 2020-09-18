@@ -33,7 +33,19 @@ target_link_libraries(${libName} PUBLIC fms)
 target_link_libraries(${libName} PUBLIC NetCDF::NetCDF_Fortran)
 target_link_libraries(${libName} PUBLIC esmf)
 if(OPENMP)
-  target_link_libraries(${libName} PUBLIC OpenMP::OpenMP_Fortran)
+  message(WARNING "MOM6 CANNOT BE BUILT WITH OPENMP.. DISABLING")
+  #CMAKE_Fortran_FLAGS
+  string(REPLACE " " ";" CMAKE_Fortran_FLAGS ${CMAKE_Fortran_FLAGS})
+  list(REMOVE_ITEM CMAKE_Fortran_FLAGS "-qopenmp")
+  string(REPLACE ";" " " CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
+  #CMAKE_C_FLAGS
+  string(REPLACE " " ";" CMAKE_C_FLAGS ${CMAKE_C_FLAGS})
+  list(REMOVE_ITEM CMAKE_C_FLAGS "-qopenmp")
+  string(REPLACE ";" " " CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+  #CMAKE_EXE_LINKER_FLAGS
+  string(REPLACE " " ";" CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS})
+  list(REMOVE_ITEM CMAKE_EXE_LINKER_FLAGS "-qopenmp")
+  string(REPLACE ";" " " CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
 endif()
 
 #########################

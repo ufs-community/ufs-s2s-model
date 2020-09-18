@@ -24,7 +24,7 @@ set(CCPP            ON  CACHE BOOL "Enable CCPP")
 set(DEBUG           OFF CACHE BOOL "Enable DEBUG mode")
 set(INLINE_POST     OFF CACHE BOOL "Enable inline post")
 set(MULTI_GASES     OFF CACHE BOOL "Enable MULTI_GASES")
-set(OPENMP          OFF CACHE BOOL "Enable OpenMP threading")
+set(OPENMP          ON CACHE BOOL "Enable OpenMP threading")
 set(PARALLEL_NETCDF OFF CACHE BOOL "Enable parallel NetCDF")
 set(QUAD_PRECISION  ON  CACHE BOOL "Enable QUAD_PRECISION (for certain grid metric terms in dycore)")
 set(REPRO           OFF CACHE BOOL "Enable REPRO mode")
@@ -333,7 +333,7 @@ if(WW3)
 endif()
 
 if(S2S)
-    target_compile_definitions(NEMS.exe PRIVATE -DUSE_NETCDF)
+    target_compile_definitions(NEMS.exe PRIVATE -DCPPCMEPS="-DCMEPS")
 endif()
 
 target_link_libraries(NEMS.exe
