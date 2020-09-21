@@ -106,7 +106,7 @@ ALLCOMP_attributes::
       ScalarFieldIdxGridNX = 1
       ScalarFieldIdxGridNY = 2
       ScalarFieldName = cpl_scalars
-      start_type = startup
+      start_type = @[RUNTYPE]
       case_name = ufs.s2s
       restart_n = @[FV3_RESTART_INTERVAL]
       restart_option = nhours

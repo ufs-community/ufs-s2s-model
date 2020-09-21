@@ -67,7 +67,6 @@ export INPUT_NML=input.benchmark_ccpp.nml.IN
 
 export FIELD_TABLE="field_table.gfdlmp"
 export SUITE_NAME="FV3_GFS_v15p2_coupled"
-export MED_restart_data
 
 export OZ_PHYS_NEW=".T."
 

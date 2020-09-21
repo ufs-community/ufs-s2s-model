@@ -91,4 +91,3 @@ export HYBEDMF='.false.'
 
 export FIELD_TABLE='field_table_satmedmf'
 export SUITE_NAME='FV3_GFS_2017_satmedmf_coupled'
-export MED_restart_data='MEDIATOR_satmedmf_ccpp_cmeps'
