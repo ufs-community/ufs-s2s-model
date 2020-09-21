@@ -62,27 +62,9 @@ rt_35d() {
   rm -f tests/$new_test_name
   cp tests/$TEST_NAME $new_test_name
 
-  if [[ $TEST_NAME =~ cold$ ]]; then
-    sed -i -e "s/\(export LIST_FILES\)/\1=\"ufs.s2s.cold.cpl.r.${sy}-${sm}-01-03600.nc\"/" $new_test_name
-    sed -i -e "s/\(export SYEAR\)/\1=\"$sy\"/" $new_test_name
-    sed -i -e "s/\(export SMONTH\)/\1=\"$sm\"/" $new_test_name
-    if [[ $TEST_NAME =~ ww3 ]]; then
-      sed -i -e "s/\(export CNTL_DIR\)/\1='RT-Baselines_cold_bmwav_cmeps_${DATE_35D}'/" $new_test_name
-      sed -i -e "s/\(export CNTLMED_DIR\)/\1='MEDIATOR_bmwav_cmeps_${DATE_35D}'/" $new_test_name
-    else
-      sed -i -e "s/\(export CNTL_DIR\)/\1='RT-Baselines_cold_bm_cmeps_${DATE_35D}'/" $new_test_name
-      sed -i -e "s/\(export CNTLMED_DIR\)/\1='MEDIATOR_bm_cmeps_${DATE_35D}'/" $new_test_name
-    fi
-  elif [[ $TEST_NAME =~ 35d$ ]]; then
     sed -i -e "s/\(export SYEAR\)/\1=\"$sy\"/" $new_test_name
     sed -i -e "s/\(export SMONTH\)/\1=\"$sm\"/" $new_test_name
     DEP_RUN=${DEP_RUN}_${DATE_35D}
-    if [[ $TEST_NAME =~ ww3 ]]; then
-      sed -i -e "s/\(export MED_restart_data\)/\1='MEDIATOR_bmwav_cmeps_${DATE_35D}'/" $new_test_name
-    else
-      sed -i -e "s/\(export MED_restart_data\)/\1='MEDIATOR_bm_cmeps_${DATE_35D}'/" $new_test_name
-    fi
-  fi
 
   TEST_NAME=${new_test_name#tests/}
 }
@@ -435,7 +417,7 @@ fi
 if [[ $MACHINE_ID = cheyenne.* ]]; then
   RTPWD=${RTPWD:-$DISKNM/develop-20200210/${COMPILER^^}}
 else
-  RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200907}
+  RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200918}
 fi
 
 shift $((OPTIND-1))

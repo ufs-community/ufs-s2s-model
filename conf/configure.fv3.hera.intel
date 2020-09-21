@@ -180,6 +180,6 @@ LDFLAGS += $(LIBS)
 
 ifdef InNemsMakefile
 FFLAGS += $(ESMF_INC)
-CPPFLAGS += -DFV3_CPLD -traditional
+CPPFLAGS += -traditional
 EXTLIBS = $(NCEPLIBS) $(ESMF_LIB) $(LDFLAGS) $(NETCDF_LIB)
 endif
