@@ -251,8 +251,10 @@ add_library(
     NEMS/src/ENS_Cpl/ENS_CplComp_ESMFMod_STUB.F90
 )
 add_dependencies(ufs fv3atm fms)
-target_link_libraries(ufs PRIVATE esmf)
+target_link_libraries(ufs PUBLIC fms)
+target_link_libraries(ufs PUBLIC esmf)
 target_link_libraries(ufs PUBLIC PIO::PIO_Fortran PIO::PIO_C)
+target_link_libraries(ufs PUBLIC fv3atm )
 
 target_compile_definitions(ufs PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR}
                                        -DFRONT_FMS
@@ -284,11 +286,12 @@ if(S2S)
                                            ${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod
                                            ${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod)
     add_dependencies(ufs mom6 cice cmeps)
-    target_link_libraries(ufs PUBLIC mom6 cice cmeps)
-    target_include_directories(ufs PUBLIC
-                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/mod>
-                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod>
-                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>)
+    target_link_libraries(ufs PUBLIC mom6)
+    target_link_libraries(ufs PUBLIC cice)
+    target_link_libraries(ufs PUBLIC cmeps)
+    target_include_directories(ufs PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/mod>
+                                          $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod>
+                                          $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>)
     list(APPEND ufs_targets mom6 cice cmeps)
 endif()
 
@@ -309,7 +312,6 @@ configure_file(${PROJECT_SOURCE_DIR}/NEMS/src/ESMFConvenienceMacros.h
                ${PROJECT_BINARY_DIR}/NEMS/src/ESMFConvenienceMacros.h
                COPYONLY)
 
-target_link_libraries(ufs PUBLIC fv3atm )
 
 ###############################################################################
 ### UFS executable
@@ -320,7 +322,8 @@ add_executable(NEMS.exe
 add_dependencies(NEMS.exe ufs)
 
 target_compile_definitions(NEMS.exe PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR})
-target_include_directories(NEMS.exe PRIVATE ${PROJECT_BINARY_DIR}/NEMS/src)
+target_include_directories(NEMS.exe PRIVATE ${PROJECT_BINARY_DIR}/NEMS/src
+                                            ${PROJECT_BINARY_DIR}/NEMS/src/ENS_Cpl)
 
 set_target_properties(NEMS.exe PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/mod)
 
@@ -335,10 +338,6 @@ if(S2S)
     target_compile_definitions(NEMS.exe PRIVATE -DFRONT_MOM6=mom_cap_mod
                                            -DFRONT_CICE6=ice_comp_nuopc
                                            -DCMEPS -DFRONT_CMEPS=MED)
-    target_include_directories(NEMS.exe PUBLIC
-                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/mod>
-                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod>
-                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>)
 endif()
 
 target_link_libraries(NEMS.exe
