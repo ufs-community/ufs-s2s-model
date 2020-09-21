@@ -293,7 +293,7 @@ export NFHMAX_HF='-1'
 export NFHOUT_HF='-1'
 export CPLFLX='.T.'
 export CPL='.true.'
-export FRAC_GRID='.false.'
+export FRAC_GRID='.F.'
 export NSTF_NAME='0,0,0,0,0'
 export MOM6_RESTART_SETTING='n'
 export med_model="nems"
@@ -302,7 +302,7 @@ export ocn_model="mom6"
 export ice_model="cice6"
 export wav_model="ww3"
 export cap_dbug_flag="0"
-export use_coldstart="true"
+export use_coldstart="false"
 # MOM6 river runoff 
 export MOM6_RIVER_RUNOFF='True'
 # set USE_LA_LI2016 to the current default; this must be set False for restart repro 
@@ -314,10 +314,8 @@ export DT_ATMOS='900' #needed for C96 cases
 export DT_DYNAM_MOM6='900'
 export DT_THERM_MOM6='1800'
 export MOM_INPUT=MOM_input_template_025
-export mom6_restart_option='nhours'
-export mom6_restart_n='24' 
 # defaults for CICE runtype and restart writing
-export RUNTYPE='initial' 
+export RUNTYPE='startup' 
 export DUMPFREQ='d' 
 export DUMPFREQ_N='35' 
 export USE_RESTART_TIME='.false.'

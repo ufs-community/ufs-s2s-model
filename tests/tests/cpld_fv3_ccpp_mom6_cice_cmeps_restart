@@ -103,4 +103,3 @@ export FV3_RUN=cpld_fv3_mom6_cice_atm_flux_run.IN
 export INPUT_NML=input.mom6_ccpp.nml.IN
 
 export SUITE_NAME="FV3_GFS_2017_coupled"
-export MED_restart_data='MEDIATOR_ccpp_cmeps'
