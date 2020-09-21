@@ -215,11 +215,10 @@ if(S2S)
     add_library(cmeps ${cmeps_src_files})
 
     target_include_directories(cmeps PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/CMEPS/mediator>)
+    target_include_directories(cmeps PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/CMEPS/nems/util>)
 
     target_link_libraries(cmeps PUBLIC PIO::PIO_Fortran PIO::PIO_C)
-    if(ESMF_FOUND)
-        target_link_libraries(cmeps PUBLIC esmf)
-    endif()
+    target_link_libraries(cmeps PUBLIC esmf)
 
     target_compile_definitions(cmeps PRIVATE "-DINTERNAL_PIO_INIT")
     set_target_properties(cmeps PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS)
@@ -333,9 +332,13 @@ if(WW3)
 endif()
 
 if(S2S)
-    target_compile_definitions(ufs PRIVATE -DFRONT_MOM6=mom_cap_mod
+    target_compile_definitions(NEMS.exe PRIVATE -DFRONT_MOM6=mom_cap_mod
                                            -DFRONT_CICE6=ice_comp_nuopc
                                            -DCMEPS -DFRONT_CMEPS=MED)
+    target_include_directories(NEMS.exe PUBLIC
+                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/mod>
+                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod>
+                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>)
 endif()
 
 target_link_libraries(NEMS.exe
