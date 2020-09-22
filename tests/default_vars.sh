@@ -294,18 +294,18 @@ export atm_petlist_bounds=$APB_cpl_c096
 export ocn_petlist_bounds=$OPB_cpl_c096
 export ice_petlist_bounds=$IPB_cpl_c096
 
-# default resolution
+# default atm/ocn/ice resolution
 export ATMRES='C96'
 export OCNRES='100'
 export ICERES='1.00'
 export NX_GLB=360
 export NY_GLB=320
+
+# component and coupling timesteps
 export DT_ATMOS='900'
+export DT_CICE=${DT_ATMOS}
 export DT_DYNAM_MOM6='1800'
 export DT_THERM_MOM6='3600'
-
-# set component and coupling timesteps
-export DT_CICE=${DT_ATMOS}
 export CPL_SLOW=${DT_THERM_MOM6}
 export CPL_FAST=${DT_ATMOS}
 

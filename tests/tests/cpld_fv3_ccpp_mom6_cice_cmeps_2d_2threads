@@ -79,10 +79,21 @@ export atm_petlist_bounds=$APB_cpl_thrd
 export ocn_petlist_bounds=$OPB_cpl_thrd
 export ice_petlist_bounds=$IPB_cpl_thrd
 
+# atm/ocn/ice resolution
 export OCNRES='025'
 export ICERES='0.25'
 export NX_GLB=1440
 export NY_GLB=1080
+
+export NPROC_ICE='48'
+export DT_DYNAM_MOM6='900'
+export DT_THERM_MOM6='1800'
+
+# set component and coupling timesteps
+export CPL_SLOW=${DT_THERM_MOM6}
+export CPL_FAST=${DT_ATMOS}
+export coupling_interval_slow_sec=${CPL_SLOW}
+export coupling_interval_fast_sec=${CPL_FAST}
 
 export MESHICE="mesh.mx${OCNRES}.nc"
 export CICEGRID="grid_cice_NEMS_mx${OCNRES}.nc"
@@ -90,20 +101,8 @@ export CICEMASK="kmtu_cice_NEMS_mx${OCNRES}.nc"
 export CHLCLIM="seawifs-clim-1997-2010.${NX_GLB}x${NY_GLB}.v20180328.nc"
 export FRUNOFF="runoff.daitren.clim.${NX_GLB}x${NY_GLB}.v20180328.nc"
 
-export MOM_INPUT=MOM_input_template_025
+export MOM_INPUT="MOM_input_template_${OCNRES}"
 export MOM6_RIVER_RUNOFF='True'
-
-export NPROC_ICE='48'
-export DT_DYNAM_MOM6='900'
-export DT_THERM_MOM6='1800'
-
-# set component and coupling timesteps
-export DT_CICE=${DT_ATMOS}
-export CPL_SLOW=${DT_THERM_MOM6}
-export CPL_FAST=${DT_ATMOS}
-export coupling_interval_slow_sec=${CPL_SLOW}
-export coupling_interval_fast_sec=${CPL_FAST}
-
 # restart test: required for restart repro
 export MOM6_REPRO_LA='False'
 export MOM6_THERMO_SPAN='False'
