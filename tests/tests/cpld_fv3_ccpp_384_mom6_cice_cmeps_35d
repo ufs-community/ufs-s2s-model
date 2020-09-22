@@ -81,7 +81,6 @@ export FV3_RESTART_INTERVAL=${FHMAX}
 export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice.IN"
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
-export MOM_INPUT=MOM_input_template_${OCNRES}
 
 export FV3_RUN=cpld_fv3_mom6_cice_bmark_35d_run.IN
 export INPUT_NML=input.benchmark_ccpp.nml.IN
@@ -94,5 +93,7 @@ export OZ_PHYS_NEW=".T."
 export CPLWAV='.F.'
 export CPLWAV2ATM='.F.'
 
+# set run type for CICE in ice_in
 export RUNID="cpcice"
+# set initialization type for MOM6
 export MOM6_RESTART_SETTING="r"
