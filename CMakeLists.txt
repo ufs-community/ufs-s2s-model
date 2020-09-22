@@ -223,6 +223,8 @@ if(S2S)
 
     target_link_libraries(cmeps PUBLIC PIO::PIO_Fortran PIO::PIO_C)
     target_link_libraries(cmeps PUBLIC esmf)
+    target_compile_definitions(cmeps PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR}
+                                       -DESMF_VERSION_MINOR=${ESMF_VERSION_MINOR})
 
     target_compile_definitions(cmeps PRIVATE "-DINTERNAL_PIO_INIT")
     set_target_properties(cmeps PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS)
@@ -261,6 +263,7 @@ target_link_libraries(ufs PUBLIC PIO::PIO_Fortran PIO::PIO_C)
 target_link_libraries(ufs PUBLIC fv3atm )
 
 target_compile_definitions(ufs PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR}
+				       -DESMF_VERSION_MINOR=${ESMF_VERSION_MINOR}
                                        -DFRONT_FMS
                                        -DFRONT_FV3=fv3gfs_cap_mod)
 

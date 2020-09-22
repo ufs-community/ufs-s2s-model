@@ -46,7 +46,8 @@ elseif(PIO_Fortran_FOUND)
   target_link_libraries(${libName} PUBLIC PIO::PIO_Fortran PIO::PIO_C)
 endif()
 
-target_compile_definitions(${libName} PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR})
+target_compile_definitions(${libName} PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR}
+					      -DESMF_VERSION_MINOR=${ESMF_VERSION_MINOR})
 target_compile_definitions(${libName} PRIVATE "-DFORTRANUNDERSCORE -Dcoupled -DUSE_NETCDF")
 target_include_directories(${libName} PRIVATE ${ESMF_MOD})
 
