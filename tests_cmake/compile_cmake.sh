@@ -51,10 +51,10 @@ hostname
 set +x
 source $PATHTR/NEMS/src/conf/module-setup.sh.inc
 if [[ $MACHINE_ID == macosx.* ]] || [[ $MACHINE_ID == linux.* ]]; then
-  source $PATHTR/modulefiles/${MACHINE_ID}/fv3_stack
+  source $PATHTR/modulefiles/${MACHINE_ID}/fv3
 else
   module use $PATHTR/modulefiles/${MACHINE_ID}
-  module load fv3_stack
+  module load fv3
   module list
 fi
 set -x
@@ -146,7 +146,7 @@ CCPP_CMAKE_FLAGS=$(trim "${CCPP_CMAKE_FLAGS}")
   cmake ${PATHTR} ${CCPP_CMAKE_FLAGS}
   make -j ${MAKE_THREADS} VERBOSE=1
   mv NEMS.exe ${PATHTR}/tests_cmake/${BUILD_NAME}.exe
-  cp ${PATHTR}/modulefiles/${MACHINE_ID}/fv3_stack ${PATHTR}/tests_cmake/modules.${BUILD_NAME}
+  cp ${PATHTR}/modulefiles/${MACHINE_ID}/fv3 ${PATHTR}/tests_cmake/modules.${BUILD_NAME}
   cd ..
 )
 

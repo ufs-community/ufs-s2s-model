@@ -1,0 +1,2 @@
+cpld_fv3_ccpp_mom6_cice_cmeps_1stepcold_atm_flux 001 failed in check_result
+cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux 002 failed in run_test

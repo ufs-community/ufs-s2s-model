@@ -49,15 +49,9 @@ cp    @[RTPWD]/WW3_input_data/ww3_multi_35d.inp ww3_multi.inp
 cp    @[RTPWD]/${FV3_IC}/sfc_data*.nc ./INPUT
 cp    @[RTPWD]/${FV3_IC}/gfs_data*.nc ./INPUT
 cp    @[RTPWD]/${MOM6_IC}/MOM*.nc ./INPUT
-cp    @[RTPWD]/${CICE_IC}/cice5_model_@[ICERES].*.nc ./cice5_model.res.nc
+# the BM ICs are still named cice5 and need to remain so until P5.0 is completed
+cp    @[RTPWD]/${CICE_IC}/cice5_model_@[ICERES].*.nc ./cice_model.res.nc
 cp    @[RTPWD]/${WW3_IC}/*.000000.restart.gwes_30m ./restart.gwes_30m
-
-# Restart from CMEPS mediator
-if [[ ! $MED_restart_data == '' ]]; then
-  RFILE="ufs.s2s.cold.cpl.r.${SYEAR}-${SMONTH}-${SDAY}-03600.nc"
-  cp  @[RTPWD]/@[MED_restart_data]/${RFILE} .
-  ls -1 ${RFILE}>rpointer.cpl
-fi
 
 # CCPP
 if [[ ! $SUITE_NAME == '' ]]; then

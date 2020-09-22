@@ -22,9 +22,10 @@ set(AVX2            ON  CACHE BOOL "Enable AVX2 instruction set")
 set(SIMDMULTIARCH   OFF CACHE BOOL "Enable multi-target SIMD instruction sets")
 set(CCPP            ON  CACHE BOOL "Enable CCPP")
 set(DEBUG           OFF CACHE BOOL "Enable DEBUG mode")
+set(DEBUG_LINKMPI   ON  CACHE BOOL "Enable linkmpi option when DEBUG mode is on")
 set(INLINE_POST     OFF CACHE BOOL "Enable inline post")
 set(MULTI_GASES     OFF CACHE BOOL "Enable MULTI_GASES")
-set(OPENMP          ON CACHE BOOL "Enable OpenMP threading")
+set(OPENMP          ON  CACHE BOOL "Enable OpenMP threading")
 set(PARALLEL_NETCDF OFF CACHE BOOL "Enable parallel NetCDF")
 set(QUAD_PRECISION  ON  CACHE BOOL "Enable QUAD_PRECISION (for certain grid metric terms in dycore)")
 set(REPRO           OFF CACHE BOOL "Enable REPRO mode")
@@ -47,6 +48,7 @@ message("AVX2 ............. ${AVX2}")
 message("SIMDMULTIARCH      ${SIMDMULTIARCH}")
 message("CCPP ............. ${CCPP}")
 message("DEBUG ............ ${DEBUG}")
+message("DEBUG_LINKMPI..... ${DEBUG_LINKMPI}")
 message("INLINE_POST ...... ${INLINE_POST}")
 message("MULTI_GASES ...... ${MULTI_GASES}")
 message("OPENMP ........... ${OPENMP}")
@@ -112,7 +114,8 @@ if(CCPP)
 
     if(DEFINED CCPP_SUITES)
         message("Calling CCPP code generator (ccpp_prebuild.py) for SUITES = ${CCPP_SUITES}")
-        execute_process(COMMAND FV3/ccpp/framework/scripts/ccpp_prebuild.py
+        execute_process(COMMAND ${Python_EXECUTABLE}
+				"FV3/ccpp/framework/scripts/ccpp_prebuild.py"
                                 "--config=FV3/ccpp/config/ccpp_prebuild_config.py"
                                 "--suites=${CCPP_SUITES}"
                                 "--builddir=${PROJECT_BINARY_DIR}/FV3"
@@ -123,7 +126,8 @@ if(CCPP)
                        )
     else()
         message("Calling CCPP code generator (ccpp_prebuild.py) ...")
-        execute_process(COMMAND FV3/ccpp/framework/scripts/ccpp_prebuild.py
+        execute_process(COMMAND ${Python_EXECUTABLE}
+				"FV3/ccpp/framework/scripts/ccpp_prebuild.py"
                                 "--config=FV3/ccpp/config/ccpp_prebuild_config.py"
                                 "--builddir=${PROJECT_BINARY_DIR}/FV3"
                         WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
