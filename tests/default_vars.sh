@@ -289,16 +289,18 @@ export atm_petlist_bounds=$APB_cpl_dflt
 export ocn_petlist_bounds=$OPB_cpl_dflt
 export ice_petlist_bounds=$IPB_cpl_dflt
 
+# default test resolution
 export ATMRES='C96'
-# default ice and ocean resolution
-export OCNRES='025'
-export ICERES='0.25'
-export NX_GLB=1440
-export NY_GLB=1080
+export OCNRES='100'
+export ICERES='1.00'
+export NX_GLB=360
+export NY_GLB=320
+export DT_ATMOS='900'
+
 export SUITE_NAME=''
-export MED_restart_data=''
 export INPUT_NML="input.mom6.nml.IN"
 export FIELD_TABLE="field_table"
+
 export FV3_RESTART_INTERVAL='0'
 export FHROT='0'
 export NSOUT='-1'
@@ -307,49 +309,55 @@ export NFHOUT='6'
 #no high freq fv3 output
 export NFHMAX_HF='-1'
 export NFHOUT_HF='-1'
+
 export CPLFLX='.T.'
 export CPL='.true.'
-export FRAC_GRID='.F.'
 export NSTF_NAME='0,0,0,0,0'
-export MOM6_RESTART_SETTING='n'
+
+export FRAC_GRID='.F.'
+export CPLMODE='nems_orig'
+export cap_dbug_flag="0"
+export use_coldstart="false"
+
 export med_model="nems"
 export atm_model="fv3"
 export ocn_model="mom6"
 export ice_model="cice6"
 export wav_model="ww3"
-export cap_dbug_flag="0"
-export use_coldstart="false"
-# MOM6 river runoff 
-export MOM6_RIVER_RUNOFF='True'
+
+# MOM6 defaults; 1 degree
+export MOM_INPUT=MOM_input_template_100
+export MOM6_RESTART_SETTING='n'
+export DT_DYNAM_MOM6='1800'
+export DT_THERM_MOM6='3600'
+export MOM6_RIVER_RUNOFF='False'
+export FRUNOFF=""
+export CHLCLIM="seawifs_1998-2006_smoothed_2X.nc"
 # set USE_LA_LI2016 to the current default; this must be set False for restart repro 
 export MOM6_REPRO_LA='True'
 # set the THERMO_SPANS_COUPLING to the current default; according to Gustavo and Alper, the correct setting is "False"
 export MOM6_THERMO_SPAN='True'
-export NPROC_ICE='48'
-export DT_ATMOS='900' #needed for C96 cases
-export DT_DYNAM_MOM6='900'
-export DT_THERM_MOM6='1800'
-export MOM_INPUT=MOM_input_template_025
+
+# CICE6 defaults; 1 degree
+export NPROC_ICE='12'
+export MESHICE="mesh.mx${OCNRES}.nc"
+export CICEGRID="grid_cice_NEMS_mx${OCNRES}.nc"
+export CICEMASK="kmtu_cice_NEMS_mx${OCNRES}.nc"
 # defaults for CICE runtype and restart writing
+export RUNID='unknown'
 export RUNTYPE='startup' 
 export DUMPFREQ='d' 
 export DUMPFREQ_N='35' 
 export USE_RESTART_TIME='.false.'
-# set false for CICE6
 export RESTART_EXT='.false'
-# resolution dependent files
-export MESHICE="mesh.mx${OCNRES}.nc"
-export CICEGRID="grid_cice_NEMS_mx${OCNRES}.nc"
-export CICEMASK="kmtu_cice_NEMS_mx${OCNRES}.nc"
-export CHLCLIM="seawifs-clim-1997-2010.${NX_GLB}x${NY_GLB}.v20180328.nc"
-export FRUNOFF="runoff.daitren.clim.${NX_GLB}x${NY_GLB}.v20180328.nc"
 # setting to true will allow Frazil FW and Salt to be
 # included in fluxes sent to ocean
 export FRAZIL_FWSALT='.true.'
 # default to write CICE average history files
 export CICE_HIST_AVG='.true.'
 # default setting for runid
-export RUNID='unknown'
+export RUNID="unknown"
+
 # for FV3: default values will be changed if doing a warm-warm restart
 export WARM_START='.F.'
 export MAKE_NH='.T.'
@@ -357,7 +365,6 @@ export NA_INIT='1'
 export EXTERNAL_IC='.T.'
 export NGGPS_IC='.T.'
 export MOUNTAIN='.F.'
-export CPLMODE='nems_orig'
 export RESTART_PREFIX=''
 export RESTART_SUFFIX=''
 }

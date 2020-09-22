@@ -66,23 +66,6 @@ export FHMAX="48"
 export FDIAG="6"
 export WLCLK=30
 
-# set resolution (these are defaults)
-export ATMRES='C96'
-export NPX=97
-export NPY=97
-export IMO=384
-export JMO=190
-
-export OCNRES='100'
-export ICERES='1.00'
-export NX_GLB=360
-export NY_GLB=320
-
-export NPROC_ICE='12'
-DT_ATMOS='900'
-DT_DYNAM_MOM6='1800'
-DT_THERM_MOM6='3600'
-
 # set component and coupling timesteps
 export DT_CICE=${DT_ATMOS}
 export CPL_SLOW=${DT_THERM_MOM6}
@@ -101,13 +84,6 @@ export atm_petlist_bounds=$APB_cpl_c096
 export ocn_petlist_bounds=$OPB_cpl_c096
 export ice_petlist_bounds=$IPB_cpl_c096
 
-export MOM_INPUT=MOM_input_template_${OCNRES}
-export MESHICE="mesh.mx${OCNRES}.nc"
-export CICEGRID="grid_cice_NEMS_mx${OCNRES}.nc"
-export CICEMASK="kmtu_cice_NEMS_mx${OCNRES}.nc"
-export CHLCLIM="seawifs_1998-2006_smoothed_2X.nc"
-export FRUNOFF=""
-
 # write a CICE restart at DAYS
 export DUMPFREQ_N=${DAYS}
 export DUMPFREQ="d"
@@ -118,9 +94,6 @@ export FV3_RESTART_INTERVAL=${FHMAX}
 # restart test: required for restart repro
 export MOM6_REPRO_LA='False'
 export MOM6_THERMO_SPAN='False'
-# use one step coldstart
-export use_coldstart="false"
-export debug_flag='0'
 
 # nems.configure
 export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice.IN"
@@ -131,4 +104,3 @@ export FV3_RUN=cpld_lowres.IN
 export INPUT_NML=input.mom6_ccpp.nml.IN
 
 export SUITE_NAME="FV3_GFS_2017_coupled"
-export MED_restart_data=''

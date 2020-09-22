@@ -114,6 +114,8 @@ export CICEMASK="kmtu_cice_NEMS_mx${OCNRES}.nc"
 export CHLCLIM="seawifs-clim-1997-2010.${NX_GLB}x${NY_GLB}.v20180328.nc"
 export FRUNOFF="runoff.daitren.clim.${NX_GLB}x${NY_GLB}.v20180328.nc"
 
+export MOM6_RIVER_RUNOFF='True'
+
 # write a CICE restart at DAYS
 export DUMPFREQ_N=${DAYS}
 export DUMPFREQ="d"
@@ -124,9 +126,6 @@ export FV3_RESTART_INTERVAL=${FHMAX}
 # restart test: required for restart repro
 export MOM6_REPRO_LA='False'
 export MOM6_THERMO_SPAN='False'
-# use one step coldstart
-export use_coldstart="false"
-export debug_flag='0'
 
 # nems.configure
 export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice.IN"
@@ -137,4 +136,3 @@ export FV3_RUN=cpld_lowres.IN
 export INPUT_NML=input.mom6_ccpp.nml.IN
 
 export SUITE_NAME="FV3_GFS_2017_coupled"
-export MED_restart_data=''
