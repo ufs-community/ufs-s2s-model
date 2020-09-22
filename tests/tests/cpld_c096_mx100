@@ -61,46 +61,12 @@ export LIST_FILES="phyf048.tile1.nc \
 export_fv3
 export_cpl
 
-export DAYS="2"
-export FHMAX="48"
-export FDIAG="6"
-export WLCLK=30
-
-# set component and coupling timesteps
-export DT_CICE=${DT_ATMOS}
-export CPL_SLOW=${DT_THERM_MOM6}
-export CPL_FAST=${DT_ATMOS}
-
-export TASKS=$TASKS_cpl_c096
-export TPN=$TPN_cpl_c096
-export INPES=$INPES_cpl_c096
-export JNPES=$JNPES_cpl_c096
-export THRD=$THRD_cpl_c096
-export WRTTASK_PER_GROUP=$WPG_cpl_c096
-export WRITE_GROUP=1
-
-export med_petlist_bounds=$MPB_cpl_c096
-export atm_petlist_bounds=$APB_cpl_c096
-export ocn_petlist_bounds=$OPB_cpl_c096
-export ice_petlist_bounds=$IPB_cpl_c096
-
 # write a CICE restart at DAYS
 export DUMPFREQ_N=${DAYS}
 export DUMPFREQ="d"
-
-# CMEPS controls intervals in ALLCOMP
-export FV3_RESTART_INTERVAL=${FHMAX}
 
 # restart test: required for restart repro
 export MOM6_REPRO_LA='False'
 export MOM6_THERMO_SPAN='False'
 
-# nems.configure
-export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice.IN"
-export coupling_interval_slow_sec=${CPL_SLOW}
-export coupling_interval_fast_sec=${CPL_FAST}
-
 export FV3_RUN=cpld_lowres.IN
-export INPUT_NML=input.mom6_ccpp.nml.IN
-
-export SUITE_NAME="FV3_GFS_2017_coupled"

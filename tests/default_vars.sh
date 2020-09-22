@@ -245,7 +245,6 @@ export FNSOTC="'global_soiltype.statsgo.t126.384.190.rg.grb',"
 export FNSMCC="'global_soilmgldas.t126.384.190.grb',"
 export FNABSC="'global_mxsnoalb.uariz.t126.384.190.rg.grb',"
 
-
 export ENS_NUM=1
 export SYEAR=2016
 export SMONTH=10
@@ -276,32 +275,62 @@ export CA_GLOBAL=.F.
 }
 
 export_cpl ()
-{ 
-export TASKS=$TASKS_cpl_dflt
-export TPN=$TPN_cpl_dflt
-export INPES=$INPES_cpl_dflt
-export JNPES=$JNPES_cpl_dflt
-export THRD=$THRD_cpl_dflt
+{
+export DAYS="2"
+export FHMAX="48"
+export FDIAG="6"
+export WLCLK=30
+ 
+# default resources
+export TASKS=$TASKS_cpl_c096
+export TPN=$TPN_cpl_c096
+export INPES=$INPES_cpl_c096
+export JNPES=$JNPES_cpl_c096
+export THRD=$THRD_cpl_c096
+export WRTTASK_PER_GROUP=$WPG_cpl_c096
 
-export WRTTASK_PER_GROUP=$WPG_cpl_dflt
-export med_petlist_bounds=$MPB_cpl_dflt
-export atm_petlist_bounds=$APB_cpl_dflt
-export ocn_petlist_bounds=$OPB_cpl_dflt
-export ice_petlist_bounds=$IPB_cpl_dflt
+export med_petlist_bounds=$MPB_cpl_c096
+export atm_petlist_bounds=$APB_cpl_c096
+export ocn_petlist_bounds=$OPB_cpl_c096
+export ice_petlist_bounds=$IPB_cpl_c096
 
-# default test resolution
+# default resolution
 export ATMRES='C96'
 export OCNRES='100'
 export ICERES='1.00'
 export NX_GLB=360
 export NY_GLB=320
 export DT_ATMOS='900'
+export DT_DYNAM_MOM6='1800'
+export DT_THERM_MOM6='3600'
 
-export SUITE_NAME=''
-export INPUT_NML="input.mom6.nml.IN"
+# set component and coupling timesteps
+export DT_CICE=${DT_ATMOS}
+export CPL_SLOW=${DT_THERM_MOM6}
+export CPL_FAST=${DT_ATMOS}
+
+# nems.configure defaults
+export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice.IN"
+export med_model="nems"
+export atm_model="fv3"
+export ocn_model="mom6"
+export ice_model="cice6"
+export wav_model="ww3"
+
+export coupling_interval_slow_sec=${CPL_SLOW}
+export coupling_interval_fast_sec=${CPL_FAST}
+
+export FV3_RESTART_INTERVAL=${FHMAX}
+export CPLMODE='nems_orig'
+export cap_dbug_flag="0"
+export use_coldstart="false"
+
+# FV3 defaults; C96, non-frac 
+export FRAC_GRID='.F.'
+export SUITE_NAME="FV3_GFS_2017_coupled"
+export INPUT_NML=input.mom6_ccpp.nml.IN
 export FIELD_TABLE="field_table"
 
-export FV3_RESTART_INTERVAL='0'
 export FHROT='0'
 export NSOUT='-1'
 export FDIAG='6'
@@ -314,22 +343,17 @@ export CPLFLX='.T.'
 export CPL='.true.'
 export NSTF_NAME='0,0,0,0,0'
 
-export FRAC_GRID='.F.'
-export CPLMODE='nems_orig'
-export cap_dbug_flag="0"
-export use_coldstart="false"
-
-export med_model="nems"
-export atm_model="fv3"
-export ocn_model="mom6"
-export ice_model="cice6"
-export wav_model="ww3"
+# for FV3: default values will be changed if doing a warm-warm restart
+export WARM_START='.F.'
+export MAKE_NH='.T.'
+export NA_INIT='1'
+export EXTERNAL_IC='.T.'
+export NGGPS_IC='.T.'
+export MOUNTAIN='.F.'
 
 # MOM6 defaults; 1 degree
 export MOM_INPUT=MOM_input_template_100
 export MOM6_RESTART_SETTING='n'
-export DT_DYNAM_MOM6='1800'
-export DT_THERM_MOM6='3600'
 export MOM6_RIVER_RUNOFF='False'
 export FRUNOFF=""
 export CHLCLIM="seawifs_1998-2006_smoothed_2X.nc"
@@ -347,7 +371,7 @@ export CICEMASK="kmtu_cice_NEMS_mx${OCNRES}.nc"
 export RUNID='unknown'
 export RUNTYPE='startup' 
 export DUMPFREQ='d' 
-export DUMPFREQ_N='35' 
+export DUMPFREQ_N=${DAYS}
 export USE_RESTART_TIME='.false.'
 export RESTART_EXT='.false'
 # setting to true will allow Frazil FW and Salt to be
@@ -355,16 +379,7 @@ export RESTART_EXT='.false'
 export FRAZIL_FWSALT='.true.'
 # default to write CICE average history files
 export CICE_HIST_AVG='.true.'
-# default setting for runid
-export RUNID="unknown"
 
-# for FV3: default values will be changed if doing a warm-warm restart
-export WARM_START='.F.'
-export MAKE_NH='.T.'
-export NA_INIT='1'
-export EXTERNAL_IC='.T.'
-export NGGPS_IC='.T.'
-export MOUNTAIN='.F.'
 export RESTART_PREFIX=''
 export RESTART_SUFFIX=''
 }
