@@ -167,6 +167,6 @@ LDFLAGS += $(LIBS)
 
 ifdef InNemsMakefile
 FFLAGS += $(ESMF_INC)
-CPPFLAGS += -DFV3_CPLD -traditional
+CPPFLAGS += -traditional
 EXTLIBS = $(NCEPLIBS) $(ESMF_F90LINKPATHS) $(ESMF_LIB) $(LDFLAGS)
 endif
