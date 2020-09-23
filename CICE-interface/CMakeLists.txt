@@ -39,9 +39,6 @@ set(moduleDir "${CMAKE_CURRENT_BINARY_DIR}/mod")
 add_library(${libName} STATIC ${lib_src_files})
 add_library(${libName}::${libName} ALIAS ${libName})
 
-
-#set_target_properties(${libName} PROPERTIES COMPILE_FLAGS "-fp-model precise -convert big_endian -traceback -xHost -FR")
-
 target_link_libraries(${libName} PUBLIC cmeps)
 target_link_libraries(${libName} PUBLIC esmf MPI::MPI_Fortran)
 if(NetCDF_Fortran_FOUND)
@@ -65,8 +62,6 @@ target_include_directories(${libName} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_S
                                              $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/CICE/cicecore/shared>
                                              $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/CICE/icepack/columnphysics>
 )
-
-
 
 if(OPENMP)
   target_link_libraries(${libName} PUBLIC OpenMP::OpenMP_Fortran)

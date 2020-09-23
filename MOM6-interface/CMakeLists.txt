@@ -55,12 +55,6 @@ add_library(${lib1Name}::${lib1Name} ALIAS ${lib1Name})
 set_target_properties(${lib1Name} PROPERTIES Fortran_MODULE_DIRECTORY ${moduleDir})
 target_include_directories(${lib1Name} PUBLIC $<BUILD_INTERFACE:${moduleDir}>)
 
-#target_compile_definitions(${lib1Name} PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR})
-#target_compile_definitions(${lib1Name} PRIVATE -DMOM6_CAP)
-
-#target_include_directories(${lib1Name} PRIVATE ${ESMF_MOD})
-
-
 target_include_directories(${lib1Name} PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/config_src/dynamic>
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/src/framework>
@@ -72,8 +66,6 @@ target_include_directories(${lib1Name} INTERFACE
 
 target_link_libraries(${lib1Name} PUBLIC fms)
 target_link_libraries(${lib1Name} PUBLIC NetCDF::NetCDF_Fortran)
-#target_link_libraries(${lib1Name} PUBLIC PIO::PIO_Fortran PIO::PIO_C)
-#target_link_libraries(${lib1Name} PUBLIC esmf)
 
 #########################
 ### mom6
@@ -91,22 +83,22 @@ target_include_directories(${libName} PUBLIC $<BUILD_INTERFACE:${moduleDir}>)
 
 target_compile_definitions(${libName} PRIVATE -DMOM6_CAP)
 target_compile_definitions(${libName} PRIVATE -DESMF_NO_INTEGER_1_BYTE
-					-DESMF_NO_INTEGER_2_BYTE
-					-DESMF_MOAB=1
-					-DESMF_LAPACK=1
-					-DESMF_LAPACK_INTERNAL=1
-					-DESMF_NO_ACC_SOFTWARE_STACK=1
-					-DESMF_NETCDF=1
-					-DESMF_YAMLCPP=1
-					-DESMF_YAML=1
-					-DESMF_PIO=1
-					-DESMF_MPIIO
-					-DESMF_NO_OPENACC
-					-DESMF_BOPT_O
-					-DESMF_TESTCOMPTUNNEL
-					-DSx86_64_small=1
-					-DESMF_OS_Linux=1
-					-DESMF_COMM=intelmpi)
+					      -DESMF_NO_INTEGER_2_BYTE
+					      -DESMF_MOAB=1
+					      -DESMF_LAPACK=1
+					      -DESMF_LAPACK_INTERNAL=1
+					      -DESMF_NO_ACC_SOFTWARE_STACK=1
+					      -DESMF_NETCDF=1
+					      -DESMF_YAMLCPP=1
+					      -DESMF_YAML=1
+					      -DESMF_PIO=1
+					      -DESMF_MPIIO
+					      -DESMF_NO_OPENACC
+					      -DESMF_BOPT_O
+					      -DESMF_TESTCOMPTUNNEL
+					      -DSx86_64_small=1
+					      -DESMF_OS_Linux=1
+					      -DESMF_COMM=intelmpi)
 target_link_libraries(${libName} PUBLIC ${lib1Name})
 target_link_libraries(${libName} PUBLIC esmf)
 
