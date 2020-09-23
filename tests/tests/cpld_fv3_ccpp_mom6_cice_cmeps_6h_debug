@@ -104,6 +104,7 @@ export FRUNOFF="runoff.daitren.clim.${NX_GLB}x${NY_GLB}.v20180328.nc"
 
 export MOM_INPUT="MOM_input_template_${OCNRES}"
 export MOM6_RIVER_RUNOFF='True'
+export FV3_RESTART_INTERVAL=${FHMAX}
 
 # write a CICE restart at FHMAX
 export DUMPFREQ_N=${FHMAX}
