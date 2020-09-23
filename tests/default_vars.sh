@@ -324,6 +324,7 @@ export FV3_RESTART_INTERVAL=${FHMAX}
 export CPLMODE='nems_orig'
 export cap_dbug_flag="0"
 export use_coldstart="false"
+export RUNTYPE='startup' 
 
 # FV3 defaults; C96, non-frac 
 export FRAC_GRID='.F.'
@@ -367,9 +368,7 @@ export NPROC_ICE='12'
 export MESHICE="mesh.mx${OCNRES}.nc"
 export CICEGRID="grid_cice_NEMS_mx${OCNRES}.nc"
 export CICEMASK="kmtu_cice_NEMS_mx${OCNRES}.nc"
-# defaults for CICE runtype and restart writing
 export RUNID='unknown'
-export RUNTYPE='startup' 
 export DUMPFREQ='d' 
 export DUMPFREQ_N=${DAYS}
 export USE_RESTART_TIME='.false.'

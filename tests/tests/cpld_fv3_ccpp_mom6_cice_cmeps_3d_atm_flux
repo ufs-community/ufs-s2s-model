@@ -108,5 +108,6 @@ export MOM6_REPRO_LA='False'
 export MOM6_THERMO_SPAN='False'
 
 export DUMPFREQ_N=${DAYS}
+export FV3_RESTART_INTERVAL=${FHMAX}
 
 export FV3_RUN=cpld_fv3_mom6_cice_atm_flux_run.IN
