@@ -1,11 +1,10 @@
 #
-#  CPLD_FV3_CCPP_96_MOM6_CICE_CMEPS_COLD_ATM_FLUX test
+#  S2S_control test
 #
 
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX100 "
 
-export CNTL_DIR="RT-Baselines_C96_mx100"
-export CNTLMED_DIR=""
+export CNTL_DIR="s2s_control"
 
 export LIST_FILES="phyf048.tile1.nc \
                    phyf048.tile2.nc \
@@ -61,12 +60,8 @@ export LIST_FILES="phyf048.tile1.nc \
 export_fv3
 export_cpl
 
-# write a CICE restart at DAYS
-export DUMPFREQ_N=${DAYS}
-export DUMPFREQ="d"
-
 # restart test: required for restart repro
 export MOM6_REPRO_LA='False'
 export MOM6_THERMO_SPAN='False'
 
-export FV3_RUN=cpld_lowres.IN
+export FV3_RUN=s2s_control.IN
