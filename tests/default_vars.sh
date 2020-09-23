@@ -27,9 +27,13 @@ elif [ $MACHINE_ID = wcoss_dell_p3 ]; then
   TASKS_stretch=48 ; TPN_stretch=28 ; INPES_stretch=2 ; JNPES_stretch=4
   TASKS_strnest=96 ; TPN_strnest=28 ; INPES_strnest=2 ; JNPES_strnest=4
 
-  TASKS_cpl_dflt=318; TPN_cpl_dflt=28; INPES_cpl_dflt=3; JNPES_cpl_dflt=8
+  TASKS_cpl_dflt_ori=318; TPN_cpl_dflt_ori=28; INPES_cpl_dflt_ori=3; JNPES_cpl_dflt_ori=8
+  THRD_cpl_dflt_ori=1; WPG_cpl_dflt_ori=6;  MPB_cpl_dflt_ori="0 143"; APB_cpl_dflt_ori="0 149"
+  OPB_cpl_dflt_ori="150 269"; IPB_cpl_dflt_ori="270 317"
+
+  TASKS_cpl_dflt=192; TPN_cpl_dflt=40; INPES_cpl_dflt=3; JNPES_cpl_dflt=8
   THRD_cpl_dflt=1; WPG_cpl_dflt=6;  MPB_cpl_dflt="0 143"; APB_cpl_dflt="0 149"
-  OPB_cpl_dflt="150 269"; IPB_cpl_dflt="270 317"
+  OPB_cpl_dflt="150 179"; IPB_cpl_dflt="180 191"
 
   TASKS_cpl_thrd=246; TPN_cpl_thrd=14; INPES_cpl_thrd=3; JNPES_cpl_thrd=4
   THRD_cpl_thrd=2; WPG_cpl_thrd=6;  MPB_cpl_thrd="0 77";  APB_cpl_thrd="0 77"
@@ -50,9 +54,13 @@ elif [[ $MACHINE_ID = orion.* ]]; then
   TASKS_stretch=48 ; TPN_stretch=12 ; INPES_stretch=2 ; JNPES_stretch=4
   TASKS_strnest=96 ; TPN_strnest=12 ; INPES_strnest=2 ; JNPES_strnest=4
 
-  TASKS_cpl_dflt=318; TPN_cpl_dflt=40; INPES_cpl_dflt=3; JNPES_cpl_dflt=8
+  TASKS_cpl_dflt_ori=318; TPN_cpl_dflt_ori=40; INPES_cpl_dflt_ori=3; JNPES_cpl_dflt_ori=8
+  THRD_cpl_dflt_ori=1; WPG_cpl_dflt_ori=6;  MPB_cpl_dflt_ori="0 143"; APB_cpl_dflt_ori="0 149"
+  OPB_cpl_dflt_ori="150 269"; IPB_cpl_dflt_ori="270 317"
+
+  TASKS_cpl_dflt=192; TPN_cpl_dflt=40; INPES_cpl_dflt=3; JNPES_cpl_dflt=8
   THRD_cpl_dflt=1; WPG_cpl_dflt=6;  MPB_cpl_dflt="0 143"; APB_cpl_dflt="0 149"
-  OPB_cpl_dflt="150 269"; IPB_cpl_dflt="270 317"
+  OPB_cpl_dflt="150 179"; IPB_cpl_dflt="180 191"
 
   TASKS_cpl_thrd=246; TPN_cpl_thrd=40; INPES_cpl_thrd=3; JNPES_cpl_thrd=4
   THRD_cpl_thrd=2; WPG_cpl_thrd=6;  MPB_cpl_thrd="0 77";  APB_cpl_thrd="0 77"
@@ -69,10 +77,6 @@ elif [[ $MACHINE_ID = orion.* ]]; then
   TASKS_cpl_c192=288; TPN_cpl_c192=40; INPES_cpl_c192=4; JNPES_cpl_c192=8
   THRD_cpl_c192=1; WPG_cpl_c192=12;  MPB_cpl_c192="0 191"; APB_cpl_c192="0 203"
   OPB_cpl_c192="204 263"; IPB_cpl_c192="264 287"
-
-  TASKS_cpl_c096=192; TPN_cpl_c096=40; INPES_cpl_c096=3; JNPES_cpl_c096=8
-  THRD_cpl_c096=1; WPG_cpl_c096=6;  MPB_cpl_c096="0 143"; APB_cpl_c096="0 149"
-  OPB_cpl_c096="150 179"; IPB_cpl_c096="180 191"
 
 elif [[ $MACHINE_ID = hera.* ]]; then
 
@@ -81,9 +85,13 @@ elif [[ $MACHINE_ID = hera.* ]]; then
   TASKS_stretch=48 ; TPN_stretch=12 ; INPES_stretch=2 ; JNPES_stretch=4
   TASKS_strnest=96 ; TPN_strnest=12 ; INPES_strnest=2 ; JNPES_strnest=4
 
-  TASKS_cpl_dflt=318; TPN_cpl_dflt=40; INPES_cpl_dflt=3; JNPES_cpl_dflt=8
+  TASKS_cpl_dflt_ori=318; TPN_cpl_dflt_ori=40; INPES_cpl_dflt_ori=3; JNPES_cpl_dflt_ori=8
+  THRD_cpl_dflt_ori=1; WPG_cpl_dflt_ori=6;  MPB_cpl_dflt_ori="0 143"; APB_cpl_dflt_ori="0 149"
+  OPB_cpl_dflt_ori="150 269"; IPB_cpl_dflt_ori="270 317"
+
+  TASKS_cpl_dflt=192; TPN_cpl_dflt=40; INPES_cpl_dflt=3; JNPES_cpl_dflt=8
   THRD_cpl_dflt=1; WPG_cpl_dflt=6;  MPB_cpl_dflt="0 143"; APB_cpl_dflt="0 149"
-  OPB_cpl_dflt="150 269"; IPB_cpl_dflt="270 317"
+  OPB_cpl_dflt="150 179"; IPB_cpl_dflt="180 191"
 
   TASKS_cpl_thrd=246; TPN_cpl_thrd=40; INPES_cpl_thrd=3; JNPES_cpl_thrd=4
   THRD_cpl_thrd=2; WPG_cpl_thrd=6;  MPB_cpl_thrd="0 77";  APB_cpl_thrd="0 77"
@@ -100,10 +108,6 @@ elif [[ $MACHINE_ID = hera.* ]]; then
   TASKS_cpl_c192=288; TPN_cpl_c192=40; INPES_cpl_c192=4; JNPES_cpl_c192=8
   THRD_cpl_c192=1; WPG_cpl_c192=12;  MPB_cpl_c192="0 191"; APB_cpl_c192="0 203"
   OPB_cpl_c192="204 263"; IPB_cpl_c192="264 287"
-
-  TASKS_cpl_c096=192; TPN_cpl_c096=40; INPES_cpl_c096=3; JNPES_cpl_c096=8
-  THRD_cpl_c096=1; WPG_cpl_c096=6;  MPB_cpl_c096="0 143"; APB_cpl_c096="0 149"
-  OPB_cpl_c096="150 179"; IPB_cpl_c096="180 191"
 
 elif [[ $MACHINE_ID = jet.* ]]; then
 
@@ -280,19 +284,6 @@ export DAYS="2"
 export FHMAX="48"
 export FDIAG="6"
 export WLCLK=30
- 
-# default resources
-export TASKS=$TASKS_cpl_c096
-export TPN=$TPN_cpl_c096
-export INPES=$INPES_cpl_c096
-export JNPES=$JNPES_cpl_c096
-export THRD=$THRD_cpl_c096
-export WRTTASK_PER_GROUP=$WPG_cpl_c096
-
-export med_petlist_bounds=$MPB_cpl_c096
-export atm_petlist_bounds=$APB_cpl_c096
-export ocn_petlist_bounds=$OPB_cpl_c096
-export ice_petlist_bounds=$IPB_cpl_c096
 
 # default atm/ocn/ice resolution
 export ATMRES='C96'
@@ -300,6 +291,19 @@ export OCNRES='100'
 export ICERES='1.00'
 export NX_GLB=360
 export NY_GLB=320
+
+# default resources
+export TASKS=$TASKS_cpl_dflt
+export TPN=$TPN_cpl_dflt
+export INPES=$INPES_cpl_dflt
+export JNPES=$JNPES_cpl_dflt
+export THRD=$THRD_cpl_dflt
+export WRTTASK_PER_GROUP=$WPG_cpl_dflt
+
+export med_petlist_bounds=$MPB_cpl_dflt
+export atm_petlist_bounds=$APB_cpl_dflt
+export ocn_petlist_bounds=$OPB_cpl_dflt
+export ice_petlist_bounds=$IPB_cpl_dflt
 
 # component and coupling timesteps
 export DT_ATMOS='900'

@@ -67,17 +67,17 @@ export FDIAG="6"
 export WLCLK=60
 
 # replicate current tests; explicitly set values for c384/mx025
-export TASKS=$TASKS_cpl_dflt
-export TPN=$TPN_cpl_dflt
-export INPES=$INPES_cpl_dflt
-export JNPES=$JNPES_cpl_dflt
-export THRD=$THRD_cpl_dflt
+export TASKS=$TASKS_cpl_dflt_ori
+export TPN=$TPN_cpl_dflt_ori
+export INPES=$INPES_cpl_dflt_ori
+export JNPES=$JNPES_cpl_dflt_ori
+export THRD=$THRD_cpl_dflt_ori
 
-export WRTTASK_PER_GROUP=$WPG_cpl_dflt
-export med_petlist_bounds=$MPB_cpl_dflt
-export atm_petlist_bounds=$APB_cpl_dflt
-export ocn_petlist_bounds=$OPB_cpl_dflt
-export ice_petlist_bounds=$IPB_cpl_dflt
+export WRTTASK_PER_GROUP=$WPG_cpl_dflt_ori
+export med_petlist_bounds=$MPB_cpl_dflt_ori
+export atm_petlist_bounds=$APB_cpl_dflt_ori
+export ocn_petlist_bounds=$OPB_cpl_dflt_ori
+export ice_petlist_bounds=$IPB_cpl_dflt_ori
 
 # atm/ocn/ice resolution
 export ATMRES=C384
