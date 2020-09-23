@@ -442,13 +442,13 @@ fi
 
 if [[ $MACHINE_ID = hera.* ]] || [[ $MACHINE_ID = orion.* ]] || [[ $MACHINE_ID = cheyenne.* ]] || [[ $MACHINE_ID = jet.* ]]; then
   if [ $S2S == true ]; then
-    RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200918}
+    RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200921}
   else
     RTPWD=${RTPWD:-$DISKNM/NEMSfv3gfs/develop-20200917/${COMPILER^^}}
   fi
 else
   if [ $S2S == true ]; then
-    RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200918}
+    RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200921}
   else
     RTPWD=${RTPWD:-$DISKNM/NEMSfv3gfs/develop-20200917}
   fi

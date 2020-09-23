@@ -15,6 +15,11 @@ elseif(CMAKE_Fortran_COMPILER_ID MATCHES "GNU")
 endif()
 endif()
 
+if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
+    string (REPLACE "-assume realloc_lhs" " " CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Wp,-w -r8 -traceback")
+endif()
+
 if(OPENMP)
   message(WARNING "MOM6 CANNOT BE BUILT WITH OPENMP.. DISABLING")
   #CMAKE_Fortran_FLAGS

@@ -215,6 +215,10 @@ endif()
 ###############################################################################
 if(S2S)
     ### CMEPS
+    if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
+	string (REPLACE "-assume byterecl" "-assume realloc_lhs" CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
+        set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -m64 -mcmodel=small")
+    endif()
     include(cmeps_files.cmake)
     add_library(cmeps ${cmeps_src_files})
 
@@ -256,6 +260,10 @@ add_library(
     NEMS/src/nems_c_rusage.c
     NEMS/src/ENS_Cpl/ENS_CplComp_ESMFMod_STUB.F90
 )
+if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -save-temps")
+endif()
+
 add_dependencies(ufs fv3atm fms)
 target_link_libraries(ufs PUBLIC fms)
 target_link_libraries(ufs PUBLIC esmf)
