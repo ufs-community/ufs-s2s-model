@@ -1,39 +1,9 @@
-include(GNUInstallDirs)
-
 if(32BIT)
-remove_definitions(-DOVERLOAD_R4)
-remove_definitions(-DOVERLOAD_R8)
-message (WARNING "MOM6 does not compile on 32bit, forcing 64 bits")
-if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
-    if(REPRO)
-        string (REPLACE "-i4 -real-size 32" "-i4 -real-size 64" CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
-    else()
-        string (REPLACE "-i4 -real-size 32" "-i4 -real-size 64 -no-prec-div -no-prec-sqrt" CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
-    endif()
-elseif(CMAKE_Fortran_COMPILER_ID MATCHES "GNU")
-    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -fdefault-real-8")
-endif()
-endif()
-
-if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
-    string (REPLACE "-assume realloc_lhs" " " CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
-    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -Wp,-w -r8 -traceback")
+  message(FATAL_ERROR "MOM6 demands double precision, ABORT!")
 endif()
 
 if(OPENMP)
-  message(WARNING "MOM6 CANNOT BE BUILT WITH OPENMP.. DISABLING")
-  #CMAKE_Fortran_FLAGS
-  string(REPLACE " " ";" CMAKE_Fortran_FLAGS ${CMAKE_Fortran_FLAGS})
-  list(REMOVE_ITEM CMAKE_Fortran_FLAGS "-qopenmp")
-  string(REPLACE ";" " " CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
-  #CMAKE_C_FLAGS
-  string(REPLACE " " ";" CMAKE_C_FLAGS ${CMAKE_C_FLAGS})
-  list(REMOVE_ITEM CMAKE_C_FLAGS "-qopenmp")
-  string(REPLACE ";" " " CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
-  #CMAKE_EXE_LINKER_FLAGS
-  string(REPLACE " " ";" CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS})
-  list(REMOVE_ITEM CMAKE_EXE_LINKER_FLAGS "-qopenmp")
-  string(REPLACE ";" " " CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
+  message(FATAL_ERROR "MOM6 does not build with OpenMP threading, ABORT!")
 endif()
 
 include("mom6_files.cmake")
@@ -83,22 +53,22 @@ target_include_directories(${libName} PUBLIC $<BUILD_INTERFACE:${moduleDir}>)
 
 target_compile_definitions(${libName} PRIVATE -DMOM6_CAP)
 target_compile_definitions(${libName} PRIVATE -DESMF_NO_INTEGER_1_BYTE
-					      -DESMF_NO_INTEGER_2_BYTE
-					      -DESMF_MOAB=1
-					      -DESMF_LAPACK=1
-					      -DESMF_LAPACK_INTERNAL=1
-					      -DESMF_NO_ACC_SOFTWARE_STACK=1
-					      -DESMF_NETCDF=1
-					      -DESMF_YAMLCPP=1
-					      -DESMF_YAML=1
-					      -DESMF_PIO=1
-					      -DESMF_MPIIO
-					      -DESMF_NO_OPENACC
-					      -DESMF_BOPT_O
-					      -DESMF_TESTCOMPTUNNEL
-					      -DSx86_64_small=1
-					      -DESMF_OS_Linux=1
-					      -DESMF_COMM=intelmpi)
+					                                    -DESMF_NO_INTEGER_2_BYTE
+					                                    -DESMF_MOAB=1
+					                                    -DESMF_LAPACK=1
+					                                    -DESMF_LAPACK_INTERNAL=1
+					                                    -DESMF_NO_ACC_SOFTWARE_STACK=1
+					                                    -DESMF_NETCDF=1
+					                                    -DESMF_YAMLCPP=1
+					                                    -DESMF_YAML=1
+					                                    -DESMF_PIO=1
+					                                    -DESMF_MPIIO
+					                                    -DESMF_NO_OPENACC
+					                                    -DESMF_BOPT_O
+					                                    -DESMF_TESTCOMPTUNNEL
+					                                    -DSx86_64_small=1
+					                                    -DESMF_OS_Linux=1
+					                                    -DESMF_COMM=intelmpi)
 target_link_libraries(${libName} PUBLIC ${lib1Name})
 target_link_libraries(${libName} PUBLIC esmf)
 
@@ -113,8 +83,8 @@ install(
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   COMPONENT Library)
+
 install(DIRECTORY ${moduleDir} DESTINATION ${CMAKE_INSTALL_PREFIX})
 
-install(EXPORT ${libName}-config
-  DESTINATION lib/cmake
-)
+install(EXPORT      ${libName}-config
+        DESTINATION lib/cmake)

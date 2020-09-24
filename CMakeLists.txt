@@ -227,26 +227,8 @@ endif()
 ### S2S - Seasonal to Subseasonal Components
 ###############################################################################
 if(S2S)
-    ### CMEPS
-    if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
-      string (REPLACE "-assume byterecl" "-assume realloc_lhs" CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
-      set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -m64 -mcmodel=small")
-    endif()
-    include(cmeps_files.cmake)
-    add_library(cmeps ${cmeps_src_files})
-
-    target_include_directories(cmeps PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/CMEPS/mediator>)
-    target_include_directories(cmeps PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/CMEPS/nems/util>)
-
-    target_link_libraries(cmeps PUBLIC PIO::PIO_Fortran PIO::PIO_C)
-    target_link_libraries(cmeps PUBLIC esmf)
-    target_compile_definitions(cmeps PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR}
-                                       -DESMF_VERSION_MINOR=${ESMF_VERSION_MINOR})
-
-    target_compile_definitions(cmeps PRIVATE "-DINTERNAL_PIO_INIT")
-    set_target_properties(cmeps PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS)
-    set_target_properties(cmeps PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod)
-    target_include_directories(cmeps PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>)
+    ### CMEPS-interface
+    add_subdirectory(CMEPS-interface)
 
     ### CICE_interface
     add_subdirectory(CICE-interface)
