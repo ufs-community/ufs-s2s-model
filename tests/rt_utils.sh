@@ -324,10 +324,12 @@ check_results() {
 
   echo                                                       >  ${REGRESSIONTEST_LOG}
   echo "baseline dir = ${RTPWD}/${CNTL_DIR}"                 >> ${REGRESSIONTEST_LOG}
+  echo "mediator baseline dir = ${RTPWD}/${CNTLMED_DIR}"     >> ${REGRESSIONTEST_LOG}
   echo "working dir  = ${RUNDIR}"                            >> ${REGRESSIONTEST_LOG}
   echo "Checking test ${TEST_NR} ${TEST_NAME} results ...."  >> ${REGRESSIONTEST_LOG}
   echo
   echo "baseline dir = ${RTPWD}/${CNTL_DIR}"
+  echo "mediator baseline dir = ${RTPWD}/${CNTLMED_DIR}"
   echo "working dir  = ${RUNDIR}"
   echo "Checking test ${TEST_NR} ${TEST_NAME} results ...."
 
@@ -350,7 +352,7 @@ check_results() {
         echo ".......MISSING file"
         test_status='FAIL'
 
-      elif [[ ! -f ${RTPWD}/${CNTL_DIR}/$i && ! -f ${RTPWD}/${CNTL_DIR}/$crst ]] ; then
+      elif [[ ! -f ${RTPWD}/${CNTL_DIR}/$i && ! -f ${RTPWD}/${CNTLMED_DIR}/$i && ! -f ${RTPWD}/${CNTL_DIR}/$crst ]] ; then
 
         echo ".......MISSING baseline" >> ${REGRESSIONTEST_LOG}
         echo ".......MISSING baseline"
@@ -374,7 +376,9 @@ check_results() {
 
       else
 
-        if [[ $i =~ RESTART/ ]]; then
+        if [[ $i =~ ufs.s2s ]]; then
+          d=$( cmp ${RTPWD}/${CNTLMED_DIR}/$i ${RUNDIR}/$i | wc -l )
+        elif [[ $i =~ RESTART/ ]]; then
           d=$( cmp ${RTPWD}/${CNTL_DIR}/$crst ${RUNDIR}/$i | wc -l )
         else
           d=$( cmp ${RTPWD}/${CNTL_DIR}/$i ${RUNDIR}/$i | wc -l )
@@ -402,12 +406,18 @@ check_results() {
       echo " mkdir -p ${NEW_BASELINE}/${CNTL_DIR}/RESTART" >> ${REGRESSIONTEST_LOG}
       mkdir -p ${NEW_BASELINE}/${CNTL_DIR}/RESTART
     fi
+    if [[ ${CNTLMED_DIR} =~ MEDIATOR && ! -d ${NEW_BASELINE}/${CNTLMED_DIR} ]]; then
+      echo " mkdir -p ${NEW_BASELINE}/${CNTLMED_DIR}" >> ${REGRESSIONTEST_LOG}
+      mkdir -p ${NEW_BASELINE}/${CNTLMED_DIR}
+    fi
 
     for i in ${LIST_FILES} ; do
       printf %s " Moving " $i " ....."   >> ${REGRESSIONTEST_LOG}
       if [[ -f ${RUNDIR}/$i ]] ; then
         if [[ $i =~ RESTART/ ]]; then
           cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTL_DIR}/RESTART/$(basename $i)
+        elif [[ $i =~ ufs.s2s ]]; then
+          cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTLMED_DIR}
         else
           cp ${RUNDIR}/${i} ${NEW_BASELINE}/${CNTL_DIR}/${i}
         fi

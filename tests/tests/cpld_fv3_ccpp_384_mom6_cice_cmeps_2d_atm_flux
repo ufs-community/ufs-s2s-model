@@ -5,6 +5,7 @@
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - 2d_warm"
 
 export CNTL_DIR="RT-Baselines_2d_warm_ccpp384_cmeps"
+export CNTLMED_DIR="RT-Baselines_2d_warm_ccpp384_cmeps/RESTART"
 
 export LIST_FILES="phyf048.tile1.nc \
                    phyf048.tile2.nc \

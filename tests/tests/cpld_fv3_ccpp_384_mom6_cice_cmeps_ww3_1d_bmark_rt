@@ -5,6 +5,7 @@
 export TEST_DESCR="Coupled FV3-CCPP-MOM6-CICE-CMEPS-WW3 system - 1 day"
 
 export CNTL_DIR="RT-Baselines_1d_bmwav_ccpp_cmeps"
+export CNTLMED_DIR="RT-Baselines_1d_bmwav_ccpp_cmeps/RESTART"
 
 export LIST_FILES="phyf024.tile1.nc \
                    phyf024.tile2.nc \

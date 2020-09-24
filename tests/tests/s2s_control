@@ -4,7 +4,8 @@
 
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX100 "
 
-export CNTL_DIR="s2s_control"
+export CNTL_DIR="RT-Baselines_s2s_control"
+export CNTLMED_DIR="RT-Baselines_s2s_control/RESTART"
 
 export LIST_FILES="phyf048.tile1.nc \
                    phyf048.tile2.nc \
