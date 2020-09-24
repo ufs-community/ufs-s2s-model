@@ -1,3 +1,7 @@
+[submodule "CMakeModules"]
+	path = CMakeModules
+	url = https://github.com/NOAA-EMC/CMakeModules
+	branch = feature/pio
 [submodule "FV3"]
 	path = FV3
 	url = https://github.com/NOAA-EMC/fv3atm
