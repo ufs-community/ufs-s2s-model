@@ -105,9 +105,6 @@ export FRUNOFF="runoff.daitren.clim.${NX_GLB}x${NY_GLB}.v20180328.nc"
 
 export MOM_INPUT="MOM_input_template_${OCNRES}"
 export MOM6_RIVER_RUNOFF='True'
-# MOM6 restart requirement
-export MOM6_REPRO_LA='False'
-export MOM6_THERMO_SPAN='False'
 
 # CMEPS controls intervals in ALLCOMP
 export FV3_RESTART_INTERVAL='24'

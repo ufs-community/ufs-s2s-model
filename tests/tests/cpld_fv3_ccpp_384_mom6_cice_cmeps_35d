@@ -74,6 +74,8 @@ export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 
 export MOM6_RIVER_RUNOFF='True'
+export MOM6_REPRO_LA='True'
+export MOM6_THERMO_SPAN='True'
 
 export FV3_RUN=cpld_fv3_mom6_cice_bmark_35d_run.IN
 export INPUT_NML=input.benchmark_ccpp.nml.IN

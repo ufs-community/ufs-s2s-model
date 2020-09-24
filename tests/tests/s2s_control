@@ -61,8 +61,4 @@ export LIST_FILES="phyf048.tile1.nc \
 export_fv3
 export_cpl
 
-# restart test: required for restart repro
-export MOM6_REPRO_LA='False'
-export MOM6_THERMO_SPAN='False'
-
 export FV3_RUN=s2s_control_run.IN

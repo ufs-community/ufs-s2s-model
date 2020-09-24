@@ -35,9 +35,9 @@ elif [ $MACHINE_ID = wcoss_dell_p3 ]; then
   THRD_cpl_dflt=1; WPG_cpl_dflt=6;  MPB_cpl_dflt="0 143"; APB_cpl_dflt="0 149"
   OPB_cpl_dflt="150 179"; IPB_cpl_dflt="180 191"
 
-  TASKS_cpl_thrd=246; TPN_cpl_thrd=14; INPES_cpl_thrd=3; JNPES_cpl_thrd=4
+  TASKS_cpl_thrd=120; TPN_cpl_thrd=14; INPES_cpl_thrd=3; JNPES_cpl_thrd=4
   THRD_cpl_thrd=2; WPG_cpl_thrd=6;  MPB_cpl_thrd="0 77";  APB_cpl_thrd="0 77"
-  OPB_cpl_thrd="78 197";  IPB_cpl_thrd="198 245"
+  OPB_cpl_thrd="78 107";  IPB_cpl_thrd="108 119"
 
   TASKS_cpl_bmrk=480; TPN_cpl_bmrk=28; INPES_cpl_bmrk=6; JNPES_cpl_bmrk=8
   THRD_cpl_bmrk=1; WPG_cpl_bmrk=24; MPB_cpl_bmrk="0 287"; APB_cpl_bmrk="0 311"
@@ -62,9 +62,9 @@ elif [[ $MACHINE_ID = orion.* ]]; then
   THRD_cpl_dflt=1; WPG_cpl_dflt=6;  MPB_cpl_dflt="0 143"; APB_cpl_dflt="0 149"
   OPB_cpl_dflt="150 179"; IPB_cpl_dflt="180 191"
 
-  TASKS_cpl_thrd=246; TPN_cpl_thrd=40; INPES_cpl_thrd=3; JNPES_cpl_thrd=4
+  TASKS_cpl_thrd=120; TPN_cpl_thrd=14; INPES_cpl_thrd=3; JNPES_cpl_thrd=4
   THRD_cpl_thrd=2; WPG_cpl_thrd=6;  MPB_cpl_thrd="0 77";  APB_cpl_thrd="0 77"
-  OPB_cpl_thrd="78 197";  IPB_cpl_thrd="198 245"
+  OPB_cpl_thrd="78 107";  IPB_cpl_thrd="108 119"
 
   TASKS_cpl_bmrk=480; TPN_cpl_bmrk=40; INPES_cpl_bmrk=6; JNPES_cpl_bmrk=8
   THRD_cpl_bmrk=1; WPG_cpl_bmrk=24; MPB_cpl_bmrk="0 287"; APB_cpl_bmrk="0 311"
@@ -93,9 +93,9 @@ elif [[ $MACHINE_ID = hera.* ]]; then
   THRD_cpl_dflt=1; WPG_cpl_dflt=6;  MPB_cpl_dflt="0 143"; APB_cpl_dflt="0 149"
   OPB_cpl_dflt="150 179"; IPB_cpl_dflt="180 191"
 
-  TASKS_cpl_thrd=246; TPN_cpl_thrd=40; INPES_cpl_thrd=3; JNPES_cpl_thrd=4
+  TASKS_cpl_thrd=120; TPN_cpl_thrd=14; INPES_cpl_thrd=3; JNPES_cpl_thrd=4
   THRD_cpl_thrd=2; WPG_cpl_thrd=6;  MPB_cpl_thrd="0 77";  APB_cpl_thrd="0 77"
-  OPB_cpl_thrd="78 197";  IPB_cpl_thrd="198 245"
+  OPB_cpl_thrd="78 107";  IPB_cpl_thrd="108 119"
 
   TASKS_cpl_bmrk=480; TPN_cpl_bmrk=40; INPES_cpl_bmrk=6; JNPES_cpl_bmrk=8
   THRD_cpl_bmrk=1; WPG_cpl_bmrk=24; MPB_cpl_bmrk="0 287"; APB_cpl_bmrk="0 311"
@@ -368,10 +368,9 @@ export MOM6_RESTART_SETTING='n'
 export MOM6_RIVER_RUNOFF='False'
 export FRUNOFF=""
 export CHLCLIM="seawifs_1998-2006_smoothed_2X.nc"
-# set USE_LA_LI2016 to the current default; this must be set False for restart repro 
-export MOM6_REPRO_LA='True'
-# set the THERMO_SPANS_COUPLING to the current default; according to Gustavo and Alper, the correct setting is "False"
-export MOM6_THERMO_SPAN='True'
+# these must be set False for restart repro 
+export MOM6_REPRO_LA='False'
+export MOM6_THERMO_SPAN='False'
 # no WW3 
 export MOM6_USE_WAVES='False'
 

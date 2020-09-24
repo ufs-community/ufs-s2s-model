@@ -147,9 +147,6 @@ export DUMPFREQ="h"
 export FV3_RESTART_INTERVAL='12'
 
 export MOM6_RIVER_RUNOFF='True'
-# restart test: required for restart repro
-export MOM6_REPRO_LA='False'
-export MOM6_THERMO_SPAN='False'
 
 export FV3_RUN=cpld_fv3_mom6_cice_bmark_restart_run.IN
 export INPUT_NML=input.benchmark_ccpp.nml.IN
