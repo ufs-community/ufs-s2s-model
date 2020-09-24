@@ -31,6 +31,10 @@ elif [ $MACHINE_ID = wcoss_dell_p3 ]; then
   THRD_cpl_dflt_ori=1; WPG_cpl_dflt_ori=6;  MPB_cpl_dflt_ori="0 143"; APB_cpl_dflt_ori="0 149"
   OPB_cpl_dflt_ori="150 269"; IPB_cpl_dflt_ori="270 317"
 
+  TASKS_cpl_thrd_ori=246; TPN_cpl_thrd_ori=14; INPES_cpl_thrd_ori=3; JNPES_cpl_thrd_ori=4
+  THRD_cpl_thrd_ori=2; WPG_cpl_thrd_ori=6;  MPB_cpl_thrd_ori="0 77";  APB_cpl_thrd_ori="0 77"
+  OPB_cpl_thrd_ori="78 197";  IPB_cpl_thrd_ori="198 245"
+
   TASKS_cpl_dflt=192; TPN_cpl_dflt=40; INPES_cpl_dflt=3; JNPES_cpl_dflt=8
   THRD_cpl_dflt=1; WPG_cpl_dflt=6;  MPB_cpl_dflt="0 143"; APB_cpl_dflt="0 149"
   OPB_cpl_dflt="150 179"; IPB_cpl_dflt="180 191"
@@ -57,6 +61,10 @@ elif [[ $MACHINE_ID = orion.* ]]; then
   TASKS_cpl_dflt_ori=318; TPN_cpl_dflt_ori=40; INPES_cpl_dflt_ori=3; JNPES_cpl_dflt_ori=8
   THRD_cpl_dflt_ori=1; WPG_cpl_dflt_ori=6;  MPB_cpl_dflt_ori="0 143"; APB_cpl_dflt_ori="0 149"
   OPB_cpl_dflt_ori="150 269"; IPB_cpl_dflt_ori="270 317"
+
+  TASKS_cpl_thrd_ori=246; TPN_cpl_thrd_ori=40; INPES_cpl_thrd_ori=3; JNPES_cpl_thrd_ori=4
+  THRD_cpl_thrd_ori=2; WPG_cpl_thrd_ori=6;  MPB_cpl_thrd_ori="0 77";  APB_cpl_thrd_ori="0 77"
+  OPB_cpl_thrd_ori="78 197";  IPB_cpl_thrd_ori="198 245"
 
   TASKS_cpl_dflt=192; TPN_cpl_dflt=40; INPES_cpl_dflt=3; JNPES_cpl_dflt=8
   THRD_cpl_dflt=1; WPG_cpl_dflt=6;  MPB_cpl_dflt="0 143"; APB_cpl_dflt="0 149"
@@ -88,6 +96,10 @@ elif [[ $MACHINE_ID = hera.* ]]; then
   TASKS_cpl_dflt_ori=318; TPN_cpl_dflt_ori=40; INPES_cpl_dflt_ori=3; JNPES_cpl_dflt_ori=8
   THRD_cpl_dflt_ori=1; WPG_cpl_dflt_ori=6;  MPB_cpl_dflt_ori="0 143"; APB_cpl_dflt_ori="0 149"
   OPB_cpl_dflt_ori="150 269"; IPB_cpl_dflt_ori="270 317"
+
+  TASKS_cpl_thrd_ori=246; TPN_cpl_thrd_ori=40; INPES_cpl_thrd_ori=3; JNPES_cpl_thrd_ori=4
+  THRD_cpl_thrd_ori=2; WPG_cpl_thrd_ori=6;  MPB_cpl_thrd_ori="0 77";  APB_cpl_thrd_ori="0 77"
+  OPB_cpl_thrd_ori="78 197";  IPB_cpl_thrd_ori="198 245"
 
   TASKS_cpl_dflt=192; TPN_cpl_dflt=40; INPES_cpl_dflt=3; JNPES_cpl_dflt=8
   THRD_cpl_dflt=1; WPG_cpl_dflt=6;  MPB_cpl_dflt="0 143"; APB_cpl_dflt="0 149"

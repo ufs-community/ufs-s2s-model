@@ -151,10 +151,6 @@ export FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
 export FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
 export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"  
 
-# no high freq fv3 output
-NFHMAX_HF='-1'
-NFHOUT_HF='-1'
-
 # set component and coupling timesteps
 export DT_ATMOS="450"
 export DT_CICE=${DT_ATMOS}
