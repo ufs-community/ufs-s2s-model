@@ -139,6 +139,10 @@ export coupling_interval_fast_sec=${CPL_FAST}
 export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice_wav.IN"
 
 export MOM6_RIVER_RUNOFF='True'
+export MOM6_REPRO_LA='True'
+export MOM6_THERMO_SPAN='True'
+export MOM6_USE_WAVES='True'
+
 export FV3_RESTART_INTERVAL=${FHMAX}
 
 export FV3_RUN=cpld_fv3_mom6_cice_ww3_bmark_rt_run.IN

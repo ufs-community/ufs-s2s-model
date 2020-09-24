@@ -372,6 +372,8 @@ export CHLCLIM="seawifs_1998-2006_smoothed_2X.nc"
 export MOM6_REPRO_LA='True'
 # set the THERMO_SPANS_COUPLING to the current default; according to Gustavo and Alper, the correct setting is "False"
 export MOM6_THERMO_SPAN='True'
+# no WW3 
+export MOM6_USE_WAVES='False'
 
 # CICE6 defaults; 1 degree
 export NPROC_ICE='12'
