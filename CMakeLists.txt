@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.15)
 
-foreach(env_var IN ITEMS CMAKE_C_COMPILER CMAKE_CXX_COMPILER CMAKE_Fortran_COMPILER)
+foreach(env_var IN ITEMS
+                CMAKE_C_COMPILER CMAKE_CXX_COMPILER CMAKE_Fortran_COMPILER
+                CMAKE_Platform)
   if(NOT DEFINED ENV{${env_var}})
     message(FATAL_ERROR "${env_var} is not defined")
   endif()
@@ -11,11 +13,14 @@ set(CMAKE_CXX_COMPILER $ENV{CMAKE_CXX_COMPILER})
 set(CMAKE_Fortran_COMPILER $ENV{CMAKE_Fortran_COMPILER})
 set(CMAKE_Platform $ENV{CMAKE_Platform})
 
-project(ufs-s2s-model
+project(ufs
         VERSION 1.0
         LANGUAGES C CXX Fortran)
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_SOURCE_DIR}/cmake)
+list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_SOURCE_DIR}/CMakeModules/Modules)
+
+include(GNUInstallDirs)
 
 set(32BIT           OFF CACHE BOOL "Enable 32BIT (single precision arithmetic in dycore)")
 set(AVX2            ON  CACHE BOOL "Enable AVX2 instruction set")
@@ -59,9 +64,9 @@ message("WW3 .............. ${WW3}")
 message("S2S .............. ${S2S}")
 message("")
 
-get_filename_component (C_COMPILER_NAME ${CMAKE_C_COMPILER} NAME)
-get_filename_component (CXX_COMPILER_NAME ${CMAKE_CXX_COMPILER} NAME)
-get_filename_component (Fortran_COMPILER_NAME ${CMAKE_Fortran_COMPILER} NAME)
+get_filename_component(C_COMPILER_NAME ${CMAKE_C_COMPILER} NAME)
+get_filename_component(CXX_COMPILER_NAME ${CMAKE_CXX_COMPILER} NAME)
+get_filename_component(Fortran_COMPILER_NAME ${CMAKE_Fortran_COMPILER} NAME)
 message("C       compiler: ${CMAKE_C_COMPILER_ID} ${CMAKE_C_COMPILER_VERSION} (${C_COMPILER_NAME})")
 message("CXX     compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION} (${CXX_COMPILER_NAME})")
 message("Fortran compiler: ${CMAKE_Fortran_COMPILER_ID} ${CMAKE_Fortran_COMPILER_VERSION} (${Fortran_COMPILER_NAME})")
@@ -87,18 +92,20 @@ find_package(PIO REQUIRED COMPONENTS C Fortran STATIC)
 # See https://github.com/NOAA-EMC/NCEPLIBS-nemsio/pull/22
 target_link_libraries(nemsio::nemsio INTERFACE w3emc::w3emc_d bacio::bacio_4)
 
-add_definitions(-Duse_libMPI)
-add_definitions(-Duse_netCDF)
-add_definitions(-Duse_WRTCOMP)
-add_definitions(-DSPMD)
-add_definitions(-DUSE_LOG_DIAG_FIELD_INFO)
-#add_definitions(-Duse_LARGEFILE)
-add_definitions(-DUSE_GFSL63)
-add_definitions(-DGFS_PHYS)
-add_definitions(-DMOIST_CAPPA)
-add_definitions(-DUSE_COND)
-add_definitions(-DNEW_TAUCTMAX)
-add_definitions(-DINTERNAL_FILE_NML)
+list(APPEND fms_defs
+  use_libMPI
+  use_netCDF
+  USE_GFSL63
+  GFS_PHYS
+  INTERNAL_FILE_NML)
+list(APPEND fv3_defs
+  SPMD
+  MOIST_CAPPA
+  USE_COND
+  NEW_TAUCTMAX
+  use_WRTCOMP)
+list(APPEND mom6_defs
+  USE_LOG_DIAG_FIELD_INFO)
 
 if (CMAKE_Fortran_COMPILER_ID MATCHES "GNU" AND CMAKE_Fortran_COMPILER_VERSION VERSION_LESS 9.0.0)
   message(FATAL_ERROR "GNU Compiler >= 9 is required")
@@ -108,14 +115,14 @@ if(CCPP)
 
     find_package(Python 3 QUIET COMPONENTS Interpreter)
     if (NOT Python_Interpreter_FOUND)
-      find_package(Python 2.7 QUIET REQUIRED COMPONENTS Interpreter)
+      find_package(Python 2.7 REQUIRED COMPONENTS Interpreter)
     endif()
     message("Found Python: ${Python_EXECUTABLE}")
 
     if(DEFINED CCPP_SUITES)
         message("Calling CCPP code generator (ccpp_prebuild.py) for SUITES = ${CCPP_SUITES}")
         execute_process(COMMAND ${Python_EXECUTABLE}
-				"FV3/ccpp/framework/scripts/ccpp_prebuild.py"
+                                "FV3/ccpp/framework/scripts/ccpp_prebuild.py"
                                 "--config=FV3/ccpp/config/ccpp_prebuild_config.py"
                                 "--suites=${CCPP_SUITES}"
                                 "--builddir=${PROJECT_BINARY_DIR}/FV3"
@@ -127,7 +134,7 @@ if(CCPP)
     else()
         message("Calling CCPP code generator (ccpp_prebuild.py) ...")
         execute_process(COMMAND ${Python_EXECUTABLE}
-				"FV3/ccpp/framework/scripts/ccpp_prebuild.py"
+                                "FV3/ccpp/framework/scripts/ccpp_prebuild.py"
                                 "--config=FV3/ccpp/config/ccpp_prebuild_config.py"
                                 "--builddir=${PROJECT_BINARY_DIR}/FV3"
                         WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
@@ -166,15 +173,21 @@ add_library(fms ${fms_src_files})
 # stupid cmake can not figure out dependency of fft.F90 on fft99.F90 because 'use fft99_mod' is inside ifdefs
 set_property(SOURCE FMS/fft/fft.F90 APPEND_STRING PROPERTY COMPILE_FLAGS "-DSGICRAY=0 -DNAGFFT=0")
 
+target_compile_definitions(fms PUBLIC "${fms_defs}")
 target_include_directories(fms PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/FMS/include>
                                       $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/FMS/fms>
                                       $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/FMS/fms2_io/include>
                                       $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/FMS/mpp/include>)
+target_link_libraries(fms PUBLIC NetCDF::NetCDF_Fortran
+                                 MPI::MPI_Fortran)
+if(OPENMP AND OpenMP_Fortran_FOUND)
+  target_link_libraries(fms PUBLIC OpenMP::OpenMP_Fortran)
+endif()
 
-target_link_libraries(fms PRIVATE NetCDF::NetCDF_Fortran)
 set_target_properties(fms PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/FMS)
 set_target_properties(fms PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/FMS/mod)
-target_include_directories(fms PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/FMS/mod>)
+target_include_directories(fms PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/FMS/mod>
+                                      $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/FMS/mod>)
 
 ###############################################################################
 ### stochastic_physics
@@ -216,8 +229,8 @@ endif()
 if(S2S)
     ### CMEPS
     if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
-	string (REPLACE "-assume byterecl" "-assume realloc_lhs" CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
-        set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -m64 -mcmodel=small")
+      string (REPLACE "-assume byterecl" "-assume realloc_lhs" CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
+      set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -m64 -mcmodel=small")
     endif()
     include(cmeps_files.cmake)
     add_library(cmeps ${cmeps_src_files})
@@ -270,10 +283,11 @@ target_link_libraries(ufs PUBLIC esmf)
 target_link_libraries(ufs PUBLIC PIO::PIO_Fortran PIO::PIO_C)
 target_link_libraries(ufs PUBLIC fv3atm )
 
-target_compile_definitions(ufs PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR}
-				       -DESMF_VERSION_MINOR=${ESMF_VERSION_MINOR}
-                                       -DFRONT_FMS
-                                       -DFRONT_FV3=fv3gfs_cap_mod)
+target_compile_definitions(ufs PRIVATE
+                               -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR}
+                               -DESMF_VERSION_MINOR=${ESMF_VERSION_MINOR}
+                               -DFRONT_FMS
+                               -DFRONT_FV3=fv3gfs_cap_mod)
 
 target_include_directories(ufs PRIVATE ${PROJECT_BINARY_DIR}/NEMS/src
                                        ${CMAKE_CURRENT_BINARY_DIR}/FV3/mod
