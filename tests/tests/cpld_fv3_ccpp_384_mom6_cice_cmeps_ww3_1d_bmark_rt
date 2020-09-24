@@ -100,6 +100,8 @@ export NX_GLB=1440
 export NY_GLB=1080
 export NPROC_ICE='48'
 
+export use_frac_grid_input='.F.'
+
 # resolution dependent files
 #TODO!!! This should use the wave_template
 # temporarily set it to the non-wave template to reproduce 

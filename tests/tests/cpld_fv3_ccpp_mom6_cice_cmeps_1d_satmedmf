@@ -88,6 +88,8 @@ export NPROC_ICE='48'
 export DT_DYNAM_MOM6='900'
 export DT_THERM_MOM6='1800'
 
+export use_frac_grid_input='.F.'
+
 # set component and coupling timesteps
 export CPL_SLOW=${DT_THERM_MOM6}
 export CPL_FAST=${DT_ATMOS}

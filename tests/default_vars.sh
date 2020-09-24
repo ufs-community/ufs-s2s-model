@@ -330,8 +330,14 @@ export cap_dbug_flag="0"
 export use_coldstart="false"
 export RUNTYPE='startup' 
 
-# FV3 defaults; C96, non-frac 
+# FV3 defaults
+# using new oro and ics created from 1deg ocean mask on c96 tiles
+# set frac_grid=.F. but use_frac_grid_input=.T.
+# to repro existing tests set both frac_grid and use_frac_grid_input to .F.
+# to run frac_grid, set both frac_grid and use_frac_grid_inputs to .T.
+# use_frac_grid_input setting can be removed once the existing tests are dropped
 export FRAC_GRID='.F.'
+export use_frac_grid_input='.T.'
 export SUITE_NAME="FV3_GFS_2017_coupled"
 export INPUT_NML=input.mom6_ccpp.nml.IN
 export FIELD_TABLE="field_table"
