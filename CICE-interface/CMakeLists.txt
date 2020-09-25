@@ -1,4 +1,4 @@
-f(CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
+if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
     string (REPLACE "-fp-model source" "-fp-model precise" CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
     string (REPLACE "-xCORE-AVX2" "-xHost" CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -convert big_endian -traceback -FR")
