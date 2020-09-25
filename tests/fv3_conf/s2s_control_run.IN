@@ -42,7 +42,7 @@ cp    @[RTPWD]/CICE_FIX/@[OCNRES]/mesh.mx@[OCNRES].nc .
 # No restart
 if [ $WARM_START = .F. ]; then
   # ICs
-  if [ $use_frac_grid_input = .F. ]; then
+  if [ ${use_frac_grid_input} = .F. ]; then
    cp  @[RTPWD]/${FV3_DIR}/INPUT/sfc_data*.nc ./INPUT
    cp  @[RTPWD]/${FV3_DIR}/INPUT/gfs_data*.nc ./INPUT
   else
