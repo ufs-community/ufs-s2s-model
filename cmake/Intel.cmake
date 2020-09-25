@@ -55,6 +55,7 @@ else()
 endif()
 
 if(OPENMP)
+    find_package(OpenMP REQUIRED)
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -qopenmp")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -qopenmp")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -qopenmp")

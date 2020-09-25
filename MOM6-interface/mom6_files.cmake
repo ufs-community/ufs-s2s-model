@@ -1,4 +1,4 @@
-list(APPEND ocean_src_files
+list(APPEND mom6_src_files
   MOM6/src/ALE/MOM_ALE.F90
   MOM6/src/ALE/MOM_regridding.F90
   MOM6/src/ALE/MOM_remapping.F90
@@ -248,25 +248,25 @@ list(APPEND ocean_src_files
   MOM6/src/ocean_data_assim/geoKdTree/kdtree.f90
 )
 
-list(APPEND ocean_config_src_files
+list(APPEND mom6_src_files
   MOM6/config_src/nuopc_driver/mom_ocean_model_nuopc.F90
   MOM6/config_src/nuopc_driver/mom_surface_forcing_nuopc.F90
 )
 
-list(APPEND mom_config_src_files
+list(APPEND mom6_config_src_files
   MOM6/config_src/nuopc_driver/mom_cap.F90
   MOM6/config_src/nuopc_driver/time_utils.F90
   MOM6/config_src/nuopc_driver/mom_cap_methods.F90
   MOM6/config_src/nuopc_driver/mom_cap_time.F90
 )
 
-list(APPEND ocean_include_files
+list(APPEND mom6_include_files
   MOM6/src/framework/MOM_memory_macros.h
   MOM6/src/framework/version_variable.h
   MOM6/config_src/dynamic/MOM_memory.h
 )
 
-list(APPEND ocean_include_dirs
+list(APPEND mom6_include_dirs
   MOM6/src/framework
   MOM6/config_src/dynamic
 )

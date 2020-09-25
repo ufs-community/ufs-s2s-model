@@ -5,25 +5,35 @@ if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
 endif()
 
 include(cmeps_files.cmake)
+
 add_library(cmeps ${cmeps_src_files})
 
-target_include_directories(cmeps PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/CMEPS/mediator>
-                                        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/CMEPS/nems/util>)
+set_target_properties(cmeps PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod)
+target_include_directories(cmeps PUBLIC
+                                 $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>
+                                 $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/CMEPS/mod>)
+
+target_compile_definitions(cmeps PRIVATE
+                                 -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR}
+                                 -DESMF_VERSION_MINOR=${ESMF_VERSION_MINOR})
+target_compile_definitions(cmeps PRIVATE
+                                 "-DINTERNAL_PIO_INIT")
+
+target_include_directories(cmeps PUBLIC
+                                 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../CMEPS/mediator>
+                                 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../CMEPS/nems/util>)
 
 target_link_libraries(cmeps PUBLIC PIO::PIO_C PIO::PIO_Fortran)
 target_link_libraries(cmeps PUBLIC esmf)
 
-target_compile_definitions(cmeps PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR}
-                                         -DESMF_VERSION_MINOR=${ESMF_VERSION_MINOR})
+target_include_directories(cmeps INTERFACE
+                                 $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>
+                                 $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/CMEPS/mod>)
 
-target_compile_definitions(cmeps PRIVATE "-DINTERNAL_PIO_INIT")
+###############################################################################
+### Install
+###############################################################################
 
-set_target_properties(cmeps PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS)
-set_target_properties(cmeps PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod)
-target_include_directories(cmeps PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>
-                                        $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/CMEPS/mod>)
-
-# Install library
 install(
   TARGETS cmeps
   EXPORT  cmeps-config

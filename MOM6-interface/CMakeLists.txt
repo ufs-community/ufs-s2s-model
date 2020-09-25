@@ -8,83 +8,59 @@ endif()
 
 include("mom6_files.cmake")
 
-list(APPEND lib1_src_files
-  ${ocean_src_files}
-  ${ocean_config_src_files})
-
-#########################
-### ocean
-########################
-
-set(lib1Name "ocean")
-set(moduleDir "${CMAKE_CURRENT_BINARY_DIR}/mod")
-
-add_library(${lib1Name} STATIC ${lib1_src_files})
-add_library(${lib1Name}::${lib1Name} ALIAS ${lib1Name})
-
-set_target_properties(${lib1Name} PROPERTIES Fortran_MODULE_DIRECTORY ${moduleDir})
-target_include_directories(${lib1Name} PUBLIC $<BUILD_INTERFACE:${moduleDir}>)
-
-target_include_directories(${lib1Name} PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/config_src/dynamic>
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/src/framework>
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/config_src/nuopc_driver>)
-
-target_include_directories(${lib1Name} INTERFACE
-  $<BUILD_INTERFACE:${moduleDir}>
-  $<INSTALL_INTERFACE:include/${lib1Name}>)
-
-target_link_libraries(${lib1Name} PUBLIC fms)
-target_link_libraries(${lib1Name} PUBLIC NetCDF::NetCDF_Fortran)
-
-#########################
+###############################################################################
 ### mom6
-########################
-set(libName "mom6")
+###############################################################################
 
-list(APPEND lib_src_files
-  ${mom_config_src_files})
+add_library(mom6 ${mom6_src_files})
 
-add_library(${libName} STATIC ${lib_src_files})
-add_library(${libName}::${libName} ALIAS ${libName})
+set_target_properties(mom6 PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod)
+target_include_directories(mom6 PUBLIC
+                                $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod>
+                                $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/MOM6/mod>)
 
-set_target_properties(${libName} PROPERTIES Fortran_MODULE_DIRECTORY ${moduleDir})
-target_include_directories(${libName} PUBLIC $<BUILD_INTERFACE:${moduleDir}>)
+target_include_directories(mom6 PUBLIC
+                                $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/config_src/dynamic>
+                                $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/src/framework>
+                                $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/config_src/nuopc_driver>)
 
-target_compile_definitions(${libName} PRIVATE -DMOM6_CAP)
-target_compile_definitions(${libName} PRIVATE -DESMF_NO_INTEGER_1_BYTE
-					                                    -DESMF_NO_INTEGER_2_BYTE
-					                                    -DESMF_MOAB=1
-					                                    -DESMF_LAPACK=1
-					                                    -DESMF_LAPACK_INTERNAL=1
-					                                    -DESMF_NO_ACC_SOFTWARE_STACK=1
-					                                    -DESMF_NETCDF=1
-					                                    -DESMF_YAMLCPP=1
-					                                    -DESMF_YAML=1
-					                                    -DESMF_PIO=1
-					                                    -DESMF_MPIIO
-					                                    -DESMF_NO_OPENACC
-					                                    -DESMF_BOPT_O
-					                                    -DESMF_TESTCOMPTUNNEL
-					                                    -DSx86_64_small=1
-					                                    -DESMF_OS_Linux=1
-					                                    -DESMF_COMM=intelmpi)
-target_link_libraries(${libName} PUBLIC ${lib1Name})
-target_link_libraries(${libName} PUBLIC esmf)
+target_link_libraries(mom6 PUBLIC fms)
+target_link_libraries(mom6 PUBLIC NetCDF::NetCDF_Fortran)
 
-#########################
+target_include_directories(mom6 INTERFACE
+                                $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod>
+                                $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/MOM6/mod>)
+
+###############################################################################
+### mom6ocn
+###############################################################################
+
+add_library(mom6ocn ${mom6_config_src_files})
+
+set_target_properties(mom6ocn PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod)
+target_include_directories(mom6ocn PUBLIC
+                                   $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod>
+                                   $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/MOM6/mod>)
+
+target_link_libraries(mom6ocn PUBLIC mom6)
+target_link_libraries(mom6ocn PUBLIC esmf)
+
+target_include_directories(mom6ocn INTERFACE
+                                   $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod>
+                                   $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/MOM6/mod>)
+
+###############################################################################
 ### Install
-#########################
+###############################################################################
 
-# Install library
 install(
-  TARGETS ${libName} ${lib1Name}
-  EXPORT ${libName}-config
+  TARGETS mom6ocn mom6
+  EXPORT mom6ocn-config
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   COMPONENT Library)
 
-install(DIRECTORY ${moduleDir} DESTINATION ${CMAKE_INSTALL_PREFIX})
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod DESTINATION ${CMAKE_INSTALL_PREFIX}/MOM6)
 
-install(EXPORT      ${libName}-config
+install(EXPORT      mom6ocn-config
         DESTINATION lib/cmake)
