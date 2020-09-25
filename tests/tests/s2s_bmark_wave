@@ -1,7 +1,7 @@
 #
-#  S2S_benchmark test
+#  S2S_bmark_wave test
 #
-export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C384 MX025 - Benchmark test with waves"
+export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS-WW3 system - C384 MX025 - Benchmark test with waves"
 
 #export CNTL_DIR="RT-Baselines_s2s_bmark"
 #export CNTLMED_DIR="RT-Baselines_s2s_bmark/RESTART"
@@ -102,7 +102,6 @@ export NX_GLB=1440
 export NY_GLB=1080
 export NPROC_ICE='48'
 
-
 export CPLWAV='.T.'
 export CPLWAV2ATM='.T.'
 
@@ -141,10 +140,12 @@ export FV3_RESTART_INTERVAL=${FHMAX}
 
 # This may replicate current baselines, which were incorrectly
 # generated w/o the wave template
+#export MOM6_USE_WAVES='True'
 export MOM_INPUT="MOM_input_template_${OCNRES}"
-export MOM6_USE_WAVES='True'
 export MOM6_RIVER_RUNOFF='True'
 export MOM6_RESTART_SETTING="r"
+export MOM6_THERMO_SPAN='True'
+export MOM6_REPRO_LA='True'
 
 # write a CICE restart at 12 hour intervals
 export DUMPFREQ_N=${DAYS}

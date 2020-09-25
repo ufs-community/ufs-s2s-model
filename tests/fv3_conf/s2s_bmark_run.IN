@@ -41,7 +41,7 @@ cp    @[RTPWD]/CICE_FIX/@[OCNRES]/kmtu_cice_NEMS_mx@[OCNRES].nc .
 cp    @[RTPWD]/CICE_FIX/@[OCNRES]/mesh.mx@[OCNRES].nc .
 
 # WW3 fix/input
-if [ $CPLWAV = .T. && $CPLWAV2ATM  = .T. ]; then
+if [[ $CPLWAV == .T. && $CPLWAV2ATM == .T. ]]; then
   cp    @[RTPWD]/WW3_input_data/mod_def.* .
   cp    @[RTPWD]/WW3_input_data/ww3_multi.inp .
 fi
