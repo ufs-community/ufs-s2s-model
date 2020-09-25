@@ -82,7 +82,6 @@ export INPES=$INPES_cpl_wwav
 export JNPES=$JNPES_cpl_wwav
 export THRD=$THRD_cpl_wwav
 export WRTTASK_PER_GROUP=$WPG_cpl_wwav
-export WRITE_GROUP=1
 
 export med_petlist_bounds=$MPB_cpl_wwav
 export atm_petlist_bounds=$APB_cpl_wwav
@@ -103,7 +102,6 @@ export NX_GLB=1440
 export NY_GLB=1080
 export NPROC_ICE='48'
 
-export use_frac_grid_input='.F.'
 
 export CPLWAV='.T.'
 export CPLWAV2ATM='.T.'
@@ -118,6 +116,11 @@ export DT_THERM_MOM6='1800'
 export DT_CICE=${DT_ATMOS}
 export CPL_SLOW=${DT_THERM_MOM6}
 export CPL_FAST=${DT_ATMOS}
+
+# nems.configure
+export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice_wav.IN"
+export coupling_interval_fast_sec=${CPL_FAST}
+export coupling_interval_slow_sec=${CPL_SLOW}
 
 # resolution dependent files
 export MESHICE="mesh.mx${OCNRES}.nc"
@@ -136,6 +139,8 @@ export OZ_PHYS_NEW=".T."
 
 export FV3_RESTART_INTERVAL=${FHMAX}
 
+# This may replicate current baselines, which were incorrectly
+# generated w/o the wave template
 export MOM_INPUT="MOM_input_template_${OCNRES}"
 export MOM6_USE_WAVES='True'
 export MOM6_RIVER_RUNOFF='True'
@@ -145,11 +150,6 @@ export MOM6_RESTART_SETTING="r"
 export DUMPFREQ_N=${DAYS}
 export DUMPFREQ="d"
 export RUNID="cpcice"
-
-# nems.configure
-export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice_wav.IN"
-export coupling_interval_slow_sec=${CPL_SLOW}
-export coupling_interval_fast_sec=${CPL_FAST}
 
 export INPUT_NML=input.benchmark_ccpp.nml.IN
 

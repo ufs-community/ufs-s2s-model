@@ -117,7 +117,6 @@ export INPES=$INPES_cpl_bmrk
 export JNPES=$JNPES_cpl_bmrk
 export THRD=$THRD_cpl_bmrk
 export WRTTASK_PER_GROUP=$WPG_cpl_bmrk
-export WRITE_GROUP=1
 
 export med_petlist_bounds=$MPB_cpl_bmrk
 export atm_petlist_bounds=$APB_cpl_bmrk
@@ -137,7 +136,6 @@ export NX_GLB=1440
 export NY_GLB=1080
 export NPROC_ICE='48'
 
-export use_frac_grid_input='.F.'
 
 # set component and coupling timesteps
 export DT_ATMOS='450'
@@ -150,6 +148,9 @@ export DT_CICE=${DT_ATMOS}
 export CPL_SLOW=${DT_THERM_MOM6}
 export CPL_FAST=${DT_ATMOS}
 
+# nems.configure
+export coupling_interval_slow_sec=${CPL_SLOW}
+export coupling_interval_fast_sec=${CPL_FAST}
 # resolution dependent files
 export MESHICE="mesh.mx${OCNRES}.nc"
 export CICEGRID="grid_cice_NEMS_mx${OCNRES}.nc"
@@ -175,10 +176,6 @@ export MOM6_RESTART_SETTING="r"
 export DUMPFREQ_N='12'
 export DUMPFREQ="h"
 export RUNID="cpcice"
-
-# nems.configure
-export coupling_interval_slow_sec=${CPL_SLOW}
-export coupling_interval_fast_sec=${CPL_FAST}
 
 export INPUT_NML=input.benchmark_ccpp.nml.IN
 

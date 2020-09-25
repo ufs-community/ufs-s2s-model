@@ -59,7 +59,7 @@ export LIST_FILES="phyf024.tile1.nc \
                    RESTART/MOM.res_2.nc \
                    RESTART/MOM.res_3.nc \
                    RESTART/iced.2013-04-02-00000.nc \
-                   ufs.s2s.cpl.r.2013-04-02-00000.nc" 
+                   ufs.s2s.cpl.r.2013-04-02-00000.nc"
 
 export_fv3
 export_cpl
@@ -106,7 +106,9 @@ export use_frac_grid_input='.F.'
 # resolution dependent files
 #TODO!!! This should use the wave_template
 # temporarily set it to the non-wave template to reproduce 
-# current baselines
+# current baselines. the updated test will use the
+# same mom template for waves or no waves using the
+# mom6_use_waves variable
 #export MOM_INPUT="MOM_input_wave_template_${OCNRES}"
 export MOM_INPUT="MOM_input_template_${OCNRES}"
 export MESHICE="mesh.mx${OCNRES}.nc"
@@ -119,7 +121,7 @@ export FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
 export FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
 export FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
 export FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
-export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"  
+export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
 
 # no high freq fv3 output
 NFHMAX_HF='-1'
