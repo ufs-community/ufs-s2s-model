@@ -1,4 +1,5 @@
-include("cmake/cice_compiler_flags.cmake")
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+include(cice_compiler_flags)
 
 include("cice_files.cmake")
 
