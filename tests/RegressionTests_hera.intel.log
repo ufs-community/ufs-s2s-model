@@ -1,11 +1,11 @@
-Thu Sep 24 20:38:41 UTC 2020
+Fri Sep 25 15:09:28 UTC 2020
 Start Regression test
 
 
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200921/RT-Baselines_2d_warm_ccpp_cmeps
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200921/RT-Baselines_2d_warm_ccpp_cmeps/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_201044/cpld_fv3_ccpp_mom6_cice_cmeps_2d_2threads
-Checking test 001 cpld_fv3_ccpp_mom6_cice_cmeps_2d_2threads results ....
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200921/RT-Baselines_2d_warm_ccpp384_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200921/RT-Baselines_2d_warm_ccpp384_cmeps/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_107555/s2s_control_c384
+Checking test 001 s2s_control_c384 results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
  Comparing phyf048.tile3.nc .........OK
@@ -56,25 +56,25 @@ Checking test 001 cpld_fv3_ccpp_mom6_cice_cmeps_2d_2threads results ....
  Comparing RESTART/MOM.res_3.nc .........OK
  Comparing RESTART/iced.2016-10-05-00000.nc .........OK
  Comparing ufs.s2s.cpl.r.2016-10-05-00000.nc .........OK
-Test 001 cpld_fv3_ccpp_mom6_cice_cmeps_2d_2threads PASS
+Test 001 s2s_control_c384 PASS
 
 
-baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200921/RT-Baselines_6h_warm_debug_ccpp_cmeps
-mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200921/RT-Baselines_6h_warm_debug_ccpp_cmeps/RESTART
-working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_201044/cpld_fv3_ccpp_mom6_cice_cmeps_6h_debug
-Checking test 002 cpld_fv3_ccpp_mom6_cice_cmeps_6h_debug results ....
- Comparing phyf006.tile1.nc .........OK
- Comparing phyf006.tile2.nc .........OK
- Comparing phyf006.tile3.nc .........OK
- Comparing phyf006.tile4.nc .........OK
- Comparing phyf006.tile5.nc .........OK
- Comparing phyf006.tile6.nc .........OK
- Comparing dynf006.tile1.nc .........OK
- Comparing dynf006.tile2.nc .........OK
- Comparing dynf006.tile3.nc .........OK
- Comparing dynf006.tile4.nc .........OK
- Comparing dynf006.tile5.nc .........OK
- Comparing dynf006.tile6.nc .........OK
+baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200921/RT-Baselines_2d_warm_ccpp384_cmeps
+mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200921/RT-Baselines_2d_warm_ccpp384_cmeps/RESTART
+working dir  = /scratch1/NCEPDEV/stmp2/Denise.Worthen/S2S_RT/rt_107555/cpld_fv3_ccpp_384_mom6_cice_cmeps_2d_atm_flux
+Checking test 002 cpld_fv3_ccpp_384_mom6_cice_cmeps_2d_atm_flux results ....
+ Comparing phyf048.tile1.nc .........OK
+ Comparing phyf048.tile2.nc .........OK
+ Comparing phyf048.tile3.nc .........OK
+ Comparing phyf048.tile4.nc .........OK
+ Comparing phyf048.tile5.nc .........OK
+ Comparing phyf048.tile6.nc .........OK
+ Comparing dynf048.tile1.nc .........OK
+ Comparing dynf048.tile2.nc .........OK
+ Comparing dynf048.tile3.nc .........OK
+ Comparing dynf048.tile4.nc .........OK
+ Comparing dynf048.tile5.nc .........OK
+ Comparing dynf048.tile6.nc .........OK
  Comparing RESTART/coupler.res .........OK
  Comparing RESTART/fv_core.res.nc .........OK
  Comparing RESTART/fv_core.res.tile1.nc .........OK
@@ -111,11 +111,11 @@ Checking test 002 cpld_fv3_ccpp_mom6_cice_cmeps_6h_debug results ....
  Comparing RESTART/MOM.res_1.nc .........OK
  Comparing RESTART/MOM.res_2.nc .........OK
  Comparing RESTART/MOM.res_3.nc .........OK
- Comparing RESTART/iced.2016-10-03-21600.nc .........OK
- Comparing ufs.s2s.cpl.r.2016-10-03-21600.nc .........OK
-Test 002 cpld_fv3_ccpp_mom6_cice_cmeps_6h_debug PASS
+ Comparing RESTART/iced.2016-10-05-00000.nc .........OK
+ Comparing ufs.s2s.cpl.r.2016-10-05-00000.nc .........OK
+Test 002 cpld_fv3_ccpp_384_mom6_cice_cmeps_2d_atm_flux PASS
 
 
 REGRESSION TEST WAS SUCCESSFUL
-Thu Sep 24 21:39:05 UTC 2020
-Elapsed time: 01h:00m:26s. Have a nice day!
+Fri Sep 25 15:52:47 UTC 2020
+Elapsed time: 00h:43m:21s. Have a nice day!

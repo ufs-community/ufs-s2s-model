@@ -65,18 +65,18 @@ export_cpl
 
 export WLCLK=60
 
-export TASKS=$TASKS_dflt_ori
-export TPN=$TPN_dflt_ori
-export INPES=$INPES_dflt_ori
-export JNPES=$JNPES_dflt_ori
-export THRD=$THRD_dflt_ori
-export WRTTASK_PER_GROUP=$WPG_dflt_ori
+export TASKS=$TASKS_cpl_dflt_ori
+export TPN=$TPN_cpl_dflt_ori
+export INPES=$INPES_cpl_dflt_ori
+export JNPES=$JNPES_cpl_dflt_ori
+export THRD=$THRD_cpl_dflt_ori
+export WRTTASK_PER_GROUP=$WPG_cpl_dflt_ori
 export WRITE_GROUP=1
 
-export med_petlist_bounds=$MPB_dflt_ori
-export atm_petlist_bounds=$APB_dflt_ori
-export ocn_petlist_bounds=$OPB_dflt_ori
-export ice_petlist_bounds=$IPB_dflt_ori
+export med_petlist_bounds=$MPB_cpl_dflt_ori
+export atm_petlist_bounds=$APB_cpl_dflt_ori
+export ocn_petlist_bounds=$OPB_cpl_dflt_ori
+export ice_petlist_bounds=$IPB_cpl_dflt_ori
 
 # atm/ocn/ice resolution
 export ATMRES='C384'
