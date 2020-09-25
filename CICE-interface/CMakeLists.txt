@@ -1,8 +1,4 @@
-if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
-    string (REPLACE "-fp-model source" "-fp-model precise" CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
-    string (REPLACE "-xCORE-AVX2" "-xHost" CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS}")
-    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -convert big_endian -traceback -FR")
-endif()
+include("cmake/cice_compiler_flags.cmake")
 
 include("cice_files.cmake")
 
@@ -15,20 +11,12 @@ list(APPEND lib_src_files
   ${cice_nuopc_cmeps_driver_files}
 )
 
-# NetCDF or PIO is required in CICE
-if(NOT NetCDF_Fortran_FOUND AND NOT PIO_Fortran_FOUND)
+# NetCDF and PIO are both required in CICE
+if(NOT NetCDF_Fortran_FOUND OR NOT PIO_Fortran_FOUND)
   message(FATAL_ERROR "NetCDF or PIO required")
-#  message(STATUS "CICE: Build with Binary IO")
-#  list(APPEND io_list ${cice_binary_io_files})
 else()
-  if(NetCDF_Fortran_FOUND)
-    message(STATUS "CICE: Build with NetCDF IO")
-    list(APPEND lib_src_files ${cice_netcdf_io_files})
-  endif()
-  if(PIO_Fortran_FOUND)
-    message(STATUS "CICE: Build with Parallel IO")
-    list(APPEND lib_src_files ${cice_pio2_io_files})
-  endif()
+  list(APPEND lib_src_files ${cice_netcdf_io_files})
+  list(APPEND lib_src_files ${cice_pio2_io_files})
 endif()
 
 add_library(cice ${lib_src_files})
@@ -41,23 +29,9 @@ target_include_directories(cice PUBLIC
 target_compile_definitions(cice PRIVATE
                                 "-DFORTRANUNDERSCORE -DUSE_NETCDF")
 
-# Where in CICE are the following used?
-#target_compile_definitions(cice PRIVATE
-#                                "-Dcoupled")
-#target_compile_definitions(cice PRIVATE
-#                                -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR}
-#					                      -DESMF_VERSION_MINOR=${ESMF_VERSION_MINOR})
-
-# target_link_libraries(cice PUBLIC cmeps) # Is CMEPS needed in CICE, Really?
-target_link_libraries(cice PUBLIC esmf)
-
-if(NetCDF_Fortran_FOUND)
-  target_link_libraries(cice PUBLIC NetCDF::NetCDF_Fortran)
-endif()
-
-if(PIO_Fortran_FOUND)
-  target_link_libraries(cice PUBLIC PIO::PIO_Fortran)
-endif()
+target_link_libraries(cice PUBLIC esmf
+                                  NetCDF::NetCDF_Fortran
+                                  PIO::PIO_Fortran)
 
 if(OpenMP_Fortran_FOUND)
   target_link_libraries(cice PUBLIC OpenMP::OpenMP_Fortran)
