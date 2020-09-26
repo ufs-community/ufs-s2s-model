@@ -14,7 +14,6 @@ export SHOUR="00"
 
 export DAYS="35"
 export FHMAX="840"
-export FDIAG="6"
 export WLCLK=480
 
 # replicate current tests; explicitly set values for c384/mx025

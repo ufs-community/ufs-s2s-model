@@ -1,5 +1,5 @@
 #
-#  S2S_bmark_wave test
+#  S2S_benchmark_wave test
 #
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS-WW3 system - C384 MX025 - Benchmark test with waves"
 
@@ -73,7 +73,6 @@ export SHOUR="00"
 
 export DAYS="1"
 export FHMAX="24"
-export FDIAG="6"
 export WLCLK=60
 
 export TASKS=$TASKS_cpl_wwav

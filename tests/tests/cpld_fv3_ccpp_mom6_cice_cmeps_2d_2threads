@@ -61,11 +61,6 @@ export LIST_FILES="phyf048.tile1.nc \
 export_fv3
 export_cpl
 
-export DAYS="2"
-export FHMAX="48"
-export FDIAG="6"
-export WLCLK=30
-
 # replicate current tests; explicitly set values for c96/mx025
 export TASKS=$TASKS_cpl_thrd_ori
 export TPN=$TPN_cpl_thrd_ori

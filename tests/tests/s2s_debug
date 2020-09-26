@@ -64,7 +64,6 @@ export_cpl
 export DAYS="0.25"
 export FHMAX="6"
 export NFHOUT_HF="1"
-export FDIAG="6"
 # requires extra time
 export WLCLK=60
 

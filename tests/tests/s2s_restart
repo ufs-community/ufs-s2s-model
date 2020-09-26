@@ -63,8 +63,6 @@ export_cpl
 
 export DAYS="1"
 export FHMAX="72"
-export FDIAG="6"
-export WLCLK=30
 
 # ATM warm start
 FHROT='48'

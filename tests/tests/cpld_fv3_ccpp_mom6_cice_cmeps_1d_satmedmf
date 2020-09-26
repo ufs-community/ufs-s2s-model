@@ -63,8 +63,6 @@ export_cpl
 
 export DAYS="1"
 export FHMAX="24"
-export FDIAG="6"
-export WLCLK=30
 
 # replicate current tests; explicitly set values for c96/mx025
 export TASKS=$TASKS_cpl_c384
