@@ -149,6 +149,7 @@ export CPL_FAST=${DT_ATMOS}
 # nems.configure
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
+
 # resolution dependent files
 export MESHICE="mesh.mx${OCNRES}.nc"
 export CICEGRID="grid_cice_NEMS_mx${OCNRES}.nc"
