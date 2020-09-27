@@ -47,7 +47,7 @@ if [[ $CPLWAV == .T. && $CPLWAV2ATM == .T. ]]; then
   if [ $DAYS == 35 ]; then
    cp    @[RTPWD]/WW3_input_data/ww3_multi_35d.inp ww3_multi.inp
    cp    @[RTPWD]/${WW3_IC}/*.000000.restart.gwes_30m ./restart.gwes_30m
-  elif
+  else
    cp    @[RTPWD]/WW3_input_data/ww3_multi.inp .
   fi
 fi
