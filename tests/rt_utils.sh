@@ -324,12 +324,10 @@ check_results() {
 
   echo                                                       >  ${REGRESSIONTEST_LOG}
   echo "baseline dir = ${RTPWD}/${CNTL_DIR}"                 >> ${REGRESSIONTEST_LOG}
-  echo "mediator baseline dir = ${RTPWD}/${CNTLMED_DIR}"     >> ${REGRESSIONTEST_LOG}
   echo "working dir  = ${RUNDIR}"                            >> ${REGRESSIONTEST_LOG}
   echo "Checking test ${TEST_NR} ${TEST_NAME} results ...."  >> ${REGRESSIONTEST_LOG}
   echo
   echo "baseline dir = ${RTPWD}/${CNTL_DIR}"
-  echo "mediator baseline dir = ${RTPWD}/${CNTLMED_DIR}"
   echo "working dir  = ${RUNDIR}"
   echo "Checking test ${TEST_NR} ${TEST_NAME} results ...."
 
@@ -341,48 +339,29 @@ check_results() {
       printf %s " Comparing " $i " ....." >> ${REGRESSIONTEST_LOG}
       printf %s " Comparing " $i " ....."
 
-      crst=''
-      if [[ $i =~ RESTART/ ]]; then
-        crst=RESTART/$(basename $i)
-      fi
-
       if [[ ! -f ${RUNDIR}/$i ]] ; then
 
         echo ".......MISSING file" >> ${REGRESSIONTEST_LOG}
         echo ".......MISSING file"
         test_status='FAIL'
 
-      elif [[ ! -f ${RTPWD}/${CNTL_DIR}/$i && ! -f ${RTPWD}/${CNTLMED_DIR}/$i && ! -f ${RTPWD}/${CNTL_DIR}/$crst ]] ; then
+      elif [[ ! -f ${RTPWD}/${CNTL_DIR}/$i ]] ; then
 
         echo ".......MISSING baseline" >> ${REGRESSIONTEST_LOG}
         echo ".......MISSING baseline"
         test_status='FAIL'
 
-      elif [[ ( $COMPILER == "gnu" || $COMPILER == "pgi" ) && $i == "RESTART/fv_core.res.nc" ]] ; then
+      elif [[ $COMPILER == "gnu" && $i == "RESTART/fv_core.res.nc" ]] ; then
 
         # Although identical in ncdiff, RESTART/fv_core.res.nc differs in byte 469, line 3,
         # for the fv3_control_32bit test between each run (without changing the source code)
         # for GNU and PGI compilers - skip comparison.
-        echo ".......SKIP for gnu/pgi compilers" >> ${REGRESSIONTEST_LOG}
-        echo ".......SKIP for gnu/pgi compilers"
-
-      elif [[ $COMPILER == "pgi"  && ( $i == "RESTART/fv_BC_sw.res.nest02.nc" || $i == "RESTART/fv_BC_ne.res.nest02.nc" ) ]] ; then
-
-        # Although identical in ncdiff, RESTART/fv_BC_sw.res.nest02.nc differs in byte 6897, line 17
-        # (similar for fv_BC_ne.res.nest02.nc) for the fv3_stretched_nest test between each run
-        # (without changing the source code) for the PGI compiler - skip comparison.
-        echo ".......SKIP for pgi compiler" >> ${REGRESSIONTEST_LOG}
-        echo ".......SKIP for pgi compiler"
+        echo ".......SKIP for gnu compilers" >> ${REGRESSIONTEST_LOG}
+        echo ".......SKIP for gnu compilers"
 
       else
 
-        if [[ $i =~ ufs.s2s ]]; then
-          d=$( cmp ${RTPWD}/${CNTLMED_DIR}/$i ${RUNDIR}/$i | wc -l )
-        elif [[ $i =~ RESTART/ ]]; then
-          d=$( cmp ${RTPWD}/${CNTL_DIR}/$crst ${RUNDIR}/$i | wc -l )
-        else
-          d=$( cmp ${RTPWD}/${CNTL_DIR}/$i ${RUNDIR}/$i | wc -l )
-        fi
+        d=$( cmp ${RTPWD}/${CNTL_DIR}/$i ${RUNDIR}/$i | wc -l )
 
         if [[ $d -ne 0 ]] ; then
           echo ".......NOT OK" >> ${REGRESSIONTEST_LOG}
@@ -406,24 +385,17 @@ check_results() {
       echo " mkdir -p ${NEW_BASELINE}/${CNTL_DIR}/RESTART" >> ${REGRESSIONTEST_LOG}
       mkdir -p ${NEW_BASELINE}/${CNTL_DIR}/RESTART
     fi
-    if [[ ${CNTLMED_DIR} =~ MEDIATOR && ! -d ${NEW_BASELINE}/${CNTLMED_DIR} ]]; then
-      echo " mkdir -p ${NEW_BASELINE}/${CNTLMED_DIR}" >> ${REGRESSIONTEST_LOG}
-      mkdir -p ${NEW_BASELINE}/${CNTLMED_DIR}
-    fi
 
     for i in ${LIST_FILES} ; do
+      printf %s " Moving " $i " ....."
       printf %s " Moving " $i " ....."   >> ${REGRESSIONTEST_LOG}
       if [[ -f ${RUNDIR}/$i ]] ; then
-        if [[ $i =~ RESTART/ ]]; then
-          cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTL_DIR}/RESTART/$(basename $i)
-        elif [[ $i =~ ufs.s2s ]]; then
-          cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTLMED_DIR}
-        else
-          cp ${RUNDIR}/${i} ${NEW_BASELINE}/${CNTL_DIR}/${i}
-        fi
+        cp ${RUNDIR}/${i} ${NEW_BASELINE}/${CNTL_DIR}/${i}
+        echo ".... OK"
+        echo ".... OK" >> ${REGRESSIONTEST_LOG}
       else
-        echo "Missing " ${RUNDIR}/$i " output file"
-        echo;echo " Set ${TEST_NR} ${TEST_NAME} failed"
+        echo ".... missing " ${RUNDIR}/$i
+        echo ".... missing " ${RUNDIR}/$i >> ${REGRESSIONTEST_LOG}
         test_status='FAIL'
       fi
     done
@@ -538,7 +510,7 @@ EOF
 
 rocoto_create_run_task() {
 
-  if [[ $CREATE_BASELINE == true && $DEP_RUN != '' ]] || [[ $WARM_START == .T. && $DEP_RUN != '' ]]; then
+  if [[ $DEP_RUN != '' ]]; then
     DEP_STRING="<and> <taskdep task=\"compile_${COMPILE_NR}\"/> <taskdep task=\"${DEP_RUN}${RT_SUFFIX}\"/> </and>"
   else
     DEP_STRING="<taskdep task=\"compile_${COMPILE_NR}\"/>"
@@ -638,13 +610,15 @@ EOF
 
   echo "    task ${TEST_NAME}${RT_SUFFIX}" >> ${ECFLOW_RUN}/${ECFLOW_SUITE}.def
   echo "      inlimit max_jobs" >> ${ECFLOW_RUN}/${ECFLOW_SUITE}.def
-  if [[ ${UNIT_TEST} == true && $DEP_RUN != '' ]]; then
-    echo "      trigger compile_${COMPILE_NR} == complete and ${DEP_RUN} == complete" >> ${ECFLOW_RUN}/${ECFLOW_SUITE}.def
-  elif [[ $CREATE_BASELINE == true && $DEP_RUN != '' ]] || [[ $WARM_START == .T. && $DEP_RUN != '' ]]; then
-    echo "      trigger compile_${COMPILE_NR} == complete and ${DEP_RUN}${RT_SUFFIX} == complete" >> ${ECFLOW_RUN}/${ECFLOW_SUITE}.def
+  if [[ $DEP_RUN != '' ]]; then
+    if [[ ${UNIT_TEST} == false ]]; then
+      echo "      trigger compile_${COMPILE_NR} == complete and ${DEP_RUN}${RT_SUFFIX} == complete" >> ${ECFLOW_RUN}/${ECFLOW_SUITE}.def
+    else
+      echo "      trigger compile_${COMPILE_NR} == complete and ${DEP_RUN} == complete" >> ${ECFLOW_RUN}/${ECFLOW_SUITE}.def
+    fi  
   else
     echo "      trigger compile_${COMPILE_NR} == complete" >> ${ECFLOW_RUN}/${ECFLOW_SUITE}.def
-  fi
+  fi  
 }
 
 ecflow_run() {
