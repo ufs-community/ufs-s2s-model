@@ -103,11 +103,6 @@ export NPROC_ICE='48'
 export use_frac_grid_input='.F.'
 
 # resolution dependent files
-#TODO!!! This should use the wave_template
-# temporarily set it to the non-wave template to reproduce 
-# current baselines. the updated test will use the
-# same mom template for waves or no waves using the
-# mom6_use_waves variable
 export MOM_INPUT="MOM_input_template_${OCNRES}"
 export MESHICE="mesh.mx${OCNRES}.nc"
 export CICEGRID="grid_cice_NEMS_mx${OCNRES}.nc"
@@ -120,10 +115,6 @@ export FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
 export FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
 export FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
 export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
-
-# no high freq fv3 output
-NFHMAX_HF='-1'
-NFHOUT_HF='-1'
 
 # set component and coupling timesteps
 export DT_ATMOS="450"
@@ -141,7 +132,7 @@ export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice_wav.IN"
 export MOM6_RIVER_RUNOFF='True'
 export MOM6_REPRO_LA='True'
 export MOM6_THERMO_SPAN='True'
-#export MOM6_USE_WAVES='True'
+export MOM6_USE_WAVES='True'
 
 export FV3_RESTART_INTERVAL=${FHMAX}
 
