@@ -1,9 +1,11 @@
 #
-#  CPLD_FV3_CCPP_MOM6_CICE_CMEPS 1D_BMARK_RT test
+#  S2S_benchmark test
 #
+export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C384 MX025 - Benchmark test"
 
-export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS 1 day run"
-
+#export CNTL_DIR="RT-Baselines_s2s_bmark"
+#export CNTLMED_DIR="RT-Baselines_s2s_bmark/RESTART"
+# test against current baseline 
 export CNTL_DIR="RT-Baselines_1d_bmrt_ccpp_cmeps"
 export CNTLMED_DIR="RT-Baselines_1d_bmrt_ccpp_cmeps/RESTART"
 
@@ -107,7 +109,6 @@ export SHOUR="00"
 export DAYS="1"
 export FHMAX="24"
 
-# replicate current tests; explicitly set values for c384/mx025
 export TASKS=$TASKS_cpl_bmrk
 export TPN=$TPN_cpl_bmrk
 export INPES=$INPES_cpl_bmrk
@@ -121,11 +122,11 @@ export ocn_petlist_bounds=$OPB_cpl_bmrk
 export ice_petlist_bounds=$IPB_cpl_bmrk
 
 # atm/ocn/ice resolution
-export ATMRES=C384
-export NPX="385"
-export NPY="385"
-export IMO="1536"
-export JMO="768"
+export ATMRES='C384'
+export NPX=385
+export NPY=385
+export IMO=1536
+export JMO=768
 
 export OCNRES='025'
 export ICERES='0.25'
@@ -133,10 +134,23 @@ export NX_GLB=1440
 export NY_GLB=1080
 export NPROC_ICE='48'
 
-export use_frac_grid_input='.F.'
+
+# set component and coupling timesteps
+export DT_ATMOS='450'
+export DT_CICE=${DT_ATMOS}
+export DT_DYNAM_MOM6='900'
+export DT_THERM_MOM6='1800'
+
+# set component and coupling timesteps
+export DT_CICE=${DT_ATMOS}
+export CPL_SLOW=${DT_THERM_MOM6}
+export CPL_FAST=${DT_ATMOS}
+
+# nems.configure
+export coupling_interval_slow_sec=${CPL_SLOW}
+export coupling_interval_fast_sec=${CPL_FAST}
 
 # resolution dependent files
-export MOM_INPUT="MOM_input_template_${OCNRES}"
 export MESHICE="mesh.mx${OCNRES}.nc"
 export CICEGRID="grid_cice_NEMS_mx${OCNRES}.nc"
 export CICEMASK="kmtu_cice_NEMS_mx${OCNRES}.nc"
@@ -149,34 +163,22 @@ export FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
 export FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
 export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
 
-# set component and coupling timesteps
-export DT_ATMOS="450"
-export DT_CICE=${DT_ATMOS}
-export DT_DYNAM_MOM6='900'
-export DT_THERM_MOM6='1800'
-export CPL_SLOW=${DT_THERM_MOM6}
-export CPL_FAST=${DT_ATMOS}
-export coupling_interval_slow_sec=${CPL_SLOW}
-export coupling_interval_fast_sec=${CPL_FAST}
+export OZ_PHYS_NEW=".T."
 
-# restart test: write a CICE restart at 12 hour intervals
-export DUMPFREQ_N='12'
-export DUMPFREQ="h"
-
-# restart test: CMEPS controls intervals in ALLCOMP
 export FV3_RESTART_INTERVAL='12'
 
+export MOM_INPUT="MOM_input_template_${OCNRES}"
 export MOM6_RIVER_RUNOFF='True'
+export MOM6_RESTART_SETTING="r"
 
-export FV3_RUN=cpld_fv3_mom6_cice_bmark_rt_run.IN
+# write a CICE restart at 12 hour intervals
+export DUMPFREQ_N='12'
+export DUMPFREQ="h"
+export RUNID="cpcice"
+
 export INPUT_NML=input.benchmark_ccpp.nml.IN
 
 export FIELD_TABLE="field_table.gfdlmp"
 export SUITE_NAME="FV3_GFS_v15p2_coupled"
 
-export OZ_PHYS_NEW=".T."
-
-# set run type for CICE in ice_in
-export RUNID="cpcice"
-# set initialization type for MOM6
-export MOM6_RESTART_SETTING="r"
+export FV3_RUN=s2s_bmark_run.IN

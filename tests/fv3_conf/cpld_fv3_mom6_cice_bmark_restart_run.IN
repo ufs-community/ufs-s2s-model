@@ -76,7 +76,3 @@ cp  @[RTPWD]/${RESTART_INPUTDIR}/RESTART/iced.${SYEAR}-${SMONTH}-${SDAY}-${SECS}
 RFILE="iced.${SYEAR}-${SMONTH}-${SDAY}-${SECS}.nc"
 ls -1 "./INPUT/"${RFILE}>ice.restart_file
 
-# CCPP
-if [[ ! $SUITE_NAME == '' ]]; then
-  cp ${PATHTR}/FV3/ccpp/suites/suite_@[SUITE_NAME].xml .
-fi

@@ -53,7 +53,3 @@ cp    @[RTPWD]/${MOM6_IC}/MOM*.nc ./INPUT
 cp    @[RTPWD]/${CICE_IC}/cice5_model_@[ICERES].*.nc ./cice_model.res.nc
 cp    @[RTPWD]/${WW3_IC}/*.000000.restart.gwes_30m ./restart.gwes_30m
 
-# CCPP
-if [[ ! $SUITE_NAME == '' ]]; then
-  cp ${PATHTR}/FV3/ccpp/suites/suite_@[SUITE_NAME].xml .
-fi

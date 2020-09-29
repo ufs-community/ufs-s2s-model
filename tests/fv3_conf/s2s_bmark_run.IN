@@ -12,6 +12,7 @@ BM_IC=BM_IC/${SYEAR}${SMONTH}${SDAY}${SHOUR}
 FV3_IC=${BM_IC}/gfs/@[ATMRES]/INPUT
 MOM6_IC=${BM_IC}/mom6_da
 CICE_IC=${BM_IC}/cpc
+WW3_IC=${BM_IC}/ww3
 
 # FV3 fixed input
 cp    @[RTPWD]/${FV3_DIR}/INPUT/aerosol.dat .
@@ -41,8 +42,15 @@ cp    @[RTPWD]/CICE_FIX/@[OCNRES]/kmtu_cice_NEMS_mx@[OCNRES].nc .
 cp    @[RTPWD]/CICE_FIX/@[OCNRES]/mesh.mx@[OCNRES].nc .
 
 # WW3 fix/input
-cp    @[RTPWD]/WW3_input_data/mod_def.* .
-cp    @[RTPWD]/WW3_input_data/ww3_multi.inp .
+if [[ $CPLWAV == .T. && $CPLWAV2ATM == .T. ]]; then
+  cp    @[RTPWD]/WW3_input_data/mod_def.* .
+  if [[ $LIST_FILES == '' ]]; then
+   cp    @[RTPWD]/WW3_input_data/ww3_multi_35d.inp ww3_multi.inp
+   cp    @[RTPWD]/${WW3_IC}/*.000000.restart.gwes_30m ./restart.gwes_30m
+  else
+   cp    @[RTPWD]/WW3_input_data/ww3_multi.inp .
+  fi
+fi
 
 # ICs
 cp    @[RTPWD]/${FV3_IC}/sfc_data*.nc ./INPUT
@@ -50,4 +58,3 @@ cp    @[RTPWD]/${FV3_IC}/gfs_data*.nc ./INPUT
 cp    @[RTPWD]/${MOM6_IC}/MOM*.nc ./INPUT
 # the BM ICs are still named cice5 and need to remain so until P5.0 is completed
 cp    @[RTPWD]/${CICE_IC}/cice5_model_@[ICERES].*.nc ./cice_model.res.nc
-
