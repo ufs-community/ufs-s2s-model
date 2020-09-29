@@ -98,12 +98,14 @@ list(APPEND fms_defs
   USE_GFSL63
   GFS_PHYS
   INTERNAL_FILE_NML)
+
 list(APPEND fv3_defs
   SPMD
   MOIST_CAPPA
   USE_COND
   NEW_TAUCTMAX
   use_WRTCOMP)
+
 list(APPEND mom6_defs
   USE_LOG_DIAG_FIELD_INFO)
 
@@ -224,16 +226,16 @@ if(WW3)
 endif()
 
 ###############################################################################
-### S2S - Seasonal to Subseasonal Components
+### S2S
 ###############################################################################
 if(S2S)
-    ### CMEPS-interface
+    ### CMEPS
     add_subdirectory(CMEPS-interface)
 
-    ### CICE_interface
+    ### CICE
     add_subdirectory(CICE-interface)
 
-    ### MOM6-interface
+    ### MOM6
     add_subdirectory(MOM6-interface)
 endif()
 
@@ -286,7 +288,7 @@ if(WW3)
     add_dependencies(ufs ww3_nems)
     target_link_libraries(ufs PUBLIC ${WW3_LIBS})
     target_include_directories(ufs PUBLIC
-                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/WW3/model/mod>)
+                                   $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/WW3/model/mod>)
 endif()
 
 if(S2S)
@@ -303,14 +305,14 @@ if(S2S)
     target_include_directories(ufs PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/mod>
                                           $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod>
                                           $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>)
-    list(APPEND ufs_targets mom6 cice cmeps)
+    list(APPEND ufs_targets mom6ocn cice cmeps)
 endif()
 
 
 set_target_properties(ufs PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/mod)
 target_include_directories(ufs PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
-                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/FV3/mod>
-                                       $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/mod>)
+                                      $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/FV3/mod>
+                                      $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/mod>)
 
 configure_file(${PROJECT_SOURCE_DIR}/NEMS/src/ESMFVersionDefine_ESMF_NUOPC.h
                ${PROJECT_BINARY_DIR}/NEMS/src/ESMFVersionDefine.h
@@ -346,9 +348,10 @@ if(WW3)
 endif()
 
 if(S2S)
-    target_compile_definitions(NEMS.exe PRIVATE -DFRONT_MOM6=mom_cap_mod
-                                           -DFRONT_CICE6=ice_comp_nuopc
-                                           -DCMEPS -DFRONT_CMEPS=MED)
+    target_compile_definitions(NEMS.exe PRIVATE
+                                        -DFRONT_MOM6=mom_cap_mod
+                                        -DFRONT_CICE6=ice_comp_nuopc
+                                        -DCMEPS -DFRONT_CMEPS=MED)
 endif()
 
 target_link_libraries(NEMS.exe

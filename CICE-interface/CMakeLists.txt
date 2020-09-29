@@ -22,6 +22,7 @@ endif()
 
 add_library(cice ${lib_src_files})
 
+set_target_properties(cice PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CICE)
 set_target_properties(cice PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CICE/mod)
 target_include_directories(cice PUBLIC
                                 $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CICE/mod>
@@ -30,17 +31,13 @@ target_include_directories(cice PUBLIC
 target_compile_definitions(cice PRIVATE
                                 "-DFORTRANUNDERSCORE -DUSE_NETCDF")
 
-target_link_libraries(cice PUBLIC esmf
-                                  NetCDF::NetCDF_Fortran
-                                  PIO::PIO_Fortran)
+target_link_libraries(cice PUBLIC esmf)
+target_link_libraries(cice PUBLIC NetCDF::NetCDF_Fortran)
+target_link_libraries(cice PUBLIC PIO::PIO_Fortran)
 
 if(OpenMP_Fortran_FOUND)
   target_link_libraries(cice PUBLIC OpenMP::OpenMP_Fortran)
 endif()
-
-target_include_directories(cice INTERFACE
-                                $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CICE/mod>
-                                $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/CICE/mod>)
 
 ###############################################################################
 ### Install

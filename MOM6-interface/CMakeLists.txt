@@ -9,6 +9,7 @@ include("mom6_files.cmake")
 
 add_library(mom6 ${mom6_src_files})
 
+set_target_properties(mom6 PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/MOM6)
 set_target_properties(mom6 PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod)
 target_include_directories(mom6 PUBLIC
                                 $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod>
@@ -22,16 +23,13 @@ target_include_directories(mom6 PUBLIC
 target_link_libraries(mom6 PUBLIC fms)
 target_link_libraries(mom6 PUBLIC NetCDF::NetCDF_Fortran)
 
-target_include_directories(mom6 INTERFACE
-                                $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod>
-                                $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/MOM6/mod>)
-
 ###############################################################################
 ### mom6ocn
 ###############################################################################
 
 add_library(mom6ocn ${mom6_config_src_files})
 
+set_target_properties(mom6ocn PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/MOM6)
 set_target_properties(mom6ocn PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod)
 target_include_directories(mom6ocn PUBLIC
                                    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod>
@@ -39,10 +37,6 @@ target_include_directories(mom6ocn PUBLIC
 
 target_link_libraries(mom6ocn PUBLIC mom6)
 target_link_libraries(mom6ocn PUBLIC esmf)
-
-target_include_directories(mom6ocn INTERFACE
-                                   $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod>
-                                   $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/MOM6/mod>)
 
 ###############################################################################
 ### Install
