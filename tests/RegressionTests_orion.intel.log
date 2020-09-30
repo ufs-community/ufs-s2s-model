@@ -1,67 +1,67 @@
-Wed Sep 30 09:19:10 CDT 2020
+Wed Sep 30 12:06:40 CDT 2020
 Start Regression test
 
 
 baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_2d_warm_ccpp_cmeps
 mediator baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_2d_warm_ccpp_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_59804/cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux
+working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_416344/cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux
 Checking test 001 cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux results ....
- Comparing phyf048.tile1.nc ............MISSING file
- Comparing phyf048.tile2.nc ............MISSING file
- Comparing phyf048.tile3.nc ............MISSING file
- Comparing phyf048.tile4.nc ............MISSING file
- Comparing phyf048.tile5.nc ............MISSING file
- Comparing phyf048.tile6.nc ............MISSING file
- Comparing dynf048.tile1.nc ............MISSING file
- Comparing dynf048.tile2.nc ............MISSING file
- Comparing dynf048.tile3.nc ............MISSING file
- Comparing dynf048.tile4.nc ............MISSING file
- Comparing dynf048.tile5.nc ............MISSING file
- Comparing dynf048.tile6.nc ............MISSING file
- Comparing RESTART/coupler.res ............MISSING file
- Comparing RESTART/fv_core.res.nc ............MISSING file
- Comparing RESTART/fv_core.res.tile1.nc ............MISSING file
- Comparing RESTART/fv_core.res.tile2.nc ............MISSING file
- Comparing RESTART/fv_core.res.tile3.nc ............MISSING file
- Comparing RESTART/fv_core.res.tile4.nc ............MISSING file
- Comparing RESTART/fv_core.res.tile5.nc ............MISSING file
- Comparing RESTART/fv_core.res.tile6.nc ............MISSING file
- Comparing RESTART/fv_srf_wnd.res.tile1.nc ............MISSING file
- Comparing RESTART/fv_srf_wnd.res.tile2.nc ............MISSING file
- Comparing RESTART/fv_srf_wnd.res.tile3.nc ............MISSING file
- Comparing RESTART/fv_srf_wnd.res.tile4.nc ............MISSING file
- Comparing RESTART/fv_srf_wnd.res.tile5.nc ............MISSING file
- Comparing RESTART/fv_srf_wnd.res.tile6.nc ............MISSING file
- Comparing RESTART/fv_tracer.res.tile1.nc ............MISSING file
- Comparing RESTART/fv_tracer.res.tile2.nc ............MISSING file
- Comparing RESTART/fv_tracer.res.tile3.nc ............MISSING file
- Comparing RESTART/fv_tracer.res.tile4.nc ............MISSING file
- Comparing RESTART/fv_tracer.res.tile5.nc ............MISSING file
- Comparing RESTART/fv_tracer.res.tile6.nc ............MISSING file
- Comparing RESTART/phy_data.tile1.nc ............MISSING file
- Comparing RESTART/phy_data.tile2.nc ............MISSING file
- Comparing RESTART/phy_data.tile3.nc ............MISSING file
- Comparing RESTART/phy_data.tile4.nc ............MISSING file
- Comparing RESTART/phy_data.tile5.nc ............MISSING file
- Comparing RESTART/phy_data.tile6.nc ............MISSING file
- Comparing RESTART/sfc_data.tile1.nc ............MISSING file
- Comparing RESTART/sfc_data.tile2.nc ............MISSING file
- Comparing RESTART/sfc_data.tile3.nc ............MISSING file
- Comparing RESTART/sfc_data.tile4.nc ............MISSING file
- Comparing RESTART/sfc_data.tile5.nc ............MISSING file
- Comparing RESTART/sfc_data.tile6.nc ............MISSING file
- Comparing RESTART/MOM.res.nc ............MISSING file
- Comparing RESTART/MOM.res_1.nc ............MISSING file
- Comparing RESTART/MOM.res_2.nc ............MISSING file
- Comparing RESTART/MOM.res_3.nc ............MISSING file
- Comparing RESTART/iced.2016-10-05-00000.nc ............MISSING file
- Comparing ufs.s2s.cpl.r.2016-10-05-00000.nc ............MISSING file
-Test 001 cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux FAIL
+ Comparing phyf048.tile1.nc .........OK
+ Comparing phyf048.tile2.nc .........OK
+ Comparing phyf048.tile3.nc .........OK
+ Comparing phyf048.tile4.nc .........OK
+ Comparing phyf048.tile5.nc .........OK
+ Comparing phyf048.tile6.nc .........OK
+ Comparing dynf048.tile1.nc .........OK
+ Comparing dynf048.tile2.nc .........OK
+ Comparing dynf048.tile3.nc .........OK
+ Comparing dynf048.tile4.nc .........OK
+ Comparing dynf048.tile5.nc .........OK
+ Comparing dynf048.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2016-10-05-00000.nc .........OK
+ Comparing ufs.s2s.cpl.r.2016-10-05-00000.nc .........OK
+Test 001 cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux PASS
 
 
 baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_3d_warm_ccpp_cmeps
 mediator baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_3d_warm_ccpp_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_59804/cpld_fv3_ccpp_mom6_cice_cmeps_3d_atm_flux
+working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_416344/cpld_fv3_ccpp_mom6_cice_cmeps_3d_atm_flux
 Checking test 002 cpld_fv3_ccpp_mom6_cice_cmeps_3d_atm_flux results ....
  Comparing phyf072.tile1.nc .........OK
  Comparing phyf072.tile2.nc .........OK
@@ -116,9 +116,66 @@ Checking test 002 cpld_fv3_ccpp_mom6_cice_cmeps_3d_atm_flux results ....
 Test 002 cpld_fv3_ccpp_mom6_cice_cmeps_3d_atm_flux PASS
 
 
+baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_3d_warm_ccpp_cmeps
+mediator baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_3d_warm_ccpp_cmeps/RESTART
+working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_416344/cpld_fv3_ccpp_mom6_cice_cmeps_restart
+Checking test 003 cpld_fv3_ccpp_mom6_cice_cmeps_restart results ....
+ Comparing phyf072.tile1.nc .........OK
+ Comparing phyf072.tile2.nc .........OK
+ Comparing phyf072.tile3.nc .........OK
+ Comparing phyf072.tile4.nc .........OK
+ Comparing phyf072.tile5.nc .........OK
+ Comparing phyf072.tile6.nc .........OK
+ Comparing dynf072.tile1.nc .........OK
+ Comparing dynf072.tile2.nc .........OK
+ Comparing dynf072.tile3.nc .........OK
+ Comparing dynf072.tile4.nc .........OK
+ Comparing dynf072.tile5.nc .........OK
+ Comparing dynf072.tile6.nc .........OK
+ Comparing RESTART/coupler.res .........OK
+ Comparing RESTART/fv_core.res.nc .........OK
+ Comparing RESTART/fv_core.res.tile1.nc .........OK
+ Comparing RESTART/fv_core.res.tile2.nc .........OK
+ Comparing RESTART/fv_core.res.tile3.nc .........OK
+ Comparing RESTART/fv_core.res.tile4.nc .........OK
+ Comparing RESTART/fv_core.res.tile5.nc .........OK
+ Comparing RESTART/fv_core.res.tile6.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile1.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile2.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile3.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile4.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile5.nc .........OK
+ Comparing RESTART/fv_srf_wnd.res.tile6.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile1.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile2.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile3.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile4.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile5.nc .........OK
+ Comparing RESTART/fv_tracer.res.tile6.nc .........OK
+ Comparing RESTART/phy_data.tile1.nc .........OK
+ Comparing RESTART/phy_data.tile2.nc .........OK
+ Comparing RESTART/phy_data.tile3.nc .........OK
+ Comparing RESTART/phy_data.tile4.nc .........OK
+ Comparing RESTART/phy_data.tile5.nc .........OK
+ Comparing RESTART/phy_data.tile6.nc .........OK
+ Comparing RESTART/sfc_data.tile1.nc .........OK
+ Comparing RESTART/sfc_data.tile2.nc .........OK
+ Comparing RESTART/sfc_data.tile3.nc .........OK
+ Comparing RESTART/sfc_data.tile4.nc .........OK
+ Comparing RESTART/sfc_data.tile5.nc .........OK
+ Comparing RESTART/sfc_data.tile6.nc .........OK
+ Comparing RESTART/MOM.res.nc .........OK
+ Comparing RESTART/MOM.res_1.nc .........OK
+ Comparing RESTART/MOM.res_2.nc .........OK
+ Comparing RESTART/MOM.res_3.nc .........OK
+ Comparing RESTART/iced.2016-10-06-00000.nc .........OK
+ Comparing ufs.s2s.cpl.r.2016-10-06-00000.nc .........OK
+Test 003 cpld_fv3_ccpp_mom6_cice_cmeps_restart PASS
+
+
 baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_2d_warm_ccpp_cmeps
 mediator baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_2d_warm_ccpp_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_59804/cpld_fv3_ccpp_mom6_cice_cmeps_2d_2threads
+working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_416344/cpld_fv3_ccpp_mom6_cice_cmeps_2d_2threads
 Checking test 004 cpld_fv3_ccpp_mom6_cice_cmeps_2d_2threads results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -175,7 +232,7 @@ Test 004 cpld_fv3_ccpp_mom6_cice_cmeps_2d_2threads PASS
 
 baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_2d_warm_ccpp_cmeps
 mediator baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_2d_warm_ccpp_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_59804/cpld_fv3_ccpp_mom6_cice_cmeps_2d_decomp
+working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_416344/cpld_fv3_ccpp_mom6_cice_cmeps_2d_decomp
 Checking test 005 cpld_fv3_ccpp_mom6_cice_cmeps_2d_decomp results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -232,7 +289,7 @@ Test 005 cpld_fv3_ccpp_mom6_cice_cmeps_2d_decomp PASS
 
 baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_1d_warm_satmedmf_ccpp_cmeps
 mediator baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_1d_warm_satmedmf_ccpp_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_59804/cpld_fv3_ccpp_mom6_cice_cmeps_1d_satmedmf
+working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_416344/cpld_fv3_ccpp_mom6_cice_cmeps_1d_satmedmf
 Checking test 006 cpld_fv3_ccpp_mom6_cice_cmeps_1d_satmedmf results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -289,7 +346,7 @@ Test 006 cpld_fv3_ccpp_mom6_cice_cmeps_1d_satmedmf PASS
 
 baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_2d_warm_ccpp384_cmeps
 mediator baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_2d_warm_ccpp384_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_59804/cpld_fv3_ccpp_384_mom6_cice_cmeps_2d_atm_flux
+working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_416344/cpld_fv3_ccpp_384_mom6_cice_cmeps_2d_atm_flux
 Checking test 007 cpld_fv3_ccpp_384_mom6_cice_cmeps_2d_atm_flux results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -346,7 +403,7 @@ Test 007 cpld_fv3_ccpp_384_mom6_cice_cmeps_2d_atm_flux PASS
 
 baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_2d_warm_ccpp384_cmeps
 mediator baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_2d_warm_ccpp384_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_59804/s2s_control_c384
+working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_416344/s2s_control_c384
 Checking test 008 s2s_control_c384 results ....
  Comparing phyf048.tile1.nc .........OK
  Comparing phyf048.tile2.nc .........OK
@@ -403,7 +460,7 @@ Test 008 s2s_control_c384 PASS
 
 baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_1d_bmrt_ccpp_cmeps
 mediator baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_1d_bmrt_ccpp_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_59804/cpld_fv3_ccpp_384_mom6_cice_cmeps_1d_bmark_rt
+working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_416344/cpld_fv3_ccpp_384_mom6_cice_cmeps_1d_bmark_rt
 Checking test 009 cpld_fv3_ccpp_384_mom6_cice_cmeps_1d_bmark_rt results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -498,7 +555,7 @@ Test 009 cpld_fv3_ccpp_384_mom6_cice_cmeps_1d_bmark_rt PASS
 
 baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_1d_bmrt_ccpp_cmeps
 mediator baseline dir = /work/noaa/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_1d_bmrt_ccpp_cmeps/RESTART
-working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_59804/s2s_bmark
+working dir  = /work/noaa/stmp/dworthen/stmp/dworthen/S2S_RT/rt_416344/s2s_bmark
 Checking test 010 s2s_bmark results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -552,10 +609,7 @@ Checking test 010 s2s_bmark results ....
  Comparing ufs.s2s.cpl.r.2013-04-02-00000.nc .........OK
 Test 010 s2s_bmark PASS
 
-FAILED TESTS: 
-Test cpld_fv3_ccpp_mom6_cice_cmeps_2d_atm_flux failed 
-Test cpld_fv3_ccpp_mom6_cice_cmeps_restart failed 
 
-REGRESSION TEST FAILED
-Wed Sep 30 11:20:36 CDT 2020
-Elapsed time: 02h:01m:28s. Have a nice day!
+REGRESSION TEST WAS SUCCESSFUL
+Wed Sep 30 13:21:12 CDT 2020
+Elapsed time: 01h:14m:33s. Have a nice day!
