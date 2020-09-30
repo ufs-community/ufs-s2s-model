@@ -21,7 +21,7 @@ export TASKS=$TASKS_cpl_bmrk
 export TPN=$TPN_cpl_bmrk
 export INPES=$INPES_cpl_bmrk
 export JNPES=$JNPES_cpl_bmrk
-export THRD=1
+export THRD=$THRD_cpl_bmrk
 export WRTTASK_PER_GROUP=$WPG_cpl_bmrk
 
 export med_petlist_bounds=$MPB_cpl_bmrk
@@ -56,7 +56,7 @@ export FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
 export FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
 export FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
 export FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
-export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"  
+export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
 
 # set component and coupling timesteps
 export DT_ATMOS="450"
@@ -79,9 +79,6 @@ export FIELD_TABLE="field_table.gfdlmp"
 export SUITE_NAME="FV3_GFS_v15p2_coupled"
 
 export OZ_PHYS_NEW=".T."
-
-export CPLWAV='.F.'
-export CPLWAV2ATM='.F.'
 
 # set run type for CICE in ice_in
 export RUNID="cpcice"
