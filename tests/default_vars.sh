@@ -405,6 +405,7 @@ export FRAZIL_FWSALT='.true.'
 # default to write CICE average history files
 export CICE_HIST_AVG='.true.'
 
+export RT35D=''
 export RESTART_PREFIX=''
 export RESTART_SUFFIX=''
 }

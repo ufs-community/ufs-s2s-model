@@ -44,7 +44,7 @@ cp    @[RTPWD]/CICE_FIX/@[OCNRES]/mesh.mx@[OCNRES].nc .
 # WW3 fix/input
 if [[ $CPLWAV == .T. && $CPLWAV2ATM == .T. ]]; then
   cp    @[RTPWD]/WW3_input_data/mod_def.* .
-  if [[ $LIST_FILES == '' ]]; then
+  if [[ $RT35D == .T. ]]; then
    cp    @[RTPWD]/WW3_input_data/ww3_multi_35d.inp ww3_multi.inp
    cp    @[RTPWD]/${WW3_IC}/*.000000.restart.gwes_30m ./restart.gwes_30m
   else
