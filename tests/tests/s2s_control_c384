@@ -97,7 +97,7 @@ export DT_CICE=${DT_ATMOS}
 export DT_DYNAM_MOM6='900'
 export DT_THERM_MOM6='1800'
 
-export use_frac_grid_input='.F.'
+export FRAC_GRID_INPUT='.F.'
 
 # set component and coupling timesteps
 export DT_CICE=${DT_ATMOS}

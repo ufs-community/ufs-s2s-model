@@ -53,49 +53,11 @@ export LIST_FILES="phyf024.tile1.nc \
                    RESTART/sfc_data.tile4.nc \
                    RESTART/sfc_data.tile5.nc \
                    RESTART/sfc_data.tile6.nc \
-                   RESTART/20130401.120000.coupler.res \
-                   RESTART/20130401.120000.fv_core.res.nc \
-                   RESTART/20130401.120000.fv_core.res.tile1.nc \
-                   RESTART/20130401.120000.fv_core.res.tile2.nc \
-                   RESTART/20130401.120000.fv_core.res.tile3.nc \
-                   RESTART/20130401.120000.fv_core.res.tile4.nc \
-                   RESTART/20130401.120000.fv_core.res.tile5.nc \
-                   RESTART/20130401.120000.fv_core.res.tile6.nc \
-                   RESTART/20130401.120000.fv_srf_wnd.res.tile1.nc \
-                   RESTART/20130401.120000.fv_srf_wnd.res.tile2.nc \
-                   RESTART/20130401.120000.fv_srf_wnd.res.tile3.nc \
-                   RESTART/20130401.120000.fv_srf_wnd.res.tile4.nc \
-                   RESTART/20130401.120000.fv_srf_wnd.res.tile5.nc \
-                   RESTART/20130401.120000.fv_srf_wnd.res.tile6.nc \
-                   RESTART/20130401.120000.fv_tracer.res.tile1.nc \
-                   RESTART/20130401.120000.fv_tracer.res.tile2.nc \
-                   RESTART/20130401.120000.fv_tracer.res.tile3.nc \
-                   RESTART/20130401.120000.fv_tracer.res.tile4.nc \
-                   RESTART/20130401.120000.fv_tracer.res.tile5.nc \
-                   RESTART/20130401.120000.fv_tracer.res.tile6.nc \
-                   RESTART/20130401.120000.phy_data.tile1.nc \
-                   RESTART/20130401.120000.phy_data.tile2.nc \
-                   RESTART/20130401.120000.phy_data.tile3.nc \
-                   RESTART/20130401.120000.phy_data.tile4.nc \
-                   RESTART/20130401.120000.phy_data.tile5.nc \
-                   RESTART/20130401.120000.phy_data.tile6.nc \
-                   RESTART/20130401.120000.sfc_data.tile1.nc \
-                   RESTART/20130401.120000.sfc_data.tile2.nc \
-                   RESTART/20130401.120000.sfc_data.tile3.nc \
-                   RESTART/20130401.120000.sfc_data.tile4.nc \
-                   RESTART/20130401.120000.sfc_data.tile5.nc \
-                   RESTART/20130401.120000.sfc_data.tile6.nc \
                    RESTART/MOM.res.nc \
                    RESTART/MOM.res_1.nc \
                    RESTART/MOM.res_2.nc \
                    RESTART/MOM.res_3.nc \
-                   RESTART/MOM.res.2013-04-01-12-00-00.nc \
-                   RESTART/MOM.res.2013-04-01-12-00-00_1.nc \
-                   RESTART/MOM.res.2013-04-01-12-00-00_2.nc \
-                   RESTART/MOM.res.2013-04-01-12-00-00_3.nc \
                    RESTART/iced.2013-04-02-00000.nc \
-                   RESTART/iced.2013-04-01-43200.nc \
-                   ufs.s2s.cpl.r.2013-04-01-43200.nc \
                    ufs.s2s.cpl.r.2013-04-02-00000.nc"
 
 export_fv3
@@ -134,6 +96,7 @@ export NX_GLB=1440
 export NY_GLB=1080
 export NPROC_ICE='48'
 
+export FRAC_GRID_INPUT='.F.'
 
 # set component and coupling timesteps
 export DT_ATMOS='450'
@@ -147,8 +110,8 @@ export CPL_SLOW=${DT_THERM_MOM6}
 export CPL_FAST=${DT_ATMOS}
 
 # nems.configure
-export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
+export coupling_interval_slow_sec=${CPL_SLOW}
 
 # resolution dependent files
 export MESHICE="mesh.mx${OCNRES}.nc"
@@ -165,15 +128,15 @@ export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
 
 export OZ_PHYS_NEW=".T."
 
-export FV3_RESTART_INTERVAL='12'
+export FV3_RESTART_INTERVAL=${FHMAX}
 
 export MOM_INPUT="MOM_input_template_${OCNRES}"
 export MOM6_RIVER_RUNOFF='True'
 export MOM6_RESTART_SETTING="r"
 
-# write a CICE restart at 12 hour intervals
-export DUMPFREQ_N='12'
-export DUMPFREQ="h"
+# write a CICE restart 
+export DUMPFREQ_N=${DAYS}
+export DUMPFREQ="d"
 export RUNID="cpcice"
 
 export INPUT_NML=input.benchmark_ccpp.nml.IN

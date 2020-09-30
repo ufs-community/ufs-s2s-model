@@ -101,6 +101,8 @@ export NX_GLB=1440
 export NY_GLB=1080
 export NPROC_ICE='48'
 
+export FRAC_GRID_INPUT='.F.'
+
 export CPLWAV='.T.'
 export CPLWAV2ATM='.T.'
 
@@ -144,7 +146,7 @@ export MOM6_RESTART_SETTING="r"
 export MOM6_THERMO_SPAN='True'
 export MOM6_REPRO_LA='True'
 
-# write a CICE restart at 12 hour intervals
+# write a CICE restart 
 export DUMPFREQ_N=${DAYS}
 export DUMPFREQ="d"
 export RUNID="cpcice"
