@@ -406,8 +406,6 @@ export FRAZIL_FWSALT='.true.'
 export CICE_HIST_AVG='.true.'
 
 export RT35D=''
-export RESTART_PREFIX=''
-export RESTART_SUFFIX=''
 }
 export_35d_run ()
 {
