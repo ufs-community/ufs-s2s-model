@@ -3,11 +3,8 @@
 #
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C384 MX025 "
 
-#export CNTL_DIR="RT-Baselines_s2s_control_c384"
-#export CNTLMED_DIR="RT-Baselines_s2s_control_c384/RESTART"
-# test against current baseline 
-export CNTL_DIR="RT-Baselines_2d_warm_ccpp384_cmeps"
-export CNTLMED_DIR="RT-Baselines_2d_warm_ccpp384_cmeps/RESTART"
+export CNTL_DIR="RT-Baselines_s2s_control_c384"
+export CNTLMED_DIR="RT-Baselines_s2s_control_c384/RESTART"
 
 export LIST_FILES="phyf024.tile1.nc \
                    phyf024.tile2.nc \

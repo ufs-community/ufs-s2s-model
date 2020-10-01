@@ -3,11 +3,8 @@
 #
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS-WW3 system - C384 MX025 - Benchmark test with waves"
 
-#export CNTL_DIR="RT-Baselines_s2s_bmark"
-#export CNTLMED_DIR="RT-Baselines_s2s_bmark/RESTART"
-# test against current baseline 
-export CNTL_DIR="RT-Baselines_1d_bmwav_ccpp_cmeps"
-export CNTLMED_DIR="RT-Baselines_1d_bmwav_ccpp_cmeps/RESTART"
+export CNTL_DIR="RT-Baselines_s2s_bmark"
+export CNTLMED_DIR="RT-Baselines_s2s_bmark/RESTART"
 
 export LIST_FILES="phyf024.tile1.nc \
                    phyf024.tile2.nc \

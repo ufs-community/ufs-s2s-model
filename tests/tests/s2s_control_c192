@@ -51,9 +51,6 @@ export LIST_FILES="phyf024.tile1.nc \
                    RESTART/sfc_data.tile5.nc \
                    RESTART/sfc_data.tile6.nc \
                    RESTART/MOM.res.nc \
-                   RESTART/MOM.res_1.nc \
-                   RESTART/MOM.res_2.nc \
-                   RESTART/MOM.res_3.nc \
                    RESTART/iced.2016-10-04-00000.nc \
                    RESTART/ufs.s2s.cpl.r.2016-10-04-00000.nc"
 
