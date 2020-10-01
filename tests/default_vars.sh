@@ -296,8 +296,8 @@ export CA_GLOBAL=.F.
 
 export_cpl ()
 {
-export DAYS="2"
-export FHMAX="48"
+export DAYS="1"
+export FHMAX="24"
 export FDIAG="6"
 export WLCLK=30
 

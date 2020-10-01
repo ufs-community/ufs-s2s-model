@@ -58,7 +58,7 @@ export LIST_FILES="phyf024.tile1.nc \
                    RESTART/MOM.res_2.nc \
                    RESTART/MOM.res_3.nc \
                    RESTART/iced.2013-04-02-00000.nc \
-                   ufs.s2s.cpl.r.2013-04-02-00000.nc"
+                   RESTART/ufs.s2s.cpl.r.2013-04-02-00000.nc"
 
 export_fv3
 export_cpl
@@ -67,9 +67,6 @@ export SYEAR="2013"
 export SMONTH="04"
 export SDAY="01"
 export SHOUR="00"
-
-export DAYS="1"
-export FHMAX="24"
 
 export TASKS=$TASKS_cpl_bmrk
 export TPN=$TPN_cpl_bmrk
@@ -128,15 +125,10 @@ export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
 
 export OZ_PHYS_NEW=".T."
 
-export FV3_RESTART_INTERVAL=${FHMAX}
-
 export MOM_INPUT="MOM_input_template_${OCNRES}"
 export MOM6_RIVER_RUNOFF='True'
 export MOM6_RESTART_SETTING="r"
 
-# write a CICE restart 
-export DUMPFREQ_N=${DAYS}
-export DUMPFREQ="d"
 export RUNID="cpcice"
 
 export INPUT_NML=input.benchmark_ccpp.nml.IN
