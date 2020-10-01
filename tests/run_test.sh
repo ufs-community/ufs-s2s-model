@@ -1,15 +1,27 @@
 #!/bin/bash
 set -eux
 
+echo "PID=$$"
+SECONDS=0
+
+trap '[ "$?" -eq 0 ] || write_fail_test' EXIT
+trap 'echo "run_test.sh interrupted PID=$$"; cleanup' INT
+trap 'echo "run_test.sh terminated PID=$$";  cleanup' TERM
+
+cleanup() {
+  [[ $ROCOTO = 'false' ]] && interrupt_job
+  trap 0
+  exit
+}
+
 write_fail_test() {
   if [[ ${UNIT_TEST} == true ]]; then
     echo ${TEST_NR} $TEST_NAME >> $PATHRT/fail_unit_test
   else
-    echo $TEST_NAME >> $PATHRT/fail_test
+    echo "${TEST_NAME} ${TEST_NR} failed in run_test" >> $PATHRT/fail_test
   fi
+  exit 1
 }
-
-SECONDS=0
 
 if [[ $# != 5 ]]; then
   echo "Usage: $0 PATHRT RUNDIR_ROOT TEST_NAME TEST_NR COMPILE_NR"
@@ -36,10 +48,7 @@ export INPUT_DIR=${CNTL_DIR}
 export RUNDIR=${RUNDIR_ROOT}/${TEST_NAME}${RT_SUFFIX}
 export CNTL_DIR=${CNTL_DIR}${BL_SUFFIX}
 
-JBNME=$(basename $RUNDIR_ROOT)_${TEST_NR}
-export JBNME
-
-export FV3X=fcst_${COMPILE_NR}.exe
+export JBNME=$(basename $RUNDIR_ROOT)_${TEST_NR}
 
 UNIT_TEST=${UNIT_TEST:-false}
 if [[ ${UNIT_TEST} == false ]]; then
@@ -49,13 +58,101 @@ else
 fi
 export REGRESSIONTEST_LOG
 
-# Submit the actual test run script
 echo "Test ${TEST_NR} ${TEST_NAME} ${TEST_DESCR}"
-trap 'echo "run_test.sh: Test ${TEST_NAME} killed"; kill $(jobs -p); wait; trap 0; exit' 1 2 3 4 5 6 7 8 10 12 13 15
-trap '[ "$?" -eq 0 ] || write_fail_test' EXIT
 
-RUN_SCRIPT=rt_fv3.sh
-./${RUN_SCRIPT} > ${RUNDIR_ROOT}/${TEST_NAME}${RT_SUFFIX}.log 2>&1
+source rt_utils.sh
+source atparse.bash
+source edit_inputs.sh
+
+mkdir -p ${RUNDIR}
+cd $RUNDIR
+
+###############################################################################
+# Make configure and run files
+###############################################################################
+
+# FV3 executable:
+cp ${PATHRT}/fcst_${COMPILE_NR}.exe                 fcst.exe
+
+# modulefile for FV3 prerequisites:
+cp ${PATHRT}/modules.fcst_${COMPILE_NR}             modules.fcst
+
+# Get the shell file that loads the "module" command and purges modules:
+cp ${PATHRT}/../NEMS/src/conf/module-setup.sh.inc  module-setup.sh
+
+SRCD="${PATHTR}"
+RUND="${RUNDIR}"
+
+# Set up the run directory
+atparse < ${PATHRT}/fv3_conf/${FV3_RUN:-fv3_run.IN} > fv3_run
+source ./fv3_run
+atparse < ${PATHTR}/parm/${INPUT_NML:-input.nml.IN} > input.nml
+atparse < ${PATHTR}/parm/${MODEL_CONFIGURE:-model_configure.IN} > model_configure
+atparse < ${PATHTR}/parm/${NEMS_CONFIGURE:-nems.configure} > nems.configure
+
+edit_ice_in < ${PATHTR}/parm/ice_in_template > ice_in
+edit_mom_input < ${PATHTR}/parm/${MOM_INPUT:-MOM_input_template_$OCNRES} > INPUT/MOM_input
+edit_diag_table < ${PATHTR}/parm/diag_table_template > diag_table
+edit_data_table < ${PATHTR}/parm/data_table_template > data_table
+
+cp ${PATHTR}/parm/fd_nems.yaml fd_nems.yaml
+cp ${PATHTR}/parm/pio_in pio_in
+cp ${PATHTR}/parm/med_modelio.nml med_modelio.nml
+
+if [[ "Q${INPUT_NEST02_NML:-}" != Q ]] ; then
+    atparse < ${PATHTR}/parm/${INPUT_NEST02_NML} > input_nest02.nml
+fi
+
+if [[ $SCHEDULER = 'pbs' ]]; then
+  NODES=$(( TASKS / TPN ))
+  if (( NODES * TPN < TASKS )); then
+    NODES=$(( NODES + 1 ))
+  fi
+  atparse < $PATHRT/fv3_conf/fv3_qsub.IN > job_card
+elif [[ $SCHEDULER = 'slurm' ]]; then
+  NODES=$(( TASKS / TPN ))
+  if (( NODES * TPN < TASKS )); then
+    NODES=$(( NODES + 1 ))
+  fi
+  atparse < $PATHRT/fv3_conf/fv3_slurm.IN > job_card
+elif [[ $SCHEDULER = 'lsf' ]]; then
+  if (( TASKS < TPN )); then
+    TPN=${TASKS}
+  fi
+  NODES=$(( TASKS / TPN ))
+  if (( NODES * TPN < TASKS )); then
+    NODES=$(( NODES + 1 ))
+  fi
+  atparse < $PATHRT/fv3_conf/fv3_bsub.IN > job_card
+fi
+
+atparse < ${PATHTR}/parm/${NEMS_CONFIGURE:-nems.configure} > nems.configure
+
+################################################################################
+# Submit test job
+################################################################################
+
+if [[ $SCHEDULER = 'none' ]]; then
+
+  ulimit -s unlimited
+  mpiexec -n ${TASKS} ./fv3.exe >out 2> >(tee err >&3)
+
+else
+
+  if [[ $ROCOTO = 'false' ]]; then
+    submit_and_wait job_card
+  else
+    chmod u+x job_card
+    ./job_card
+  fi
+
+fi
+
+check_results
+
+################################################################################
+# End test
+################################################################################
 
 elapsed=$SECONDS
 echo "Elapsed time $elapsed seconds. Test ${TEST_NAME}"
