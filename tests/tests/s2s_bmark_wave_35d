@@ -1,5 +1,5 @@
 #
-#  S2S_benchmark_wave test
+#  S2S_benchmark_wave 35D
 #
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS-WW3 system - C384 MX025 - Benchmark 35d test with waves"
 

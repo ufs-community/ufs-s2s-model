@@ -1,11 +1,11 @@
 #
-#  S2S_restart test
+#  S2S_ca (cellular automata) test
 #
 
-export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX100 - 12h restart"
+export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX100 CA"
 
-export CNTL_DIR="RT-Baselines_s2s_control"
-export CNTLMED_DIR="RT-Baselines_s2s_control/RESTART"
+export CNTL_DIR="RT-Baselines_s2s_ca"
+export CNTLMED_DIR="RT-Baselines_s2s_ca/RESTART"
 
 export LIST_FILES="phyf024.tile1.nc \
                    phyf024.tile2.nc \
@@ -58,29 +58,8 @@ export LIST_FILES="phyf024.tile1.nc \
 export_fv3
 export_cpl
 
-export DAYS="0.50"
-export FHMAX="24"
-
-# ATM warm start
-FHROT='12'
-WARM_START='.T.'
-MAKE_NH='.F.'
-NA_INIT='0'
-EXTERNAL_IC='.F.'
-NGGPS_IC='.F.'
-MOUNTAIN='.T.'
-# 
-export FV3_RESTART_INTERVAL=12
-
-# ICE warm start
-RUNTYPE='continue'
-export USE_RESTART_TIME='.true.'
-
-# MOM6 warm start
-export MOM6_RESTART_SETTING="r"
-
-# write a CICE restart at FHMAX
-export DUMPFREQ_N=${FV3_RESTART_INTERVAL}
-export DUMPFREQ="h"
+export DO_CA=.T.
+export CA_SGS=.T.
+export CA_GLOBAL=.T.
 
 export FV3_RUN=s2s_control_run.IN

@@ -27,6 +27,7 @@ elif [ $MACHINE_ID = wcoss_dell_p3 ]; then
   TASKS_stretch=48 ; TPN_stretch=28 ; INPES_stretch=2 ; JNPES_stretch=4
   TASKS_strnest=96 ; TPN_strnest=28 ; INPES_strnest=2 ; JNPES_strnest=4
 
+  # To be deleted after c96/mx025 tests dropped
   TASKS_cpl_thrd_ori=246; TPN_cpl_thrd_ori=14; INPES_cpl_thrd_ori=3; JNPES_cpl_thrd_ori=4
   THRD_cpl_thrd_ori=2; WPG_cpl_thrd_ori=6;  MPB_cpl_thrd_ori="0 77";  APB_cpl_thrd_ori="0 77"
   OPB_cpl_thrd_ori="78 197";  IPB_cpl_thrd_ori="198 245"
@@ -62,6 +63,7 @@ elif [[ $MACHINE_ID = orion.* ]]; then
   TASKS_stretch=48 ; TPN_stretch=12 ; INPES_stretch=2 ; JNPES_stretch=4
   TASKS_strnest=96 ; TPN_strnest=12 ; INPES_strnest=2 ; JNPES_strnest=4
 
+  # To be deleted after c96/mx025 tests dropped
   TASKS_cpl_thrd_ori=246; TPN_cpl_thrd_ori=40; INPES_cpl_thrd_ori=3; JNPES_cpl_thrd_ori=4
   THRD_cpl_thrd_ori=2; WPG_cpl_thrd_ori=6;  MPB_cpl_thrd_ori="0 77";  APB_cpl_thrd_ori="0 77"
   OPB_cpl_thrd_ori="78 197";  IPB_cpl_thrd_ori="198 245"
@@ -97,6 +99,7 @@ elif [[ $MACHINE_ID = hera.* ]]; then
   TASKS_stretch=48 ; TPN_stretch=12 ; INPES_stretch=2 ; JNPES_stretch=4
   TASKS_strnest=96 ; TPN_strnest=12 ; INPES_strnest=2 ; JNPES_strnest=4
 
+  # To be deleted after c96/mx025 tests dropped
   TASKS_cpl_thrd_ori=246; TPN_cpl_thrd_ori=40; INPES_cpl_thrd_ori=3; JNPES_cpl_thrd_ori=4
   THRD_cpl_thrd_ori=2; WPG_cpl_thrd_ori=6;  MPB_cpl_thrd_ori="0 77";  APB_cpl_thrd_ori="0 77"
   OPB_cpl_thrd_ori="78 197";  IPB_cpl_thrd_ori="198 245"
