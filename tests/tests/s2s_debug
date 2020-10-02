@@ -68,6 +68,6 @@ export WLCLK=60
 export DUMPFREQ_N=${FHMAX}
 export DUMPFREQ="h"
 
-export FV3_RESTART_INTERVAL=${FHMAX}
+export FV3_RESTART_H=${FHMAX}
 
 export FV3_RUN=s2s_control_run.IN

@@ -418,6 +418,9 @@ if [[ $MACHINE_ID = cheyenne.* ]]; then
   RTPWD=${RTPWD:-$DISKNM/develop-20200210/${COMPILER^^}}
 else
   #RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20200928}
+  #orion
+  #RTPWD="/work/noaa/stmp/dworthen/stmp/dworthen/lowres_bl"
+  #hera
   RTPWD="/work/noaa/stmp/dworthen/stmp/dworthen/lowres_bl"
 fi
 

@@ -70,7 +70,7 @@ EXTERNAL_IC='.F.'
 NGGPS_IC='.F.'
 MOUNTAIN='.T.'
 # 
-export FV3_RESTART_INTERVAL=12
+export FV3_RESTART_H=12
 
 # ICE warm start
 RUNTYPE='continue'
@@ -80,7 +80,7 @@ export USE_RESTART_TIME='.true.'
 export MOM6_RESTART_SETTING="r"
 
 # write a CICE restart at FHMAX
-export DUMPFREQ_N=${FV3_RESTART_INTERVAL}
+export DUMPFREQ_N=${FV3_RESTART_H}
 export DUMPFREQ="h"
 
 export FV3_RUN=s2s_control_run.IN

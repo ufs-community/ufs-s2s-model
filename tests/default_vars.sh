@@ -343,7 +343,7 @@ export wav_model="ww3"
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 
-export FV3_RESTART_INTERVAL=${FHMAX}
+export FV3_RESTART_H=${FHMAX}
 export CPLMODE='nems_orig'
 export cap_dbug_flag="0"
 export use_coldstart="false"

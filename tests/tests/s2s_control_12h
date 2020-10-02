@@ -60,7 +60,7 @@ export_cpl
 
 export DAYS="0.50"
 export FHMAX="12"
-export FV3_RESTART_INTERVAL=${FHMAX}
+export FV3_RESTART_H=${FHMAX}
 
 # write a CICE restart at FHMAX
 export DUMPFREQ_N=${FHMAX}

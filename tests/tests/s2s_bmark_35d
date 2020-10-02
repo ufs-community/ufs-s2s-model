@@ -81,7 +81,7 @@ export DUMPFREQ_N=${DAYS}
 export DUMPFREQ="d"
 export RUNID="cpcice"
 
-export FV3_RESTART_INTERVAL=${FHMAX}
+export FV3_RESTART_H=${FHMAX}
 
 export INPUT_NML=input.benchmark_ccpp.nml.IN
 
