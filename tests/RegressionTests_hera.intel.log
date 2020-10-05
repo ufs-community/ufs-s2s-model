@@ -1,10 +1,10 @@
-Fri Oct  2 14:48:15 UTC 2020
+Mon Oct  5 05:50:55 UTC 2020
 Start Regression test
 
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_1d_bmwav_ccpp_cmeps
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_1d_bmwav_ccpp_cmeps/RESTART
-working dir  = /scratch2/BMC/gsd-fv3-dev/Shan.Sun/S2S_RT/rt_87080/cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt
+working dir  = /scratch2/BMC/gsd-fv3-dev/Shan.Sun/S2S_RT/rt_25890/cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt
 Checking test 001 cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -58,13 +58,13 @@ Checking test 001 cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt results ....
  Comparing RESTART/MOM.res_2.nc .........OK
  Comparing RESTART/MOM.res_3.nc .........OK
  Comparing RESTART/iced.2013-04-02-00000.nc .........OK
- Comparing ufs.s2s.cpl.r.2013-04-02-00000.nc .........OK
-Test 001 cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt PASS
+ Comparing ufs.s2s.cpl.r.2013-04-02-00000.nc ............NOT OK
+Test 001 cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt FAIL
 
 
 baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_1d_bmwav_ccpp_cmeps_frac
 mediator baseline dir = /scratch1/NCEPDEV/nems/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20200928/RT-Baselines_1d_bmwav_ccpp_cmeps_frac/RESTART
-working dir  = /scratch2/BMC/gsd-fv3-dev/Shan.Sun/S2S_RT/rt_87080/cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt_frac
+working dir  = /scratch2/BMC/gsd-fv3-dev/Shan.Sun/S2S_RT/rt_25890/cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt_frac
 Checking test 002 cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt_frac results ....
  Comparing phyf024.tile1.nc ............MISSING baseline
  Comparing phyf024.tile2.nc ............MISSING baseline
@@ -122,8 +122,9 @@ Checking test 002 cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt_frac results
 Test 002 cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt_frac FAIL
 
 FAILED TESTS: 
+Test cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt failed 
 Test cpld_fv3_ccpp_384_mom6_cice_cmeps_ww3_1d_bmark_rt_frac failed 
 
 REGRESSION TEST FAILED
-Fri Oct  2 16:08:02 UTC 2020
-Elapsed time: 01h:19m:50s. Have a nice day!
+Mon Oct  5 07:05:40 UTC 2020
+Elapsed time: 01h:14m:48s. Have a nice day!
