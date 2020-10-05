@@ -107,6 +107,6 @@ export FRUNOFF="runoff.daitren.clim.${NX_GLB}x${NY_GLB}.v20180328.nc"
 export MOM6_RIVER_RUNOFF='True'
 
 export DUMPFREQ_N=${DAYS}
-export FV3_RESTART_INTERVAL=${FHMAX}
+export FV3_RESTART_H=${FHMAX}
 
 export FV3_RUN=cpld_fv3_mom6_cice_atm_flux_run.IN

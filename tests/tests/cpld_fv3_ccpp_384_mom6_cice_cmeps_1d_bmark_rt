@@ -164,7 +164,7 @@ export DUMPFREQ_N='12'
 export DUMPFREQ="h"
 
 # restart test: CMEPS controls intervals in ALLCOMP
-export FV3_RESTART_INTERVAL='12'
+export FV3_RESTART_H='12'
 
 export MOM6_RIVER_RUNOFF='True'
 
