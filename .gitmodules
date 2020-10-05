@@ -20,16 +20,16 @@
 	branch = emc/develop
 [submodule "WW3"]
 	path = WW3
-	url = https://github.com/NOAA-EMC/WW3.git
-	branch = develop
+	url = https://github.com/MinsukJi-NOAA/WW3.git
+	branch = feature/stampede
 [submodule "CICE6"]
 	path = CICE-interface/CICE
-	url = https://github.com/NOAA-EMC/CICE.git
-	branch = emc/develop
+	url = https://github.com/MinsukJi-NOAA/CICE.git
+	branch = feature/stampede
 [submodule "MOM6-interface/mkmf"]
 	path = MOM6-interface/mkmf
-	url = https://github.com/NOAA-EMC/mkmf
-	branch = develop
+	url = https://github.com/MinsukJi-NOAA/mkmf
+	branch = feature/stampede
 [submodule "MOM6-interface/MOM6"]
 	path = MOM6-interface/MOM6
 	url = https://github.com/NOAA-EMC/MOM6
