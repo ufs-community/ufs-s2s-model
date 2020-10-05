@@ -99,6 +99,7 @@ export MOM6_THERMO_SPAN='True'
 export MOM6_REPRO_LA='True'
 
 export DUMPFREQ_N=${DAYS}
+export DUMPFREQ="d"
 export RUNID="cpcice"
 
 export INPUT_NML=input.benchmark_ccpp.nml.IN
