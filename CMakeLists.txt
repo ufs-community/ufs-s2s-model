@@ -35,7 +35,9 @@ set(PARALLEL_NETCDF OFF CACHE BOOL "Enable parallel NetCDF")
 set(QUAD_PRECISION  ON  CACHE BOOL "Enable QUAD_PRECISION (for certain grid metric terms in dycore)")
 set(REPRO           OFF CACHE BOOL "Enable REPRO mode")
 set(WW3             OFF CACHE BOOL "Enable WW3")
-set(S2S             ON  CACHE BOOL "Enable S2S Components MOM6/CICE6/CMEPS")
+set(MOM6            ON  CACHE BOOL "Enable S2S Component MOM6")
+set(CICE6           ON  CACHE BOOL "Enable S2S Component CICE6")
+set(CMEPS           ON  CACHE BOOL "Enable S2S Component CMEPS")
 
 if(CMAKE_Platform)
   message("")
@@ -61,7 +63,9 @@ message("PARALLEL_NETCDF .. ${PARALLEL_NETCDF}")
 message("QUAD_PRECISION ... ${QUAD_PRECISION}")
 message("REPRO ............ ${REPRO}")
 message("WW3 .............. ${WW3}")
-message("S2S .............. ${S2S}")
+message("MOM6 ............. ${MOM6}")
+message("CICE6 ............ ${CICE6}")
+message("CMEPS ............ ${CMEPS}")
 message("")
 
 get_filename_component(C_COMPILER_NAME ${CMAKE_C_COMPILER} NAME)
@@ -187,13 +191,17 @@ endif()
 ###############################################################################
 ### S2S
 ###############################################################################
-if(S2S)
+if(CMEPS)
     ### CMEPS
     add_subdirectory(CMEPS-interface)
+endif()
 
+if(CICE6)
     ### CICE
     add_subdirectory(CICE-interface)
+endif()
 
+if(MOM6)
     ### MOM6
     add_subdirectory(MOM6-interface)
 endif()
@@ -247,15 +255,23 @@ target_compile_definitions(ufs PRIVATE ${_ufs_defs_private})
 target_link_libraries(ufs PUBLIC esmf
                                  fv3atm)
 
-if(S2S)
-  list(APPEND _ufs_defs_private FRONT_MOM6=mom_cap_mod
-                                FRONT_CICE6=ice_comp_nuopc
-                                CMEPS
+if(MOM6)
+  list(APPEND _ufs_defs_private FRONT_MOM6=mom_cap_mod)
+  add_dependencies(ufs mom6ocn)
+  target_link_libraries(ufs PUBLIC mom6ocn)
+endif()
+
+if(CICE6)
+  list(APPEND _ufs_defs_private FRONT_CICE6=ice_comp_nuopc)
+  add_dependencies(ufs cice)
+  target_link_libraries(ufs PUBLIC cice)
+endif()
+
+if(CMEPS)
+  list(APPEND _ufs_defs_private CMEPS
                                 FRONT_CMEPS=MED)
-  add_dependencies(ufs mom6ocn cice cmeps)
-  target_link_libraries(ufs PUBLIC mom6ocn
-                                   cice
-                                   cmeps)
+  add_dependencies(ufs cmeps)
+  target_link_libraries(ufs PUBLIC cmeps)
 endif()
 
 ###############################################################################
@@ -275,10 +291,16 @@ if(WW3)
   add_dependencies(ufs_model ww3_nems)
 endif()
 
-if(S2S)
-  list(APPEND _ufs_model_defs_private FRONT_MOM6=mom_cap_mod
-                                      FRONT_CICE6=ice_comp_nuopc
-                                      CMEPS
+if(MOM6)
+  list(APPEND _ufs_model_defs_private FRONT_MOM6=mom_cap_mod)
+endif()
+
+if(CICE6)
+  list(APPEND _ufs_model_defs_private FRONT_CICE6=ice_comp_nuopc)
+endif()
+
+if(CMEPS)
+  list(APPEND _ufs_model_defs_private CMEPS
                                       FRONT_CMEPS=MED)
 endif()
 
