@@ -4,8 +4,6 @@
   branch = feature/pio
 [submodule "FV3"]
   path = FV3
-  #url = https://github.com/NOAA-EMC/fv3atm
-  #branch = develop
   url = https://github.com/aerorahul/fv3atm
   branch = feature/overload
 [submodule "NEMS"]
@@ -20,8 +18,6 @@
   branch = master
 [submodule "stochastic_physics"]
   path = stochastic_physics
-  #url = https://github.com/noaa-psd/stochastic_physics
-  #branch = master
   url = https://github.com/aerorahul/stochastic_physics
   branch = feature/overload
 [submodule "CMEPS"]
