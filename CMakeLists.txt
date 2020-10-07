@@ -112,8 +112,8 @@ if(CCPP)
 endif()
 
 # Ensure S2S is 64BIT
-if(S2S AND 32BIT)
-  message(FATAL_ERROR "S2S=ON and 32BIT=ON are incompatible, ABORT!")
+if(32BIT AND NOT (MOM6 OR CICE OR CMEPS))
+  message(FATAL_ERROR "S2S components and 32BIT=ON are incompatible, ABORT!")
 endif()
 
 ###############################################################################
