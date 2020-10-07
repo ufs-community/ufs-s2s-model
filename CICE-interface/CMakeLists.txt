@@ -22,14 +22,11 @@ endif()
 
 add_library(cice ${lib_src_files})
 
-set_target_properties(cice PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CICE)
-set_target_properties(cice PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CICE/mod)
-target_include_directories(cice PUBLIC
-                                $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CICE/mod>
-                                $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/CICE/mod>)
-
+set_target_properties(cice PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/mod)
 target_compile_definitions(cice PRIVATE FORTRANUNDERSCORE
                                         USE_NETCDF)
+target_include_directories(cice INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
+                                          $<INSTALL_INTERFACE:mod>)
 
 target_link_libraries(cice PUBLIC esmf
                                   NetCDF::NetCDF_Fortran

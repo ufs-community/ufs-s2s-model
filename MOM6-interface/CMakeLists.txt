@@ -9,16 +9,13 @@ include("mom6_files.cmake")
 
 add_library(mom6 ${mom6_src_files})
 
-set_target_properties(mom6 PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/MOM6)
-set_target_properties(mom6 PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod)
-target_include_directories(mom6 PUBLIC
-                                $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod>
-                                $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/MOM6/mod>)
+set_target_properties(mom6 PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/mod)
+target_include_directories(mom6 INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
+                                          $<INSTALL_INTERFACE:mod>)
 
-target_include_directories(mom6 PUBLIC
-                                $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/config_src/dynamic>
-                                $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/src/framework>
-                                $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/config_src/nuopc_driver>)
+target_include_directories(mom6 PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/config_src/dynamic>
+                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/src/framework>
+                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/config_src/nuopc_driver>)
 
 target_link_libraries(mom6 PUBLIC fms
                                   NetCDF::NetCDF_Fortran)
@@ -29,11 +26,9 @@ target_link_libraries(mom6 PUBLIC fms
 
 add_library(mom6ocn ${mom6_config_src_files})
 
-set_target_properties(mom6ocn PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/MOM6)
-set_target_properties(mom6ocn PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod)
-target_include_directories(mom6ocn PUBLIC
-                                   $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod>
-                                   $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/MOM6/mod>)
+set_target_properties(mom6ocn PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/mod)
+target_include_directories(mom6ocn INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
+                                             $<INSTALL_INTERFACE:mod>)
 
 target_link_libraries(mom6ocn PUBLIC mom6
                                      esmf)

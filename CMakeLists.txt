@@ -211,7 +211,7 @@ list(APPEND _nems_srcs NEMS/src/module_NEMS_UTILS.F90
     NEMS/src/module_NEMS_GRID_COMP.F90
     NEMS/src/module_NEMS_Rusage.F90
     NEMS/src/nems_c_rusage.c
-                       NEMS/src/ENS_Cpl/ENS_CplComp_ESMFMod_STUB.F90)
+    NEMS/src/ENS_Cpl/ENS_CplComp_ESMFMod_STUB.F90)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/NEMS/src/ESMFVersionDefine_ESMF_NUOPC.h
                ${CMAKE_CURRENT_BINARY_DIR}/NEMS/src/ESMFVersionDefine.h
@@ -240,25 +240,22 @@ if(WW3)
     target_link_libraries(ufs PUBLIC ${WW3_LIBS})
 endif()
 
-if(S2S)
-  list(APPEND _ufs_defs_private FRONT_MOM6=mom_cap_mod
-                                FRONT_CICE6=ice_comp_nuopc
-                                CMEPS -DFRONT_CMEPS=MED)
-  target_include_directories(ufs PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/mod
-                                        ${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod
-                                        ${CMAKE_CURRENT_BINARY_DIR}/CMEPS-interface/mod)
-  add_dependencies(ufs mom6ocn cice cmeps)
-  target_link_libraries(ufs PUBLIC mom6ocn
-                                   cice
-                                   cmeps)
-endif()
-
 target_include_directories(ufs INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
                                          $<INSTALL_INTERFACE:mod>)
 
 target_compile_definitions(ufs PRIVATE ${_ufs_defs_private})
 target_link_libraries(ufs PUBLIC esmf
                                  fv3atm)
+
+if(S2S)
+  list(APPEND _ufs_defs_private FRONT_MOM6=mom_cap_mod
+                                FRONT_CICE6=ice_comp_nuopc
+                                CMEPS -DFRONT_CMEPS=MED)
+  add_dependencies(ufs mom6ocn cice cmeps)
+  target_link_libraries(ufs PUBLIC mom6ocn
+                                   cice
+                                   cmeps)
+endif()
 
 ###############################################################################
 ### UFS executable

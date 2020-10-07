@@ -6,14 +6,11 @@ include("cmeps_files.cmake")
 # CMEPS NEMS Utils
 add_library(cmeps_util ${cmeps_nems_util_files})
 
-set_target_properties(cmeps_util PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS)
-set_target_properties(cmeps_util PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod)
-target_include_directories(cmeps_util PUBLIC
-                                      $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>
-                                      $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/CMEPS/mod>)
+set_target_properties(cmeps_util PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/mod)
+target_include_directories(cmeps_util INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
+                                                $<INSTALL_INTERFACE:mod>)
 
-target_include_directories(cmeps_util PUBLIC
-                                      $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/CMEPS/nems/util>)
+target_include_directories(cmeps_util PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/CMEPS/nems/util>)
 
 target_link_libraries(cmeps_util PUBLIC esmf
                                         PIO::PIO_C PIO::PIO_Fortran)
@@ -25,18 +22,15 @@ endif()
 # CMEPS Mediator
 add_library(cmeps ${cmeps_mediator_src_files})
 
-set_target_properties(cmeps PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS)
-set_target_properties(cmeps PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod)
-target_include_directories(cmeps PUBLIC
-                                 $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>
-                                 $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/CMEPS/mod>)
+set_target_properties(cmeps PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/mod)
+target_include_directories(cmeps PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
+                                        $<INSTALL_INTERFACE:mod>)
 
 target_compile_definitions(cmeps PRIVATE ESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR}
-                                         ESMF_VERSION_MINOR=${ESMF_VERSION_MINOR})
+                                         ESMF_VERSION_MINOR=${ESMF_VERSION_MINOR}
                                          INTERNAL_PIO_INIT)
 
-target_include_directories(cmeps PUBLIC
-                                 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/CMEPS/mediator>)
+target_include_directories(cmeps PRIVATE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/CMEPS/mediator>)
 
 target_link_libraries(cmeps PUBLIC cmeps_util
                                    esmf
