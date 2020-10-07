@@ -278,7 +278,8 @@ endif()
 if(S2S)
   list(APPEND _ufs_model_defs_private FRONT_MOM6=mom_cap_mod
                                       FRONT_CICE6=ice_comp_nuopc
-                                      CMEPS -DFRONT_CMEPS=MED)
+                                      CMEPS
+                                      FRONT_CMEPS=MED)
 endif()
 
 target_compile_definitions(ufs_model PRIVATE "${_ufs_model_defs_private}")
