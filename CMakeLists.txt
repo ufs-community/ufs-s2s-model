@@ -35,9 +35,7 @@ set(PARALLEL_NETCDF OFF CACHE BOOL "Enable parallel NetCDF")
 set(QUAD_PRECISION  ON  CACHE BOOL "Enable QUAD_PRECISION (for certain grid metric terms in dycore)")
 set(REPRO           OFF CACHE BOOL "Enable REPRO mode")
 set(WW3             OFF CACHE BOOL "Enable WW3")
-set(MOM6            ON  CACHE BOOL "Enable S2S Component MOM6")
-set(CICE6           ON  CACHE BOOL "Enable S2S Component CICE6")
-set(CMEPS           ON  CACHE BOOL "Enable S2S Component CMEPS")
+set(S2S             ON  CACHE BOOL "Enable S2S Components MOM6/CICE6/CMEPS")
 
 if(CMAKE_Platform)
   message("")
@@ -63,9 +61,7 @@ message("PARALLEL_NETCDF .. ${PARALLEL_NETCDF}")
 message("QUAD_PRECISION ... ${QUAD_PRECISION}")
 message("REPRO ............ ${REPRO}")
 message("WW3 .............. ${WW3}")
-message("MOM6 ............. ${MOM6}")
-message("CICE6 ............ ${CICE6}")
-message("CMEPS ............ ${CMEPS}")
+message("S2S .............. ${S2S}")
 message("")
 
 get_filename_component(C_COMPILER_NAME ${CMAKE_C_COMPILER} NAME)
@@ -112,8 +108,8 @@ if(CCPP)
 endif()
 
 # Ensure S2S is 64BIT
-if(32BIT AND NOT (MOM6 OR CICE OR CMEPS))
-  message(FATAL_ERROR "S2S components and 32BIT=ON are incompatible, ABORT!")
+if(S2S AND 32BIT)
+  message(FATAL_ERROR "S2S=ON and 32BIT=ON are incompatible, ABORT!")
 endif()
 
 ###############################################################################
@@ -141,12 +137,11 @@ target_compile_definitions(fms PRIVATE "${_fms_defs_private}")
 
 target_include_directories(fms PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/FMS/include>
                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/FMS/fms>
-                                      $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/FMS/fms2_io/include>
                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/FMS/mpp/include>)
 target_link_libraries(fms PUBLIC MPI::MPI_Fortran
                                  NetCDF::NetCDF_Fortran)
 if(OpenMP_Fortran_FOUND)
-  target_link_libraries(fms PUBLIC OpenMP::OpenMP_Fortran)
+  target_link_libraries(fms PRIVATE OpenMP::OpenMP_Fortran)
 endif()
 set_target_properties(fms PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/FMS)
 set_target_properties(fms PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/FMS/mod)
@@ -191,35 +186,31 @@ endif()
 ###############################################################################
 ### S2S
 ###############################################################################
-if(CMEPS)
-    ### CMEPS
-    add_subdirectory(CMEPS-interface)
-endif()
+if(S2S)
+  ### CMEPS
+  add_subdirectory(CMEPS-interface)
 
-if(CICE6)
-    ### CICE
-    add_subdirectory(CICE-interface)
-endif()
+  ### CICE
+  add_subdirectory(CICE-interface)
 
-if(MOM6)
-    ### MOM6
-    add_subdirectory(MOM6-interface)
+  ### MOM6
+  add_subdirectory(MOM6-interface)
 endif()
 
 ###############################################################################
 ### NEMS (ufs)
 ###############################################################################
 list(APPEND _nems_srcs NEMS/src/module_NEMS_UTILS.F90
-    NEMS/src/module_MEDIATOR_methods.F90
-    NEMS/src/module_MEDIATOR.F90
-    NEMS/src/module_MEDIATOR_SpaceWeather.F90
-    NEMS/src/module_EARTH_INTERNAL_STATE.F90
-    NEMS/src/module_EARTH_GRID_COMP.F90
-    NEMS/src/module_NEMS_INTERNAL_STATE.F90
-    NEMS/src/module_NEMS_GRID_COMP.F90
-    NEMS/src/module_NEMS_Rusage.F90
-    NEMS/src/nems_c_rusage.c
-    NEMS/src/ENS_Cpl/ENS_CplComp_ESMFMod_STUB.F90)
+                       NEMS/src/module_MEDIATOR_methods.F90
+                       NEMS/src/module_MEDIATOR.F90
+                       NEMS/src/module_MEDIATOR_SpaceWeather.F90
+                       NEMS/src/module_EARTH_INTERNAL_STATE.F90
+                       NEMS/src/module_EARTH_GRID_COMP.F90
+                       NEMS/src/module_NEMS_INTERNAL_STATE.F90
+                       NEMS/src/module_NEMS_GRID_COMP.F90
+                       NEMS/src/module_NEMS_Rusage.F90
+                       NEMS/src/nems_c_rusage.c
+                       NEMS/src/ENS_Cpl/ENS_CplComp_ESMFMod_STUB.F90)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/NEMS/src/ESMFVersionDefine_ESMF_NUOPC.h
                ${CMAKE_CURRENT_BINARY_DIR}/NEMS/src/ESMFVersionDefine.h
@@ -244,67 +235,42 @@ target_include_directories(ufs PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/NEMS/src)
 if(WW3)
   list(APPEND _ufs_defs_private FRONT_WW3=WMESMFMD)
   target_include_directories(ufs PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/WW3/model/mod)
-    add_dependencies(ufs ww3_nems)
-    target_link_libraries(ufs PUBLIC ${WW3_LIBS})
+  add_dependencies(ufs ww3_nems)
+  target_link_libraries(ufs PUBLIC ${WW3_LIBS})
 endif()
 
 target_include_directories(ufs INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
                                          $<INSTALL_INTERFACE:mod>)
 
-target_compile_definitions(ufs PRIVATE ${_ufs_defs_private})
 target_link_libraries(ufs PUBLIC esmf
                                  fv3atm)
 
-if(MOM6)
-  list(APPEND _ufs_defs_private FRONT_MOM6=mom_cap_mod)
-  add_dependencies(ufs mom6ocn)
-  target_link_libraries(ufs PUBLIC mom6ocn)
-endif()
-
-if(CICE6)
-  list(APPEND _ufs_defs_private FRONT_CICE6=ice_comp_nuopc)
-  add_dependencies(ufs cice)
-  target_link_libraries(ufs PUBLIC cice)
-endif()
-
-if(CMEPS)
-  list(APPEND _ufs_defs_private CMEPS
+if(S2S)
+  list(APPEND _ufs_defs_private FRONT_MOM6=mom_cap_mod
+                                FRONT_CICE6=ice_comp_nuopc
+                                CMEPS
                                 FRONT_CMEPS=MED)
-  add_dependencies(ufs cmeps)
-  target_link_libraries(ufs PUBLIC cmeps)
+  add_dependencies(ufs mom6ocn cice cmeps)
+  target_link_libraries(ufs PUBLIC mom6ocn
+                                   cice
+                                   cmeps)
 endif()
+
+target_compile_definitions(ufs PRIVATE "${_ufs_defs_private}")
 
 ###############################################################################
 ### UFS executable
 ###############################################################################
 add_executable(ufs_model NEMS/src/MAIN_NEMS.F90)
 
-list(APPEND _ufs_model_defs_private ESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR})
-
 set_target_properties(ufs_model PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/mod)
-
+target_compile_definitions(ufs_model PRIVATE ESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR})
 target_include_directories(ufs_model PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/NEMS/src)
 
 if(WW3)
-  list(APPEND _ufs_model_defs_private FRONT_WW3=WMESMFMD)
   target_include_directories(ufs_model PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/WW3/model/mod)
   add_dependencies(ufs_model ww3_nems)
 endif()
-
-if(MOM6)
-  list(APPEND _ufs_model_defs_private FRONT_MOM6=mom_cap_mod)
-endif()
-
-if(CICE6)
-  list(APPEND _ufs_model_defs_private FRONT_CICE6=ice_comp_nuopc)
-endif()
-
-if(CMEPS)
-  list(APPEND _ufs_model_defs_private CMEPS
-                                      FRONT_CMEPS=MED)
-endif()
-
-target_compile_definitions(ufs_model PRIVATE "${_ufs_model_defs_private}")
 
 target_link_libraries(ufs_model PRIVATE ufs
                                         esmf
