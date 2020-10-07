@@ -1,7 +1,7 @@
 #
 #  S2S_control_c384 test
 #
-export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C384 MX025 "
+export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C384 MX025"
 
 export CNTL_DIR="RT-Baselines_s2s_control_c384"
 export CNTLMED_DIR="RT-Baselines_s2s_control_c384"

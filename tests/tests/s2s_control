@@ -2,7 +2,7 @@
 #  S2S_control test
 #
 
-export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX100 "
+export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX100"
 
 export CNTL_DIR="RT-Baselines_s2s_control"
 export CNTLMED_DIR="RT-Baselines_s2s_control"

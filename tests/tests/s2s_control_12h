@@ -2,7 +2,7 @@
 #  S2S_control 12h test
 #
 
-export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX100 12h "
+export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX100 12h"
 
 export CNTL_DIR="RT-Baselines_s2s_control_12h"
 export CNTLMED_DIR="RT-Baselines_s2s_control_12h"
