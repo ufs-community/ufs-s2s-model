@@ -20,8 +20,8 @@ target_include_directories(mom6 PUBLIC
                                 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/src/framework>
                                 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/MOM6/config_src/nuopc_driver>)
 
-target_link_libraries(mom6 PUBLIC fms)
-target_link_libraries(mom6 PUBLIC NetCDF::NetCDF_Fortran)
+target_link_libraries(mom6 PUBLIC fms
+                                  NetCDF::NetCDF_Fortran)
 
 ###############################################################################
 ### mom6ocn
@@ -35,8 +35,8 @@ target_include_directories(mom6ocn PUBLIC
                                    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6/mod>
                                    $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/MOM6/mod>)
 
-target_link_libraries(mom6ocn PUBLIC mom6)
-target_link_libraries(mom6ocn PUBLIC esmf)
+target_link_libraries(mom6ocn PUBLIC mom6
+                                     esmf)
 
 ###############################################################################
 ### Install

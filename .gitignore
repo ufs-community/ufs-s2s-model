@@ -60,3 +60,14 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+
+
+ufs_model
+NEMS.exe
+*.exe
+
+tests/fv3_*.exe
+tests/modules.fv3_*
+tests/ecflow_run/
+tests/log_*/
+tests/lock/

@@ -28,12 +28,12 @@ target_include_directories(cice PUBLIC
                                 $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CICE/mod>
                                 $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/CICE/mod>)
 
-target_compile_definitions(cice PRIVATE
-                                "-DFORTRANUNDERSCORE -DUSE_NETCDF")
+target_compile_definitions(cice PRIVATE FORTRANUNDERSCORE
+                                        USE_NETCDF)
 
-target_link_libraries(cice PUBLIC esmf)
-target_link_libraries(cice PUBLIC NetCDF::NetCDF_Fortran)
-target_link_libraries(cice PUBLIC PIO::PIO_Fortran)
+target_link_libraries(cice PUBLIC esmf
+                                  NetCDF::NetCDF_Fortran
+                                  PIO::PIO_Fortran)
 
 if(OpenMP_Fortran_FOUND)
   target_link_libraries(cice PUBLIC OpenMP::OpenMP_Fortran)

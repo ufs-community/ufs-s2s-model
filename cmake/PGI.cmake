@@ -25,22 +25,9 @@ endif()
 if(32BIT)
     message("32BIT is       ENABLED")
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -i4 -r4")
-    add_definitions(-DOVERLOAD_R4)
-    add_definitions(-DOVERLOAD_R8)
 else()
     message("32BIT is       disabled")
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -i4 -r8 -Mfprelaxed=div -Mfprelaxed=sqrt")
-endif()
-
-
-if(OPENMP)
-    message("OPENMP is      ENABLED")
-    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -mp")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mp")
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -mp")
-    add_definitions(-DOPENMP)
-else()
-    message("OPENMP is      disabled")
 endif()
 
 

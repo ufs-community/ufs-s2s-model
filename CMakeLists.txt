@@ -39,9 +39,9 @@ set(S2S             ON  CACHE BOOL "Enable S2S Components MOM6/CICE6/CMEPS")
 
 if(CMAKE_Platform)
   message("")
-  if(EXISTS ${PROJECT_SOURCE_DIR}/cmake/configure_${CMAKE_Platform}.cmake)
+  if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/cmake/configure_${CMAKE_Platform}.cmake)
     message("Setting configuration for ${CMAKE_Platform}")
-    include(${PROJECT_SOURCE_DIR}/cmake/configure_${CMAKE_Platform}.cmake)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/configure_${CMAKE_Platform}.cmake)
   else()
     message("Platform '${CMAKE_Platform}' configuration file does not exist")
   endif()
@@ -53,7 +53,7 @@ message("AVX2 ............. ${AVX2}")
 message("SIMDMULTIARCH      ${SIMDMULTIARCH}")
 message("CCPP ............. ${CCPP}")
 message("DEBUG ............ ${DEBUG}")
-message("DEBUG_LINKMPI..... ${DEBUG_LINKMPI}")
+message("DEBUG_LINKMPI .... ${DEBUG_LINKMPI}")
 message("INLINE_POST ...... ${INLINE_POST}")
 message("MULTI_GASES ...... ${MULTI_GASES}")
 message("OPENMP ........... ${OPENMP}")
@@ -72,11 +72,18 @@ message("CXX     compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION
 message("Fortran compiler: ${CMAKE_Fortran_COMPILER_ID} ${CMAKE_Fortran_COMPILER_VERSION} (${Fortran_COMPILER_NAME})")
 message("")
 
+if (CMAKE_Fortran_COMPILER_ID MATCHES "GNU" AND CMAKE_Fortran_COMPILER_VERSION VERSION_LESS 9.0.0)
+  message(FATAL_ERROR "GNU Compiler >= 9 is required")
+endif()
+
 include(cmake/${CMAKE_Fortran_COMPILER_ID}.cmake)
 message("")
 
 find_package(NetCDF REQUIRED C Fortran)
 find_package(MPI REQUIRED)
+if(OPENMP)
+  find_package(OpenMP REQUIRED)
+endif()
 find_package(ESMF MODULE REQUIRED)
 
 find_package(bacio REQUIRED)
@@ -92,79 +99,17 @@ find_package(PIO REQUIRED COMPONENTS C Fortran STATIC)
 # See https://github.com/NOAA-EMC/NCEPLIBS-nemsio/pull/22
 target_link_libraries(nemsio::nemsio INTERFACE w3emc::w3emc_d bacio::bacio_4)
 
-list(APPEND fms_defs
-  use_libMPI
-  use_netCDF
-  USE_GFSL63
-  GFS_PHYS
-  INTERNAL_FILE_NML)
-
-list(APPEND fv3_defs
-  SPMD
-  MOIST_CAPPA
-  USE_COND
-  NEW_TAUCTMAX
-  use_WRTCOMP)
-
-list(APPEND mom6_defs
-  USE_LOG_DIAG_FIELD_INFO)
-
-if (CMAKE_Fortran_COMPILER_ID MATCHES "GNU" AND CMAKE_Fortran_COMPILER_VERSION VERSION_LESS 9.0.0)
-  message(FATAL_ERROR "GNU Compiler >= 9 is required")
+if(CCPP)
+  find_package(Python 3 QUIET COMPONENTS Interpreter)
+  if (NOT Python_Interpreter_FOUND)
+    find_package(Python 2.7 REQUIRED COMPONENTS Interpreter)
+  endif()
+  message("Found Python: ${Python_EXECUTABLE}")
 endif()
 
-if(CCPP)
-
-    find_package(Python 3 QUIET COMPONENTS Interpreter)
-    if (NOT Python_Interpreter_FOUND)
-      find_package(Python 2.7 REQUIRED COMPONENTS Interpreter)
-    endif()
-    message("Found Python: ${Python_EXECUTABLE}")
-
-    if(DEFINED CCPP_SUITES)
-        message("Calling CCPP code generator (ccpp_prebuild.py) for SUITES = ${CCPP_SUITES}")
-        execute_process(COMMAND ${Python_EXECUTABLE}
-                                "FV3/ccpp/framework/scripts/ccpp_prebuild.py"
-                                "--config=FV3/ccpp/config/ccpp_prebuild_config.py"
-                                "--suites=${CCPP_SUITES}"
-                                "--builddir=${PROJECT_BINARY_DIR}/FV3"
-                        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-                        OUTPUT_FILE ${PROJECT_BINARY_DIR}/ccpp_prebuild.out
-                        ERROR_FILE ${PROJECT_BINARY_DIR}/ccpp_prebuild.err
-                        RESULT_VARIABLE RC
-                       )
-    else()
-        message("Calling CCPP code generator (ccpp_prebuild.py) ...")
-        execute_process(COMMAND ${Python_EXECUTABLE}
-                                "FV3/ccpp/framework/scripts/ccpp_prebuild.py"
-                                "--config=FV3/ccpp/config/ccpp_prebuild_config.py"
-                                "--builddir=${PROJECT_BINARY_DIR}/FV3"
-                        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-                        OUTPUT_FILE ${PROJECT_BINARY_DIR}/ccpp_prebuild.out
-                        ERROR_FILE ${PROJECT_BINARY_DIR}/ccpp_prebuild.err
-                        RESULT_VARIABLE RC
-                       )
-    endif()
-
-    # Check return code from ccpp_prebuild.py
-    if(RC EQUAL 0)
-        message("")
-    else()
-        message(FATAL_ERROR "An error occured while running ccpp_prebuild.py, check ${PROJECT_BINARY_DIR}/ccpp_prebuild.{out,err}")
-    endif()
-
-    # this should not be necessary; including CCPP_*.cmake here and passing
-    # SCHEMES, CAPS and TYPEDEFS via environment variables to CCPP build.
-    # CCPP should be able to directly include those three .cmake files.
-
-    include(${PROJECT_BINARY_DIR}/FV3/ccpp/physics/CCPP_SCHEMES.cmake)
-    include(${PROJECT_BINARY_DIR}/FV3/ccpp/physics/CCPP_CAPS.cmake)
-    include(${PROJECT_BINARY_DIR}/FV3/ccpp/physics/CCPP_TYPEDEFS.cmake)
-
-    set(ENV{CCPP_SCHEMES} "${SCHEMES}")
-    set(ENV{CCPP_CAPS} "${CAPS}")
-    set(ENV{CCPP_TYPEDEFS} "${TYPEDEFS}")
-
+# Ensure S2S is 64BIT
+if(S2S AND 32BIT)
+  message(FATAL_ERROR "S2S=ON and 32BIT=ON are incompatible, ABORT!")
 endif()
 
 ###############################################################################
@@ -175,21 +120,34 @@ add_library(fms ${fms_src_files})
 # stupid cmake can not figure out dependency of fft.F90 on fft99.F90 because 'use fft99_mod' is inside ifdefs
 set_property(SOURCE FMS/fft/fft.F90 APPEND_STRING PROPERTY COMPILE_FLAGS "-DSGICRAY=0 -DNAGFFT=0")
 
-target_compile_definitions(fms PUBLIC "${fms_defs}")
-target_include_directories(fms PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/FMS/include>
-                                      $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/FMS/fms>
-                                      $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/FMS/fms2_io/include>
-                                      $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/FMS/mpp/include>)
-target_link_libraries(fms PUBLIC NetCDF::NetCDF_Fortran
-                                 MPI::MPI_Fortran)
-if(OPENMP AND OpenMP_Fortran_FOUND)
+list(APPEND _fms_defs_public use_libMPI
+                             use_netCDF
+                             GFS_PHYS
+                             INTERNAL_FILE_NML)
+if(QUAD_PRECISION)
+  list(APPEND _fms_defs_public ENABLE_QUAD_PRECISION)
+endif()
+target_compile_definitions(fms PUBLIC "${_fms_defs_public}")
+
+if(32BIT)
+  list(APPEND _fms_defs_private OVERLOAD_R4
+                                OVERLOAD_R8)
+endif()
+target_compile_definitions(fms PRIVATE "${_fms_defs_private}")
+
+target_include_directories(fms PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/FMS/include>
+                                      $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/FMS/fms>
+                                      $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/FMS/fms2_io/include>
+                                      $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/FMS/mpp/include>)
+target_link_libraries(fms PUBLIC MPI::MPI_Fortran
+                                 NetCDF::NetCDF_Fortran)
+if(OpenMP_Fortran_FOUND)
   target_link_libraries(fms PUBLIC OpenMP::OpenMP_Fortran)
 endif()
-
 set_target_properties(fms PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/FMS)
 set_target_properties(fms PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/FMS/mod)
-target_include_directories(fms PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/FMS/mod>
-                                      $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/FMS/mod>)
+target_include_directories(fms INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/FMS/mod>
+                                         $<INSTALL_INTERFACE:FMS/mod>)
 
 ###############################################################################
 ### stochastic_physics
@@ -205,24 +163,25 @@ add_subdirectory(FV3)
 ### WW3
 ###############################################################################
 if(WW3)
-  set(WW3_COMP ${CMAKE_Platform})
+  if(CMAKE_Platform)
   if(${CMAKE_Platform} STREQUAL "hera.intel")
     set(WW3_COMP "hera")
-  endif()
-  if(${CMAKE_Platform} STREQUAL "orion.intel")
+    elseif(${CMAKE_Platform} STREQUAL "orion.intel")
     set(WW3_COMP "orion")
+    else()
+      set(WW3_COMP ${CMAKE_Platform})
+    endif()
   endif()
   message("Build WW3:")
   message("   run: ${CMAKE_BUILD_TOOL} WW3_PARCOMPN=4 WW3_COMP=${WW3_COMP} ww3_nemslibonly")
-  message("   in:  ${PROJECT_SOURCE_DIR}/WW3/model/esmf")
+  message("   in:  ${CMAKE_CURRENT_SOURCE_DIR}/WW3/model/esmf")
   message("")
 
   add_custom_target(ww3_nems
-    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/WW3/model/esmf
-    COMMAND ${CMAKE_BUILD_TOOL} WW3_PARCOMPN=4 WW3_COMP=${WW3_COMP} ww3_nemslibonly > ${PROJECT_BINARY_DIR}/ww3_make.log 2>&1
-  )
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/WW3/model/esmf
+    COMMAND ${CMAKE_BUILD_TOOL} WW3_PARCOMPN=4 WW3_COMP=${WW3_COMP} ww3_nemslibonly > ${CMAKE_CURRENT_BINARY_DIR}/ww3_make.log 2>&1)
 
-    set(WW3_LIBS ${PROJECT_SOURCE_DIR}/WW3/model/obj/libww3_multi_esmf.a)
+    set(WW3_LIBS ${CMAKE_CURRENT_SOURCE_DIR}/WW3/model/obj/libww3_multi_esmf.a)
 endif()
 
 ###############################################################################
@@ -242,10 +201,7 @@ endif()
 ###############################################################################
 ### NEMS (ufs)
 ###############################################################################
-add_library(
-    ufs
-
-    NEMS/src/module_NEMS_UTILS.F90
+list(APPEND _nems_srcs NEMS/src/module_NEMS_UTILS.F90
     NEMS/src/module_MEDIATOR_methods.F90
     NEMS/src/module_MEDIATOR.F90
     NEMS/src/module_MEDIATOR_SpaceWeather.F90
@@ -255,115 +211,90 @@ add_library(
     NEMS/src/module_NEMS_GRID_COMP.F90
     NEMS/src/module_NEMS_Rusage.F90
     NEMS/src/nems_c_rusage.c
-    NEMS/src/ENS_Cpl/ENS_CplComp_ESMFMod_STUB.F90
-)
-if(CMAKE_Fortran_COMPILER_ID MATCHES "Intel")
-    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -save-temps")
-endif()
+                       NEMS/src/ENS_Cpl/ENS_CplComp_ESMFMod_STUB.F90)
 
-add_dependencies(ufs fv3atm fms)
-target_link_libraries(ufs PUBLIC fms)
-target_link_libraries(ufs PUBLIC esmf)
-target_link_libraries(ufs PUBLIC PIO::PIO_Fortran PIO::PIO_C)
-target_link_libraries(ufs PUBLIC fv3atm )
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/NEMS/src/ESMFVersionDefine_ESMF_NUOPC.h
+               ${CMAKE_CURRENT_BINARY_DIR}/NEMS/src/ESMFVersionDefine.h
+               COPYONLY)
+# until we remove "../ESMFVersionDefine.h" from ENS_Cpl/ENS_CplComp_ESMFMod_STUB.F90
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/NEMS/src/ESMFVersionDefine_ESMF_NUOPC.h
+               ${CMAKE_CURRENT_BINARY_DIR}/NEMS/ESMFVersionDefine.h
+               COPYONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/NEMS/src/ESMFConvenienceMacros.h
+               ${CMAKE_CURRENT_BINARY_DIR}/NEMS/src/ESMFConvenienceMacros.h
+               COPYONLY)
 
-target_compile_definitions(ufs PRIVATE
-                               -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR}
-                               -DESMF_VERSION_MINOR=${ESMF_VERSION_MINOR}
-                               -DFRONT_FMS
-                               -DFRONT_FV3=fv3gfs_cap_mod)
+add_library(ufs ${_nems_srcs})
 
-target_include_directories(ufs PRIVATE ${PROJECT_BINARY_DIR}/NEMS/src
-                                       ${CMAKE_CURRENT_BINARY_DIR}/FV3/mod
-                                       ${CMAKE_CURRENT_BINARY_DIR}/FMS/mod)
+list(APPEND _ufs_defs_private ESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR}
+                              FRONT_FMS
+                              FRONT_FV3=fv3gfs_cap_mod)
 
-if(CCPP)
-    target_compile_definitions(ufs PRIVATE -DFRONT_CCPP)
-endif()
+set_target_properties(ufs PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/mod)
+target_include_directories(ufs PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/NEMS/src)
 
 if(WW3)
-    target_compile_definitions(ufs PRIVATE -DFRONT_WW3=WMESMFMD)
-    target_include_directories(ufs PRIVATE ${PROJECT_SOURCE_DIR}/WW3/model/mod)
-    set_target_properties(ufs PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_SOURCE_DIR}/WW3/model/mod)
+  list(APPEND _ufs_defs_private FRONT_WW3=WMESMFMD)
+  target_include_directories(ufs PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/WW3/model/mod)
     add_dependencies(ufs ww3_nems)
     target_link_libraries(ufs PUBLIC ${WW3_LIBS})
-    target_include_directories(ufs PUBLIC
-                                   $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/WW3/model/mod>)
 endif()
 
 if(S2S)
-    target_compile_definitions(ufs PRIVATE -DFRONT_MOM6=mom_cap_mod
-                                           -DFRONT_CICE6=ice_comp_nuopc
-                                           -DCMEPS -DFRONT_CMEPS=MED)
-    target_include_directories(ufs PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/mod
-                                           ${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod
-                                           ${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod)
-    add_dependencies(ufs mom6 cice cmeps)
-    target_link_libraries(ufs PUBLIC mom6)
-    target_link_libraries(ufs PUBLIC cice)
-    target_link_libraries(ufs PUBLIC cmeps)
-    target_include_directories(ufs PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/mod>
-                                          $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod>
-                                          $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>)
-    list(APPEND ufs_targets mom6ocn cice cmeps)
+  list(APPEND _ufs_defs_private FRONT_MOM6=mom_cap_mod
+                                FRONT_CICE6=ice_comp_nuopc
+                                CMEPS -DFRONT_CMEPS=MED)
+  target_include_directories(ufs PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/MOM6-interface/mod
+                                        ${CMAKE_CURRENT_BINARY_DIR}/CICE-interface/mod
+                                        ${CMAKE_CURRENT_BINARY_DIR}/CMEPS-interface/mod)
+  add_dependencies(ufs mom6ocn cice cmeps)
+  target_link_libraries(ufs PUBLIC mom6ocn
+                                   cice
+                                   cmeps)
 endif()
 
+target_include_directories(ufs INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
+                                         $<INSTALL_INTERFACE:mod>)
 
-set_target_properties(ufs PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/mod)
-target_include_directories(ufs PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/mod>
-                                      $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/FV3/mod>
-                                      $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/mod>)
-
-configure_file(${PROJECT_SOURCE_DIR}/NEMS/src/ESMFVersionDefine_ESMF_NUOPC.h
-               ${PROJECT_BINARY_DIR}/NEMS/src/ESMFVersionDefine.h
-               COPYONLY)
-# until we remove "../ESMFVersionDefine.h" from ENS_Cpl/ENS_CplComp_ESMFMod_STUB.F90
-configure_file(${PROJECT_SOURCE_DIR}/NEMS/src/ESMFVersionDefine_ESMF_NUOPC.h
-               ${PROJECT_BINARY_DIR}/NEMS/ESMFVersionDefine.h
-               COPYONLY)
-configure_file(${PROJECT_SOURCE_DIR}/NEMS/src/ESMFConvenienceMacros.h
-               ${PROJECT_BINARY_DIR}/NEMS/src/ESMFConvenienceMacros.h
-               COPYONLY)
-
+target_compile_definitions(ufs PRIVATE ${_ufs_defs_private})
+target_link_libraries(ufs PUBLIC esmf
+                                 fv3atm)
 
 ###############################################################################
 ### UFS executable
 ###############################################################################
-add_executable(NEMS.exe
-               NEMS/src/MAIN_NEMS.F90
-)
-add_dependencies(NEMS.exe ufs)
+add_executable(ufs_model NEMS/src/MAIN_NEMS.F90)
 
-target_compile_definitions(NEMS.exe PRIVATE -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR})
-target_include_directories(NEMS.exe PRIVATE ${PROJECT_BINARY_DIR}/NEMS/src
-                                            ${PROJECT_BINARY_DIR}/NEMS/src/ENS_Cpl)
+list(APPEND _ufs_model_defs_private ESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR})
 
-set_target_properties(NEMS.exe PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/mod)
+set_target_properties(ufs_model PROPERTIES Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/mod)
+
+target_include_directories(ufs_model PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/NEMS/src)
 
 if(WW3)
-    target_compile_definitions(NEMS.exe PRIVATE -DFRONT_WW3=WMESMFMD)
-    set_target_properties(NEMS.exe PROPERTIES Fortran_MODULE_DIRECTORY ${PROJECT_SOURCE_DIR}/WW3/model/mod)
-    add_dependencies(NEMS.exe ww3_nems)
-    target_link_libraries(NEMS.exe ${WW3_LIBS})
+  list(APPEND _ufs_model_defs_private FRONT_WW3=WMESMFMD)
+  target_include_directories(ufs_model PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/WW3/model/mod)
+  add_dependencies(ufs_model ww3_nems)
 endif()
 
 if(S2S)
-    target_compile_definitions(NEMS.exe PRIVATE
-                                        -DFRONT_MOM6=mom_cap_mod
-                                        -DFRONT_CICE6=ice_comp_nuopc
-                                        -DCMEPS -DFRONT_CMEPS=MED)
+  list(APPEND _ufs_model_defs_private FRONT_MOM6=mom_cap_mod
+                                      FRONT_CICE6=ice_comp_nuopc
+                                      CMEPS -DFRONT_CMEPS=MED)
 endif()
 
-target_link_libraries(NEMS.exe
-                      ufs
-                      esmf NetCDF::NetCDF_Fortran ${MKL_LIB}
-                      PIO::PIO_Fortran PIO::PIO_C)
+target_compile_definitions(ufs_model PRIVATE "${_ufs_model_defs_private}")
+
+target_link_libraries(ufs_model PRIVATE ufs
+                                        esmf
+                                        NetCDF::NetCDF_Fortran
+                                        ${MKL_LIB})
 
 ###############################################################################
 ### Install
 ###############################################################################
 install(
-  TARGETS ufs fms ${ufs_targets}
+  TARGETS ufs_model ufs fms
   EXPORT ufs-config
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib)

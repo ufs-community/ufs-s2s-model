@@ -15,8 +15,8 @@ target_include_directories(cmeps_util PUBLIC
 target_include_directories(cmeps_util PUBLIC
                                       $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/CMEPS/nems/util>)
 
-target_link_libraries(cmeps_util PUBLIC esmf)
-target_link_libraries(cmeps_util PUBLIC PIO::PIO_C PIO::PIO_Fortran)
+target_link_libraries(cmeps_util PUBLIC esmf
+                                        PIO::PIO_C PIO::PIO_Fortran)
 
 if(OpenMP_Fortran_FOUND)
   target_link_libraries(cmeps_util PUBLIC OpenMP::OpenMP_Fortran)
@@ -31,18 +31,16 @@ target_include_directories(cmeps PUBLIC
                                  $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/CMEPS/mod>
                                  $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/CMEPS/mod>)
 
-target_compile_definitions(cmeps PRIVATE
-                                 -DESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR}
-                                 -DESMF_VERSION_MINOR=${ESMF_VERSION_MINOR})
-target_compile_definitions(cmeps PRIVATE
-                                 "-DINTERNAL_PIO_INIT")
+target_compile_definitions(cmeps PRIVATE ESMF_VERSION_MAJOR=${ESMF_VERSION_MAJOR}
+                                         ESMF_VERSION_MINOR=${ESMF_VERSION_MINOR})
+                                         INTERNAL_PIO_INIT)
 
 target_include_directories(cmeps PUBLIC
                                  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/CMEPS/mediator>)
 
-target_link_libraries(cmeps PUBLIC cmeps_util)
-target_link_libraries(cmeps PUBLIC esmf)
-target_link_libraries(cmeps PUBLIC PIO::PIO_C PIO::PIO_Fortran)
+target_link_libraries(cmeps PUBLIC cmeps_util
+                                   esmf
+                                   PIO::PIO_C PIO::PIO_Fortran)
 
 if(OpenMP_Fortran_FOUND)
   target_link_libraries(cmeps PUBLIC OpenMP::OpenMP_Fortran)
