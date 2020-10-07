@@ -250,7 +250,8 @@ target_link_libraries(ufs PUBLIC esmf
 if(S2S)
   list(APPEND _ufs_defs_private FRONT_MOM6=mom_cap_mod
                                 FRONT_CICE6=ice_comp_nuopc
-                                CMEPS -DFRONT_CMEPS=MED)
+                                CMEPS
+                                FRONT_CMEPS=MED)
   add_dependencies(ufs mom6ocn cice cmeps)
   target_link_libraries(ufs PUBLIC mom6ocn
                                    cice
