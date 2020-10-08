@@ -5,7 +5,7 @@
 Issues Fixed (include github issue #):
 
 Do answers change?
- - [ ] No. Answers are b4b with previous baselines
+ - [ ] No. Answers are b4b with previous baselines when using cmp or nccmp
  - [ ] Yes. New baselines are required.
  
 Are there changes in parm or module directory?
