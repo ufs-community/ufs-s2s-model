@@ -4,17 +4,24 @@
 
 Issues Fixed (include github issue #):
 
-Are changes expected to change answers?
-- bit for bit (yes/no)
-- more substantial (yes/no)
+Do answers change?
+ - [ ] No. Answers are b4b with previous baselines
+ - [ ] Yes. New baselines are required.
+ 
+Are there changes in parm or module directory?
+- [ ] No
+- [ ] Yes.  Provide details below
 
-Specific changes:
-- changes in parm directory (yes/no)
-- changes in module files (yes/no)
-- new tests added or removed (yes/no)
+Are new tests added or removed?
+- [ ] No
+- [ ] Yes.  Provide details below
 
 Testing performed:
 - machines:
+- [ ] Hera
+- [ ] Orion
+- [ ] Dell-p3
+
 - details:
 
 Hashes used for testing:
