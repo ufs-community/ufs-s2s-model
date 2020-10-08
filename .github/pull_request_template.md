@@ -16,13 +16,15 @@ Are new tests added or removed?
 - [ ] No
 - [ ] Yes.  Provide details below
 
-Testing performed:
-- machines:
+Regression tests run or created on these platforms:
+
 - [ ] Hera
 - [ ] Orion
 - [ ] Dell-p3
 
-- details:
+Additional Testing details (failed tests etc):
+
+Dependent or Associated PRs, if any:
 
 Hashes used for testing:
 - NEMS:
