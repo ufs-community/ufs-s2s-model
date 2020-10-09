@@ -4,18 +4,27 @@
 
 Issues Fixed (include github issue #):
 
-Are changes expected to change answers?
-- bit for bit (yes/no)
-- more substantial (yes/no)
+Do answers change?
+ - [ ] No. Answers are the same as previous baselines when using cmp or nccmp
+ - [ ] Yes. New baselines are required.
+ 
+Are there changes in parm or module directory?
+- [ ] No
+- [ ] Yes.  Provide details below
 
-Specific changes:
-- changes in parm directory (yes/no)
-- changes in module files (yes/no)
-- new tests added or removed (yes/no)
+Are new tests added or removed?
+- [ ] No
+- [ ] Yes.  Provide details below
 
-Testing performed:
-- machines:
-- details:
+Regression tests run or created on these platforms:
+
+- [ ] Hera
+- [ ] Orion
+- [ ] Dell-p3
+
+Additional Testing details (failed tests etc):
+
+Dependent or Associated PRs, if any:
 
 Hashes used for testing:
 - NEMS:
