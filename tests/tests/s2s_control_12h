@@ -62,8 +62,4 @@ export DAYS="0.50"
 export FHMAX="12"
 export FV3_RESTART_H=${FHMAX}
 
-# write a CICE restart at FHMAX
-export DUMPFREQ_N=${FHMAX}
-export DUMPFREQ="h"
-
 export FV3_RUN=s2s_control_run.IN

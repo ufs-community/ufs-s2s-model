@@ -64,10 +64,6 @@ export NFHOUT_HF="1"
 # requires extra time
 export WLCLK=60
 
-# write a CICE restart at FHMAX
-export DUMPFREQ_N=${FHMAX}
-export DUMPFREQ="h"
-
 export FV3_RESTART_H=${FHMAX}
 
 export FV3_RUN=s2s_control_run.IN

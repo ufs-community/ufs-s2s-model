@@ -383,8 +383,9 @@ export MESHICE="mesh.mx${OCNRES}.nc"
 export CICEGRID="grid_cice_NEMS_mx${OCNRES}.nc"
 export CICEMASK="kmtu_cice_NEMS_mx${OCNRES}.nc"
 export RUNID='unknown'
-export DUMPFREQ='d' 
-export DUMPFREQ_N=${DAYS}
+# set large; restart frequency now controlled by restart_n in nems.configure
+export DUMPFREQ='d'
+export DUMPFREQ_N=1000
 export USE_RESTART_TIME='.false.'
 export RESTART_EXT='.false'
 # setting to true will allow Frazil FW and Salt to be

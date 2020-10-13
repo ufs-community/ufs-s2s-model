@@ -79,8 +79,4 @@ export USE_RESTART_TIME='.true.'
 # MOM6 warm start
 export MOM6_RESTART_SETTING="r"
 
-# write a CICE restart at FHMAX
-export DUMPFREQ_N=${FV3_RESTART_H}
-export DUMPFREQ="h"
-
 export FV3_RUN=s2s_control_run.IN
