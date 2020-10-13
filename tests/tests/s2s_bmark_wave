@@ -128,7 +128,6 @@ export FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
 export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
 
 export OZ_PHYS_NEW=".T."
-export FV3_RESTART_H=${FHMAX}
 
 export MOM6_USE_WAVES='True'
 export MOM6_RIVER_RUNOFF='True'
