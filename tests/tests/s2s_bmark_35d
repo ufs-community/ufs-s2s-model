@@ -1,5 +1,5 @@
 #
-#  S2S_benchmark test
+#  S2S_benchmark 35D
 #
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C384 MX025 - Benchmark 35d test"
 
@@ -77,6 +77,8 @@ export MOM6_REPRO_LA='True'
 export MOM6_THERMO_SPAN='True'
 
 export RUNID="cpcice"
+
+export FV3_RESTART_H=${FHMAX}
 
 export INPUT_NML=input.benchmark_ccpp.nml.IN
 
