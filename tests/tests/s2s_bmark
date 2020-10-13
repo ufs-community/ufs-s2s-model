@@ -131,9 +131,6 @@ export FV3_RESTART_H=${FHMAX}
 export MOM6_RIVER_RUNOFF='True'
 export MOM6_RESTART_SETTING="r"
 
-# write a CICE restart 
-export DUMPFREQ_N=${DAYS}
-export DUMPFREQ="d"
 export RUNID="cpcice"
 
 export INPUT_NML=input.benchmark_ccpp.nml.IN

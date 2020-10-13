@@ -76,9 +76,6 @@ export MOM6_RESTART_SETTING="r"
 export MOM6_REPRO_LA='True'
 export MOM6_THERMO_SPAN='True'
 
-# write a CICE restart 
-export DUMPFREQ_N=${DAYS}
-export DUMPFREQ="d"
 export RUNID="cpcice"
 
 export INPUT_NML=input.benchmark_ccpp.nml.IN
