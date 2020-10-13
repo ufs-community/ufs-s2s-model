@@ -105,7 +105,4 @@ export JNPES='4'
 
 export MOM6_RIVER_RUNOFF='True'
 
-export coupling_interval_slow_sec=${CPL_SLOW}
-export coupling_interval_fast_sec=${CPL_FAST}
-
 export FV3_RUN=cpld_fv3_mom6_cice_atm_flux_run.IN
