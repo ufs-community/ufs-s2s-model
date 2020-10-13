@@ -42,7 +42,7 @@ ICE_attributes::
   ProfileMemory = false
   OverwriteSlice = true
   mesh_ice = @[MESHICE]
-  stop_n = @[FHMAX]
+  stop_n = @[FV3_RESTART_H]
   stop_option = nhours
   stop_ymd = -999
 ::

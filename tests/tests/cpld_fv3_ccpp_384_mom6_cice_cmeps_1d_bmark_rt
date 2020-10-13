@@ -159,10 +159,6 @@ export FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
 export FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
 export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
 
-# restart test: write a CICE restart at 12 hour intervals
-export DUMPFREQ_N='12'
-export DUMPFREQ="h"
-
 # restart test: CMEPS controls intervals in ALLCOMP
 export FV3_RESTART_H='12'
 
