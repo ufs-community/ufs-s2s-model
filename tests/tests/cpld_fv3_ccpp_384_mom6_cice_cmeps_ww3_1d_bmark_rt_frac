@@ -134,7 +134,6 @@ export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice_wav.IN"
 export MOM6_USE_WAVES='True'
 export MOM6_RIVER_RUNOFF='True'
 export MOM6_REPRO_LA='True'
-export MOM6_THERMO_SPAN='True'
 
 export FV3_RESTART_H=${FHMAX}
 

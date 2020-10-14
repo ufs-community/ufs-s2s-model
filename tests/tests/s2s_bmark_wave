@@ -140,7 +140,6 @@ export FV3_RESTART_H=${FHMAX}
 export MOM6_USE_WAVES='True'
 export MOM6_RIVER_RUNOFF='True'
 export MOM6_RESTART_SETTING="r"
-export MOM6_THERMO_SPAN='True'
 export MOM6_REPRO_LA='True'
 
 export RUNID="cpcice"
