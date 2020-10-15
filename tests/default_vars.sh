@@ -332,7 +332,7 @@ export FV3_RESTART_H=${FHMAX}
 export CPLMODE='nems_orig'
 export cap_dbug_flag="0"
 export use_coldstart="false"
-export RUNTYPE='startup' 
+export RUNTYPE='startup'
 
 # FV3 defaults
 # to use new oro and ics created from 1deg ocean mask on c96 tiles
@@ -371,10 +371,11 @@ export MOM6_RESTART_SETTING='n'
 export MOM6_RIVER_RUNOFF='False'
 export FRUNOFF=""
 export CHLCLIM="seawifs_1998-2006_smoothed_2X.nc"
-# these must be set False for restart repro 
+# this must be set False for restart repro 
 export MOM6_REPRO_LA='False'
+# since CPL_SLOW is set to DT_THERM, this should be always be false 
 export MOM6_THERMO_SPAN='False'
-# no WW3 
+# no WW3
 export MOM6_USE_WAVES='False'
 
 # CICE6 defaults; 1 degree
