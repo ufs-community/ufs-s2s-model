@@ -3,8 +3,8 @@
 #
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C384 MX025 "
 
-#export CNTL_DIR="RT-Baselines_s2s_control_c384"
-#export CNTLMED_DIR="RT-Baselines_s2s_control_c384/RESTART"
+#export CNTL_DIR="s2s_control_c384"
+#export CNTLMED_DIR="s2s_control_c384/RESTART"
 # test against current baseline 
 export CNTL_DIR="RT-Baselines_2d_warm_ccpp384_cmeps"
 export CNTLMED_DIR="RT-Baselines_2d_warm_ccpp384_cmeps/RESTART"
@@ -63,6 +63,9 @@ export LIST_FILES="phyf048.tile1.nc \
 export_fv3
 export_cpl
 
+export DAYS="2"
+export FHMAX="48"
+export FV3_RESTART_H=${FHMAX}
 export WLCLK=60
 
 export TASKS=$TASKS_cpl_c384

@@ -61,6 +61,9 @@ export LIST_FILES="phyf048.tile1.nc \
 export_fv3
 export_cpl
 
+export DAYS="2"
+export FHMAX="48"
+export FV3_RESTART_H=${FHMAX}
 export WLCLK=60
 
 # replicate current tests; explicitly set values for c384/mx025

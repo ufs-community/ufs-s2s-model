@@ -104,8 +104,7 @@ export SMONTH="04"
 export SDAY="01"
 export SHOUR="00"
 
-export DAYS="1"
-export FHMAX="24"
+export FV3_RESTART_H='12'
 
 # replicate current tests; explicitly set values for c384/mx025
 export TASKS=$TASKS_cpl_bmrk
@@ -158,9 +157,6 @@ export FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
 export FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
 export FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
 export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
-
-# restart test: CMEPS controls intervals in ALLCOMP
-export FV3_RESTART_H='12'
 
 export MOM6_RIVER_RUNOFF='True'
 

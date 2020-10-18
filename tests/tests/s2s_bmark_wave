@@ -3,8 +3,8 @@
 #
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS-WW3 system - C384 MX025 - Benchmark test with waves"
 
-#export CNTL_DIR="RT-Baselines_s2s_bmark"
-#export CNTLMED_DIR="RT-Baselines_s2s_bmark/RESTART"
+#export CNTL_DIR="s2s_bmark"
+#export CNTLMED_DIR="s2s_bmark/RESTART"
 # test against current baseline 
 export CNTL_DIR="RT-Baselines_1d_bmwav_ccpp_cmeps"
 export CNTLMED_DIR="RT-Baselines_1d_bmwav_ccpp_cmeps/RESTART"
@@ -60,8 +60,8 @@ export LIST_FILES="phyf024.tile1.nc \
                    RESTART/MOM.res_1.nc \
                    RESTART/MOM.res_2.nc \
                    RESTART/MOM.res_3.nc \
-                   RESTART/iced.2013-04-02-00000.nc \
-                   ufs.s2s.cpl.r.2013-04-02-00000.nc"
+                   RESTART/iced.2013-04-02-00000.nc"
+                   #ufs.s2s.cpl.r.2013-04-02-00000.nc"
 
 export_fv3
 export_cpl
@@ -71,8 +71,6 @@ export SMONTH="04"
 export SDAY="01"
 export SHOUR="00"
 
-export DAYS="1"
-export FHMAX="24"
 export WLCLK=60
 
 export TASKS=$TASKS_cpl_wwav
@@ -134,8 +132,6 @@ export FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
 export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
 
 export OZ_PHYS_NEW=".T."
-
-export FV3_RESTART_H=${FHMAX}
 
 export MOM6_USE_WAVES='True'
 export MOM6_RIVER_RUNOFF='True'

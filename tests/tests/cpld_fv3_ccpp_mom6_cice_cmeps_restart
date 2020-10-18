@@ -63,6 +63,8 @@ export_cpl
 
 export DAYS="1"
 export FHMAX="72"
+export FV3_RESTART_H='24'
+export FHROT='48'
 
 # replicate current tests; explicitly set values for c96/mx025
 export TASKS=$TASKS_cpl_c384
@@ -105,11 +107,7 @@ export FRUNOFF="runoff.daitren.clim.${NX_GLB}x${NY_GLB}.v20180328.nc"
 
 export MOM6_RIVER_RUNOFF='True'
 
-# CMEPS controls intervals in ALLCOMP
-export FV3_RESTART_H='24'
-
 # ATM warm start
-FHROT='48'
 WARM_START='.T.'
 MAKE_NH='.F.'
 NA_INIT='0'

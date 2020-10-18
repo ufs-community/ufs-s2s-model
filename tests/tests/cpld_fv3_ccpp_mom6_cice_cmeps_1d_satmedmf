@@ -61,9 +61,6 @@ export LIST_FILES="phyf024.tile1.nc \
 export_fv3
 export_cpl
 
-export DAYS="1"
-export FHMAX="24"
-
 # replicate current tests; explicitly set values for c96/mx025
 export TASKS=$TASKS_cpl_c384
 export TPN=$TPN_cpl_c384
@@ -105,8 +102,6 @@ export FRUNOFF="runoff.daitren.clim.${NX_GLB}x${NY_GLB}.v20180328.nc"
 
 export MOM6_RIVER_RUNOFF='True'
 export MOM6_REPRO_LA='True'
-
-export FV3_RESTART_H=${FHMAX}
 
 export FV3_RUN=cpld_fv3_mom6_cice_atm_flux_run.IN
 

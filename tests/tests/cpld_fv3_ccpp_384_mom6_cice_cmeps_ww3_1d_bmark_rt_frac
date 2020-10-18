@@ -69,8 +69,6 @@ export SMONTH="04"
 export SDAY="01"
 export SHOUR="00"
 
-export DAYS="1"
-export FHMAX="24"
 export WLCLK=60
 
 # replicate current tests; explicitly set values for c384/mx025
@@ -134,8 +132,6 @@ export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice_wav.IN"
 export MOM6_USE_WAVES='True'
 export MOM6_RIVER_RUNOFF='True'
 export MOM6_REPRO_LA='True'
-
-export FV3_RESTART_H=${FHMAX}
 
 export FV3_RUN=cpld_fv3_mom6_cice_ww3_bmark_rt_run.IN
 export INPUT_NML=input.benchmark_ccpp.nml.IN
