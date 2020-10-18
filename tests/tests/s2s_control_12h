@@ -4,8 +4,8 @@
 
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX100 12h"
 
-export CNTL_DIR="RT-Baselines_s2s_control_12h"
-export CNTLMED_DIR="RT-Baselines_s2s_control_12h"
+export CNTL_DIR="s2s_control_12h"
+export CNTLMED_DIR="s2s_control_12h"
 
 export LIST_FILES="phyf012.tile1.nc \
                    phyf012.tile2.nc \
