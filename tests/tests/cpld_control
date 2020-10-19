@@ -1,24 +1,24 @@
 #
-#  S2S_control 12h test
+#  cpld_control test
 #
 
-export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX100 12h"
+export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX100"
 
-export CNTL_DIR="s2s_control_12h"
-export CNTLMED_DIR="s2s_control_12h"
+export CNTL_DIR="cpld_control"
+export CNTLMED_DIR="cpld_control"
 
-export LIST_FILES="phyf012.tile1.nc \
-                   phyf012.tile2.nc \
-                   phyf012.tile3.nc \
-                   phyf012.tile4.nc \
-                   phyf012.tile5.nc \
-                   phyf012.tile6.nc \
-                   dynf012.tile1.nc \
-                   dynf012.tile2.nc \
-                   dynf012.tile3.nc \
-                   dynf012.tile4.nc \
-                   dynf012.tile5.nc \
-                   dynf012.tile6.nc \
+export LIST_FILES="phyf024.tile1.nc \
+                   phyf024.tile2.nc \
+                   phyf024.tile3.nc \
+                   phyf024.tile4.nc \
+                   phyf024.tile5.nc \
+                   phyf024.tile6.nc \
+                   dynf024.tile1.nc \
+                   dynf024.tile2.nc \
+                   dynf024.tile3.nc \
+                   dynf024.tile4.nc \
+                   dynf024.tile5.nc \
+                   dynf024.tile6.nc \
                    RESTART/coupler.res \
                    RESTART/fv_core.res.nc \
                    RESTART/fv_core.res.tile1.nc \
@@ -52,14 +52,10 @@ export LIST_FILES="phyf012.tile1.nc \
                    RESTART/sfc_data.tile5.nc \
                    RESTART/sfc_data.tile6.nc \
                    RESTART/MOM.res.nc \
-                   RESTART/iced.2016-10-03-43200.nc \
-                   RESTART/ufs.s2s.cpl.r.2016-10-03-43200.nc"
+                   RESTART/iced.2016-10-04-00000.nc "
+                   #RESTART/ufs.cpld.cpl.r.2016-10-04-00000.nc"
 
 export_fv3
 export_cpl
 
-export DAYS="0.50"
-export FHMAX="12"
-export FV3_RESTART_H=${FHMAX}
-
-export FV3_RUN=s2s_control_run.IN
+export FV3_RUN=cpld_control_run.IN

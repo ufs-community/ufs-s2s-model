@@ -1,11 +1,11 @@
 #
-#  S2S_satmedmf test
+#  cpld_decomp test
 #
 
-export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX100 - satmedmf"
+export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX100 - decomp"
 
-export CNTL_DIR="s2s_satmedmf"
-export CNTLMED_DIR="s2s_satmedmf"
+export CNTL_DIR="cpld_control"
+export CNTLMED_DIR="cpld_control"
 
 export LIST_FILES="phyf024.tile1.nc \
                    phyf024.tile2.nc \
@@ -53,15 +53,12 @@ export LIST_FILES="phyf024.tile1.nc \
                    RESTART/sfc_data.tile6.nc \
                    RESTART/MOM.res.nc \
                    RESTART/iced.2016-10-04-00000.nc \
-                   RESTART/ufs.s2s.cpl.r.2016-10-04-00000.nc"
+                   RESTART/ufs.cpld.cpl.r.2016-10-04-00000.nc"
 
 export_fv3
 export_cpl
 
-export SATMEDMF='.true.'
-export HYBEDMF='.false.'
+export INPES='6'
+export JNPES='4'
 
-export FIELD_TABLE='field_table_satmedmf'
-export SUITE_NAME='FV3_GFS_2017_satmedmf_coupled'
-
-export FV3_RUN=s2s_control_run.IN
+export FV3_RUN=cpld_control_run.IN

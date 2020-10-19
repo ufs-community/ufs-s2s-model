@@ -1,39 +1,39 @@
 #
-#  S2S_control test
+#  cpld_control 12h test
 #
 
-export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX025"
+export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX025 12h"
 
-#export CNTL_DIR="s2s_control_mx025"
-#export CNTLMED_DIR="s2s_control_mx025"
+#export CNTL_DIR="cpld_control_mx025_12h"
+#export CNTLMED_DIR="cpld_control_mx025_12h"
 # test against current baseline
-export CNTL_DIR="RT-Baselines_3d_warm_ccpp_cmeps"
-export CNTLMED_DIR="RT-Baselines_3d_warm_ccpp_cmeps/RESTART"
+export CNTL_DIR="RT-Baselines_2d_warm_ccpp_cmeps"
+export CNTLMED_DIR="RT-Baselines_2d_warm_ccpp_cmeps/RESTART"
 
-#export LIST_FILES="phyf024.tile1.nc \
-#                   phyf024.tile2.nc \
-#                   phyf024.tile3.nc \
-#                   phyf024.tile4.nc \
-#                   phyf024.tile5.nc \
-#                   phyf024.tile6.nc \
-#                   dynf024.tile1.nc \
-#                   dynf024.tile2.nc \
-#                   dynf024.tile3.nc \
-#                   dynf024.tile4.nc \
-#                   dynf024.tile5.nc \
-#                   dynf024.tile6.nc \
-export LIST_FILES="phyf072.tile1.nc \
-                   phyf072.tile2.nc \
-                   phyf072.tile3.nc \
-                   phyf072.tile4.nc \
-                   phyf072.tile5.nc \
-                   phyf072.tile6.nc \
-                   dynf072.tile1.nc \
-                   dynf072.tile2.nc \
-                   dynf072.tile3.nc \
-                   dynf072.tile4.nc \
-                   dynf072.tile5.nc \
-                   dynf072.tile6.nc \
+#export LIST_FILES="phyf012.tile1.nc \
+#                   phyf012.tile2.nc \
+#                   phyf012.tile3.nc \
+#                   phyf012.tile4.nc \
+#                   phyf012.tile5.nc \
+#                   phyf012.tile6.nc \
+#                   dynf012.tile1.nc \
+#                   dynf012.tile2.nc \
+#                   dynf012.tile3.nc \
+#                   dynf012.tile4.nc \
+#                   dynf012.tile5.nc \
+#                   dynf012.tile6.nc \
+export LIST_FILES="phyf048.tile1.nc \
+                   phyf048.tile2.nc \
+                   phyf048.tile3.nc \
+                   phyf048.tile4.nc \
+                   phyf048.tile5.nc \
+                   phyf048.tile6.nc \
+                   dynf048.tile1.nc \
+                   dynf048.tile2.nc \
+                   dynf048.tile3.nc \
+                   dynf048.tile4.nc \
+                   dynf048.tile5.nc \
+                   dynf048.tile6.nc \
                    RESTART/coupler.res \
                    RESTART/fv_core.res.nc \
                    RESTART/fv_core.res.tile1.nc \
@@ -70,17 +70,17 @@ export LIST_FILES="phyf072.tile1.nc \
                    RESTART/MOM.res_1.nc \
                    RESTART/MOM.res_2.nc \
                    RESTART/MOM.res_3.nc \
-                   RESTART/iced.2016-10-06-00000.nc"
-                  #ufs.s2s.cpl.r.2016-10-06-00000.nc"
-                   #RESTART/iced.2016-10-04-00000.nc \
-                   #RESTART/ufs.s2s.cpl.r.2016-10-04-00000.nc"
+                   RESTART/iced.2016-10-05-00000.nc"
+                   #RESTART/ufs.cpld.cpl.r.2016-10-03-43200.nc"
+
 export_fv3
 export_cpl
 
-export DAYS="3"
-export FHMAX="72"
+export DAYS="2"
+export FHMAX="48"
+#export DAYS="0.50"
+#export FHMAX="12"
 export FV3_RESTART_H=${FHMAX}
-export WLCLK=60
 
 # replicate current tests; explicitly set values for c96/mx025
 export TASKS=$TASKS_cpl_c384
@@ -124,4 +124,5 @@ export CHLCLIM="seawifs-clim-1997-2010.${NX_GLB}x${NY_GLB}.v20180328.nc"
 export FRUNOFF="runoff.daitren.clim.${NX_GLB}x${NY_GLB}.v20180328.nc"
 
 export MOM6_RIVER_RUNOFF='True'
-export FV3_RUN=s2s_control_run.IN
+
+export FV3_RUN=cpld_control_run.IN
