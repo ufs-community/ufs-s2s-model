@@ -313,6 +313,7 @@ elif [[ $MACHINE_ID = stampede.* ]]; then
   export PYTHONPATH=
   ECFLOW_START=
   QUEUE=skx-normal
+  ACCNR=TG-EES200001
   PARTITION=
   dprefix=$WORK/FV3-MOM6-CICE6/run
   DISKNM=$WORK/RT
