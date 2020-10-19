@@ -1,11 +1,11 @@
 #
-#  S2S_restart test
+#  cpld_restart test
 #
 
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX025 - 12h restart"
 
-#export CNTL_DIR="s2s_control_mx025"
-#export CNTLMED_DIR="s2s_control_mx025"
+#export CNTL_DIR="cpld_control_mx025"
+#export CNTLMED_DIR="cpld_control_mx025"
 # test aginst current baseline
 export CNTL_DIR="RT-Baselines_3d_warm_ccpp_cmeps"
 export CNTLMED_DIR="RT-Baselines_3d_warm_ccpp_cmeps/RESTART"
@@ -145,4 +145,4 @@ export USE_RESTART_TIME='.true.'
 # MOM6 warm start
 export MOM6_RESTART_SETTING="r"
 
-export FV3_RUN=s2s_control_run.IN
+export FV3_RUN=cpld_control_run.IN
