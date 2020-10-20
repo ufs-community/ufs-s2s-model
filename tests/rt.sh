@@ -312,16 +312,17 @@ elif [[ $MACHINE_ID = stampede.* ]]; then
 
   export PYTHONPATH=
   ECFLOW_START=
-  QUEUE=skx-dev
+  QUEUE=skx-normal
+  ACCNR=TG-EES200001
   PARTITION=
-  dprefix=$WORK/NEMSfv3gfs/run
-  DISKNM=$WORK/NEMSfv3gfs/RT
+  dprefix=$WORK/FV3-MOM6-CICE6/run
+  DISKNM=$WORK/RT
   STMP=$dprefix/stmp4
   PTMP=$dprefix/stmp3
-  SCHEDULER=sbatch
+  SCHEDULER=slurm
   MPIEXEC=ibrun
   MPIEXECOPTS=
-  cp fv3_conf/fv3_qsub.IN_stampede fv3_conf/fv3_qsub.IN
+  cp fv3_conf/fv3_slurm.IN_stampede fv3_conf/fv3_slurm.IN
 
 else
   die "Unknown machine ID, please edit detect_machine.sh file"
