@@ -1,5 +1,5 @@
 #
-#  cpld_control test 
+#  cpld_control test
 #
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX025"
 

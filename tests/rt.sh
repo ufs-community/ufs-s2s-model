@@ -312,16 +312,17 @@ elif [[ $MACHINE_ID = stampede.* ]]; then
 
   export PYTHONPATH=
   ECFLOW_START=
-  QUEUE=skx-dev
+  QUEUE=skx-normal
+  ACCNR=TG-EES200001
   PARTITION=
-  dprefix=$WORK/NEMSfv3gfs/run
-  DISKNM=$WORK/NEMSfv3gfs/RT
+  dprefix=$WORK/FV3-MOM6-CICE6/run
+  DISKNM=$WORK/RT
   STMP=$dprefix/stmp4
   PTMP=$dprefix/stmp3
-  SCHEDULER=sbatch
+  SCHEDULER=slurm
   MPIEXEC=ibrun
   MPIEXECOPTS=
-  cp fv3_conf/fv3_qsub.IN_stampede fv3_conf/fv3_qsub.IN
+  cp fv3_conf/fv3_slurm.IN_stampede fv3_conf/fv3_slurm.IN
 
 else
   die "Unknown machine ID, please edit detect_machine.sh file"
@@ -417,11 +418,7 @@ fi
 if [[ $MACHINE_ID = cheyenne.* ]]; then
   RTPWD=${RTPWD:-$DISKNM/develop-20200210/${COMPILER^^}}
 else
-  #RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20201012}
-  #orion
-  #RTPWD="/work/noaa/stmp/dworthen/stmp/dworthen/lowres_bl"
-  #hera
-  RTPWD="/work/noaa/stmp/dworthen/stmp/dworthen/lowres_bl"
+  RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20201012}
 fi
 
 shift $((OPTIND-1))
