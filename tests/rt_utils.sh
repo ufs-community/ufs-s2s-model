@@ -270,7 +270,7 @@ check_results() {
 
       else
 
-        if [[ $i =~ ufs.s2s ]]; then
+        if [[ $i =~ ufs.cpld ]]; then
           d=$( cmp ${RTPWD}/${CNTLMED_DIR}/$i ${RUNDIR}/$i | wc -l )
         elif [[ $i =~ RESTART/ ]]; then
           d=$( cmp ${RTPWD}/${CNTL_DIR}/$crst ${RUNDIR}/$i | wc -l )
@@ -310,7 +310,7 @@ check_results() {
       if [[ -f ${RUNDIR}/$i ]] ; then
         if [[ $i =~ RESTART/ ]]; then
           cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTL_DIR}/RESTART/$(basename $i)
-        elif [[ $i =~ ufs.s2s ]]; then
+        elif [[ $i =~ ufs.cpld ]]; then
           cp ${RUNDIR}/$i ${NEW_BASELINE}/${CNTLMED_DIR}
         else
           cp ${RUNDIR}/${i} ${NEW_BASELINE}/${CNTL_DIR}/${i}
