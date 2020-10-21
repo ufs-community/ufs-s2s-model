@@ -59,7 +59,7 @@ export LIST_FILES="phyf024.tile1.nc \
                    RESTART/MOM.res_2.nc \
                    RESTART/MOM.res_3.nc \
                    RESTART/iced.2013-04-02-00000.nc"
-                 # ufs.s2s.cpl.r.2013-04-02-00000.nc" 
+                  #ufs.s2s.cpl.r.2013-04-02-00000.nc" 
 
 export_fv3
 export_cpl
@@ -69,22 +69,9 @@ export SMONTH="04"
 export SDAY="01"
 export SHOUR="00"
 
-export DAYS="1"
-export FHMAX="24"
-export FDIAG="6"
 export WLCLK=60
 
-export DT_ATMOS="450"
-export NPX="385"
-export NPY="385"
-export IMO="1536"
-export JMO="768"
-export FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
-export FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
-export FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
-export FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
-export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"  
-
+# replicate current tests; explicitly set values for c384/mx025
 export TASKS=$TASKS_cpl_wwav
 export TPN=$TPN_cpl_wwav
 export INPES=$INPES_cpl_wwav
@@ -98,27 +85,53 @@ export ocn_petlist_bounds=$OPB_cpl_wwav
 export ice_petlist_bounds=$IPB_cpl_wwav
 export wav_petlist_bounds=$WPB_cpl_wwav
 
-# no high freq fv3 output
-NFHMAX_HF='-1'
-NFHOUT_HF='-1'
+# atm/ocn/ice resolution
+export ATMRES=C384
+export NPX="385"
+export NPY="385"
+export IMO="1536"
+export JMO="768"
+
+export OCNRES='025'
+export ICERES='0.25'
+export NX_GLB=1440
+export NY_GLB=1080
+export NPROC_ICE='48'
+
+export FRAC_GRID='.T.'
+export FRAC_GRID_INPUT='.T.'
+export CPLMODE="nems_frac"
 
 # set component and coupling timesteps
+export DT_ATMOS="450"
 export DT_CICE=${DT_ATMOS}
+export DT_DYNAM_MOM6='900'
+export DT_THERM_MOM6='1800'
 export CPL_SLOW=${DT_THERM_MOM6}
 export CPL_FAST=${DT_ATMOS}
+export coupling_interval_slow_sec=${CPL_SLOW}
+export coupling_interval_fast_sec=${CPL_FAST}
 
-# write a CICE restart at DAYS
-export DUMPFREQ_N=${DAYS}
-export DUMPFREQ="d"
+# resolution dependent files
+export MOM_INPUT="MOM_input_template_${OCNRES}"
+export MESHICE="mesh.mx${OCNRES}.nc"
+export CICEGRID="grid_cice_NEMS_mx${OCNRES}.nc"
+export CICEMASK="kmtu_cice_NEMS_mx${OCNRES}.nc"
+export CHLCLIM="seawifs-clim-1997-2010.${NX_GLB}x${NY_GLB}.v20180328.nc"
+export FRUNOFF="runoff.daitren.clim.${NX_GLB}x${NY_GLB}.v20180328.nc"
 
-# CMEPS controls intervals in ALLCOMP
-export FV3_RESTART_INTERVAL=${FHMAX}
+export FNALBC="'global_snowfree_albedo.bosu.t766.1536.768.rg.grb',"
+export FNVETC="'global_vegtype.igbp.t766.1536.768.rg.grb',"
+export FNSOTC="'global_soiltype.statsgo.t766.1536.768.rg.grb',"
+export FNSMCC="'global_soilmgldas.statsgo.t766.1536.768.grb',"
+export FNABSC="'global_mxsnoalb.uariz.t766.1536.768.rg.grb',"
 
 # nems.configure
 export NEMS_CONFIGURE="nems.configure.medcmeps_atm_ocn_ice_wav.IN"
-export coupling_interval_slow_sec=${CPL_SLOW}
-export coupling_interval_fast_sec=${CPL_FAST}
-export MOM_INPUT=MOM_input_wave_template_${OCNRES}
+
+export MOM6_USE_WAVES='True'
+export MOM6_RIVER_RUNOFF='True'
+export MOM6_REPRO_LA='True'
 
 export FV3_RUN=cpld_fv3_mom6_cice_ww3_bmark_rt_run.IN
 export INPUT_NML=input.benchmark_ccpp.nml.IN
@@ -131,9 +144,7 @@ export OZ_PHYS_NEW=".T."
 export CPLWAV='.T.'
 export CPLWAV2ATM='.T.'
 
+# set run type for CICE in ice_in
 export RUNID="cpcice"
+# set initialization type for MOM6
 export MOM6_RESTART_SETTING="r"
-
-export ATMRES=C384
-export FRAC_GRID="T"
-export CPLMODE="nems_frac"
