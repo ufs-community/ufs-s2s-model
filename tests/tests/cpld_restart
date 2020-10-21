@@ -1,6 +1,6 @@
 #
 #  cpld_restart test
-#
+#  NOTE: test is not currently used; restarts are tested at c96mx025
 
 export TEST_DESCR="Fully coupled FV3-CCPP-MOM6-CICE-CMEPS system - C96MX100 - 12h restart"
 
