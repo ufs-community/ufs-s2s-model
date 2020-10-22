@@ -418,7 +418,7 @@ fi
 if [[ $MACHINE_ID = cheyenne.* ]]; then
   RTPWD=${RTPWD:-$DISKNM/develop-20200210/${COMPILER^^}}
 else
-  RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20201012}
+  RTPWD=${RTPWD:-$DISKNM/FV3-MOM6-CICE5/develop-20201021}
 fi
 
 shift $((OPTIND-1))

@@ -27,11 +27,6 @@ elif [ $MACHINE_ID = wcoss_dell_p3 ]; then
   TASKS_stretch=48 ; TPN_stretch=28 ; INPES_stretch=2 ; JNPES_stretch=4
   TASKS_strnest=96 ; TPN_strnest=28 ; INPES_strnest=2 ; JNPES_strnest=4
 
-  # To be deleted after c96/mx025 tests dropped
-  TASKS_cpl_thrd_ori=246; TPN_cpl_thrd_ori=14; INPES_cpl_thrd_ori=3; JNPES_cpl_thrd_ori=4
-  THRD_cpl_thrd_ori=2; WPG_cpl_thrd_ori=6;  MPB_cpl_thrd_ori="0 77";  APB_cpl_thrd_ori="0 77"
-  OPB_cpl_thrd_ori="78 197";  IPB_cpl_thrd_ori="198 245"
-
   TASKS_cpl_dflt=192; TPN_cpl_dflt=28; INPES_cpl_dflt=3; JNPES_cpl_dflt=8
   THRD_cpl_dflt=1; WPG_cpl_dflt=6;  MPB_cpl_dflt="0 143"; APB_cpl_dflt="0 149"
   OPB_cpl_dflt="150 179"; IPB_cpl_dflt="180 191"
@@ -63,11 +58,6 @@ elif [[ $MACHINE_ID = orion.* ]]; then
   TASKS_stretch=48 ; TPN_stretch=12 ; INPES_stretch=2 ; JNPES_stretch=4
   TASKS_strnest=96 ; TPN_strnest=12 ; INPES_strnest=2 ; JNPES_strnest=4
 
-  # To be deleted after c96/mx025 tests dropped
-  TASKS_cpl_thrd_ori=246; TPN_cpl_thrd_ori=40; INPES_cpl_thrd_ori=3; JNPES_cpl_thrd_ori=4
-  THRD_cpl_thrd_ori=2; WPG_cpl_thrd_ori=6;  MPB_cpl_thrd_ori="0 77";  APB_cpl_thrd_ori="0 77"
-  OPB_cpl_thrd_ori="78 197";  IPB_cpl_thrd_ori="198 245"
-
   TASKS_cpl_dflt=192; TPN_cpl_dflt=40; INPES_cpl_dflt=3; JNPES_cpl_dflt=8
   THRD_cpl_dflt=1; WPG_cpl_dflt=6;  MPB_cpl_dflt="0 143"; APB_cpl_dflt="0 149"
   OPB_cpl_dflt="150 179"; IPB_cpl_dflt="180 191"
@@ -98,11 +88,6 @@ elif [[ $MACHINE_ID = hera.* ]]; then
   TASKS_thrd=84  ; TPN_thrd=20 ; INPES_thrd=3 ; JNPES_thrd=4
   TASKS_stretch=48 ; TPN_stretch=12 ; INPES_stretch=2 ; JNPES_stretch=4
   TASKS_strnest=96 ; TPN_strnest=12 ; INPES_strnest=2 ; JNPES_strnest=4
-
-  # To be deleted after c96/mx025 tests dropped
-  TASKS_cpl_thrd_ori=246; TPN_cpl_thrd_ori=40; INPES_cpl_thrd_ori=3; JNPES_cpl_thrd_ori=4
-  THRD_cpl_thrd_ori=2; WPG_cpl_thrd_ori=6;  MPB_cpl_thrd_ori="0 77";  APB_cpl_thrd_ori="0 77"
-  OPB_cpl_thrd_ori="78 197";  IPB_cpl_thrd_ori="198 245"
 
   TASKS_cpl_dflt=192; TPN_cpl_dflt=40; INPES_cpl_dflt=3; JNPES_cpl_dflt=8
   THRD_cpl_dflt=1; WPG_cpl_dflt=6;  MPB_cpl_dflt="0 143"; APB_cpl_dflt="0 149"
@@ -154,11 +139,6 @@ elif [[ $MACHINE_ID = stampede.* ]]; then
   TASKS_dflt=150 ; TPN_dflt=48 ; INPES_dflt=3 ; JNPES_dflt=8
   TASKS_thrd=84  ; TPN_thrd=24 ; INPES_thrd=3 ; JNPES_thrd=4
   TASKS_stretch=48 ; TPN_stretch=12 ; INPES_stretch=2 ; JNPES_stretch=4
-
-  # To be deleted after c96/mx025 tests dropped
-  TASKS_cpl_thrd_ori=246; TPN_cpl_thrd_ori=48; INPES_cpl_thrd_ori=3; JNPES_cpl_thrd_ori=4
-  THRD_cpl_thrd_ori=2; WPG_cpl_thrd_ori=6;  MPB_cpl_thrd_ori="0 77";  APB_cpl_thrd_ori="0 77"
-  OPB_cpl_thrd_ori="78 197";  IPB_cpl_thrd_ori="198 245"
 
   TASKS_cpl_dflt=192; TPN_cpl_dflt=48; INPES_cpl_dflt=3; JNPES_cpl_dflt=8
   THRD_cpl_dflt=1; WPG_cpl_dflt=6;  MPB_cpl_dflt="0 143"; APB_cpl_dflt="0 149"
@@ -371,7 +351,7 @@ export wav_model="ww3"
 export coupling_interval_slow_sec=${CPL_SLOW}
 export coupling_interval_fast_sec=${CPL_FAST}
 
-export FV3_RESTART_H=${FHMAX}
+export RESTART_N=${FHMAX}
 export CPLMODE='nems_orig'
 export cap_dbug_flag="0"
 export use_coldstart="false"
