@@ -60,6 +60,6 @@ export_cpl
 
 export DAYS="0.50"
 export FHMAX="12"
-export FV3_RESTART_H=${FHMAX}
+export RESTART_N=${FHMAX}
 
 export FV3_RUN=cpld_control_run.IN

@@ -63,8 +63,8 @@ export_cpl
 
 export DAYS="0.50"
 export FHMAX="24"
-export FV3_RESTART_H=12
 export FHROT='12'
+export RESTART_N=$((FHMAX-$FHROT))
 
 # replicate current tests; explicitly set values for c96/mx025
 export TASKS=$TASKS_cpl_c384
