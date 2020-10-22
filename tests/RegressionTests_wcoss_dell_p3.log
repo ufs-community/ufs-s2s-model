@@ -1,10 +1,10 @@
-Wed Oct 21 19:18:31 UTC 2020
+Thu Oct 22 11:48:57 UTC 2020
 Start Regression test
 
 
 baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_control
 mediator baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_control
-working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_14052/cpld_control
+working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_25564/cpld_control
 Checking test 001 cpld_control results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -57,7 +57,7 @@ Test 001 cpld_control PASS
 
 baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_control
 mediator baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_control
-working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_14052/cpld_2threads
+working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_25564/cpld_2threads
 Checking test 002 cpld_2threads results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -110,7 +110,7 @@ Test 002 cpld_2threads PASS
 
 baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_control
 mediator baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_control
-working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_14052/cpld_decomp
+working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_25564/cpld_decomp
 Checking test 003 cpld_decomp results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -163,7 +163,7 @@ Test 003 cpld_decomp PASS
 
 baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_satmedmf
 mediator baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_satmedmf
-working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_14052/cpld_satmedmf
+working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_25564/cpld_satmedmf
 Checking test 004 cpld_satmedmf results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -216,7 +216,7 @@ Test 004 cpld_satmedmf PASS
 
 baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_ca
 mediator baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_ca
-working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_14052/cpld_ca
+working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_25564/cpld_ca
 Checking test 005 cpld_ca results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -269,7 +269,7 @@ Test 005 cpld_ca PASS
 
 baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_control_mx025
 mediator baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_control_mx025
-working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_14052/cpld_control_mx025
+working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_25564/cpld_control_mx025
 Checking test 006 cpld_control_mx025 results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -325,7 +325,7 @@ Test 006 cpld_control_mx025 PASS
 
 baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_control_mx025_12h
 mediator baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_control_mx025_12h
-working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_14052/cpld_control_mx025_12h
+working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_25564/cpld_control_mx025_12h
 Checking test 007 cpld_control_mx025_12h results ....
  Comparing phyf012.tile1.nc .........OK
  Comparing phyf012.tile2.nc .........OK
@@ -381,7 +381,7 @@ Test 007 cpld_control_mx025_12h PASS
 
 baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_control_mx025
 mediator baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_control_mx025
-working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_14052/cpld_restart_mx025
+working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_25564/cpld_restart_mx025
 Checking test 008 cpld_restart_mx025 results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -437,7 +437,7 @@ Test 008 cpld_restart_mx025 PASS
 
 baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_control_c192
 mediator baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_control_c192
-working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_14052/cpld_control_c192
+working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_25564/cpld_control_c192
 Checking test 009 cpld_control_c192 results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -490,7 +490,7 @@ Test 009 cpld_control_c192 PASS
 
 baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_control_c384
 mediator baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_control_c384
-working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_14052/cpld_control_c384
+working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_25564/cpld_control_c384
 Checking test 010 cpld_control_c384 results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -546,7 +546,7 @@ Test 010 cpld_control_c384 PASS
 
 baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_controlfrac_c384
 mediator baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_controlfrac_c384
-working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_14052/cpld_controlfrac_c384
+working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_25564/cpld_controlfrac_c384
 Checking test 011 cpld_controlfrac_c384 results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -602,7 +602,7 @@ Test 011 cpld_controlfrac_c384 PASS
 
 baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_bmark
 mediator baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_bmark
-working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_14052/cpld_bmark
+working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_25564/cpld_bmark
 Checking test 012 cpld_bmark results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -658,7 +658,7 @@ Test 012 cpld_bmark PASS
 
 baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_bmark_wave
 mediator baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_bmark_wave
-working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_14052/cpld_bmark_wave
+working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_25564/cpld_bmark_wave
 Checking test 013 cpld_bmark_wave results ....
  Comparing phyf024.tile1.nc .........OK
  Comparing phyf024.tile2.nc .........OK
@@ -717,7 +717,7 @@ Test 013 cpld_bmark_wave PASS
 
 baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_debug
 mediator baseline dir = /gpfs/dell2/emc/modeling/noscrub/emc.nemspara/RT/FV3-MOM6-CICE5/develop-20201021/cpld_debug
-working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_14052/cpld_debug
+working dir  = /gpfs/dell2/ptmp/Denise.Worthen/S2S_RT/rt_25564/cpld_debug
 Checking test 014 cpld_debug results ....
  Comparing phyf006.tile1.nc .........OK
  Comparing phyf006.tile2.nc .........OK
@@ -769,5 +769,5 @@ Test 014 cpld_debug PASS
 
 
 REGRESSION TEST WAS SUCCESSFUL
-Wed Oct 21 22:46:46 UTC 2020
-Elapsed time: 03h:28m:19s. Have a nice day!
+Thu Oct 22 14:03:25 UTC 2020
+Elapsed time: 02h:14m:33s. Have a nice day!
